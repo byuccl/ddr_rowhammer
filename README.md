@@ -1,6 +1,17 @@
 # DDR Rowhammer Project
 
-Getting Started:
+The overall goal of the DDR Rohammer project is to develop and verify DDR controllers for FPGAs that provide both reliability and security.
+We will work with sponsors and colleagues at other universities to 
+
+1. Develop and verify a soft DDR controller
+2. Rowhammer
+3. Opensource
+
+Based on the 
+
+[litedram](https://github.com/enjoy-digital/litedram)
+
+## Getting Started
 
 * Learn what you can about DDR and DDR controllers (keep a list of good references that you find useful)
 * Read up about DDR Rowhammering and keep a list of good references that you find along the way
