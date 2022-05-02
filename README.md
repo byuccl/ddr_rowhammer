@@ -1,13 +1,23 @@
 # DDR Rowhammer Project
 
-The overall goal of the DDR Rohammer project is to develop and verify DDR controllers for FPGAs that provide both reliability and security.
-We will work with sponsors and colleagues at other universities to 
+The overall goal of the DDR project is to develop and verify DDR controllers for FPGAs that provide both reliability and security.
+We will work with sponsors and colleagues at other universities to address each of these concerns as follows:
 
-1. Develop and verify a soft DDR controller
-2. Rowhammer
-3. Opensource
-
-Based on the 
+* **Reliability**:
+  * Determine the reliability of an open-source soft DDR controller
+    * Perform fault injection
+    * Identify single-point failures
+  * Improve reliability of DDR controller
+    * Test/validate ECC support
+    * Support Chip ECC modes on boards/systems that provide the connections
+    * Provide higher-level SEU recovery or response support
+  * Work with U-Pitt on their DDR testbench 
+  * Prepare for radiation experiment (BYU and Pitt)
+* **Security**:
+  * Rowhammer
+    * Implement and verify [LiteX ROwHammer Tester](https://litex-rowhammer-tester.readthedocs.io/en/latest/)
+    * Perform fault injection on Litex RowHammer tester
+  
 
 [litedram](https://github.com/enjoy-digital/litedram)
 
