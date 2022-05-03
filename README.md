@@ -36,3 +36,4 @@ We will work with sponsors and colleagues at other universities to address each 
 * https://github.com/antmicro/litex-rowhammer-tester/
 * https://cfp.openpower.foundation/summit2021/talk/C9Q3GS/ 
 * https://github.com/waviousllc/wav-lpddr-hw 
+* https://github.com/litex-hub/linux-on-litex-vexriscv
