@@ -1,0 +1,3 @@
+[submodule "litex-rowhammer-tester"]
+	path = litex-rowhammer-tester
+	url = https://github.com/antmicro/litex-rowhammer-tester
