@@ -4,3 +4,6 @@
 [submodule "migen"]
 	path = migen
 	url = https://github.com/m-labs/migen
+[submodule "litex-boards"]
+	path = litex-boards
+	url = https://github.com/litex-hub/litex-boards
