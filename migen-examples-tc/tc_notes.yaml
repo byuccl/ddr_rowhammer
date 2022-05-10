@@ -42,8 +42,14 @@ Git Submodules:
       - Case: Rebase local changes on top of submodule updates.
         Commands:
           - git submodule update --remote --rebase
-  - Task: Push changes to submodule.
-    Use Cases:
+  - Task: Removing a submodule.
+    Reference: https://gist.github.com/myusuf3/7f645819ded92bda6677
+    Commands:
+      - git submodule deinit -f <path to submodule>
+      - rm -rf .git/modules/<path to submodule>
+      - git rm -f <path to submodule>
+  # - Task: Push changes to submodule.
+  #   Use Cases:
   - Miscellaneous:
       # Run a git command in each submodule?
       - git submodule foreach '<git command>'
@@ -52,6 +58,15 @@ Migen:
     - Reading the User Manual (docs) was a really good starting place.
       It explained some of the rationale behind the project which made it easier to understand.
       https://m-labs.hk/migen/manual/fhdl.html
-Miscellaneous:
-  - litex-boards is a not part of migen
-  - litex-boards seems to use migen
+Python:
+  Installing Packages:
+    - Manually installed migen.
+    - Manually installed litex-boards.
+    - Found out later that litex will install both.
+    - Was able to install unregistered packages with `pip install -e <path to folder>`
+  Environment:
+    - Installed some apt package to use `python3 -m venv <foldername>` on linux.
+    - Created a .pyenv environment for my local copy of the repo.
+    - Had a problem with the vscode run button not finding "python" but
+      it turned out to be the "Code Runner" extension doing annoying stuff.
+      Disabled it and the normal python extension did everything properly.
