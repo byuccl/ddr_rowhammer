@@ -1,0 +1,57 @@
+# Author: Tommy Cox
+# Email: contact@tommycox.org
+# Description:
+#   Just my personal project-local notes.
+#   Intended for reference and preliminary/unofficial documentation.
+%YAML 1.2
+---
+Git Submodules:
+  - Reference Link: https://git-scm.com/book/en/v2/Git-Tools-Submodules
+  - Task: Adding a submodule.
+    Commands:
+      # Add a submodule.
+      - git submodule add <URL>
+      # Don't forget to commit the changes from running that command.
+  - Task: Cloning with submodules.
+    Use Cases:
+      # Note: This does not clone nested submodules.
+      - Case: After normal clone of repo.
+        Commands:
+          # Not sure what exactly this does.
+          - git submodule init
+          # This is what actually downloads the submodule files.
+          - git submodule update
+          # Alternatively, do both of the above with the following command:
+          - git submodule update --init
+      # Note: This clones nested submodules too.
+      - Case: On initial clone.
+        Commands:
+          - git clone --recurse-submodules <repo>
+      - Case: Submodule(s) of a submodule.
+        Commands:
+          - git submodule update --recursive
+  - Task: Updating submodule (pull upstream changes).
+    Use Cases:
+      - Case: Consuming (using) submodule without changes.
+        Commands:
+          # Runs fetch and update.
+          - git submodule update --remote
+      - Case: Merge submodule changes with local changes.
+        Commands:
+          - git submodule update --remote --merge
+      - Case: Rebase local changes on top of submodule updates.
+        Commands:
+          - git submodule update --remote --rebase
+  - Task: Push changes to submodule.
+    Use Cases:
+  - Miscellaneous:
+      # Run a git command in each submodule?
+      - git submodule foreach '<git command>'
+Migen:
+  Learning:
+    - Reading the User Manual (docs) was a really good starting place.
+      It explained some of the rationale behind the project which made it easier to understand.
+      https://m-labs.hk/migen/manual/fhdl.html
+Miscellaneous:
+  - litex-boards is a not part of migen
+  - litex-boards seems to use migen
