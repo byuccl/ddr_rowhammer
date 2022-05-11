@@ -20,7 +20,7 @@ This is my first original attempt to use the Memory module in Migen. To use this
 
 [fpga 101 tutorials/labs (conveniently for nexys4ddr!)](https://github.com/litex-hub/fpga_101) This walks through making Migen designs and running SoC's with litex.
 
-[Intro to using litex for those with verilog and vivado experience](https://github.com/enjoy-digital/litex/wiki/LiteX-for-Hardware-Engineers)
+[LiteX-for-Hardware-Engineers](https://github.com/enjoy-digital/litex/wiki/LiteX-for-Hardware-Engineers)
 
 
 
