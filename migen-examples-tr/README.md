@@ -12,7 +12,7 @@ This is my first original migen script. Each switch turns on the led just above 
 	
 ### firstMemoryAttempt.py
 
-This is my first attempt to use the Memory module in Migen. To run this, flip on the desired switches for the data (right 8 switches) and the desired switches for the address (left 8 switches). The center button (btnc) writes that data to the address, and turns the leds off. The bottom button (btnd) reads the data from the desired address (again left 8 switches) and outputs the contained data on the right 8 leds. See the tutorial below called 'LiteX-for-Hardware-Engineers' and the Migen user guide for a description of the signals, and run the 'memory.py' example in migen/examples for an example of how the verilog is generated.
+This is my first attempt to use the Memory module in Migen. To run this, flip on the desired switches for the data (right 8 switches) and the desired switches for the address (left 8 switches). The center button (btnc) writes that data to the address, and turns the leds off. The bottom button (btnd) reads the data from the desired address (again left 8 switches) and outputs the contained data on the right 8 leds. See the tutorial below called 'LiteX-for-Hardware-Engineers' and the Migen user guide for a description of the signals.
 	
 
 	
