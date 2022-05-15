@@ -15,12 +15,17 @@ This is my first original migen script. Each switch turns on the led just above 
 This is my first attempt to use the Memory module in Migen. To run this, flip on the desired switches for the data (right 8 switches) and the desired switches for the address (left 8 switches). The center button (btnc) writes that data to the address, and turns the leds off. The bottom button (btnd) reads the data from the desired address (again left 8 switches) and outputs the contained data on the right 8 leds. See the tutorial below called 'LiteX-for-Hardware-Engineers' and the Migen user guide for a description of the signals.
 	
 
-	
+###Migen and Litex
 [Here is a link to the tutorials section of the Litex wiki page.](https://github.com/enjoy-digital/litex/wiki/Tutorials-Resources) I've found a lot of helpful links from this page that have helped me learn migen and use litex. Here are a few:
 
 [fpga 101 tutorials/labs (conveniently for nexys4ddr!)](https://github.com/litex-hub/fpga_101) This walks through making Migen designs and running SoC's with litex.
 
 [LiteX-for-Hardware-Engineers](https://github.com/enjoy-digital/litex/wiki/LiteX-for-Hardware-Engineers)
+
+###DDR Controllers (Important Links, keep for reference)
+[DDR2 SDRAM Data sheet by Micron](https://media-www.micron.com/-/media/client/global/documents/products/data-sheet/dram/ddr2/1gb_ddr2.pdf?rev=854b480189b84d558d466bc18efe270c)
+
+[Pin layout diagram for Nexys4 DDR2 Memory](https://digilent.com/reference/_media/reference/programmable-logic/nexys-4-ddr/nexys-4-ddr_sch.pdf)
 
 
 
