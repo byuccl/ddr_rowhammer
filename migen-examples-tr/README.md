@@ -23,6 +23,7 @@ This is my first attempt to use the Memory module in Migen. To run this, flip on
 [LiteX-for-Hardware-Engineers](https://github.com/enjoy-digital/litex/wiki/LiteX-for-Hardware-Engineers)
 
 ###DDR Controllers (Important Links, keep for reference)
+
 [DDR2 SDRAM Data sheet by Micron](https://media-www.micron.com/-/media/client/global/documents/products/data-sheet/dram/ddr2/1gb_ddr2.pdf?rev=854b480189b84d558d466bc18efe270c)
 
 [Pin layout diagram for Nexys4 DDR2 Memory](https://digilent.com/reference/_media/reference/programmable-logic/nexys-4-ddr/nexys-4-ddr_sch.pdf)
