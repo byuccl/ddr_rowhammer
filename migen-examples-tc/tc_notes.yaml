@@ -64,9 +64,32 @@ Python:
     - Manually installed litex-boards.
     - Found out later that litex will install both.
     - Was able to install unregistered packages with `pip install -e <path to folder>`
+    - Removed litex-boards because it might be intended to be used independent of the overarching project.
   Environment:
     - Installed some apt package to use `python3 -m venv <foldername>` on linux.
     - Created a .pyenv environment for my local copy of the repo.
     - Had a problem with the vscode run button not finding "python" but
       it turned out to be the "Code Runner" extension doing annoying stuff.
       Disabled it and the normal python extension did everything properly.
+LiteX Rowhammer Tester:
+  OpenOCD:
+    additional dependencies:
+      # apt install
+      - libtool
+      - libusb-1.0-0-dev
+  Rowhammer Tester:
+    additional dependencies:
+      # pip install
+      - ninja
+    Firewall:
+      # Not sure if this was required, but I did this while debugging.
+      iptables:
+        - iptables -A INPUT -i eno2 -j ACCEPT
+        - iptables -A OUTPUT -o eno2 -j ACCEPT
+      ufw:
+        - ufw enable
+        - ufw allow in on eno2 to any
+        - ufw allow out on eno2 to any
+    Interfaces:
+      - Had to disable eno1 to successfully connect.
+      - ip link set eno1 down
