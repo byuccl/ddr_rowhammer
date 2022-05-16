@@ -1,1 +1,5 @@
 .pyenv/
+.Xil/
+vivado*.jou
+vivado*.log
+build/
