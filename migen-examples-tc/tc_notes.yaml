@@ -93,3 +93,19 @@ LiteX Rowhammer Tester:
     Interfaces:
       - Had to disable eno1 to successfully connect.
       - ip link set eno1 down
+  Usage:
+    # Make Vivado available.
+    - source /tools/Xilinx/Vivado/2021.1/settings64.sh
+    # Activate python virtual environment.
+    - source ./venv/bin/activate
+    # Set the target board.
+    - export TARGET=arty
+    # Build the modules for the board.
+    - make build
+    # Upload built module to the board.
+    - make upload
+    # Run the communication server.
+    - make srv
+    # Run the leds test.
+    - python leds.py
+    
