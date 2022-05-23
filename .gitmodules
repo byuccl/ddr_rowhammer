@@ -4,3 +4,7 @@
 [submodule "migen"]
 	path = migen
 	url = https://github.com/m-labs/migen
+[submodule "openocd"]
+	path = openocd
+	url = https://github.com/antmicro/openocd.git
+	branch = add-jtagspi-command
