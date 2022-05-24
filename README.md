@@ -37,3 +37,8 @@ We will work with sponsors and colleagues at other universities to address each 
 * https://cfp.openpower.foundation/summit2021/talk/C9Q3GS/ 
 * https://github.com/waviousllc/wav-lpddr-hw 
 * https://github.com/litex-hub/linux-on-litex-vexriscv
+
+## Boards
+
+* [VCU108](https://www.xilinx.com/products/boards-and-kits/ek-u1-vcu108-g.html) $7,194.00
+* [VCU118](https://www.xilinx.com/products/boards-and-kits/vcu118.html) $8,394.00
