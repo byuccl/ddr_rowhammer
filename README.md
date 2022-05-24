@@ -44,3 +44,4 @@ We will work with sponsors and colleagues at other universities to address each 
 * [VCU118](https://www.xilinx.com/products/boards-and-kits/vcu118.html) $8,394.00
 * [Sidewinder-1000](https://www.xilinx.com/products/boards-and-kits/1-o1x8yv.html)
 * [Alpha Data PCIe KU3](https://www.alpha-data.com/product/adm-pcie-ku3/)
+* [LPDDR4](https://litex-rowhammer-tester.readthedocs.io/en/latest/lpddr4_tb.html)
