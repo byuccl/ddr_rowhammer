@@ -43,3 +43,4 @@ We will work with sponsors and colleagues at other universities to address each 
 * [VCU108](https://www.xilinx.com/products/boards-and-kits/ek-u1-vcu108-g.html) $7,194.00
 * [VCU118](https://www.xilinx.com/products/boards-and-kits/vcu118.html) $8,394.00
 * [Sidewinder-1000](https://www.xilinx.com/products/boards-and-kits/1-o1x8yv.html)
+* [Alpha Data PCIe KU3](https://www.alpha-data.com/product/adm-pcie-ku3/)
