@@ -1,6 +1,6 @@
-# Migen Scripts
+# Scripts
 
-Here are some examples of Migen I have used. More to come!
+
 
 ### blinker.py
 
