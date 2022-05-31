@@ -16,7 +16,7 @@ This is my first attempt to use the Memory module in Migen. To run this, flip on
 
 ### core_sim_usb.py
 
-When going through init sequence, here is what is programmed:
+Programming the DDR2:
 - Programming MR:
   - #A2-A0: Burst length (selected as 8 bit)
   - #A3: Burst Type (selected as interleaved)
