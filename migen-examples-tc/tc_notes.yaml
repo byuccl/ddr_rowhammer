@@ -77,6 +77,10 @@ LiteX Rowhammer Tester:
       # apt install
       - libtool
       - libusb-1.0-0-dev
+<<<<<<< HEAD
+=======
+      - pkg-config
+>>>>>>> e95bf27 (Restore personal notes.)
   Rowhammer Tester:
     additional dependencies:
       # pip install
@@ -108,4 +112,36 @@ LiteX Rowhammer Tester:
     - make srv
     # Run the leds test.
     - python leds.py
+2022-05-24:
+  Interface Setup:
+    Adapter Name: enxa0cec803ae9e
+    Create Altname: sudo ip link property add dev enxa0cec803ae9e altname eno2
+    # Create Static IP: sudo ip addr add 192.168.100.2 dev eno
     
+    Static IP Ubuntu:
+      Configure netplan file: /etc/netplan/01-network-manager-all.yaml
+      Add appropriate fields:
+        # Just append these at the same level as the "renderer" key.
+        ethernets:
+            eno2:
+              dhcp4: no
+              addresses: 192.168.100.2/24
+        # Does the netmask need to be set too?
+      Apply changes: sudo netplan apply
+
+  Switching Branch:
+   - git checkout 7c22b0c5a22f2aa1b1ad0f134cda9c4d280c1ad5
+   - git submodule update --init -f
+   - export PATH=$PATH:~/ddr_rowhammer/litex-rowhammer-tester/third_party/riscv64-unknown-elf-gcc/bin
+  #  - make deps
+   - make build
+   - make upload
+   - make srv
+   - python mem.py
+   - ROWHAMMER_COMMAND
+  Miscellaneous:
+    - Master Commit: ee04855e7c85de27b1badcbded47468dff443dff
+      Old Commit: 7c22b0c5a22f2aa1b1ad0f134cda9c4d280c1ad5
+  Plotting:
+    - Depends on matplotlib for plotting... (but it's not installed as a dependency)
+    - Also requires python3-tk
