@@ -1,0 +1,1 @@
+{"buildTargets":["default","env","openocd-setup","rowhammer-setup"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}
