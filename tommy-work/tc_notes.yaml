@@ -77,10 +77,7 @@ LiteX Rowhammer Tester:
       # apt install
       - libtool
       - libusb-1.0-0-dev
-<<<<<<< HEAD
-=======
       - pkg-config
->>>>>>> e95bf27 (Restore personal notes.)
   Rowhammer Tester:
     additional dependencies:
       # pip install
