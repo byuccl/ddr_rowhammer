@@ -1,0 +1,6409 @@
+Using generated target files in: ../../../build/zcu104
+Progress: [========================================] 3072 / 3072 Progress: [========================================] 3072 / 3072 
+Rows: [0, 2]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 2.687 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [0, 2]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.480 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [0, 2]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 41.322 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [0, 2]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 9.617 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [0, 2]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 10.699 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [0, 2]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.428 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [0, 2]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 9.986 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [0, 2]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 11.585 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [0, 2]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 13.755 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [0, 2]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.373 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [1, 3]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.239 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [1, 3]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.423 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [1, 3]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.334 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [1, 3]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.311 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [1, 3]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 8.721 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [1, 3]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 8.932 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 Progress: [========================================] 3072 / 3072 
+Rows: [1, 3]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.411 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [1, 3]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.447 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [1, 3]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.488 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [1, 3]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.596 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [2, 4]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 4.356 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [2, 4]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.584 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [2, 4]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 5.639 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [2, 4]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 6.151 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [2, 4]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 9.342 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [2, 4]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 13.231 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [2, 4]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.650 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [2, 4]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 13.486 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [2, 4]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.526 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [2, 4]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 16.086 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [3, 5]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 2.464 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [3, 5]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.295 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [3, 5]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 6.101 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [3, 5]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.388 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [3, 5]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 8.285 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [3, 5]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.430 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [3, 5]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 10.153 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [3, 5]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 12.184 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [3, 5]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 13.841 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [3, 5]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.347 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [4, 6]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 2.422 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [4, 6]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 4.374 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [4, 6]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.440 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [4, 6]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 7.406 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [4, 6]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 9.056 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [4, 6]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 12.686 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [4, 6]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.703 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [4, 6]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.114 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [4, 6]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 16.666 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [4, 6]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.654 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [5, 7]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 44.275 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [5, 7]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.301 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [5, 7]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 6.704 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [5, 7]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 9.743 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [5, 7]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 7.665 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [5, 7]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.718 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [5, 7]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 13.132 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [5, 7]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 11.709 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 Progress: [========================================] 3072 / 3072 
+Rows: [5, 7]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.333 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [5, 7]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.390 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [6, 14]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 2.643 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [6, 14]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 4.499 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [6, 14]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.383 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [6, 14]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 6.762 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [6, 14]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 8.666 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [6, 14]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 9.702 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [6, 14]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 10.028 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [6, 14]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 12.007 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [6, 14]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 13.868 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [6, 14]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 14.180 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [7, 15]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.624 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 
+Rows: [7, 15]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 5.713 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 
+Rows: [7, 15]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 5.430 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 
+Rows: [7, 15]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 9.128 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 
+Rows: [7, 15]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 9.659 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 
+Rows: [7, 15]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.629 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 
+Rows: [7, 15]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 13.203 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 
+Rows: [7, 15]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 14.113 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 
+Rows: [7, 15]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 13.723 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 
+Rows: [7, 15]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 17.854 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [14, 12]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 5.831 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [14, 12]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 6.032 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [14, 12]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 6.063 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [14, 12]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 5.935 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [14, 12]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 8.789 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [14, 12]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.410 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [14, 12]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 11.559 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [14, 12]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 12.053 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [14, 12]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 13.998 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [14, 12]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.439 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [15, 13]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 2.371 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [15, 13]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 4.364 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [15, 13]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 6.394 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [15, 13]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 6.605 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [15, 13]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 8.765 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [15, 13]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 10.515 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [15, 13]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 11.460 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [15, 13]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.705 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [15, 13]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 16.648 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [15, 13]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 17.269 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [12, 10]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 5.913 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [12, 10]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.757 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [12, 10]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 5.784 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [12, 10]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 8.504 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [12, 10]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 11.091 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [12, 10]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 13.065 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [12, 10]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 13.500 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [12, 10]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.766 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [12, 10]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 17.053 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [12, 10]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.555 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [13, 11]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 2.208 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [13, 11]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 4.034 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [13, 11]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.591 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [13, 11]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 5.975 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [13, 11]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.563 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [13, 11]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 9.768 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [13, 11]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.606 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [13, 11]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.501 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [13, 11]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 13.294 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [13, 11]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.494 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [10, 8]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 2.299 ms
+Progress: [========================================] 1024 / 1024 Progress: [========================================] 1024 / 1024 (Errors: 0) Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [10, 8]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.805 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [10, 8]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.715 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [10, 8]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 8.498 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [10, 8]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.677 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [10, 8]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 12.748 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [10, 8]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 13.276 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [10, 8]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 12.933 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [10, 8]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 16.642 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [10, 8]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 14.781 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [11, 9]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 5.489 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [11, 9]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.854 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [11, 9]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 5.682 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [11, 9]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.562 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [11, 9]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.588 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [11, 9]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 9.925 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [11, 9]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 10.062 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [11, 9]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 12.057 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [11, 9]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 13.973 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [11, 9]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.541 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [8, 16]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 2.339 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [8, 16]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 4.351 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [8, 16]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.263 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [8, 16]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 6.899 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [8, 16]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.550 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [8, 16]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.490 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [8, 16]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 10.080 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 
+Rows: [8, 16]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 44.146 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 
+Rows: [8, 16]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 14.146 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 
+Rows: [8, 16]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.541 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 
+Rows: [9, 17]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 5.964 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 
+Rows: [9, 17]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.923 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 
+Rows: [9, 17]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 4.592 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 
+Rows: [9, 17]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 9.529 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 
+Rows: [9, 17]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.455 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 
+Rows: [9, 17]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 8.909 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 
+Rows: [9, 17]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 13.892 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 
+Rows: [9, 17]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 13.129 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 
+Rows: [9, 17]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 13.749 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [9, 17]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.543 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [16, 18]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.329 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [16, 18]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.395 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [16, 18]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.398 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [16, 18]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 6.724 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [16, 18]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.326 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [16, 18]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.384 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [16, 18]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.446 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [16, 18]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.386 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [16, 18]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.397 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [16, 18]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.449 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [17, 19]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.542 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [17, 19]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 3.874 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [17, 19]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 5.655 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [17, 19]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.638 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [17, 19]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 9.885 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [17, 19]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 44.199 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [17, 19]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 13.860 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [17, 19]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 12.811 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [17, 19]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.662 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [17, 19]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 14.954 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [18, 20]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 5.921 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [18, 20]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 5.601 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [18, 20]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.561 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [18, 20]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 9.967 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [18, 20]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 8.295 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [18, 20]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 10.360 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 Progress: [========================================] 3072 / 3072 
+Rows: [18, 20]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 10.449 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 Progress: [========================================] 3072 / 3072 
+Rows: [18, 20]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 12.850 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [18, 20]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.499 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [18, 20]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 15.070 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [19, 21]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 2.559 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [19, 21]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 4.773 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [19, 21]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 4.634 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [19, 21]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 6.876 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [19, 21]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.421 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [19, 21]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 8.768 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [19, 21]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.520 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [19, 21]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 11.463 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [19, 21]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 16.516 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [19, 21]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 16.190 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [20, 22]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.487 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [20, 22]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 5.672 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [20, 22]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 5.975 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [20, 22]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.036 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [20, 22]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 9.669 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [20, 22]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 9.670 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [20, 22]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.594 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [20, 22]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 12.376 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [20, 22]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 44.056 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [20, 22]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 16.169 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [21, 23]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 44.244 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [21, 23]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.358 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [21, 23]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 5.832 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [21, 23]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 9.271 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [21, 23]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.579 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [21, 23]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 13.456 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [21, 23]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 44.111 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [21, 23]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 14.181 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [21, 23]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.404 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 3072 / 3072 
+Rows: [21, 23]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 17.287 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [22, 30]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 2.493 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [22, 30]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 5.442 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [22, 30]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.345 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [22, 30]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.272 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [22, 30]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 8.393 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [22, 30]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.395 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [22, 30]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 10.460 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [22, 30]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 12.407 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [22, 30]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.390 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [22, 30]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 14.745 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [23, 31]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 2.479 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [23, 31]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 4.511 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [23, 31]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 6.075 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [23, 31]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 6.125 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 
+Rows: [23, 31]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 8.213 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 
+Rows: [23, 31]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 9.463 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 
+Rows: [23, 31]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.852 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [23, 31]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 44.022 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 
+Rows: [23, 31]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 16.631 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 9216 / 9216 Progress: [========================================] 9216 / 9216 
+Rows: [23, 31]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.447 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [30, 28]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 5.404 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [30, 28]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 5.313 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [30, 28]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 8.954 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [30, 28]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.466 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [30, 28]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 9.290 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [30, 28]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 11.532 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [30, 28]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 9.853 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [30, 28]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 11.498 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [30, 28]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 13.899 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [30, 28]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 13.981 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [31, 29]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 2.322 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [31, 29]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 4.358 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [31, 29]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.345 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [31, 29]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.471 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [31, 29]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 7.859 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [31, 29]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 10.155 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [31, 29]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.428 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [31, 29]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.605 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [31, 29]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 14.093 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [31, 29]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 18.159 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [28, 26]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 5.439 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [28, 26]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.542 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [28, 26]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 5.563 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [28, 26]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 7.870 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [28, 26]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.703 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [28, 26]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 9.854 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [28, 26]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 13.293 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [28, 26]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.397 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [28, 26]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 17.064 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [28, 26]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 16.263 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [29, 27]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.342 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [29, 27]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 4.558 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [29, 27]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.915 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [29, 27]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.415 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [29, 27]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 8.790 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [29, 27]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.451 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [29, 27]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.425 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [29, 27]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 12.857 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [29, 27]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.337 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [29, 27]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 15.136 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [26, 24]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.290 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [26, 24]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 4.136 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [26, 24]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.581 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [26, 24]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.636 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [26, 24]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 8.970 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [26, 24]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 13.065 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [26, 24]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 13.399 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [26, 24]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.550 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [26, 24]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 17.178 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [26, 24]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 17.116 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [27, 25]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 5.337 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [27, 25]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 5.127 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [27, 25]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 44.059 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [27, 25]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 9.759 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 
+Rows: [27, 25]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 9.686 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [27, 25]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 10.337 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [27, 25]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 10.386 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [27, 25]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 12.361 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [27, 25]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 14.041 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 4096 / 4096 Progress: [========================================] 4096 / 4096 
+Rows: [27, 25]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 14.102 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 26624 / 26624 Progress: [========================================] 26624 / 26624 
+Rows: [24, 32]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.349 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 26624 / 26624 Progress: [========================================] 26624 / 26624 
+Rows: [24, 32]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 4.639 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 26624 / 26624 Progress: [========================================] 26624 / 26624 
+Rows: [24, 32]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 6.658 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 26624 / 26624 Progress: [========================================] 26624 / 26624 
+Rows: [24, 32]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.400 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 26624 / 26624 Progress: [========================================] 26624 / 26624 
+Rows: [24, 32]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 8.792 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 26624 / 26624 Progress: [========================================] 26624 / 26624 
+Rows: [24, 32]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.414 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 26624 / 26624 Progress: [========================================] 26624 / 26624 
+Rows: [24, 32]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 10.361 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 26624 / 26624 Progress: [========================================] 26624 / 26624 
+Rows: [24, 32]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 12.463 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 26624 / 26624 Progress: [========================================] 26624 / 26624 
+Rows: [24, 32]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.366 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 26624 / 26624 Progress: [========================================] 26624 / 26624 
+Rows: [24, 32]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.072 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 32768 / 32768 Progress: [========================================] 32768 / 32768 
+Rows: [25, 33]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 10.000K  x2 rows
+  Payload refreshes (if enabled) = 196 (disabled)
+  Expected execution time = 169799 cycles = 1.358 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 5.568 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 32768 / 32768 Progress: [========================================] 32768 / 32768 
+Rows: [25, 33]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 20.000K  x2 rows
+  Payload refreshes (if enabled) = 392 (disabled)
+  Expected execution time = 338619 cycles = 2.709 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.871 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 32768 / 32768 Progress: [========================================] 32768 / 32768 
+Rows: [25, 33]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 30.000K  x2 rows
+  Payload refreshes (if enabled) = 531 (disabled)
+  Expected execution time = 504874 cycles = 4.039 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 5.785 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 32768 / 32768 Progress: [========================================] 32768 / 32768 
+Rows: [25, 33]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 40.000K  x2 rows
+  Payload refreshes (if enabled) = 727 (disabled)
+  Expected execution time = 673694 cycles = 5.390 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 44.165 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 32768 / 32768 Progress: [========================================] 32768 / 32768 
+Rows: [25, 33]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 50.000K  x2 rows
+  Payload refreshes (if enabled) = 866 (disabled)
+  Expected execution time = 839949 cycles = 6.720 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 9.506 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 32768 / 32768 Progress: [========================================] 32768 / 32768 
+Rows: [25, 33]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 60.000K  x2 rows
+  Payload refreshes (if enabled) = 1062 (disabled)
+  Expected execution time = 1008769 cycles = 8.070 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 13.135 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 32768 / 32768 Progress: [========================================] 32768 / 32768 
+Rows: [25, 33]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 70.000K  x2 rows
+  Payload refreshes (if enabled) = 1258 (disabled)
+  Expected execution time = 1177589 cycles = 9.421 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 13.540 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 32768 / 32768 Progress: [========================================] 32768 / 32768 
+Rows: [25, 33]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 80.000K  x2 rows
+  Payload refreshes (if enabled) = 1397 (disabled)
+  Expected execution time = 1343844 cycles = 10.751 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.811 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 32768 / 32768 Progress: [========================================] 32768 / 32768 
+Rows: [25, 33]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 90.000K  x2 rows
+  Payload refreshes (if enabled) = 1593 (disabled)
+  Expected execution time = 1512664 cycles = 12.101 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 42.859 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Progress: [========================================] 32768 / 32768 Progress: [========================================] 32768 / 32768 
+Rows: [25, 33]
+Generating payload:
+  tRAS = 5
+  tRP = 3
+  tREFI = 977
+  tRFC = 45
+  Repeatable unit: 116
+  Repetitions: 58
+  Payload size =  0.95KB /  1.00KB
+  Payload per-row toggle count = 100.000K  x2 rows
+  Payload refreshes (if enabled) = 1732 (disabled)
+  Expected execution time = 1678919 cycles = 13.431 ms
+
+Transferring the payload ...
+
+Executing ...
+
+Total elapsed time: 43.342 ms
+Progress: [========================================] 1024 / 1024 (Errors: 0) 
+Row error summary:
+
+
+Bit error summary:
+
+
+Beat error summary:
+
