@@ -113,8 +113,7 @@ LiteX Rowhammer Tester:
   Interface Setup:
     Adapter Name: enxa0cec803ae9e
     Create Altname: sudo ip link property add dev enxa0cec803ae9e altname eno2
-    # Create Static IP: sudo ip addr add 192.168.100.2 dev eno
-    
+    # Create Static IP: sudo ip addr add 192.168.100.2 dev eno2
     Static IP Ubuntu:
       Configure netplan file: /etc/netplan/01-network-manager-all.yaml
       Add appropriate fields:

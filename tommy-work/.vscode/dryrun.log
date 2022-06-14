@@ -1,6 +1,0 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/tommycox/ddr_rowhammer'
-echo No default make rule exists.
-echo DETECTED_OS: Linux.
-make: Leaving directory '/home/tommycox/ddr_rowhammer'
- 
