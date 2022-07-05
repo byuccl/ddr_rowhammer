@@ -2,10 +2,3 @@
 	path = litex-rowhammer-tester
 	url = https://github.com/TommyCox/litex-rowhammer-tester
 	# url = https://github.com/antmicro/litex-rowhammer-tester
-[submodule "migen"]
-	path = migen
-	url = https://github.com/m-labs/migen
-[submodule "openocd"]
-	path = openocd
-	url = https://github.com/antmicro/openocd.git
-	branch = add-jtagspi-command
