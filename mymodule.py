@@ -1,0 +1,140 @@
+from digilent_nexys_video_modified import BaseSoC as NexysVideoBase
+
+from litex.soc.integration.soc_core import *
+from litex.soc.integration.builder import *
+from litex.build.xilinx.vivado import vivado_build_args, vivado_build_argdict
+
+
+class NexysVideoSoC(NexysVideoBase):
+    def __init__(self, **kwargs):
+        kwargs["uart_name"] = "usb_fifo"
+        super().__init__(
+            # with_led_chaser=False,
+            **kwargs
+        )
+
+    def add_sdram(
+        self,
+        name="sdram",
+        phy=None,
+        module=None,
+        origin=None,
+        size=None,
+        with_bist=True, # MODIFIED: Changing default to True.
+        with_soc_interconnect=True,
+        l2_cache_size=8192,
+        l2_cache_min_data_width=128,
+        l2_cache_reverse=False,
+        l2_cache_full_memory_we=True,
+        **kwargs
+    ):
+        return super().add_sdram(
+            name,
+            phy,
+            module,
+            origin,
+            size,
+            with_bist,
+            with_soc_interconnect,
+            l2_cache_size,
+            l2_cache_min_data_width,
+            l2_cache_reverse,
+            l2_cache_full_memory_we,
+            **kwargs
+        )
+
+
+# vvvv COPIED from digilent_nexys_video_modified.py vvvv
+# Build --------------------------------------------------------------------------------------------
+
+
+def main():
+    from litex.soc.integration.soc import LiteXSoCArgumentParser
+
+    parser = LiteXSoCArgumentParser(description="LiteX SoC on Nexys Video")
+    target_group = parser.add_argument_group(title="Target options")
+    target_group.add_argument(
+        "--toolchain", default="vivado", help="FPGA toolchain (vivado or symbiflow)."
+    )
+    target_group.add_argument("--build", action="store_true", help="Build design.")
+    target_group.add_argument("--load", action="store_true", help="Load bitstream.")
+    target_group.add_argument(
+        "--sys-clk-freq", default=100e6, help="System clock frequency."
+    )
+    target_group.add_argument(
+        "--with-ethernet", action="store_true", help="Enable Ethernet support."
+    )
+    sdopts = target_group.add_mutually_exclusive_group()
+    sdopts.add_argument(
+        "--with-spi-sdcard", action="store_true", help="Enable SPI-mode SDCard support."
+    )
+    sdopts.add_argument(
+        "--with-sdcard", action="store_true", help="Enable SDCard support."
+    )
+    target_group.add_argument(
+        "--with-sata", action="store_true", help="Enable SATA support (over FMCRAID)."
+    )
+    target_group.add_argument(
+        "--sata-gen", default="2", help="SATA Gen.", choices=["1", "2"]
+    )
+    target_group.add_argument(
+        "--with-sata-pll-refclk",
+        action="store_true",
+        help="Generate SATA RefClk from PLL.",
+    )
+    target_group.add_argument(
+        "--vadj",
+        default="1.2V",
+        help="FMC VADJ value.",
+        choices=["1.2V", "1.8V", "2.5V", "3.3V"],
+    )
+    viopts = target_group.add_mutually_exclusive_group()
+    viopts.add_argument(
+        "--with-video-terminal",
+        action="store_true",
+        help="Enable Video Terminal (HDMI).",
+    )
+    viopts.add_argument(
+        "--with-video-framebuffer",
+        action="store_true",
+        help="Enable Video Framebuffer (HDMI).",
+    )
+    builder_args(parser)
+    soc_core_args(parser)
+    vivado_build_args(parser)
+    args = parser.parse_args()
+
+    # MODIFIED: Used the class defined in this file.
+    soc = NexysVideoSoC(
+        toolchain=args.toolchain,
+        sys_clk_freq=int(float(args.sys_clk_freq)),
+        with_ethernet=args.with_ethernet,
+        with_sata=args.with_sata,
+        sata_gen="gen" + args.sata_gen,
+        with_sata_pll_refclk=args.with_sata_pll_refclk,
+        vadj=args.vadj,
+        with_video_terminal=args.with_video_terminal,
+        with_video_framebuffer=args.with_video_framebuffer,
+        **soc_core_argdict(args)
+    )
+    if args.with_spi_sdcard:
+        soc.add_spi_sdcard()
+    if args.with_sdcard:
+        soc.add_sdcard()
+
+    # MODIFIED: Trying to convert to verilog here instead of build.
+    # from migen.fhdl.verilog import convert
+    # convert(soc).write("test_verilog_output.v")
+
+    builder = Builder(soc, **builder_argdict(args))
+    builder_kwargs = vivado_build_argdict(args) if args.toolchain == "vivado" else {}
+    if args.build:
+        builder.build(**builder_kwargs)
+
+    if args.load:
+        prog = soc.platform.create_programmer()
+        prog.load_bitstream(builder.get_bitstream_filename(mode="sram"))
+
+
+if __name__ == "__main__":
+    main()
