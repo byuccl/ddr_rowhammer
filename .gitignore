@@ -1,6 +1,5 @@
 .Xil/
 .pyenv/
-.vscode/
 build/
 demo.bin
 demo/
