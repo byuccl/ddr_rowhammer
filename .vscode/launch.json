@@ -5,6 +5,23 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "ECC Test Direct",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/litedram",
+            "justMyCode": true
+        },
+        {
             "name": "ECC Test",
             "type": "python",
             "request": "launch",
@@ -13,7 +30,7 @@
             "args": [
                 "test.test_ecc"
             ],
-            "justMyCode": false
+            "justMyCode": true
         },
         {
             "name": "Nexys Video",
