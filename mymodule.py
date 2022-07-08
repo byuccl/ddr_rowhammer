@@ -6,6 +6,12 @@ from litex.build.xilinx.vivado import vivado_build_args, vivado_build_argdict
 
 
 class NexysVideoSoC(NexysVideoBase):
+    """Create custom SoC by overrideing a base SoC class.
+    
+        This specific SoC modifies the memory controller.
+    """
+
+
     def __init__(self, **kwargs):
         kwargs["uart_name"] = "usb_fifo"
         super().__init__(
@@ -13,6 +19,7 @@ class NexysVideoSoC(NexysVideoBase):
             **kwargs
         )
 
+    # Override add_sdram.
     def add_sdram(
         self,
         name="sdram",
@@ -20,7 +27,7 @@ class NexysVideoSoC(NexysVideoBase):
         module=None,
         origin=None,
         size=None,
-        with_bist=True, # MODIFIED: Changing default to True.
+        with_bist=False,
         with_soc_interconnect=True,
         l2_cache_size=8192,
         l2_cache_min_data_width=128,
@@ -28,7 +35,8 @@ class NexysVideoSoC(NexysVideoBase):
         l2_cache_full_memory_we=True,
         **kwargs
     ):
-        return super().add_sdram(
+        # Call superclass add_sdram.
+        super().add_sdram(
             name,
             phy,
             module,
@@ -42,6 +50,15 @@ class NexysVideoSoC(NexysVideoBase):
             l2_cache_full_memory_we,
             **kwargs
         )
+        
+        # Create a copy of the BIST.
+        # TODO: Customize.
+        sdram = self.sdram
+        from litedram.frontend.bist import  LiteDRAMBISTGenerator, LiteDRAMBISTChecker
+        sdram_generator = LiteDRAMBISTGenerator(sdram.crossbar.get_port())
+        sdram_checker   = LiteDRAMBISTChecker(  sdram.crossbar.get_port())
+        setattr(self.submodules, f"{name}_generator", sdram_generator)
+        setattr(self.submodules, f"{name}_checker",   sdram_checker)
 
 
 # vvvv COPIED from digilent_nexys_video_modified.py vvvv
