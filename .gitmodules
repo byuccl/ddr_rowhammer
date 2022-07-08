@@ -2,3 +2,7 @@
 	path = litex
 	url = https://github.com/enjoy-digital/litex
 	branch = master
+[submodule "litedram"]
+	path = litedram
+	url = https://github.com/TommyCox/litedram.git
+	branch = custom

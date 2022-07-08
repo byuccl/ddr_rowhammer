@@ -3,7 +3,6 @@
 build/
 demo.bin
 demo/
-litedram/
 liteeth/
 liteiclink/
 litejesd204b/
