@@ -5,6 +5,9 @@ import pexpect
 import sys
 import time
 
+# This will start a terminal once a board from litex-boards 
+# is already built and loaded.
+
 # # Create, Send output to generated test.txt file 
 # fout = open('test.txt','wb')
 # c = pexpect.spawn('litex_term /dev/ttyUSB1')
