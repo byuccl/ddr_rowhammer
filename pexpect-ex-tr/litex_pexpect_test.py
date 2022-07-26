@@ -53,8 +53,7 @@ while(True):
 
         # sdram_bist function terminates when any input is entered.
         c.send('\n')
-        c.expect(pattern='\[92;1mlitex\W\[0m> ')
-        time.sleep(0.5)
+        time.sleep(0.05)
         c.expect(pattern='\[92;1mlitex\W\[0m> ')
 
         # flip csr register that injects single errors to low
