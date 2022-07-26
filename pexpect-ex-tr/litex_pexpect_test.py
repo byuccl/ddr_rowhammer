@@ -18,7 +18,7 @@ c.logfile = sys.stdout
 c.expect(pattern='\[92;1mlitex\W\[0m> ')
 c.sendline('help')
 
-# Inject error
+# flip csr register that injects single errors to high
 c.expect(pattern='\[92;1mlitex\W\[0m> ')
 c.sendline('mem_write 0xf0003810 0x02 4')
 
