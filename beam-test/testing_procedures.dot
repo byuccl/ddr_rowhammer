@@ -1,0 +1,16 @@
+digraph {
+    // Nodes
+    connect_board;
+    start_bist;
+    check_errors;
+    log_errors;
+    attempt_recovery;
+    timeout_exception [label = "TODO: \N";];
+    
+    // Edges
+    connect_board -> start_bist;
+    start_bist -> check_errors;
+    check_errors -> check_errors [label = "none";];
+    check_errors -> log_errors [label = "some";];
+    check_errors -> attempt_recovery [label = "many";];
+}
