@@ -44,8 +44,11 @@ Test Organization
   * Read the raw data from software from the entire block to find the word(s) that failed (and log it). Do a bitwise compare and print out the address and bits that failed
   * BIST write to the block to repair the memory
   * Continue the BIST reading where we left off
-* If DRAM hangs or does something very wrong (i.e., an internal controller error rather than a memory error)
-  * 
+* If the bist error count is above some threshold, go through some sort of memory congtroller diagnosis and attempt recover
+  * try command again
+  * Read mode registers
+  * Do a reinitialization of DRAM mode values
+  * Recalibrate
 * If the processor fails (PEXPECT)
 
 Expected DDR Errors:
