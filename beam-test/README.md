@@ -4,6 +4,9 @@ Folder for everything related to the upcoming radiation test in December 2022.
 
 ## Notes / To Do
 
+- [ ] Hardware Design
+  - [ ] TMR version
+  - [ ] BSCAN
 - [ ] Develop automated test script.
 - [ ] Handle timeouts errors.
 - [ ] Handle different types of errors.
