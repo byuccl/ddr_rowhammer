@@ -39,8 +39,12 @@ Folder for everything related to the upcoming radiation test in December 2022.
 In this experiment, the DDR is placed in the beam and the FPGA controller is shielded as best we can.
 We expect few FPGA/controller issues (we will be scrubbing the FPGA just in case).
 We expect most errors (if not all) to occur from the DDR.
-The purpose of this test is to measure the cross section of the DRAM memory cells and the various SEFI modes that it experiences.
-We also want to experiment with error recovery mechanisms and find ways of recovering DRAM functionality after failure.
+The purpose of this test is as follows:
+  * Measure the per bit cross section of the DDR memory cells
+  * Identify possible MCUs in the per bit cross sections
+  * Measure the SEFI cross section of the DDR
+    * Identify different SEFI modes (primitive reason for DDR failure)
+  * Identify low-cost error recovery mechanisms when SEFI occurs
 
 Test Procedure
 * Power up and Configure the FPGA (SD-CARD config and boot so no additional step is needed
@@ -78,9 +82,27 @@ In this experiment, the FPGA is placed in the beam and the DRAM is shielded as b
 We expect few DRAM errors (although they may occur occasionally from secondaries).
 We expect most errors (if not all) to occur from the FPGA processor and memory controller.
 In this experiment we want to have both a TMR and non-TMR version of the FPGA circuitry so we can evalaute the improvement in controller/processor reliability using TMR.
+The purpose of this test is as follows:
+  * Measure the cross section of the overall processor system (with TMR and without TMR)
+    * Measure the processor cross section independent of the controller (we assume the memory controller has a larger cross section)
+    * Measure the cross section of the controller (indpeendent of the processor)
+  * Identify specific DDR controller failure modes (and their cross sections)
+  * Experiment with DDR controller recovery mechanisms FI occurs
 
-The purpose of this test is to measure the cross section of the DRAM memory cells and the various SEFI modes that it experiences.
-We also want to experiment with error recovery mechanisms and find ways of recovering DRAM functionality after failure.
+Test Procedure
+* Power up and Configure the FPGA (SD-CARD config and boot so no additional step is needed
+  * Pexpect to check and see if it is booted properly (before issuing more commands)
+* Start BIST check
+  * Full write of memory in fixed sized chunks
+  * Full reads of memory in fixed sized chunks
+* Small DRAM errors
+  * Just record DRAM errors. No need to scrub (they will be scrubbed on next cycle)
+  * We expect few DRAM errors (only those "in flight" within the FPGA)
+* Large DRAM error count (some sort of a SEFI)
+  * Various recover mechanisms: scrub mode registers, recalibration/initialize, repower
+* If the processor hangs and doesn't respond (PEXPECT)
+  * Try a remote reset (PMOD I/O? BSCAN?)
+  * Repower
 
 
 ## Test
