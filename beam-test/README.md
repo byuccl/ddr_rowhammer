@@ -39,6 +39,7 @@ Test Organization
 * Configure the FPGA
 * Intialize the memory with BIST (including ECC words)
   * Use an "incrementing" pattern so we know what should be in each word
+  * Read all the internal DRAM registers as a golden copy
 * Continuously read the memory through BIST in some block size (1k?)
 * If a memory error has occured in a block:
   * Read the raw data from software from the entire block to find the word(s) that failed (and log it). Do a bitwise compare and print out the address and bits that failed
