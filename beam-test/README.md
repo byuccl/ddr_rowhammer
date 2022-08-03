@@ -50,7 +50,7 @@ Test Procedure
 * Power up and Configure the FPGA (SD-CARD config and boot so no additional step is needed
   * Pexpect to check and see if it is booted properly (before issuing more commands)
 * Intialize the memory with BIST (including ECC words)
-  * Use an "incrementing" pattern so we know what should be in each word
+  * Use an "incrementing" or "fixed value" pattern so we know what should be in each word
   * Read all the internal DRAM registers/state as a golden copy
 * Continuously read the memory through BIST in some block size (1k?)
   * If a memory error has occured in a block:
