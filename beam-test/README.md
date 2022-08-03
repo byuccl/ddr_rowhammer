@@ -9,6 +9,8 @@ Folder for everything related to the upcoming radiation test in December 2022.
   - [ ] BSCAN (query locked and other state, remote reset)
   - [ ] Triplicated clocking/MMCM
   - [ ] Support SD cards
+  - [ ] Scrub ROM BRAMs
+  - [ ] Scrub IO Delay elements
 - [ ] BIOS Code
 - [ ] Test Infrastructure
   - [ ] Netbooter
