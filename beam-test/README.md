@@ -68,6 +68,23 @@ Test Procedure
   * Try a remote reset (PMOD I/O? BSCAN?)
   * Repower
 
+Test Variants
+* Use ECC with BIST 
+  * **Goal**: Demonstrate that the ECC core actually works in the beam. Proof of concept.
+  * Initialize memory with BIST write. Do continuous reads.
+  * No need to run very long. Accumulate about 100 errors if possible (simple cross section)
+* Create system without ECC in BIST (raw mode)
+  * The ECC just gets in the way if we can do raw reads to find all errors (not just SEC and DED errors)
+  * Variant 1: "Static" test
+    * Write the memory at the start, then do reads very infrequently (collect DRAM errors)
+    * Scrub the mode registers
+    * Goal: get raw static cross section without dynamic activity
+  * Variant 2: "Dynamic" Read Test
+    * Write the memory at the start, then do reads continuosly (get the dynamic impact of reading)
+  * Variant 3: "Dynamic" Read/Write Test
+    * Continuously write/read to increase the dynamic cross section
+  
+
 Expected DDR Errors:
 * DRAM memory cell errors (will show up as single-bit errors and possibly double-bit errors)
   * BIST engine will report single and double and DRAM error
