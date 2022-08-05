@@ -37,6 +37,7 @@ We will work with sponsors and colleagues at other universities to address each 
 * https://cfp.openpower.foundation/summit2021/talk/C9Q3GS/ 
 * https://github.com/waviousllc/wav-lpddr-hw 
 * https://github.com/litex-hub/linux-on-litex-vexriscv
+* [LiteX: an open-source SoC builder and library based on Migen Python DSL](https://arxiv.org/pdf/2005.02506.pdf)
 
 ## Boards
 
