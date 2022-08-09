@@ -69,20 +69,35 @@ Test Procedure
   * Repower
 
 Test Variants
+
 * Use ECC with BIST 
   * **Goal**: Demonstrate that the ECC core actually works in the beam. Proof of concept.
   * Initialize memory with BIST write. Do continuous reads.
   * No need to run very long. Accumulate about 100 errors if possible (simple cross section)
+  * Script
+    * Wait for system to boot
+    * sdram_bist_pat 0x55
+    * sdram_bist 0x1000 1 0 1
+    * Expect proper output. Look for hanging or vary large number of errors (three error columns). Scrub with failures?
 * Create system without ECC in BIST (raw mode)
   * The ECC just gets in the way if we can do raw reads to find all errors (not just SEC and DED errors)
   * Variant 1: "Static" test
     * Write the memory at the start, then do reads very infrequently (collect DRAM errors)
-    * Scrub the mode registers
+      * sdram_bist_pat 0x55
+      * sdram_bist_gen 0x0 0x8000000 0
+      * <Wait ~10 seconds to collect errors>
+      * sdram_bist_chk 0x0 0x8000000 0
+      * Scrub the mode registers
+      * <Go back to the wait command>
     * Goal: get raw static cross section without dynamic activity
   * Variant 2: "Dynamic" Read Test
     * Write the memory at the start, then do reads continuosly (get the dynamic impact of reading)
+      * sdram_bist_pat 0x55
+      * sdram_bist 0x1000 1 0 1
   * Variant 3: "Dynamic" Read/Write Test
     * Continuously write/read to increase the dynamic cross section
+      * sdram_bist_pat 0x55
+      * sdram_bist 0x1000 1 0 0
   
 
 Expected DDR Errors:
