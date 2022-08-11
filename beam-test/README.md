@@ -37,6 +37,7 @@ The following additions to the baseline system will be added for mitigation.
 * Provide reading/scrubbing of the I/O delay elements
 * Use three separate bits and voting for BSCAN status and control
 * See if we can manually change the routing so that the single-point failure lines are as short as possible (i.e., the signals branch soon after the single-point location). Mostly for the DDR signals.
+* Figure out how to triplicate global GND and Power signals
  
 ### Unmittigated system with ECC ("ECC")
 
