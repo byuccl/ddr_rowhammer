@@ -6,7 +6,7 @@ Folder for everything related to the upcoming radiation test in December 2022.
 
 The following hardware images need to be created for the radiation test.
 
-### Baseline Unmittigated VexRiscv Bare Metal system
+### Baseline Unmittigated VexRiscv Bare Metal system ("Bare")
 
 A baseline VexRiscv Litex SoC system will be created that will form the core of all of the hardware systems we create for this test.
 The building of the system must be very clearly documented and all custom scripts, hardware modules, and software must be committed to a public repository. 
@@ -16,29 +16,36 @@ The requirements of this base SoC system are as follows:
 - Default VexRiscV system from Litex for the NexysVideo board
 - Supports SD card configuration and booting
 - UART for logging output
-- DDR Controller as a peripheral
+- DDR Controller as a peripheral (need to disable the cache: caching not needed here)
   - Ability to Read/restore internal DDR mode registers (with corresponding BIOS)
   - Ability to read/restore delay registers (with corresponding BIOS)
-- Updated BISTZ
+- Updated BIST module for custom BIST modes (with corresponding BIOS)
+- BSCAN module for querying status/providing remote control
+  - Read status of MMCM locked signal (to determine MMCM failure)
+  - Provide a remote reset so we can try to restart without power cycling
 
-The mitigated version must have the following enhancements
 
-### Baseline Mittigated VexRiscv Bare Metal system
+### Baseline Mitigated VexRiscv Bare Metal system
 
 The following additions to the baseline system will be added for mitigation.
 
 - Apply TMR to the system
 - Create a Triplicated clocking/MMCM module so we can have triplicated clocks
+- BRAM scrubbing
+- Provide reading/scrubbing of the I/O delay elements
 
-###
+
+## Radiation Experiments
+
+### Baseline Unmittigated ("Baseline")
+
+The purpose of this experiment is to obtain cross section data on the unmittigated SoC system as well as the DDR interface.
+We will also be using this unmitigated version to debug the response/recovery scripts with this system (since the errors will come more frequently and we can get ready for the overnight mitigated tests).
+The FPGA is placed in the beam with scrubbing to cause upsets in the SoC system (and not the DDR).
+
 
 ## To Do
 
-- [ ] Hardware Design / Bitfile
-  - [ ] BSCAN (query locked and other state, remote reset)
-  - [ ] Scrub ROM BRAMs
-  - [ ] Scrub IO Delay elements
-- [ ] BIOS Code
 
 - [ ] Handle timeouts errors.
 - [ ] Handle different types of errors.
