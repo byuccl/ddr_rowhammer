@@ -2,20 +2,43 @@
 
 Folder for everything related to the upcoming radiation test in December 2022.
 
+## Hardware Images
+
+The following hardware images need to be created for the radiation test.
+
+### Baseline Unmittigated VexRiscv Bare Metal system
+
+A baseline VexRiscv Litex SoC system will be created that will form the core of all of the hardware systems we create for this test.
+The building of the system must be very clearly documented and all custom scripts, hardware modules, and software must be committed to a public repository. 
+Timestamps and commit tags of the software used to build the processor must be clearly documented.
+The requirements of this base SoC system are as follows:
+
+- Default VexRiscV system from Litex for the NexysVideo board
+- Supports SD card configuration and booting
+- UART for logging output
+- DDR Controller as a peripheral
+  - Ability to Read/restore internal DDR mode registers (with corresponding BIOS)
+  - Ability to read/restore delay registers (with corresponding BIOS)
+- Updated BISTZ
+
+The mitigated version must have the following enhancements
+
+### Baseline Mittigated VexRiscv Bare Metal system
+
+The following additions to the baseline system will be added for mitigation.
+
+- Apply TMR to the system
+- Create a Triplicated clocking/MMCM module so we can have triplicated clocks
+
+###
+
 ## To Do
 
 - [ ] Hardware Design / Bitfile
-  - [ ] TMR version
   - [ ] BSCAN (query locked and other state, remote reset)
-  - [ ] Triplicated clocking/MMCM
-  - [ ] Support SD cards
   - [ ] Scrub ROM BRAMs
   - [ ] Scrub IO Delay elements
 - [ ] BIOS Code
-- [ ] Test Infrastructure
-  - [ ] Netbooter
-  - [ ] JCMs
-- [ ] Python Control Script
 
 - [ ] Handle timeouts errors.
 - [ ] Handle different types of errors.
