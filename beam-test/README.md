@@ -27,6 +27,8 @@ The requirements of this base SoC system are as follows:
 
 ### Baseline Mitigated VexRiscv Bare Metal system ("TMR")
 
+The tools and IP used for the mitigation should be carefully documented so the design can be reproduced.
+Any steps involved with checking and setting timing need to be described carefully.
 The following additions to the baseline system will be added for mitigation.
 
 * Apply TMR to the system
