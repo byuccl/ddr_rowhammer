@@ -36,6 +36,21 @@ The following additions to the baseline system will be added for mitigation.
 * BRAM scrubbing
 * Provide reading/scrubbing of the I/O delay elements
 * Use three separate bits and voting for BSCAN status and control
+ 
+### Mitigated VexRiscv Bare Metal system with ECC ("TMR-ECC")
+
+The Baseline migitated system 
+
+
+The tools and IP used for the mitigation should be carefully documented so the design can be reproduced.
+Any steps involved with checking and setting timing need to be described carefully.
+The following additions to the baseline system will be added for mitigation.
+
+* Apply TMR to the system
+* Create a Triplicated clocking/MMCM module so we can have triplicated clocks
+* BRAM scrubbing
+* Provide reading/scrubbing of the I/O delay elements
+* Use three separate bits and voting for BSCAN status and control
 
 
 ## Radiation Experiments
