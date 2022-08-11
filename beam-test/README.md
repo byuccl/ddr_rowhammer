@@ -22,44 +22,65 @@ The requirements of this base SoC system are as follows:
   * No ECC module on the DDR interface
 * Updated BIST module for custom BIST modes (with corresponding BIOS)
 * BSCAN module for querying status/providing remote control
-  * Read status of MMCM locked signal (to determine MMCM failure)
-  * Provide a remote reset so we can try to restart without power cycling
+  * Read status of MMCM locked signal (to determine MMCM failure). Use three bits for status (for future TMR)
+  * Provide a remote reset so we can try to restart without power cycling. Use three bits for reset (for future TMR)
 
 ### Baseline Mitigated VexRiscv Bare Metal system ("TMR")
 
 The following additions to the baseline system will be added for mitigation.
 
-- Apply TMR to the system
-- Create a Triplicated clocking/MMCM module so we can have triplicated clocks
-- BRAM scrubbing
-- Provide reading/scrubbing of the I/O delay elements
+* Apply TMR to the system
+* Create a Triplicated clocking/MMCM module so we can have triplicated clocks
+* BRAM scrubbing
+* Provide reading/scrubbing of the I/O delay elements
+* Use three separate bits and voting for BSCAN status and control
 
 
 ## Radiation Experiments
 
-### Baseline Unmittigated ("Baseline")
+### Baseline FPGA Experiment
 
-The purpose of this experiment is to obtain cross section data on the unmittigated SoC system as well as the DDR interface.
+The purpose of this experiment is to obtain cross section data on the SoC system as well as the DDR interface.
 We will also be using this unmitigated version to debug the response/recovery scripts with this system (since the errors will come more frequently and we can get ready for the overnight mitigated tests).
 The FPGA is placed in the beam with scrubbing to cause upsets in the SoC system (and not the DDR).
+In this experiment, the FPGA is placed in the beam and the DRAM is shielded as best we can.
+We expect few DRAM errors (although they may occur occasionally from secondaries).
+We expect most errors (if not all) to occur from the FPGA processor and memory controller.
+
+The purpose of this test is as follows:
+  * Measure the cross section of the overall processor system (with TMR and without TMR)
+    * Measure the processor cross section independent of the controller (we assume the memory controller has a larger cross section)
+    * Check for processor hangs, UART issues, or incorrect execution
+  * Measure the cross section of the DDR controller (independent of the processor)
+    * Since the DDR controller is not used by the processor for execution, we can test it independently of the processor
+    * Check for memory errors, controller errors (all bad data)
+    * Identify any specific processor failure modes (and measure their cross section)
+  * Identify and validate processor recovery methods
+    * Issue internal reset (as a step before repower). This might identify unrepairable BRAM ROM corruption
+  * Identify and validate DDR controller recovery mechanisms
+
+Test Procedure
+- Power up and Configure the FPGA (SD-CARD config and boot so no additional step is needed)
+  * Pexpect to check and see if it is booted properly (before issuing more commands)
+- Start BIST check
+  * Full write/read of memory in fixed sized chunks
+- Small DRAM errors
+  * Just record DRAM errors. No need to scrub (they will be fixed on next BIST cycle)
+  * We expect few DRAM errors (only those "in flight" within the FPGA)
+- Large DRAM error count (some sort of a SEFI)
+  * Try BIST again to see if a new BIST cycle will flush this out
+  * If this fails, read/scrub the DDR mode registers (try BIST again after this)
+  * If this fails, read/scrub the DDR delay registers (i.e., scrub delays) to fix calibration issues
+  * If this fails, issue a DDR "calibrate" command
+  * If this fails, issue a DDR "initialize" command
+  * If this fails, repower (even though processor works)
+* If the processor hangs and doesn't respond (PEXPECT)
+  * Try a remote reset via BSCAN
+  * If this does not recover, issue a repower
 
 
 ## To Do
 
-
-- [ ] Handle timeouts errors.
-- [ ] Handle different types of errors.
-  - [ ] "ERRORS"
-  - [ ] "SEC"
-  - [ ] "DED"
-  - [ ] Combinations of above.
-- [ ] Recovery methods.
-  - [ ] Recalibrate.
-  - [ ] Reinitialize.
-  - [ ] Hardware Reset?
-  - [ ] Reboot?
-  - [ ] JTAG Reset?
-  - [ ] Power Cycle
 - [ ] Log errors with timestamps.
 - [ ] Detect and handle failure types.
   - [ ] Controller failures.
@@ -139,34 +160,6 @@ Expected DDR Errors:
 Test Setup
 * Disable L2 cache for DRAM (so processor is always reading actual DRAM rather than cached values)
 
-
-## FPGA Test
-
-In this experiment, the FPGA is placed in the beam and the DRAM is shielded as best we can.
-We expect few DRAM errors (although they may occur occasionally from secondaries).
-We expect most errors (if not all) to occur from the FPGA processor and memory controller.
-In this experiment we want to have both a TMR and non-TMR version of the FPGA circuitry so we can evalaute the improvement in controller/processor reliability using TMR.
-The purpose of this test is as follows:
-  * Measure the cross section of the overall processor system (with TMR and without TMR)
-    * Measure the processor cross section independent of the controller (we assume the memory controller has a larger cross section)
-    * Measure the cross section of the controller (indpeendent of the processor)
-  * Identify specific DDR controller failure modes (and their cross sections)
-  * Experiment with DDR controller recovery mechanisms FI occurs
-
-Test Procedure
-* Power up and Configure the FPGA (SD-CARD config and boot so no additional step is needed
-  * Pexpect to check and see if it is booted properly (before issuing more commands)
-* Start BIST check
-  * Full write of memory in fixed sized chunks
-  * Full reads of memory in fixed sized chunks
-* Small DRAM errors
-  * Just record DRAM errors. No need to scrub (they will be scrubbed on next cycle)
-  * We expect few DRAM errors (only those "in flight" within the FPGA)
-* Large DRAM error count (some sort of a SEFI)
-  * Various recover mechanisms: scrub mode registers, recalibration/initialize, repower
-* If the processor hangs and doesn't respond (PEXPECT)
-  * Try a remote reset (PMOD I/O? BSCAN?)
-  * Repower
 
 
 ## Test
