@@ -13,19 +13,19 @@ The building of the system must be very clearly documented and all custom script
 Timestamps and commit tags of the software used to build the processor must be clearly documented.
 The requirements of this base SoC system are as follows:
 
-- Default VexRiscV system from Litex for the NexysVideo board
-- Supports SD card configuration and booting
-- UART for logging output
-- DDR Controller as a peripheral (need to disable the cache: caching not needed here)
-  - Ability to Read/restore internal DDR mode registers (with corresponding BIOS)
-  - Ability to read/restore delay registers (with corresponding BIOS)
-- Updated BIST module for custom BIST modes (with corresponding BIOS)
-- BSCAN module for querying status/providing remote control
-  - Read status of MMCM locked signal (to determine MMCM failure)
-  - Provide a remote reset so we can try to restart without power cycling
+* Default VexRiscV system from Litex for the NexysVideo board
+* Supports SD card configuration and booting
+* UART for logging output
+* DDR Controller as a peripheral (need to disable the cache: caching not needed here)
+  * Ability to Read/restore internal DDR mode registers (with corresponding BIOS)
+  * Ability to read/restore delay registers (with corresponding BIOS)
+  * No ECC module on the DDR interface
+* Updated BIST module for custom BIST modes (with corresponding BIOS)
+* BSCAN module for querying status/providing remote control
+  * Read status of MMCM locked signal (to determine MMCM failure)
+  * Provide a remote reset so we can try to restart without power cycling
 
-
-### Baseline Mitigated VexRiscv Bare Metal system
+### Baseline Mitigated VexRiscv Bare Metal system ("TMR")
 
 The following additions to the baseline system will be added for mitigation.
 
