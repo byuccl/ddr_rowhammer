@@ -36,26 +36,18 @@ The following additions to the baseline system will be added for mitigation.
 * BRAM scrubbing
 * Provide reading/scrubbing of the I/O delay elements
 * Use three separate bits and voting for BSCAN status and control
+* See if we can manually change the routing so that the single-point failure lines are as short as possible (i.e., the signals branch soon after the single-point location). Mostly for the DDR signals.
  
-### Mitigated VexRiscv Bare Metal system with ECC ("TMR-ECC")
+### Unmittigated system with ECC ("ECC")
 
-The Baseline migitated system 
-
-
-The tools and IP used for the mitigation should be carefully documented so the design can be reproduced.
-Any steps involved with checking and setting timing need to be described carefully.
-The following additions to the baseline system will be added for mitigation.
-
-* Apply TMR to the system
-* Create a Triplicated clocking/MMCM module so we can have triplicated clocks
-* BRAM scrubbing
-* Provide reading/scrubbing of the I/O delay elements
-* Use three separate bits and voting for BSCAN status and control
+The Baseline unmitigated system is modified to include the ECC module between the BIST system.
+This is used to validate the operation of the ECC (when the DDR is placed in the beam).
+ECC is not used in the regular system because it messes up the addresses and makes it difficult to know what really happened.
 
 
 ## Radiation Experiments
 
-### Baseline FPGA Experiment
+### FPGA Experiment (Mitigated and Unmitigated)
 
 The purpose of this experiment is to obtain cross section data on the SoC system as well as the DDR interface.
 We will also be using this unmitigated version to debug the response/recovery scripts with this system (since the errors will come more frequently and we can get ready for the overnight mitigated tests).
@@ -95,19 +87,12 @@ Test Procedure
   * Try a remote reset via BSCAN
   * If this does not recover, issue a repower
 
-
-## To Do
-
-- [ ] Log errors with timestamps.
-- [ ] Detect and handle failure types.
-  - [ ] Controller failures.
-  - [ ] Processor failures.
-<!-- - [ ]  -->
-
-## DDR Test
+### DDR FPGA Experiment
 
 In this experiment, the DDR is placed in the beam and the FPGA controller is shielded as best we can.
 We expect few FPGA/controller issues (we will be scrubbing the FPGA just in case).
+We can use either the unmitigated or mitigated controller.
+Ideally, we can just use the unmitigated version.
 We expect most errors (if not all) to occur from the DDR.
 The purpose of this test is as follows:
   * Measure the per bit cross section of the DDR memory cells
@@ -136,7 +121,9 @@ Test Procedure
   * Try a remote reset (PMOD I/O? BSCAN?)
   * Repower
 
-Test Variants
+### DDR ECC Experiment
+
+
 
 * Use ECC with BIST 
   * **Goal**: Demonstrate that the ECC core actually works in the beam. Proof of concept.
@@ -174,8 +161,14 @@ Expected DDR Errors:
 * Internal DRAM bank machine failures
   * Very large number of errors from the BIST
   
-Test Setup
-* Disable L2 cache for DRAM (so processor is always reading actual DRAM rather than cached values)
+
+## To Do
+
+- [ ] Log errors with timestamps.
+- [ ] Detect and handle failure types.
+  - [ ] Controller failures.
+  - [ ] Processor failures.
+<!-- - [ ]  -->
 
 
 
