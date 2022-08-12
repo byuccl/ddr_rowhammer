@@ -202,15 +202,26 @@ In our beam testing of the VexRisc Linux system we identified 28 failures of the
  This class of errors that cannot be emulated with fault injection involve triplicated components ofthe design.
  There are two cases for this situation but in both cases, the error is caused by an accumulation of errors in the triplicated system and an error occurs when an error occurs in at least two of the three same components or TMR domains.
  
- Case 1: In this first case,
- 
- Similar to the first category but cannot be scrubbed (or inject faults into). This is accumulation of bits. Takes longer to get to this point.
- 
- Case 2: no feedback voting/repair. ROMs, BRAMs that dont write very often, internal feedback that does not have feedback voting
- 
+ **Case 1**: This first case is similar to the condition described above. 
+ This occurs when you cannot inject faults into a resource of the device. 
+ When you cannot inject faults into the device, you are correspondingly not able to scrub the device.
+ If the component cannot be scrubbed then errors can accumlate and TMR can be broken.
+ Examples of this include BRAM contents, SRLs, etc.
+  
+ **Case 2**: The TMR system we use is "feedback" TMR which is a form of repair on the internal state of the system. 
+ A second type of TMR error that cannot be replciated with fault injection occurs when you can't inject faults into a portion of the design and that portion of the design does not have feedback voting.
+ In these cases, upsets will accumulate and will fail since the state is not being repaired (ROMs, BRAMs that don't write often, SRL, and other internal feedback components that do not have feedback voting).
+  
  3. Difficult to reproduce with fault injection
  
- Low probability faults. Faults that cause history and do not manifest themselves some time later.
+ It is entirely possible that errors seen at the beam are caused by CRAM faults that can be reproduced but that it is difficult or impossible to reproduce them.
+ This may occur with CRAM bits that cause errors for a low probability.
+ Not all faults cause errors and a single fault injection of a bit may not cause a corresponding error.
+ It may take many fault injetinos of the same bit to cause the error.
+ Related to this are faults that cause errors only with a specific history. 
+ A set of previous faults may create conditions that cause a specific fault to cause an error.
+ It is difficult to emulate this history in fault injection.
+ 
  
  
  
