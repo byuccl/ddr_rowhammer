@@ -39,6 +39,7 @@ The following additions to the baseline system will be added for mitigation.
 * See if we can manually change the routing so that the single-point failure lines are as short as possible (i.e., the signals branch soon after the single-point location). Mostly for the DDR signals.
 * Figure out how to triplicate global GND and Power signals
 * The SPF DDR lines turned out to be a primary source of errors. To reduce the cross section of these signals, do the following:
+  * Manually place the reduction voter for the OSERDES as close as possible to the OSERDES
   * Manually place (through constraints) the TMR flip flops just after ISERZDESZ and the TMR flip flops just before the SERDES as close to the SERDES as possible. The intent is to reduce the length of the SPF routing signal as much as possible.
  
 ### Unmittigated system with ECC ("ECC")
