@@ -91,7 +91,9 @@ Test Procedure
   * Try a remote reset via BSCAN
   * If this does not recover, issue a repower
 
-**Note**: If we get a system failure that requires a reset/reboot/repower, perform a GLUT readback first to capture the internal FF & BRAM state. This would allow us to examine the contents of the ROMs to see how many ROM bits have been upset and see if the ROMs caused a problem. We can shut off the clock during this GLUT readback so we don't have any changes. 
+**Notes**: 
+ * If we get a system failure that requires a reset/reboot/repower, perform a GLUT readback first to capture the internal FF & BRAM state. This would allow us to examine the contents of the ROMs to see how many ROM bits have been upset and see if the ROMs caused a problem. We can shut off the clock during this GLUT readback so we don't have any changes. 
+ * Based on the previous non-TMR VexLinux, the system failed once every ~25 minutes.
 
 
 ### DDR FPGA Experiment
