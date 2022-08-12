@@ -183,15 +183,28 @@ Expected DDR Errors:
  
 In our beam testing of the VexRisc Linux system we identified 28 failures of the TMR system. Of these, 13 were reproducable 100% of the time with fault injection. We need to try to identify what was going on in the other 15. The text below proposes a variety of reasons why these faults are not reproducable with fault injection.
  
- 1. Single point failures that you cannot inject faults in.
+ 1. Single point failures that you cannot inject faults into.
  
- SERDES delay lines, Flip-flops, BRAM contents, DRP port bits (MMCM, MGT, etc.).
+ All TMR designs have some "single point failures" (SPFs) in which triplication does not occur (I/Os, etc.).
+ Faults in these components will obviously cause errors in the system.
+ Some resources in the FPGA have configuration bits or internal state that cannot be upset through fault injection. 
+ Examples of these include the flip-flop state, BRAM contents, Dynamic reconfiguration port (DRP) bits (used in MMCMs, MGTs, etc.), and SERDES delay values (which are changed dynamically).
+ Because faults cannot be inserted into these components during fault injection, errors in the system due to such faults cannot be seen. 
  
- SEFIs are a special case of this.
+ A special case of this category are "Single Event Functional Interrupts" of SEFIs.
+ SEFIs correspond to global functional interrupts cause by upsets within internal state that is not visible to the user.
+ An example of a SEFI is the "Power On Reset" or POR SEFI seen in radiation testing.
+ In this SEFI, some internal state can be upset that causes the entire device to reset and/or reconfigure. 
+ There are a variety of such SEFIs that vary from device to device and the union of all such SEFIs may be the cause of a system failure.
  
  2. TMR portions that cannot be scrubbed or fault injected
+
+ This class of errors that cannot be emulated with fault injection involve triplicated components ofthe design.
+ There are two cases for this situation but in both cases, the error is caused by an accumulation of errors in the triplicated system and an error occurs when an error occurs in at least two of the three same components or TMR domains.
  
- Case 1: Similar to the first category but cannot be scrubbed (or inject faults into). This is accumulation of bits. Takes longer to get to this point.
+ Case 1: In this first case,
+ 
+ Similar to the first category but cannot be scrubbed (or inject faults into). This is accumulation of bits. Takes longer to get to this point.
  
  Case 2: no feedback voting/repair. ROMs, BRAMs that dont write very often, internal feedback that does not have feedback voting
  
