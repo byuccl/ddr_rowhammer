@@ -174,6 +174,32 @@ Expected DDR Errors:
 
 
 
+ 
 ## Test
 
 ![image](testing_procedures.svg)
+ 
+# Post Radiation Testing Notes
+ 
+In our beam testing of the VexRisc Linux system we identified 28 failures of the TMR system. Of these, 13 were reproducable 100% of the time with fault injection. We need to try to identify what was going on in the other 15. The text below proposes a variety of reasons why these faults are not reproducable with fault injection.
+ 
+ 1. Single point failures that you cannot inject faults in.
+ 
+ SERDES delay lines, Flip-flops, BRAM contents, DRP port bits (MMCM, MGT, etc.).
+ 
+ SEFIs are a special case of this.
+ 
+ 2. TMR portions that cannot be scrubbed or fault injected
+ 
+ Case 1: Similar to the first category but cannot be scrubbed (or inject faults into). This is accumulation of bits. Takes longer to get to this point.
+ 
+ Case 2: no feedback voting/repair. ROMs, BRAMs that dont write very often, internal feedback that does not have feedback voting
+ 
+ 3. Difficult to reproduce with fault injection
+ 
+ Low probability faults. Faults that cause history and do not manifest themselves some time later.
+ 
+ 
+ 
+ 
+ 
