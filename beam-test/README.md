@@ -94,6 +94,7 @@ Test Procedure
 **Notes**: 
  * If we get a system failure that requires a reset/reboot/repower, perform a GLUT readback first to capture the internal FF & BRAM state. This would allow us to examine the contents of the ROMs to see how many ROM bits have been upset and see if the ROMs caused a problem. We can shut off the clock during this GLUT readback so we don't have any changes. 
  * Based on the previous non-TMR VexLinux, the system failed once every ~25 minutes.
+ * A KU VexRiscv processor bare metal, non-TMR, no DDR failed 4x less often than S7-Linux. This suggets about 2 hours MTBF for a KU embedded processor. SInce the UltraScale has a 2x lower cross section than the S7, we anticipate the bare processor of a S7 VexRiscv to fail every 1 hour.
 
 
 ### DDR FPGA Experiment
