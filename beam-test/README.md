@@ -91,6 +91,9 @@ Test Procedure
   * Try a remote reset via BSCAN
   * If this does not recover, issue a repower
 
+**Note**: If we get a system failure that requires a reset/reboot/repower, perform a GLUT readback first to capture the internal FF & BRAM state. This would allow us to examine the contents of the ROMs to see how many ROM bits have been upset and see if the ROMs caused a problem. We can shut off the clock during this GLUT readback so we don't have any changes. 
+
+
 ### DDR FPGA Experiment
 
 In this experiment, the DDR is placed in the beam and the FPGA controller is shielded as best we can.
