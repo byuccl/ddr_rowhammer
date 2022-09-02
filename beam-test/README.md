@@ -75,21 +75,35 @@ The purpose of this test is as follows:
 Test Procedure
 - Power up and Configure the FPGA (SD-CARD config and boot so no additional step is needed)
   * Pexpect to check and see if it is booted properly (before issuing more commands)
+  * If the system does not boot after some fixed amount of time, try again
+  * If the system failes to boot after 5 or so tries, then give up - something else is wrong (SD card? comm issue, power issue?)
 - Start BIST check
-  * Full write/read of memory in fixed sized chunks
+  * Once booted, start the BIST command to do a full write/read of memory in a fixed sized chuck.
+  * Proper operation involves receiving messages from the procesor indicating that the BIST is working
+  * Failure modes:
+    * Hang: We don't get anything from the processor after some fixed amount of time (some sort of hang)
+    * End of file error: This probably means the UART has an issue or the board powers off
+    * Few DRAM errors: Small number of independent DRAM erros
+    * Large DRAM errors: Large number of block DRAM errors
+- Hang error:
+  * Try to issue a character to stop the bist and issue a help or somethign to see if you can wake it up. If you can wake it upm, restart the BIST. If no response, go to next step.
+  * Issue a CTRL-CC to close the terminal and then try to reconnect to the terminal. Once reconnected, issue a character to stop the bist and see if you can get a response. If you get a response go back gto BIST. If not, go to the next step.
+  * Try a remote RESET via BSCAN
+  * Try reconfiguring (without repowering) and restart test. If this does not work, go to the next step,
+  * Finally, repower the device and start over.
+- End of File Error:
+  * Try to reconnect to the terminal (See above). Continue with steps listed above on reconnecting to the terminal.
 - Small DRAM errors
-  * Just record DRAM errors. No need to scrub (they will be fixed on next BIST cycle)
-  * We expect few DRAM errors (only those "in flight" within the FPGA)
+  * Print a message indicating the DRAM error. 
+  * Wait until the system completes another BIST scrub. If all is well, continue. If we have a "stuck" failure bit, proceed as follows.
+  * Scrub DDR mode registers and try again
+  * Scrub the DDR delay registers and try again
+  * Issue DDR calibrate command
+  * Issue Initialise command
+  * Go through board recover (reset, reconfigure, and repower steps)
 - Large DRAM error count (some sort of a SEFI)
   * Try BIST again to see if a new BIST cycle will flush this out
-  * If this fails, read/scrub the DDR mode registers (try BIST again after this)
-  * If this fails, read/scrub the DDR delay registers (i.e., scrub delays) to fix calibration issues
-  * If this fails, issue a DDR "calibrate" command
-  * If this fails, issue a DDR "initialize" command
-  * If this fails, repower (even though processor works)
-* If the processor hangs and doesn't respond (PEXPECT)
-  * Try a remote reset via BSCAN
-  * If this does not recover, issue a repower
+  * Go through DFRAM recover steps listed above
 
 **Notes**: 
  * If we get a system failure that requires a reset/reboot/repower, perform a GLUT readback first to capture the internal FF & BRAM state. This would allow us to examine the contents of the ROMs to see how many ROM bits have been upset and see if the ROMs caused a problem. We can shut off the clock during this GLUT readback so we don't have any changes. 
