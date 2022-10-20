@@ -2,3 +2,7 @@
 	path = litex-rowhammer-tester
 	url = https://github.com/TommyCox/litex-rowhammer-tester
 	# url = https://github.com/antmicro/litex-rowhammer-tester
+[submodule "submodules/litex"]
+	path = submodules/litex
+	url = https://github.com/enjoy-digital/litex.git
+	branch = master

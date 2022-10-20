@@ -1,7 +1,3 @@
-# -------------------------------------- #
-# Classes Drafting
-# -------------------------------------- #
-
 # TODO: Consider removing the state argument from actions and conditions.
 #       States aren't a good place to store data because the method to
 #       initialize variables there is a bit strange.
@@ -9,6 +5,9 @@
 
 from typing import Callable
 
+# -------------------------------------- #
+# Classes
+# -------------------------------------- #
 
 class Transition():
     """Explicity stores a state transition.
@@ -142,64 +141,65 @@ class Experiment():
         """Stops the experiment at the end of the current state."""
         self.__stop = True
 
-# -------------------------------------- #
-# -------------------------------------- #
-# Usage Drafting
-# -------------------------------------- #
-# -------------------------------------- #
-from time import sleep
-
-# Create a new experiment object.
-experiment = Experiment()
 
 # -------------------------------------- #
-# Creating states.
+# Usage Example
 # -------------------------------------- #
+if __name__ == "__main__":
+    # Import module/script here.
+    from time import sleep
 
-# Define some state actions.
-def initial_actions(experiment, state):
-    print("This is the initial state!")
-    experiment.counter = 0
+    # Create a new experiment object.
+    experiment = Experiment()
 
-# Create the state object.
-initial_state = ExperimentState(
-    "Initial State",
-    initial_actions,
-    Transition(lambda ex, st: True, "Increment State")
-)
+    # -------------------------------------- #
+    # Creating states.
+    # -------------------------------------- #
 
-# Add state to experiment.
-experiment.add_state(initial_state)
+    # Define some state actions.
+    def initial_actions(experiment, state):
+        print("This is the initial state!")
+        experiment.counter = 0
 
-# -------------------------------------- #
-threshold = 5
+    # Create the state object.
+    initial_state = ExperimentState(
+        "Initial State",
+        initial_actions,
+        Transition(lambda ex, st: True, "Increment State")
+    )
 
-def increment_actions(experiment, state):
-    experiment.counter += 1
-    print(f"Incremented Counter: {experiment.counter - 1} -> {experiment.counter}")
-    # print("Now sleeping for 1 second.")
-    sleep(1)
+    # Add state to experiment.
+    experiment.add_state(initial_state)
 
-experiment.add_state(ExperimentState(
-    "Increment State",
-    increment_actions,
-    Transition(lambda ex, st: ex.counter >= threshold, "End State"),
-    # Transition(lambda ex, st: True, "Increment State")
-))
+    # -------------------------------------- #
+    threshold = 5
 
-# -------------------------------------- #
+    def increment_actions(experiment, state):
+        experiment.counter += 1
+        print(f"Incremented Counter: {experiment.counter - 1} -> {experiment.counter}")
+        # print("Now sleeping for 1 second.")
+        sleep(1)
 
-experiment.add_state(ExperimentState(
-    "End State",
-    lambda ex, st: ex.stop(),
-    Transition(lambda ex, st: True, "End State")
-))
+    experiment.add_state(ExperimentState(
+        "Increment State",
+        increment_actions,
+        Transition(lambda ex, st: ex.counter >= threshold, "End State"),
+        Transition(lambda ex, st: True, "Increment State") # Comment this line out to get an error.
+    ))
 
-# -------------------------------------- #
-# Running the experiment.
-# -------------------------------------- #
+    # -------------------------------------- #
 
-# Set the first state and start the experiment.
-experiment.set_next_state("Initial State")
-experiment.start()
-print(f"Experiment finished in state: {experiment.get_current_state()}")
+    experiment.add_state(ExperimentState(
+        "End State",
+        lambda ex, st: ex.stop(),
+        Transition(lambda ex, st: True, "End State")
+    ))
+
+    # -------------------------------------- #
+    # Running the experiment.
+    # -------------------------------------- #
+
+    # Set the first state and start the experiment.
+    experiment.set_next_state("Initial State")
+    experiment.start()
+    print(f"Experiment finished in state: {experiment.get_current_state()}")
