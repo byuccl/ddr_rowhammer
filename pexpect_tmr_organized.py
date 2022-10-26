@@ -107,7 +107,7 @@ FAULT_INJECTION_ENABLED = True
 # degree_of_max_error = 0
 
 
-print_jcm_fout = open('jcm_times_18.txt', 'w')
+print_jcm_fout = open('jcm_times_19.txt', 'w')
 
 
 class jcm_control():
@@ -308,9 +308,10 @@ class boardcontrol():
 
     Parameters:
         output_str (str): The string to output in a log file and in stdout."""
-    def _record_data(output_str):
+    def _record_data(output_str, supress_log = False):
         print("[", time.strftime("%Y-%m-%d %H:%M:%S"), "] ", output_str)
-        logging.info(output_str)
+        if not (supress_log):
+            logging.info(output_str)
 
 
 
@@ -491,7 +492,7 @@ class boardcontrol():
             otherwise False.
         """
     def expect_title_line_actions(experiment, state):
-        boardcontrol._record_data("expect title line")
+        boardcontrol._record_data("expect title line", True)
         experiment.isUnicodeError = False
         experiment.isTimeOut = False
         experiment.isEOFError = False
@@ -531,7 +532,7 @@ class boardcontrol():
                         else:
                             experiment.invalid_input = True
 
-                        boardcontrol._record_data("")
+                        boardcontrol._record_data("", True)
                         break
 
                     elif match_index == DATA_INDEX:
@@ -555,7 +556,7 @@ class boardcontrol():
 
                         experiment.gotData = True
 
-                        boardcontrol._record_data("")
+                        boardcontrol._record_data("", True)
                         break
 
                 else:
@@ -607,7 +608,7 @@ class boardcontrol():
             
     """
     def check_if_errors_exist_actions(experiment, state):
-        boardcontrol._record_data("check if errors exist")
+        boardcontrol._record_data("check if errors exist", True)
         experiment.errors_exist = False
         
         if (boardcontrol.new_error_cnt > 0 or boardcontrol.new_sec_cnt > 0 or boardcontrol.new_ded_cnt > 0):
@@ -624,7 +625,7 @@ class boardcontrol():
             errors_stopped_incrementing (bool): True if errors exist, otherwise false.
     """
     def check_if_errors_increment_actions(experiment, state):
-        boardcontrol._record_data("check_if_errors_increment")
+        boardcontrol._record_data("check_if_errors_increment", True)
         experiment.errors_incrementing = False
         experiment.errors_stopped_incrementing = False
 
@@ -676,7 +677,7 @@ class boardcontrol():
             this cycle, otherwise false."""
 
     def correct_inject_fault_time_actions(experiment, state):
-        boardcontrol._record_data("inject fault time")
+        boardcontrol._record_data("inject fault time", True)
         experiment.isTimeToInject = False
 
         if not hasattr(experiment, '_correct_inject_fault_timer'):
@@ -692,7 +693,7 @@ class boardcontrol():
     """ Correct fault and inject fault 
     """
     def correct_inject_fault_actions(experiment, state):
-        boardcontrol._record_data("Fault injected!")
+        boardcontrol._record_data("Fault injected!", True)
         jcm_control.correct_fault(boardcontrol.jcm_client)
         jcm_control.inject_fault(boardcontrol.jcm_client)
 
@@ -728,7 +729,7 @@ class boardcontrol():
             timeout_occured (bool): True if timeout occured, otherwise false
     """
     def close_bist_correct_fault_actions(experiment, state):
-        boardcontrol._record_data("bist correct")
+        boardcontrol._record_data("closing bist, correcting fault")
         experiment.timeout_occured = False
 
         try:
@@ -754,7 +755,7 @@ class boardcontrol():
             cycle, errors still appear
     """
     def debug_error_actions(experiment, state):
-        boardcontrol._record_data("debug error")
+        boardcontrol._record_data("Send sdram command")
         experiment.failed_to_correct_errors = False
         experiment.timeout_occured_in_debug = False
 
@@ -838,7 +839,7 @@ class boardcontrol():
 
         
     def repower_board_actions(experiment, state):
-        boardcontrol._record_data("Repower")
+        boardcontrol._record_data("Repower board")
         
         # Stop JCM
         jcm_control.close_jcm(boardcontrol.jcm_client)
@@ -863,7 +864,7 @@ class boardcontrol():
 
 def main():
     # Set up logger settings
-    logging.basicConfig(filename="times_18.txt", level=logging.INFO, datefmt='%Y-%m-%d %H:%M:%S', format='%(asctime)s %(levelname)-8s %(message)s')
+    logging.basicConfig(filename="times_19.txt", level=logging.INFO, datefmt='%Y-%m-%d %H:%M:%S', format='%(asctime)s %(levelname)-8s %(message)s')
     
     # Create a new experiment object
     experiment = Experiment()
