@@ -99,6 +99,8 @@ NETBOOTER_PORT = "1"
 BURST_LENGTH = 0x2000
 RAND_ARG = 1
 
+FAULT_INJECTION_ENABLED = True
+
 
 # # Used to control which level of dram init to do
 # global degree_of_max_error
@@ -481,6 +483,7 @@ def send_bist_cmd_actions(experiment, state):
         otherwise False.
     """
 def expect_title_line_actions(experiment, state):
+    _record_data("expect title line")
     experiment.isUnicodeError = False
     experiment.isTimeOut = False
     experiment.isEOFError = False
@@ -525,6 +528,7 @@ def expect_title_line_actions(experiment, state):
                         experiment.invalid_input = True
 
                     _record_data("")
+                    break
 
                 elif match_index == DATA_INDEX:
 
@@ -548,10 +552,12 @@ def expect_title_line_actions(experiment, state):
                     experiment.gotData = True
 
                     _record_data("")
+                    break
 
             else:
                 # Reach here if no match found
                 _record_data("Unexpected, no match found")
+                break
 
             
         except pexpect.exceptions.TIMEOUT:
@@ -597,6 +603,7 @@ def expect_title_line_actions(experiment, state):
         
 """
 def check_if_errors_exist_actions(experiment, state):
+    _record_data("check if errors exist")
     experiment.errors_exist = False
     
     if (new_error_cnt > 0 or new_sec_cnt > 0 or new_ded_cnt > 0):
@@ -614,6 +621,7 @@ def check_if_errors_exist_actions(experiment, state):
         errors_stopped_incrementing (bool): True if errors exist, otherwise false.
 """
 def check_if_errors_increment_actions(experiment, state):
+    _record_data("check_if_errors_increment")
     experiment.errors_incrementing = False
     experiment.errors_stopped_incrementing = False
 
@@ -665,6 +673,7 @@ def check_if_errors_increment_actions(experiment, state):
         this cycle, otherwise false."""
 
 def correct_inject_fault_time_actions(experiment, state):
+    _record_data("inject fault time")
     experiment.isTimeToInject = False
 
     if not hasattr(experiment, '_correct_inject_fault_timer'):
@@ -675,6 +684,7 @@ def correct_inject_fault_time_actions(experiment, state):
 
     if (experiment._correct_inject_fault_timer >= FAULT_TIMER_MAX):
         experiment.isTimeToInject = True
+        experiment._correct_inject_fault_timer = 0
 
 
 
@@ -693,6 +703,7 @@ def correct_inject_fault_actions(experiment, state):
         timeout_occured (bool): Timeout occured while expecting 'litex>>' prompt
 """
 def restart_bist_actions(experiment, state):
+    _record_data("Restart bist")
 
     experiment.timeout_occured = False
 
@@ -716,6 +727,7 @@ def restart_bist_actions(experiment, state):
         timeout_occured (bool): True if timeout occured, otherwise false
 """
 def close_bist_correct_fault_actions(experiment, state):
+    _record_data("bist correct")
     experiment.timeout_occured = False
 
     try:
@@ -741,6 +753,7 @@ def close_bist_correct_fault_actions(experiment, state):
         cycle, errors still appear
 """
 def debug_error_actions(experiment, state):
+    _record_data("debug error")
     experiment.failed_to_correct_errors = False
     experiment.timeout_occured_in_debug = False
 
@@ -796,6 +809,7 @@ def debug_error_actions(experiment, state):
 """ Correct fault
 """
 def correct_fault_actions(experiment, state):
+    _record_data("Correct fault")
 
     jcm_control.correct_fault(jcm_client)
 
@@ -804,6 +818,7 @@ def correct_fault_actions(experiment, state):
 """ Attempt to restart Litex 
     """
 def restart_litex_actions(experiment, state):
+    _record_data("Restart litex")
     experiment.restart_success = False
 
     try:
@@ -822,6 +837,7 @@ def restart_litex_actions(experiment, state):
 
     
 def repower_board_actions(experiment, state):
+    _record_data("Repower")
     
     # Stop JCM
     jcm_control.close_jcm(jcm_client)
@@ -932,6 +948,7 @@ def main():
         expect_title_line_actions,
         Transition(lambda ex, st: (ex.isError or ex.isEOFError or ex.isTimeOut or ex.isUnicodeError or ex.invalid_input), "Correct Fault State"),
         Transition(lambda ex, st: ex.gotData, "Check If Errors Exist State"),
+        Transition(lambda ex, st: ex.gotTitle, "Expect Title Or Data State"),
         Transition(lambda ex, st: True, "Give Up State")
     ))
 
