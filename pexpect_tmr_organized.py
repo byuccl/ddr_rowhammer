@@ -87,7 +87,7 @@ FAULT_INJECTION_COMMAND = "~/jcm_apps/jcm_random_fault_inject.elf --part {fpga} 
 CONFIGURATION_COMMAND = "~/jcm_apps/jcm_config.elf --part {part} -c 20000000 --jtag --config_file {bitstream}"
 JCM_IP_ADDRESS = "169.254.132.152"
 PART = "xc7a200t"
-BITFILE = "./digilent_nexys_video.bit"
+BITFILE = "./newtobetmred_tmr.bit"
 FRADS = "~/jcm_apps/a200t.frad"
 JCM_LOGIN_LOOPS = 10
 JCM_TIMEOUT_IN_SECONDS = 15
@@ -126,7 +126,7 @@ class jcm_control():
                 new_client.load_system_host_keys()
                 new_client.set_missing_host_key_policy(AutoAddPolicy())
                 print("Connecting to JCM over SSH...", file=print_jcm_fout)
-                new_client.connect(ip_addr, username='root', password='chrec', timeout=None)
+                new_client.connect(ip_addr, username='root', password='chrec', timeout=MAX_ALIVE_CNT)
                 print("SSH successful!", file=print_jcm_fout)
                 break
             except (BadHostKeyException, AuthenticationException,
@@ -879,16 +879,16 @@ def main():
     experiment.add_state(ExperimentState(
         "Plugged In State",
         boardcontrol.board_plugged_in_actions,
-        Transition(lambda ex, st: ex.give_up_time, "Give Up State"),
+        Transition(lambda ex, st: ex.give_up_time, "TTY Connection Failure"),
         Transition(lambda ex, st: ex.board_powered_on < 0, "Plugged In State"),
         Transition(lambda ex, st: True, "Login JCM State")
     ))
 
     # Create give up state
     experiment.add_state(ExperimentState(
-        "Give Up State",
+        "TTY Connection Failure",
         boardcontrol.give_up_actions,
-        Transition(lambda ex, st: True, "Give Up State")
+        Transition(lambda ex, st: True, "TTY Connection Failure")
     ))
 
     # Create login jcm state
@@ -950,7 +950,7 @@ def main():
         Transition(lambda ex, st: (ex.isError or ex.isEOFError or ex.isTimeOut or ex.isUnicodeError or ex.invalid_input), "Correct Fault State"),
         Transition(lambda ex, st: ex.gotData, "Check If Errors Exist State"),
         Transition(lambda ex, st: ex.gotTitle, "Expect Title Or Data State"),
-        Transition(lambda ex, st: True, "Give Up State")
+        Transition(lambda ex, st: True, "TTY Connection Failure")
     ))
 
     # Create check if errors exist state
