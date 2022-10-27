@@ -95,7 +95,7 @@ NUC_SEED = None
 DESIGN = "digilent_nexys_video"
 
 NETBOOTER_IP = "169.254.131.160"
-NETBOOTER_PORT = "1"
+NETBOOTER_PORT = 1
 BURST_LENGTH = 0x2000
 RAND_ARG = 1
 
@@ -294,24 +294,101 @@ class jcm_control():
 class boardcontrol():
 
     """Set variables to pass around"""
+
+    # Number for dev port in /dev/ttyUSBX (int)
     serial_port = None
+
+    # Object controlling JCM (jcm_control)
     jcm_client = None
+
+    # The Serial object opening the file (fd) and
+    # the fdspawn object controlling pexpect.
     fd = None
     fdspawn_obj = None
+
+    # Error count variables, new and old (int)
     new_error_cnt = None
     new_sec_cnt = None
     new_ded_cnt = None
+    old_error_cnt = None
+    old_sec_cnt = None
+    old_ded_cnt = None
+
+    # Variable to control which error correction function to use (int)
     degree_of_max_error = None
+
+    # Timers for 'check if errors increment' state (int)
+    stopped_increment_error_count = None
+    increment_error_count = None
+
+    # Timer for checking unexpected input state (int)
+    unexpected_output_timer = None
+
+    # Boolean variables for tracking if invalid data occured. (bool)
+    data_output_before_title = None
+    first_run = None
+
+    # Netbooter port and ip address variables
+    netbooter_ip = None     # (str)
+    netbooter_port = None   # (int)
+
+    # Settings for bist: 
+    #   mem-burst-length: Bist memory burst length (str)
+    #   addr-mode: Address mode, how bist should read and write memory (str)
+    mem_burst_length = None
+    addr_mode = None
+
+    # # Final error counts (all int)
+    # # Number of times errors appeared total
+    # total_error_cnt = None
+    # total_sec_cnt = None
+    # total_ded_cnt = None
+    # # Number of times errors continued to increment after restarting bist
+    # inc_error_cnt = None
+    # inc_sec_cnt = None
+    # inc_ded_cnt = None
+    # # Number of timeouts occured
+    # total_timeouts = None
+    # # Number of times unexpected data output
+    # total_unexpected_output = None
 
 
     """ Record time and data in both log and output 
 
     Parameters:
-        output_str (str): The string to output in a log file and in stdout."""
+        output_str (str): The string to output in a log file and in stdout.
+        supress_log (bool): True if log should NOT print message, false if it should."""
     def _record_data(output_str, supress_log = False):
         print("[", time.strftime("%Y-%m-%d %H:%M:%S"), "] ", output_str)
         if not (supress_log):
             logging.info(output_str)
+
+
+
+    def init_funct():
+        boardcontrol.new_error_cnt = 0
+        boardcontrol.new_sec_cnt = 0
+        boardcontrol.new_ded_cnt = 0
+        boardcontrol.old_error_cnt = 0
+        boardcontrol.old_sec_cnt = 0
+        boardcontrol.old_ded_cnt = 0
+        boardcontrol.stopped_increment_error_count = 0
+        boardcontrol.increment_error_count = 0
+
+        boardcontrol.data_output_before_title = False
+        boardcontrol.first_run = False
+
+        boardcontrol.unexpected_output_timer = 0
+
+        # # Final error counts:
+        # boardcontrol.total_error_cnt = 0
+        # boardcontrol.total_sec_cnt = 0
+        # boardcontrol.total_ded_cnt = 0
+        # boardcontrol.inc_error_cnt = 0
+        # boardcontrol.inc_sec_cnt = 0
+        # boardcontrol.inc_ded_cnt = 0
+        # boardcontrol.total_timeouts = 0
+        # boardcontrol.total_unexpected_output = 0
 
 
 
@@ -468,14 +545,21 @@ class boardcontrol():
 
 
 
-    """Send bist command to terminal
-
-        """
+    """Send bist command to terminal, initialize error counts
+    """
     def send_bist_cmd_actions(experiment, state):
         boardcontrol._record_data("Starting bist")
 
-        cmd_str = "sdram_bist " + str(BURST_LENGTH) + " " + str(RAND_ARG)
+        cmd_str = "sdram_bist " + str(boardcontrol.mem_burst_length) + " " + str(boardcontrol.addr_mode)
         boardcontrol.fdspawn_obj.sendline(cmd_str)
+
+        # Set old error counts to zero
+        boardcontrol.old_error_cnt = 0
+        boardcontrol.old_sec_cnt = 0
+        boardcontrol.old_ded_cnt = 0
+
+        # Set first run variable to True
+        boardcontrol.first_run = True
 
 
 
@@ -492,7 +576,7 @@ class boardcontrol():
             otherwise False.
         """
     def expect_title_line_actions(experiment, state):
-        boardcontrol._record_data("expect title line", True)
+        # boardcontrol._record_data("expect title line", True)
         experiment.isUnicodeError = False
         experiment.isTimeOut = False
         experiment.isEOFError = False
@@ -503,10 +587,6 @@ class boardcontrol():
 
         # Error correction, Data must be read between titles, otherwise 
         # data output is no good.
-        if not (hasattr(experiment, '_data_output_before_title')):
-            experiment._data_output_before_title = False
-        if not (hasattr(experiment, '_first_run')):
-            experiment._first_run = True
 
         unicode_error_index = 0
 
@@ -526,9 +606,9 @@ class boardcontrol():
                         experiment.gotTitle = True
 
                         # Check that valid input has outputted, or its the first run
-                        if (experiment._data_output_before_title or experiment._first_run):
-                            experiment._data_output_before_title = False
-                            experiment._first_run = False
+                        if (boardcontrol.data_output_before_title or boardcontrol.first_run):
+                            boardcontrol.data_output_before_title = False
+                            boardcontrol.first_run = False
                         else:
                             experiment.invalid_input = True
 
@@ -538,7 +618,7 @@ class boardcontrol():
                     elif match_index == DATA_INDEX:
 
                         # Data recognized
-                        experiment._data_output_before_title = True
+                        boardcontrol.data_output_before_title = True
 
                         # Split apart, take data and return error counts
                         result_str = str(boardcontrol.fdspawn_obj.match.group(0)).split()
@@ -568,15 +648,11 @@ class boardcontrol():
             except pexpect.exceptions.TIMEOUT:
                 boardcontrol._record_data("Time out whie expecting title or data")
                 experiment.isTimeOut = True
-                # Set this for the next time we expect title or data
-                experiment._first_run = True
                 break
 
             except pexpect.exceptions.EOF:
                 boardcontrol._record_data("EOF exception while expecting title or data")
                 experiment.isEOFError = True
-                # Set this for the next time we expect title or data
-                experiment._first_run = True
                 break
 
             except UnicodeDecodeError:
@@ -586,35 +662,34 @@ class boardcontrol():
                 if (unicode_error_index >= MAX_NUM_UNICODE_EXCEPTIONS):
                     boardcontrol._record_data("Too many UnicodeDecode exceptions")
                     experiment.isUnicodeError = True
-                    # Set this for the next time we expect title or data
-                    experiment._first_run = True
                     break
 
             except Exception:
                 boardcontrol._record_data("Other exception occured whie expecting title or data")
                 boardcontrol._record_data(str(Exception))
+
                 experiment.isError = True
-                # Set this for the next time we expect title or data
-                experiment._first_run = True
                 break
 
 
 
     """ Check if errors have come up. This resets the line of fixing dram errors
-        by setting degree_of_max_error to zero
+        by setting degree_of_max_error to zero, also error timers for checking if
+        errors increment.
 
         Attributes:
             errors_exist (bool): True if errors exist, otherwise false.
-            
     """
     def check_if_errors_exist_actions(experiment, state):
-        boardcontrol._record_data("check if errors exist", True)
+        # boardcontrol._record_data("check if errors exist", True)
         experiment.errors_exist = False
         
         if (boardcontrol.new_error_cnt > 0 or boardcontrol.new_sec_cnt > 0 or boardcontrol.new_ded_cnt > 0):
             experiment.errors_exist = True
         else:
             boardcontrol.degree_of_max_error = 0
+            boardcontrol.increment_error_count = 0
+            boardcontrol.stopped_increment_error_count = 0
 
 
 
@@ -625,48 +700,37 @@ class boardcontrol():
             errors_stopped_incrementing (bool): True if errors exist, otherwise false.
     """
     def check_if_errors_increment_actions(experiment, state):
-        boardcontrol._record_data("check_if_errors_increment", True)
+        # boardcontrol._record_data("check_if_errors_increment", True)
         experiment.errors_incrementing = False
         experiment.errors_stopped_incrementing = False
 
-        if not hasattr(experiment, '_increment_error_count'):
-            experiment._increment_error_count = 0
-        if not hasattr(experiment, '_stopped_increment_error_count'):
-            experiment._increment_error_count = 0
-        if not hasattr(experiment, '_old_error_cnt'):
-            experiment._old_error_cnt = 0
-        if not hasattr(experiment, '_old_sec_cnt'):
-            experiment._old_sec_cnt = 0
-        if not hasattr(experiment, '_old_ded_cnt'):
-            experiment._old_ded_cnt = 0
-
         # Output to user if dram errors begin to exist
-        if ((experiment._old_error_cnt == 0) and 
-            (experiment._old_sec_cnt == 0) and
-            (experiment._old_ded_cnt == 0)):
+        if ((boardcontrol.old_error_cnt == 0) and 
+            (boardcontrol.old_sec_cnt == 0) and
+            (boardcontrol.old_ded_cnt == 0)):
             boardcontrol._record_data("Errors detected")
 
-        if ((boardcontrol.new_error_cnt > experiment._old_error_cnt) or 
-            (boardcontrol.new_sec_cnt > experiment._old_sec_cnt) or
-            (boardcontrol.new_ded_cnt > experiment._old_ded_cnt)):
+        if ((boardcontrol.new_error_cnt > boardcontrol.old_error_cnt) or 
+            (boardcontrol.new_sec_cnt > boardcontrol.old_sec_cnt) or
+            (boardcontrol.new_ded_cnt > boardcontrol.old_ded_cnt)):
             
-            experiment._stopped_increment_error_count = 0
-            experiment._increment_error_count += 1
-            if (experiment._increment_error_count >= MAX_ERROR_CNT_CYCLES):
+            boardcontrol.stopped_increment_error_count = 0
+            boardcontrol.increment_error_count += 1
+            if (boardcontrol.increment_error_count >= MAX_ERROR_CNT_CYCLES):
                 experiment.errors_incrementing = True
-                experiment._increment_error_count = 0
+                boardcontrol.increment_error_count = 0
 
         else:
-            experiment._stopped_increment_error_count += 1
-            experiment._increment_error_count = 0
-            if (experiment._stopped_increment_error_count >= MAX_PAUSE_ERROR_CNT_CYCLES):
+            boardcontrol.stopped_increment_error_count += 1
+            boardcontrol.increment_error_count = 0
+            if (boardcontrol.stopped_increment_error_count >= MAX_PAUSE_ERROR_CNT_CYCLES):
                 experiment.errors_stopped_incrementing = True
-                experiment._stopped_increment_error_count = 0
+                boardcontrol.stopped_increment_error_count = 0
 
 
-        experiment._old_error_cnt = boardcontrol.new_error_cnt
-        experiment._old_sec_cnt = boardcontrol.new_sec_cnt
-        experiment._old_ded_cnt = boardcontrol.new_ded_cnt
+        boardcontrol.old_error_cnt = boardcontrol.new_error_cnt
+        boardcontrol.old_sec_cnt = boardcontrol.new_sec_cnt
+        boardcontrol.old_ded_cnt = boardcontrol.new_ded_cnt
 
 
 
@@ -677,7 +741,7 @@ class boardcontrol():
             this cycle, otherwise false."""
 
     def correct_inject_fault_time_actions(experiment, state):
-        boardcontrol._record_data("inject fault time", True)
+        # boardcontrol._record_data("inject fault time", True)
         experiment.isTimeToInject = False
 
         if not hasattr(experiment, '_correct_inject_fault_timer'):
@@ -693,13 +757,13 @@ class boardcontrol():
     """ Correct fault and inject fault 
     """
     def correct_inject_fault_actions(experiment, state):
-        boardcontrol._record_data("Fault injected!", True)
+        # boardcontrol._record_data("Fault injected!", True)
         jcm_control.correct_fault(boardcontrol.jcm_client)
         jcm_control.inject_fault(boardcontrol.jcm_client)
 
 
 
-    """ Close bist, correct fault. Happens if errors are incrementing
+    """ Close bist, reopen. Happens if errors are not incrementing
 
         Attributes:
             timeout_occured (bool): Timeout occured while expecting 'litex>>' prompt
@@ -710,12 +774,20 @@ class boardcontrol():
         experiment.timeout_occured = False
 
         try:
-            boardcontrol._record_data("Closing bist")
             boardcontrol.fdspawn_obj.sendline("\n")
             boardcontrol.fdspawn_obj.expect(pattern="^.*litex[^>]*> ", timeout=BOARD_REPOWER_TIMEOUT)
 
-            cmd_str = "sdram_bist " + str(BURST_LENGTH) + " " + str(RAND_ARG)
+            boardcontrol._record_data("Bist closed, sending bist command")
+            cmd_str = "sdram_bist " + str(boardcontrol.mem_burst_length) + " " + str(boardcontrol.addr_mode)
             boardcontrol.fdspawn_obj.sendline(cmd_str)
+
+            # Set old error counts to zero
+            boardcontrol.old_error_cnt = 0
+            boardcontrol.old_sec_cnt = 0
+            boardcontrol.old_ded_cnt = 0
+
+            # Set first run variable to true
+            boardcontrol.first_run = True
 
         except pexpect.exceptions.TIMEOUT:
             boardcontrol._record_data("Timeout occured restarting bist")
@@ -800,8 +872,16 @@ class boardcontrol():
                 jcm_control.inject_fault(boardcontrol.jcm_client)
 
                 # Restart bist
-                cmd_str = "sdram_bist " + str(BURST_LENGTH) + " " + str(RAND_ARG)
+                cmd_str = "sdram_bist " + str(boardcontrol.mem_burst_length) + " " + str(boardcontrol.addr_mode)
                 boardcontrol.fdspawn_obj.sendline(cmd_str)
+
+                # Set old error counts to zero
+                boardcontrol.old_error_cnt = 0
+                boardcontrol.old_sec_cnt = 0
+                boardcontrol.old_ded_cnt = 0
+
+                # Set first run variable to true 
+                boardcontrol.first_run = True
 
         except pexpect.exceptions.TIMEOUT:
             experiment.timeout_occured_in_debug = True
@@ -818,6 +898,9 @@ class boardcontrol():
 
 
     """ Attempt to restart Litex 
+
+        Attributes:
+            restart_success: True if litex resets, False if otherwise.
         """
     def restart_litex_actions(experiment, state):
         boardcontrol._record_data("Restart litex")
@@ -837,25 +920,26 @@ class boardcontrol():
             boardcontrol._record_data(str(Exception))
 
 
-        
+    """ Repower board 
+    """
     def repower_board_actions(experiment, state):
         boardcontrol._record_data("Repower board")
         
         # Stop JCM
         jcm_control.close_jcm(boardcontrol.jcm_client)
 
-        teln = telnetlib.Telnet(NETBOOTER_IP, None, timeout=TIMEOUT_NETBOOTER)
+        teln = telnetlib.Telnet(boardcontrol.netbooter_ip, None, timeout=TIMEOUT_NETBOOTER)
 
         # Turn off
         s = teln.read_some()
         time.sleep(SLEEPTIME_NETBOOTER)
 
-        s = ("pset " + str(NETBOOTER_IP) + " 0").encode("ascii") + b"\r\n\r\n"
+        s = ("pset " + str(boardcontrol.netbooter_port) + " 0").encode("ascii") + b"\r\n\r\n"
         teln.write(s)
         time.sleep(SLEEPTIME_NETBOOTER)
 
         # Turn back on
-        s = ("pset " + str(NETBOOTER_IP) + " 1").encode("ascii") + b"\r\n\r\n"
+        s = ("pset " + str(boardcontrol.netbooter_port) + " 1").encode("ascii") + b"\r\n\r\n"
         teln.write(s)
         time.sleep(SLEEPTIME_NETBOOTER)
         teln.close()
@@ -863,11 +947,28 @@ class boardcontrol():
 
 
 def main():
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--netbooter-port", help="netbooter outlet number that the FPGA is connected to", default=NETBOOTER_PORT, type=int, required=False)
+    parser.add_argument("--netbooter-ip", help="Ip address to connect to netbooter", default=NETBOOTER_IP, required=False)
+    parser.add_argument("--mem-burst-length", help="Bist memory burst length", default=BURST_LENGTH, type=int, required=False)
+    parser.add_argument("--addr-mode", help="Address mode, how Bist should read and write memory: 0=fixed, 1=linear, 2=random", default=RAND_ARG, type=int, required=False)
+    args = parser.parse_args()
+
+    # Set BIST settings
+    boardcontrol.netbooter_port = args.netbooter_port
+    boardcontrol.netbooter_ip = args.netbooter_ip
+    boardcontrol.mem_burst_length = args.mem_burst_length
+    boardcontrol.addr_mode = args.addr_mode
+
     # Set up logger settings
     logging.basicConfig(filename="times_19.txt", level=logging.INFO, datefmt='%Y-%m-%d %H:%M:%S', format='%(asctime)s %(levelname)-8s %(message)s')
     
     # Create a new experiment object
     experiment = Experiment()
+
+    # Initialize class
+    boardcontrol.init_funct()
 
     # Create initial state
     experiment.add_state(ExperimentState(
@@ -912,7 +1013,7 @@ def main():
         "Connect To Litex",
         boardcontrol.connect_to_litex_serial_actions,
         Transition(lambda ex, st: ex.connection_return_val == 0, "Expect Litex Prompt State"),
-        Transition(lambda ex, st: True, "Configure FPGA State")
+        Transition(lambda ex, st: True, "Repower State")
     ))
 
     # Create expect litex prompt state
