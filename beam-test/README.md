@@ -194,12 +194,6 @@ Expected DDR Errors:
   - [ ] Processor failures.
 <!-- - [ ]  -->
 
-
-
- 
-## Test
-
-![image](testing_procedures.svg)
  
 # Post Radiation Testing Notes
  
