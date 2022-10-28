@@ -107,7 +107,7 @@ FAULT_INJECTION_ENABLED = True
 # degree_of_max_error = 0
 
 
-print_jcm_fout = open('jcm_times_19.txt', 'w')
+print_jcm_fout = open('jcm_times_20.txt', 'w')
 
 
 class jcm_control():
@@ -962,7 +962,7 @@ def main():
     boardcontrol.addr_mode = args.addr_mode
 
     # Set up logger settings
-    logging.basicConfig(filename="times_19.txt", level=logging.INFO, datefmt='%Y-%m-%d %H:%M:%S', format='%(asctime)s %(levelname)-8s %(message)s')
+    logging.basicConfig(filename="times_20.txt", level=logging.INFO, datefmt='%Y-%m-%d %H:%M:%S', format='%(asctime)s %(levelname)-8s %(message)s')
     
     # Create a new experiment object
     experiment = Experiment()
