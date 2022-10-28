@@ -17,9 +17,6 @@ We will work with sponsors and colleagues at other universities to address each 
   * Rowhammer
     * Implement and verify [LiteX ROwHammer Tester](https://litex-rowhammer-tester.readthedocs.io/en/latest/)
     * Perform fault injection on Litex RowHammer tester
-  
-
-[litedram](https://github.com/enjoy-digital/litedram)
 
 ## Getting Started
 
@@ -31,9 +28,20 @@ We will work with sponsors and colleagues at other universities to address each 
 
 ## Resources
 
-* https://antmicro.com/blog/2021/08/open-source-ddr-test-framework-for-rowhammer/
+* https://github.com/enjoy-digital/litex
+* https://github.com/enjoy-digital/litex/wiki
+* https://github.com/enjoy-digital/litex/wiki/LiteX-for-Hardware-Engineers - essential reading
 * https://github.com/enjoy-digital/litedram
+* https://antmicro.com/blog/2021/08/open-source-ddr-test-framework-for-rowhammer/
 * https://github.com/antmicro/litex-rowhammer-tester/
 * https://cfp.openpower.foundation/summit2021/talk/C9Q3GS/ 
 * https://github.com/waviousllc/wav-lpddr-hw 
 * https://github.com/litex-hub/linux-on-litex-vexriscv
+
+## Boards
+
+* [VCU108](https://www.xilinx.com/products/boards-and-kits/ek-u1-vcu108-g.html) $7,194.00
+* [VCU118](https://www.xilinx.com/products/boards-and-kits/vcu118.html) $8,394.00
+* [Sidewinder-1000](https://www.xilinx.com/products/boards-and-kits/1-o1x8yv.html)
+* [Alpha Data PCIe KU3](https://www.alpha-data.com/product/adm-pcie-ku3/)
+* [LPDDR4](https://litex-rowhammer-tester.readthedocs.io/en/latest/lpddr4_tb.html)
