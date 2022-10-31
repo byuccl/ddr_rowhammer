@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+# Questions?
+# - Do I need to give a message at the start of each action? 
 
 import pexpect
 import argparse
@@ -34,11 +36,14 @@ from datetime import date, datetime
 from experiment_machine import Transition, ExperimentState, Experiment
 
 
-# print_fout = open('times_4.txt', 'w+')
+# Format string for printing the date and time
+TIME_STRING_FORMAT = "%Y-%m-%d %H:%M:%S"
 
-# Dev port
-MAX_FILE_NUM = 10 # Search a range from /dev/ttyUSB0 to /dev/ttyUSB9
+# UART port connection constants
+MAX_TTYUSB_INDEX = 10 #  Largest port number to search for (/dev/ttyUSB0 to /dev/ttyUSB9)
 STARTING_FILE_NUM = -1 # Start at -1. If file exists, send num 0-9 otherwise -1.
+MAX_NUM_TIMES_BOOT_UP = 5 # Max number attempts at finding board plugged in
+UART_CONNECTION_ATTEMPT_DELAY = 10 # Number of seconds to delay before trying to connect to the UART again
 
 # Netbooter times in seconds
 TIMEOUT_NETBOOTER = 3.0 # Timeout connecting to netbooter
@@ -64,7 +69,6 @@ SDRAM_INIT_INDEX = 5
 SOC_REBOOT_INDEX = 6
 
 MAX_NUM_UNICODE_EXCEPTIONS = 20 # Catch unicodedecode exception after 20 tries
-MAX_NUM_TIMES_BOOT_UP = 5 # Max number attempts at finding board plugged in
 
 # Data output
 ERROR_MSG_INDEX = 3 # Error number at index 3 of matched string
@@ -142,16 +146,16 @@ class jcm_control():
             except SSHException as error:
                 print(error, file=print_jcm_fout)
                 logging.info("SSHException: Timeout occured or request was rejected opening channel to JCM. Retrying command.")
-                print("[", time.strftime("%Y-%m-%d %H:%M:%S"), "] SSHException: Timeout occured or request was rejected opening channel to JCM. Retrying command.")
+                print("[", time.strftime(TIME_STRING_FORMAT), "] SSHException: Timeout occured or request was rejected opening channel to JCM. Retrying command.")
                 ssh_client = jcm_control.login_to_jcm(JCM_IP_ADDRESS)
 
         while not stdout.channel.exit_status_ready():
             try:
                 line = stdout.readline()
                 if (not line.isspace()) and line != '':
-                    print("[", time.strftime("%Y-%m-%d %H:%M:%S"), "] : ", line, file=print_jcm_fout)
+                    print("[", time.strftime(TIME_STRING_FORMAT), "] : ", line, file=print_jcm_fout)
                 if (not line.isspace()) and line != '':
-                    line = "[{}] ".format(time.strftime("%Y-%m-%d %H:%M:%S")) + line
+                    line = "[{}] ".format(time.strftime(TIME_STRING_FORMAT)) + line
                     print(line, file=print_jcm_fout)
 
                     if "Success" in line:
@@ -178,7 +182,7 @@ class jcm_control():
         global bit_to_correct
         global location_to_correct
         
-        print(time.strftime("%Y-%m-%d %H:%M:%S"),"Injecting Location", file=print_jcm_fout)
+        print(time.strftime(TIME_STRING_FORMAT),"Injecting Location", file=print_jcm_fout)
 
         if NUC_SEED is None:
             jcm_seed = str(np.uint32(time.time() * 1000))
@@ -194,7 +198,7 @@ class jcm_control():
                 break
             except SSHException as error:
                 print(error, file=print_jcm_fout)
-                print("[", time.strftime("%Y-%m-%d %H:%M:%S"), "] SSHException: Timeout occured or request was rejected opening channel to JCM. Retrying exec_command.")
+                print("[", time.strftime(TIME_STRING_FORMAT), "] SSHException: Timeout occured or request was rejected opening channel to JCM. Retrying exec_command.")
                 
 
         print("After", file=print_jcm_fout)
@@ -211,8 +215,8 @@ class jcm_control():
             
             line = stdout.readline()
             if (not line.isspace()) and line != '':
-                print(time.strftime("%Y-%m-%d %H:%M:%S"),   " : ", line, file=print_jcm_fout)
-                line = "[{}] ".format(time.strftime("%Y-%m-%d %H:%M:%S")) + line
+                print(time.strftime(TIME_STRING_FORMAT),   " : ", line, file=print_jcm_fout)
+                line = "[{}] ".format(time.strftime(TIME_STRING_FORMAT)) + line
                 if "Failed!" in line:
                     return 1
                 if "Injecting Frame" in line:
@@ -233,7 +237,7 @@ class jcm_control():
                     # write_to_log("Injected location " + location_to_correct, jcm_log)
                     
                 if "Fault Injection Succeeded!" in line:
-                    line = "[{}] ".format(time.strftime("%Y-%m-%d %H:%M:%S")) + "Fault Injected!\n"
+                    line = "[{}] ".format(time.strftime(TIME_STRING_FORMAT)) + "Fault Injected!\n"
                     print("Fault injection succeeded!", file=print_jcm_fout)
                     keep_reading = False
 
@@ -272,12 +276,12 @@ class jcm_control():
                 os.execv(sys.executable, ['python3'] + sys.argv) # Restarts the program
             line = stdout.readline()
             if (not line.isspace()) and line != '':
-                print(time.strftime("%Y-%m-%d %H:%M:%S"), " : ", line, file=print_jcm_fout)
-                line = "[{}] ".format(time.strftime("%Y-%m-%d %H:%M:%S")) + line
+                print(time.strftime(TIME_STRING_FORMAT), " : ", line, file=print_jcm_fout)
+                line = "[{}] ".format(time.strftime(TIME_STRING_FORMAT)) + line
                 if "Failed!" in line:
                     return 1
                 if "Fault Injection Succeeded!" in line:
-                    line = "[{}] ".format(time.strftime("%Y-%m-%d %H:%M:%S")) + "Fault Corrected!\n"
+                    line = "[{}] ".format(time.strftime(TIME_STRING_FORMAT)) + "Fault Corrected!\n"
                     print("Fault correction succeeded!", file=print_jcm_fout)
                     keep_reading = False
 
@@ -339,7 +343,7 @@ class boardcontrol():
         output_str (str): The string to output in a log file and in stdout.
         supress_log (bool): True if log should NOT print message, false if it should."""
     def _record_data(output_str, supress_log = False):
-        print("[", time.strftime("%Y-%m-%d %H:%M:%S"), "] ", output_str)
+        print("[", time.strftime(TIME_STRING_FORMAT), "] ", output_str)
         if not (supress_log):
             logging.info(output_str)
 
@@ -363,25 +367,23 @@ class boardcontrol():
 
 
 
-    """Does nothing, transition to the board_plugged_in state."""
     def start_actions(experiment, state):
-        boardcontrol._record_data("Starting test")
-        pass
+        '''
+        Actions performed at the very start of a new test
+        '''
+        boardcontrol._record_data("Test Start")
 
-
-
-    """ Check if dev port exists, confirm the nexys video board
-        is plugged in.
-        
-        Attributes:
-            board_powered_on (int) = This holds the dev_port number, otherwise
-            -1 if the dev port file could not be found.
-            give_up_time (bool): True if time to give up on checking board, 
-            otherwise false.
-    """
     def board_plugged_in_actions(experiment, state):
+        """ Check if dev port exists, confirm the nexys video board is plugged in.
+            
+            Attributes:
+                tty_port_num (int) = This holds the dev_port number, otherwise
+                -1 if the dev port file could not be found.
+                give_up_time (bool): True if time to give up on checking board, 
+                otherwise false.
+        """
         boardcontrol._record_data("Confirming board plugged in")
-        experiment.board_powered_on = -1
+        experiment.tty_port_num = STARTING_FILE_NUM
         experiment.give_up_time = False
 
         if not hasattr(experiment, 'give_up_timer'):
@@ -389,26 +391,32 @@ class boardcontrol():
         
         # Set starting number to -1, send command to see if /dev/ttyUSBX
         # file exists, interpret by reading resulting output string.
+        # ?? Why looking for the max? Will there be more than one?
         max_num = STARTING_FILE_NUM
-        for i in range(0, MAX_FILE_NUM):
-            output_str = pexpect.run("ls /dev/ttyUSB" + str(i), encoding="utf-8", logfile=sys.stdout)
-            if not ("cannot access '/dev/ttyUSB" + str(i) + "': No such file or directory" in output_str and (i > max_num)):
+        for i in range(0, MAX_TTYUSB_INDEX):
+            tty_dev = "/dev/ttyUSB" + str(i)
+            output_str = pexpect.run("ls "+tty_dev, encoding="utf-8", logfile=sys.stdout)
+            if not ("cannot access '" + tty_dev + "': No such file or directory" in output_str and (i > max_num)):
                 max_num = i
 
         # Set attribute file_num as the dev port number. If dev port doesn't 
         # exist, file_num is -1.
         boardcontrol.serial_port = max_num
         if (max_num > 0):
+            # Found a tty port
             boardcontrol._record_data("Board plugged in, using /dev/ttyUSB{max_int}.".format(max_int=max_num))
-            experiment.board_powered_on = max_num
+            experiment.tty_port_num = max_num
             experiment.give_up_timer = 0
         else:
+            # Failed to find a tty port
             boardcontrol._record_data("Board not plugged in.")
             experiment.give_up_timer += 1
             if (experiment.give_up_timer >= MAX_NUM_TIMES_BOOT_UP):
+                # Give up if maximum number of attempts made
                 experiment.give_up_time = True
             else:
-                time.sleep(10)
+                # Wait before trying again
+                time.sleep(UART_CONNECTION_ATTEMPT_DELAY)
 
 
 
@@ -917,53 +925,45 @@ class boardcontrol():
         time.sleep(SLEEPTIME_NETBOOTER)
         teln.close()
 
+def build_experiment():
+    '''
+    Builds the experiment object and its related states for the experiment state machine.
+    '''
 
+    # State constants
+    INITIAL_STARTING_STATE = "Initial Starting State"
+    PLUGGED_IN_STATE = "Plugged In State"
+    TTY_CONNECTION_FAILURE = "TTY Connection Failure"
 
-def main():
-
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--netbooter-port", help="netbooter outlet number that the FPGA is connected to", default=NETBOOTER_PORT, type=int, required=False)
-    parser.add_argument("--netbooter-ip", help="Ip address to connect to netbooter", default=NETBOOTER_IP, required=False)
-    parser.add_argument("--mem-burst-length", help="Bist memory burst length", default=BURST_LENGTH, type=int, required=False)
-    parser.add_argument("--addr-mode", help="Address mode, how Bist should read and write memory: 0=fixed, 1=linear, 2=random", default=RAND_ARG, type=int, required=False)
-    args = parser.parse_args()
-
-    # Set BIST settings
-    boardcontrol.netbooter_port = args.netbooter_port
-    boardcontrol.netbooter_ip = args.netbooter_ip
-    boardcontrol.mem_burst_length = args.mem_burst_length
-    boardcontrol.addr_mode = args.addr_mode
-
-    # Set up logger settings
-    logging.basicConfig(filename="times_20.txt", level=logging.INFO, datefmt='%Y-%m-%d %H:%M:%S', format='%(asctime)s %(levelname)-8s %(message)s')
-    
     # Create a new experiment object
     experiment = Experiment()
 
     # Initialize class
     boardcontrol.init_funct()
 
-    # Create initial state
+    # INITIAL_STARTING_STATE
+    # - perform any initial messages or setup
     experiment.add_state(ExperimentState(
-        "Initial Starting State",
+        INITIAL_STARTING_STATE,
         boardcontrol.start_actions,
-        Transition(lambda ex, st: True, "Plugged In State")
+        Transition(lambda ex, st: True, PLUGGED_IN_STATE)
     ))
 
-    # Create plugged in state
+    # PLUGGED_IN_STATE
+    # - Check for the UART port and for UART connection
     experiment.add_state(ExperimentState(
-        "Plugged In State",
+        PLUGGED_IN_STATE,
         boardcontrol.board_plugged_in_actions,
-        Transition(lambda ex, st: ex.give_up_time, "TTY Connection Failure"),
-        Transition(lambda ex, st: ex.board_powered_on < 0, "Plugged In State"),
+        Transition(lambda ex, st: ex.give_up_time,TTY_CONNECTION_FAILURE),
+        Transition(lambda ex, st: ex.tty_port_num < 0, "Plugged In State"),
         Transition(lambda ex, st: True, "Login JCM State")
     ))
 
     # Create give up state
     experiment.add_state(ExperimentState(
-        "TTY Connection Failure",
+        TTY_CONNECTION_FAILURE,
         boardcontrol.give_up_actions,
-        Transition(lambda ex, st: True, "TTY Connection Failure")
+        Transition(lambda ex, st: True, TTY_CONNECTION_FAILURE)
     ))
 
     # Create login jcm state
@@ -1105,7 +1105,28 @@ def main():
         Transition(lambda ex, st: True, "Configure FPGA State")
     ))
 
-    experiment.set_next_state("Initial Starting State")
+    experiment.set_next_state(INITIAL_STARTING_STATE)
+    return experiment
+
+def main():
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--netbooter-port", help="netbooter outlet number that the FPGA is connected to", default=NETBOOTER_PORT, type=int, required=False)
+    parser.add_argument("--netbooter-ip", help="Ip address to connect to netbooter", default=NETBOOTER_IP, required=False)
+    parser.add_argument("--mem-burst-length", help="Bist memory burst length", default=BURST_LENGTH, type=int, required=False)
+    parser.add_argument("--addr-mode", help="Address mode, how Bist should read and write memory: 0=fixed, 1=linear, 2=random", default=RAND_ARG, type=int, required=False)
+    args = parser.parse_args()
+
+    # Set BIST settings
+    boardcontrol.netbooter_port = args.netbooter_port
+    boardcontrol.netbooter_ip = args.netbooter_ip
+    boardcontrol.mem_burst_length = args.mem_burst_length
+    boardcontrol.addr_mode = args.addr_mode
+
+    # Set up logger settings
+    logging.basicConfig(filename="times_20.txt", level=logging.INFO, datefmt='%Y-%m-%d %H:%M:%S', format='%(asctime)s %(levelname)-8s %(message)s')
+    
+    experiment = build_experiment()
     experiment.start()
     print(f"Experiment finished in state: {experiment.get_current_state()}")
 
