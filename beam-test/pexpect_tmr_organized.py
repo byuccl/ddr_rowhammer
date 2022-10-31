@@ -36,23 +36,26 @@ from experiment_machine import Transition, ExperimentState, Experiment
 
 # print_fout = open('times_4.txt', 'w+')
 
-MAX_FILE_NUM = 10
+# Dev port
+MAX_FILE_NUM = 10 # Search a range from /dev/ttyUSB0 to /dev/ttyUSB9
+STARTING_FILE_NUM = -1 # Start at -1. If file exists, send num 0-9 otherwise -1.
 
-TIMEOUT_NETBOOTER = 3.0
-SLEEPTIME_NETBOOTER = 1
-LITEX_BAUDRATE = 115200
+# Netbooter times in seconds
+TIMEOUT_NETBOOTER = 3.0 # Timeout connecting to netbooter
+SLEEPTIME_NETBOOTER = 1 # Time between creating connected instance of Telnet,
+                        # turning board off, then on again.
 
-WAIT_TEXT_TIMEOUT = 15 # 15 seconds
-WAIT_FOR_BOARD_BOOTUP = 40 # 40 seconds
-RUN_JCM_TIMEOUT = 30 # 30 seconds
-SDRAM_CAL_TIMEOUT = 5 # 5 seconds
-SDRAM_INIT_TIMEOUT = 5 # 5 seconds
-TERMINAL_REBOOT_CMD_TIMEOUT = 10 # 10 seconds
-BOARD_REPOWER_TIMEOUT = 30 # 30 seconds
-BOARD_REPROGRAM_TIMEOUT = 10 # 10 seconds
-RESET_LITEX_TIMEOUT = 10 # 10 seconds
+# Timeout times in seconds
+WAIT_TEXT_TIMEOUT = 15 # Wait for data or title to output
+SDRAM_INIT_TIMEOUT = 5 # Time expected at least for scrubbing/init commands to run
+CLOSE_BIST_TIMEOUT = 10 # Time expected to close bist
+BOARD_REPROGRAM_TIMEOUT = 10 # Time expected to connect or reconnect to litex
 FAULT_TIMER_MAX = 2 # 2 second fault injections
+MAX_ALIVE_CNT = 30 # Max amount of time to try to connect to JCM
 
+LITEX_BAUDRATE = 115200 # Baud rate to innitialize comm port object
+
+# Control which command should send to correct errors
 RESTART_BIST_INDEX = 1
 SDRAM_MODE_SCRUB_INDEX = 2
 SDRAM_DELAY_SCRUB_INDEX = 3
@@ -60,27 +63,19 @@ SDRAM_CALLIBRATE_INDEX = 4
 SDRAM_INIT_INDEX = 5
 SOC_REBOOT_INDEX = 6
 
-MAX_NUM_INC_FAULT_READS = 20
-MAX_NUM_UNICODE_EXCEPTIONS = 20
-AUTO_NUM_ERRORS = 1
-STARTING_FILE_NUM = -1
-MEM_INDEX = 2
-ERROR_MSG_INDEX = 3
-SEC_MSG_INDEX = 4
-DED_MSG_INDEX = 5
-MAX_LINES_CODE_MAX_OUT_ERROR =120
-MAX_NUM_TIMES_BOOT_UP = 5
-MAX_MIB_TO_READ = 0x1000
-MAX_ALIVE_CNT = 30
-MAX_BEGINNING_LINES_FOR_ERRORS = 10
-TITLE_INDEX = 0
-DATA_INDEX = 1
+MAX_NUM_UNICODE_EXCEPTIONS = 20 # Catch unicodedecode exception after 20 tries
+MAX_NUM_TIMES_BOOT_UP = 5 # Max number attempts at finding board plugged in
 
-MAX_ERROR_CNT_CYCLES = 30
-MAX_PAUSE_ERROR_CNT_CYCLES = 10
+# Data output
+ERROR_MSG_INDEX = 3 # Error number at index 3 of matched string
+SEC_MSG_INDEX = 4 # Sec error number at index 4 of matched string
+DED_MSG_INDEX = 5 # Ded error number at index 5 of matched string
+TITLE_INDEX = 0 # Returns this index if title is in matched string
+DATA_INDEX = 1 # Returns this index if data is in matched string
+MAX_ERROR_CNT = 0xFFFFFFFF # Errors have maxed out if either value reaches this value.
 
-PLUG_IN_DELAY = 10
-MAX_ERROR_CNT = 0xFFFFFFFF
+MAX_ERROR_CNT_CYCLES = 30 # After 30 cycles of errors incrementing, make transition.
+MAX_PAUSE_ERROR_CNT_CYCLES = 10 # After 10 cycles of errors non_incrementing, make transition
 
 CORRECTION_FAULT_INJECTION_COMMAND = "~/jcm_apps/jcm_fault_inject.elf --part {fpga} -c 20000000 --jtag --frad_file {frads} --readback_file {design}.rb --target_frame {frame} --target_word {word} --target_bit {bit}"
 FAULT_INJECTION_COMMAND = "~/jcm_apps/jcm_random_fault_inject.elf --part {fpga} -c 20000000 --jtag --frad_file {frads} --seed {seed} --readback_file ~/jcm_apps/jcm_readback.rb"
@@ -95,19 +90,15 @@ NUC_SEED = None
 DESIGN = "digilent_nexys_video"
 
 NETBOOTER_IP = "169.254.131.160"
-NETBOOTER_PORT = 1
-BURST_LENGTH = 0x2000
-RAND_ARG = 1
+NETBOOTER_PORT = 1 # Default netbooter port
+BURST_LENGTH = 0x2000 # Default burst length
+RAND_ARG = 1 # Start reading/writing data with addresses linearly.
 
-FAULT_INJECTION_ENABLED = True
-
-
-# # Used to control which level of dram init to do
-# global degree_of_max_error
-# degree_of_max_error = 0
+FAULT_INJECTION_ENABLED = True # Run fault injection.
 
 
-print_jcm_fout = open('jcm_times_20.txt', 'w')
+print_jcm_fout = open('jcm_times_20.txt', 'w') # JCM text file
+
 
 
 class jcm_control():
@@ -338,19 +329,9 @@ class boardcontrol():
     mem_burst_length = None
     addr_mode = None
 
-    # # Final error counts (all int)
-    # # Number of times errors appeared total
-    # total_error_cnt = None
-    # total_sec_cnt = None
-    # total_ded_cnt = None
-    # # Number of times errors continued to increment after restarting bist
-    # inc_error_cnt = None
-    # inc_sec_cnt = None
-    # inc_ded_cnt = None
-    # # Number of timeouts occured
-    # total_timeouts = None
-    # # Number of times unexpected data output
-    # total_unexpected_output = None
+    # UnicodeDecode error flag. If litex restarts because of a UnicodeDecodeException,
+    # this flag will set, and the board will reconfigure. (bool)
+    unicode_decode_prev_error = None
 
 
     """ Record time and data in both log and output 
@@ -377,18 +358,9 @@ class boardcontrol():
 
         boardcontrol.data_output_before_title = False
         boardcontrol.first_run = False
+        boardcontrol.unicode_decode_prev_error = False
 
         boardcontrol.unexpected_output_timer = 0
-
-        # # Final error counts:
-        # boardcontrol.total_error_cnt = 0
-        # boardcontrol.total_sec_cnt = 0
-        # boardcontrol.total_ded_cnt = 0
-        # boardcontrol.inc_error_cnt = 0
-        # boardcontrol.inc_sec_cnt = 0
-        # boardcontrol.inc_ded_cnt = 0
-        # boardcontrol.total_timeouts = 0
-        # boardcontrol.total_unexpected_output = 0
 
 
 
@@ -510,7 +482,7 @@ class boardcontrol():
 
         Attributes:
             expect_litex_return_val (int) = Returns 0 if no problems occured, 1 if 
-            a timeout error occured or a UnicodeDecode error occured more than 20x
+            a timeout error occured or if a UnicodeDecode error occured more than 20x
             
         """
     def expect_litex_prompt_actions(experiment, state):
@@ -521,7 +493,7 @@ class boardcontrol():
         while (True):
             try:
                 boardcontrol.fdspawn_obj.sendline("\n")
-                boardcontrol.fdspawn_obj.expect(pattern="^.*litex[^>]*> ", timeout=BOARD_REPOWER_TIMEOUT)
+                boardcontrol.fdspawn_obj.expect(pattern="^.*litex[^>]*> ", timeout=CLOSE_BIST_TIMEOUT)
                 break
             except pexpect.exceptions.TIMEOUT:
                 boardcontrol._record_data("Timeout occured expecting Litex>> prompt")
@@ -567,6 +539,7 @@ class boardcontrol():
 
         Attributes:
             isUnicodeError (bool): True if a UnicodeDecode exception occured
+            isSecondUnicodeError (bool): Litex has restarted, we are still getting UnicodeDecode exceptions
             isTimeOut (bool): True if a Timeout exception occured
             isEOFError (bool): True if an EOF exception occured.
             isError (bool): True if another exception occured.
@@ -578,6 +551,7 @@ class boardcontrol():
     def expect_title_line_actions(experiment, state):
         # boardcontrol._record_data("expect title line", True)
         experiment.isUnicodeError = False
+        experiment.isSecondUnicodeError = False
         experiment.isTimeOut = False
         experiment.isEOFError = False
         experiment.isError = False
@@ -616,6 +590,9 @@ class boardcontrol():
                         break
 
                     elif match_index == DATA_INDEX:
+
+                        # Match to familiar data, set SecondUnicodeDecode to false if occured beforehand
+                        boardcontrol.unicode_decode_prev_error = False
 
                         # Data recognized
                         boardcontrol.data_output_before_title = True
@@ -659,9 +636,16 @@ class boardcontrol():
                 boardcontrol._record_data("UnicodeDecodeException whie expecting title or data")
                 unicode_error_index += 1
 
+                if (boardcontrol.unicode_decode_prev_error):
+                    boardcontrol._record_data("UnicodeDecode exceptions occuring again")
+                    experiment.isSecondUnicodeError = True
+                    boardcontrol.unicode_decode_prev_error = False
+                    break
+
                 if (unicode_error_index >= MAX_NUM_UNICODE_EXCEPTIONS):
                     boardcontrol._record_data("Too many UnicodeDecode exceptions")
                     experiment.isUnicodeError = True
+                    boardcontrol.unicode_decode_prev_error = True
                     break
 
             except Exception:
@@ -693,7 +677,7 @@ class boardcontrol():
 
 
 
-    """ Check if errors have come up, after 30x or so it will return true.
+    """ Check if the errors that do exist are incrementing or not after each cycle.
 
         Attributes:
             errors_incrementing (bool): True if errors exist, otherwise false.
@@ -775,7 +759,7 @@ class boardcontrol():
 
         try:
             boardcontrol.fdspawn_obj.sendline("\n")
-            boardcontrol.fdspawn_obj.expect(pattern="^.*litex[^>]*> ", timeout=BOARD_REPOWER_TIMEOUT)
+            boardcontrol.fdspawn_obj.expect(pattern="^.*litex[^>]*> ", timeout=CLOSE_BIST_TIMEOUT)
 
             boardcontrol._record_data("Bist closed, sending bist command")
             cmd_str = "sdram_bist " + str(boardcontrol.mem_burst_length) + " " + str(boardcontrol.addr_mode)
@@ -807,7 +791,7 @@ class boardcontrol():
         try:
             boardcontrol._record_data("Closing bist")
             boardcontrol.fdspawn_obj.sendline("\n")
-            boardcontrol.fdspawn_obj.expect(pattern="^.*litex[^>]*> ", timeout=BOARD_REPOWER_TIMEOUT)
+            boardcontrol.fdspawn_obj.expect(pattern="^.*litex[^>]*> ", timeout=CLOSE_BIST_TIMEOUT)
         except pexpect.exceptions.TIMEOUT:
             experiment.timeout_occured = True
             return
@@ -860,6 +844,8 @@ class boardcontrol():
             elif (boardcontrol.degree_of_max_error == SOC_REBOOT_INDEX):
 
                 boardcontrol.fdspawn_obj.sendline("reboot")
+                boardcontrol.fd.close()
+                boardcontrol.fd.open()
                 boardcontrol.fdspawn_obj.expect(pattern="^.*litex[^>]*> ", timeout=SDRAM_INIT_TIMEOUT)
 
             else:
@@ -897,7 +883,7 @@ class boardcontrol():
 
 
 
-    """ Attempt to restart Litex 
+    """ Attempt to restart Litex (s)
 
         Attributes:
             restart_success: True if litex resets, False if otherwise.
@@ -920,7 +906,7 @@ class boardcontrol():
             boardcontrol._record_data(str(Exception))
 
 
-    """ Repower board 
+    """ Repower board, turn netbooter outlet off, then on.
     """
     def repower_board_actions(experiment, state):
         boardcontrol._record_data("Repower board")
@@ -1049,10 +1035,17 @@ def main():
     experiment.add_state(ExperimentState(
         "Expect Title Or Data State",
         boardcontrol.expect_title_line_actions,
+        Transition(lambda ex, st: ex.isSecondUnicodeError, "Correct Fault Reconfigure Board"),
         Transition(lambda ex, st: (ex.isError or ex.isEOFError or ex.isTimeOut or ex.isUnicodeError or ex.invalid_input), "Correct Fault State"),
         Transition(lambda ex, st: ex.gotData, "Check If Errors Exist State"),
         Transition(lambda ex, st: ex.gotTitle, "Expect Title Or Data State"),
         Transition(lambda ex, st: True, "TTY Connection Failure")
+    ))
+
+    experiment.add_state(ExperimentState(
+        "Correct Fault Reconfigure Board",
+        boardcontrol.correct_fault_actions,
+        Transition(lambda ex, st: True, "Configure FPGA State")
     ))
 
     # Create check if errors exist state
