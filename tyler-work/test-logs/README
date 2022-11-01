@@ -1,7 +1,0 @@
-# Fault Injection Tests
-
-Test 1 was started last week, as well as test 2 and 3. Test 1 was done without the tmr design, and failed about a half hour in because the board failed to reprogram itself after my program caused the board to turn off and on after a bothersome timeout. I found the board would reprogram while the fault injector wasn't running, and wouldn't while it was; therefore I adjusted the script to use pexpect to spawn another command to the JCM to run the fault injector after enough time (about 40 seconds) for the board to reprogram itself, then turn off as the nexys board turned off.
-
-Tests 2 and 3 also failed for reasons dealing with the JCM. I started the tests thinking that both board and fault injector were running, but came back both times to see that the JCM had run for about 10 seconds and stopped itself. I stopped using pexpect and imported the fault_injection class and started running commands with that to again turn on the fault injector after the board reprogramed and turn off as the board turned off. 
-
-Test 4 was the first using the tmr design. The test ran for about 8 hours with the JCM injecting a fault about every 2 seconds, correcting them afterwards. Test 5 also ran with this fault injection without the tmr design for about 12 hours. Neither failed to stop during the period. 
