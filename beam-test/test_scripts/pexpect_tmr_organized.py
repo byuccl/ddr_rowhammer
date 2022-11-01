@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+# Questions?
+# - Do I need to give a message at the start of each action? 
 
 import pexpect
 import argparse
@@ -34,11 +36,16 @@ from datetime import date, datetime
 from experiment_machine import Transition, ExperimentState, Experiment
 
 
-# print_fout = open('times_4.txt', 'w+')
+# Format string for printing the date and time
+TIME_STRING_FORMAT = "%Y-%m-%d %H:%M:%S"
 
-# Dev port
-MAX_FILE_NUM = 10 # Search a range from /dev/ttyUSB0 to /dev/ttyUSB9
+# UART port connection constants
+MAX_TTYUSB_INDEX = 10 #  Largest port number to search for (/dev/ttyUSB0 to /dev/ttyUSB9)
 STARTING_FILE_NUM = -1 # Start at -1. If file exists, send num 0-9 otherwise -1.
+MAX_NUM_TIMES_BOOT_UP = 5 # Max number attempts at finding board plugged in
+UART_CONNECTION_ATTEMPT_DELAY = 10 # Number of seconds to delay before trying to connect to the UART again
+
+GIVE_UP_MESSAGE_DELAY = 60 * 10 # Message delay every ten minutes
 
 # Netbooter times in seconds
 TIMEOUT_NETBOOTER = 3.0 # Timeout connecting to netbooter
@@ -64,7 +71,6 @@ SDRAM_INIT_INDEX = 5
 SOC_REBOOT_INDEX = 6
 
 MAX_NUM_UNICODE_EXCEPTIONS = 20 # Catch unicodedecode exception after 20 tries
-MAX_NUM_TIMES_BOOT_UP = 5 # Max number attempts at finding board plugged in
 
 # Data output
 ERROR_MSG_INDEX = 3 # Error number at index 3 of matched string
@@ -142,16 +148,16 @@ class jcm_control():
             except SSHException as error:
                 print(error, file=print_jcm_fout)
                 logging.info("SSHException: Timeout occured or request was rejected opening channel to JCM. Retrying command.")
-                print("[", time.strftime("%Y-%m-%d %H:%M:%S"), "] SSHException: Timeout occured or request was rejected opening channel to JCM. Retrying command.")
+                print("[", time.strftime(TIME_STRING_FORMAT), "] SSHException: Timeout occured or request was rejected opening channel to JCM. Retrying command.")
                 ssh_client = jcm_control.login_to_jcm(JCM_IP_ADDRESS)
 
         while not stdout.channel.exit_status_ready():
             try:
                 line = stdout.readline()
                 if (not line.isspace()) and line != '':
-                    print("[", time.strftime("%Y-%m-%d %H:%M:%S"), "] : ", line, file=print_jcm_fout)
+                    print("[", time.strftime(TIME_STRING_FORMAT), "] : ", line, file=print_jcm_fout)
                 if (not line.isspace()) and line != '':
-                    line = "[{}] ".format(time.strftime("%Y-%m-%d %H:%M:%S")) + line
+                    line = "[{}] ".format(time.strftime(TIME_STRING_FORMAT)) + line
                     print(line, file=print_jcm_fout)
 
                     if "Success" in line:
@@ -178,7 +184,7 @@ class jcm_control():
         global bit_to_correct
         global location_to_correct
         
-        print(time.strftime("%Y-%m-%d %H:%M:%S"),"Injecting Location", file=print_jcm_fout)
+        print(time.strftime(TIME_STRING_FORMAT),"Injecting Location", file=print_jcm_fout)
 
         if NUC_SEED is None:
             jcm_seed = str(np.uint32(time.time() * 1000))
@@ -194,7 +200,7 @@ class jcm_control():
                 break
             except SSHException as error:
                 print(error, file=print_jcm_fout)
-                print("[", time.strftime("%Y-%m-%d %H:%M:%S"), "] SSHException: Timeout occured or request was rejected opening channel to JCM. Retrying exec_command.")
+                print("[", time.strftime(TIME_STRING_FORMAT), "] SSHException: Timeout occured or request was rejected opening channel to JCM. Retrying exec_command.")
                 
 
         print("After", file=print_jcm_fout)
@@ -211,8 +217,8 @@ class jcm_control():
             
             line = stdout.readline()
             if (not line.isspace()) and line != '':
-                print(time.strftime("%Y-%m-%d %H:%M:%S"),   " : ", line, file=print_jcm_fout)
-                line = "[{}] ".format(time.strftime("%Y-%m-%d %H:%M:%S")) + line
+                print(time.strftime(TIME_STRING_FORMAT),   " : ", line, file=print_jcm_fout)
+                line = "[{}] ".format(time.strftime(TIME_STRING_FORMAT)) + line
                 if "Failed!" in line:
                     return 1
                 if "Injecting Frame" in line:
@@ -233,7 +239,7 @@ class jcm_control():
                     # write_to_log("Injected location " + location_to_correct, jcm_log)
                     
                 if "Fault Injection Succeeded!" in line:
-                    line = "[{}] ".format(time.strftime("%Y-%m-%d %H:%M:%S")) + "Fault Injected!\n"
+                    line = "[{}] ".format(time.strftime(TIME_STRING_FORMAT)) + "Fault Injected!\n"
                     print("Fault injection succeeded!", file=print_jcm_fout)
                     keep_reading = False
 
@@ -272,12 +278,12 @@ class jcm_control():
                 os.execv(sys.executable, ['python3'] + sys.argv) # Restarts the program
             line = stdout.readline()
             if (not line.isspace()) and line != '':
-                print(time.strftime("%Y-%m-%d %H:%M:%S"), " : ", line, file=print_jcm_fout)
-                line = "[{}] ".format(time.strftime("%Y-%m-%d %H:%M:%S")) + line
+                print(time.strftime(TIME_STRING_FORMAT), " : ", line, file=print_jcm_fout)
+                line = "[{}] ".format(time.strftime(TIME_STRING_FORMAT)) + line
                 if "Failed!" in line:
                     return 1
                 if "Fault Injection Succeeded!" in line:
-                    line = "[{}] ".format(time.strftime("%Y-%m-%d %H:%M:%S")) + "Fault Corrected!\n"
+                    line = "[{}] ".format(time.strftime(TIME_STRING_FORMAT)) + "Fault Corrected!\n"
                     print("Fault correction succeeded!", file=print_jcm_fout)
                     keep_reading = False
 
@@ -339,7 +345,7 @@ class boardcontrol():
         output_str (str): The string to output in a log file and in stdout.
         supress_log (bool): True if log should NOT print message, false if it should."""
     def _record_data(output_str, supress_log = False):
-        print("[", time.strftime("%Y-%m-%d %H:%M:%S"), "] ", output_str)
+        print("[", time.strftime(TIME_STRING_FORMAT), "] ", output_str)
         if not (supress_log):
             logging.info(output_str)
 
@@ -363,25 +369,23 @@ class boardcontrol():
 
 
 
-    """Does nothing, transition to the board_plugged_in state."""
     def start_actions(experiment, state):
-        boardcontrol._record_data("Starting test")
-        pass
+        '''
+        Actions performed at the very start of a new test
+        '''
+        boardcontrol._record_data("Test Start")
 
-
-
-    """ Check if dev port exists, confirm the nexys video board
-        is plugged in.
-        
-        Attributes:
-            board_powered_on (int) = This holds the dev_port number, otherwise
-            -1 if the dev port file could not be found.
-            give_up_time (bool): True if time to give up on checking board, 
-            otherwise false.
-    """
     def board_plugged_in_actions(experiment, state):
+        """ Check if dev port exists, confirm the nexys video board is plugged in.
+            
+            Attributes:
+                tty_port_num (int) = This holds the dev_port number, otherwise
+                -1 if the dev port file could not be found.
+                give_up_time (bool): True if time to give up on checking board, 
+                otherwise false.
+        """
         boardcontrol._record_data("Confirming board plugged in")
-        experiment.board_powered_on = -1
+        experiment.tty_port_num = STARTING_FILE_NUM
         experiment.give_up_time = False
 
         if not hasattr(experiment, 'give_up_timer'):
@@ -389,26 +393,32 @@ class boardcontrol():
         
         # Set starting number to -1, send command to see if /dev/ttyUSBX
         # file exists, interpret by reading resulting output string.
+        # ?? Why looking for the max? Will there be more than one?
         max_num = STARTING_FILE_NUM
-        for i in range(0, MAX_FILE_NUM):
-            output_str = pexpect.run("ls /dev/ttyUSB" + str(i), encoding="utf-8", logfile=sys.stdout)
-            if not ("cannot access '/dev/ttyUSB" + str(i) + "': No such file or directory" in output_str and (i > max_num)):
+        for i in range(0, MAX_TTYUSB_INDEX):
+            tty_dev = "/dev/ttyUSB" + str(i)
+            output_str = pexpect.run("ls "+tty_dev, encoding="utf-8", logfile=sys.stdout)
+            if not ("cannot access '" + tty_dev + "': No such file or directory" in output_str and (i > max_num)):
                 max_num = i
 
         # Set attribute file_num as the dev port number. If dev port doesn't 
         # exist, file_num is -1.
         boardcontrol.serial_port = max_num
         if (max_num > 0):
+            # Found a tty port
             boardcontrol._record_data("Board plugged in, using /dev/ttyUSB{max_int}.".format(max_int=max_num))
-            experiment.board_powered_on = max_num
+            experiment.tty_port_num = max_num
             experiment.give_up_timer = 0
         else:
+            # Failed to find a tty port
             boardcontrol._record_data("Board not plugged in.")
             experiment.give_up_timer += 1
             if (experiment.give_up_timer >= MAX_NUM_TIMES_BOOT_UP):
+                # Give up if maximum number of attempts made
                 experiment.give_up_time = True
             else:
-                time.sleep(10)
+                # Wait before trying again
+                time.sleep(UART_CONNECTION_ATTEMPT_DELAY)
 
 
 
@@ -417,7 +427,8 @@ class boardcontrol():
     def give_up_actions(experiment, state):
         boardcontrol._record_data("Giving up")
         while(True):
-            time.sleep(1)
+            time.sleep(GIVE_UP_MESSAGE_DELAY)
+            boardcontrol._record_data("Given up loop")
 
 
 
@@ -917,7 +928,207 @@ class boardcontrol():
         time.sleep(SLEEPTIME_NETBOOTER)
         teln.close()
 
+def build_experiment():
+    '''
+    Builds the experiment object and its related states for the experiment state machine.
+    '''
 
+    # State constants
+    INITIAL_STARTING_STATE = "Initial Starting State"
+    PLUGGED_IN_STATE = "Plugged In State"
+    TTY_CONNECTION_FAILURE = "TTY Connection Failure"
+    LOGIN_JCM_STATE = "Login JCM State"
+    CONFIGURE_FPGA_STATE = "Configure FPGA State"
+    CONNECT_TO_LITEX_STATE = "Connect To Litex"
+    EXPECT_LITEX_PROMPT_STATE = "Expect Litex Prompt State"
+    REPOWER_STATE = "Repower State"
+    INJECT_FIRST_FAULT_STATE = "Inject First Fault State"
+    SEND_BIST_COMMAND_STATE = "Send Bist Command State"
+    EXPECT_TITLE_OR_DATA_STATE = "Expect Title Or Data State"
+    CORRECT_FAULT_RECONFIGURE_BOARD_STATE = "Correct Fault Reconfigure Board"
+    CORRECT_FAULT_STATE = "Correct Fault State"
+    CHECK_IF_ERRORS_EXIST_STATE = "Check If Errors Exist State"
+    CHECK_IF_ERRORS_INCREMENT_STATE = "Check If Errors Increment State"
+    CHECK_IF_FAULT_INJECT_STATE = "Check If Fault Inject State"
+    FAULT_CORRECT_INJECT_STATE = "Fault Correct Inject State"
+    CLOSE_RESTART_BIST_STATE = "Close Restart Bist State"
+    CLOSE_BIST_CORRECT_FAULT_STATE = "Close Bist Correct Fault State"
+    FIX_ERRORS_STATE = "Fix Errors State"
+    RESTART_LITEX_STATE = "Restart Litex State"
+
+    # Create a new experiment object
+    experiment = Experiment()
+
+    # Initialize class
+    boardcontrol.init_funct()
+
+    # INITIAL_STARTING_STATE
+    # - perform any initial messages or setup
+    experiment.add_state(ExperimentState(
+        INITIAL_STARTING_STATE,
+        boardcontrol.start_actions,
+        Transition(lambda ex, st: True, PLUGGED_IN_STATE)
+    ))
+
+    # PLUGGED_IN_STATE
+    # - Check for the UART port and for UART connection
+    experiment.add_state(ExperimentState(
+        PLUGGED_IN_STATE,
+        boardcontrol.board_plugged_in_actions,
+        Transition(lambda ex, st: ex.give_up_time,TTY_CONNECTION_FAILURE),
+        Transition(lambda ex, st: ex.tty_port_num < 0, PLUGGED_IN_STATE),
+        Transition(lambda ex, st: True, LOGIN_JCM_STATE)
+    ))
+
+    # Create give up state (termination state)
+    experiment.add_state(ExperimentState(
+        TTY_CONNECTION_FAILURE,
+        boardcontrol.give_up_actions,
+        # Should never get to this transition
+        Transition(lambda ex, st: True, TTY_CONNECTION_FAILURE)
+    ))
+
+    # Create login jcm state
+    experiment.add_state(ExperimentState(
+        LOGIN_JCM_STATE,
+        boardcontrol.jcm_login_actions,
+        Transition(lambda ex, st: True, CONFIGURE_FPGA_STATE)
+    ))
+
+    # Create configure fpga state
+    experiment.add_state(ExperimentState(
+        CONFIGURE_FPGA_STATE,
+        boardcontrol.jcm_configure_board_actions,
+        Transition(lambda ex, st: ex.jcm_configured, CONNECT_TO_LITEX_STATE),
+        Transition(lambda ex, st: True, PLUGGED_IN_STATE)
+    ))
+
+    # Create connect to litex state
+    experiment.add_state(ExperimentState(
+        CONNECT_TO_LITEX_STATE,
+        boardcontrol.connect_to_litex_serial_actions,
+        Transition(lambda ex, st: ex.connection_return_val == 0, EXPECT_LITEX_PROMPT_STATE),
+        Transition(lambda ex, st: True, REPOWER_STATE)
+    ))
+
+    # Create expect litex prompt state
+    experiment.add_state(ExperimentState(
+        EXPECT_LITEX_PROMPT_STATE,
+        boardcontrol.expect_litex_prompt_actions,
+        Transition(lambda ex, st: ex.expect_litex_return_val == 0, INJECT_FIRST_FAULT_STATE),
+        Transition(lambda ex, st: True, REPOWER_STATE)
+    ))
+
+    # Create repower state
+    experiment.add_state(ExperimentState(
+        REPOWER_STATE,
+        boardcontrol.repower_board_actions,
+        Transition(lambda ex, st: True, PLUGGED_IN_STATE)
+    ))
+
+    # Create inject first fault state
+    experiment.add_state(ExperimentState(
+        INJECT_FIRST_FAULT_STATE,
+        boardcontrol.create_first_fault_actions,
+        Transition(lambda ex, st: True, SEND_BIST_COMMAND_STATE)
+    ))
+
+    # Create send bist command state
+    experiment.add_state(ExperimentState(
+        SEND_BIST_COMMAND_STATE,
+        boardcontrol.send_bist_cmd_actions,
+        Transition(lambda ex, st: True, EXPECT_TITLE_OR_DATA_STATE)
+    ))
+
+    # Create expect title or data state
+    experiment.add_state(ExperimentState(
+        EXPECT_TITLE_OR_DATA_STATE,
+        boardcontrol.expect_title_line_actions,
+        Transition(lambda ex, st: ex.isSecondUnicodeError, CORRECT_FAULT_RECONFIGURE_BOARD_STATE),
+        Transition(lambda ex, st: (ex.isError or ex.isEOFError or ex.isTimeOut or ex.isUnicodeError or ex.invalid_input), CORRECT_FAULT_STATE),
+        Transition(lambda ex, st: ex.gotData, CHECK_IF_ERRORS_EXIST_STATE),
+        Transition(lambda ex, st: ex.gotTitle, EXPECT_TITLE_OR_DATA_STATE),
+        Transition(lambda ex, st: True, TTY_CONNECTION_FAILURE)
+    ))
+
+    experiment.add_state(ExperimentState(
+        CORRECT_FAULT_RECONFIGURE_BOARD_STATE,
+        boardcontrol.correct_fault_actions,
+        Transition(lambda ex, st: True, CONFIGURE_FPGA_STATE)
+    ))
+
+    # Create check if errors exist state
+    experiment.add_state(ExperimentState(
+        CHECK_IF_ERRORS_EXIST_STATE,
+        boardcontrol.check_if_errors_exist_actions,
+        Transition(lambda ex, st: ex.errors_exist, CHECK_IF_ERRORS_INCREMENT_STATE),
+        Transition(lambda ex, st: True, CHECK_IF_FAULT_INJECT_STATE)
+    ))
+
+    # Create check if fault inject state
+    experiment.add_state(ExperimentState(
+        CHECK_IF_FAULT_INJECT_STATE,
+        boardcontrol.correct_inject_fault_time_actions,
+        Transition(lambda ex, st: ex.isTimeToInject, FAULT_CORRECT_INJECT_STATE),
+        Transition(lambda ex, st: True, EXPECT_TITLE_OR_DATA_STATE)
+    ))
+
+    # Create fault correct inject state
+    experiment.add_state(ExperimentState(
+        FAULT_CORRECT_INJECT_STATE,
+        boardcontrol.correct_inject_fault_actions,
+        Transition(lambda ex, st: True, EXPECT_TITLE_OR_DATA_STATE)
+    ))
+
+    # Create check if Errors increment state
+    experiment.add_state(ExperimentState(
+        CHECK_IF_ERRORS_INCREMENT_STATE,
+        boardcontrol.check_if_errors_increment_actions,
+        Transition(lambda ex, st: ex.errors_stopped_incrementing, CLOSE_RESTART_BIST_STATE),
+        Transition(lambda ex, st: ex.errors_incrementing, CLOSE_BIST_CORRECT_FAULT_STATE),
+        Transition(lambda ex, st: True, CHECK_IF_FAULT_INJECT_STATE)
+    ))
+
+    # Create close restart bist state
+    experiment.add_state(ExperimentState(
+        CLOSE_RESTART_BIST_STATE,
+        boardcontrol.restart_bist_actions,
+        Transition(lambda ex, st: ex.timeout_occured, CORRECT_FAULT_STATE),
+        Transition(lambda ex, st: True, EXPECT_TITLE_OR_DATA_STATE)
+    ))
+
+    # Create close bist correct fault state
+    experiment.add_state(ExperimentState(
+        CLOSE_BIST_CORRECT_FAULT_STATE,
+        boardcontrol.close_bist_correct_fault_actions,
+        Transition(lambda ex, st: ex.timeout_occured, CORRECT_FAULT_STATE),
+        Transition(lambda ex, st: True, FIX_ERRORS_STATE)
+    ))
+
+    # Create fix errors state
+    experiment.add_state(ExperimentState(
+        FIX_ERRORS_STATE,
+        boardcontrol.debug_error_actions,
+        Transition(lambda ex, st: (ex.timeout_occured_in_debug or ex.failed_to_correct_errors), RESTART_LITEX_STATE),
+        Transition(lambda ex, st: True, EXPECT_TITLE_OR_DATA_STATE)
+    ))
+
+    # Create correct fault state
+    experiment.add_state(ExperimentState(
+        CORRECT_FAULT_STATE,
+        boardcontrol.correct_fault_actions,
+        Transition(lambda ex, st: True, RESTART_LITEX_STATE)
+    ))
+
+    experiment.add_state(ExperimentState(
+        RESTART_LITEX_STATE,
+        boardcontrol.restart_litex_actions,
+        Transition(lambda ex, st: ex.restart_success, INJECT_FIRST_FAULT_STATE),
+        Transition(lambda ex, st: True, CONFIGURE_FPGA_STATE)
+    ))
+
+    experiment.set_next_state(INITIAL_STARTING_STATE)
+    return experiment
 
 def main():
 
@@ -935,177 +1146,9 @@ def main():
     boardcontrol.addr_mode = args.addr_mode
 
     # Set up logger settings
-    logging.basicConfig(filename="times_20.txt", level=logging.INFO, datefmt='%Y-%m-%d %H:%M:%S', format='%(asctime)s %(levelname)-8s %(message)s')
+    logging.basicConfig(filename="times_20.txt", level=logging.INFO, datefmt=TIME_STRING_FORMAT, format='%(asctime)s %(levelname)-8s %(message)s')
     
-    # Create a new experiment object
-    experiment = Experiment()
-
-    # Initialize class
-    boardcontrol.init_funct()
-
-    # Create initial state
-    experiment.add_state(ExperimentState(
-        "Initial Starting State",
-        boardcontrol.start_actions,
-        Transition(lambda ex, st: True, "Plugged In State")
-    ))
-
-    # Create plugged in state
-    experiment.add_state(ExperimentState(
-        "Plugged In State",
-        boardcontrol.board_plugged_in_actions,
-        Transition(lambda ex, st: ex.give_up_time, "TTY Connection Failure"),
-        Transition(lambda ex, st: ex.board_powered_on < 0, "Plugged In State"),
-        Transition(lambda ex, st: True, "Login JCM State")
-    ))
-
-    # Create give up state
-    experiment.add_state(ExperimentState(
-        "TTY Connection Failure",
-        boardcontrol.give_up_actions,
-        Transition(lambda ex, st: True, "TTY Connection Failure")
-    ))
-
-    # Create login jcm state
-    experiment.add_state(ExperimentState(
-        "Login JCM State",
-        boardcontrol.jcm_login_actions,
-        Transition(lambda ex, st: True, "Configure FPGA State")
-    ))
-
-    # Create configure fpga state
-    experiment.add_state(ExperimentState(
-        "Configure FPGA State",
-        boardcontrol.jcm_configure_board_actions,
-        Transition(lambda ex, st: ex.jcm_configured, "Connect To Litex"),
-        Transition(lambda ex, st: True, "Plugged In State")
-    ))
-
-    # Create connect to litex state
-    experiment.add_state(ExperimentState(
-        "Connect To Litex",
-        boardcontrol.connect_to_litex_serial_actions,
-        Transition(lambda ex, st: ex.connection_return_val == 0, "Expect Litex Prompt State"),
-        Transition(lambda ex, st: True, "Repower State")
-    ))
-
-    # Create expect litex prompt state
-    experiment.add_state(ExperimentState(
-        "Expect Litex Prompt State",
-        boardcontrol.expect_litex_prompt_actions,
-        Transition(lambda ex, st: ex.expect_litex_return_val == 0, "Inject First Fault State"),
-        Transition(lambda ex, st: True, "Repower State")
-    ))
-
-    # Create repower state
-    experiment.add_state(ExperimentState(
-        "Repower State",
-        boardcontrol.repower_board_actions,
-        Transition(lambda ex, st: True, "Plugged In State")
-    ))
-
-    # Create inject first fault state
-    experiment.add_state(ExperimentState(
-        "Inject First Fault State",
-        boardcontrol.create_first_fault_actions,
-        Transition(lambda ex, st: True, "Send Bist Command State")
-    ))
-
-    # Create send bist command state
-    experiment.add_state(ExperimentState(
-        "Send Bist Command State",
-        boardcontrol.send_bist_cmd_actions,
-        Transition(lambda ex, st: True, "Expect Title Or Data State")
-    ))
-
-    # Create expect title or data state
-    experiment.add_state(ExperimentState(
-        "Expect Title Or Data State",
-        boardcontrol.expect_title_line_actions,
-        Transition(lambda ex, st: ex.isSecondUnicodeError, "Correct Fault Reconfigure Board"),
-        Transition(lambda ex, st: (ex.isError or ex.isEOFError or ex.isTimeOut or ex.isUnicodeError or ex.invalid_input), "Correct Fault State"),
-        Transition(lambda ex, st: ex.gotData, "Check If Errors Exist State"),
-        Transition(lambda ex, st: ex.gotTitle, "Expect Title Or Data State"),
-        Transition(lambda ex, st: True, "TTY Connection Failure")
-    ))
-
-    experiment.add_state(ExperimentState(
-        "Correct Fault Reconfigure Board",
-        boardcontrol.correct_fault_actions,
-        Transition(lambda ex, st: True, "Configure FPGA State")
-    ))
-
-    # Create check if errors exist state
-    experiment.add_state(ExperimentState(
-        "Check If Errors Exist State",
-        boardcontrol.check_if_errors_exist_actions,
-        Transition(lambda ex, st: ex.errors_exist, "Check If Errors Increment State"),
-        Transition(lambda ex, st: True, "Check If Fault Inject State")
-    ))
-
-    # Create check if fault inject state
-    experiment.add_state(ExperimentState(
-        "Check If Fault Inject State",
-        boardcontrol.correct_inject_fault_time_actions,
-        Transition(lambda ex, st: ex.isTimeToInject, "Fault Correct Inject State"),
-        Transition(lambda ex, st: True, "Expect Title Or Data State")
-    ))
-
-    # Create fault correct inject state
-    experiment.add_state(ExperimentState(
-        "Fault Correct Inject State",
-        boardcontrol.correct_inject_fault_actions,
-        Transition(lambda ex, st: True, "Expect Title Or Data State")
-    ))
-
-    # Create check if Errors increment state
-    experiment.add_state(ExperimentState(
-        "Check If Errors Increment State",
-        boardcontrol.check_if_errors_increment_actions,
-        Transition(lambda ex, st: ex.errors_stopped_incrementing, "Close Restart Bist State"),
-        Transition(lambda ex, st: ex.errors_incrementing, "Close Bist Correct Fault State"),
-        Transition(lambda ex, st: True, "Check If Fault Inject State")
-    ))
-
-    # Create close restart bist state
-    experiment.add_state(ExperimentState(
-        "Close Restart Bist State",
-        boardcontrol.restart_bist_actions,
-        Transition(lambda ex, st: ex.timeout_occured, "Correct Fault State"),
-        Transition(lambda ex, st: True, "Expect Title Or Data State")
-    ))
-
-    # Create close bist correct fault state
-    experiment.add_state(ExperimentState(
-        "Close Bist Correct Fault State",
-        boardcontrol.close_bist_correct_fault_actions,
-        Transition(lambda ex, st: ex.timeout_occured, "Correct Fault State"),
-        Transition(lambda ex, st: True, "Fix Errors State")
-    ))
-
-    # Create fix errors state
-    experiment.add_state(ExperimentState(
-        "Fix Errors State",
-        boardcontrol.debug_error_actions,
-        Transition(lambda ex, st: (ex.timeout_occured_in_debug or ex.failed_to_correct_errors), "Restart Litex State"),
-        Transition(lambda ex, st: True, "Expect Title Or Data State")
-    ))
-
-    # Create correct fault state
-    experiment.add_state(ExperimentState(
-        "Correct Fault State",
-        boardcontrol.correct_fault_actions,
-        Transition(lambda ex, st: True, "Restart Litex State")
-    ))
-
-    experiment.add_state(ExperimentState(
-        "Restart Litex State",
-        boardcontrol.restart_litex_actions,
-        Transition(lambda ex, st: ex.restart_success, "Inject First Fault State"),
-        Transition(lambda ex, st: True, "Configure FPGA State")
-    ))
-
-    experiment.set_next_state("Initial Starting State")
+    experiment = build_experiment()
     experiment.start()
     print(f"Experiment finished in state: {experiment.get_current_state()}")
 
