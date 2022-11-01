@@ -45,6 +45,8 @@ STARTING_FILE_NUM = -1 # Start at -1. If file exists, send num 0-9 otherwise -1.
 MAX_NUM_TIMES_BOOT_UP = 5 # Max number attempts at finding board plugged in
 UART_CONNECTION_ATTEMPT_DELAY = 10 # Number of seconds to delay before trying to connect to the UART again
 
+GIVE_UP_MESSAGE_DELAY = 60 * 10 # Message delay every ten minutes
+
 # Netbooter times in seconds
 TIMEOUT_NETBOOTER = 3.0 # Timeout connecting to netbooter
 SLEEPTIME_NETBOOTER = 1 # Time between creating connected instance of Telnet,
@@ -425,7 +427,8 @@ class boardcontrol():
     def give_up_actions(experiment, state):
         boardcontrol._record_data("Giving up")
         while(True):
-            time.sleep(1)
+            time.sleep(GIVE_UP_MESSAGE_DELAY)
+            boardcontrol._record_data("Given up loop")
 
 
 
@@ -934,6 +937,24 @@ def build_experiment():
     INITIAL_STARTING_STATE = "Initial Starting State"
     PLUGGED_IN_STATE = "Plugged In State"
     TTY_CONNECTION_FAILURE = "TTY Connection Failure"
+    LOGIN_JCM_STATE = "Login JCM State"
+    CONFIGURE_FPGA_STATE = "Configure FPGA State"
+    CONNECT_TO_LITEX_STATE = "Connect To Litex"
+    EXPECT_LITEX_PROMPT_STATE = "Expect Litex Prompt State"
+    REPOWER_STATE = "Repower State"
+    INJECT_FIRST_FAULT_STATE = "Inject First Fault State"
+    SEND_BIST_COMMAND_STATE = "Send Bist Command State"
+    EXPECT_TITLE_OR_DATA_STATE = "Expect Title Or Data State"
+    CORRECT_FAULT_RECONFIGURE_BOARD_STATE = "Correct Fault Reconfigure Board"
+    CORRECT_FAULT_STATE = "Correct Fault State"
+    CHECK_IF_ERRORS_EXIST_STATE = "Check If Errors Exist State"
+    CHECK_IF_ERRORS_INCREMENT_STATE = "Check If Errors Increment State"
+    CHECK_IF_FAULT_INJECT_STATE = "Check If Fault Inject State"
+    FAULT_CORRECT_INJECT_STATE = "Fault Correct Inject State"
+    CLOSE_RESTART_BIST_STATE = "Close Restart Bist State"
+    CLOSE_BIST_CORRECT_FAULT_STATE = "Close Bist Correct Fault State"
+    FIX_ERRORS_STATE = "Fix Errors State"
+    RESTART_LITEX_STATE = "Restart Litex State"
 
     # Create a new experiment object
     experiment = Experiment()
@@ -955,154 +976,155 @@ def build_experiment():
         PLUGGED_IN_STATE,
         boardcontrol.board_plugged_in_actions,
         Transition(lambda ex, st: ex.give_up_time,TTY_CONNECTION_FAILURE),
-        Transition(lambda ex, st: ex.tty_port_num < 0, "Plugged In State"),
-        Transition(lambda ex, st: True, "Login JCM State")
+        Transition(lambda ex, st: ex.tty_port_num < 0, PLUGGED_IN_STATE),
+        Transition(lambda ex, st: True, LOGIN_JCM_STATE)
     ))
 
-    # Create give up state
+    # Create give up state (termination state)
     experiment.add_state(ExperimentState(
         TTY_CONNECTION_FAILURE,
         boardcontrol.give_up_actions,
+        # Should never get to this transition
         Transition(lambda ex, st: True, TTY_CONNECTION_FAILURE)
     ))
 
     # Create login jcm state
     experiment.add_state(ExperimentState(
-        "Login JCM State",
+        LOGIN_JCM_STATE,
         boardcontrol.jcm_login_actions,
-        Transition(lambda ex, st: True, "Configure FPGA State")
+        Transition(lambda ex, st: True, CONFIGURE_FPGA_STATE)
     ))
 
     # Create configure fpga state
     experiment.add_state(ExperimentState(
-        "Configure FPGA State",
+        CONFIGURE_FPGA_STATE,
         boardcontrol.jcm_configure_board_actions,
-        Transition(lambda ex, st: ex.jcm_configured, "Connect To Litex"),
-        Transition(lambda ex, st: True, "Plugged In State")
+        Transition(lambda ex, st: ex.jcm_configured, CONNECT_TO_LITEX_STATE),
+        Transition(lambda ex, st: True, PLUGGED_IN_STATE)
     ))
 
     # Create connect to litex state
     experiment.add_state(ExperimentState(
-        "Connect To Litex",
+        CONNECT_TO_LITEX_STATE,
         boardcontrol.connect_to_litex_serial_actions,
-        Transition(lambda ex, st: ex.connection_return_val == 0, "Expect Litex Prompt State"),
-        Transition(lambda ex, st: True, "Repower State")
+        Transition(lambda ex, st: ex.connection_return_val == 0, EXPECT_LITEX_PROMPT_STATE),
+        Transition(lambda ex, st: True, REPOWER_STATE)
     ))
 
     # Create expect litex prompt state
     experiment.add_state(ExperimentState(
-        "Expect Litex Prompt State",
+        EXPECT_LITEX_PROMPT_STATE,
         boardcontrol.expect_litex_prompt_actions,
-        Transition(lambda ex, st: ex.expect_litex_return_val == 0, "Inject First Fault State"),
-        Transition(lambda ex, st: True, "Repower State")
+        Transition(lambda ex, st: ex.expect_litex_return_val == 0, INJECT_FIRST_FAULT_STATE),
+        Transition(lambda ex, st: True, REPOWER_STATE)
     ))
 
     # Create repower state
     experiment.add_state(ExperimentState(
-        "Repower State",
+        REPOWER_STATE,
         boardcontrol.repower_board_actions,
-        Transition(lambda ex, st: True, "Plugged In State")
+        Transition(lambda ex, st: True, PLUGGED_IN_STATE)
     ))
 
     # Create inject first fault state
     experiment.add_state(ExperimentState(
-        "Inject First Fault State",
+        INJECT_FIRST_FAULT_STATE,
         boardcontrol.create_first_fault_actions,
-        Transition(lambda ex, st: True, "Send Bist Command State")
+        Transition(lambda ex, st: True, SEND_BIST_COMMAND_STATE)
     ))
 
     # Create send bist command state
     experiment.add_state(ExperimentState(
-        "Send Bist Command State",
+        SEND_BIST_COMMAND_STATE,
         boardcontrol.send_bist_cmd_actions,
-        Transition(lambda ex, st: True, "Expect Title Or Data State")
+        Transition(lambda ex, st: True, EXPECT_TITLE_OR_DATA_STATE)
     ))
 
     # Create expect title or data state
     experiment.add_state(ExperimentState(
-        "Expect Title Or Data State",
+        EXPECT_TITLE_OR_DATA_STATE,
         boardcontrol.expect_title_line_actions,
-        Transition(lambda ex, st: ex.isSecondUnicodeError, "Correct Fault Reconfigure Board"),
-        Transition(lambda ex, st: (ex.isError or ex.isEOFError or ex.isTimeOut or ex.isUnicodeError or ex.invalid_input), "Correct Fault State"),
-        Transition(lambda ex, st: ex.gotData, "Check If Errors Exist State"),
-        Transition(lambda ex, st: ex.gotTitle, "Expect Title Or Data State"),
-        Transition(lambda ex, st: True, "TTY Connection Failure")
+        Transition(lambda ex, st: ex.isSecondUnicodeError, CORRECT_FAULT_RECONFIGURE_BOARD_STATE),
+        Transition(lambda ex, st: (ex.isError or ex.isEOFError or ex.isTimeOut or ex.isUnicodeError or ex.invalid_input), CORRECT_FAULT_STATE),
+        Transition(lambda ex, st: ex.gotData, CHECK_IF_ERRORS_EXIST_STATE),
+        Transition(lambda ex, st: ex.gotTitle, EXPECT_TITLE_OR_DATA_STATE),
+        Transition(lambda ex, st: True, TTY_CONNECTION_FAILURE)
     ))
 
     experiment.add_state(ExperimentState(
-        "Correct Fault Reconfigure Board",
+        CORRECT_FAULT_RECONFIGURE_BOARD_STATE,
         boardcontrol.correct_fault_actions,
-        Transition(lambda ex, st: True, "Configure FPGA State")
+        Transition(lambda ex, st: True, CONFIGURE_FPGA_STATE)
     ))
 
     # Create check if errors exist state
     experiment.add_state(ExperimentState(
-        "Check If Errors Exist State",
+        CHECK_IF_ERRORS_EXIST_STATE,
         boardcontrol.check_if_errors_exist_actions,
-        Transition(lambda ex, st: ex.errors_exist, "Check If Errors Increment State"),
-        Transition(lambda ex, st: True, "Check If Fault Inject State")
+        Transition(lambda ex, st: ex.errors_exist, CHECK_IF_ERRORS_INCREMENT_STATE),
+        Transition(lambda ex, st: True, CHECK_IF_FAULT_INJECT_STATE)
     ))
 
     # Create check if fault inject state
     experiment.add_state(ExperimentState(
-        "Check If Fault Inject State",
+        CHECK_IF_FAULT_INJECT_STATE,
         boardcontrol.correct_inject_fault_time_actions,
-        Transition(lambda ex, st: ex.isTimeToInject, "Fault Correct Inject State"),
-        Transition(lambda ex, st: True, "Expect Title Or Data State")
+        Transition(lambda ex, st: ex.isTimeToInject, FAULT_CORRECT_INJECT_STATE),
+        Transition(lambda ex, st: True, EXPECT_TITLE_OR_DATA_STATE)
     ))
 
     # Create fault correct inject state
     experiment.add_state(ExperimentState(
-        "Fault Correct Inject State",
+        FAULT_CORRECT_INJECT_STATE,
         boardcontrol.correct_inject_fault_actions,
-        Transition(lambda ex, st: True, "Expect Title Or Data State")
+        Transition(lambda ex, st: True, EXPECT_TITLE_OR_DATA_STATE)
     ))
 
     # Create check if Errors increment state
     experiment.add_state(ExperimentState(
-        "Check If Errors Increment State",
+        CHECK_IF_ERRORS_INCREMENT_STATE,
         boardcontrol.check_if_errors_increment_actions,
-        Transition(lambda ex, st: ex.errors_stopped_incrementing, "Close Restart Bist State"),
-        Transition(lambda ex, st: ex.errors_incrementing, "Close Bist Correct Fault State"),
-        Transition(lambda ex, st: True, "Check If Fault Inject State")
+        Transition(lambda ex, st: ex.errors_stopped_incrementing, CLOSE_RESTART_BIST_STATE),
+        Transition(lambda ex, st: ex.errors_incrementing, CLOSE_BIST_CORRECT_FAULT_STATE),
+        Transition(lambda ex, st: True, CHECK_IF_FAULT_INJECT_STATE)
     ))
 
     # Create close restart bist state
     experiment.add_state(ExperimentState(
-        "Close Restart Bist State",
+        CLOSE_RESTART_BIST_STATE,
         boardcontrol.restart_bist_actions,
-        Transition(lambda ex, st: ex.timeout_occured, "Correct Fault State"),
-        Transition(lambda ex, st: True, "Expect Title Or Data State")
+        Transition(lambda ex, st: ex.timeout_occured, CORRECT_FAULT_STATE),
+        Transition(lambda ex, st: True, EXPECT_TITLE_OR_DATA_STATE)
     ))
 
     # Create close bist correct fault state
     experiment.add_state(ExperimentState(
-        "Close Bist Correct Fault State",
+        CLOSE_BIST_CORRECT_FAULT_STATE,
         boardcontrol.close_bist_correct_fault_actions,
-        Transition(lambda ex, st: ex.timeout_occured, "Correct Fault State"),
-        Transition(lambda ex, st: True, "Fix Errors State")
+        Transition(lambda ex, st: ex.timeout_occured, CORRECT_FAULT_STATE),
+        Transition(lambda ex, st: True, FIX_ERRORS_STATE)
     ))
 
     # Create fix errors state
     experiment.add_state(ExperimentState(
-        "Fix Errors State",
+        FIX_ERRORS_STATE,
         boardcontrol.debug_error_actions,
-        Transition(lambda ex, st: (ex.timeout_occured_in_debug or ex.failed_to_correct_errors), "Restart Litex State"),
-        Transition(lambda ex, st: True, "Expect Title Or Data State")
+        Transition(lambda ex, st: (ex.timeout_occured_in_debug or ex.failed_to_correct_errors), RESTART_LITEX_STATE),
+        Transition(lambda ex, st: True, EXPECT_TITLE_OR_DATA_STATE)
     ))
 
     # Create correct fault state
     experiment.add_state(ExperimentState(
-        "Correct Fault State",
+        CORRECT_FAULT_STATE,
         boardcontrol.correct_fault_actions,
-        Transition(lambda ex, st: True, "Restart Litex State")
+        Transition(lambda ex, st: True, RESTART_LITEX_STATE)
     ))
 
     experiment.add_state(ExperimentState(
-        "Restart Litex State",
+        RESTART_LITEX_STATE,
         boardcontrol.restart_litex_actions,
-        Transition(lambda ex, st: ex.restart_success, "Inject First Fault State"),
-        Transition(lambda ex, st: True, "Configure FPGA State")
+        Transition(lambda ex, st: ex.restart_success, INJECT_FIRST_FAULT_STATE),
+        Transition(lambda ex, st: True, CONFIGURE_FPGA_STATE)
     ))
 
     experiment.set_next_state(INITIAL_STARTING_STATE)
