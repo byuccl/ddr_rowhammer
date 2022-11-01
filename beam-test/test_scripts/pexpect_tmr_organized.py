@@ -1146,7 +1146,7 @@ def main():
     boardcontrol.addr_mode = args.addr_mode
 
     # Set up logger settings
-    logging.basicConfig(filename="times_20.txt", level=logging.INFO, datefmt='%Y-%m-%d %H:%M:%S', format='%(asctime)s %(levelname)-8s %(message)s')
+    logging.basicConfig(filename="times_20.txt", level=logging.INFO, datefmt=TIME_STRING_FORMAT, format='%(asctime)s %(levelname)-8s %(message)s')
     
     experiment = build_experiment()
     experiment.start()
