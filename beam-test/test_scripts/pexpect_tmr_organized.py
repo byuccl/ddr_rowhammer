@@ -1041,6 +1041,8 @@ def build_experiment():
     ))
 
     # Create expect title or data state
+    #  - If a title comes out, it comes back to this state
+    #  - If a data line comes out, checks data for errors
     experiment.add_state(ExperimentState(
         EXPECT_TITLE_OR_DATA_STATE,
         boardcontrol.expect_title_line_actions,
@@ -1155,3 +1157,74 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+'''
+Updated state machine using threads
+
+1. Init state
+2. Repower board
+3. Initialize UART connection (for UARTBone and UART serial)
+  - Force repower the UART connection?
+  - Log the UART serial from here out
+4. JCM Login
+  - All JCM traffic logged to a dedicated file
+5. JCM Configuration
+6. JCM Scrubbing
+  - This is a separate thread
+     - SCRUBBING_OK global variable set to 1 indicating scrubbing is working correctly.
+       - Main thread will periodically check this and jump to a recovery state if it goes to zero
+     - If scrubbing fails, this variable is set to zero
+       - Scrubber ends, or connection to JCM fails
+     - Main thread has a flag CONTINUE_SCRUBBING set to 1
+       - Scrubbing thread watches this variable and closes scrubbing and exits thread if this is set to 0     
+  - Flag to support scrubbing with and without fault injection
+  - Listen to a global variable controlled by the script that indicates when scrubbing should stop
+6a. Read UARTBone registers as baseline
+7. Connect to litex serial
+8. Wait for Litex prompt
+9. Send BIST command (initialize error counts)
+10. Expect title line actions
+11. check_for_errors_state
+
+Error response:
+
+DRAM Errors
+- Scrubbing is going on in the background so wait a bit to see if the errors go away
+- Scrub mode registers
+- scrub delay/bitslip registers
+- Recalibrate memory
+- Reinitialize memory
+- reboot command
+- Uartbone reset
+- COnfigure
+- Repower
+
+
+CPU Hang:
+- Sent Ctrl-C & Enter to see if prompt returns
+- Disconnect terminal (SW) and reconnect to see if you can reconnect
+- Unpower/repower uart and see if you can connect
+- Offline CPU debug
+  - Read debug UART bone registers
+  - Issue uart bone reset
+
+UART Bone Registers:
+- Read PC (twice?)
+- MMCM lock toggle count
+- MMCM Lock value
+- Clock frequency value
+- MMCM drp bits?
+- Bitslip bits?
+- External reset
+
+Questions:
+- Do we reset the system over uart bone at the start? (to catch the boot process while the UART is trying to connect)
+  - Is there a way to delay bootup? (give connection time)
+- Can we do a capture at the end of a hang?
+  Capture 1: while clock is running (FFs)
+  Capture 2: with reset held to get decent BRAM data (to compare for BRAM upsets)
+
+
+'''
+
