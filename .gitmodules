@@ -1,6 +1,0 @@
-[submodule "litex-rowhammer-tester"]
-	path = litex-rowhammer-tester
-	url = https://github.com/antmicro/litex-rowhammer-tester
-[submodule "migen"]
-	path = migen
-	url = https://github.com/m-labs/migen
