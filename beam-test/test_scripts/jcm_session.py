@@ -11,10 +11,7 @@ import random
 import threading
 import sys
 import time
-
-from paramiko import SSHClient, SSHException, AutoAddPolicy, \
-                    BadHostKeyException, AuthenticationException, buffered_pipe
-
+import subprocess
 
 class jcm_session():
     '''
@@ -35,16 +32,16 @@ class jcm_session():
     JCM_LOGIN_ATTEMPTS = 5
     JCM_DEFAULT_CLOCK_RATE = 10_000_000
 
-    def _default_jcm_print(str):
-        ''' Default function for printing JCM output. This can be overriden in the constructor. '''
-        print("JCM:"+str, end="")
+    #def _default_jcm_print(str):
+    #    ''' Default function for printing JCM output. This can be overriden in the constructor. '''
+    #    print(str, end="")
 
     def __init__(self, 
         jcm_ip_addr:str, 
         part, 
         jtag_clock = JCM_DEFAULT_CLOCK_RATE, 
-        logging = None,
-        jcm_print = _default_jcm_print,
+        status_logging = None,
+        stdout_logging = None,
         username='root', password='chrec') -> None:
 
         self.ssh_client = None
@@ -52,7 +49,8 @@ class jcm_session():
         self.logging = logging
         self.part = part
         self.jtag_clock = jtag_clock
-        self.jcm_print = jcm_print
+        self.status_logging = status_logging,
+        self.std_logging = stdout_logging,
         self.username = username
         self.password = password
         # references to the I/O of the JCM commands
@@ -70,17 +68,18 @@ class jcm_session():
 
     def _info(self, str):
         ''' Send an 'info' message to the logger. '''
-        if self.logging:
+        if self.status_logging:
             self.logging.info(str)
 
     def _error(self, str):
         ''' Send an 'error' message to the logger. '''
-        if self.logging:
+        if self.status_logging:
             self.logging.error(str)
 
     def _print_std_out(self, line):
         ''' Print JCM standard output '''
-        self.jcm_print(line)
+        if self.stdout_logging:
+            self.stdout_logging.into(line)
 
     def close_jcm(self):
         ''' Closes JCM SSH session'''
@@ -243,6 +242,10 @@ class jcm_session():
         # Scrubbing started and the thread is going
         return True
 
+    def jcm_ping(self):
+        command = ['ping', "-c", '1', self.jcm_ip_addr]
+        return subprocess.call(command) == 0
+
     def jcm_group_args(parser):
         ''' Static function for creating JCM argument group '''
         jcm_arg_group = parser.add_argument_group("JCM")
@@ -250,19 +253,18 @@ class jcm_session():
         jcm_arg_group.add_argument("--jcm_part", help="JCM Part Name", required=True)
         jcm_arg_group.add_argument("--jcm_clock", help="JCM Clock Rate", type=int, default = 10_000_000)
 
-    def create_jcm_from_args(args, logging, stdout, stdout_prefex = "", username="root", password="chrec"):
+    def create_jcm_from_args(args, status_logging, stdout_logging, username="root", password="chrec"):
         ''' Static function for creating JCM argument group '''
 
-        jcm = jcm_session(args.jcm_ip, args.jcm_part, jtag_clock=args.jcm_clock, logging = logging,
-            stdout = stdout, stdout_prefix = stdout_prefex, username = username, password = password
+        jcm = jcm_session(args.jcm_ip, args.jcm_part, jtag_clock=args.jcm_clock, status_logging = status_logging,
+            stdout_logging = stdout_logging, username = username, password = password
         )
         return jcm
 
 def main():
 
     parser = argparse.ArgumentParser()
-    jcm_args = jcm_session.jcm_group_args(parser)
-    parser.add_argument_group(jcm_args)
+    parser.add_argument_group(jcm_session.jcm_group_args(parser))
     # Add arguments
     parser.add_argument("--bitfile",required=True)
 

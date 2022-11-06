@@ -4,6 +4,7 @@
 #       Probably better to just use "global" variables in the experiment's scope.
 
 from typing import Callable
+import logging
 
 # -------------------------------------- #
 # Classes
@@ -69,7 +70,7 @@ class ExperimentState():
         self.__action_function(experiment, self)
 
 class Experiment():
-    def __init__(self) -> None:
+    def __init__(self, logging = None) -> None:
         # -------------------------------------- #
         # "Private" Member Variables
         # -------------------------------------- #
@@ -83,6 +84,10 @@ class Experiment():
 
         # Stores the name of the next state to run.
         self.__next_state = ""
+
+        # Logger for state transitions
+        self._logging = logging
+
         # -------------------------------------- #
     
     # -------------------------------------- #
@@ -92,6 +97,8 @@ class Experiment():
     def __run_state(self, state_name: str):
         """Runs a specific state."""
         self.__current_state = state_name
+        #if self._logging:
+        self._logging.info("STATE:"+state_name)
         target_state = self.__states[state_name]
         target_state.do_actions(self)
         target_state.do_transitions(self)
