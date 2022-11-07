@@ -2,6 +2,8 @@
 
 # Questions?
 # - Do I need to give a message at the start of each action? 
+# shrec@nuc4.ee.byu.edu (pass:shrec)
+# token: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
 
 import pexpect
 import argparse
