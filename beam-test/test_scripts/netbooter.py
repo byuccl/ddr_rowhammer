@@ -25,12 +25,15 @@ class netbooter_control():
     # Netbooter constants
     TIMEOUT_NETBOOTER = 3.0
     NETBOOTER_LOGGING_PREFIX = "NETBOOTER:"
+    SLEEPTIME_NETBOOTER = 1 # Time between creating connected instance of Telnet,
+                        # turning board off, then on again.
 
     def __init__(self, 
         netbooter_ip_addr:str, 
         logging = None):
         self.netbooter_ip_addr = netbooter_ip_addr
         self.logging = logging
+        self.telnet_open = False
 
     def _info(self, str):
         ''' Send an 'info' message to the logger. '''
@@ -57,15 +60,17 @@ class netbooter_control():
         self.teln.close()
 
     def _control_string(self,power_port,turn_on):
+        ''' Generate a control string for the port/function '''
         if turn_on:
-            power_state = "0"
-        else:
             power_state = "1"
+        else:
+            power_state = "0"
         s = ("pset " + str(power_port) + " " + power_state).encode("ascii") + b"\r\n\r\n"
         return s
 
     def control_port(self, power_port, turn_on = True, cycle=False):
 
+        print(f"Port {power_port} state {turn_on}")
         # Open telnet
         if not self.telnet_open:
             if not self.open_telnet():
@@ -86,12 +91,14 @@ class netbooter_control():
             s = ("pset " + str(power_port) + " 0").encode("ascii") + b"\r\n\r\n"
             # Do the opposite of what is wanted (for cycle)
             self.teln.write(self._control_string(power_port, not turn_on))
-            self._info("Setting port "+power_port+" to "+nState)
+            self._info("Setting port "+str(power_port)+" to "+nState)
             time.sleep(self.SLEEPTIME_NETBOOTER)
 
 
-        self.teln.write(self._control_string(power_port, turn_on))
-        self._info("Setting port "+power_port+" to "+state)
+        control_string = self._control_string(power_port, turn_on)
+        self.teln.write(control_string)
+        #print(control_string)
+        self._info(str("Setting port "+str(power_port)+" to "+state))
         time.sleep(self.SLEEPTIME_NETBOOTER)
         return True
 
@@ -110,15 +117,17 @@ class netbooter_control():
 
 def main():
 
+    NETBOOTER_IP = "169.254.131.160"
     parser = argparse.ArgumentParser()
     parser.add_argument("--on", help="Turn on port", type=int)
     parser.add_argument("--off", help="Turn off port", type=int)
-    parser.add_argument("--netbooter_ip", help="IP Address of Netbooter", type=str, required=True)
+    parser.add_argument("--netbooter_ip", help="IP Address of Netbooter", type=str, default=NETBOOTER_IP)
 
     args = parser.parse_args()
 
-    # create jcm object
-    netbooter = netbooter(args.netbooter_ip)
+    # create jcm objecT
+    logging.basicConfig(level=logging.INFO)
+    netbooter = netbooter_control(args.netbooter_ip,logging=logging)
 
     # Ping netbooter
     if not netbooter.ping_netbooter():

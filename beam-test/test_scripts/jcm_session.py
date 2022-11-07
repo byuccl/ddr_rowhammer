@@ -12,6 +12,7 @@ import threading
 import sys
 import time
 import subprocess
+from datetime import datetime
 
 from paramiko import SSHClient, SSHException, AutoAddPolicy, \
                     BadHostKeyException, AuthenticationException, buffered_pipe
@@ -176,8 +177,6 @@ class jcm_session():
         if block:
             thread = self.jcm_thread
             thread.join()  # Add timeout? Catch exception?
-            # Done with command - set active to false
-            self.jcm_active = False
         return True
 
     def _jcm_execution_thread(self,save_output):
@@ -217,8 +216,8 @@ class jcm_session():
                 self.logging.error("Scrubbing: ",error)
                 # return?
 
-        # Scrubbing done: reset flag
-        self.scrubbing_active = False
+        # Reset active flag
+        self.jcm_active = False
         return
 
     def configure_fpga(self, bitstream_filename):
@@ -269,6 +268,15 @@ class jcm_session():
 
         # Scrubbing started and the thread is going
         return True
+
+    def stop_scrub(self):
+        if not self.jcm_active:
+            self._error("Cannot stop scrub: jcm not active")
+            return False
+        self.jcm_stdin.write(" \n")
+        time.sleep(1)
+        self.jcm_stdin.write("0\n")
+        time.sleep(1)
 
     def jcm_ping(self):
         command = ['ping', "-c", '1', self.jcm_ip_addr]
@@ -340,31 +348,38 @@ def main():
     # Wait for thread to end
     jcm.jcm_thread.join()
 
-    return 0
+    print("jcm active",jcm.is_active())
 
     # 5. Perform scrubbing, JCM ends scrubber, wait on flag (no blocking, no frads file, no readback file)
     print("Main:Attempting to scrub and no block (wait on flag)")
-    if not jcm.scrub_fpga(iterations=2, frads_file = frads_file, block=False):
+    if not jcm.scrub_fpga(iterations=4, frads_file = frads_file, block=False):
         return 1
     # Wait for thread to end
+    start_time = datetime.now()
+    max_seconds = 5 * 60
     while jcm.jcm_active:
         print("Main:JCM still active")
-        time.sleep(10)
+        time.sleep(2)
+        time_delay = (datetime.now() - start_time).total_seconds()
+        if time_delay > max_seconds:
+            print("Wating too long")
+            return 1
     print("Main:JCM finished scrubbing")
 
-    # 5. Perform scrubbing, main thread ends scrubber (no blocking, no frads file, no readback file)
-    if not jcm.scrub_fpga(iterations=1_000_000, block=False):
+    # 6. Perform scrubbing, wait on flag, have main send command to stop scrubber
+    print("Main:Attempting to scrub and stop from JCM")
+    if not jcm.scrub_fpga(iterations=100, frads_file = frads_file, block=False):
         return 1
-    # Allow scrubber to operate for a bit
-    print("Allowing Scrubber to run for a bit")
-    time.sleep(20)
-    # Stop JCM execution
-    jcm.stop_jcm()
-    # Wait for thread to stop
-    (index, thread) = jcm.jcm_thread
-    thread.join()
-    print("JCM stopped")
+    # Wait for thread to end
+    print("Main:Waiting for 30 seconds")
+    time.sleep(30)
+    print("Main:Stopping scrub over stdin")
+    jcm.stop_scrub()
+    print("Main:Swaiting for thread to end")
+    jcm.jcm_thread.join()
+    print("Main:JCM stopped")
 
+    return 0
 
 if __name__ == "__main__":
     main()
