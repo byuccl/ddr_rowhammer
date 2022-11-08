@@ -4,13 +4,14 @@
 # - Do I need to give a message at the start of each action? 
 # shrec@nuc4.ee.byu.edu (pass:shrec)
 # token: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
+# Todo: Need to catch ctrl-c so we can exit JCM safely
 
 import pexpect
 import argparse
 import telnetlib
 import logging
 import traceback
-import cffi
+#import cffi
 import sys
 import time
 import re
@@ -27,7 +28,7 @@ from jcm_session import jcm_session
 from paramiko import SSHClient, SSHException, AutoAddPolicy, \
                     BadHostKeyException, AuthenticationException, buffered_pipe
 
-from distutils.log import error
+#from distutils.log import error
 from mimetypes import init
 from multiprocessing.spawn import old_main_modules
 from nis import match
@@ -37,7 +38,7 @@ from urllib.parse import _NetlocResultMixinStr
 
 from pkg_resources import require
 # from asyncio.timeouts import timeout
-from serial import Serial
+from serial import Serial  # from pyserial
 from datetime import date, datetime
 from experiment_machine import Transition, ExperimentState, Experiment
 
@@ -55,7 +56,12 @@ def setup_logger(log_filename:str, include_level = True, print_stdout = False):
         formatter = logging.Formatter('%(asctime)s %(levelname)-8s %(message)s', datefmt=TIME_STRING_FORMAT)
     else:
         formatter = logging.Formatter('%(asctime)s %(message)s', datefmt=TIME_STRING_FORMAT)
-    handler = logging.FileHandler(log_filename)        
+    try:
+        handler = logging.FileHandler(log_filename)
+    except (FileNotFoundError) as error:
+        print("Logging File "+log_filename+"cannot be opened")
+        return None
+
     handler.setFormatter(formatter)
     logger = logging.getLogger("main_log")
     logger.setLevel(logging.INFO)
@@ -247,6 +253,9 @@ def main():
         log_dir = Path(args.log_dir)
 
     log_filepath = create_log_path("LOG",filebasename, log_dir)
+    if not log_filepath:
+        # Can't create log file
+        return 1
 
     print("Base filename:", log_filepath)
 
