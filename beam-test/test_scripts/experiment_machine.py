@@ -97,14 +97,14 @@ class Experiment():
 
     def __run_state(self, state_name: str):
         """Runs a specific state."""
+        if self._single_step:
+            input(f"Press enter to continue for state:{state_name}")
         self.__current_state = state_name
         #if self._logging:
         self._logging.info("STATE:"+state_name)
         target_state = self.__states[state_name]
         target_state.do_actions(self)
         target_state.do_transitions(self)
-        if self._single_step:
-            input("Press enter to continue:")
 
     # -------------------------------------- #
     # Public Methods

@@ -48,6 +48,8 @@ class netbooter_control():
 
     def ping_netbooter(self):
         command = ['ping', "-c", '1', self.netbooter_ip_addr]
+        #print("command",command)
+        sys.stdout.flush()
         return subprocess.call(command) == 0
 
     def open_telnet(self):
@@ -71,7 +73,7 @@ class netbooter_control():
 
     def control_port(self, power_port, turn_on = True, cycle=False):
 
-        print(f"Port {power_port} state {turn_on}")
+        #print(f"Port {power_port} state {turn_on}")
         # Open telnet
         if not self.telnet_open:
             if not self.open_telnet():
@@ -114,7 +116,8 @@ class netbooter_control():
     def netbooter_group_args(parser):
         ''' Static function for creating netbooter argument group '''
         jcm_arg_group = parser.add_argument_group("NETBOOTER")
-        jcm_arg_group.add_argument("--netbooter_ip", help="Netbooter IP Address", required=False)
+        jcm_arg_group.add_argument("--netbooter_ip", help="Netbooter IP Address", 
+            default = netbooter_control.DEFAULT_NETBOOTER_IP, required=False)
 
 def main():
 
