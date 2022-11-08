@@ -70,7 +70,7 @@ class ExperimentState():
         self.__action_function(experiment, self)
 
 class Experiment():
-    def __init__(self, logging = None) -> None:
+    def __init__(self, logging = None, single_step = False) -> None:
         # -------------------------------------- #
         # "Private" Member Variables
         # -------------------------------------- #
@@ -88,6 +88,7 @@ class Experiment():
         # Logger for state transitions
         self._logging = logging
 
+        self._single_step = single_step
         # -------------------------------------- #
     
     # -------------------------------------- #
@@ -102,6 +103,8 @@ class Experiment():
         target_state = self.__states[state_name]
         target_state.do_actions(self)
         target_state.do_transitions(self)
+        if self._single_step:
+            input("Press enter to continue:")
 
     # -------------------------------------- #
     # Public Methods

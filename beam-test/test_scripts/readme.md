@@ -8,8 +8,8 @@
 
 ## netbooter.py
 
-`python3 netbooter.py`
+`python3 netbooter_control.py --off 2`
 
 ## ddr_experiment.py
 
-
+`python3 ddr_experiment.py --jcm_part xc7a200t --bitstream /root/newtobetmred_tmr.bit`

@@ -15,13 +15,14 @@ import sys
 import time
 import re
 import os
-import numpy as np
+#import numpy as np
 import random
 import socket
 from pathlib import Path
 from datetime import datetime
-import netbooter
-import jcm_session
+
+from netbooter_control import netbooter_control
+from jcm_session import jcm_session
 
 from paramiko import SSHClient, SSHException, AutoAddPolicy, \
                     BadHostKeyException, AuthenticationException, buffered_pipe
@@ -48,7 +49,7 @@ JCM_PING_COUNT_LIMIT = 10
 # JCM Ping Delay
 JCM_PING_DELAY = 10
 
-def setup_logger(log_filename:str, include_level = True):
+def setup_logger(log_filename:str, include_level = True, print_stdout = False):
     ''' Create a custom logger '''
     if include_level:
         formatter = logging.Formatter('%(asctime)s %(levelname)-8s %(message)s', datefmt=TIME_STRING_FORMAT)
@@ -59,6 +60,12 @@ def setup_logger(log_filename:str, include_level = True):
     logger = logging.getLogger("main_log")
     logger.setLevel(logging.INFO)
     logger.addHandler(handler)
+
+    if print_stdout:
+        consoleHandler = logging.StreamHandler(sys.stdout)
+        consoleHandler.setFormatter(formatter)
+        logger.addHandler(consoleHandler)
+
     return logger
 
 def initial_starting_state_actions(ex, st):
@@ -67,7 +74,7 @@ def initial_starting_state_actions(ex, st):
 def netbooter_setup_state_actions(ex, st):
     ex.netbooter_ok = False
     netbooter_ip = ex.args.netbooter_ip
-    ex.netbooter = netbooter(netbooter_ip,ex.logger)
+    ex.netbooter = netbooter_control(netbooter_ip,ex.logger)
     if not ex.netbooter.ping_netbooter():
         ex.logger.error("Netbooter not on network")
         return
@@ -111,7 +118,7 @@ def terminating_state_actions(ex, st):
         
     ex.stop()
 
-def build_experiment(args,logger):
+def build_experiment(args,logger,single_step=False):
     '''
     Builds the experiment object and its related states for the experiment state machine.
     '''
@@ -125,7 +132,7 @@ def build_experiment(args,logger):
     TERMINATING_STATE = "Terminating State"
 
     # Create a new experiment object
-    experiment = Experiment(logger)
+    experiment = Experiment(logger,single_step=single_step)
 
     # Save the arguments
     experiment.args = args
@@ -163,7 +170,7 @@ def build_experiment(args,logger):
     experiment.add_state(ExperimentState(
         POWER_NEXYS_STATE,
         power_nexys_state_actions,
-        Transition(lambda ex, st: True, UNKNOWN_STATE)
+        Transition(lambda ex, st: True, TERMINATING_STATE)
     ))
 
     # TERMINATING_STATE
@@ -184,19 +191,20 @@ def create_base_filename(bitstream_filename):
 
     # See if the bitstream exists
     p = Path(bitstream_filename)
+    #print(p,p.cwd())
     #if not p.exists():
     #    return None
     # Strip the path and suffix
-    filename_stem = p.stem()
+    filename_stem = p.stem
     # Add a timestamp
-    current_date_time = datetime.now().strftime("%B_%d_%H_%M")
+    current_date_time = datetime.now().strftime("%B_%d__%H_%M_%S")
     return str(filename_stem + "_" + current_date_time)
 
 def main():
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--bitstream", help="filename of bitstream", type=str, required=False)
-    parser.add_argument_group(netbooter.netbooter_group_args(parser))
+    parser.add_argument("--bitstream", help="filename of bitstream", type=str, required=True)
+    parser.add_argument_group(netbooter_control.netbooter_group_args(parser))
     parser.add_argument_group(jcm_session.jcm_group_args(parser))
     parser.add_argument("--repower_jcm", help="Repower JCM at start of experiment", action='store_true')
     parser.add_argument("--jcm_netbooter_port", help="Netbooter port for JCM", type=int, default=1)
@@ -205,11 +213,14 @@ def main():
 
     # Set up logger settings
     filebasename = create_base_filename(args.bitstream)
-    log_filename = str("LOG_"+filebasename)
-    logger = setup_logger(log_filename)
+    log_filename = str("LOG_"+filebasename+".log")
+    print("Base filename:", log_filename)
+
+    logger = setup_logger(log_filename,print_stdout = True)
     
-    experiment = build_experiment(args,logger)
+    experiment = build_experiment(args,logger,single_step = True)
     experiment.filebasename = filebasename
+
     experiment.start()
 
 

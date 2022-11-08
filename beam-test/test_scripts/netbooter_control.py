@@ -27,9 +27,10 @@ class netbooter_control():
     NETBOOTER_LOGGING_PREFIX = "NETBOOTER:"
     SLEEPTIME_NETBOOTER = 1 # Time between creating connected instance of Telnet,
                         # turning board off, then on again.
+    DEFAULT_NETBOOTER_IP = "169.254.131.160"
 
     def __init__(self, 
-        netbooter_ip_addr:str, 
+        netbooter_ip_addr:str = DEFAULT_NETBOOTER_IP, 
         logging = None):
         self.netbooter_ip_addr = netbooter_ip_addr
         self.logging = logging
@@ -113,21 +114,20 @@ class netbooter_control():
     def netbooter_group_args(parser):
         ''' Static function for creating netbooter argument group '''
         jcm_arg_group = parser.add_argument_group("NETBOOTER")
-        jcm_arg_group.add_argument("--netbooter_ip", help="JCM IP Address", required=True)
+        jcm_arg_group.add_argument("--netbooter_ip", help="Netbooter IP Address", required=False)
 
 def main():
 
-    NETBOOTER_IP = "169.254.131.160"
     parser = argparse.ArgumentParser()
+    parser.add_argument_group(netbooter_control.netbooter_group_args(parser))
     parser.add_argument("--on", help="Turn on port", type=int)
     parser.add_argument("--off", help="Turn off port", type=int)
-    parser.add_argument("--netbooter_ip", help="IP Address of Netbooter", type=str, default=NETBOOTER_IP)
 
     args = parser.parse_args()
 
     # create jcm objecT
     logging.basicConfig(level=logging.INFO)
-    netbooter = netbooter_control(args.netbooter_ip,logging=logging)
+    netbooter = netbooter_control(logging=logging)
 
     # Ping netbooter
     if not netbooter.ping_netbooter():
