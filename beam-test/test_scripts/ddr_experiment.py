@@ -91,13 +91,15 @@ def jcm_setup_state_actions(ex, st):
     # Create JCM output logger
     jcm_log_filename = create_log_path("JCM",ex.filebasename, ex.log_dir)
 
-    jcm_stdout_logger = setup_logger(jcm_log_filename, include_level = False)
+    # Create JCM log file
+    jcm_log_file = open(jcm_log_filename,"w")
+    #jcm_stdout_logger = setup_logger(jcm_log_filename, include_level = False)
     # Create JCM object
-    ex.jcm = jcm_session.create_jcm_from_args(ex.args,ex.logger,jcm_stdout_logger)
+    ex.jcm = jcm_session.create_jcm_from_args(ex.args,ex.logger,jcm_log_file,stdout_timeprefix = TIME_STRING_FORMAT)
     # Ping JCM (wait until ping before trying to connect)
     for i in range(JCM_PING_COUNT_LIMIT):
         ping_true = ex.jcm.jcm_ping()
-        ex.logger.info("JCM ping attempt {}",i+1)
+        ex.logger.info(f"JCM ping attempt {i+1}")
         if ping_true:
             break
         time.sleep(JCM_PING_DELAY)
@@ -112,6 +114,10 @@ def jcm_setup_state_actions(ex, st):
 def power_nexys_state_actions(ex, st):
     ex.netbooter.turn_off_port(ex.args.nexys_netbooter_port)
     ex.netbooter.turn_on_port(ex.args.nexys_netbooter_port)
+
+def configure_nexys_state_actions(ex, st):
+    ex.jcm.configure_fpga(ex.args.bitstream)
+
 
 def terminating_state_actions(ex, st):
     # Close the JCM (if it was setup properly)
@@ -130,6 +136,7 @@ def build_experiment(args,logger,single_step=False):
     NETBOOTER_SETUP_STATE = "Netbooter Setup State"
     JCM_SETUP_STATE = "JCM Setup State"
     POWER_NEXYS_STATE = "Power Nexys State"
+    CONFIGURE_NEXYS_STATE = "Configure Nexys State"
 
     TERMINATING_STATE = "Terminating State"
 
@@ -172,8 +179,17 @@ def build_experiment(args,logger,single_step=False):
     experiment.add_state(ExperimentState(
         POWER_NEXYS_STATE,
         power_nexys_state_actions,
+        Transition(lambda ex, st: True, CONFIGURE_NEXYS_STATE)
+    ))
+
+    # CONFIGURE_NEXYS_STATE
+    # - Configure FPGA
+    experiment.add_state(ExperimentState(
+        CONFIGURE_NEXYS_STATE,
+        configure_nexys_state_actions,
         Transition(lambda ex, st: True, TERMINATING_STATE)
     ))
+
 
     # TERMINATING_STATE
     # - Do nothing: place holder for ending state. Will set experiment to "stop"
@@ -221,6 +237,7 @@ def main():
     parser.add_argument("--jcm_netbooter_port", help="Netbooter port for JCM", type=int, default=1)
     parser.add_argument("--nexys_netbooter_port", help="Netbooter port for Nexys", type=int, default=2)
     parser.add_argument("--log_dir", help="Directory of logs", type=str)
+    parser.add_argument("--single_step", help="Single step through state machine", action='store_true')
     args = parser.parse_args()
 
     # Set up logger settings
@@ -235,7 +252,7 @@ def main():
 
     logger = setup_logger(log_filepath,print_stdout = True)
     
-    experiment = build_experiment(args,logger,single_step = True)
+    experiment = build_experiment(args,logger,single_step = args.single_step)
     experiment.filebasename = filebasename
     experiment.log_dir = log_dir
 

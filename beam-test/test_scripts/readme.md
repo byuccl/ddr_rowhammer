@@ -13,3 +13,6 @@
 ## ddr_experiment.py
 
 `python3 ddr_experiment.py --jcm_part xc7a200t --bitstream /root/newtobetmred_tmr.bit`
+
+`python3 ddr_experiment.py --jcm_part xc7a200t --bitstream /root/newtobetmred_tmr.bit --log_dir ./tmp --jcm_clock 30_000_000`
+
