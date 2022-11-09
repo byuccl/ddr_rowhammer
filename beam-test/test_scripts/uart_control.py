@@ -141,6 +141,13 @@ class uart_control():
             return False
         return True
 
+    def get_expect_str(self):
+        ''' Return the last string received with expect '''
+        if not self.serial_fdspawn:
+            self._error("no active fdspan")
+            return None
+        return self.serial_fdspawn.match.group(0)
+
     def expect(self,pattern,timeout=DEFAULT_EXPECT_TIMEOUT):
         ''' Expext fdspawn handle '''
         if not self.serial_fdspawn:
@@ -154,6 +161,9 @@ class uart_control():
         except UnicodeDecodeError:
             self._error("expect unicode error with pattern:"+pattern)
             # TODO: keep a running track of unicode errors and do something if there are too many
+            return False
+        except pexpect.exceptions.EOF:
+            self._error("expect EOF")
             return False
         except Exception as error:
             self._error("expect error:"+str(error))

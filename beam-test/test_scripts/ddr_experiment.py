@@ -74,6 +74,22 @@ class bist_state(object):
         cmd_str = "sdram_bist " + str(self.bist_mem_burst_length) + " " + str(self.bist_addr_mode)
         return cmd_str
 
+    def new_data_str(self,result_str):
+        ERROR_MSG_INDEX = 3 # Error number at index 3 of matched string
+        SEC_MSG_INDEX = 4 # Sec error number at index 4 of matched string
+        DED_MSG_INDEX = 5 # Ded error number at index 5 of matched string
+        result_list = result_str.split()
+        new_error_cnt = int(result_list[ERROR_MSG_INDEX])
+        new_sec_cnt = int(result_list[SEC_MSG_INDEX])
+        # What is going on here?
+        ded_string = result_list[DED_MSG_INDEX]
+        ded_string_int = "0"
+        if (ded_string.find('\'', 0) == -1):
+            ded_string_int = ded_string
+        else :
+            ded_string_int = ded_string[:ded_string.find('\'', 0):]
+        new_ded_cnt = int(ded_string_int)
+
 def setup_logger(log_filename:str, include_level = True, print_stdout = False):
     ''' Static method for creating custom loggers '''
     if include_level:
@@ -183,6 +199,23 @@ def start_bist_state_actions(ex, st):
     bist_command = ex.bist.get_bist_command_str()
     result = ex.uart.sendline(bist_command)
 
+def bist_result_state_actions(ex, st):
+
+    # Wait for the BIST title
+    #^M                          WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS        SEC        DED
+    BIST_TITLE_REGEX = "WR-BW\(MiB/s\) RD-BW\(MiB/s\)  TESTED\(MiB\)     ERRORS        SEC        DED"
+    BIST_TEXT_DELAY = 15
+    ex.uart.expect(BIST_TITLE_REGEX,timeout=BIST_TEXT_DELAY)
+
+    # Wait for the BIST Data
+    #^M                                   646          654          324          0          0          0
+    BIST_DATA_REGEX = "\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+"
+    for i in range(8):
+        ex.uart.expect(BIST_DATA_REGEX,timeout=BIST_TEXT_DELAY)
+        result = ex.uart.get_expect_str()
+        ex.bist.new_data_str(result)     
+
+
 def terminating_state_actions(ex, st):
     # Close the JCM (if it was setup properly)
     if ex.jcm_ok:
@@ -204,6 +237,7 @@ def build_experiment(args,logger,single_step=False):
     CONFIGURE_NEXYS_STATE = "Configure Nexys State"
     LITEX_PROMPT_STATE = "LiteX Login State"
     START_BIST_STATE = "Start BIST State"
+    BIST_RESULT_STATE = "BIST Result State"
 
     TERMINATING_STATE = "Terminating State"
 
@@ -283,7 +317,16 @@ def build_experiment(args,logger,single_step=False):
     experiment.add_state(ExperimentState(
         START_BIST_STATE,
         start_bist_state_actions,
-        Transition(lambda ex, st: ex.login_litex, TERMINATING_STATE),
+        Transition(lambda ex, st: ex.login_litex, BIST_RESULT_STATE),
+        Transition(lambda ex, st: True, TERMINATING_STATE)
+    ))
+
+    # BIST_RESULT_STATE
+    # - Process an execution of the BIST
+    experiment.add_state(ExperimentState(
+        BIST_RESULT_STATE,
+        bist_result_state_actions,
+        #Transition(lambda ex, st: ex.login_litex, TERMINATING_STATE),
         Transition(lambda ex, st: True, TERMINATING_STATE)
     ))
 
