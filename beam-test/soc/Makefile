@@ -18,8 +18,8 @@
 PYTHON_VENV = .pyenv
 VIVADO_VERSION = 2022.1
 RISCV_TOOLCHAIN = riscv64-unknown-elf-gcc-10.1.0-2020.08.2-x86_64-linux-ubuntu14
-PYTHON_FLAGS = -m
-BUILD_TARGET = litex_boards.targets.digilent_nexys_video
+PYTHON_FLAGS =
+BUILD_TARGET = build_soc.py
 BUILD_FLAGS =
 
 # -------------------------------------- #
