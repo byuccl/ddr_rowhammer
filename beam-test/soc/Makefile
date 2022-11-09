@@ -18,7 +18,9 @@
 PYTHON_VENV = .pyenv
 VIVADO_VERSION = 2022.1
 RISCV_TOOLCHAIN = riscv64-unknown-elf-gcc-10.1.0-2020.08.2-x86_64-linux-ubuntu14
-BUILD_FLAGS = #--uart_bone=usb_fifo
+PYTHON_FLAGS = -m
+BUILD_TARGET = litex_boards.targets.digilent_nexys_video
+BUILD_FLAGS =
 
 # -------------------------------------- #
 # RULES
@@ -103,7 +105,7 @@ build: deps | env.sh
 	@echo Building SoC.
 	@echo ------------------------------------------
 	. ./env.sh; \
-	python -m litex_boards.targets.digilent_nexys_video --build $(BUILD_FLAGS)
+	python $(PYTHON_FLAGS) $(BUILD_TARGET) --build $(BUILD_FLAGS)
 	@echo -------------------DONE-------------------
 
 # -------------------------------------- #
@@ -113,5 +115,5 @@ load: env.sh
 	@echo Loading Design
 	@echo ------------------------------------------
 	. ./env.sh; \
-	python -m litex_boards.targets.digilent_nexys_video --load
+	python $(PYTHON_FLAGS) $(BUILD_TARGET) --load
 	@echo -------------------DONE-------------------
