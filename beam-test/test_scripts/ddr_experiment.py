@@ -24,6 +24,7 @@ from datetime import datetime
 
 from netbooter_control import netbooter_control
 from jcm_session import jcm_session
+from uart_control import uart_control
 
 from paramiko import SSHClient, SSHException, AutoAddPolicy, \
                     BadHostKeyException, AuthenticationException, buffered_pipe
@@ -51,7 +52,7 @@ JCM_PING_COUNT_LIMIT = 10
 JCM_PING_DELAY = 10
 
 def setup_logger(log_filename:str, include_level = True, print_stdout = False):
-    ''' Create a custom logger '''
+    ''' Static method for creating custom loggers '''
     if include_level:
         formatter = logging.Formatter('%(asctime)s %(levelname)-8s %(message)s', datefmt=TIME_STRING_FORMAT)
     else:
@@ -94,12 +95,13 @@ def jcm_setup_state_actions(ex, st):
         time.sleep(3)
     # Power on JCM (may already be powered)
     ex.netbooter.turn_on_port(ex.args.jcm_netbooter_port)
+
     # Create JCM output logger
     jcm_log_filename = create_log_path("JCM",ex.filebasename, ex.log_dir)
-
     # Create JCM log file
     jcm_log_file = open(jcm_log_filename,"w")
     #jcm_stdout_logger = setup_logger(jcm_log_filename, include_level = False)
+
     # Create JCM object
     ex.jcm = jcm_session.create_jcm_from_args(ex.args,ex.logger,jcm_log_file,stdout_timeprefix = TIME_STRING_FORMAT)
     # Ping JCM (wait until ping before trying to connect)
@@ -120,6 +122,24 @@ def jcm_setup_state_actions(ex, st):
 def power_nexys_state_actions(ex, st):
     ex.netbooter.turn_off_port(ex.args.nexys_netbooter_port)
     ex.netbooter.turn_on_port(ex.args.nexys_netbooter_port)
+
+def connect_uart_state_actions(ex, st):
+    ex.uart_ok = False
+
+    # Create UART stdout
+    uart_log_filename = create_log_path("UART",ex.filebasename, ex.log_dir)
+    # Create UART log file
+    uart_log_file = open(uart_log_filename,"w")
+
+    # Create UART control object
+    ex.uart = uart_control(ex.args.usb_uart_phys_port, uart_stdout = uart_log_file, logging = ex.logger)
+
+    # Determine device name for uart
+    serial_fdspawn = ex.uart.create_uart_spawn()
+    if not serial_fdspawn:
+        return
+
+    ex.uart_ok = True
 
 def configure_nexys_state_actions(ex, st):
     ex.jcm.configure_fpga(ex.args.bitstream)
@@ -142,6 +162,7 @@ def build_experiment(args,logger,single_step=False):
     NETBOOTER_SETUP_STATE = "Netbooter Setup State"
     JCM_SETUP_STATE = "JCM Setup State"
     POWER_NEXYS_STATE = "Power Nexys State"
+    CONNECT_UART_STATE = "Connect UART State"
     CONFIGURE_NEXYS_STATE = "Configure Nexys State"
 
     TERMINATING_STATE = "Terminating State"
@@ -176,7 +197,7 @@ def build_experiment(args,logger,single_step=False):
     experiment.add_state(ExperimentState(
         JCM_SETUP_STATE,
         jcm_setup_state_actions,
-        Transition(lambda ex, st: ex.netbooter_ok, POWER_NEXYS_STATE),
+        Transition(lambda ex, st: ex.jcm_ok, POWER_NEXYS_STATE),
         Transition(lambda ex, st: True, TERMINATING_STATE)
     ))
 
@@ -193,6 +214,18 @@ def build_experiment(args,logger,single_step=False):
     experiment.add_state(ExperimentState(
         CONFIGURE_NEXYS_STATE,
         configure_nexys_state_actions,
+        # TODO: need to check to see if it configured properly
+        Transition(lambda ex, st: True, CONNECT_UART_STATE)
+    ))
+
+    # CONNECT_UART_STATE
+    # - Connect the UART
+    # Does the FPGA needs to be configured before connecting
+    # to the UART? 
+    experiment.add_state(ExperimentState(
+        CONNECT_UART_STATE,
+        connect_uart_state_actions,
+        Transition(lambda ex, st: ex.uart_ok, CONFIGURE_NEXYS_STATE),
         Transition(lambda ex, st: True, TERMINATING_STATE)
     ))
 
@@ -239,6 +272,7 @@ def main():
     parser.add_argument("--bitstream", help="filename of bitstream", type=str, required=True)
     parser.add_argument_group(netbooter_control.netbooter_group_args(parser))
     parser.add_argument_group(jcm_session.jcm_group_args(parser))
+    parser.add_argument_group(uart_control.uart_group_args(parser))
     parser.add_argument("--repower_jcm", help="Repower JCM at start of experiment", action='store_true')
     parser.add_argument("--jcm_netbooter_port", help="Netbooter port for JCM", type=int, default=1)
     parser.add_argument("--nexys_netbooter_port", help="Netbooter port for Nexys", type=int, default=2)
