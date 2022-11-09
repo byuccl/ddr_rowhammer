@@ -24,6 +24,11 @@ BUILD_FLAGS = --uart-name=usb_fifo
 # RULES
 # -------------------------------------- #
 
+# Force the environment script to be regenerated on every run.
+.PHONY: env.sh
+
+# -------------------------------------- #
+
 default:
 	@echo No default rule configured.
 
@@ -70,7 +75,7 @@ env: env.sh
 
 # -------------------------------------- #
 
-$(PYTHON_VENV)/dependencies_installed.txt: env.sh
+$(PYTHON_VENV)/dependencies_installed.txt: | env.sh
 	@echo ------------------------------------------
 	@echo Installing build dependnecies.
 	@echo ------------------------------------------
@@ -93,7 +98,7 @@ deps: $(PYTHON_VENV)/dependencies_installed.txt
 
 # -------------------------------------- #
 
-build: env.sh deps
+build: deps | env.sh
 	@echo ------------------------------------------
 	@echo Building SoC.
 	@echo ------------------------------------------
