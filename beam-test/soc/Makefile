@@ -26,8 +26,7 @@ BUILD_FLAGS =
 # RULES
 # -------------------------------------- #
 
-# Force the environment script to be regenerated on every run.
-.PHONY: env.sh
+.PHONY: env.sh build load
 
 # -------------------------------------- #
 
@@ -110,7 +109,7 @@ build: deps | env.sh
 
 # -------------------------------------- #
 
-load: env.sh
+load: | env.sh
 	@echo ------------------------------------------
 	@echo Loading Design
 	@echo ------------------------------------------
