@@ -64,7 +64,7 @@ class bist_state(object):
 
         self.bist_mem_burst_length = bist_mem_burst_length
         self.bist_addr_mode = bist_addr_mode
-        self.first_run = True
+        self.new_title = True
 
         self.error_cnt = 0
         self.sec_cnt = 0
@@ -73,6 +73,9 @@ class bist_state(object):
     def get_bist_command_str(self):
         cmd_str = "sdram_bist " + str(self.bist_mem_burst_length) + " " + str(self.bist_addr_mode)
         return cmd_str
+
+    def new_bist_title(self):
+        self.new_title = True
 
     def new_data_str(self,result_str):
         ERROR_MSG_INDEX = 3 # Error number at index 3 of matched string
@@ -89,6 +92,7 @@ class bist_state(object):
         else :
             ded_string_int = ded_string[:ded_string.find('\'', 0):]
         new_ded_cnt = int(ded_string_int)
+        self.new_title = False
 
 def setup_logger(log_filename:str, include_level = True, print_stdout = False):
     ''' Static method for creating custom loggers '''
@@ -206,17 +210,24 @@ def bist_result_state_actions(ex, st):
     BIST_TITLE_REGEX = "WR-BW\(MiB/s\) RD-BW\(MiB/s\)  TESTED\(MiB\)     ERRORS        SEC        DED"
     BIST_TEXT_DELAY = 15
     ex.uart.expect(BIST_TITLE_REGEX,timeout=BIST_TEXT_DELAY)
+    # New title: reset the title flag
+    ex.bist.new_bist_title()
 
     # Wait for the BIST Data
     #^M                                   646          654          324          0          0          0
     BIST_DATA_REGEX = "\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+"
-    for i in range(8):
+    for i in range(16):
         ex.uart.expect(BIST_DATA_REGEX,timeout=BIST_TEXT_DELAY)
         result = ex.uart.get_expect_str()
         ex.bist.new_data_str(result)     
 
 
 def terminating_state_actions(ex, st):
+    # Stop scrubbing (if it is going)
+    if ex.jcm.is_active():
+        ex.jcm.stop_scrub()
+        ex.jcm.jcm_thread.join()
+
     # Close the JCM (if it was setup properly)
     if ex.jcm_ok:
         ex.jcm.close_jcm()
@@ -235,6 +246,7 @@ def build_experiment(args,logger,single_step=False):
     POWER_NEXYS_STATE = "Power Nexys State"
     CONNECT_UART_STATE = "Connect UART State"
     CONFIGURE_NEXYS_STATE = "Configure Nexys State"
+    ENABLE_SCRUBBING_STATE = "Enable Scrubbing State"
     LITEX_PROMPT_STATE = "LiteX Login State"
     START_BIST_STATE = "Start BIST State"
     BIST_RESULT_STATE = "BIST Result State"
@@ -299,7 +311,16 @@ def build_experiment(args,logger,single_step=False):
     experiment.add_state(ExperimentState(
         CONFIGURE_NEXYS_STATE,
         configure_nexys_state_actions,
-        Transition(lambda ex, st: ex.configure_ok, LITEX_PROMPT_STATE),
+        Transition(lambda ex, st: ex.configure_ok, ENABLE_SCRUBBING_STATE),
+        Transition(lambda ex, st: True, TERMINATING_STATE)
+    ))
+
+    # ENABLE_SCRUBBING_STATE
+    # - Turn on scrubbing
+    experiment.add_state(ExperimentState(
+        ENABLE_SCRUBBING_STATE,
+        enable_scrubbing_state_actions,
+        Transition(lambda ex, st: ex.scrubbing_ok, LITEX_PROMPT_STATE),
         Transition(lambda ex, st: True, TERMINATING_STATE)
     ))
 
