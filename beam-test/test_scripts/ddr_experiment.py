@@ -51,6 +51,29 @@ JCM_PING_COUNT_LIMIT = 10
 # JCM Ping Delay
 JCM_PING_DELAY = 10
 
+DEFAULT_BIST_BURST_LENGTH = 0x2000 # Default burst length
+DEFAULT_BIST_ADDR_MODE = 1 # Start reading/writing data with addresses linearly.
+
+class bist_state(object):
+    ''' This class keeps track of a running bist command '''
+
+    def __init__(self, 
+        bist_mem_burst_length:int,
+        bist_addr_mode:int,
+        ) -> None:
+
+        self.bist_mem_burst_length = bist_mem_burst_length
+        self.bist_addr_mode = bist_addr_mode
+        self.first_run = True
+
+        self.error_cnt = 0
+        self.sec_cnt = 0
+        self.ded_cnt = 0
+
+    def get_bist_command_str(self):
+        cmd_str = "sdram_bist " + str(self.bist_mem_burst_length) + " " + str(self.bist_addr_mode)
+        return cmd_str
+
 def setup_logger(log_filename:str, include_level = True, print_stdout = False):
     ''' Static method for creating custom loggers '''
     if include_level:
@@ -142,8 +165,23 @@ def connect_uart_state_actions(ex, st):
     ex.uart_ok = True
 
 def configure_nexys_state_actions(ex, st):
-    ex.jcm.configure_fpga(ex.args.bitstream)
+    ex.configure_ok = False
+    result = ex.jcm.configure_fpga(ex.args.bitstream)
+    ex.configure_ok = result
 
+def litex_prompt_state_actions(ex, st):
+    ex.login_litex = False
+    # Todo: Allow multiple attempts (if boot is slow)
+    LITEX_LOGIN_PATTERN = "^.*litex[^>]*> "
+    LITEX_LOGIN_DELAY = 10
+    ex.uart.sendline("\n")
+    ex.uart.expect(LITEX_LOGIN_PATTERN,timeout=LITEX_LOGIN_DELAY)
+    ex.login_litex = True
+
+def start_bist_state_actions(ex, st):
+    ex.bist = bist_state(ex.args.bist_mem_burst_length, ex.args.bist_addr_mode)
+    bist_command = ex.bist.get_bist_command_str()
+    result = ex.uart.sendline(bist_command)
 
 def terminating_state_actions(ex, st):
     # Close the JCM (if it was setup properly)
@@ -164,6 +202,8 @@ def build_experiment(args,logger,single_step=False):
     POWER_NEXYS_STATE = "Power Nexys State"
     CONNECT_UART_STATE = "Connect UART State"
     CONFIGURE_NEXYS_STATE = "Configure Nexys State"
+    LITEX_PROMPT_STATE = "LiteX Login State"
+    START_BIST_STATE = "Start BIST State"
 
     TERMINATING_STATE = "Terminating State"
 
@@ -206,15 +246,6 @@ def build_experiment(args,logger,single_step=False):
     experiment.add_state(ExperimentState(
         POWER_NEXYS_STATE,
         power_nexys_state_actions,
-        Transition(lambda ex, st: True, CONFIGURE_NEXYS_STATE)
-    ))
-
-    # CONFIGURE_NEXYS_STATE
-    # - Configure FPGA
-    experiment.add_state(ExperimentState(
-        CONFIGURE_NEXYS_STATE,
-        configure_nexys_state_actions,
-        # TODO: need to check to see if it configured properly
         Transition(lambda ex, st: True, CONNECT_UART_STATE)
     ))
 
@@ -226,6 +257,33 @@ def build_experiment(args,logger,single_step=False):
         CONNECT_UART_STATE,
         connect_uart_state_actions,
         Transition(lambda ex, st: ex.uart_ok, CONFIGURE_NEXYS_STATE),
+        Transition(lambda ex, st: True, TERMINATING_STATE)
+    ))
+
+    # CONFIGURE_NEXYS_STATE
+    # - Configure FPGA
+    experiment.add_state(ExperimentState(
+        CONFIGURE_NEXYS_STATE,
+        configure_nexys_state_actions,
+        Transition(lambda ex, st: ex.configure_ok, LITEX_PROMPT_STATE),
+        Transition(lambda ex, st: True, TERMINATING_STATE)
+    ))
+
+    # LITEX_PROMPT_STATE
+    # - Wait for LITEX login
+    experiment.add_state(ExperimentState(
+        LITEX_PROMPT_STATE,
+        litex_prompt_state_actions,
+        Transition(lambda ex, st: ex.login_litex, START_BIST_STATE),
+        Transition(lambda ex, st: True, TERMINATING_STATE)
+    ))
+
+    # START_BIST_STATE
+    # - Start BIST command
+    experiment.add_state(ExperimentState(
+        START_BIST_STATE,
+        start_bist_state_actions,
+        Transition(lambda ex, st: ex.login_litex, TERMINATING_STATE),
         Transition(lambda ex, st: True, TERMINATING_STATE)
     ))
 
@@ -278,6 +336,8 @@ def main():
     parser.add_argument("--nexys_netbooter_port", help="Netbooter port for Nexys", type=int, default=2)
     parser.add_argument("--log_dir", help="Directory of logs", type=str)
     parser.add_argument("--single_step", help="Single step through state machine", action='store_true')
+    parser.add_argument("--bist_mem_burst_length", help="Burst length of BIST command", type=int, default = DEFAULT_BIST_BURST_LENGTH)
+    parser.add_argument("--bist_addr_mode", help="Burst length of BIST command", type=int, default=DEFAULT_BIST_ADDR_MODE)
     args = parser.parse_args()
 
     # Set up logger settings

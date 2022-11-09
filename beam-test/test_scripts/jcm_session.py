@@ -221,7 +221,9 @@ class jcm_session():
         return
 
     def configure_fpga(self, bitstream_filename):
-
+        ''' Configure FPGA
+        returns 'True' if configuration was successful, False otherwise.
+        '''
         self._info("Attempting JCM configuration")
 
         # Default configuration command
@@ -243,7 +245,7 @@ class jcm_session():
         for line in self.jcm_thread_output:
             print(line)
 
-        return False
+        return True
 
     def create_frad_list(self, frads_filename):
         pass

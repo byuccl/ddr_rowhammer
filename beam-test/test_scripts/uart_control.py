@@ -50,6 +50,7 @@ class uart_control():
     FDSPAWN_TIMEOUT = 5
     MAX_TTY_FIND_ATTEMPTS = 5
     TTY_SEARCH_DELAY = 2
+    DEFAULT_EXPECT_TIMEOUT = 5
     
     def __init__(self, 
         usb_uart_phys_port:str,
@@ -127,6 +128,36 @@ class uart_control():
             self._error("Unexpected exception connecting to uart"+str(error))
             self.serial_fdspawn = None
         return self.serial_fdspawn
+
+    def sendline(self,line):
+        ''' Send line over fdspawn handle '''
+        if not self.serial_fdspawn:
+            self._error("sendline call without active fdspan")
+            return False
+        try:
+            self.serial_fdspawn.sendline(line)
+        except Exception as error:
+            self._error("sendline error:"+str(error))
+            return False
+        return True
+
+    def expect(self,pattern,timeout=DEFAULT_EXPECT_TIMEOUT):
+        ''' Expext fdspawn handle '''
+        if not self.serial_fdspawn:
+            self._error("expect call without active fdspan")
+            return False
+        try:
+            self.serial_fdspawn.expect(pattern=pattern, timeout=timeout)
+        except pexpect.exceptions.TIMEOUT:
+            self._error("expect timeout with pattern:"+pattern)
+            return False
+        except UnicodeDecodeError:
+            self._error("expect unicode error with pattern:"+pattern)
+            # TODO: keep a running track of unicode errors and do something if there are too many
+            return False
+        except Exception as error:
+            self._error("expect error:"+str(error))
+            return False
 
     def uart_group_args(parser):
         ''' Static function for creating UART argument group '''
