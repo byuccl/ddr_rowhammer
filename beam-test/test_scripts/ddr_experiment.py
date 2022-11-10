@@ -64,7 +64,6 @@ class bist_state(object):
 
         self.bist_mem_burst_length = bist_mem_burst_length
         self.bist_addr_mode = bist_addr_mode
-        self.new_title = True
 
         self.error_cnt = 0
         self.sec_cnt = 0
@@ -74,25 +73,32 @@ class bist_state(object):
         cmd_str = "sdram_bist " + str(self.bist_mem_burst_length) + " " + str(self.bist_addr_mode)
         return cmd_str
 
-    def new_bist_title(self):
-        self.new_title = True
+    def clear_data(self):
+        self.error_cnt = 0
+        self.sec_cnt = 0
+        self.ded_cnt = 0
 
     def new_data_str(self,result_str):
+        ''' Evaluates data string. Returns False if no new errors. True with new errors. '''
         ERROR_MSG_INDEX = 3 # Error number at index 3 of matched string
         SEC_MSG_INDEX = 4 # Sec error number at index 4 of matched string
         DED_MSG_INDEX = 5 # Ded error number at index 5 of matched string
         result_list = result_str.split()
         new_error_cnt = int(result_list[ERROR_MSG_INDEX])
         new_sec_cnt = int(result_list[SEC_MSG_INDEX])
-        # What is going on here?
-        ded_string = result_list[DED_MSG_INDEX]
-        ded_string_int = "0"
-        if (ded_string.find('\'', 0) == -1):
-            ded_string_int = ded_string
-        else :
-            ded_string_int = ded_string[:ded_string.find('\'', 0):]
-        new_ded_cnt = int(ded_string_int)
-        self.new_title = False
+        new_ded_cnt = int(result_list[DED_MSG_INDEX])
+        new_errors = False
+        if new_error_cnt != self.error_cnt:
+            new_errors = True
+        if new_sec_cnt != self.sec_cnt:
+            new_errors = True
+        if new_ded_cnt != self.ded_cnt:
+            new_errors = True
+        # update internal variables
+        self.error_cnt = new_error_cnt
+        self.sec_cnt = new_sec_cnt
+        self.ded_cnt = new_ded_cnt
+        return new_errors
 
 def setup_logger(log_filename:str, include_level = True, print_stdout = False):
     ''' Static method for creating custom loggers '''
@@ -119,6 +125,7 @@ def setup_logger(log_filename:str, include_level = True, print_stdout = False):
     return logger
 
 def initial_starting_state_actions(ex, st):
+    # Do nothing. Just an entry point.
     pass
 
 def netbooter_setup_state_actions(ex, st):
@@ -143,7 +150,7 @@ def jcm_setup_state_actions(ex, st):
     jcm_log_filename = create_log_path("JCM",ex.filebasename, ex.log_dir)
     # Create JCM log file
     jcm_log_file = open(jcm_log_filename,"w")
-    #jcm_stdout_logger = setup_logger(jcm_log_filename, include_level = False)
+    # TODO: need to close jcm_log_file: where?
 
     # Create JCM object
     ex.jcm = jcm_session.create_jcm_from_args(ex.args,ex.logger,jcm_log_file,stdout_timeprefix = TIME_STRING_FORMAT)
@@ -189,6 +196,16 @@ def configure_nexys_state_actions(ex, st):
     result = ex.jcm.configure_fpga(ex.args.bitstream)
     ex.configure_ok = result
 
+def enable_scrubbing_state_actions(ex, st):
+    ex.scrubbing_ok = False
+    frads_file = None
+    #if ex.args.frads_file:
+    #    frads_file = ex.args.frads_file
+    ITERATIONS = 100
+    result = ex.jcm.scrub_fpga(iterations=ITERATIONS, frads_file = frads_file, block=False)
+    result = True
+    ex.scrubbing_ok = result
+
 def litex_prompt_state_actions(ex, st):
     ex.login_litex = False
     # Todo: Allow multiple attempts (if boot is slow)
@@ -202,25 +219,125 @@ def start_bist_state_actions(ex, st):
     ex.bist = bist_state(ex.args.bist_mem_burst_length, ex.args.bist_addr_mode)
     bist_command = ex.bist.get_bist_command_str()
     result = ex.uart.sendline(bist_command)
+    # Flag indicating that this is a fresh BIST (not coming in with errors)
+    ex.previous_bist_error = False
 
-def bist_result_state_actions(ex, st):
+def bist_execution_state_actions(ex, st):
+    ''' Watch the execution of th BIST command and respond to errors.'''
 
-    # Wait for the BIST title
+    expecting_title = True # When we should see a title line
+    consecutive_unicode_errors = 0
+    consecutive_bad_title_lines = 0
+    consecutive_bad_data_lines = 0
+    consecutive_data_errors = 0
+    ex.timeout = False
+    ex.bist_recovery = False
+    ex.bist.clear_data()
+
+    # Clear error flags
+
+    # BIST title line
     #^M                          WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS        SEC        DED
     BIST_TITLE_REGEX = "WR-BW\(MiB/s\) RD-BW\(MiB/s\)  TESTED\(MiB\)     ERRORS        SEC        DED"
-    BIST_TEXT_DELAY = 15
-    ex.uart.expect(BIST_TITLE_REGEX,timeout=BIST_TEXT_DELAY)
-    # New title: reset the title flag
-    ex.bist.new_bist_title()
-
-    # Wait for the BIST Data
+    # BIST data line
     #^M                                   646          654          324          0          0          0
     BIST_DATA_REGEX = "\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+"
-    for i in range(16):
-        ex.uart.expect(BIST_DATA_REGEX,timeout=BIST_TEXT_DELAY)
-        result = ex.uart.get_expect_str()
-        ex.bist.new_data_str(result)     
+    BIST_TEXT_DELAY = 15
+    MAX_CONSECUTIVE_UNICODE_ERRORS = 20
+    MAX_CONSECUTIVE_BAD_TITLE_LINES = 10
+    MAX_CONSECUTIVE_BAD_DATA_LINES = 10
+    MAX_CONSECUTIVE_BAD_DATA_ERRORS = 8
 
+    # Iterate over lines until an error occurs (will need to break out of line)
+    while(1):
+
+        # Get a line of data
+        TITLE_INDEX=0
+        DATA_INDEX=1
+        match_index = ex.uart.expect([BIST_TITLE_REGEX,BIST_DATA_REGEX],timeout=BIST_TEXT_DELAY)
+
+        # Process expect errors
+        if ex.uart.timeout or ex.EOF:
+            ex.timeout = True # Should go to TERMINAL_RECOVERY_STATE
+            ex.previous_bist_error = True  # Don't want to see back to back BIST failures
+            break
+        if ex.uart.unicode_error:
+            consecutive_unicode_errors += 1
+            if consecutive_unicode_errors == 1:
+                ex.logger.error("Unicode Error")
+            elif consecutive_unicode_errors >= MAX_CONSECUTIVE_UNICODE_ERRORS:
+                ex.timeout = True # Should go to TERMINAL_RECOVERY_STATE
+                ex.previous_bist_error = True  
+            # Don't process this unicode error line
+            continue
+        else:
+            # If there are no unicode errors, clear any consecutive flags and go to title state (not sure where we are)
+            if consecutive_unicode_errors > 0:
+                consecutive_unicode_errors == 1
+                expecting_title = True # Start looking or titles (may get errors)
+
+        if expecting_title: # Need to process a good title before accepting any data
+            if ex.uart.serial_fdspawn.match and match == TITLE_INDEX:
+                # execpting a title and receivd a title
+                ex.logger.info("Valid BIST Title")
+                expecting_title = False # Now expecting data
+                consecutive_bad_title_lines = 0 # Clear any bad title line errors
+                DataLineNumber = 0 # initialize data counter
+                continue
+            else: # have an invalid title line
+                consecutive_bad_title_lines += 1
+                if consecutive_bad_title_lines == 1:
+                    ex.logger.error("Bad title line")
+                    continue
+                elif consecutive_bad_title_lines > MAX_CONSECUTIVE_BAD_TITLE_LINES:
+                    # Too many bad title lines: try to recover
+                    if ex.previous_bist_error:   # Double error, recover
+                        ex.timeout = True
+                        ex.previous_bist_error = True
+                        break
+                    else: # first error
+                        ex.bist_recovery = True
+                        ex.previous_bist_error = True
+                        break
+
+        else: # Expecting Data
+            if ex.uart.serial_fdspawn.match and match == DATA_INDEX:
+                # execpting data and received data
+                DataLineNumber += 1
+                if DataLineNumber == 8: # finished data lines
+                    expecting_title = True # Now expecting title
+                    ex.previous_bist_error = False # Clear any previous bist error flag (we completed an iteration)
+                consecutive_bad_data_lines = 0 # Clear any bad data line errors
+                # See if we have any data errors
+                match_str = ex.uart.serial_fdspawn.match.group(0)
+                new_errors = ex.bist.new_data_str(match_str)
+                if new_errors:
+                    consecutive_data_errors += 1
+                    if consecutive_data_errors == 1:
+                        ex.logger.error("Data Error")
+                    elif consecutive_data_errors >= MAX_CONSECUTIVE_BAD_DATA_ERRORS:
+                        ex.logger.error("Multiple Data Error")
+                        ex.bist_recovery = True
+                        ex.previous_bist_error = True
+                    continue
+                else: # no new errors
+                    consecutive_data_errors = 0 # Clear consecutive error flag
+                continue
+            else: # bad data line
+                consecutive_bad_data_lines += 1
+                if consecutive_bad_data_lines == 1:
+                    ex.logger.error("Bad data line")
+                elif consecutive_bad_data_lines >= MAX_CONSECUTIVE_BAD_DATA_LINES:
+                    # Too many bad data lines: try to recover
+                    if ex.previous_bist_error:   # Double error, recover
+                        ex.timeout = True
+                        ex.previous_bist_error = True
+                        break
+                    else: # first error
+                        ex.bist_recovery = True
+                        ex.previous_bist_error = True
+                        break
+        
 
 def terminating_state_actions(ex, st):
     # Stop scrubbing (if it is going)
@@ -231,7 +348,9 @@ def terminating_state_actions(ex, st):
     # Close the JCM (if it was setup properly)
     if ex.jcm_ok:
         ex.jcm.close_jcm()
-        
+
+    # Close the uart?
+
     ex.stop()
 
 def build_experiment(args,logger,single_step=False):
@@ -249,7 +368,7 @@ def build_experiment(args,logger,single_step=False):
     ENABLE_SCRUBBING_STATE = "Enable Scrubbing State"
     LITEX_PROMPT_STATE = "LiteX Login State"
     START_BIST_STATE = "Start BIST State"
-    BIST_RESULT_STATE = "BIST Result State"
+    BIST_EXECUTION_STATE = "BIST Result State"
 
     TERMINATING_STATE = "Terminating State"
 
@@ -338,19 +457,34 @@ def build_experiment(args,logger,single_step=False):
     experiment.add_state(ExperimentState(
         START_BIST_STATE,
         start_bist_state_actions,
-        Transition(lambda ex, st: ex.login_litex, BIST_RESULT_STATE),
+        Transition(lambda ex, st: ex.login_litex, BIST_EXECUTION_STATE),
         Transition(lambda ex, st: True, TERMINATING_STATE)
     ))
 
-    # BIST_RESULT_STATE
+    # BIST_EXECUTION_STATE
     # - Process an execution of the BIST
     experiment.add_state(ExperimentState(
-        BIST_RESULT_STATE,
-        bist_result_state_actions,
+        BIST_EXECUTION_STATE,
+        bist_execution_state_actions,
+        Transition(lambda ex, st: ex.timeout, TERMINAL_RECOVERY_STATE),        
+        Transition(lambda ex, st: ex.bist_recovery, BIST_RECOVERY_STATE),        
         #Transition(lambda ex, st: ex.login_litex, TERMINATING_STATE),
         Transition(lambda ex, st: True, TERMINATING_STATE)
     ))
 
+    # BIST_RECOVERY_STATE
+    experiment.add_state(ExperimentState(
+        BIST_RECOVERY_STATE,
+        bist_recovery_state_actions,
+        Transition(lambda ex, st: True, TERMINATING_STATE)
+    ))
+
+    # TERMINAL_RECOVERY_STATE
+    experiment.add_state(ExperimentState(
+        TERMINAL_RECOVERY_STATE,
+        terminal_recovery_state_actions,
+        Transition(lambda ex, st: True, TERMINATING_STATE)
+    ))
 
     # TERMINATING_STATE
     # - Do nothing: place holder for ending state. Will set experiment to "stop"
@@ -432,35 +566,50 @@ if __name__ == "__main__":
 
 
 '''
-Updated state machine using threads
 
-1. Init state
-   - Just a start message
-2. Repower board
-   - We want to start the experiment in a fresh state
-3. Initialize UART connection (for UARTBone and UART serial)
-  - Force repower the UART connection?
-  - Log the UART serial from here out
-4. JCM Login
-  - All JCM traffic logged to a dedicated file
-5. JCM Configuration
-  - This is blocking - we don't move to the next state until this is done.
-6. JCM Scrubbing
-  - This is a separate thread
-     - SCRUBBING_OK global variable set to 1 indicating scrubbing is working correctly.
-       - Main thread will periodically check this and jump to a recovery state if it goes to zero
-     - If scrubbing fails, this variable is set to zero
-       - Scrubber ends, or connection to JCM fails
-     - Main thread has a flag CONTINUE_SCRUBBING set to 1
-       - Scrubbing thread watches this variable and closes scrubbing and exits thread if this is set to 0     
-  - Flag to support scrubbing with and without fault injection
-  - Listen to a global variable controlled by the script that indicates when scrubbing should stop
-6a. Read UARTBone registers as baseline (and any other baseline values)
-7. Connect to litex serial
-8. Wait for Litex prompt
-9. Send BIST command (initialize error counts)
-10. Expect title line actions
-11. check_for_errors_state
+Bist command sequence
+
+- If a full sequence is executed without errors, clear all "pending errors"
+  - If the first full sequence is executed with errors, go to UNRECOVERABLE_POST_MORTUM
+
+START_BIST_STATE
+- Set flags:
+  previous_bist_error = False
+
+  (so the bist states can tell if they are in the first execution or not)
+
+
+Timeout:
+- timeout Flag for every 'expect' command
+  - Must be checked after every expect
+    - If there is a flag, go to "TIMEOUT_RECOVERY_STATE"
+
+DRAM_RECOVERY (state for cleaning up DRAM)
+- Execute all the commands to try and fix DRAM
+- On timeout, go to TERMINAL_RECOVERY_STATE
+- On success, go to BIST_RECOVERY_STATE
+
+BIST_RECOVERY_STATE  (Try to rerun the bist command)
+- Hit enter to stop BIST and expect prompt
+ - If timeout, 
+    go to TERMINAL_RECOVERY_STATE
+    previous_bist_error = True (don't allow back to back )
+- Start BIST command nad go to BIST_EXECUTION_STATE
+
+TERMINAL_RECOVERY_STATE (this is the state whenever a timeout occurs or need to try restablishing a connection)
+- Close spawn and open spawn to create new terminal (give it a few tries): restart experiment if this fails
+- Close the bist command by giving a few enters
+- Try to get Litex Prompt (do this a couple of times to make sure the prompts keep coming)
+  - If unsuccessful, go to UNRECOVERABLE_POST_MORTUM
+- If prompt is ok, go to the BIST command
+  Do we need to set a flag suggesting we came from an error? If the first bist command fails, we should go to UNRECOVERABLE_POST_MORTUM
+
+UNRECOVERABLE_POST_MORTUM
+- Stop scrubbing
+- Add steps for figuring out what happened here (uart_bone, readback, etc.)
+- Reconfigure/Repower
+
+
 
 Error response:
 

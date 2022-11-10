@@ -90,6 +90,7 @@ class jcm_session():
                 time_prefix = str("["+time.strftime(self.stdout_timeprefix)+"] ")
                 line = time_prefix + line
             self.stdout.write(line)
+            self.stdout.flush()
 
     def close_jcm(self):
         ''' Closes JCM SSH session'''
@@ -300,60 +301,74 @@ class jcm_session():
         return jcm
 
 def main():
-
+    ''' This main function demonstrates some common JCM uses using the threads. '''
     parser = argparse.ArgumentParser()
     parser.add_argument_group(jcm_session.jcm_group_args(parser))
     # Add arguments
     parser.add_argument("--bitfile",required=True)
     parser.add_argument("--fradlist",default="xc7a200t_frad.txt")
+    parser.add_argument("--jcm_file",type=str)
 
     args = parser.parse_args()
 
     # create jcm object
-    logging.basicConfig(level=logging.INFO)
-    jcm_output = sys.stdout
     TIME_STRING_FORMAT = "%Y-%m-%d %H:%M:%S"
+    logging.basicConfig(level=logging.INFO, datefmt=TIME_STRING_FORMAT)    
+
+    # Create JCM output logger
+    if args.jcm_file:
+        jcm_output = open(args.jcm_file,"w")
+    else:
+        jcm_output = sys.stdout
+
     jcm = jcm_session.create_jcm_from_args(args, logging, stdout = jcm_output, stdout_timeprefix=TIME_STRING_FORMAT)
 
+    test_num = 1
     # 1. Connect with JCM
-    print("Main:Attempting to open JCM")
+    print(f"\n{test_num}: Main:Attempting to open JCM")
     if not jcm.open_jcm():
         print("JCM open failed")
         return 1
+    test_num += 1
 
     # 2. Configure with a bitfile
     bitstream_filename = args.bitfile
     # --bitfile /root/newtobetmred_tmr.bit
-    print("Main:Attempting to configure with JCM using bitfile ",bitstream_filename)
+    print(f"\n{test_num}: Main:Attempting to configure with JCM using bitfile ",bitstream_filename)
     if not jcm.configure_fpga(bitstream_filename):
         print("Main:Failed configure")
         return 1
+    test_num += 1
 
     # 3. Perform scrubbing (blocking, no frads file, no readback file)
     frads_file = args.fradlist
-    print("Main:Attempting to scrub and block")
+    print(f"\n{test_num}: Main:Attempting to scrub and block")
     if not jcm.scrub_fpga(iterations=2, block=True, frads_file = frads_file):
         print("Main:Failed scrubbing")
         return 1
+    test_num += 1
 
     # 4. Perform scrubbing (blocking, no frads file, no readback file) and inject faults
     frads_file = args.fradlist
-    print("Main:Attempting to scrub and block and inject faults")
-    if not jcm.scrub_fpga(iterations=2, block=True, frads_file = frads_file, inject_faults=1):
+    print(f"\n{test_num}: Main:Attempting to scrub and block and inject faults")
+    if not jcm.scrub_fpga(iterations=3, block=True, frads_file = frads_file, inject_faults=1):
         print("Main:Failed scrubbing")
         return 1
+    test_num += 1
 
     # 5. Perform scrubbing, JCM ends scrubber, wait on thread (no blocking, no frads file, no readback file)
-    print("Main:Attempting to scrub and no block (wait on thread)")
+    print(f"\n{test_num}: Main:Attempting to scrub and no block (wait on thread)")
     if not jcm.scrub_fpga(iterations=2, frads_file = frads_file, block=False):
         return 1
     # Wait for thread to end
+    print("jcm active before join",jcm.is_active())
     jcm.jcm_thread.join()
+    print("jcm active after join",jcm.is_active())
+    test_num += 1
 
-    print("jcm active",jcm.is_active())
 
     # 5. Perform scrubbing, JCM ends scrubber, wait on flag (no blocking, no frads file, no readback file)
-    print("Main:Attempting to scrub and no block (wait on flag)")
+    print(f"\n{test_num}: Main:Attempting to scrub and no block (wait on flag)")
     if not jcm.scrub_fpga(iterations=4, frads_file = frads_file, block=False):
         return 1
     # Wait for thread to end
@@ -367,19 +382,27 @@ def main():
             print("Wating too long")
             return 1
     print("Main:JCM finished scrubbing")
+    print("jcm active before join",jcm.is_active())
+    jcm.jcm_thread.join()
+    print("jcm active after join",jcm.is_active())
 
     # 6. Perform scrubbing, wait on flag, have main send command to stop scrubber
-    print("Main:Attempting to scrub and stop from JCM")
+    print(f"\n{test_num}: Main:Attempting to scrub and stop from JCM")
     if not jcm.scrub_fpga(iterations=100, frads_file = frads_file, block=False):
         return 1
     # Wait for thread to end
-    print("Main:Waiting for 30 seconds")
-    time.sleep(30)
+    print("Main: doing other work on new thread")
+    for i in range(7):
+        print(" Main: waiting")
+        time.sleep(2)
     print("Main:Stopping scrub over stdin")
     jcm.stop_scrub()
     print("Main:Swaiting for thread to end")
+    print("jcm active before join ",jcm.is_active())
     jcm.jcm_thread.join()
-    print("Main:JCM stopped")
+    print("jcm active after join",jcm.is_active())
+
+    jcm.close_jcm()
 
     return 0
 

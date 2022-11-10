@@ -62,6 +62,7 @@ class uart_control():
         self.logging = logging
         self.serial_fd = None
         self.litex_baudrate = litex_baudrate
+        self.timeout = False
         if uart_stdout:
             self.logfile = TimestampedFile(uart_stdout)
         else:
@@ -149,25 +150,31 @@ class uart_control():
         return self.serial_fdspawn.match.group(0)
 
     def expect(self,pattern,timeout=DEFAULT_EXPECT_TIMEOUT):
+        self.timeout = False
+        self.EOF = False
+        self.unicode_error = False
         ''' Expext fdspawn handle '''
         if not self.serial_fdspawn:
             self._error("expect call without active fdspan")
-            return False
+            return None
         try:
-            self.serial_fdspawn.expect(pattern=pattern, timeout=timeout)
+            result = self.serial_fdspawn.expect(pattern=pattern, timeout=timeout)
         except pexpect.exceptions.TIMEOUT:
-            self._error("expect timeout with pattern:"+pattern)
-            return False
+            self.timeout = True
+            self._error(f"expect timeout delay {timeout}s and pattern:"+pattern)
+            return None
+        except pexpect.exceptions.EOF:
+            self.EOF = True
+            self._error(f"UART EOF with pattern:"+pattern)
+            return None
         except UnicodeDecodeError:
             self._error("expect unicode error with pattern:"+pattern)
-            # TODO: keep a running track of unicode errors and do something if there are too many
-            return False
-        except pexpect.exceptions.EOF:
-            self._error("expect EOF")
-            return False
+            self.unicode_error = True
+            return None
         except Exception as error:
             self._error("expect error:"+str(error))
-            return False
+            return None
+        return result
 
     def uart_group_args(parser):
         ''' Static function for creating UART argument group '''
