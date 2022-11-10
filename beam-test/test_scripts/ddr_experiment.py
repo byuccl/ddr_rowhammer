@@ -197,12 +197,24 @@ def configure_nexys_state_actions(ex, st):
     ex.configure_ok = result
 
 def enable_scrubbing_state_actions(ex, st):
+
+    if ex.args.disable_scrubbing:
+        ex.scrubbing_ok = True
+        return
+
     ex.scrubbing_ok = False
     frads_file = None
-    #if ex.args.frads_file:
-    #    frads_file = ex.args.frads_file
-    ITERATIONS = 100
-    result = ex.jcm.scrub_fpga(iterations=ITERATIONS, frads_file = frads_file, block=False)
+    if ex.args.frads_file:
+        frads_file = ex.args.frads_file
+    ITERATIONS = 100_000_000
+
+    if ex.args.fault_injection:
+        inject_faults = 1
+    else:
+        inject_faults = 0
+
+    result = ex.jcm.scrub_fpga(iterations=ITERATIONS, frads_file = frads_file, inject_faults = inject_faults, block=False)
+    # TODO: do some real checking on scrubbing
     result = True
     ex.scrubbing_ok = result
 
@@ -257,7 +269,7 @@ def bist_execution_state_actions(ex, st):
         match_index = ex.uart.expect([BIST_TITLE_REGEX,BIST_DATA_REGEX],timeout=BIST_TEXT_DELAY)
 
         # Process expect errors
-        if ex.uart.timeout or ex.EOF:
+        if ex.uart.timeout or ex.uart.EOF:
             ex.timeout = True # Should go to TERMINAL_RECOVERY_STATE
             ex.previous_bist_error = True  # Don't want to see back to back BIST failures
             break
@@ -275,11 +287,13 @@ def bist_execution_state_actions(ex, st):
             if consecutive_unicode_errors > 0:
                 consecutive_unicode_errors == 1
                 expecting_title = True # Start looking or titles (may get errors)
+        # No errors
+        expect_str =ex.uart.serial_fdspawn.match.group(0)
 
         if expecting_title: # Need to process a good title before accepting any data
-            if ex.uart.serial_fdspawn.match and match == TITLE_INDEX:
+            if ex.uart.serial_fdspawn.match and match_index == TITLE_INDEX:
                 # execpting a title and receivd a title
-                ex.logger.info("Valid BIST Title")
+                ex.logger.info("BIST:Valid BIST Title")
                 expecting_title = False # Now expecting data
                 consecutive_bad_title_lines = 0 # Clear any bad title line errors
                 DataLineNumber = 0 # initialize data counter
@@ -287,7 +301,7 @@ def bist_execution_state_actions(ex, st):
             else: # have an invalid title line
                 consecutive_bad_title_lines += 1
                 if consecutive_bad_title_lines == 1:
-                    ex.logger.error("Bad title line")
+                    ex.logger.error("BIST:Bad title line:",str(expect_str))
                     continue
                 elif consecutive_bad_title_lines > MAX_CONSECUTIVE_BAD_TITLE_LINES:
                     # Too many bad title lines: try to recover
@@ -301,7 +315,7 @@ def bist_execution_state_actions(ex, st):
                         break
 
         else: # Expecting Data
-            if ex.uart.serial_fdspawn.match and match == DATA_INDEX:
+            if ex.uart.serial_fdspawn.match and match_index == DATA_INDEX:
                 # execpting data and received data
                 DataLineNumber += 1
                 if DataLineNumber == 8: # finished data lines
@@ -337,7 +351,12 @@ def bist_execution_state_actions(ex, st):
                         ex.bist_recovery = True
                         ex.previous_bist_error = True
                         break
-        
+
+def bist_recovery_state_actions(ex, st):
+    pass
+
+def terminal_recovery_state_actions(ex, st):
+    pass
 
 def terminating_state_actions(ex, st):
     # Stop scrubbing (if it is going)
@@ -368,7 +387,9 @@ def build_experiment(args,logger,single_step=False):
     ENABLE_SCRUBBING_STATE = "Enable Scrubbing State"
     LITEX_PROMPT_STATE = "LiteX Login State"
     START_BIST_STATE = "Start BIST State"
-    BIST_EXECUTION_STATE = "BIST Result State"
+    BIST_EXECUTION_STATE = "BIST Execution State"
+    TERMINAL_RECOVERY_STATE = "Terminal Recovery State"
+    BIST_RECOVERY_STATE = "BIST Recovery State"
 
     TERMINATING_STATE = "Terminating State"
 
@@ -530,6 +551,9 @@ def main():
     parser.add_argument_group(jcm_session.jcm_group_args(parser))
     parser.add_argument_group(uart_control.uart_group_args(parser))
     parser.add_argument("--repower_jcm", help="Repower JCM at start of experiment", action='store_true')
+    parser.add_argument("--disable_scrubbing", help="Do not enable the scrubber", action='store_true')
+    parser.add_argument("--fault_injection", help="Enable fault injection during scrubbing", action='store_true')
+    parser.add_argument("--frads_file", help="Name of frads filename", type=str)
     parser.add_argument("--jcm_netbooter_port", help="Netbooter port for JCM", type=int, default=1)
     parser.add_argument("--nexys_netbooter_port", help="Netbooter port for Nexys", type=int, default=2)
     parser.add_argument("--log_dir", help="Directory of logs", type=str)
