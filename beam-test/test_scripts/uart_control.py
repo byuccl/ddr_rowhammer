@@ -51,7 +51,8 @@ class uart_control():
     MAX_TTY_FIND_ATTEMPTS = 5
     TTY_SEARCH_DELAY = 2
     DEFAULT_EXPECT_TIMEOUT = 5
-    
+    LOGGER_TEXT_PREFIX = "UART:"
+
     def __init__(self, 
         usb_uart_phys_port:str,
         uart_stdout = None,
@@ -63,6 +64,8 @@ class uart_control():
         self.serial_fd = None
         self.litex_baudrate = litex_baudrate
         self.timeout = False
+        self.serial_dev = None      # String of currently opened Serial device
+
         if uart_stdout:
             self.logfile = TimestampedFile(uart_stdout)
         else:
@@ -71,12 +74,12 @@ class uart_control():
     def _info(self, str):
         ''' Send an 'info' message to the logger. '''
         if self.logging:
-            self.logging.info("UART:"+str)
+            self.logging.info(uart_control.LOGGER_TEXT_PREFIX+str)
 
     def _error(self, str):
         ''' Send an 'error' message to the logger. '''
         if self.logging:
-            self.logging.error("UART:"+str)
+            self.logging.error(uart_control.LOGGER_TEXT_PREFIX+str)
 
     def get_uart_dev_str(self):
         ''' Return the /dev/ttyUSBx device string of the UART '''
@@ -103,23 +106,31 @@ class uart_control():
     
     def create_uart_serial(self):
         ''' Create Serial object for uart '''
-        serial_dev = self.get_uart_dev_str()
-        if not serial_dev:
+        self.serial_dev = self.get_uart_dev_str()
+        self.serial_fdspawn = None # Clear any reference to a spawn object
+        if not self.serial_dev:
             return
         try:
-            self._info("Attempting to open serial port:"+serial_dev)
-            self.serial_fd = Serial(serial_dev, baudrate=self.litex_baudrate)
+            self.serial_fd = Serial(self.serial_dev, baudrate=self.litex_baudrate)
         except (Exception) as error:
-            self._error("Failed to open:"+str(serial_dev)+" ("+str(error)+")")
+            self._error("Failed to open:"+str(self.serial_dev)+" ("+str(error)+")")
             return None
+        self._info("Serial port "+self.serial_dev+" open")
         return self.serial_fd
+
+    def close_uart_serial(self):
+        ''' Close serial port'''
+        self._info("Serial port "+self.serial_dev+" closed")
+        self.serial_dev = None
+        self.serial_fd.close()
+        self.serial_fd = None
+        self.serial_fdspawn = None
 
     def create_uart_spawn(self):
         ''' Create Serial spawn object for pexpect'''
         if not self.create_uart_serial():
             # Error message would have already been printed
-            return
-
+            self.serial_fdspawn = None
         try:
             self.serial_fdspawn = fdspawn(self.serial_fd, encoding="utf-8", logfile=self.logfile, timeout=uart_control.FDSPAWN_TIMEOUT)
         except pexpect.exceptions.TIMEOUT as error:
@@ -153,6 +164,8 @@ class uart_control():
         self.timeout = False
         self.EOF = False
         self.unicode_error = False
+        self.error = False
+        
         ''' Expext fdspawn handle '''
         if not self.serial_fdspawn:
             self._error("expect call without active fdspan")
@@ -161,20 +174,39 @@ class uart_control():
             result = self.serial_fdspawn.expect(pattern=pattern, timeout=timeout)
         except pexpect.exceptions.TIMEOUT:
             self.timeout = True
-            self._error(f"expect timeout delay {timeout}s and pattern:"+pattern)
+            self._error(f"expect timeout delay {timeout}s and pattern:"+str(pattern))
             return None
         except pexpect.exceptions.EOF:
             self.EOF = True
-            self._error(f"UART EOF with pattern:"+pattern)
+            self._error(f"UART EOF with pattern:"+str(pattern))
             return None
         except UnicodeDecodeError:
-            self._error("expect unicode error with pattern:"+pattern)
+            self._error("expect unicode error with pattern:"+str(pattern))
             self.unicode_error = True
             return None
         except Exception as error:
             self._error("expect error:"+str(error))
+            self.error = True
             return None
         return result
+
+    def has_error(self):
+        ''' Determines whether any error had occured on the last call to 'expect' '''
+        if self.timeout or self.EOF or self.unicode_error or self.error:
+            return True
+        return False
+
+    def has_unicode_error(self):
+        ''' Determines whether a unicode error occured on the last call to 'expect' '''
+        if self.unicode_error:
+            return True
+        return False
+
+    def has_uart_error(self):
+        ''' Determines whether a non-unicode error occured on the last call to 'expect' '''
+        if self.timeout or self.EOF or self.error:
+            return True
+        return False
 
     def uart_group_args(parser):
         ''' Static function for creating UART argument group '''
@@ -189,8 +221,6 @@ class uart_control():
         #print(args.usb_uart_phys_port)
         uart = uart_control(args.usb_uart_phys_port, logging = logging, litex_baudrate=args.uart_litex_baudrate)
         return uart
-
-
 
 
 def main():
