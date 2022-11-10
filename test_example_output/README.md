@@ -166,7 +166,7 @@ In this following test run on October 29, 2022, a UnicodeDecodeException output 
 
 ### Other bizarre data output
 
-Here I have examples of times when bizarre output occured, or nothing at all. These happened rarely.
+Here I have examples of times when bizarre output occured, or nothing at all.
 Here is an example where a timeout occured, a reboot command was sent, and only titles output. 
 
 ```
