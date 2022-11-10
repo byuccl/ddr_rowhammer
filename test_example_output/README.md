@@ -8,7 +8,7 @@ There have been a number of times when unexpected data has output. Here are a fe
 
 ### UnicodeDecodeExceptions
 
-A number of times, pexpect expected a line of data only to throw a UnicodeDecodeException. This often happened when the code read data at the beginning of the litex program or after a bist calibrate, init, or reboot command is sent, when data other than bist data is output. I had the code retry to expect the same line after this exception over and over again until the exception stopped occuring. Here is an example.
+A number of times, pexpect expected a line of data only to throw a UnicodeDecodeException. This often happens when the code reads data at the beginning of the litex program or after a bist calibrate, init, or reboot command is sent, when data other than bist data is output. I had the code retry to expect the same line after this exception over and over again until the exception stopped occuring. Here is an example.
 
 ```
 [ 2022-10-26 17:26:21 ]  Starting test
