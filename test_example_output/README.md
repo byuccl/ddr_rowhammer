@@ -430,7 +430,18 @@ Starting SDRAM BIST with burst_length=8192 and addr_mode=1
                                    646          654          324          0          0          0
 
 [ 2022-10-18 17:07:08 ] 
-                                  646u`%,u          654u`%$u`       640u`%$ub                                   646u`e,u          6545`%,=        9735`%,=                                   646u`%$u`         654u`%,u       1217u`%,u                                   6465`%,=          654u`e,u       1621u`e,u                 \00                 646u`%,u          654u`%$u`      9946u`%$ub                                   646u`e,u          6545`%,=       22705`%,=                                   646u`%$u`         654u`%,u       2515u`%,u                          WR-*W@MIBGsa 2DEBW(-ib/;)  4ESTED@MIBA     %RROZS@       3EC        DEDB                                   646u`e,u          6545`%,=       :919=`%,=                                   646u`%$u`         654u`%,u       3243u`%,u                                   6465`%,=          654u`e,u       3568u`e,u                 \00                 646u`%,u          654u`%$u`      ;812u`%$ub                                   646u`e,u          6545`%,=        1205`%,=                                   646u`%$u`         654u`%,u        445u`%,u                                   6465`%,=          654u`e,u        769u`e,u                 \00                 646u`%,u          654u`%$u`      1014u`%$ub                          WR-BWHMaBOs! 2D%BW(Eij/s)( TESTEDHMaBI     ERRORS@       3EC        DED[ 2022-10-18 17:07:23 ] Timeout occured. Attempting to close, reopen Litex.
+                                  646u`%,u          654u`%$u`       640u`%$ub                                   646u`e,u
+6545`%,=        9735`%,=                                   646u`%$u`         654u`%,u       1217u`%,u                  
+6465`%,=          654u`e,u       1621u`e,u                 \00                 646u`%,u          654u`%$u`      9946u`%$
+ub                                   646u`e,u          6545`%,=       22705`%,=                                   646u`%
+$u`         654u`%,u       2515u`%,u                          WR-*W@MIBGsa 2DEBW(-ib/;)  4ESTED@MIBA     %RROZS@       3
+EC        DEDB                                   646u`e,u          6545`%,=       :919=`%,=                             
+646u`%$u`         654u`%,u       3243u`%,u                                   6465`%,=          654u`e,u       3568u`e,u
+\00                 646u`%,u          654u`%$u`      ;812u`%$ub                                   646u`e,u          6545`
+%,=        1205`%,=                                   646u`%$u`         654u`%,u        445u`%,u                      
+6465`%,=          654u`e,u        769u`e,u                 \00                 646u`%,u          654u`%$u`      1014u`%
+$ub                          WR-BWHMaBOs! 2D%BW(Eij/s)( TESTEDHMaBI     ERRORS@       3EC        DED[ 2022-10-18 17:07:
+23 ] Timeout occured. Attempting to close, reopen Litex.
 [ 2022-10-18 17:07:23 ] Quitting Bist.
 
 
