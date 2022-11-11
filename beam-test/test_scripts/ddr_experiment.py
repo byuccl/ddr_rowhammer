@@ -146,6 +146,10 @@ def initial_starting_state_actions(ex, st):
     ''' Do nothing - just an entry point for the experiment. Executed only once. 
         No state change
     '''
+    # Print information about the current version of the code (what is committed)
+    #git show --oneline -s
+    #git log -1 --format=%cd --date=local
+    # Print the value of all the options when the executable was run
     pass
 
 def netbooter_setup_state_actions(ex, st):
@@ -197,8 +201,9 @@ def jcm_setup_state_actions(ex, st):
 
 def power_nexys_state_actions(ex, st):
     ''' Power cycle nexys board (no status) '''
-    ex.netbooter.turn_off_port(ex.args.nexys_netbooter_port)
-    ex.netbooter.turn_on_port(ex.args.nexys_netbooter_port)
+    turn_off_cmd = ex.netbooter.turn_off_port(ex.args.nexys_netbooter_port)
+    turn_on_cmd = ex.netbooter.turn_on_port(ex.args.nexys_netbooter_port)
+    ex.netbooter_ok = turn_off_cmd and turn_on_cmd
 
 def connect_uart_state_actions(ex, st):
     ''' Creates UART std_out path, creates uart_control object, and creates uart spawn fd object
@@ -218,7 +223,6 @@ def connect_uart_state_actions(ex, st):
     serial_fdspawn = ex.uart.create_uart_spawn()
     if not serial_fdspawn:
         return
-
     ex.uart_ok = True
 
 def configure_nexys_state_actions(ex, st):
@@ -264,6 +268,11 @@ def initial_litex_prompt_state_actions(ex, st):
         ex.login_litex = True
     # TODO: try multiple times if unicode error?
 
+def initialize_cross_state_variables(ex, st):
+    # Flag indicating that this is a fresh BIST (not coming in with errors)
+    ex.previous_bist_uart_error = False    # Flag indicating a previous BIST system error occured
+    ex.previous_bist_data_repair = None      # variable indicating what repair has been made
+
 def start_bist_state_actions(ex, st):
     ''' Issues the BIST command
         sets: does not impact state
@@ -271,27 +280,29 @@ def start_bist_state_actions(ex, st):
     ex.bist = bist_state(ex.args.bist_mem_burst_length, ex.args.bist_addr_mode)
     bist_command = ex.bist.get_bist_command_str()
     result = ex.uart.sendline(bist_command)
-    # Flag indicating that this is a fresh BIST (not coming in with errors)
-    ex.previous_bist_error = False
+    # Initialize all cross state variables
+    initialize_cross_state_variables(ex)
 
 def bist_execution_state_actions(ex, st):
     ''' Watch the execution of the BIST command and respond to errors. 
     The experiment should operate in this state for most of the time. 
     sets:
-        sets: uart_ok (uart_errors), bist_recovery, dram_recovery
+        sets: uart_ok (uart_errors), dram_error, reconfigure
     '''
 
-    expecting_title = True # When we should see a title line
+    expecting_title = True # State variable: when we should expect to see a title line
+    # Clear internal consecutive error counters
     consecutive_unicode_errors = 0
     consecutive_bad_title_lines = 0
     consecutive_bad_data_lines = 0
     consecutive_data_errors = 0
+    # Set to False with system errors (bad text/timeouts)
     ex.uart_ok = True
-    ex.bist_recovery = False
-    ex.dram_recovery = False
+    ex.bist_error = False
+    ex.dram_error = False
+    # Initialize the BIST data error counters
     ex.bist.clear_data()
 
-    # Clear error flags
 
     # BIST title line
     #^M                          WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS        SEC        DED
@@ -308,35 +319,39 @@ def bist_execution_state_actions(ex, st):
     # Iterate over lines until an error occurs (will need to break out on an error condition)
     while(1):
 
-        # Get a line of data
+        # Constants indicating position in regex array of each expression
         TITLE_INDEX=0
         DATA_INDEX=1
+
+        # Get a line of data
         match_index = ex.uart.expect([BIST_TITLE_REGEX,BIST_DATA_REGEX],timeout=BIST_TEXT_DELAY)
 
-        # Process expect errors
+        # Process expect system errors
         if ex.uart.has_uart_error():
-            ex.uart_ok = False # Should go to TERMINAL_RECOVERY_STATE
-            ex.previous_bist_error = True  # Don't want to see back to back BIST failures
-            break
+            # General UART errors (Timeout, etc)
+            ex.uart_ok = False # State change to repair uart
+
         elif ex.uart.unicode_error:
+            # Unicode errors over UART (look for a consecutive number of them)
             consecutive_unicode_errors += 1
             if consecutive_unicode_errors == 1:
-                ex.logger.error("BIST:Unicode Error")
+                ex.logger.info("BIST:Unicode Error")
+                # Don't process this unicode error line
+                continue
             elif consecutive_unicode_errors >= MAX_CONSECUTIVE_UNICODE_ERRORS:
                 ex.logger.error("BIST:Max Consecitive Unicode Errors:",consecutive_unicode_errors)
-                ex.uart_ok = False # Should go to TERMINAL_RECOVERY_STATE
-                ex.previous_bist_error = True  
-            # Don't process this unicode error line
-            continue
+                ex.uart_ok = False # State change to repair uart
+
         else:
-            # If there are no unicode errors, clear any consecutive flags and go to title state 
+            # No UART/system errors at this point
+            # Clear any unicode flags and go to title state 
             #  (not sure where we are in bist execution - will likely get data errors after this)
             if consecutive_unicode_errors > 0:
                 consecutive_unicode_errors == 0
                 expecting_title = True # Start looking or titles (may get errors)
 
-        # No errors - evaluate the string
-        expect_str =ex.uart.serial_fdspawn.match.group(0)
+        # No system errors in string - evaluate the string
+        expect_str = ex.uart.serial_fdspawn.match.group(0)
 
         if expecting_title: # Need to process a good title before accepting any data
             if ex.uart.serial_fdspawn.match and match_index == TITLE_INDEX:
@@ -349,60 +364,44 @@ def bist_execution_state_actions(ex, st):
             else: # have an invalid title line
                 consecutive_bad_title_lines += 1
                 if consecutive_bad_title_lines == 1:
-                    ex.logger.error("BIST:Bad title line:",str(expect_str))
+                    ex.logger.info("BIST:Bad title line:",str(expect_str))
+                    # Ignore line but continue
                     continue
                 elif consecutive_bad_title_lines > MAX_CONSECUTIVE_BAD_TITLE_LINES:
-                    # Too many bad title lines: try to recover
-                    if ex.previous_bist_error:   # Double error, recover
-                        ex.logger.error("BIST:Max consecutive bad title lines & Previous consecutive BIST error")
-                        ex.uart_ok = False
-                        ex.previous_bist_error = True
-                        break
-                    else: # first error
-                        ex.logger.error("BIST:Max consecutive bad title lines")
-                        ex.bist_recovery = True  # Go to bist_recovery first
-                        ex.previous_bist_error = True
-                        break
+                    ex.logger.error("BIST:Max consecutive bad title lines")
+                    ex.bist_error = True # System error: will go to a recovery state
+                    break
 
         else: # Expecting Data
             if ex.uart.serial_fdspawn.match and match_index == DATA_INDEX:
-                # execpting data and received data
+                # execpting data and received valid data line
                 DataLineNumber += 1
-                if DataLineNumber == 8: # finished data lines
+                if DataLineNumber == 8: 
+                    ###############################
+                    # Successful execution of BIST: clear all error hoistory
+                    ###############################
+                    initialize_cross_state_variables(ex)
                     expecting_title = True # Now expecting title
-                    ex.previous_bist_error = False # Clear any previous bist error flag (we completed an iteration of BIST)
-                consecutive_bad_data_lines = 0 # Clear any bad data line errors
-                # See if we have any data errors
-                match_str = ex.uart.serial_fdspawn.match.group(0)
-                new_errors = ex.bist.new_data_str(match_str)
-                if new_errors:
+                # Check for data errors
+                if ex.bist.new_data_str(expect_str):                
                     consecutive_data_errors += 1
                     if consecutive_data_errors == 1:
                         ex.logger.error("BIST:Data Error")
                     elif consecutive_data_errors >= MAX_CONSECUTIVE_BAD_DATA_ERRORS:
-                        ex.logger.error("BIST:Max consecutive Data Errors:",consecutive_data_errors)
-                        ex.dram_recovery = True
-                        ex.previous_bist_error = True
-                    continue
+                        # Need to repair data errors
+                        ex.dram_error = True
                 else: # no new errors
                     consecutive_data_errors = 0 # Clear consecutive error flag
                     continue
+
             else: # bad data line
                 consecutive_bad_data_lines += 1
                 if consecutive_bad_data_lines == 1:
-                    ex.logger.error("BIST:Bad data line")
+                    ex.logger.info("BIST:Bad data line")
                 elif consecutive_bad_data_lines >= MAX_CONSECUTIVE_BAD_DATA_LINES:
-                    # Too many bad data lines: try to recover
-                    if ex.previous_bist_error:   # Double error, recover
-                        ex.logger.error("BIST:Max consecutive data line errors and previous BIST error")
-                        ex.uart_ok = False
-                        ex.previous_bist_error = True
-                        break
-                    else: # Error without previous BIST error
-                        ex.logger.error("BIST:Max consecutive data line errors",consecutive_bad_data_lines)
-                        ex.bist_recovery = True
-                        ex.previous_bist_error = True
-                        break
+                    ex.logger.error("BIST:Max consecutive bad data lines")
+                    ex.bist_error = True # System error: will go to a recovery state
+                    break
 
 def dram_recovery_state_actions(ex, st):
     ''' Perform DRAM specific recover: see line 812 on pexpect_tmr_organized.py
@@ -411,23 +410,36 @@ def dram_recovery_state_actions(ex, st):
     - Scrub mode registers
     - Scrub bit slip, etc.
     * Note that any timeouts should go to bist_recovery_State 
+
+    - if uart error, recover uart
+    - i
     '''
     ex.uart_ok = True
-    # Stop BIST ommand
+    # Stop BIST command
     ex.uart.sendline("\n\n")
     time.sleep(1)
     # Search for Litex prompt
     expect_result = expect_prompt(ex)
     if not expect_result:
         ex.uart_ok = False
-    # Iss
+        return
+
+    RESTART_BIST_STEP = 0
+
+    if not ex.previous_bist_data_repair:
+        # This is the first repair for data
+        ex.previous_bist_data_repair = RESTART_BIST_STEP
+    elif not ex.previous_bist_data_repair:
+        pass
+        # HERE!
     # TODO
     pass
 
 
 def bist_recovery_state_actions(ex, st):
-    ''' Try to end the current BIST command and restart it. 
-    sets the ex.uart_ok flag
+    ''' This action is performed when the BIST command is acting up and we want
+    to try and restart it. If the UART fails, try to recover the terminal,
+    otherwise continue with the bist command.
     '''
     ex.uart_ok = True
     # Send a few new lines to try to stop the BIST command
@@ -443,7 +455,12 @@ def bist_recovery_state_actions(ex, st):
     result = ex.uart.sendline(bist_command)
 
 def terminal_recovery_state_actions(ex, st):
-    ''' Try to reconnect the terminal: close, reopen, and get login prompt. 
+    ''' This action is performed when there was some sort of UART problem. 
+    The purpose of this action is to try and repair the UART connection.
+    If this fails, the system needs to be reconfigured. 
+    If it succeeds, the BIST command should be restarted.
+    
+    Try to reconnect the terminal: close, reopen, and get login prompt. 
     sets the ex.uart_ok, ex.login_litex
     '''
     # Close the existing serial port (and spawn object)
@@ -451,6 +468,12 @@ def terminal_recovery_state_actions(ex, st):
     ex.login_litex = False
     ex.uart_ok = False
     time.sleep(1)
+
+    # Check previous uart error. If so, then just reconfigure
+    if ex.previous_bist_uart_error:
+        return # uart_ok flag is False causing failure
+    ex.previous_bist_uart_error = True
+
     # Create a spawned file handle for reading/writing to the serial port
     serial_fdspawn = ex.uart.create_uart_spawn()
     if not serial_fdspawn:
@@ -461,12 +484,22 @@ def terminal_recovery_state_actions(ex, st):
     expect_result = expect_prompt(ex)
     if not expect_result:
         # close the uart before executing power down
-        ex.close_uart_serial()
+        ex.uart.close_uart_serial()
         return
     ex.login_litex = True
     # Restart BIST command
     bist_command = ex.bist.get_bist_command_str()
     result = ex.uart.sendline(bist_command)
+
+def unrecoverable_postmortum_state_actions(ex, st):
+    '''
+    TODO
+- Stop scrubbing
+- Add steps for figuring out what happened here (uart_bone, readback, etc.)
+- Reconfigure/Repower
+    '''
+    ex.jcm.stop_scrub()
+    pass
 
 def terminating_state_actions(ex, st):
     ''' Terminates experiment
@@ -504,6 +537,7 @@ def build_experiment(args,logger,single_step=False):
     TERMINAL_RECOVERY_STATE = "Terminal Recovery State"
     BIST_RECOVERY_STATE = "BIST Recovery State"
     DRAM_RECOVERY_STATE = "DRAM Recovery State"
+    UNRECOVERABLE_POSTMORTUM_STATE = "Unrecoverable Postmortum State"
 
     TERMINATING_STATE = "Terminating State"
 
@@ -546,7 +580,8 @@ def build_experiment(args,logger,single_step=False):
     experiment.add_state(ExperimentState(
         POWER_NEXYS_STATE,
         power_nexys_state_actions,
-        Transition(lambda ex, st: True, CONNECT_UART_STATE)
+        Transition(lambda ex, st: ex.netbooter_ok, CONNECT_UART_STATE),
+        Transition(lambda ex, st: True, TERMINATING_STATE)
     ))
 
     # CONNECT_UART_STATE
@@ -601,9 +636,10 @@ def build_experiment(args,logger,single_step=False):
         BIST_EXECUTION_STATE,
         bist_execution_state_actions,
         Transition(lambda ex, st: not ex.uart_ok, TERMINAL_RECOVERY_STATE),        
-        Transition(lambda ex, st: ex.bist_recovery, BIST_RECOVERY_STATE),
-        Transition(lambda ex, st: ex.dram_recovery, DRAM_RECOVERY_STATE),
-        Transition(lambda ex, st: True, TERMINATING_STATE)
+        Transition(lambda ex, st: ex.bist_errory, BIST_RECOVERY_STATE),
+        Transition(lambda ex, st: ex.dram_error, DRAM_RECOVERY_STATE),
+        # Shouldn't get here
+        Transition(lambda ex, st: True, UNRECOVERABLE_POSTMORTUM_STATE)
     ))
 
     # DRAM_RECOVERY_STATE
@@ -611,7 +647,7 @@ def build_experiment(args,logger,single_step=False):
         DRAM_RECOVERY_STATE,
         dram_recovery_state_actions,
         Transition(lambda ex, st: ex.uart_ok, BIST_EXECUTION_STATE),
-        Transition(lambda ex, st: True, POWER_NEXYS_STATE)
+        Transition(lambda ex, st: True, UNRECOVERABLE_POSTMORTUM_STATE)
     ))
 
     # BIST_RECOVERY_STATE
@@ -619,7 +655,7 @@ def build_experiment(args,logger,single_step=False):
         BIST_RECOVERY_STATE,
         bist_recovery_state_actions,
         Transition(lambda ex, st: ex.uart_ok, BIST_EXECUTION_STATE),
-        Transition(lambda ex, st: True, POWER_NEXYS_STATE)
+        Transition(lambda ex, st: True, TERMINAL_RECOVERY_STATE)
     ))
 
     # TERMINAL_RECOVERY_STATE
@@ -627,7 +663,14 @@ def build_experiment(args,logger,single_step=False):
         TERMINAL_RECOVERY_STATE,
         terminal_recovery_state_actions,
         Transition(lambda ex, st: ex.uart_ok and ex.login_litex, BIST_EXECUTION_STATE),
-        Transition(lambda ex, st: True, POWER_NEXYS_STATE)
+        Transition(lambda ex, st: True, UNRECOVERABLE_POSTMORTUM_STATE)
+    ))
+
+    # UNRECOVERABLE_POSTMORTUM_STATE
+    experiment.add_state(ExperimentState(
+        UNRECOVERABLE_POSTMORTUM_STATE,
+        unrecoverable_postmortum_state_actions,
+        Transition(lambda ex, st: True, CONFIGURE_NEXYS_STATE)
     ))
 
     # TERMINATING_STATE
@@ -719,6 +762,34 @@ if __name__ == "__main__":
 
 '''
 
+First BIST command
+ - Initialize flags
+   - ex.previous_bist_system_error = False
+   - ex.previous_bist_data_repair = None
+
+BIST Command
+ - Sets flags: (clears at start of method)
+   - ex.reconfigure (indicates a dram or system error and go to post mortum recovery)
+   - ex.uart_ok (indicates a system error and go to terminal recovery)
+   - ex.dram_error (indicates a dram error and go to dram recovery)
+ - System errors:
+      - Multiple unicode errors
+      - Consecutive bad title lines
+      - Consecutive bad data lines
+    - ex.uart_ok = false
+    - if ex.previous_bist_system_error = True, set ex.reconfigure (indicates lost cause) and go to post portum/reconfigure
+    - else go to terminal recovery and set ex.previous_bist_system_error = True
+
+ - Run terminal recovery 
+    - Runs terminal (or reconfigure)
+ - Data errors: (multiple consecutive)
+    - set ex.dram_error = True
+    - If x.previous_bist_system_error = True, move to reconfigure/post mortum rather than dram recovery 
+       (i.e., went through all the steps)
+    - If x.previous_bist_system_error = False
+      - Run dram recovery
+        - checks the previous_bist_data_repair and decides what step to take next (more sophisticated each step)
+          - If it is the last on the list, it sets x.previous_bist_system_error = True (so that it goes to reconfigure with without ddr recovery)
 
 DRAM_RECOVERY (state for cleaning up DRAM)
 - Execute all the commands to try and fix DRAM
@@ -729,7 +800,6 @@ BIST_RECOVERY_STATE  (Try to rerun the bist command)
 - Hit enter to stop BIST and expect prompt
  - If timeout, 
     go to TERMINAL_RECOVERY_STATE
-    previous_bist_error = True (don't allow back to back )
 - Start BIST command nad go to BIST_EXECUTION_STATE
 
 TERMINAL_RECOVERY_STATE (this is the state whenever a timeout occurs or need to try restablishing a connection)
@@ -739,12 +809,6 @@ TERMINAL_RECOVERY_STATE (this is the state whenever a timeout occurs or need to 
   - If unsuccessful, go to UNRECOVERABLE_POST_MORTUM
 - If prompt is ok, go to the BIST command
   Do we need to set a flag suggesting we came from an error? If the first bist command fails, we should go to UNRECOVERABLE_POST_MORTUM
-
-UNRECOVERABLE_POST_MORTUM
-- Stop scrubbing
-- Add steps for figuring out what happened here (uart_bone, readback, etc.)
-- Reconfigure/Repower
-
 
 
 Error response:
