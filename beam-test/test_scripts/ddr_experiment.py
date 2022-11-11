@@ -460,6 +460,8 @@ def terminal_recovery_state_actions(ex, st):
     # Search for Litex prompt
     expect_result = expect_prompt(ex)
     if not expect_result:
+        # close the uart before executing power down
+        ex.close_uart_serial()
         return
     ex.login_litex = True
     # Restart BIST command
