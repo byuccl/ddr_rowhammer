@@ -268,7 +268,7 @@ def initial_litex_prompt_state_actions(ex, st):
         ex.login_litex = True
     # TODO: try multiple times if unicode error?
 
-def initialize_cross_state_variables(ex, st):
+def initialize_cross_state_variables(ex):
     # Flag indicating that this is a fresh BIST (not coming in with errors)
     ex.previous_bist_uart_error = False    # Flag indicating a previous BIST system error occured
     ex.previous_bist_data_repair = None      # variable indicating what repair has been made
@@ -415,9 +415,9 @@ def dram_recovery_state_actions(ex, st):
     - i
     '''
     ex.uart_ok = True
+    ex.reconfigure = False
     # Stop BIST command
     ex.uart.sendline("\n\n")
-    time.sleep(1)
     # Search for Litex prompt
     expect_result = expect_prompt(ex)
     if not expect_result:
@@ -425,16 +425,55 @@ def dram_recovery_state_actions(ex, st):
         return
 
     RESTART_BIST_STEP = 0
+    DRAM_MR_SCRUB_STEP = 1
+    DRAM_DELAY_SCRUB_STEP = 2
+    DRAM_CALIBRATE_STEP = 3
+    DRAM_INIT_STEP = 4
+    DRAM_REBOOT_STEP = 5
 
     if not ex.previous_bist_data_repair:
         # This is the first repair for data
+        ex.logger.info("BIST:Restart BIST")
         ex.previous_bist_data_repair = RESTART_BIST_STEP
-    elif not ex.previous_bist_data_repair:
-        pass
-        # HERE!
-    # TODO
-    pass
+        return
+    elif ex.previous_bist_data_repair == RESTART_BIST_STEP:
+        ex.logger.info("BIST:SDRAM MR Scrub")
+        ex.previous_bist_data_repair = DRAM_MR_SCRUB_STEP
+        ex.uart.sendline("sdram_mr_scrub")
+        if not expect_prompt(ex):
+            ex.uart_ok = False
+        return
+    elif ex.previous_bist_data_repair == DRAM_MR_SCRUB_STEP:
+        ex.logger.info("BIST:SDRAM Delay Scrub")
+        ex.previous_bist_data_repair = DRAM_DELAY_SCRUB_STEP
+        ex.uart.sendline("sdram_delay_scrub")
+        if not expect_prompt(ex):
+            ex.uart_ok = False
+        return
+    elif ex.previous_bist_data_repair == DRAM_DELAY_SCRUB_STEP:
+        ex.logger.info("BIST:SDRAM Calibrate Scrub")
+        ex.previous_bist_data_repair = DRAM_CALIBRATE_STEP
+        ex.uart.sendline("sdram_cal")
+        if not expect_prompt(ex):
+            ex.uart_ok = False
+        return
+    elif ex.previous_bist_data_repair == DRAM_CALIBRATE_STEP:
+        ex.logger.info("BIST:SDRAM INIT Scrub")
+        ex.previous_bist_data_repair = DRAM_INIT_STEP
+        ex.uart.sendline("sdram_init")
+        if not expect_prompt(ex):
+            ex.uart_ok = False
+        return
+    elif ex.previous_bist_data_repair == DRAM_INIT_STEP:
+        ex.logger.info("BIST:Reboot")
+        ex.previous_bist_data_repair = DRAM_REBOOT_STEP
+        ex.uart.sendline("reboot")
+        if not expect_prompt(ex):
+            ex.uart_ok = False
+        return
 
+    # If I get here, we have exhausted all tests. Just reconfigure
+    ex.reconfigure = True
 
 def bist_recovery_state_actions(ex, st):
     ''' This action is performed when the BIST command is acting up and we want
@@ -646,7 +685,8 @@ def build_experiment(args,logger,single_step=False):
     experiment.add_state(ExperimentState(
         DRAM_RECOVERY_STATE,
         dram_recovery_state_actions,
-        Transition(lambda ex, st: ex.uart_ok, BIST_EXECUTION_STATE),
+        Transition(lambda ex, st: ex.uart_ok, BIST_RECOVERY_STATE),
+        Transition(lambda ex, st: not ex.uart_ok or ex.reconfigure, UNRECOVERABLE_POSTMORTUM_STATE),
         Transition(lambda ex, st: True, UNRECOVERABLE_POSTMORTUM_STATE)
     ))
 
