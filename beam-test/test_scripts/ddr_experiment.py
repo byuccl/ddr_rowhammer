@@ -212,7 +212,7 @@ def connect_uart_state_actions(ex, st):
     uart_log_file = open(uart_log_filename,"w")
 
     # Create UART control object
-    ex.uart = uart_control(ex.args.usb_uart_phys_port, uart_stdout = uart_log_file, logging = ex.logger)
+    ex.uart = uart_control(ex.args.usb_uart_phys_port, uart_stdout = uart_log_file, logging = ex.logger, timestampformat = TIME_STRING_FORMAT)
 
     # Create a spawned file handle for reading/writing to the serial port
     serial_fdspawn = ex.uart.create_uart_spawn()

@@ -22,20 +22,24 @@ from usb_finder import find_dev_file_ttyUSB,USBFindError
 
 class TimestampedFile(object):
     '''
-    Class for writing a file with timestamps
+    Class for writing the UART data in a file with timestamps
     '''
+
     def __init__(self, file, timestampformat = None):
+        ''' Class initialization '''
         self.file = file
         self.timestampformat = timestampformat
 
     def write(self, data):
+        ''' Write data to the UART file '''
         line = data
         if self.timestampformat:
-            time_prefix = str("["+time.strftime(self.stdout_timeprefix)+"] ")
+            time_prefix = str("["+time.strftime(self.timestampformat)+"] ")
             line = time_prefix + data
         return self.file.write(line)
 
     def flush(self):
+        ''' Flush the buffer '''
         self.file.flush()
 
 class uart_control():
@@ -57,7 +61,8 @@ class uart_control():
         usb_uart_phys_port:str,
         uart_stdout = None,
         logging = None,
-        litex_baudrate = DEFAULT_SERIAL_BAUDRATE):
+        litex_baudrate = DEFAULT_SERIAL_BAUDRATE,
+        timestampformat = None):
 
         self.usb_uart_phys_port = usb_uart_phys_port
         self.logging = logging
@@ -67,7 +72,7 @@ class uart_control():
         self.serial_dev = None      # String of currently opened Serial device
 
         if uart_stdout:
-            self.logfile = TimestampedFile(uart_stdout)
+            self.logfile = TimestampedFile(uart_stdout, timestampformat = timestampformat)
         else:
             self.logfile = None
 
