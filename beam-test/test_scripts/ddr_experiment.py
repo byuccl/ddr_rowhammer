@@ -258,7 +258,7 @@ def enable_scrubbing_state_actions(ex, st):
     ITERATIONS = 100_000_000
 
     if ex.args.fault_injection:
-        inject_faults = 1
+        inject_faults = ex.args.fault_injection
     else:
         inject_faults = 0
 
@@ -772,7 +772,7 @@ def main():
     parser.add_argument_group(uart_control.uart_group_args(parser))
     parser.add_argument("--repower_jcm", help="Repower JCM at start of experiment", action='store_true')
     parser.add_argument("--disable_scrubbing", help="Do not enable the scrubber", action='store_true')
-    parser.add_argument("--fault_injection", help="Enable fault injection during scrubbing", action='store_true')
+    parser.add_argument("--fault_injection", help="Enable fault injection during scrubbing. Param=# of faults per cycle", type=int)
     parser.add_argument("--frads_file", help="Name of frads filename", type=str)
     parser.add_argument("--jcm_netbooter_port", help="Netbooter port for JCM", type=int, default=1)
     parser.add_argument("--nexys_netbooter_port", help="Netbooter port for Nexys", type=int, default=2)
