@@ -8,11 +8,8 @@ There have been a number of times when unexpected data has output. Here are a fe
 
 ### UnicodeDecodeExceptions
 
-<<<<<<< HEAD
+
 A number of times, pexpect expected a line of data and threw a UnicodeDecodeException in the process. This often happens at the start of a Litex boot-up, or when data outputs from a reboot command, or when data other than bist data is output. In the way I implemented this, the 'expect' function is in a while loop, and if a UnicodeDecodeException is thrown, it will be caught and the program will return to the 'expect' function over and over again.
-=======
-A number of times, pexpect expected a line of data only to throw a UnicodeDecodeException. This often happens when the code reads data at the beginning of the litex program or after a bist calibrate, init, or reboot command is sent, when data other than bist data is output. I had the code retry to expect the same line after this exception over and over again until the exception stopped occuring. Here is an example.
->>>>>>> 446e944f4589c5919af15ee2cfae7fa35ddeab01
 
 ```
 [ 2022-10-26 17:26:21 ]  Starting test
@@ -170,12 +167,8 @@ In this following test run on October 29, 2022, a UnicodeDecodeException output 
 
 ### Other bizarre data output
 
-Here I have examples of times when bizarre output occured, or nothing at all.
-<<<<<<< HEAD
+
 Here is an example where a timeout occured, a reboot command was issued, and only titles output without data. 
-=======
-Here is an example where a timeout occured, a reboot command was sent, and only titles output. 
->>>>>>> 446e944f4589c5919af15ee2cfae7fa35ddeab01
 
 ```
 
