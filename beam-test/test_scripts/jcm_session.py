@@ -276,6 +276,7 @@ class jcm_session():
         if not self.jcm_active:
             self._error("Cannot stop scrub: jcm not active")
             return False
+        self._info("Stopping JCM scrubber")
         self.jcm_stdin.write(" \n")
         time.sleep(1)
         self.jcm_stdin.write("0\n")
