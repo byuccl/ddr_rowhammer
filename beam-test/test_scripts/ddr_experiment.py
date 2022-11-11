@@ -21,6 +21,7 @@ import random
 import socket
 from pathlib import Path
 from datetime import datetime
+from subprocess import run
 
 from netbooter_control import netbooter_control
 from jcm_session import jcm_session
@@ -146,11 +147,19 @@ def initial_starting_state_actions(ex, st):
     ''' Do nothing - just an entry point for the experiment. Executed only once. 
         No state change
     '''
+
     # Print information about the current version of the code (what is committed)
-    #git show --oneline -s
-    #git log -1 --format=%cd --date=local
+    p = run( [ 'git', 'show', '--oneline', '-s' ], capture_output=True )
+    out = p.stdout.decode().strip()
+    ex.logger.info("git commit:"+out)
+    p = run( [ 'git', 'log', '-1', '--format=%cd', '--date=local' ], capture_output=True )
+    out = p.stdout.decode().strip()
+    ex.logger.info("git commit date:"+out)
     # Print the value of all the options when the executable was run
-    pass
+    dict_args = vars(ex.args)
+    for arg in dict_args:
+        ex.logger.info("arg:"+arg+"="+str(dict_args[arg]))
+    #print(ex.args)
 
 def netbooter_setup_state_actions(ex, st):
     ''' Checks for the netbooter network connectivity
