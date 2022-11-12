@@ -329,6 +329,7 @@ def bist_execution_state_actions(ex, st):
     MAX_CONSECUTIVE_BAD_TITLE_LINES = 10
     MAX_CONSECUTIVE_BAD_DATA_LINES = 10
     MAX_CONSECUTIVE_BAD_DATA_ERRORS = 8
+    DRAM_ERROR_THRESHOLD = 100
 
     # Iterate over lines until an error occurs (will need to break out on an error condition)
     while(1):
@@ -398,11 +399,12 @@ def bist_execution_state_actions(ex, st):
                     expecting_title = True # Now expecting title
                 # Check for data errors
                 (err,sec,ded) = ex.bist.new_errors(expect_str)
-                if err+sec+ded > 0:            
+                total_errors = err+sec+ded
+                if total_errors > 0:            
+                    ex.logger.error(f"BIST:Data Errors ({err},{sec},{ded})")
                     consecutive_data_errors += 1
-                    if consecutive_data_errors == 1:
-                        ex.logger.error(f"BIST:Data Errors ({err},{sec},{ded})")
-                    elif consecutive_data_errors >= MAX_CONSECUTIVE_BAD_DATA_ERRORS:
+                    if (total_errors) > DRAM_ERROR_THRESHOLD or \
+                        consecutive_data_errors >= MAX_CONSECUTIVE_BAD_DATA_ERRORS:
                         # Need to repair data errors
                         ex.dram_error = True
                 else: # no new errors
