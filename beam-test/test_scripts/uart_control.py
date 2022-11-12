@@ -166,6 +166,7 @@ class uart_control():
         return self.serial_fdspawn.match.group(0)
 
     def expect(self,pattern,timeout=DEFAULT_EXPECT_TIMEOUT):
+        ''' Perform the "expect" command and catch any errors. '''
         self.timeout = False
         self.EOF = False
         self.unicode_error = False
@@ -179,7 +180,7 @@ class uart_control():
             result = self.serial_fdspawn.expect(pattern=pattern, timeout=timeout)
         except pexpect.exceptions.TIMEOUT:
             self.timeout = True
-            self._error(f"expect timeout delay {timeout}s and pattern:"+str(pattern))
+            self._error(f"expect timeout (delay {timeout}s)")
             return None
         except pexpect.exceptions.EOF:
             self.EOF = True

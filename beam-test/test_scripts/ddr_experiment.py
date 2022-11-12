@@ -727,7 +727,7 @@ def build_experiment(args,logger,single_step=False):
     experiment.add_state(ExperimentState(
         UNRECOVERABLE_POSTMORTUM_STATE,
         unrecoverable_postmortum_state_actions,
-        Transition(lambda ex, st: True, CONFIGURE_NEXYS_STATE)
+        Transition(lambda ex, st: True, CONNECT_UART_STATE)
     ))
 
     # TERMINATING_STATE
