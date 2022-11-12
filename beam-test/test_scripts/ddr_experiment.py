@@ -339,18 +339,19 @@ def bist_execution_state_actions(ex, st):
         if ex.uart.has_uart_error():
             # General UART errors (Timeout, etc)
             ex.uart_ok = False # State change to repair uart
+            return 
 
         elif ex.uart.unicode_error:
             # Unicode errors over UART (look for a consecutive number of them)
             consecutive_unicode_errors += 1
             if consecutive_unicode_errors == 1:
-                ex.logger.info("BIST:Unicode Error")
+                ex.logger.info("BIST:First Unicode Error")
                 # Don't process this unicode error line
                 continue
             elif consecutive_unicode_errors >= MAX_CONSECUTIVE_UNICODE_ERRORS:
                 ex.logger.error("BIST:Max Consecitive Unicode Errors:",consecutive_unicode_errors)
                 ex.uart_ok = False # State change to repair uart
-
+                return
         else:
             # No UART/system errors at this point
             # Clear any unicode flags and go to title state 
@@ -360,8 +361,6 @@ def bist_execution_state_actions(ex, st):
                 expecting_title = True # Start looking or titles (may get errors)
 
         # No system errors in string - evaluate the string
-        expect_str = ex.uart.serial_fdspawn.match.group(0)
-
         if expecting_title: # Need to process a good title before accepting any data
             if ex.uart.serial_fdspawn.match and match_index == TITLE_INDEX:
                 # execpting a title and receivd a title
@@ -384,6 +383,7 @@ def bist_execution_state_actions(ex, st):
         else: # Expecting Data
             if ex.uart.serial_fdspawn.match and match_index == DATA_INDEX:
                 # execpting data and received valid data line
+                expect_str = ex.uart.serial_fdspawn.match.group(0)
                 DataLineNumber += 1
                 if DataLineNumber == 8: 
                     ###############################

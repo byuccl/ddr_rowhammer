@@ -186,7 +186,7 @@ class uart_control():
             self._error(f"UART EOF with pattern:"+str(pattern))
             return None
         except UnicodeDecodeError:
-            self._error("expect unicode error with pattern:"+str(pattern))
+            self._error("expect unicode error")
             self.unicode_error = True
             return None
         except Exception as error:
