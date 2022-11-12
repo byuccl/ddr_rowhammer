@@ -397,8 +397,8 @@ def bist_execution_state_actions(ex, st):
                     initialize_cross_state_variables(ex)
                     expecting_title = True # Now expecting title
                 # Check for data errors
-                if ex.bist.new_data_str(expect_str):                
-                    (err,sec,ded) = ex.bist.new_errors(expect_str)
+                (err,sec,ded) = ex.bist.new_errors(expect_str)
+                if err+sec+ded > 0:            
                     consecutive_data_errors += 1
                     if consecutive_data_errors == 1:
                         ex.logger.error(f"BIST:Data Errors ({err},{sec},{ded})")
