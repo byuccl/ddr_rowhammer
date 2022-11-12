@@ -82,8 +82,8 @@ class bist_state(object):
         self.sec_cnt = 0
         self.ded_cnt = 0
 
-    def new_data_str(self,result_str):
-        ''' Evaluates data string. Returns False if no new errors. True with new errors. '''
+    def new_errors(self,result_str):
+        ''' Evaluates data string. New errors as a tuple. '''
         ERROR_MSG_INDEX = 3 # Error number at index 3 of matched string
         SEC_MSG_INDEX = 4 # Sec error number at index 4 of matched string
         DED_MSG_INDEX = 5 # Ded error number at index 5 of matched string
@@ -91,18 +91,23 @@ class bist_state(object):
         new_error_cnt = int(result_list[ERROR_MSG_INDEX])
         new_sec_cnt = int(result_list[SEC_MSG_INDEX])
         new_ded_cnt = int(result_list[DED_MSG_INDEX])
-        new_errors = False
-        if new_error_cnt != self.error_cnt:
-            new_errors = True
-        if new_sec_cnt != self.sec_cnt:
-            new_errors = True
-        if new_ded_cnt != self.ded_cnt:
-            new_errors = True
+        new_errors = new_error_cnt - self.error_cnt
+        new_sec_errors = new_sec_cnt - self.sec_cnt
+        new_ded_errors = new_ded_cnt - self.ded_cnt
         # update internal variables
         self.error_cnt = new_error_cnt
         self.sec_cnt = new_sec_cnt
         self.ded_cnt = new_ded_cnt
-        return new_errors
+        return (new_errors, new_sec_errors, new_ded_errors)
+
+    def new_data_str(self,result_str):
+        ''' Evaluates data string. Returns False if no new errors. True with new errors. '''
+        (error,sec,ded) = self.new_errors(result_str)
+        if error+sec+ded > 0:
+            return True
+        return False
+
+
 
 def setup_logger(log_filename:str, include_level = True, print_stdout = False):
     ''' Static method for creating custom loggers '''
@@ -393,9 +398,10 @@ def bist_execution_state_actions(ex, st):
                     expecting_title = True # Now expecting title
                 # Check for data errors
                 if ex.bist.new_data_str(expect_str):                
+                    (err,sec,ded) = ex.bist.new_errors(expect_str)
                     consecutive_data_errors += 1
                     if consecutive_data_errors == 1:
-                        ex.logger.error("BIST:Data Error")
+                        ex.logger.error(f"BIST:Data Errors ({err},{sec},{ded})")
                     elif consecutive_data_errors >= MAX_CONSECUTIVE_BAD_DATA_ERRORS:
                         # Need to repair data errors
                         ex.dram_error = True
