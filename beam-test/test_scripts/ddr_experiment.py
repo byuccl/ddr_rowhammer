@@ -370,7 +370,7 @@ def bist_execution_state_actions(ex, st):
         if expecting_title: # Need to process a good title before accepting any data
             if ex.uart.serial_fdspawn.match and match_index == TITLE_INDEX:
                 # execpting a title and receivd a title
-                ex.logger.info("BIST:Valid BIST Title")
+                ex.logger.info("BIST:Valid BIST")
                 expecting_title = False # Now expecting data
                 consecutive_bad_title_lines = 0 # Clear any bad title line errors
                 DataLineNumber = 0 # initialize data counter
@@ -401,12 +401,14 @@ def bist_execution_state_actions(ex, st):
                 (err,sec,ded) = ex.bist.new_errors(expect_str)
                 total_errors = err+sec+ded
                 if total_errors > 0:            
-                    ex.logger.error(f"BIST:Data Errors ({err},{sec},{ded})")
                     consecutive_data_errors += 1
-                    if (total_errors) > DRAM_ERROR_THRESHOLD or \
-                        consecutive_data_errors >= MAX_CONSECUTIVE_BAD_DATA_ERRORS:
+                    ex.logger.error(f"BIST:Data Errors ({err},{sec},{ded}-({total_errors}/{consecutive_data_errors}))")
+                    #if (total_errors) > DRAM_ERROR_THRESHOLD or \
+                    #    consecutive_data_errors >= MAX_CONSECUTIVE_BAD_DATA_ERRORS:
+                    if consecutive_data_errors >= MAX_CONSECUTIVE_BAD_DATA_ERRORS:
                         # Need to repair data errors
                         ex.dram_error = True
+                        return
                 else: # no new errors
                     consecutive_data_errors = 0 # Clear consecutive error flag
                     continue
@@ -692,7 +694,7 @@ def build_experiment(args,logger,single_step=False):
         BIST_EXECUTION_STATE,
         bist_execution_state_actions,
         Transition(lambda ex, st: not ex.uart_ok, TERMINAL_RECOVERY_STATE),        
-        Transition(lambda ex, st: ex.bist_errory, BIST_RECOVERY_STATE),
+        Transition(lambda ex, st: ex.bist_error, BIST_RECOVERY_STATE),
         Transition(lambda ex, st: ex.dram_error, DRAM_RECOVERY_STATE),
         # Shouldn't get here
         Transition(lambda ex, st: True, UNRECOVERABLE_POSTMORTUM_STATE)

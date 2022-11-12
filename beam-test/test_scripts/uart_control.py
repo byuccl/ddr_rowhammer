@@ -29,9 +29,18 @@ class TimestampedFile(object):
         ''' Class initialization '''
         self.file = file
         self.timestampformat = timestampformat
+        self.unprinted_data = None  # Data to print when new line found
 
     def write(self, data):
         ''' Write data to the UART file '''
+
+        # Find last CR/LF (0xD/0xA) in string (if it exists)
+        # If no CR/LF exists, just add data to buffer (and print later when CR/LF arrives)
+        # Split string and save data after last CR/LF into buffer
+        # Split rest of string based on CR/LF and print each line
+
+        CR_LF_SPLIT_REGEX = "(\n|\r)+" # One or more consecutive CR/LF characters
+
         line = data
         if self.timestampformat:
             time_prefix = str("["+time.strftime(self.timestampformat)+"] ")
