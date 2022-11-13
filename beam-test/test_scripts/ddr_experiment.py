@@ -111,9 +111,9 @@ class bist_state(object):
 def setup_logger(log_filename:str, include_level = True, print_stdout = False):
     ''' Static method for creating custom loggers '''
     if include_level:
-        formatter = logging.Formatter('%(asctime)s %(levelname)-8s %(message)s', datefmt=TIME_STRING_FORMAT)
+        formatter = logging.Formatter('[%(asctime)s] %(levelname)-8s %(message)s', datefmt=TIME_STRING_FORMAT)
     else:
-        formatter = logging.Formatter('%(asctime)s %(message)s', datefmt=TIME_STRING_FORMAT)
+        formatter = logging.Formatter('[%(asctime)s] %(message)s', datefmt=TIME_STRING_FORMAT)
     try:
         handler = logging.FileHandler(log_filename)
     except (FileNotFoundError) as error:
