@@ -44,7 +44,6 @@ from serial import Serial  # from pyserial
 from datetime import date, datetime
 from experiment_machine import Transition, ExperimentState, Experiment
 
-
 # Format string for printing the date and time
 TIME_STRING_FORMAT = "%Y-%m-%d %H:%M:%S"
 # Number of JCM pings before failure
@@ -316,6 +315,7 @@ def bist_execution_state_actions(ex, st):
     ex.dram_error = False
     # Initialize the BIST data error counters
     ex.bist.clear_data()
+    consecutive_no_data_errors = 0
 
 
     # BIST title line
@@ -392,17 +392,19 @@ def bist_execution_state_actions(ex, st):
                 expect_str = ex.uart.serial_fdspawn.match.group(0)
                 DataLineNumber += 1
                 if DataLineNumber == 8: 
-                    ###############################
-                    # Successful execution of BIST: clear all error hoistory
-                    ###############################
-                    initialize_cross_state_variables(ex)
                     expecting_title = True # Now expecting title
+                    if consecutive_no_data_errors >= 8:
+                        ###############################
+                        # Successful execution of BIST: clear all error hoistory
+                        ###############################
+                        initialize_cross_state_variables(ex)
                 # Check for data errors
                 (err,sec,ded) = ex.bist.new_errors(expect_str)
                 total_errors = err+sec+ded
                 if total_errors > 0:            
+                    consecutive_no_data_errors = 0
                     consecutive_data_errors += 1
-                    ex.logger.error(f"BIST:Data Errors ({err},{sec},{ded}-({total_errors}/{consecutive_data_errors}))")
+                    ex.logger.error(f"BIST:Data Errors ({err},{sec},{ded}:{total_errors}/{consecutive_data_errors})")
                     #if (total_errors) > DRAM_ERROR_THRESHOLD or \
                     #    consecutive_data_errors >= MAX_CONSECUTIVE_BAD_DATA_ERRORS:
                     if consecutive_data_errors >= MAX_CONSECUTIVE_BAD_DATA_ERRORS:
@@ -410,6 +412,7 @@ def bist_execution_state_actions(ex, st):
                         ex.dram_error = True
                         return
                 else: # no new errors
+                    consecutive_no_data_errors += 1
                     consecutive_data_errors = 0 # Clear consecutive error flag
                     continue
 

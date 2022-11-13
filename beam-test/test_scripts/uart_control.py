@@ -20,7 +20,9 @@ sys.path.insert(0, '../../../yinstruments/yinstruments')
 #from usb_finder import find_dev_file_usb_bus
 from usb_finder import find_dev_file_ttyUSB,USBFindError 
 
-class TimestampedFile(object):
+from timestampedfile import TimestampedFile
+
+class TimestampedFile2(object):
     '''
     Class for writing the UART data in a file with timestamps
     '''
