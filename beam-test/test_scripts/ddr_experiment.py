@@ -212,6 +212,19 @@ def jcm_setup_state_actions(ex, st):
         return
     ex.jcm_ok = True
 
+def uart_setup_state_actions(ex, st):
+    # create uart object but do not connect uart
+    #ex.uart_ok = False
+
+    # Create UART stdout
+    uart_log_filename = create_log_path("UART",ex.filebasename, ex.log_dir)
+    # Create UART log file
+    uart_log_file = open(uart_log_filename,"w")
+
+    # Create UART control object
+    ex.uart = uart_control(ex.args.usb_uart_phys_port, uart_stdout = uart_log_file, logging = ex.logger, timestampformat = TIME_STRING_FORMAT)
+
+
 def power_nexys_state_actions(ex, st):
     ''' Power cycle nexys board (no status) '''
     turn_off_cmd = ex.netbooter.turn_off_port(ex.args.nexys_netbooter_port)
@@ -222,15 +235,15 @@ def connect_uart_state_actions(ex, st):
     ''' Creates UART std_out path, creates uart_control object, and creates uart spawn fd object
         sets: ex.uart_ok
     '''
-    ex.uart_ok = False
+    #ex.uart_ok = False
 
     # Create UART stdout
-    uart_log_filename = create_log_path("UART",ex.filebasename, ex.log_dir)
+    #uart_log_filename = create_log_path("UART",ex.filebasename, ex.log_dir)
     # Create UART log file
-    uart_log_file = open(uart_log_filename,"w")
+    #uart_log_file = open(uart_log_filename,"w")
 
     # Create UART control object
-    ex.uart = uart_control(ex.args.usb_uart_phys_port, uart_stdout = uart_log_file, logging = ex.logger, timestampformat = TIME_STRING_FORMAT)
+    #ex.uart = uart_control(ex.args.usb_uart_phys_port, uart_stdout = uart_log_file, logging = ex.logger, timestampformat = TIME_STRING_FORMAT)
 
     # Create a spawned file handle for reading/writing to the serial port
     serial_fdspawn = ex.uart.create_uart_spawn()
@@ -588,6 +601,7 @@ def build_experiment(args,logger,single_step=False):
     INITIAL_STARTING_STATE = "Initial Starting State"
     NETBOOTER_SETUP_STATE = "Netbooter Setup State"
     JCM_SETUP_STATE = "JCM Setup State"
+    UART_SETUP_STATE = "UART Setup State"
     POWER_NEXYS_STATE = "Power Nexys State"
     CONNECT_UART_STATE = "Connect UART State"
     CONFIGURE_NEXYS_STATE = "Configure Nexys State"
@@ -632,8 +646,16 @@ def build_experiment(args,logger,single_step=False):
     experiment.add_state(ExperimentState(
         JCM_SETUP_STATE,
         jcm_setup_state_actions,
-        Transition(lambda ex, st: ex.jcm_ok, POWER_NEXYS_STATE),
+        Transition(lambda ex, st: ex.jcm_ok, UART_SETUP_STATE),
         Transition(lambda ex, st: True, TERMINATING_STATE)
+    ))
+
+    # UART_SETUP_STATE
+    # - Intialize JCM data structure, repower (if necessary), and create connection
+    experiment.add_state(ExperimentState(
+        UART_SETUP_STATE,
+        uart_setup_state_actions,
+        Transition(lambda ex, st: True, POWER_NEXYS_STATE)
     ))
 
     # POWER_NEXYS_STATE

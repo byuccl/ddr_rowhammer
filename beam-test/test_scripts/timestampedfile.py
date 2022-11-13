@@ -33,12 +33,12 @@ class TimestampedFile(object):
 
         for c in data:
             if c == '\n' or c == '\r':
+                if not self.new_line_char:
+                    self._write_line(self.unprinted_data)
+                    self.unprinted_data = ""
                 self.new_line_char = True
             else:
                 # Previous character was a new line: print line
-                if self.new_line_char:
-                    self._write_line(self.unprinted_data)
-                    self.unprinted_data = ""
                 self.unprinted_data += c
                 self.new_line_char = False
         return
