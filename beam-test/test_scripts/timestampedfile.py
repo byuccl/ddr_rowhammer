@@ -26,16 +26,21 @@ class TimestampedFile(object):
         self.file = file
         self.timestampformat = timestampformat
         self.unprinted_data = ""  # Data to print when new line found (start with empty string)
+        self.new_line_char = False
 
     def write(self, data):
         ''' Write data to the UART file '''
 
         for c in data:
             if c == '\n' or c == '\r':
-                self._write_line(self.unprinted_data)
-                self.unprinted_data = ""
+                self.new_line_char = True
             else:
+                # Previous character was a new line: print line
+                if self.new_line_char:
+                    self._write_line(self.unprinted_data)
+                    self.unprinted_data = ""
                 self.unprinted_data += c
+                self.new_line_char = False
         return
 
     def _write_line(self,line,eol="\n"):
