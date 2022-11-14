@@ -328,8 +328,9 @@ def bist_execution_state_actions(ex, st):
     ex.dram_error = False
     # Initialize the BIST data error counters
     ex.bist.clear_data()
-    consecutive_no_data_errors = 0
-
+    # Flag counting valid data lines during BIST execution
+    valid_data_lines = 0
+    first_title_line = True  # no check on data for first title line
 
     # BIST title line
     #^M                          WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS        SEC        DED
@@ -382,8 +383,25 @@ def bist_execution_state_actions(ex, st):
         # No system errors in string - evaluate the string
         if expecting_title: # Need to process a good title before accepting any data
             if ex.uart.serial_fdspawn.match and match_index == TITLE_INDEX:
-                # execpting a title and receivd a title
-                ex.logger.info("BIST:Valid BIST")
+                # execpting a title and received a title
+
+                # Determine what annotation to give to header message:
+                # "first" if first title line "ok"=executed 8 good data lines, 1-7 ()
+                if first_title_line:
+                    bist_status = "first"
+                else:
+                    if valid_data_lines == 8:
+                        # received 8 valid data lines
+                        bist_status = "ok"
+                        ###############################
+                        # Successful execution of BIST: clear all error hoistory
+                        ###############################
+                        initialize_cross_state_variables(ex)
+                    else:
+                        bist_status = f"err {valid_data_lines}"
+                valid_data_lines = 0  # Clear valid data lines for next iteration
+                
+                ex.logger.info(f"BIST:Header ({bist_status})")
                 expecting_title = False # Now expecting data
                 consecutive_bad_title_lines = 0 # Clear any bad title line errors
                 DataLineNumber = 0 # initialize data counter
@@ -406,16 +424,10 @@ def bist_execution_state_actions(ex, st):
                 DataLineNumber += 1
                 if DataLineNumber == 8: 
                     expecting_title = True # Now expecting title
-                    if consecutive_no_data_errors >= 8:
-                        ###############################
-                        # Successful execution of BIST: clear all error hoistory
-                        ###############################
-                        initialize_cross_state_variables(ex)
                 # Check for data errors
                 (err,sec,ded) = ex.bist.new_errors(expect_str)
                 total_errors = err+sec+ded
                 if total_errors > 0:            
-                    consecutive_no_data_errors = 0
                     consecutive_data_errors += 1
                     ex.logger.error(f"BIST:Data Errors ({err},{sec},{ded}:{total_errors}/{consecutive_data_errors})")
                     #if (total_errors) > DRAM_ERROR_THRESHOLD or \
@@ -425,7 +437,7 @@ def bist_execution_state_actions(ex, st):
                         ex.dram_error = True
                         return
                 else: # no new errors
-                    consecutive_no_data_errors += 1
+                    valid_data_lines += 1
                     consecutive_data_errors = 0 # Clear consecutive error flag
                     continue
 
