@@ -391,7 +391,7 @@ def bist_execution_state_actions(ex, st):
             else: # have an invalid title line
                 consecutive_bad_title_lines += 1
                 if consecutive_bad_title_lines == 1:
-                    ex.logger.info("BIST:Bad title line:",str(expect_str))
+                    ex.logger.info("BIST:Bad title line:")
                     # Ignore line but continue
                     continue
                 elif consecutive_bad_title_lines > MAX_CONSECUTIVE_BAD_TITLE_LINES:
