@@ -1,6 +1,29 @@
-[submodule "litex-rowhammer-tester"]
-	path = litex-rowhammer-tester
-	url = https://github.com/antmicro/litex-rowhammer-tester
-[submodule "migen"]
-	path = migen
-	url = https://github.com/m-labs/migen
+[submodule "beam-test/soc/dependencies/litex"]
+	path = beam-test/soc/dependencies/litex
+	url = https://github.com/TommyCox/litex.git
+	branch = beam-test
+[submodule "beam-test/soc/dependencies/litedram"]
+	path = beam-test/soc/dependencies/litedram
+	url = https://github.com/TommyCox/litedram.git
+	branch = beam-test
+[submodule "beam-test/soc/dependencies/litex-boards"]
+	path = beam-test/soc/dependencies/litex-boards
+	url = https://github.com/litex-hub/litex-boards.git
+[submodule "beam-test/soc/dependencies/liteeth"]
+	path = beam-test/soc/dependencies/liteeth
+	url = https://github.com/enjoy-digital/liteeth.git
+[submodule "beam-test/soc/dependencies/liteiclink"]
+	path = beam-test/soc/dependencies/liteiclink
+	url = https://github.com/enjoy-digital/liteiclink.git
+[submodule "beam-test/soc/dependencies/pythondata-cpu-vexriscv"]
+	path = beam-test/soc/dependencies/pythondata-cpu-vexriscv
+	url = https://github.com/litex-hub/pythondata-cpu-vexriscv.git
+[submodule "beam-test/soc/dependencies/pythondata-software-picolibc"]
+	path = beam-test/soc/dependencies/pythondata-software-picolibc
+	url = https://github.com/litex-hub/pythondata-software-picolibc
+[submodule "beam-test/soc/dependencies/pythondata-software-compiler_rt"]
+	path = beam-test/soc/dependencies/pythondata-software-compiler_rt
+	url = https://github.com/litex-hub/pythondata-software-compiler_rt
+[submodule "beam-test/soc/dependencies/migen"]
+	path = beam-test/soc/dependencies/migen
+	url = https://github.com/m-labs/migen.git
