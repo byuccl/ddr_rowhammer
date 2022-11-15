@@ -153,6 +153,11 @@ class jcm_session():
 
         if self.jcm_active:
             self._error(f"JCM currently executing a command. Cannot perform command\n{command}")
+            if not self.jcm_thread:
+                self._error("\tjcm_thread does not exists: inconsistent state")
+            else:
+                # Print something out about the thread to help in debugging
+                self._error("\tjcm_thred:"+str(self.jcm_thread))
             return True
 
         # Prepare flag for being stopped externally
