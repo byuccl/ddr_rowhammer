@@ -399,7 +399,8 @@ def bist_execution_state_actions(ex, st):
                         ###############################
                         initialize_cross_state_variables(ex)
                     else:
-                        bist_status = f"err {valid_data_lines}"
+                        errors = 8 - valid_data_lines
+                        bist_status = f"err {errors}"
                 valid_data_lines = 0  # Clear valid data lines for next iteration
                 
                 ex.logger.info(f"BIST:Header ({bist_status})")
