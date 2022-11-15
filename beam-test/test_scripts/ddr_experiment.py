@@ -389,6 +389,7 @@ def bist_execution_state_actions(ex, st):
                 # "first" if first title line "ok"=executed 8 good data lines, 1-7 ()
                 if first_title_line:
                     bist_status = "first"
+                    first_title_line = False
                 else:
                     if valid_data_lines == 8:
                         # received 8 valid data lines
