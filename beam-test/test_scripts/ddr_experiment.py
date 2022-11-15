@@ -295,9 +295,11 @@ def initial_litex_prompt_state_actions(ex, st):
     # TODO: try multiple times if unicode error?
 
 def initialize_cross_state_variables(ex):
+    ''' Initalize/clear all variables that hold error state between
+    states. Used when a successful BIST execution sequence occurs. '''
     # Flag indicating that this is a fresh BIST (not coming in with errors)
     ex.previous_bist_uart_error = False    # Flag indicating a previous BIST system error occured
-    ex.previous_bist_data_repair = None      # variable indicating what repair has been made
+    ex.previous_bist_data_repair = 0       # variable indicating what repair has been made
 
 def start_bist_state_actions(ex, st):
     ''' Issues the BIST command
@@ -403,6 +405,7 @@ def bist_execution_state_actions(ex, st):
                         bist_status = f"err {errors}"
                 valid_data_lines = 0  # Clear valid data lines for next iteration
                 
+                # Print message indicating status of header
                 ex.logger.info(f"BIST:Header ({bist_status})")
                 expecting_title = False # Now expecting data
                 consecutive_bad_title_lines = 0 # Clear any bad title line errors
@@ -453,15 +456,8 @@ def bist_execution_state_actions(ex, st):
                     break
 
 def dram_recovery_state_actions(ex, st):
-    ''' Perform DRAM specific recover: see line 812 on pexpect_tmr_organized.py
-       Sets the ex.uart_ok flag
-
-    - Scrub mode registers
-    - Scrub bit slip, etc.
-    * Note that any timeouts should go to bist_recovery_State 
-
-    - if uart error, recover uart
-    - i
+    ''' 
+    Attempts to repair the DRAM interface
     '''
     ex.uart_ok = True
     ex.reconfigure = False
@@ -473,14 +469,17 @@ def dram_recovery_state_actions(ex, st):
         ex.uart_ok = False
         return
 
-    RESTART_BIST_STEP = 0
-    DRAM_MR_SCRUB_STEP = 1
-    DRAM_DELAY_SCRUB_STEP = 2
-    DRAM_CALIBRATE_STEP = 3
-    DRAM_INIT_STEP = 4
-    DRAM_REBOOT_STEP = 5
+    NO_BIST_ERROR = 0
+    RESTART_BIST_STEP = 1
+    DRAM_MR_SCRUB_STEP = 2
+    DRAM_DELAY_SCRUB_STEP = 3
+    DRAM_CALIBRATE_STEP = 4
+    DRAM_INIT_STEP = 5
+    DRAM_REBOOT_STEP = 6
 
-    if not ex.previous_bist_data_repair:
+    ex.logger.info(f"BIST:Recovery level={ex.previous_bist_data_repair}")
+
+    if ex.previous_bist_data_repair == NO_BIST_ERROR:
         # This is the first repair for data
         ex.logger.info("BIST:Restart BIST")
         ex.previous_bist_data_repair = RESTART_BIST_STEP
@@ -522,6 +521,7 @@ def dram_recovery_state_actions(ex, st):
         return
 
     # If I get here, we have exhausted all tests. Just reconfigure
+    ex.logger.info("BIST:Failed all recovery - reconfigure")
     ex.reconfigure = True
 
 def bist_recovery_state_actions(ex, st):
