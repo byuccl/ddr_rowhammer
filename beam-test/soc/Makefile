@@ -8,7 +8,6 @@
 # 	This allows the commands to use the same shell, so
 # 	environment sourced with the script is preserved.
 
-# TODO: Move all the pip-installable dependencies to a requirements.txt file.
 # -------------------------------------- #
 # SETTINGS
 # -------------------------------------- #
@@ -80,17 +79,7 @@ $(PYTHON_VENV)/dependencies_installed.txt: | env.sh
 	@echo Installing build dependnecies.
 	@echo ------------------------------------------
 	git submodule update --init --recursive dependencies
-	. ./env.sh; \
-	pip install --upgrade pip meson ninja; \
-	pip install -e dependencies/migen; \
-	pip install -e dependencies/litex; \
-	pip install -e dependencies/litex-boards; \
-	pip install -e dependencies/litedram; \
-	pip install -e dependencies/liteeth; \
-	pip install -e dependencies/liteiclink; \
-	pip install -e dependencies/pythondata-cpu-vexriscv; \
-	pip install -e dependencies/pythondata-software-picolibc; \
-	pip install -e dependencies/pythondata-software-compiler_rt
+	. ./env.sh && pip install -r ./requirements.txt
 	@echo Installed dependencies on $$(date). > $(PYTHON_VENV)/dependencies_installed.txt
 	@echo -------------------DONE-------------------
 
