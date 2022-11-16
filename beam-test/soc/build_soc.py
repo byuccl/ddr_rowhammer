@@ -3,6 +3,9 @@ from litex_boards.targets.digilent_nexys_video import BaseSoC
 from litex.build.xilinx.vivado import vivado_build_args, vivado_build_argdict
 from litex.soc.integration.soc_core import *
 from litex.soc.integration.builder import *
+from litex.soc.cores.led import LedChaser
+from litex.soc.interconnect.csr import AutoCSR
+from litex.soc.cores.uart import UARTWishboneBridge
 
 class TestSoC(BaseSoC):
     def __init__(
@@ -10,7 +13,7 @@ class TestSoC(BaseSoC):
         toolchain="vivado",
         sys_clk_freq=...,
         with_ethernet=False,
-        with_led_chaser=False,  # Changed this default so I can see if the hack worked.
+        with_led_chaser=True,  # Changed this default so I can see if the hack worked.
         with_sata=False,
         sata_gen="gen2",
         with_sata_pll_refclk=False,
@@ -34,7 +37,15 @@ class TestSoC(BaseSoC):
             **kwargs
         )
         if uart_bone:
-            self.add_uartbone(name=uart_bone, buildrate=115200)
+            self.submodules.serial_bridge = UARTWishboneBridge(self.platform.request(uart_bone), sys_clk_freq)
+            self.add_wb_master(self.serial_bridge.wishbone)
+            # self.add_uartbone(name=uart_bone, buildrate=115200)
+            # self.add_wb_master(self.uartbone.wishbone)
+            pass
+        if with_led_chaser:
+            self.add_csr("leds")
+
+
 
 def main():
     from litex.soc.integration.soc import LiteXSoCArgumentParser
@@ -52,7 +63,7 @@ def main():
     target_group.add_argument("--sata-gen",               default="2",         help="SATA Gen.", choices=["1", "2"])
     target_group.add_argument("--with-sata-pll-refclk",   action="store_true", help="Generate SATA RefClk from PLL.")
     target_group.add_argument("--vadj",                   default="1.2V",      help="FMC VADJ value.", choices=["1.2V", "1.8V", "2.5V", "3.3V"])
-    target_group.add_argument("--uart_bone",default="usb_fifo",help="Add uartbone with given serial device.")
+    target_group.add_argument("--uart_bone",default="serial",help="Add uartbone with given serial device.")
     viopts = target_group.add_mutually_exclusive_group()
     viopts.add_argument("--with-video-terminal",    action="store_true", help="Enable Video Terminal (HDMI).")
     viopts.add_argument("--with-video-framebuffer", action="store_true", help="Enable Video Framebuffer (HDMI).")
@@ -60,6 +71,7 @@ def main():
     soc_core_args(parser)
     vivado_build_args(parser)
     args = parser.parse_args()
+    print("\n\n\n",args.uart_name, "\n\n\n")
 
     soc = TestSoC(
         toolchain              = args.toolchain,
@@ -77,6 +89,7 @@ def main():
         soc.add_spi_sdcard()
     if args.with_sdcard:
         soc.add_sdcard()
+    args.csr_csv = "csr.csv"
     builder = Builder(soc, **builder_argdict(args))
     builder_kwargs = vivado_build_argdict(args) if args.toolchain == "vivado" else {}
     if args.build:
