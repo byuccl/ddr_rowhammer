@@ -153,17 +153,19 @@ def initial_starting_state_actions(ex, st):
     '''
 
     # Print information about the current version of the code (what is committed)
+    ex.logger.info("git commit information")
     p = run( [ 'git', 'show', '--oneline', '-s' ], capture_output=True )
     out = p.stdout.decode().strip()
-    ex.logger.info("git commit:"+out)
+    ex.logger.info("\tgit commit:"+out)
     p = run( [ 'git', 'log', '-1', '--format=%cd', '--date=local' ], capture_output=True )
     out = p.stdout.decode().strip()
-    ex.logger.info("git commit date:"+out)
+    ex.logger.info("\tgit commit date:"+out)
     # Print the value of all the options when the executable was run
+    ex.logger.info("Command line information")
+    ex.logger.info("\tCommand line:"+str(sys.argv))
     dict_args = vars(ex.args)
     for arg in dict_args:
-        ex.logger.info("arg:"+arg+"="+str(dict_args[arg]))
-    #print(ex.args)
+        ex.logger.info("\targ:"+arg+"="+str(dict_args[arg]))
 
 def netbooter_setup_state_actions(ex, st):
     ''' Checks for the netbooter network connectivity
