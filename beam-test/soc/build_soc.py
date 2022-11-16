@@ -20,7 +20,7 @@ class TestSoC(BaseSoC):
         vadj="1.2V",
         with_video_terminal=False,
         with_video_framebuffer=False,
-        uart_bone=None,
+        uart_bone="usb_fifo",
         **kwargs
     ):
         super().__init__(
@@ -37,11 +37,7 @@ class TestSoC(BaseSoC):
             **kwargs
         )
         if uart_bone:
-            self.submodules.serial_bridge = UARTWishboneBridge(self.platform.request(uart_bone), sys_clk_freq)
-            self.add_wb_master(self.serial_bridge.wishbone)
-            # self.add_uartbone(name=uart_bone, buildrate=115200)
-            # self.add_wb_master(self.uartbone.wishbone)
-            pass
+            self.add_uartbone(name=uart_bone, baudrate=115200)
         if with_led_chaser:
             self.add_csr("leds")
 
@@ -63,7 +59,7 @@ def main():
     target_group.add_argument("--sata-gen",               default="2",         help="SATA Gen.", choices=["1", "2"])
     target_group.add_argument("--with-sata-pll-refclk",   action="store_true", help="Generate SATA RefClk from PLL.")
     target_group.add_argument("--vadj",                   default="1.2V",      help="FMC VADJ value.", choices=["1.2V", "1.8V", "2.5V", "3.3V"])
-    target_group.add_argument("--uart_bone",default="serial",help="Add uartbone with given serial device.")
+    target_group.add_argument("--uart_bone",              default="usb_fifo",  help="Add uartbone with given serial device.")
     viopts = target_group.add_mutually_exclusive_group()
     viopts.add_argument("--with-video-terminal",    action="store_true", help="Enable Video Terminal (HDMI).")
     viopts.add_argument("--with-video-framebuffer", action="store_true", help="Enable Video Framebuffer (HDMI).")
