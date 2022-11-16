@@ -71,7 +71,6 @@ def main():
     soc_core_args(parser)
     vivado_build_args(parser)
     args = parser.parse_args()
-    print("\n\n\n",args.uart_name, "\n\n\n")
 
     soc = TestSoC(
         toolchain              = args.toolchain,
@@ -83,12 +82,14 @@ def main():
         vadj                   = args.vadj,
         with_video_terminal    = args.with_video_terminal,
         with_video_framebuffer = args.with_video_framebuffer,
+        uart_bone              = args.uart_bone,
         **soc_core_argdict(args)
     )
     if args.with_spi_sdcard:
         soc.add_spi_sdcard()
     if args.with_sdcard:
         soc.add_sdcard()
+    
     args.csr_csv = "csr.csv"
     builder = Builder(soc, **builder_argdict(args))
     builder_kwargs = vivado_build_argdict(args) if args.toolchain == "vivado" else {}
