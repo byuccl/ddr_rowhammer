@@ -1,0 +1,11 @@
+meson
+ninja
+-e dependencies/migen
+-e dependencies/litex
+-e dependencies/litex-boards
+-e dependencies/litedram
+-e dependencies/liteeth
+-e dependencies/liteiclink
+-e dependencies/pythondata-cpu-vexriscv
+-e dependencies/pythondata-software-picolibc
+-e dependencies/pythondata-software-compiler_rt
