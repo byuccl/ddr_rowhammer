@@ -154,12 +154,24 @@ def initial_starting_state_actions(ex, st):
 
     # Print information about the current version of the code (what is committed)
     ex.logger.info("git commit information")
+    # Get the commit tag
     p = run( [ 'git', 'show', '--oneline', '-s' ], capture_output=True )
     out = p.stdout.decode().strip()
     ex.logger.info("\tgit commit:"+out)
+    # Get the commit information (message and date)
     p = run( [ 'git', 'log', '-1', '--format=%cd', '--date=local' ], capture_output=True )
     out = p.stdout.decode().strip()
     ex.logger.info("\tgit commit date:"+out)
+    # Get the current git status (to see if something hadn't been committed)
+    p = run( [ 'git', 'status', '--porcelain', ], capture_output=True )
+    lines =  p.stdout.decode()
+    print(lines)
+    if lines and len(lines) > 0:
+        ex.logger.info("\tgit status:"+out)
+        lines = lines.splitlines()
+        for line in lines:
+            ex.logger.info("\t\t"+line.strip())
+
     # Print the value of all the options when the executable was run
     ex.logger.info("Command line information")
     ex.logger.info("\tCommand line:"+str(sys.argv))
