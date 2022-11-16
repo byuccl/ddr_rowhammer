@@ -8,15 +8,14 @@
 # 	This allows the commands to use the same shell, so
 # 	environment sourced with the script is preserved.
 
-# TODO: Add some Vivado version discovery logic?
 # TODO: Move all the pip-installable dependencies to a requirements.txt file.
-
 # -------------------------------------- #
 # SETTINGS
 # -------------------------------------- #
 
 PYTHON_VENV = .pyenv
-VIVADO_VERSION = 2022.1
+VIVADO_LOCATION ?= /tools/Xilinx/Vivado
+VIVADO_VERSION ?= $$(ls -d $(VIVADO_LOCATION)/*.* | tr / \\n | tail -n 1)
 RISCV_TOOLCHAIN = riscv64-unknown-elf-gcc-10.1.0-2020.08.2-x86_64-linux-ubuntu14
 PYTHON_FLAGS = -m
 BUILD_TARGET = litex_boards.targets.digilent_nexys_video
@@ -67,7 +66,7 @@ env.sh: $(PYTHON_VENV) $(RISCV_TOOLCHAIN)
 	@echo ------------------------------------------
 	echo 'alias source=. # So vivado and make work together.' > ./env.sh
 	echo '. $(PYTHON_VENV)/bin/activate' >> ./env.sh
-	echo '. /tools/Xilinx/Vivado/$(VIVADO_VERSION)/settings64.sh' >> ./env.sh
+	echo ". /tools/Xilinx/Vivado/$(VIVADO_VERSION)/settings64.sh" >> ./env.sh
 	echo 'export PATH="$$PATH:$$(pwd)/$(RISCV_TOOLCHAIN)/bin"' >> ./env.sh
 	@echo -------------------DONE-------------------
 
