@@ -47,4 +47,8 @@ To Do:
 * USB port rebooting
   * https://github.com/mvp/uhubctl
   * https://github.com/byuccl/yinstruments/blob/main/yinstruments/usb_power.py
-  
+
+* Coding
+  * Move to new state machine model (return next state)
+  * Move the uart_control to a multi-class organization (test_logger, uart_base, and uart_expect)
+  * Trap control C when ending script (clean up nicely)

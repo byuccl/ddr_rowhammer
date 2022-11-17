@@ -107,6 +107,23 @@ class bist_state(object):
         return False
 
 
+def signal_handler(sig, frame):
+    ''' Ctrl-C handler so we can exit more gracefully. '''
+    print('Ctrl+C Pressed. ')
+    '''
+#!/usr/bin/env python
+import signal
+import sys
+
+def signal_handler(sig, frame):
+    print('You pressed Ctrl+C!')
+    sys.exit(0)
+
+signal.signal(signal.SIGINT, signal_handler)
+print('Press Ctrl+C')
+signal.pause()
+    '''
+    sys.exit(0)
 
 def setup_logger(log_filename:str, include_level = True, print_stdout = False):
     ''' Static method for creating custom loggers '''
@@ -843,6 +860,7 @@ def main():
     parser.add_argument("--single_step", help="Single step through state machine", action='store_true')
     parser.add_argument("--bist_mem_burst_length", help="Burst length of BIST command", type=int, default = DEFAULT_BIST_BURST_LENGTH)
     parser.add_argument("--bist_addr_mode", help="Burst length of BIST command", type=int, default=DEFAULT_BIST_ADDR_MODE)
+    #parser.add_argument("--uart_bone", help="Enable UART wishbone interface", action='store_true')
     args = parser.parse_args()
 
     # Set up logger settings
@@ -874,68 +892,8 @@ if __name__ == "__main__":
 
 '''
 
-First BIST command
- - Initialize flags
-   - ex.previous_bist_system_error = False
-   - ex.previous_bist_data_repair = None
-
-BIST Command
- - Sets flags: (clears at start of method)
-   - ex.reconfigure (indicates a dram or system error and go to post mortum recovery)
-   - ex.uart_ok (indicates a system error and go to terminal recovery)
-   - ex.dram_error (indicates a dram error and go to dram recovery)
- - System errors:
-      - Multiple unicode errors
-      - Consecutive bad title lines
-      - Consecutive bad data lines
-    - ex.uart_ok = false
-    - if ex.previous_bist_system_error = True, set ex.reconfigure (indicates lost cause) and go to post portum/reconfigure
-    - else go to terminal recovery and set ex.previous_bist_system_error = True
-
- - Run terminal recovery 
-    - Runs terminal (or reconfigure)
- - Data errors: (multiple consecutive)
-    - set ex.dram_error = True
-    - If x.previous_bist_system_error = True, move to reconfigure/post mortum rather than dram recovery 
-       (i.e., went through all the steps)
-    - If x.previous_bist_system_error = False
-      - Run dram recovery
-        - checks the previous_bist_data_repair and decides what step to take next (more sophisticated each step)
-          - If it is the last on the list, it sets x.previous_bist_system_error = True (so that it goes to reconfigure with without ddr recovery)
-
-DRAM_RECOVERY (state for cleaning up DRAM)
-- Execute all the commands to try and fix DRAM
-- On timeout, go to TERMINAL_RECOVERY_STATE
-- On success, go to BIST_RECOVERY_STATE
-
-BIST_RECOVERY_STATE  (Try to rerun the bist command)
-- Hit enter to stop BIST and expect prompt
- - If timeout, 
-    go to TERMINAL_RECOVERY_STATE
-- Start BIST command nad go to BIST_EXECUTION_STATE
-
-TERMINAL_RECOVERY_STATE (this is the state whenever a timeout occurs or need to try restablishing a connection)
-- Close spawn and open spawn to create new terminal (give it a few tries): restart experiment if this fails
-- Close the bist command by giving a few enters
-- Try to get Litex Prompt (do this a couple of times to make sure the prompts keep coming)
-  - If unsuccessful, go to UNRECOVERABLE_POST_MORTUM
-- If prompt is ok, go to the BIST command
-  Do we need to set a flag suggesting we came from an error? If the first bist command fails, we should go to UNRECOVERABLE_POST_MORTUM
-
 
 Error response:
-
-DRAM Errors
-- Scrubbing is going on in the background so wait a bit to see if the errors go away
-- Scrub mode registers
-- scrub delay/bitslip registers
-- Recalibrate memory
-- Reinitialize memory
-- reboot command
-- Uartbone reset
-- Configure
-- Repower
-
 
 CPU Hang:
 - Sent Ctrl-C & Enter to see if prompt returns
