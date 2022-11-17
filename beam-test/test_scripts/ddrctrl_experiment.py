@@ -125,6 +125,19 @@ signal.pause()
     '''
     sys.exit(0)
 
+def variable_update_successful_bist(ex):
+    ''' Initalize/clear all variables that hold error state between
+    states. Used when a successful BIST execution sequence occurs. '''
+    # Flag indicating that this is a fresh BIST (not coming in with errors)
+    ex.previous_bist_uart_error = False    # Flag indicating a previous BIST system error occured
+    ex.previous_bist_data_repair = 0       # variable indicating what repair has been made
+
+def variable_update_experiment_initialization(ex):
+    ''' Initializes global variables that are used accross states at the 
+    start of the experiment. '''
+    ex.failed_initial_login = 0
+    pass
+
 def setup_logger(log_filename:str, include_level = True, print_stdout = False):
     ''' Static method for creating custom loggers '''
     if include_level:
@@ -261,6 +274,8 @@ def power_nexys_state_actions(ex, st):
     turn_off_cmd = ex.netbooter.turn_off_port(ex.args.nexys_netbooter_port)
     turn_on_cmd = ex.netbooter.turn_on_port(ex.args.nexys_netbooter_port)
     ex.netbooter_ok = turn_off_cmd and turn_on_cmd
+    # Initialize global state variables when starting over
+    variable_update_experiment_initialization(ex)
 
 def connect_uart_state_actions(ex, st):
     ''' Creates UART std_out path, creates uart_control object, and creates uart spawn fd object
@@ -326,25 +341,15 @@ def initial_litex_prompt_state_actions(ex, st):
     if expect_result:
         # All is good - move on
         ex.login_litex = True
+        ex.failed_initial_login = 0  # Reset counter for next time around
     else:
         # Failed login, go back to repower of NEXYS until max attempts
-        if ex.failed_initial_login:  # Have we failed before
-            if ex.failed_initial_login >= MAX_LOGIN_ATTEMPS:
-                # Failed too many times - give up
-                ex.initial_login_terminate = True
-            else:
-                # Try again
-                ex.failed_initial_login += 1
+        if ex.failed_initial_login >= MAX_LOGIN_ATTEMPS:
+            # Failed too many times - give up
+            ex.initial_login_terminate = True
         else:
-            ex.failed_initial_login = 1
-
-
-def initialize_cross_state_variables(ex):
-    ''' Initalize/clear all variables that hold error state between
-    states. Used when a successful BIST execution sequence occurs. '''
-    # Flag indicating that this is a fresh BIST (not coming in with errors)
-    ex.previous_bist_uart_error = False    # Flag indicating a previous BIST system error occured
-    ex.previous_bist_data_repair = 0       # variable indicating what repair has been made
+            # Try again
+            ex.failed_initial_login += 1
 
 def start_bist_state_actions(ex, st):
     ''' Issues the BIST command
@@ -354,7 +359,7 @@ def start_bist_state_actions(ex, st):
     bist_command = ex.bist.get_bist_command_str()
     result = ex.uart.sendline(bist_command)
     # Initialize all cross state variables
-    initialize_cross_state_variables(ex)
+    variable_update_successful_bist(ex)
 
 def bist_execution_state_actions(ex, st):
     ''' Watch the execution of the BIST command and respond to errors. 
@@ -444,7 +449,7 @@ def bist_execution_state_actions(ex, st):
                         ###############################
                         # Successful execution of BIST: clear all error hoistory
                         ###############################
-                        initialize_cross_state_variables(ex)
+                        variable_update_successful_bist(ex)
                     else:
                         errors = 8 - valid_data_lines
                         bist_status = f"err {errors}"
@@ -856,7 +861,9 @@ def create_base_filename(bitstream_filename):
     filename_stem = p.stem
     # Add a timestamp
     current_date_time = datetime.now().strftime("%B_%d__%H_%M_%S")
-    return str(filename_stem + "_" + current_date_time)
+    # Add CTRL as the prefix to specify it is a DDR controller test
+    #  (the bistream is not enough - the same bitstream may be used for the DDR test)
+    return str("CTRL_" + filename_stem + "_" + current_date_time)
 
 def main():
 

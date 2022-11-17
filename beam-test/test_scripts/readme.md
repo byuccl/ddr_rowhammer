@@ -40,6 +40,8 @@ Types of errors:
 * Mixed errors
   * First a data error and then a UART timeout
   * Unicode errors and then UART timeout
+* Odd Errors
+  * Get a DDR Data error regularly but there is at least one good execution in the mix that resets the counters. Seems to be a timing error.
 
 To Do:
 * Check back to back reconfigures (need a repower?)
@@ -52,3 +54,4 @@ To Do:
   * Move to new state machine model (return next state)
   * Move the uart_control to a multi-class organization (test_logger, uart_base, and uart_expect)
   * Trap control C when ending script (clean up nicely)
+
