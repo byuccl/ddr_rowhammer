@@ -38,6 +38,7 @@ class usb_uart_bone(usb_uart_base):
         # Build base usb uart
         usb_uart_base.__init__(self, usb_uart_phys_port, usb_uart_phys_if, baud_rate, 
             logger = logger, logger_prefix = logger_prefix)
+        self.debug = False
 
     '''
     def __init__(self, port, baudrate=115200, csr_csv=None, debug=False):
@@ -126,11 +127,14 @@ class usb_uart_bone(usb_uart_base):
 
 def main():
 
+    # ls /dev/serial/by-id/
+
     parser = argparse.ArgumentParser()
     uart_basename = "uartbone"
     uartbone_args = usb_uart_base.uart_group_args(parser,uart_basename, 
-        default_phys_port="1-4.1", default_phys_if=1, default_baud = 115200)
+        default_phys_port="1-4.1", default_phys_if=0, default_baud = 115200)
     parser.add_argument("--read", help="Hex address of read value from uartbone")
+    parser.add_argument("--write", help="Hex address of read value from uartbone and Value to write", nargs=2)
 
     args = parser.parse_args()
 
@@ -148,9 +152,18 @@ def main():
         logging.error("Failed to open uart")
         return 1
     if args.read:
-        val = usb_uartbone.read(int(args.read,16), length=4)
+        val = usb_uartbone.read(int(args.read,16), length=1)
+        for i in val:
+            print(f"0x{i:x}")
         print(val)
+    if args.write:
+        wargs = args.write
+        address = int(wargs[0],16)
+        data = int(wargs[1],16)
+        val = usb_uartbone.write(address, data)
 
+    # 0xf0001800 (start of id - read bytes until null)
+    
     return 0
 
 if __name__ == "__main__":

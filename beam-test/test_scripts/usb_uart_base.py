@@ -226,13 +226,13 @@ class usb_uart_base():
         # Add argument for physical USB port
         arg = uart_arg_group.add_argument("--"+usb_uart_base.get_uart_phys_port_arg_name(base_str), 
             help="Physical port for UART", type=str, required = True)
-        if default_phys_port:
+        if not default_phys_port is None:
             arg.default=default_phys_port
             arg.required=False
         # Add argument for physical IF number
         arg = uart_arg_group.add_argument("--"+usb_uart_base.get_uart_phys_if_arg_name(base_str), 
             help="Physical IF for UART", type=str, required = True)
-        if default_phys_if:
+        if not default_phys_if is None:
             arg.default=default_phys_if
             arg.required=False
         # Add argument for baud rate
