@@ -319,11 +319,25 @@ def initial_litex_prompt_state_actions(ex, st):
     ''' Check for initial litex prompt.         
         sets: ex.login_litex (encapsulates uart issues) 
     '''
+    MAX_LOGIN_ATTEMPS = 3
     ex.login_litex = False
+    ex.initial_login_terminate = False
     expect_result = expect_prompt(ex)
     if expect_result:
+        # All is good - move on
         ex.login_litex = True
-    # TODO: try multiple times if unicode error?
+    else:
+        # Failed login, go back to repower of NEXYS until max attempts
+        if ex.failed_initial_login:  # Have we failed before
+            if ex.failed_initial_login >= MAX_LOGIN_ATTEMPS:
+                # Failed too many times - give up
+                ex.initial_login_terminate = True
+            else:
+                # Try again
+                ex.failed_initial_login += 1
+        else:
+            ex.failed_initial_login = 1
+
 
 def initialize_cross_state_variables(ex):
     ''' Initalize/clear all variables that hold error state between
@@ -747,6 +761,7 @@ def build_experiment(args,logger,single_step=False):
         LITEX_PROMPT_STATE,
         initial_litex_prompt_state_actions,
         Transition(lambda ex, st: ex.login_litex, START_BIST_STATE),
+        Transition(lambda ex, st: not ex.initial_login_terminate, POWER_NEXYS_STATE),
         Transition(lambda ex, st: True, TERMINATING_STATE)
     ))
 
