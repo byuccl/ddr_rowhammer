@@ -459,7 +459,9 @@ def bist_execution_state_actions(ex, st):
                             # Compute delay between now and 
                             bist_time_difference = current_successful_bist - last_successful_bist
                             # If the BIST occurred too quickly, exit and start over
-                            if bist_time_difference.total_seconds() < MIN_BIST_TIME_DIFF_SECONDS:
+                            execution_diff = bist_time_difference.total_seconds()
+                            if execution_diff < MIN_BIST_TIME_DIFF_SECONDS:
+                                ex.logger.error(f"BIST: Execution completed too fast ({execution_diff} s)")
                                 ex.bist_error = True
                                 return
                         else: # this is the first successful bist
