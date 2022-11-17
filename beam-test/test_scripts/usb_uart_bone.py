@@ -8,11 +8,9 @@ import random
 import threading
 import sys
 import time
-import telnetlib
-import subprocess
 from datetime import date, datetime
 from serial import Serial
-import usb_uart_base
+from usb_uart_base import usb_uart_base
 
 # Constants ----------------------------------------------------------------------------------------
 
@@ -31,12 +29,14 @@ class usb_uart_bone(usb_uart_base):
 
     def __init__(self, 
         usb_uart_phys_port:str,
+        usb_uart_phys_if:int,
         baud_rate,
         test_logger = None,
         logger_prefix = "UARTBONE",
         ):
 
-        usb_uart_base.__init__(self, usb_uart_phys_port, baud_rate, 
+        # Build base usb uart
+        usb_uart_base.__init__(self, usb_uart_phys_port, usb_uart_phys_if, baud_rate, 
             test_loger = test_logger, logger_prefix = logger_prefix)
 
     '''
@@ -47,6 +47,7 @@ class usb_uart_bone(usb_uart_base):
         self.debug    = debug
     '''
     
+    '''
     def open(self):
         if hasattr(self, "port"):
             return
@@ -57,24 +58,26 @@ class usb_uart_bone(usb_uart_base):
             return
         self.port.close()
         del self.port
+    '''
+
 
     def _read(self, length):
         r = bytes()
         while len(r) < length:
-            r += self.port.read(length - len(r))
+            r += self.serial_fd.read(length - len(r))
         return r
 
     def _write(self, data):
         remaining = len(data)
         pos = 0
         while remaining:
-            written = self.port.write(data[pos:])
+            written = self.serial_fd.write(data[pos:])
             remaining -= written
             pos += written
 
     def _flush(self):
-        if self.port.inWaiting() > 0:
-            self.port.read(self.port.inWaiting())
+        if self.serial_fd.inWaiting() > 0:
+            self.serial_fd.read(self.serial_fd.inWaiting())
 
     def read(self, addr, length=None, burst="incr"):
         self._flush()
@@ -115,56 +118,25 @@ class usb_uart_bone(usb_uart_base):
             offset += size
             length -= size
 
-    #### Static methods
-
-    def get_uart_phys_port_arg_name(base_str:str):
-        ''' Generate the phys_port argument string name for the uart. '''
-        return f"--{base_str}_uart_phys_port"
-
-    def get_uart_baud_arg_name(base_str:str):
-        ''' Generate the baudrate argument string name for the uart. '''
-        return f"--{base_str}_uart_baudrate"
-
-    def uart_group_args(parser,base_str:str):
-        ''' Static function for creating an argument group for given UART.
-        A base string is needed for the arguments (make unique for multiple UARTs) '''
-        argument_group_name = f"{base_str}_uart"
-        uart_arg_group = parser.add_argument_group(argument_group_name)
-        uart_arg_group.add_argument(usb_uart_base.get_uart_phys_port_arg_name(base_str), 
-            help="Physical port for UART", type=str)
-        uart_arg_group.add_argument(usb_uart_base.get_uart_baud_arg_name(base_str), 
-            help="Baud rate for UART", type=int)
-
-    def create_uart_from_args(args, base_str:str, logging):
-        ''' Static function for creating uart object from arguments '''
-        args_dict = vars(args)
-
-        # Get the physical port argument
-        phys_port_arg = usb_uart_base.get_uart_phys_port_arg_name(base_str)
-        if phys_port_arg in args_dict:
-            phys_port = args_dict[phys_port_arg]
-        else:
-            return None
-        # Get the baud rate argument
-        baud_arg = usb_uart_base.get_uart_baud_arg_name(base_str)
-        if baud_arg in args_dict:
-            baud = args_dict[phys_port_arg]
-        else:
-            return None
-
-        uart = usb_uart_base(phys_port_arg, baud, test_logger = logging)
-        return uart
-
-
 def main():
 
     parser = argparse.ArgumentParser()
-    parser.add_argument_group(uart_control.uart_group_args(parser))
+    uart_basename = "uartbone"
+    uartbone_args = usb_uart_base.uart_group_args(parser,uart_basename, 
+        default_phys_port="1-4.1", default_phys_if=1, default_baud = 115200)
     args = parser.parse_args()
 
+    usb_uart_base.ls_usb_port_if()
+
     logging.basicConfig(level=logging.INFO)
-    uart = uart_control.create_uart_from_args(args,logging)
-    print(uart.get_uart_dev_str())
+    logging.info("Starting")
+    usb_uartbone = usb_uart_base.create_uart_from_args(args, uart_basename, logging, logger_prefix="UARTBONE")
+    if not usb_uartbone:
+        print("Error creating object")
+        return 1
+    # Find device
+    usb_uartbone.create_uart_serial()
+
     return 0
 
 if __name__ == "__main__":
