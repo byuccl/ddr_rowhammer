@@ -242,8 +242,8 @@ class usb_uart_base():
             arg.default=default_baud
             arg.required=False
 
-    def create_uart_from_args(args, base_str:str, logging, logger_prefix=None):
-        ''' Static function for creating uart object from arguments '''
+    def get_uart_args(args, base_str:str):
+        ''' Static function for parsing the arguments and returning a tuple  '''
         args_dict = vars(args)
         #print(args_dict)
         # Get the physical port argument
@@ -271,9 +271,13 @@ class usb_uart_base():
         else:
             return None
 
-        uart = usb_uart_base(phys_port, phys_if, baud, logger = logging, logger_prefix=logger_prefix)
-        return uart
+        return (phys_port, phys_if, baud)
 
+    def create_uart_from_args(args, base_str:str, logging, logger_prefix=None):
+        uart_args = usb_uart_base.get_uart_args(args,base_str)
+
+        uart = usb_uart_base(uart_args[0], uart_args[1], uart_args[2], logger = logging, logger_prefix=logger_prefix)
+        return uart
 
 def main():
 

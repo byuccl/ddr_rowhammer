@@ -31,13 +31,13 @@ class usb_uart_bone(usb_uart_base):
         usb_uart_phys_port:str,
         usb_uart_phys_if:int,
         baud_rate,
-        test_logger = None,
+        logger = None,
         logger_prefix = "UARTBONE",
         ):
 
         # Build base usb uart
         usb_uart_base.__init__(self, usb_uart_phys_port, usb_uart_phys_if, baud_rate, 
-            test_loger = test_logger, logger_prefix = logger_prefix)
+            logger = logger, logger_prefix = logger_prefix)
 
     '''
     def __init__(self, port, baudrate=115200, csr_csv=None, debug=False):
@@ -118,24 +118,38 @@ class usb_uart_bone(usb_uart_base):
             offset += size
             length -= size
 
+    def create_uartbone_from_args(args, base_str:str, logging, logger_prefix=None):
+        uart_args = usb_uart_base.get_uart_args(args,base_str)
+
+        uart = usb_uart_bone(uart_args[0], uart_args[1], uart_args[2], logger = logging, logger_prefix=logger_prefix)
+        return uart
+
 def main():
 
     parser = argparse.ArgumentParser()
     uart_basename = "uartbone"
     uartbone_args = usb_uart_base.uart_group_args(parser,uart_basename, 
         default_phys_port="1-4.1", default_phys_if=1, default_baud = 115200)
+    parser.add_argument("--read", help="Hex address of read value from uartbone")
+
     args = parser.parse_args()
 
     usb_uart_base.ls_usb_port_if()
 
     logging.basicConfig(level=logging.INFO)
     logging.info("Starting")
-    usb_uartbone = usb_uart_base.create_uart_from_args(args, uart_basename, logging, logger_prefix="UARTBONE")
+    usb_uartbone = usb_uart_bone.create_uartbone_from_args(args, uart_basename, logging, logger_prefix="UARTBONE")
     if not usb_uartbone:
         print("Error creating object")
         return 1
     # Find device
-    usb_uartbone.create_uart_serial()
+    uart_fd = usb_uartbone.create_uart_serial()
+    if not uart_fd:
+        logging.error("Failed to open uart")
+        return 1
+    if args.read:
+        val = usb_uartbone.read(int(args.read,16), length=4)
+        print(val)
 
     return 0
 
