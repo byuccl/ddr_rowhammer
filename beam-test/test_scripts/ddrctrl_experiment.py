@@ -383,6 +383,7 @@ def bist_execution_state_actions(ex, st):
     # Flag counting valid data lines during BIST execution
     valid_data_lines = 0
     first_title_line = True  # no check on data for first title line
+    last_successful_bist = None # Time stamp when last BIST completed
 
     # BIST title line
     #^M                          WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS        SEC        DED
@@ -396,6 +397,7 @@ def bist_execution_state_actions(ex, st):
     MAX_CONSECUTIVE_BAD_DATA_LINES = 10
     MAX_CONSECUTIVE_BAD_DATA_ERRORS = 8
     DRAM_ERROR_THRESHOLD = 100
+    MIN_BIST_TIME_DIFF_SECONDS = 4
 
     # Iterate over lines until an error occurs (will need to break out on an error condition)
     while(1):
@@ -449,6 +451,21 @@ def bist_execution_state_actions(ex, st):
                         ###############################
                         # Successful execution of BIST: clear all error hoistory
                         ###############################
+
+                        # there is a failure mode in which the BIST completes much faster than it should.
+                        # Check to make sure that the BIST delay is greater than some minimum.
+                        current_successful_bist = datetime.now()
+                        if last_successful_bist:  # Has there been a first successful bist?
+                            # Compute delay between now and 
+                            bist_time_difference = current_successful_bist - last_successful_bist
+                            # If the BIST occurred too quickly, exit and start over
+                            if bist_time_difference.total_seconds() < MIN_BIST_TIME_DIFF_SECONDS:
+                                ex.bist_error = True
+                                return
+                        else: # this is the first successful bist
+                            last_successful_bist = datetime.now()
+                        # Update the last successful bist time
+                        last_successful_bist = current_successful_bist
                         variable_update_successful_bist(ex)
                     else:
                         errors = 8 - valid_data_lines
