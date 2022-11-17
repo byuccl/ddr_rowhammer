@@ -43,6 +43,8 @@ from pkg_resources import require
 from serial import Serial  # from pyserial
 from datetime import date, datetime
 from experiment_machine import Transition, ExperimentState, Experiment
+from usb_uart_base import usb_uart_base
+from usb_uart_bone import usb_uart_bone
 
 # Format string for printing the date and time
 TIME_STRING_FORMAT = "%Y-%m-%d %H:%M:%S"
@@ -50,6 +52,8 @@ TIME_STRING_FORMAT = "%Y-%m-%d %H:%M:%S"
 JCM_PING_COUNT_LIMIT = 10
 # JCM Ping Delay
 JCM_PING_DELAY = 10
+
+UARTBONE_UART_BASENAME = "uartbone"
 
 DEFAULT_BIST_BURST_LENGTH = 0x2000 # Default burst length
 DEFAULT_BIST_ADDR_MODE = 1 # Start reading/writing data with addresses linearly.
@@ -177,11 +181,8 @@ def expect_prompt(ex, number_of_enters=1,expect_timeout=LITEX_LOGIN_DELAY):
         return False
     return True
 
-def initial_starting_state_actions(ex, st):
-    ''' Do nothing - just an entry point for the experiment. Executed only once. 
-        No state change
-    '''
-
+def initial_experiment_logging(ex):
+    ''' Logs information at the start of the execution (shared with multiple experiments) '''
     # Print information about the current version of the code (what is committed)
     ex.logger.info("git commit information")
     # Get the commit tag
@@ -208,6 +209,12 @@ def initial_starting_state_actions(ex, st):
     dict_args = vars(ex.args)
     for arg in dict_args:
         ex.logger.info("\targ:"+arg+"="+str(dict_args[arg]))
+
+def initial_starting_state_actions(ex, st):
+    ''' Entry point for the experiment. Executed only once. 
+        No state change
+    '''
+    initial_experiment_logging(ex)
 
 def netbooter_setup_state_actions(ex, st):
     ''' Checks for the netbooter network connectivity
@@ -258,7 +265,6 @@ def jcm_setup_state_actions(ex, st):
 
 def uart_setup_state_actions(ex, st):
     # create uart object but do not connect uart
-    #ex.uart_ok = False
 
     # Create UART stdout
     uart_log_filename = create_log_path("UART",ex.filebasename, ex.log_dir)
@@ -281,15 +287,6 @@ def connect_uart_state_actions(ex, st):
     ''' Creates UART std_out path, creates uart_control object, and creates uart spawn fd object
         sets: ex.uart_ok
     '''
-    #ex.uart_ok = False
-
-    # Create UART stdout
-    #uart_log_filename = create_log_path("UART",ex.filebasename, ex.log_dir)
-    # Create UART log file
-    #uart_log_file = open(uart_log_filename,"w")
-
-    # Create UART control object
-    #ex.uart = uart_control(ex.args.usb_uart_phys_port, uart_stdout = uart_log_file, logging = ex.logger, timestampformat = TIME_STRING_FORMAT)
 
     # Create a spawned file handle for reading/writing to the serial port
     serial_fdspawn = ex.uart.create_uart_spawn()
@@ -304,6 +301,22 @@ def configure_nexys_state_actions(ex, st):
     ex.configure_ok = False
     result = ex.jcm.configure_fpga(ex.args.bitstream)
     ex.configure_ok = result
+
+def setup_uartbone_state_actions(ex, st):
+    ''' Connects to UART bone
+    '''
+    if ex.args.no_uart_bone:
+        ex.logger.info("Not creating UART bone")
+        return
+
+    ex.uartbone = usb_uart_bone.create_uartbone_from_args(ex.args, UARTBONE_UART_BASENAME, ex.logger)
+    if not ex.uartbone:
+        ex.logger.error("Failed to create UART Bone")
+    ex.uart_fd = ex.uartbone.create_uart_serial()
+    if not ex.uart_fd:
+        ex.logger.error("Failed to connect to UART Bone")
+    ident_str = ex.uartbone.read_ident()
+    ex.logger.info("UARTBONE ID Str="+ident_str)
 
 def enable_scrubbing_state_actions(ex, st):
     ''' Starts the scrubber
@@ -435,7 +448,9 @@ def bist_execution_state_actions(ex, st):
                 expecting_title = True # Start looking or titles (may get errors)
 
         # No system errors in string - evaluate the string
-        if expecting_title: # Need to process a good title before accepting any data
+        if expecting_title: 
+            
+            # Is this a valid title line?
             if ex.uart.serial_fdspawn.match and match_index == TITLE_INDEX:
                 # execpting a title and received a title
 
@@ -483,7 +498,7 @@ def bist_execution_state_actions(ex, st):
             else: # have an invalid title line
                 consecutive_bad_title_lines += 1
                 if consecutive_bad_title_lines == 1:
-                    ex.logger.info("BIST:Bad title line:")
+                    ex.logger.info("BIST:Bad title line ({consecutive_bad_title_lines}):")
                     # Ignore line but continue
                     continue
                 elif consecutive_bad_title_lines > MAX_CONSECUTIVE_BAD_TITLE_LINES:
@@ -688,6 +703,7 @@ def build_experiment(args,logger,single_step=False):
     POWER_NEXYS_STATE = "Power Nexys State"
     CONNECT_UART_STATE = "Connect UART State"
     CONFIGURE_NEXYS_STATE = "Configure Nexys State"
+    SETUP_UARTBONE_STATE = "Setup UARTBone State"
     ENABLE_SCRUBBING_STATE = "Enable Scrubbing State"
     LITEX_PROMPT_STATE = "LiteX Login State"
     START_BIST_STATE = "Start BIST State"
@@ -766,8 +782,16 @@ def build_experiment(args,logger,single_step=False):
     experiment.add_state(ExperimentState(
         CONFIGURE_NEXYS_STATE,
         configure_nexys_state_actions,
-        Transition(lambda ex, st: ex.configure_ok, ENABLE_SCRUBBING_STATE),
+        Transition(lambda ex, st: ex.configure_ok, SETUP_UARTBONE_STATE),
         Transition(lambda ex, st: True, TERMINATING_STATE)
+    ))
+
+    # SETUP_UARTBONE_STATE
+    experiment.add_state(ExperimentState(
+        SETUP_UARTBONE_STATE,
+        setup_uartbone_state_actions,
+        #Transition(lambda ex, st: ex.configure_ok, ENABLE_SCRUBBING_STATE),
+        Transition(lambda ex, st: True, ENABLE_SCRUBBING_STATE)
     ))
 
     # ENABLE_SCRUBBING_STATE
@@ -878,11 +902,14 @@ def create_base_filename(bitstream_filename):
     #    return None
     # Strip the path and suffix
     filename_stem = p.stem
-    # Add a timestamp
+    return create_base_filename_identifier("CTRL",filename_stem)
+
+def create_base_filename_identifier(prefix,identifier):
+    ''' Create a base filename used for all files generated by this experiment '''
     current_date_time = datetime.now().strftime("%B_%d__%H_%M_%S")
     # Add CTRL as the prefix to specify it is a DDR controller test
     #  (the bistream is not enough - the same bitstream may be used for the DDR test)
-    return str("CTRL_" + filename_stem + "_" + current_date_time)
+    return str(prefix + "_" + identifier + "_" + current_date_time)
 
 def main():
 
@@ -891,6 +918,9 @@ def main():
     parser.add_argument_group(netbooter_control.netbooter_group_args(parser))
     parser.add_argument_group(jcm_session.jcm_group_args(parser))
     parser.add_argument_group(uart_control.uart_group_args(parser))
+    uartbone_args = usb_uart_base.uart_group_args(parser,UARTBONE_UART_BASENAME, 
+        default_phys_port="1-4.1", default_phys_if=0, default_baud = 115200)
+    parser.add_argument_group(uartbone_args)
     parser.add_argument("--repower_jcm", help="Repower JCM at start of experiment", action='store_true')
     parser.add_argument("--disable_scrubbing", help="Do not enable the scrubber", action='store_true')
     parser.add_argument("--fault_injection", help="Enable fault injection during scrubbing. Param=# of faults per cycle", type=int)
@@ -901,7 +931,7 @@ def main():
     parser.add_argument("--single_step", help="Single step through state machine", action='store_true')
     parser.add_argument("--bist_mem_burst_length", help="Burst length of BIST command", type=int, default = DEFAULT_BIST_BURST_LENGTH)
     parser.add_argument("--bist_addr_mode", help="Burst length of BIST command", type=int, default=DEFAULT_BIST_ADDR_MODE)
-    #parser.add_argument("--uart_bone", help="Enable UART wishbone interface", action='store_true')
+    parser.add_argument("--no_uart_bone", help="Disable UART wishbone interface", action='store_true')
     args = parser.parse_args()
 
     # Set up logger settings

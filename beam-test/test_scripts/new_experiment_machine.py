@@ -29,7 +29,7 @@ class ExperimentState():
         """Runs the state actions by calling the action function."""
         return self.__action_function(experiment)
 
-class Experiment():
+class NewExperiment():
     def __init__(self, logging = None, single_step = False) -> None:
         # -------------------------------------- #
         # "Private" Member Variables

@@ -119,7 +119,22 @@ class usb_uart_bone(usb_uart_base):
             offset += size
             length -= size
 
-    def create_uartbone_from_args(args, base_str:str, logging, logger_prefix=None):
+    def read_ident(self, addr=0xf0001800):
+        MAX_CHARS = 256
+        char_addr = addr
+        ident_str = ""
+        while char_addr < addr + MAX_CHARS * 4:
+            val = self.read(char_addr)
+            #print(val)
+            if val == 0:
+                break
+            new_char = chr(val)
+            char_addr += 4
+            ident_str += new_char
+
+        return ident_str
+
+    def create_uartbone_from_args(args, base_str:str, logging, logger_prefix="UARTBONE"):
         uart_args = usb_uart_base.get_uart_args(args,base_str)
 
         uart = usb_uart_bone(uart_args[0], uart_args[1], uart_args[2], logger = logging, logger_prefix=logger_prefix)
@@ -135,6 +150,7 @@ def main():
         default_phys_port="1-4.1", default_phys_if=0, default_baud = 115200)
     parser.add_argument("--read", help="Hex address of read value from uartbone")
     parser.add_argument("--write", help="Hex address of read value from uartbone and Value to write", nargs=2)
+    parser.add_argument("--ident", help="Read identification string", action='store_true')
 
     args = parser.parse_args()
 
@@ -142,7 +158,7 @@ def main():
 
     logging.basicConfig(level=logging.INFO)
     logging.info("Starting")
-    usb_uartbone = usb_uart_bone.create_uartbone_from_args(args, uart_basename, logging, logger_prefix="UARTBONE")
+    usb_uartbone = usb_uart_bone.create_uartbone_from_args(args, uart_basename, logging)
     if not usb_uartbone:
         print("Error creating object")
         return 1
@@ -161,6 +177,9 @@ def main():
         address = int(wargs[0],16)
         data = int(wargs[1],16)
         val = usb_uartbone.write(address, data)
+    if args.ident:
+        ident_str = usb_uartbone.read_ident()
+        print(ident_str)
 
     # 0xf0001800 (start of id - read bytes until null)
     
