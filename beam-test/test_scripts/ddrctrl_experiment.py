@@ -129,18 +129,19 @@ signal.pause()
     '''
     sys.exit(0)
 
+def variable_update_experiment_initialization(ex):
+    ''' Initializes global variables that are used accross states at the 
+    start of the experiment. '''
+    ex.failed_initial_login = 0
+    pass
+
 def variable_update_successful_bist(ex):
     ''' Initalize/clear all variables that hold error state between
     states. Used when a successful BIST execution sequence occurs. '''
     # Flag indicating that this is a fresh BIST (not coming in with errors)
     ex.previous_bist_uart_error = False    # Flag indicating a previous BIST system error occured
     ex.previous_bist_data_repair = 0       # variable indicating what repair has been made
-
-def variable_update_experiment_initialization(ex):
-    ''' Initializes global variables that are used accross states at the 
-    start of the experiment. '''
-    ex.failed_initial_login = 0
-    pass
+    ex.issued_reset = False # Indicates a reset value was recently initiated
 
 def setup_logger(log_filename:str, include_level = True, print_stdout = False):
     ''' Static method for creating custom loggers '''
@@ -670,6 +671,18 @@ def unrecoverable_postmortum_state_actions(ex, st):
 - Add steps for figuring out what happened here (uart_bone, readback, etc.)
 - Reconfigure/Repower
     '''
+    # First try issuing a reset using the UART bone and see if that works
+    if not ex.issued_reset and ex.uartbone:
+        # Issue the reset and go to a different state
+        ex.issued_reset = True
+        ex.logger.info("Issuing UART bone reset")
+        ex.uartbone.write(int(0xf0000800,16), 1)
+        time.sleep(1)
+        return
+
+    # at this point, the previous reset didn't work (or wasn't issued).
+    # stop scrubbing and reconfigure
+
     ex.jcm.stop_scrub()
     pass
 
@@ -862,6 +875,7 @@ def build_experiment(args,logger,single_step=False):
     experiment.add_state(ExperimentState(
         UNRECOVERABLE_POSTMORTUM_STATE,
         unrecoverable_postmortum_state_actions,
+        Transition(lambda ex, st: ex.issued_reset, LITEX_PROMPT_STATE),
         Transition(lambda ex, st: True, CONNECT_UART_STATE)
     ))
 

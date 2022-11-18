@@ -182,7 +182,7 @@ def main():
         print(ident_str)
 
     # 0xf0001800 (start of id - read bytes until null)
-    
+    # 0xf0000800 - reset register (write a 1 to reset the processor)
     return 0
 
 if __name__ == "__main__":
