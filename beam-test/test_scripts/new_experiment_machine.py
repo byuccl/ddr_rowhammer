@@ -80,7 +80,10 @@ class NewExperiment():
         assert new_state.name not in self.__states.keys(), f"State '{new_state.name}' already exists."
         # Save the state in this experiment by it's name.
         self.__states[new_state.name] = new_state
-
+        # SEt the initial state if it has not been set yet
+        if not self.__next_state_name:
+            self.set_next_state(new_state.name)
+            
     def get_current_state(self) -> str:
         """Returns the name of the current state that is running."""
         return self.__current_state

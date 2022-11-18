@@ -39,17 +39,23 @@ from datetime import date, datetime
 from new_experiment_machine import ExperimentState, NewExperiment
 from ddrctrl_experiment import create_log_path, setup_logger, initial_experiment_logging, create_base_filename_identifier
 
-def initial_starting_state_actions(ex, st):
+# State constants
+INITIAL_STARTING_STATE = "Initial Starting State"
+TERMINATING_STATE = "Terminating State"
+
+def initial_starting_state_actions(ex):
     ''' Do nothing - just an entry point for the experiment. Executed only once. 
         No state change
     '''
     initial_experiment_logging(ex)
+    return TERMINATING_STATE
 
-def terminating_state_actions(ex, st):
+def terminating_state_actions(ex):
     ''' Terminates experiment
         no state change
     '''
     ex.stop()
+    return TERMINATING_STATE
 
 
 def build_experiment(args,logger,single_step=False):
@@ -57,10 +63,6 @@ def build_experiment(args,logger,single_step=False):
     Builds the experiment object and its related states for the experiment state machine.
     '''
 
-    # State constants
-    INITIAL_STARTING_STATE = "Initial Starting State"
-
-    TERMINATING_STATE = "Terminating State"
 
     # Create a new experiment object
     experiment = NewExperiment(logger,single_step=single_step)
@@ -84,7 +86,7 @@ def build_experiment(args,logger,single_step=False):
         terminating_state_actions,
     ))
     return experiment
-    
+
 def main():
 
     parser = argparse.ArgumentParser()
