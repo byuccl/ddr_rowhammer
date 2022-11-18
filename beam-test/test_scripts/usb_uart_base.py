@@ -21,8 +21,6 @@ sys.path.insert(0, '../../../yinstruments/yinstruments')
 #from usb_finder import find_dev_file_usb_bus
 from usb_finder import find_dev_file_ttyUSB,USBFindError 
 
-from timestampedfile import TimestampedFile
-
 class usb_uart_base():
     '''
     Base class for USB-based UART interfaces. This class contains methods for managing usb UART
@@ -50,9 +48,7 @@ class usb_uart_base():
         logger = None,
         logger_prefix = "UART",
         timeout = 10,
-        # TODO below
-        uart_stdout = None,
-        timestampformat = None):
+        ):
 
         self.usb_uart_phys_port = usb_uart_phys_port
         self.usb_uart_phys_if = usb_uart_phys_if
@@ -70,13 +66,6 @@ class usb_uart_base():
         # timeout for reads and writes
         self.timeout = int(timeout)
 
-
-        # TODO below
-        #self.timeout = False
-        if uart_stdout:
-            self.logfile = TimestampedFile(uart_stdout, timestampformat = timestampformat)
-        else:
-            self.logfile = None
 
     def get_uart_dev_str(self, max_tty_find_attempts = MAX_FIND_TTY_ATTEMPTS):
         ''' Returns the /dev/ttyUSBx device string of the UART '''
@@ -147,6 +136,8 @@ class usb_uart_base():
             return True
         return False
 
+
+    # End To Do
 
     #### Static methods
     def ls_usb_uart():

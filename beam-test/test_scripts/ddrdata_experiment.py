@@ -41,6 +41,7 @@ from ddrctrl_experiment import create_log_path, setup_logger, initial_experiment
 
 # State constants
 INITIAL_STARTING_STATE = "Initial Starting State"
+NETBOOTER_SETUP_STATE = "Netbooter Setup State"
 TERMINATING_STATE = "Terminating State"
 
 def initial_starting_state_actions(ex):
@@ -48,6 +49,16 @@ def initial_starting_state_actions(ex):
         No state change
     '''
     initial_experiment_logging(ex)
+    return NETBOOTER_SETUP_STATE
+
+def netbooter_setup_state_actions(ex):
+    netbooter_ip = ex.args.netbooter_ip
+    ex.netbooter = netbooter_control(netbooter_ip,ex.logger)
+    if not ex.netbooter.ping_netbooter():
+        ex.logger.error("Netbooter not on network")
+        return TERMINATING_STATE
+
+    # Netbooter ok
     return TERMINATING_STATE
 
 def terminating_state_actions(ex):
@@ -78,6 +89,12 @@ def build_experiment(args,logger,single_step=False):
         initial_starting_state_actions,
     ))
 
+    # NETBOOTER_SETUP_STATE
+    experiment.add_state(ExperimentState(
+        NETBOOTER_SETUP_STATE,
+        netbooter_setup_state_actions,
+    ))
+
     # TERMINATING_STATE
     # - Do nothing: place holder for ending state. Will set experiment to "stop"
     # - Enter this state when the experiment cannot continue
@@ -92,6 +109,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--log_dir", help="Directory to store log files", type=str)
     parser.add_argument("--single_step", help="Single step through state machine", action='store_true')
+    parser.add_argument_group(netbooter_control.netbooter_group_args(parser))
     args = parser.parse_args()
 
     # Set up logger settings
