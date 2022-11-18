@@ -59,6 +59,8 @@ DEFAULT_BIST_BURST_LENGTH = 0x2000 # Default burst length
 DEFAULT_BIST_ADDR_MODE = 1 # Start reading/writing data with addresses linearly.
 LITEX_LOGIN_DELAY = 10
 
+UARTBONE_RESET_ADDR = 0xf0000800
+
 class bist_state(object):
     ''' This class keeps track of the state of a running bist command '''
 
@@ -133,7 +135,7 @@ def variable_update_experiment_initialization(ex):
     ''' Initializes global variables that are used accross states at the 
     start of the experiment. '''
     ex.failed_initial_login = 0
-    pass
+    ex.unrecoverable = False
 
 def variable_update_successful_bist(ex):
     ''' Initalize/clear all variables that hold error state between
@@ -142,6 +144,7 @@ def variable_update_successful_bist(ex):
     ex.previous_bist_uart_error = False    # Flag indicating a previous BIST system error occured
     ex.previous_bist_data_repair = 0       # variable indicating what repair has been made
     ex.issued_reset = False # Indicates a reset value was recently initiated
+    ex.unrecoverable = False
 
 def setup_logger(log_filename:str, include_level = True, print_stdout = False):
     ''' Static method for creating custom loggers '''
@@ -630,8 +633,9 @@ def bist_recovery_state_actions(ex, st):
 def terminal_recovery_state_actions(ex, st):
     ''' This action is performed when there was some sort of UART problem. 
     The purpose of this action is to try and repair the UART connection.
-    If this fails, the system needs to be reconfigured. 
     If it succeeds, the BIST command should be restarted.
+    If it fails, it moves to a new recovery state.
+    At the end of this state the uart connection is still open
     
     Try to reconnect the terminal: close, reopen, and get login prompt. 
     sets the ex.uart_ok, ex.login_litex
@@ -650,41 +654,57 @@ def terminal_recovery_state_actions(ex, st):
     # Create a spawned file handle for reading/writing to the serial port
     serial_fdspawn = ex.uart.create_uart_spawn()
     if not serial_fdspawn:
-        # Failed uart
+        # Failed uart: shouldn't get here unless there is a connection issue
         return
     ex.uart_ok = True
     # Search for Litex prompt
     expect_result = expect_prompt(ex)
     if not expect_result:
-        # close the uart before executing power down
-        ex.uart.close_uart_serial()
+        # Exit without closing the uart
         return
     ex.login_litex = True
     # Restart BIST command
     bist_command = ex.bist.get_bist_command_str()
     result = ex.uart.sendline(bist_command)
 
+def reset_recovery_state_actions(ex, st):
+
+    # Enter this state from the terminal recovery state in error
+    # where the UART is inactive.
+
+    # Was a reset issued previously? If so, previous reset failed
+    if ex.issued_reset:
+        ex.logger.info("Previous reset recovery failed")
+        ex.unrecoverable = True
+    # Make sure we have a UARTbone
+    if not ex.uartbone:
+        ex.logger.info("No UART bone available for reset")
+        ex.unrecoverable = True
+    # See if we have an open UART connection
+    if not ex.uart.serial_fd:
+        ex.logger.info("UART not available for reset recovery")
+        ex.unrecoverable = True
+
+    # Issue the reset
+    ex.issued_reset = True
+    ex.logger.info("Issuing UART bone reset")
+    ex.uartbone.write(UARTBONE_RESET_ADDR, 1)
+    time.sleep(1)
+
 def unrecoverable_postmortum_state_actions(ex, st):
     '''
-    TODO
-- Stop scrubbing
-- Add steps for figuring out what happened here (uart_bone, readback, etc.)
-- Reconfigure/Repower
+    TODO:
+    - Add steps for figuring out what happened here (uart_bone, readback, etc.)
+    - Reconfigure/Repower
     '''
-    # First try issuing a reset using the UART bone and see if that works
-    if not ex.issued_reset and ex.uartbone:
-        # Issue the reset and go to a different state
-        ex.issued_reset = True
-        ex.logger.info("Issuing UART bone reset")
-        ex.uartbone.write(int(0xf0000800,16), 1)
-        time.sleep(1)
-        return
+
+    # Close the UART
+    ex.uart.close_uart_serial()
 
     # at this point, the previous reset didn't work (or wasn't issued).
     # stop scrubbing and reconfigure
 
     ex.jcm.stop_scrub()
-    pass
 
 def terminating_state_actions(ex, st):
     ''' Terminates experiment
@@ -722,6 +742,7 @@ def build_experiment(args,logger,single_step=False):
     START_BIST_STATE = "Start BIST State"
     BIST_EXECUTION_STATE = "BIST Execution State"
     TERMINAL_RECOVERY_STATE = "Terminal Recovery State"
+    RESET_RECOVERY_STATE = "Reset Recovery State"
     BIST_RECOVERY_STATE = "BIST Recovery State"
     DRAM_RECOVERY_STATE = "DRAM Recovery State"
     UNRECOVERABLE_POSTMORTUM_STATE = "Unrecoverable Postmortum State"
@@ -868,14 +889,21 @@ def build_experiment(args,logger,single_step=False):
         TERMINAL_RECOVERY_STATE,
         terminal_recovery_state_actions,
         Transition(lambda ex, st: ex.uart_ok and ex.login_litex, BIST_EXECUTION_STATE),
-        Transition(lambda ex, st: True, UNRECOVERABLE_POSTMORTUM_STATE)
+        Transition(lambda ex, st: True, RESET_RECOVERY_STATE)
+    ))
+
+    # RESET_RECOVERY_STATE
+    experiment.add_state(ExperimentState(
+        RESET_RECOVERY_STATE,
+        reset_recovery_state_actions,
+        Transition(lambda ex, st: ex.unrecoverable, UNRECOVERABLE_POSTMORTUM_STATE),
+        Transition(lambda ex, st: True, LITEX_PROMPT_STATE)
     ))
 
     # UNRECOVERABLE_POSTMORTUM_STATE
     experiment.add_state(ExperimentState(
         UNRECOVERABLE_POSTMORTUM_STATE,
         unrecoverable_postmortum_state_actions,
-        Transition(lambda ex, st: ex.issued_reset, LITEX_PROMPT_STATE),
         Transition(lambda ex, st: True, CONNECT_UART_STATE)
     ))
 
