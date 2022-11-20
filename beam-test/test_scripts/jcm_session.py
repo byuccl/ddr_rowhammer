@@ -17,6 +17,12 @@ from datetime import datetime
 from paramiko import SSHClient, SSHException, AutoAddPolicy, \
                     BadHostKeyException, AuthenticationException, buffered_pipe
 
+TIME_STRING_FORMAT = "%Y-%m-%d %H:%M:%S"
+# Number of JCM pings before failure
+JCM_PING_COUNT_LIMIT = 10
+# JCM Ping Delay
+JCM_PING_DELAY = 10
+
 class jcm_session():
     '''
     Represents a session on the JCM. This class is used to simplify the operation
@@ -291,11 +297,41 @@ class jcm_session():
         command = ['ping', "-c", '1', self.jcm_ip_addr]
         return subprocess.call(command) == 0
 
+    # Static methods
+
+    def jcm_setup(filename, args, logger = None, stdout_timeprefix = TIME_STRING_FORMAT):
+        '''
+        Creates a log file for the JCM
+        Creates a JCM session from arguments, a logger, etc.
+        Ping JCM to make sure it is there
+        '''
+        # Create JCM log file
+        jcm_log_file = open(filename,"w")
+        # TODO: need to close jcm_log_file: where?
+
+        # Create JCM object
+        jcm = jcm_session.create_jcm_from_args(args, logger, jcm_log_file, stdout_timeprefix = stdout_timeprefix)
+
+        # Ping JCM (wait until ping before trying to connect)
+        for i in range(JCM_PING_COUNT_LIMIT):
+            ping_true = jcm.jcm_ping()
+            logger.info(f"JCM ping attempt {i+1}")
+            if ping_true:
+                break
+            time.sleep(JCM_PING_DELAY)
+        if not ping_true:
+            logger.error("JCM ping failed")
+            return None
+        # Create JCM ssh connection
+        if not jcm.open_jcm():
+            return None
+        return jcm
+
     def jcm_group_args(parser):
         ''' Static function for creating JCM argument group '''
         jcm_arg_group = parser.add_argument_group("JCM")
         jcm_arg_group.add_argument("--jcm_ip", help="JCM IP Address", default = jcm_session.JCM_DEFAULT_IP)
-        jcm_arg_group.add_argument("--jcm_part", help="JCM Part Name", required=True)
+        jcm_arg_group.add_argument("--jcm_part", help="JCM Part Name", default = "xc7a200t")
         jcm_arg_group.add_argument("--jcm_clock", help="JCM Clock Rate", type=int, default = jcm_session.JCM_DEFAULT_CLOCK_RATE)
 
     def create_jcm_from_args(args, status_logging, stdout, stdout_timeprefix = None, username="root", password="chrec"):

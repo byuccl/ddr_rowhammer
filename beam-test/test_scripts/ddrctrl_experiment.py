@@ -199,7 +199,7 @@ def initial_experiment_logging(ex):
     ex.logger.info("\tgit commit date:"+out)
     # Get the current git status (to see if something hadn't been committed)
     p = run( [ 'git', 'status', '--porcelain', ], capture_output=True )
-    lines =  p.stdout.decode()
+    lines =  p.stdout.decode().strip()
     print(lines)
     if lines and len(lines) > 0:
         ex.logger.info("\tgit status:"+out)
@@ -236,6 +236,9 @@ def jcm_setup_state_actions(ex, st):
     ''' Power cycles JCM (if needed), creates JCM log file, creates the JCM object, and opens the JCM
         sets: ex.jcm_ok
     '''
+
+    # TODO: this has been moved to the jcm_session class
+
     ex.jcm_ok = False
     # First power off JCM (if necessary)
     if ex.args.repower_jcm:

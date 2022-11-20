@@ -112,26 +112,26 @@ class usb_uart_expect(usb_uart_base):
             return None
         return result
 
-    def create_usbuartexpect_from_args(args, base_str:str, logging, pexpect_stdout, 
-        timestampformat, logger_prefix="UART"):
-        
-        uart_args = usb_uart_base.get_uart_args(args,base_str)
+def create_usbuartexpect_from_args(args, base_str:str, logging, pexpect_stdout, 
+    timestampformat, logger_prefix="UART"):
+    
+    uart_args = usb_uart_base.get_uart_args(args,base_str)
 
-        uart = usb_uart_expect(uart_args[0], uart_args[1], uart_args[2], 
-            pexpect_stdout = pexpect_stdout, timestampformat = timestampformat, 
-            logger = logging, logger_prefix=logger_prefix)
-        return uart
+    uart = usb_uart_expect(uart_args[0], uart_args[1], uart_args[2], 
+        pexpect_stdout = pexpect_stdout, timestampformat = timestampformat, 
+        logger = logging, logger_prefix=logger_prefix)
+    return uart
 
 def main():
 
     # ls /dev/serial/by-id/
 
     parser = argparse.ArgumentParser()
-    uart_basename = "uartbone"
+    uart_basename = "uart"
     uartbone_args = usb_uart_base.uart_group_args(parser,uart_basename, 
         default_phys_port="1-4.1", default_phys_if=0, default_baud = 115200)
-    parser.add_argument("--read", help="Hex address of read value from uartbone")
-    parser.add_argument("--write", help="Hex address of read value from uartbone and Value to write", nargs=2)
+    parser.add_argument("--read", help="Hex address of read value from uart")
+    parser.add_argument("--write", help="Hex address of read value from uart and Value to write", nargs=2)
     parser.add_argument("--ident", help="Read identification string", action='store_true')
 
     args = parser.parse_args()

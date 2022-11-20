@@ -20,6 +20,10 @@ from subprocess import run
 from netbooter_control import netbooter_control
 from jcm_session import jcm_session
 from uart_control import uart_control
+import usb_uart_expect
+from usb_uart_base import usb_uart_base
+
+#from usb_uart_expect import create_usbuartexpect_from_args
 
 from paramiko import SSHClient, SSHException, AutoAddPolicy, \
                     BadHostKeyException, AuthenticationException, buffered_pipe
@@ -39,9 +43,23 @@ from datetime import date, datetime
 from new_experiment_machine import ExperimentState, NewExperiment
 from ddrctrl_experiment import create_log_path, setup_logger, initial_experiment_logging, create_base_filename_identifier
 
+TIME_STRING_FORMAT = "%Y-%m-%d %H:%M:%S"
+UART_BASENAME = "uart"
+UART_BAUD_RATE = 115200
+UART_PHYS_PORT = "1-4.1"
+UART_PHYS_IF = 0
+
 # State constants
 INITIAL_STARTING_STATE = "Initial Starting State"
 NETBOOTER_SETUP_STATE = "Netbooter Setup State"
+JCM_SETUP_STATE = "JCM Setup State"
+
+UART_SETUP_STATE = "UART Setup State"
+POWER_NEXYS_STATE = "Power Nexys State"
+CONNECT_UART_STATE = "Connect UART State"
+CONFIGURE_NEXYS_STATE = "Configure Nexys State"
+
+
 TERMINATING_STATE = "Terminating State"
 
 def initial_starting_state_actions(ex):
@@ -59,6 +77,43 @@ def netbooter_setup_state_actions(ex):
         return TERMINATING_STATE
 
     # Netbooter ok
+    return JCM_SETUP_STATE
+
+def jcm_setup_state_actions(ex):
+
+    if ex.args.disable_jcm:
+        return UART_SETUP_STATE
+
+    # First power off JCM (if necessary)
+    if ex.args.repower_jcm:
+        ex.netbooter.turn_off_port(ex.args.jcm_netbooter_port)
+        time.sleep(3)
+    # Power on JCM (may already be powered)
+    ex.netbooter.turn_on_port(ex.args.jcm_netbooter_port)
+
+    # Create a JCM log filename
+    jcm_log_filename = create_log_path("JCM",ex.filebasename, ex.log_dir)
+
+    # Create the JCM
+    ex.jcm = jcm_session.jcm_setup(jcm_log_filename,ex.args,ex.logger)
+    if not ex.jcm:
+        return TERMINATING_STATE
+    return UART_SETUP_STATE
+
+def uart_setup_state_actions(ex):
+    # create uart object but do not connect uart
+
+    # Create UART stdout
+    uart_log_filename = create_log_path("UART",ex.filebasename, ex.log_dir)
+    # Create UART log file
+    uart_log_file = open(uart_log_filename,"w")
+
+    # Create UART control object
+    ex.uart = usb_uart_expect.create_usbuartexpect_from_args(ex.args, UART_BASENAME, ex.logger, uart_log_file, 
+        TIME_STRING_FORMAT, logger_prefix="UART")
+    if not ex.uart:
+        return TERMINATING_STATE
+
     return TERMINATING_STATE
 
 def terminating_state_actions(ex):
@@ -95,6 +150,18 @@ def build_experiment(args,logger,single_step=False):
         netbooter_setup_state_actions,
     ))
 
+    # JCM_SETUP_STATE
+    experiment.add_state(ExperimentState(
+        JCM_SETUP_STATE,
+        jcm_setup_state_actions,
+    ))
+
+    # UART_SETUP_STATE
+    experiment.add_state(ExperimentState(
+        UART_SETUP_STATE,
+        uart_setup_state_actions,
+    ))
+
     # TERMINATING_STATE
     # - Do nothing: place holder for ending state. Will set experiment to "stop"
     # - Enter this state when the experiment cannot continue
@@ -107,9 +174,22 @@ def build_experiment(args,logger,single_step=False):
 def main():
 
     parser = argparse.ArgumentParser()
+    # Netbooter arguments
+    parser.add_argument_group(netbooter_control.netbooter_group_args(parser))
+    parser.add_argument("--nexys_netbooter_port", help="Netbooter port for Nexys", type=int, default=2)
+    parser.add_argument("--jcm_netbooter_port", help="Netbooter port for JCM", type=int, default=1)
+    # JCM arguments
+    parser.add_argument_group(jcm_session.jcm_group_args(parser))
+    parser.add_argument("--repower_jcm", help="Repower JCM at start of experiment", action='store_true')
+    parser.add_argument("--disable_jcm", help="Disable JCM", action='store_true')
+    # UART arguments
+    parser.add_argument_group(
+        usb_uart_base.uart_group_args(parser,UART_BASENAME, default_phys_port = UART_PHYS_PORT, 
+        default_phys_if = UART_PHYS_IF, default_baud = UART_BAUD_RATE))
+
+
     parser.add_argument("--log_dir", help="Directory to store log files", type=str)
     parser.add_argument("--single_step", help="Single step through state machine", action='store_true')
-    parser.add_argument_group(netbooter_control.netbooter_group_args(parser))
     args = parser.parse_args()
 
     # Set up logger settings
