@@ -53,11 +53,13 @@ UART_PHYS_IF = 0
 INITIAL_STARTING_STATE = "Initial Starting State"
 NETBOOTER_SETUP_STATE = "Netbooter Setup State"
 JCM_SETUP_STATE = "JCM Setup State"
-
 UART_SETUP_STATE = "UART Setup State"
 POWER_NEXYS_STATE = "Power Nexys State"
 CONNECT_UART_STATE = "Connect UART State"
 CONFIGURE_NEXYS_STATE = "Configure Nexys State"
+
+#ENABLE_SCRUBBING_STATE = "Enable Scrubbing State"
+#LITEX_PROMPT_STATE = "LiteX Login State"
 
 
 TERMINATING_STATE = "Terminating State"
@@ -114,6 +116,30 @@ def uart_setup_state_actions(ex):
     if not ex.uart:
         return TERMINATING_STATE
 
+    return POWER_NEXYS_STATE
+
+def power_nexys_state_actions(ex):
+    ''' Power cycle nexys board (no status) '''
+    turn_off_cmd = ex.netbooter.turn_off_port(ex.args.nexys_netbooter_port)
+    turn_on_cmd = ex.netbooter.turn_on_port(ex.args.nexys_netbooter_port)
+    if not (turn_off_cmd and turn_on_cmd):
+        return TERMINATING_STATE
+    #variable_update_experiment_initialization(ex)
+    return CONNECT_UART_STATE
+
+def connect_uart_state_actions(ex):
+    # Create a spawned file handle for reading/writing to the serial port
+    serial_fdspawn = ex.uart.create_uart_spawn()
+    if not serial_fdspawn:
+        return TERMINATING_STATE
+    return CONFIGURE_NEXYS_STATE
+
+def configure_nexys_state_actions(ex):
+    if ex.args.disable_jcm:
+        return TERMINATING_STATE
+    result = ex.jcm.configure_fpga(ex.args.bitstream)
+    if not result:
+        return TERMINATING_STATE
     return TERMINATING_STATE
 
 def terminating_state_actions(ex):
@@ -160,6 +186,24 @@ def build_experiment(args,logger,single_step=False):
     experiment.add_state(ExperimentState(
         UART_SETUP_STATE,
         uart_setup_state_actions,
+    ))
+
+    # POWER_NEXYS_STATE
+    experiment.add_state(ExperimentState(
+        POWER_NEXYS_STATE,
+        power_nexys_state_actions,
+    ))
+
+    # CONNECT_UART_STATE
+    experiment.add_state(ExperimentState(
+        CONNECT_UART_STATE,
+        connect_uart_state_actions,
+    ))
+
+    # CONFIGURE_NEXYS_STATE
+    experiment.add_state(ExperimentState(
+        CONFIGURE_NEXYS_STATE,
+        configure_nexys_state_actions,
     ))
 
     # TERMINATING_STATE
