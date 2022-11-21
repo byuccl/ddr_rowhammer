@@ -42,9 +42,11 @@ class TestSoC(BaseSoC):
             self.add_uartbone(name=uart_bone, baudrate=115200)
         if with_led_chaser:
             self.add_csr("leds")
+
         # Turn on the PLL DRP
         #soc.crg.pll.expose_drp()
         self.crg.pll.expose_drp()
+
         # Get signals for my debug module
         locked_signal = self.crg.pll.locked
         iaddr = self.cpu.ibus.adr
