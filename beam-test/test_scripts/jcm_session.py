@@ -350,6 +350,7 @@ def main():
     parser.add_argument("--bitfile",required=True)
     parser.add_argument("--fradlist",default="xc7a200t_frad.txt")
     parser.add_argument("--jcm_file",type=str)
+    parser.add_argument("--noscrub",action='store_true')
 
     args = parser.parse_args()
 
@@ -382,6 +383,9 @@ def main():
         return 1
     test_num += 1
 
+    if args.noscrub:
+        return
+        
     # 3. Perform scrubbing (blocking, no frads file, no readback file)
     frads_file = args.fradlist
     print(f"\n{test_num}: Main:Attempting to scrub and block")
