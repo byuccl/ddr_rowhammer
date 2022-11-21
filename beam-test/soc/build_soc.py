@@ -7,6 +7,8 @@ from litex.soc.cores.led import LedChaser
 from litex.soc.interconnect.csr import AutoCSR
 from litex.soc.cores.uart import UARTWishboneBridge
 
+from vexriscvdebug import VexRiscVDebug 
+
 class TestSoC(BaseSoC):
     def __init__(
         self,
@@ -40,6 +42,15 @@ class TestSoC(BaseSoC):
             self.add_uartbone(name=uart_bone, baudrate=115200)
         if with_led_chaser:
             self.add_csr("leds")
+        # Turn on the PLL DRP
+        #soc.crg.pll.expose_drp()
+        self.crg.pll.expose_drp()
+        # Get signals for my debug module
+        locked_signal = self.crg.pll.locked
+        iaddr = self.cpu.ibus.adr
+        icyc = self.cpu.ibus.cyc
+        iclk100 = self.crg.pll.clkin  #  I had to save this in the module - it wasn't saved
+        self.submodules.debug = VexRiscVDebug(iclk100, locked_signal, iaddr, icyc)
 
 
 
