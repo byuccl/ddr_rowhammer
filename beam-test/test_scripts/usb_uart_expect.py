@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import argparse
+import traceback
 import logging
 import re
 import os
@@ -70,7 +71,7 @@ class usb_uart_expect(usb_uart_base):
         try:
             self.serial_fdspawn.sendline(line)
         except Exception as error:
-            self.logging._error("sendline error:"+str(error))
+            self.logging._error("sendline error:"+str(error)+"\n"+traceback.format_exc())
             return False
         return True
 

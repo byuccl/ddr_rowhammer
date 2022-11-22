@@ -51,6 +51,9 @@ UART_PHYS_IF = 0
 DEFAULT_LITEX_LOGIN_DELAY = 15
 DEFAULT_IDENT_ADDRESS = 0xf0001800
 DEFAULT_BIST_PATTERN = 0x5a
+DDR_INITIAL_ADDR = 0x0
+DDR_SIZE = 0x20000000
+DDR_DEFAULT_BIST_MODE = 0
 
 # State constants
 INITIAL_STARTING_STATE = "Initial Starting State"
@@ -82,6 +85,69 @@ def expect_prompt(ex, number_of_enters=1,expect_timeout=DEFAULT_LITEX_LOGIN_DELA
     if ex.uart.has_error():
         return False
     return True
+
+def sdram_bist_pat_command(pattern):
+    ''' Generate command for setting the sdram bist pattern. 
+    Set the byte pattern used by BIST for memory testing
+    This will set all four bytes of a word to the same value.
+    It will only accept one byte (last byte in value you give it)
+    
+    Usage:
+    
+    litex> sdram_bist_pat
+    sdram_bist_pat <value>
+    
+    Example:
+    
+    sdram_bist_pat 0x5a 
+    '''
+    bist_pattern_command = f"sdram_bist_pat {pattern}"
+    return bist_pattern_command
+
+def sdram_bist_gen_command(base = DDR_INITIAL_ADDR, length = DDR_SIZE, data_mode = DDR_DEFAULT_BIST_MODE):
+    ''' Generate the sdram_bist_gen command for initializing memory
+    Initialize the memory. This command will write a word
+    using four bytes of the pattern to all locations specified
+    by the arguments. The first argument is the base address
+    to do the write. This is the DRAM base address meaning
+    that the first address is 0x0 (Even though it is mapped
+    to another location within the system address space).
+    The next argument is the length in bytes. The DDR size
+    is 0x20000000 bytes or 512 MiB. The last
+    argument is the data mode. We are using the '0'
+    pattern mode.
+    
+    Usage:
+    
+    litex> sdram_bist_gen
+    sdram_bist_gen <base> <length> [<data_mode>]
+    base     : base address (starts at zero)
+    length   : DMA block size in bytes
+    data_mode: 0=pattern, 1=inc, 2=random
+    
+    Example:
+    
+    sdram_bist_gen 0x0 0x20000000 0        
+    '''
+    bist_command = f"sdram_bist_pat {base} {length} {str(data_mode)}"
+    return bist_command
+
+def sdram_bist_chk_command(base = DDR_INITIAL_ADDR, length = DDR_SIZE, data_mode = DDR_DEFAULT_BIST_MODE):
+    ''' Check the memory
+    Check memory. This command checks the memory using DMA against the given data mode.
+    The first argument is the base, the second is the length, and the third the mode.
+    
+    Usage:
+    
+    litex> sdram_bist_chk
+    sdram_bist_chk <base> <length> [<data_mode>]
+    base     : base address (starts at zero)
+    length   : DMA block size in bytes
+    data_mode: 0=pattern, 1=inc, 2=random
+    
+    '''
+    bist_check_command = f"sdram_bist_chk {str(base)} {str(length)} {str(data_mode)}"
+    return bist_check_command
 
 def initial_starting_state_actions(ex):
     ''' Do nothing - just an entry point for the experiment. Executed only once. 
@@ -214,30 +280,37 @@ def init_mem_state_actions(ex):
         return TERMINATING_STATE
 
     # 2. Set the bist pattern
-    #  'sdram_bist_pad <pattern>'
-    bist_pattern_command = f"sdram_bist_pat {ex.args.default_bist_pattern}"
+    bist_pattern_command = sdram_bist_pat_command(ex.args.default_bist_pattern)
     result = ex.uart.sendline(bist_pattern_command)
 
-    # Check for prompt? (bad comand?)
+    # Check for prompt
+    expect_result = expect_prompt(ex, number_of_enters=0)
+    if not expect_result:
+        # Problem: for now exit
+        return TERMINATING_STATE
 
-    # 3. Initialize the memory
-    # 'sdram_bist_gen 0x0 0x2000000 0'
+    # Initialize the memory. 
     expect_result = expect_prompt(ex)
     if not expect_result:
         # Problem: for now exit
         return TERMINATING_STATE
-    bist_set_mem_cmd = f"sdram_bist_gen 0x0 0x2000000 0"
+    bist_set_mem_cmd = sdram_bist_gen_command() # use defaults for full memory clearing
     result = ex.uart.sendline(bist_set_mem_cmd)
 
     return CHECK_MEM_STATE
 
 def check_mem_state_actions(ex):
+
     expect_result = expect_prompt(ex)
     if not expect_result:
         # Problem: for now exit
         return TERMINATING_STATE
-    bist_check_command = f"sdram_bist_chk 0x0 0x2000000 0"
+    bist_check_command = sdram_bist_chk_command()
     result = ex.uart.sendline(bist_check_command)
+
+    # BIST title line
+    #^M                          WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS        SEC        DED
+    BIST_TITLE_REGEX = "WR-BW\(MiB/s\) RD-BW\(MiB/s\)  TESTED\(MiB\)     ERRORS        SEC        DED"
 
     return TERMINATING_STATE
 
