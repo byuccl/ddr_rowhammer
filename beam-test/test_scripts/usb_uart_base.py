@@ -65,6 +65,9 @@ class usb_uart_base():
         self.serial_fd = None
         # timeout for reads and writes
         self.timeout = int(timeout)
+        self.EOF = False
+        self.unicode_error = False 
+        self.error = False
 
 
     def get_uart_dev_str(self, max_tty_find_attempts = MAX_FIND_TTY_ATTEMPTS):
@@ -211,6 +214,8 @@ class usb_uart_base():
         ''' Static function for creating an argument group for given UART.
         A base string is needed for the arguments (make unique for multiple UARTs).
         Default can optionally be provided when creating these arguments.
+
+        Returns the group of arguments
         '''
         argument_group_name = f"{base_str}_uart"
         uart_arg_group = parser.add_argument_group(argument_group_name)
@@ -232,6 +237,7 @@ class usb_uart_base():
         if default_baud:
             arg.default=default_baud
             arg.required=False
+        return uart_arg_group
 
     def get_uart_args(args, base_str:str):
         ''' Static function for parsing the arguments and returning a tuple  '''
