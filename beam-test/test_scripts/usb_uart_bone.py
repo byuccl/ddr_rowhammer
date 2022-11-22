@@ -19,7 +19,6 @@ CMD_READ_BURST_INCR   = 0x02
 CMD_WRITE_BURST_FIXED = 0x03
 CMD_READ_BURST_FIXED  = 0x04
 
-
 class usb_uart_bone(usb_uart_base):
     '''
     Provides usb uart "etherbone" functionality without having to use the server.
@@ -119,7 +118,7 @@ class usb_uart_bone(usb_uart_base):
             offset += size
             length -= size
 
-    def read_ident(self, addr=0xf0001800):
+    def read_ident(self, addr):
         MAX_CHARS = 256
         char_addr = addr
         ident_str = ""
@@ -134,9 +133,20 @@ class usb_uart_bone(usb_uart_base):
 
         return ident_str
 
+    def uartbone_group_args(parser,base_str:str, default_phys_port = None, default_phys_if = None, default_baud = None):
+        ''' Static function for creating an argument group for given UART.
+        A base string is needed for the arguments (make unique for multiple UARTs).
+        Default can optionally be provided when creating these arguments.
+        '''
+        # Add the default arguments associated with the UART
+        group_args = usb_uart_base.uart_group_args(parser,base_str,
+            default_phys_port=default_phys_port,default_phys_if=default_phys_if,default_baud=default_baud)
+        # Add uart bone specific parameters
+
+        return group_args
+
     def create_uartbone_from_args(args, base_str:str, logging, logger_prefix="UARTBONE"):
         uart_args = usb_uart_base.get_uart_args(args,base_str)
-
         uart = usb_uart_bone(uart_args[0], uart_args[1], uart_args[2], logger = logging, logger_prefix=logger_prefix)
         return uart
 
@@ -146,7 +156,7 @@ def main():
 
     parser = argparse.ArgumentParser()
     uart_basename = "uartbone"
-    uartbone_args = usb_uart_base.uart_group_args(parser,uart_basename, 
+    uartbone_args = usb_uart_bone.uartbone_group_args(parser,uart_basename, 
         default_phys_port="1-4.1", default_phys_if=0, default_baud = 115200)
     parser.add_argument("--read", help="Hex address of read value from uartbone")
     parser.add_argument("--write", help="Hex address of read value from uartbone and Value to write", nargs=2)
