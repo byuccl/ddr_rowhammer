@@ -41,12 +41,12 @@ from pkg_resources import require
 from serial import Serial  # from pyserial
 from datetime import date, datetime
 from new_experiment_machine import ExperimentState, NewExperiment
-from ddrctrl_experiment import create_log_path, setup_logger, initial_experiment_logging, create_base_filename_identifier
+from ddrctrl_experiment import create_log_path, setup_logger, initial_experiment_logging, create_base_filename_identifier, create_base_filename
 
 TIME_STRING_FORMAT = "%Y-%m-%d %H:%M:%S"
 UART_BASENAME = "uart"
 UART_BAUD_RATE = 115200
-UART_PHYS_PORT = "1-4.1"
+UART_PHYS_PORT = "1-4.2"
 UART_PHYS_IF = 0
 DEFAULT_LITEX_LOGIN_DELAY = 15
 DEFAULT_IDENT_ADDRESS = 0xf0001800
@@ -162,8 +162,9 @@ def enable_scrubbing_state_actions(ex):
     if ex.args.disable_jcm:
         return LITEX_PROMPT_STATE
 
-    if ex.args.disable_scrubbing:
+    if not ex.args.enable_scrubbing:
         ex.scrubbing_ok = True
+        ex.logger.info("Scrubber disabled")
         return LITEX_PROMPT_STATE
 
     ex.scrubbing_ok = False
@@ -185,7 +186,7 @@ def initial_litex_prompt_state_actions(ex):
     MAX_LOGIN_ATTEMPS = 3
     ex.login_litex = False
     ex.initial_login_terminate = False
-    expect_result = expect_prompt(ex)
+    expect_result = expect_prompt(ex,number_of_enters=2)
     if expect_result:
         # All is good - move on
         return TERMINATING_STATE
@@ -301,16 +302,23 @@ def main():
     parser.add_argument_group(
         usb_uart_base.uart_group_args(parser,UART_BASENAME, default_phys_port = UART_PHYS_PORT, 
         default_phys_if = UART_PHYS_IF, default_baud = UART_BAUD_RATE))
-
+    # Ungrouped arguments
+    parser.add_argument("--bitstream", help="filename of bitstream", type=str)
     parser.add_argument("--log_dir", help="Directory to store log files", type=str)
+    parser.add_argument("--enable_scrubbing", help="Directory to store log files", action='store_true')
     parser.add_argument("--single_step", help="Single step through state machine", action='store_true')
     args = parser.parse_args()
 
-    # Set up logger settings
-    #filebasename = create_base_filename(args.bitstream)
-    filebasename = create_base_filename_identifier("DDR","bitstream")
+    # Bitstream/JCM?
+    if args.disable_jcm:
+        # Assume bitstream is programmed from PROM on power up
+        # Come up with random name
+        filebasename = create_base_filename_identifier("DDR","unknown")
+    else:
+        filebasename = create_base_filename(args.bitstream, prefix="DDR") # from ddrctrl_Experiment
     print(filebasename)
 
+    # Set up logger settings
     log_dir = Path(".")
     if args.log_dir:
         log_dir = Path(args.log_dir)
