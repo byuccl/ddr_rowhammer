@@ -44,8 +44,7 @@ class TestSoC(BaseSoC):
             self.add_csr("leds")
 
         # Turn on the PLL DRP
-        #soc.crg.pll.expose_drp()
-        self.crg.pll.expose_drp()
+        #self.crg.pll.expose_drp()
 
         # Get signals for my debug module
         locked_signal = self.crg.pll.locked
