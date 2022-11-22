@@ -60,6 +60,7 @@ DEFAULT_BIST_ADDR_MODE = 1 # Start reading/writing data with addresses linearly.
 LITEX_LOGIN_DELAY = 10
 
 UARTBONE_RESET_ADDR = 0xf0000800
+UARTBONE_IDENT_ADDR = 0xf0001800
 
 class bist_state(object):
     ''' This class keeps track of the state of a running bist command '''
@@ -322,7 +323,8 @@ def setup_uartbone_state_actions(ex, st):
     ex.uart_fd = ex.uartbone.create_uart_serial()
     if not ex.uart_fd:
         ex.logger.error("Failed to connect to UART Bone")
-    ident_str = ex.uartbone.read_ident()
+    uart_bone_ident_addr = int(ex.args.uart_bone_ident,16)
+    ident_str = ex.uartbone.read_ident(uart_bone_ident_addr)
     ex.logger.info("UARTBONE ID Str="+ident_str)
 
 def enable_scrubbing_state_actions(ex, st):
@@ -977,6 +979,7 @@ def main():
     parser.add_argument("--bist_mem_burst_length", help="Burst length of BIST command", type=int, default = DEFAULT_BIST_BURST_LENGTH)
     parser.add_argument("--bist_addr_mode", help="Burst length of BIST command", type=int, default=DEFAULT_BIST_ADDR_MODE)
     parser.add_argument("--no_uart_bone", help="Disable UART wishbone interface", action='store_true')
+    parser.add_argument("--uart_bone_ident", help="Hex Address of uart bone identifier register", default=UARTBONE_IDENT_ADDR)
     args = parser.parse_args()
 
     # Set up logger settings
