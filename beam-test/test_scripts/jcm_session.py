@@ -259,6 +259,77 @@ class jcm_session():
 
         return True
 
+    def read_device_dna(self):
+        '''
+        110010 (50) is 64 bit FUSE_DNA register
+        010111 (23) is 57 bit XSC_DNA register
+[root@arch jcm_apps]# ./jcm_jtag_reg.elf -r 50 --swap -w 64
+Creating JCM Hardware on port 0 with 0 shifts
+Using Default Chain String: [ 6 ]
+JCM Clock=1000000
+Register 0x32=
+ 0:0x01b72a37
+ 1:0x2a0f5e44
+[root@arch jcm_apps]#
+
+[root@arch jcm_apps]# ./jcm_jtag_reg.elf -r 23 --swap -w 57
+Creating JCM Hardware on port 0 with 0 shifts
+Using Default Chain String: [ 6 ]
+JCM Clock=1000000
+Register 0x17=
+ 0:0xffffffff
+ 1:0xffffffff
+[root@arch jcm_apps]# ./jcm_jtag_reg.elf -r 23 --swap -w 57
+
+        '''
+        self._info("Attempting JCM device DNA read")
+
+        # Default configuration command
+        CONFIGURATION_COMMAND = "~/jcm_apps/jcm_jtag_reg.elf -r 50 --swap -w 64"
+        #config_command = CONFIGURATION_COMMAND.format(part=self.part, clock_rate = self.jtag_clock, bitstream=bitstream_filename)
+
+        command_ret = self.execute_jcm_command(CONFIGURATION_COMMAND, block=True, save_output=True)
+        if not command_ret:
+            return False
+            
+        # Iterate over the output to see if it configured correctly
+        for line in self.jcm_thread_output:
+            #print(line)
+            if "0:" in line:
+                line0 = line.strip()
+            elif "1:" in line:
+                line1 = line.strip()
+        if not line0 or not line1:
+            self._error("Problem reading device DNA")
+            return None
+        return [line0, line1]
+
+    def readback(self, clockrate, part, frad_file, readback_file, capture=False, glut_b = False):
+        '''
+[root@arch jcm_apps]# mkdir /mnt/ramdisk
+[root@arch jcm_apps]# mount -t ramfs -o size 64m /mnt/ramdisk
+
+./jcm_apps/jcm_readback.elf -c 30000000 --part xc7a200t --frad_file ./xc7a200t_frad.txt --write_readback /mnt/ramdisk/temp.bin --jtag
+
+        '''
+        self._info("Attempting JCM readback")
+
+        # Default configuration command
+        CONFIGURATION_COMMAND = f"~/jcm_apps/jcm_readback.elf -c {clockrate} -part {part} --frad_file {frad_file} --write_readback {readback_file}"
+        if capture:
+            CONFIGURATION_COMMAND += " --capture"
+        if glut_b:
+            CONFIGURATION_COMMAND += " --glut_b"
+
+        command_ret = self.execute_jcm_command(CONFIGURATION_COMMAND, block=True, save_output=True)
+        if not command_ret:
+            return False
+            
+        # Iterate over the output to see if it configured correctly
+        # Check for problems?
+        return self.jcm_thread_output
+
+
     def create_frad_list(self, frads_filename):
         pass
 

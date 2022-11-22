@@ -306,6 +306,12 @@ def configure_nexys_state_actions(ex, st):
     ''' Configures the Nexys board
         sets: ex.configure_ok
     '''
+    # Print id code
+    result = ex.jcm.read_device_dna()
+    if not result:
+        ex.logger.error("Failed to read DNA")
+    else:
+        ex.logger.info("Device DNA:"+result[0] +" "+result[1])
     ex.configure_ok = False
     result = ex.jcm.configure_fpga(ex.args.bitstream)
     ex.configure_ok = result
