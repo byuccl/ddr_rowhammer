@@ -506,14 +506,13 @@ def bist_execution_state_actions(ex, st):
                 continue
             else: # have an invalid title line
                 consecutive_bad_title_lines += 1
-                if consecutive_bad_title_lines == 1:
-                    ex.logger.info(f"BIST:Bad title line ({consecutive_bad_title_lines}):")
-                    # Ignore line but continue
-                    continue
-                elif consecutive_bad_title_lines > MAX_CONSECUTIVE_BAD_TITLE_LINES:
+                ex.logger.info(f"BIST:Bad title line ({consecutive_bad_title_lines}):")
+                if consecutive_bad_title_lines > MAX_CONSECUTIVE_BAD_TITLE_LINES:
                     ex.logger.error("BIST:Max consecutive bad title lines")
                     ex.bist_error = True # System error: will go to a recovery state
                     break
+                # Skip to next line for bad title
+                continue
 
         else: # Expecting Data
             if ex.uart.serial_fdspawn.match and match_index == DATA_INDEX:
@@ -541,9 +540,8 @@ def bist_execution_state_actions(ex, st):
 
             else: # bad data line
                 consecutive_bad_data_lines += 1
-                if consecutive_bad_data_lines == 1:
-                    ex.logger.info("BIST:Bad data line")
-                elif consecutive_bad_data_lines >= MAX_CONSECUTIVE_BAD_DATA_LINES:
+                ex.logger.info(f"BIST:Bad data line ({consecutive_bad_data_lines})")
+                if consecutive_bad_data_lines >= MAX_CONSECUTIVE_BAD_DATA_LINES:
                     ex.logger.error("BIST:Max consecutive bad data lines")
                     ex.bist_error = True # System error: will go to a recovery state
                     break
