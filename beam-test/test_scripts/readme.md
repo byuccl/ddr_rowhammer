@@ -21,7 +21,13 @@
 
 `python3 ddrctrl_experiment.py --jcm_part xc7a200t --bitstream /root/newtobetmred_tmr.bit --log_dir ./tmp --jcm_clock 30_000_000 --frads_file xc7a200t_frad.txt`
 
-`python3 ddrctrl_experiment.py --jcm_part xc7a200t --bitstream /root/newtobetmred_tmr.bit --log_dir ./tmp --jcm_clock 30_000_000 --frads_file xc7a200t_frad.txt --fault_injection`
+`python3 ddrctrl_experiment.py --jcm_part xc7a200t --bitstream /root/newtobetmred_tmr.bit --log_dir ./tmp --jcm_clock 30_000_000 --frads_file xc7a200t_frad.txt --fault_injection -uart_bone_ident 0xf0001800`
+
+## ddrdata_experiment.py
+
+* With JCM (assume already configured)
+
+`python3 ddrdata_experiment.py --log_dir ./tmp --bitstream /root/newtobetmred_tmr.bit --jcm_clock 30_000_000`
 
 # Error Logs
 

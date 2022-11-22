@@ -50,6 +50,7 @@ UART_PHYS_PORT = "1-4.2"
 UART_PHYS_IF = 0
 DEFAULT_LITEX_LOGIN_DELAY = 15
 DEFAULT_IDENT_ADDRESS = 0xf0001800
+DEFAULT_BIST_PATTERN = 0x5a
 
 # State constants
 INITIAL_STARTING_STATE = "Initial Starting State"
@@ -61,6 +62,8 @@ CONNECT_UART_STATE = "Connect UART State"
 CONFIGURE_NEXYS_STATE = "Configure Nexys State"
 ENABLE_SCRUBBING_STATE = "Enable Scrubbing State"
 LITEX_PROMPT_STATE = "LiteX Login State"
+INIT_MEM_STATE = "Initialize Memory State"
+CHECK_MEM_STATE = "Check Memory State"
 
 
 TERMINATING_STATE = "Terminating State"
@@ -189,7 +192,7 @@ def initial_litex_prompt_state_actions(ex):
     expect_result = expect_prompt(ex,number_of_enters=2)
     if expect_result:
         # All is good - move on
-        return TERMINATING_STATE
+        return INIT_MEM_STATE
         #ex.login_litex = True
         #ex.failed_initial_login = 0  # Reset counter for next time around
     else:
@@ -200,7 +203,45 @@ def initial_litex_prompt_state_actions(ex):
         else:
             # Try again
             ex.failed_initial_login += 1
+    return INIT_MEM_STATE
+
+def init_mem_state_actions(ex):
+
+    # 1. Get litex prompt
+    expect_result = expect_prompt(ex)
+    if not expect_result:
+        # Problem: for now exit
+        return TERMINATING_STATE
+
+    # 2. Set the bist pattern
+    #  'sdram_bist_pad <pattern>'
+    bist_pattern_command = f"sdram_bist_pat {ex.args.default_bist_pattern}"
+    result = ex.uart.sendline(bist_pattern_command)
+
+    # Check for prompt? (bad comand?)
+
+    # 3. Initialize the memory
+    # 'sdram_bist_gen 0x0 0x2000000 0'
+    expect_result = expect_prompt(ex)
+    if not expect_result:
+        # Problem: for now exit
+        return TERMINATING_STATE
+    bist_set_mem_cmd = f"sdram_bist_gen 0x0 0x2000000 0"
+    result = ex.uart.sendline(bist_set_mem_cmd)
+
+    return CHECK_MEM_STATE
+
+def check_mem_state_actions(ex):
+    expect_result = expect_prompt(ex)
+    if not expect_result:
+        # Problem: for now exit
+        return TERMINATING_STATE
+    bist_check_command = f"sdram_bist_chk 0x0 0x2000000 0"
+    result = ex.uart.sendline(bist_check_command)
+
     return TERMINATING_STATE
+
+
 
 def terminating_state_actions(ex):
     ''' Terminates experiment
@@ -278,6 +319,21 @@ def build_experiment(args,logger,single_step=False):
         initial_litex_prompt_state_actions,
     ))
 
+    # INIT_MEM_STATE
+    # - Start BIST command
+    experiment.add_state(ExperimentState(
+        INIT_MEM_STATE,
+        init_mem_state_actions,
+    ))
+
+    # CHECK_MEM_STATE
+    # - Start BIST command
+    experiment.add_state(ExperimentState(
+        CHECK_MEM_STATE,
+        check_mem_state_actions,
+    ))
+
+
     # TERMINATING_STATE
     # - Do nothing: place holder for ending state. Will set experiment to "stop"
     # - Enter this state when the experiment cannot continue
@@ -304,6 +360,7 @@ def main():
         default_phys_if = UART_PHYS_IF, default_baud = UART_BAUD_RATE))
     # Ungrouped arguments
     parser.add_argument("--bitstream", help="filename of bitstream", type=str)
+    parser.add_argument("--default_bist_pattern", help="Pattern for memory test (i.e., 0x5a)", default = DEFAULT_BIST_PATTERN)
     parser.add_argument("--log_dir", help="Directory to store log files", type=str)
     parser.add_argument("--enable_scrubbing", help="Directory to store log files", action='store_true')
     parser.add_argument("--single_step", help="Single step through state machine", action='store_true')
