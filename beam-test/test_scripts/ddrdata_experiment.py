@@ -55,6 +55,11 @@ DDR_INITIAL_ADDR = 0x0
 DDR_SIZE = 0x20000000
 DDR_DEFAULT_BIST_MODE = 0
 
+DEFAULT_BIST_BLOCK_SIZE = 0x2000 # 4k blocks
+DEFAULT_BIST_ADDR_MODE = 1       # "inc" address mode
+DEFAULT_BIST_DATA_MODE = 0       # pattern data
+DEFAULT_BIST_WRITE_MODE =1       # write once
+
 # State constants
 INITIAL_STARTING_STATE = "Initial Starting State"
 NETBOOTER_SETUP_STATE = "Netbooter Setup State"
@@ -66,10 +71,12 @@ CONFIGURE_NEXYS_STATE = "Configure Nexys State"
 ENABLE_SCRUBBING_STATE = "Enable Scrubbing State"
 LITEX_PROMPT_STATE = "LiteX Login State"
 INIT_MEM_STATE = "Initialize Memory State"
-CHECK_MEM_STATE = "Check Memory State"
-
+RUN_BIST_STATE = "Run Bist State"
+UART_RECOVERY_STATE = "UART recovery state"
 
 TERMINATING_STATE = "Terminating State"
+
+
 
 def expect_prompt(ex, number_of_enters=1,expect_timeout=DEFAULT_LITEX_LOGIN_DELAY):
     ''' Send "Enter" and expects the "litex" prompt (does this once)
@@ -147,6 +154,30 @@ def sdram_bist_chk_command(base = DDR_INITIAL_ADDR, length = DDR_SIZE, data_mode
     
     '''
     bist_check_command = f"sdram_bist_chk {str(base)} {str(length)} {str(data_mode)}"
+    return bist_check_command
+
+def sdram_bist_command(length = DEFAULT_BIST_BLOCK_SIZE, addr_mode = DEFAULT_BIST_ADDR_MODE, 
+    data_mode = DEFAULT_BIST_DATA_MODE, write_mode = DEFAULT_BIST_WRITE_MODE):
+    ''' Start the bist check command
+
+litex> sdram_bist
+sdram_bist <length> [<addr_mode>] [<data_mode>] [<write_mode>]
+length    : DMA block size in bytes
+addr_mode : 0=fixed (starts at zero), 1=inc, 2=random
+data_mode : 0=pattern, 1=inc, 2=random
+write_mode: 0=no_write, 1=write_once, 2=write_and_read
+
+    length: The size of the DMA block check (0x2000 = 4K)
+            (Breaks up the full bist check into blocks)
+    addr_mode: stay at same place, increment, or pick random
+    data_mode: data type to write
+    write_mode: how often to write
+
+    example:
+
+litex> sdram_bist 0x1000 1 0 1    
+    '''
+    bist_check_command = f"sdram_bist {str(length)} {str(addr_mode)} {str(data_mode)} {str(write_mode)}"
     return bist_check_command
 
 def initial_starting_state_actions(ex):
@@ -269,7 +300,8 @@ def initial_litex_prompt_state_actions(ex):
         else:
             # Try again
             ex.failed_initial_login += 1
-    return INIT_MEM_STATE
+    # Too many failed attempts - terminate
+    return TERMINATING_STATE
 
 def init_mem_state_actions(ex):
 
@@ -289,31 +321,129 @@ def init_mem_state_actions(ex):
         # Problem: for now exit
         return TERMINATING_STATE
 
-    # Initialize the memory. 
-    expect_result = expect_prompt(ex)
-    if not expect_result:
-        # Problem: for now exit
-        return TERMINATING_STATE
-    bist_set_mem_cmd = sdram_bist_gen_command() # use defaults for full memory clearing
-    result = ex.uart.sendline(bist_set_mem_cmd)
+    # Start the bist command
+    bist_set_cmd = sdram_bist_command()    # Use defaults for now
+    result = ex.uart.sendline(bist_set_cmd)
 
-    return CHECK_MEM_STATE
+    return RUN_BIST_STATE
 
-def check_mem_state_actions(ex):
+def run_bist_state_actions(ex):
+    ''' The bist command has been started when this state commences. Parse the
+    bist data. '''
 
-    expect_result = expect_prompt(ex)
-    if not expect_result:
-        # Problem: for now exit
-        return TERMINATING_STATE
-    bist_check_command = sdram_bist_chk_command()
-    result = ex.uart.sendline(bist_check_command)
-
+    BIST_TEXT_DELAY = 15
+    MAX_CONSECUTIVE_UNICODE_ERRORS = 20
+    MAX_CONSECUTIVE_UNMATCHED_LINES = 10
     # BIST title line
-    #^M                          WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS        SEC        DED
-    BIST_TITLE_REGEX = "WR-BW\(MiB/s\) RD-BW\(MiB/s\)  TESTED\(MiB\)     ERRORS        SEC        DED"
+    #                          WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS        SEC        DED
+    #WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS
+    #BIST_TITLE_REGEX = "WR-BW\(MiB/s\) RD-BW\(MiB/s\)  TESTED\(MiB\)     ERRORS(        SEC        DED){0,1}"
+    BIST_TITLE_REGEX = "WR-BW\(MiB/s\) RD-BW\(MiB/s\)  TESTED\(MiB\)     ERRORS\n"
+    # BIST data line
+    #           0         1296         2282          2
+    #BIST_DATA_REGEX = "\d+\s+\d+\s+\d+\s+\d+(\s+\d+\s+\d+){0,1}"
+    BIST_DATA_REGEX = "\d+\s+\d+\s+\d+\s+\d+\n"
+    # Error message
+    #error addr: 0x40001000, content: 0xa5a5a4a5, expected: 0xa5a5a5a5
+    ERROR_MSG_REGEX = "error addr: (0x[a-f0-9]{8}), content: (0x[a-f0-9]{8}), expected: (0x[a-f0-9]{8})"
+    # Error summary
+    #ERRORS (CPU): 1
+    ERROR_SUMMARY_REGEX = "ERRORS \(CPU\): (\d+)"
 
+    consecutive_unicode_errors = 0
+    consecutive_invalid_line = 0
+
+    while(1):
+        # Constants indicating position in regex array of each expression
+        TITLE_INDEX=0
+        DATA_INDEX=1
+        ERROR_MSG_INDEX=2
+        ERROR_SUMMARY_INDEX=3
+
+        # Get a line of data
+        match_index = ex.uart.expect([BIST_TITLE_REGEX,BIST_DATA_REGEX,ERROR_MSG_REGEX,ERROR_SUMMARY_REGEX],timeout=BIST_TEXT_DELAY)
+        #match_index = ex.uart.expect("(.*)\r",timeout=BIST_TEXT_DELAY)
+
+        # Process expect system errors
+        if ex.uart.has_uart_error():
+            # General UART errors (Timeout, etc)
+            return UART_RECOVERY_STATE
+
+        elif ex.uart.unicode_error:
+            # Unicode errors over UART (look for a consecutive number of them)
+            consecutive_unicode_errors += 1
+            ex.logger.info(f"BIST:Unicode error (consecutive_unicode_errors)")
+            if consecutive_unicode_errors >= MAX_CONSECUTIVE_UNICODE_ERRORS:
+                ex.logger.info(f"BIST:Max Unicode Errors")
+                return UART_RECOVERY_STATE
+                # Don't process this unicode error line
+            continue
+        else:
+            # No UART/system errors at this point
+            # Clear any unicode flags and go to title state 
+            #  (not sure where we are in bist execution - will likely get data errors after this)
+            if consecutive_unicode_errors > 0:
+                consecutive_unicode_errors == 0
+
+        if ex.uart.serial_fdspawn.match:
+            consecutive_invalid_line = 0
+            #print("before:"+ex.uart.serial_fdspawn.before)
+            #for c in ex.uart.serial_fdspawn.before:
+            #    print(f"{c}:{ord(c)} ",end="")
+            #print()
+            #print("match:"+ex.uart.serial_fdspawn.match.group(0))
+            #print("after:"+ex.uart.serial_fdspawn.after)
+            #continue
+            # matching line
+            if match_index == TITLE_INDEX:
+                # valid title - move on
+                ex.logger.info(f"BIST:Header")
+                continue
+            if match_index == DATA_INDEX:
+                # valid data - move on
+                #ex.logger.info(f"BIST:Data")
+                continue
+            if match_index == ERROR_MSG_INDEX:
+                address = ex.uart.serial_fdspawn.match.group(1)
+                received = int(ex.uart.serial_fdspawn.match.group(2),16)
+                expected = int(ex.uart.serial_fdspawn.match.group(3),16)
+                diff = received ^ expected
+                ex.logger.error(f"BIST:ERROR {address} XOR=0x{diff:08X}")
+                #ex.logger.error(f"BIST:ERROR {address} received={received:08X} expected={expected:08X} XOR=0x{diff:08X}")
+                continue
+            if match_index == ERROR_SUMMARY_INDEX:
+                error_count = ex.uart.serial_fdspawn.match.group(1)
+                #strigd = ex.uart.serial_fdspawn.match.group(0)
+                ex.logger.error(f"BIST:Errors={error_count}")
+                continue
+            ex.logger.error(f"BIST:Shouldn't get here"+ex.uart.serial_fdspawn.match.group(0))
+            continue
+        else:
+            # Does not match a line
+            consecutive_invalid_line += 1
+            ex.logger.error(f"BIST:Invalid line {consecutive_invalid_line}:"+ex.uart.serial_fdspawn.match.group(0))
+            if consecutive_invalid_line > MAX_CONSECUTIVE_UNMATCHED_LINES:
+                ex.logger.error(f"BIST:too many invalid lines")
+                return UART_RECOVERY_STATE
+
+'''
+           0         1296          743          2
+           0         1296         2044          2
+           0         1296         3345          2
+error addr: 0x40001000, content: 0xa5a5a4a5, expected: 0xa5a5a5a5
+ERRORS (CPU): 1
+           0         1296          551          3
+           0         1296         1852          3
+WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS
+           0         1296         3153          3
+           0         1296          358          3
+
+    '''
+
+def uart_recovery_state_actions(ex):
+    ''' For now, terminate
+    '''
     return TERMINATING_STATE
-
 
 
 def terminating_state_actions(ex):
@@ -393,6 +523,25 @@ def build_experiment(args,logger,single_step=False):
     ))
 
     # INIT_MEM_STATE
+    experiment.add_state(ExperimentState(
+        INIT_MEM_STATE,
+        init_mem_state_actions,
+    ))
+
+    # RUN_BIST_STATE
+    experiment.add_state(ExperimentState(
+        RUN_BIST_STATE,
+        run_bist_state_actions,
+    ))
+
+    # UART_RECOVERY_STATE
+    experiment.add_state(ExperimentState(
+        UART_RECOVERY_STATE,
+        uart_recovery_state_actions,
+    ))
+
+    '''
+    # INIT_MEM_STATE
     # - Start BIST command
     experiment.add_state(ExperimentState(
         INIT_MEM_STATE,
@@ -405,6 +554,7 @@ def build_experiment(args,logger,single_step=False):
         CHECK_MEM_STATE,
         check_mem_state_actions,
     ))
+    '''
 
 
     # TERMINATING_STATE

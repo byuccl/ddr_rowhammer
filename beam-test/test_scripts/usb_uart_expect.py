@@ -113,6 +113,14 @@ class usb_uart_expect(usb_uart_base):
             return None
         return result
 
+    def has_error(self):
+        ''' Determines whether any error had occured on the last call to 'expect' '''
+        #if self.timeout or self.EOF or self.unicode_error or self.error:
+        if self.EOF or self.unicode_error or self.error or self.timeout_error:
+            return True
+        return False
+
+
 def create_usbuartexpect_from_args(args, base_str:str, logging, pexpect_stdout, 
     timestampformat, logger_prefix="UART"):
     

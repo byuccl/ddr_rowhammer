@@ -246,7 +246,7 @@ class jcm_session():
         if not command_ret:
             return False
             
-        # Iterate over the output to see if it configured correcty
+        # Iterate over the output to see if it configured correctly
         for line in self.jcm_thread_output:
             #print(line)
             if "Success" in line:
