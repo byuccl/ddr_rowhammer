@@ -6,6 +6,7 @@ ninja
 -e dependencies/litedram
 -e dependencies/liteeth
 -e dependencies/liteiclink
+-e dependencies/litespi
 -e dependencies/pythondata-cpu-vexriscv
 -e dependencies/pythondata-software-picolibc
 -e dependencies/pythondata-software-compiler_rt

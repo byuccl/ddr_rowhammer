@@ -27,3 +27,6 @@
 [submodule "beam-test/soc/dependencies/migen"]
 	path = beam-test/soc/dependencies/migen
 	url = https://github.com/m-labs/migen.git
+[submodule "beam-test/soc/dependencies/litespi"]
+	path = beam-test/soc/dependencies/litespi
+	url = https://github.com/litex-hub/litespi
