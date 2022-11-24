@@ -30,7 +30,7 @@ class TestSoC(BaseSoC):
         with_hyperram=False, 
         with_sdcard=False, 
         with_jtagbone=True, 
-        without_uartbone=False, 
+        uart_bone="usb_fifo",
         with_spi_flash=False,
         with_led_chaser=True, 
         with_video_terminal=False, 
@@ -54,7 +54,7 @@ class TestSoC(BaseSoC):
         with_video_framebuffer = with_video_framebuffer, 
         **kwargs
         )
-        # if not without_uartbone:
+        # if uart_bone:
         #     self.add_uartbone(name=uart_bone, baudrate=115200)
         # if with_led_chaser:
         #     self.add_csr("leds")
@@ -105,7 +105,7 @@ def main():
     target_group.add_argument("--with-video-terminal",    action="store_true",    help="Enable Video Terminal (HDMI)")
     target_group.add_argument("--with-video-framebuffer", action="store_true",    help="Enable Video Framebuffer (HDMI)")
     target_group.add_argument("--with-spi-flash",         action="store_true",    help="Enable SPI Flash (MMAPed).")
-    target_group.add_argument("--uart-bone",              default="usb")
+    target_group.add_argument("--uart_bone",              default="serial",          help="Add uartbone with given serial device.")
     builder_args(parser)
     soc_core_args(parser)
     vivado_build_args(parser)
@@ -113,7 +113,7 @@ def main():
 
     assert not (args.with_etherbone and args.eth_dynamic_ip)
 
-    soc = BaseSoC(
+    soc = TestSoC(
         sys_clk_freq           = int(float(args.sys_clk_freq)),
         iodelay_clk_freq       = int(float(args.iodelay_clk_freq)),
         with_ethernet          = args.with_ethernet,
@@ -123,7 +123,7 @@ def main():
         with_hyperram          = args.with_hyperram,
         with_sdcard            = args.with_sdcard,
         with_jtagbone          = args.with_jtagbone,
-        without_uartbone       = args.without_uartbone,
+        uart_bone              = args.uart_bone,
         with_spi_flash         = args.with_spi_flash,
         with_video_terminal    = args.with_video_terminal,
         with_video_framebuffer = args.with_video_framebuffer,
