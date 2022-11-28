@@ -57,10 +57,13 @@ UARTBONE_UART_BASENAME = "uartbone"
 
 DEFAULT_BIST_BURST_LENGTH = 0x2000 # Default burst length
 DEFAULT_BIST_ADDR_MODE = 1 # Start reading/writing data with addresses linearly.
+DEFAULT_BIST_PATTERN = 0xa5 # Start reading/writing data with addresses linearly.
 LITEX_LOGIN_DELAY = 10
 
-UARTBONE_RESET_ADDR = 0xf0000800
-UARTBONE_IDENT_ADDR = 0xf0001800
+UARTBONE_RESET_ADDR = 0xf0000800  # csr_base,ctrl
+UARTBONE_IDENT_ADDR = 0xf0002000  # csr_base,identifier_mem
+UARTBONE_DEBUG_ADDR = 0xf0001800  # csr_base,debug module
+UARTBONE_DEBUG_I_ADDR = 0x0 
 
 class bist_state(object):
     ''' This class keeps track of the state of a running bist command '''
@@ -68,18 +71,39 @@ class bist_state(object):
     def __init__(self, 
         bist_mem_burst_length:int,
         bist_addr_mode:int,
+        bist_pattern:int,
         ) -> None:
         ''' Initialize class '''
         self.bist_mem_burst_length = bist_mem_burst_length
         self.bist_addr_mode = bist_addr_mode
+        self.bist_pattern = bist_pattern
 
         self.error_cnt = 0
         self.sec_cnt = 0
         self.ded_cnt = 0
 
+    def get_bist_pattern_command_str(self):
+        '''
+        litex> sdram_bist_pat
+        sdram_bist_pat <value>
+        '''
+        cmd_str = "sdram_bist_pat " + str(self.bist_pattern)
+        return cmd_str
+
     def get_bist_command_str(self):
-        ''' Creates a string for the sdram_bist command (Based on parameters of this object) '''
-        cmd_str = "sdram_bist " + str(self.bist_mem_burst_length) + " " + str(self.bist_addr_mode)
+        ''' Creates a string for the sdram_bist command (Based on parameters of this object)
+        litex> sdram_bist
+        sdram_bist <length> [<addr_mode>] [<data_mode>] [<write_mode>]
+        length    : DMA block size in bytes
+        addr_mode : 0=fixed (starts at zero), 1=inc, 2=random
+        data_mode : 0=pattern, 1=inc, 2=random
+        write_mode: 0=no_write, 1=write_once, 2=write_and_read
+        '''
+        #cmd_str = "sdram_bist " + str(self.bist_mem_burst_length) + " " + str(self.bist_addr_mode)
+        # address_mode = 1 (increment)
+        # data_mode = 0 (pattern)
+        # write_mode = 2 (write and read)
+        cmd_str = "sdram_bist " + str(self.bist_mem_burst_length) + " 1 0 2"
         return cmd_str
 
     def clear_data(self):
@@ -95,8 +119,12 @@ class bist_state(object):
         DED_MSG_INDEX = 5 # Ded error number at index 5 of matched string
         result_list = result_str.split()
         new_error_cnt = int(result_list[ERROR_MSG_INDEX])
-        new_sec_cnt = int(result_list[SEC_MSG_INDEX])
-        new_ded_cnt = int(result_list[DED_MSG_INDEX])
+        if len(result_list) > 4:
+            new_sec_cnt = int(result_list[SEC_MSG_INDEX])
+            new_ded_cnt = int(result_list[DED_MSG_INDEX])
+        else:
+            new_sec_cnt = 0
+            new_ded_cnt = 0
         new_errors = new_error_cnt - self.error_cnt
         new_sec_errors = new_sec_cnt - self.sec_cnt
         new_ded_errors = new_ded_cnt - self.ded_cnt
@@ -332,6 +360,9 @@ def setup_uartbone_state_actions(ex, st):
     uart_bone_ident_addr = int(ex.args.uart_bone_ident,16)
     ident_str = ex.uartbone.read_ident(uart_bone_ident_addr)
     ex.logger.info("UARTBONE ID Str="+ident_str)
+    # Read the current address in the debug
+    i_addr = ex.uartbone.read(UARTBONE_DEBUG_ADDR + UARTBONE_DEBUG_I_ADDR)
+    ex.logger.info(f"UARTBONE I ADDR={i_addr:08X}")
 
 def enable_scrubbing_state_actions(ex, st):
     ''' Starts the scrubber
@@ -383,7 +414,14 @@ def start_bist_state_actions(ex, st):
     ''' Issues the BIST command
         sets: does not impact state
     '''
-    ex.bist = bist_state(ex.args.bist_mem_burst_length, ex.args.bist_addr_mode)
+    ex.bist = bist_state(ex.args.bist_mem_burst_length, ex.args.bist_addr_mode, ex.args.bist_pattern)
+
+    # Send initial bist pattern
+    bist_command = ex.bist.get_bist_pattern_command_str()
+    result = ex.uart.sendline(bist_command)
+
+    # Send initial bist command
+    expect_result = expect_prompt(ex)
     bist_command = ex.bist.get_bist_command_str()
     result = ex.uart.sendline(bist_command)
     # Initialize all cross state variables
@@ -415,10 +453,16 @@ def bist_execution_state_actions(ex, st):
 
     # BIST title line
     #^M                          WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS        SEC        DED
-    BIST_TITLE_REGEX = "WR-BW\(MiB/s\) RD-BW\(MiB/s\)  TESTED\(MiB\)     ERRORS        SEC        DED"
+    #BIST_TITLE_REGEX = "WR-BW\(MiB/s\) RD-BW\(MiB/s\)  TESTED\(MiB\)     ERRORS        SEC        DED"
+    BIST_TITLE_REGEX = "WR-BW\(MiB/s\) RD-BW\(MiB/s\)  TESTED\(MiB\)     ERRORS(        SEC        DED)?"
     # BIST data line
     #^M                                   646          654          324          0          0          0
-    BIST_DATA_REGEX = "\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+"
+    #BIST_DATA_REGEX = "\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+"
+    BIST_DATA_REGEX = "\d+\s+\d+\s+\d+\s+\d+"
+    #ERRORS (CPU): 0
+    BIST_ERROR_MSG_REGEX = "ERRORS (CPU): (\d+)"
+
+
     BIST_TEXT_DELAY = 15
     MAX_CONSECUTIVE_UNICODE_ERRORS = 20
     MAX_CONSECUTIVE_BAD_TITLE_LINES = 10
@@ -433,9 +477,10 @@ def bist_execution_state_actions(ex, st):
         # Constants indicating position in regex array of each expression
         TITLE_INDEX=0
         DATA_INDEX=1
+        ERROR_MSG_INDEX=2
 
         # Get a line of data
-        match_index = ex.uart.expect([BIST_TITLE_REGEX,BIST_DATA_REGEX],timeout=BIST_TEXT_DELAY)
+        match_index = ex.uart.expect([BIST_TITLE_REGEX,BIST_DATA_REGEX,BIST_ERROR_MSG_REGEX],timeout=BIST_TEXT_DELAY)
 
         # Process expect system errors
         if ex.uart.has_uart_error():
@@ -465,6 +510,11 @@ def bist_execution_state_actions(ex, st):
         # No system errors in string - evaluate the string
         if expecting_title: 
             
+            # is this an error message line? If so, ignore
+            if ex.uart.serial_fdspawn.match and match_index == ERROR_MSG_INDEX:
+                print("ERR MSG")
+                continue
+
             # Is this a valid title line?
             if ex.uart.serial_fdspawn.match and match_index == TITLE_INDEX:
                 # execpting a title and received a title
@@ -521,6 +571,12 @@ def bist_execution_state_actions(ex, st):
                 continue
 
         else: # Expecting Data
+
+            # is this an error message line? If so, ignore
+            if ex.uart.serial_fdspawn.match and match_index == ERROR_MSG_INDEX:
+                print("ERR MSG")
+                continue
+
             if ex.uart.serial_fdspawn.match and match_index == DATA_INDEX:
                 # execpting data and received valid data line
                 expect_str = ex.uart.serial_fdspawn.match.group(0)
@@ -533,6 +589,7 @@ def bist_execution_state_actions(ex, st):
                 if total_errors > 0:            
                     consecutive_data_errors += 1
                     ex.logger.error(f"BIST:Data Errors ({err},{sec},{ded}:{total_errors}/{consecutive_data_errors})")
+                    print(ex.uart.serial_fdspawn.match.group(0))
                     #if (total_errors) > DRAM_ERROR_THRESHOLD or \
                     #    consecutive_data_errors >= MAX_CONSECUTIVE_BAD_DATA_ERRORS:
                     if consecutive_data_errors >= MAX_CONSECUTIVE_BAD_DATA_ERRORS:
@@ -680,6 +737,10 @@ def reset_recovery_state_actions(ex, st):
 
     # Enter this state from the terminal recovery state in error
     # where the UART is inactive.
+
+    if ex.uartbone:
+        i_addr = ex.uartbone.read(UARTBONE_DEBUG_ADDR + UARTBONE_DEBUG_I_ADDR)
+        ex.logger.info(f"UARTBONE I ADDR={i_addr:08X}")
 
     # Was a reset issued previously? If so, previous reset failed
     if ex.issued_reset:
@@ -980,6 +1041,7 @@ def main():
     parser.add_argument("--single_step", help="Single step through state machine", action='store_true')
     parser.add_argument("--bist_mem_burst_length", help="Burst length of BIST command", type=int, default = DEFAULT_BIST_BURST_LENGTH)
     parser.add_argument("--bist_addr_mode", help="Burst length of BIST command", type=int, default=DEFAULT_BIST_ADDR_MODE)
+    parser.add_argument("--bist_pattern", help="BIST Pattern for memory test", type=int, default=DEFAULT_BIST_PATTERN)
     parser.add_argument("--no_uart_bone", help="Disable UART wishbone interface", action='store_true')
     parser.add_argument("--uart_bone_ident", help="Hex Address of uart bone identifier register", default=UARTBONE_IDENT_ADDR)
     args = parser.parse_args()
