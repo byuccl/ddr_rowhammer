@@ -4,7 +4,7 @@ from litex.soc.interconnect.csr import *
 
 class VexRiscVDebug(Module, AutoCSR):
 
-	def __init__(self, p_iclk100, mmcm_locked, i_addr, i_cyc, pll=None):
+	def __init__(self, p_iclk100, mmcm_locked, i_addr, i_cyc, pll = None):
 		print("Building DEBUG")
 		self.mmcm_locked = mmcm_locked			# MMCM Locked signal
 		self.i_addr = i_addr					# Instruction memory address (PC?)
@@ -48,8 +48,8 @@ class VexRiscVDebug(Module, AutoCSR):
 		self.mmcm_locked_count.status.eq(self.mmcm_locked_count_i)
 
 		# DRP port (copied from xilinx_common.py from 'expose_drp' in XilinxClocking)
-		if pll:
-			self.drp_reset  = CSR()				# hooked up to what?
+		if pll:  # pll is reference to the PLL module
+			self.drp_reset  = CSR()				# hooked up to what? (looks unconnected)
 			self.drp_locked = CSRStatus()		# driven by PLL locked signal
 			self.drp_read   = CSR()				# Causes a read to occur
 			self.drp_write  = CSR()
@@ -60,7 +60,7 @@ class VexRiscVDebug(Module, AutoCSR):
 
 			# # #
 
-			den_pipe = Signal()			# enable signal (drp_read or drp_write)
+			den_pipe = Signal()			# enable signal (asserted when drp_read or drp_write asserted)
 			dwe_pipe = Signal()			# Write enable signal (driven by drp_write)
 			drp_drdy = Signal()
 
@@ -74,8 +74,11 @@ class VexRiscVDebug(Module, AutoCSR):
 				o_DO    = self.drp_dat_r.status    # status
 			)
 			self.sync += [
-				den_pipe.eq(self.drp_read.re | self.drp_write.re),	# enable signal driven by a read or a write
-				dwe_pipe.eq(self.drp_write.re),						# drp we
+				# enable signal driven by a read or a write
+				den_pipe.eq(self.drp_read.re | self.drp_write.re),	
+				# DRP write enable
+				dwe_pipe.eq(self.drp_write.re),
+				# Status is read when not reading or writing
 				If(self.drp_read.re | self.drp_write.re,
 					self.drp_drdy.status.eq(0)
 				).Elif(drp_drdy,
@@ -83,4 +86,4 @@ class VexRiscVDebug(Module, AutoCSR):
 				)
 			]
 			self.comb += self.drp_locked.status.eq(pll.locked)   # locked status signal hooked up to DRP locked signal
-			self.logger.info("Exposing DRP interface within VexRiscV debug.")
+			#self.logger.info("Exposing DRP interface within VexRiscV debug.")
