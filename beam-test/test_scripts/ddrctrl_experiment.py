@@ -562,7 +562,7 @@ def bist_execution_state_actions(ex, st):
                 continue
             else: # have an invalid title line
                 consecutive_bad_title_lines += 1
-                ex.logger.info(f"BIST:Bad title line ({consecutive_bad_title_lines}):")
+                ex.logger.info(f"BIST:Bad title line ({consecutive_bad_title_lines}):"+ex.uart.serial_fdspawn.match.group(0))
                 if consecutive_bad_title_lines > MAX_CONSECUTIVE_BAD_TITLE_LINES:
                     ex.logger.error("BIST:Max consecutive bad title lines")
                     ex.bist_error = True # System error: will go to a recovery state
