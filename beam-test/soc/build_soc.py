@@ -51,7 +51,8 @@ class TestSoC(BaseSoC):
         iaddr = self.cpu.ibus.adr
         icyc = self.cpu.ibus.cyc
         iclk100 = self.crg.pll.clkin  #  I had to save this in the module - it wasn't saved
-        self.submodules.debug = VexRiscVDebug(iclk100, locked_signal, iaddr, icyc)
+        pll_ref = self.crg.pll
+        self.submodules.debug = VexRiscVDebug(iclk100, locked_signal, iaddr, icyc, pll=pll_ref)
 
 
 
