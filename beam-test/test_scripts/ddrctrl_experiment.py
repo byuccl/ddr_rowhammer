@@ -761,6 +761,11 @@ def reset_recovery_state_actions(ex, st):
     ex.uartbone.write(UARTBONE_RESET_ADDR, 1)
     time.sleep(1)
 
+    if ex.uartbone:
+        i_addr = ex.uartbone.read(UARTBONE_DEBUG_ADDR + UARTBONE_DEBUG_I_ADDR)
+        ex.logger.info(f"UARTBONE I ADDR={i_addr:08X}")
+
+
 def unrecoverable_postmortum_state_actions(ex, st):
     '''
     TODO:
