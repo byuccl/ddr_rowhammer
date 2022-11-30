@@ -1,7 +1,7 @@
 1. Run command to see Ethernet connections: `ip link show` to find the network name and the mac address:
 
 ```
-shrec@nuc4:~/ddr/ddr_mjw/ddr_rowhammer/beam-test/test_scripts$ ip link show
+shrec@nuc4:~/ddr/rowhammer/rowhammer-tester$ ip link show
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
 2: eno1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
@@ -11,15 +11,15 @@ shrec@nuc4:~/ddr/ddr_mjw/ddr_rowhammer/beam-test/test_scripts$ ip link show
     link/ether 00:c2:c6:f3:24:15 brd ff:ff:ff:ff:ff:ff
 4: enxa0cec803ae9e: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
     link/ether a0:ce:c8:03:ae:9e brd ff:ff:ff:ff:ff:ff
-6: enxa0cec8082364: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc fq_codel state DOWN mode DEFAULT group default qlen 1000
-    link/ether a0:ce:c8:08:23:64 brd ff:ff:ff:ff:ff:ff
+7: enxa0cec8744ccb: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
+    link/ether a0:ce:c8:74:4c:cb brd ff:ff:ff:ff:ff:ff
 ```
 
-In this case, the dongle is the `enxa0cec8082364`. 
+In this case, the dongle is the `enxa0cec8744ccb`. 
 
 2. Link the adapter to fpga0
 
-`sudo ip link property add dev enxa0cec8082364 altname fpga0`
+`sudo ip link property add dev enxa0cec8744ccb altname fpga0`
 
 3. Check to see if it is successfully linked:
 
@@ -54,9 +54,9 @@ ip link show
 `sudo ip link set fpga0 up`
 `ip link show`
 
-sudo ip addr add 192.168.100.2/24 dev <name>
+`sudo ip addr add 192.168.100.2/24 dev fpga0`
 
-ip link show
+`ip link show`
 
 
 
