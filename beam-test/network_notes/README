@@ -18,33 +18,45 @@ shrec@nuc4:~/ddr/ddr_mjw/ddr_rowhammer/beam-test/test_scripts$ ip link show
 
 In this case, the dongle is the `enxa0cec8082364`. 
 
-sudo ip link property add dev <nameofip> altname <simplername>
+2. Link the adapter to fpga0
 
-ip addr show dev <name>
+`sudo ip link property add dev enxa0cec8082364 altname fpga0`
 
-sudoedit /etc/netplan/01-network-manager-all.yaml
-sudo netplan apply
+3. Check to see if it is successfully linked:
 
-ip link show
+`ip addr show dev fpga0`
 
-sudo ip link set <name> up
+4. Edit `/etc/netplan/01-network-manager-all.yaml` as described below:
 
-ip link show
+`sudoedit /etc/netplan/01-network-manager-all.yaml`
 
-sudo ip addr add 192.168.100.2/24 dev <name>
+Example of netplan document with network with altname fpga0:
 
-ip link show
-
-Example of netplan document with network with altname env02:
 # Let NetworkManager manage all devices on this system
 network:
   version: 2
   renderer: NetworkManager
   ethernets:
-    env02:
+    fpga0:
       dhcp4: no
       addresses:
         - 192.168.100.2/24
+
+5. Apply the changes and see if they worked
+
+```
+sudo netplan apply
+ip link show
+```
+6. Get the link to be up
+
+`sudo ip link set fpga0 up`
+`ip link show`
+
+sudo ip addr add 192.168.100.2/24 dev <name>
+
+ip link show
+
 
 
 
