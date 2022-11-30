@@ -738,7 +738,7 @@ def reset_recovery_state_actions(ex, st):
     # Enter this state from the terminal recovery state in error
     # where the UART is inactive.
 
-    if ex.uartbone:
+    if ex.args.uartbone:
         i_addr = ex.uartbone.read(UARTBONE_DEBUG_ADDR + UARTBONE_DEBUG_I_ADDR)
         ex.logger.info(f"UARTBONE I ADDR={i_addr:08X}")
 
