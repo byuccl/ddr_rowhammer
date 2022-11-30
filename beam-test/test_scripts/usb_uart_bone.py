@@ -157,7 +157,7 @@ def main():
     parser = argparse.ArgumentParser()
     uart_basename = "uartbone"
     uartbone_args = usb_uart_bone.uartbone_group_args(parser,uart_basename, 
-        default_phys_port="1-4.1", default_phys_if=0, default_baud = 115200)
+        default_phys_port="1-4.4.1", default_phys_if=0, default_baud = 115200)
     parser.add_argument("--read", help="Hex address of read value from uartbone")
     parser.add_argument("--write", help="Hex address of read value from uartbone and Value to write", nargs=2)
     parser.add_argument("--ident", help="Read identification string", action='store_true')

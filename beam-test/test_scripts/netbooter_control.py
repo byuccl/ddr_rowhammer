@@ -67,6 +67,7 @@ class netbooter_control():
         ''' Close telnet connection '''
         if self.teln:
             self.teln.close()
+        self.telnet_open = False
 
     def write_telnet(self, write_str:str):
         ''' write telnet connection '''
@@ -136,6 +137,9 @@ class netbooter_control():
                 continue
             self._info(str("Setting port "+str(power_port)+" to "+new_state))
             time.sleep(self.SLEEPTIME_NETBOOTER)
+
+            # Close telnet
+            self.close_telnet()
             # This succeeded
             return True
 

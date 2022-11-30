@@ -257,7 +257,7 @@ class jcm_session():
         for line in self.jcm_thread_output:
             print(line)
 
-        return True
+        return False
 
     def read_device_dna(self):
         '''
@@ -293,6 +293,8 @@ Register 0x17=
             return False
             
         # Iterate over the output to see if it configured correctly
+        line0 = None
+        line1 = None
         for line in self.jcm_thread_output:
             #print(line)
             if "0:" in line:

@@ -253,7 +253,16 @@ def connect_uart_state_actions(ex):
 def configure_nexys_state_actions(ex):
     if ex.args.disable_jcm:
         return ENABLE_SCRUBBING_STATE
+
+    # Print id code
+    result = ex.jcm.read_device_dna()
+    if not result:
+        ex.logger.error("Failed to read DNA")
+    else:
+        ex.logger.info("Device DNA:"+result[0] +" "+result[1])
+
     result = ex.jcm.configure_fpga(ex.args.bitstream)
+    #print("result-",result)
     if not result:
         return TERMINATING_STATE
     return ENABLE_SCRUBBING_STATE

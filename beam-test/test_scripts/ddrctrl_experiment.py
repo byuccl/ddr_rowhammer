@@ -1034,7 +1034,7 @@ def main():
     parser.add_argument_group(jcm_session.jcm_group_args(parser))
     parser.add_argument_group(uart_control.uart_group_args(parser))
     uartbone_args = usb_uart_base.uart_group_args(parser,UARTBONE_UART_BASENAME, 
-        default_phys_port="1-4.1", default_phys_if=0, default_baud = 115200)
+        default_phys_port="1-4.4.1", default_phys_if=0, default_baud = 115200)
     parser.add_argument_group(uartbone_args)
     parser.add_argument("--repower_jcm", help="Repower JCM at start of experiment", action='store_true')
     parser.add_argument("--disable_scrubbing", help="Do not enable the scrubber", action='store_true')
