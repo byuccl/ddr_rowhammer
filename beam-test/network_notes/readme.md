@@ -31,6 +31,7 @@ In this case, the dongle is the `enxa0cec8082364`.
 
 Example of netplan document with network with altname fpga0:
 
+```
 # Let NetworkManager manage all devices on this system
 network:
   version: 2
@@ -40,6 +41,7 @@ network:
       dhcp4: no
       addresses:
         - 192.168.100.2/24
+```
 
 5. Apply the changes and see if they worked
 
