@@ -58,7 +58,7 @@ ip link show
 
 `ip link show`
 
-
+`export TARGET=ddr4_datacenter_test_board`
 
 
 
