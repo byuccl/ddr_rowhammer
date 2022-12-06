@@ -16,8 +16,8 @@ PYTHON_VENV = .pyenv
 VIVADO_LOCATION ?= /tools/Xilinx/Vivado
 VIVADO_VERSION ?= $$(ls -d $(VIVADO_LOCATION)/*.* | tr / \\n | tail -n 1)
 RISCV_TOOLCHAIN = riscv64-unknown-elf-gcc-10.1.0-2020.08.2-x86_64-linux-ubuntu14
-PYTHON_FLAGS =
-BUILD_TARGET = build_soc.py
+PYTHON_FLAGS = 
+BUILD_TARGET = antmicro_datacenter_ddr4_test_board.py
 BUILD_FLAGS =
 
 # -------------------------------------- #
