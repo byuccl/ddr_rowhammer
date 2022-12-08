@@ -79,6 +79,10 @@ class BaseSoC(SoCCore):
             with_led_chaser=True, with_video_terminal=False, with_video_framebuffer=False, **kwargs):
         platform = antmicro_datacenter_ddr4_test_board.Platform()
 
+        kwargs.update(dict(
+            cpu_variant = "minimal",
+        ))
+
         # CRG --------------------------------------------------------------------------------------
         with_video_pll = (with_video_terminal or with_video_framebuffer)
         self.submodules.crg = _CRG(platform, sys_clk_freq, iodelay_clk_freq=iodelay_clk_freq, with_video_pll=with_video_pll)
@@ -203,10 +207,6 @@ def main():
     soc_core_args(parser)
     vivado_build_args(parser)
     args = parser.parse_args()
-
-    args.update(dict(
-        cpu_variant = "minimal",
-    ))
 
     assert not (args.with_etherbone and args.eth_dynamic_ip)
 
