@@ -89,10 +89,11 @@ class BaseSoC(SoCCore):
         # DDR4 SDRAM RDIMM -------------------------------------------------------------------------
         if not self.integrated_main_ram_size:
             self.submodules.ddrphy = A7DDRPHY(platform.request("ddr4"),
-                memtype         = "DDR4",
-                iodelay_clk_freq = iodelay_clk_freq,
-                sys_clk_freq     = sys_clk_freq,
-                is_rdimm         = True,
+                write_latency_calibration = True,
+                memtype                   = "DDR4",
+                iodelay_clk_freq          = iodelay_clk_freq,
+                sys_clk_freq              = sys_clk_freq,
+                is_rdimm                  = True,
             )
             self.add_sdram("sdram",
                 phy                     = self.ddrphy,
@@ -202,6 +203,10 @@ def main():
     soc_core_args(parser)
     vivado_build_args(parser)
     args = parser.parse_args()
+
+    args.update(dict(
+        cpu_variant = "minimal",
+    ))
 
     assert not (args.with_etherbone and args.eth_dynamic_ip)
 
