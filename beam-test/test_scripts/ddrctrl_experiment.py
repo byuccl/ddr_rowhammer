@@ -742,8 +742,8 @@ def reset_recovery_state_actions(ex, st):
         i_addr = ex.uartbone.read(UARTBONE_DEBUG_ADDR + UARTBONE_DEBUG_I_ADDR)
         ex.logger.info(f"UARTBONE I ADDR={i_addr:08X}")
     else:
-        ex.logger.info("No UARTBONE")
-        
+        ex.logger.info("No UARTBONE for I ADDR read")
+
     # Was a reset issued previously? If so, previous reset failed
     if ex.issued_reset:
         ex.logger.info("Previous reset recovery failed")
@@ -752,10 +752,13 @@ def reset_recovery_state_actions(ex, st):
     if not ex.uartbone:
         ex.logger.info("No UART bone available for reset")
         ex.unrecoverable = True
+        return
+
     # See if we have an open UART connection
     if not ex.uart.serial_fd:
         ex.logger.info("UART not available for reset recovery")
         ex.unrecoverable = True
+        return
 
     # Issue the reset
     ex.issued_reset = True
