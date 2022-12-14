@@ -1,3 +1,7 @@
+<!-- 
+username:wirthlin
+token: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 
+-->
 
 
 # DDR Rowhammer scripts

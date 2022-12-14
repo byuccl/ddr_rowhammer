@@ -3,7 +3,6 @@
 # Questions?
 # - Do I need to give a message at the start of each action? 
 # shrec@nuc4.ee.byu.edu (pass:shrec)
-# token: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
 # Todo: Need to catch ctrl-c so we can exit JCM safely
 
 import pexpect
@@ -349,6 +348,7 @@ def setup_uartbone_state_actions(ex, st):
     '''
     if ex.args.no_uart_bone:
         ex.logger.info("Not creating UART bone")
+        # ex.uartbone will not exist. All uartbone references should check to see that ex.uartbone exists before accessing
         return
 
     ex.uartbone = usb_uart_bone.create_uartbone_from_args(ex.args, UARTBONE_UART_BASENAME, ex.logger)
@@ -738,10 +738,12 @@ def reset_recovery_state_actions(ex, st):
     # Enter this state from the terminal recovery state in error
     # where the UART is inactive.
 
-    if ex.args.uartbone:
+    if ex.uartbone:
         i_addr = ex.uartbone.read(UARTBONE_DEBUG_ADDR + UARTBONE_DEBUG_I_ADDR)
         ex.logger.info(f"UARTBONE I ADDR={i_addr:08X}")
-
+    else:
+        ex.logger.info("No UARTBONE")
+        
     # Was a reset issued previously? If so, previous reset failed
     if ex.issued_reset:
         ex.logger.info("Previous reset recovery failed")
