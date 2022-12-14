@@ -80,12 +80,12 @@ Types of errors:
   * Get a DDR Data error regularly but there is at least one good execution in the mix that resets the counters. Seems to be a timing error.
 
 To Do:
+* FIgure out why uartbone is hanging. Is there a recovery mechanism?
 * Check back to back reconfigures (need a repower?)
 * When JCM configuration/scrubbing fails (can't start because something is executing: reboot jcm?)
 * USB port rebooting
   * https://github.com/mvp/uhubctl
   * https://github.com/byuccl/yinstruments/blob/main/yinstruments/usb_power.py
-
 * Coding
   * Move to new state machine model (return next state)
   * Move the uart_control to a multi-class organization (test_logger, uart_base, and uart_expect)
@@ -126,7 +126,7 @@ DATA artix - Artix 26
 See Row Hammer Tester [Read the Docs](https://rowhammer-tester.readthedocs.io/en/latest/) 
 and [repository](https://github.com/antmicro/rowhammer-tester) for more details.
 We are using the **Data Center DRAM Tester** board.
-Refer to the 
+Refer to the [Network Notes](https://github.com/byuccl/ddr_rowhammer/tree/main/beam-test/network_notes) for setting up the network.
 
 
 ## Physical Setup:
@@ -142,14 +142,65 @@ Refer to the
 New Dongle id: enxa0cec875a7f9 (a0:ce:c8:75:a7:f9)
 (Note:there is a lost dongle somewhere)
 
+Associate the device with the name 'fpga0'
+
+```
+sudo ip link property add dev enxa0cec875a7f9 altname fpga0
+sudo netplan apply
+```
+
+Make sure it was setup properly
+```
+ip link show
+```
+
+Set the IP address of the board.
+```
+sudo ip addr add 192.168.100.2/24 dev fpga0
+```
+
+Bring the interface "UP" (it may be up as seen in the previous command)
+
+```
+sudo ip link set fpga0 up
+```
+
 
 ## Software setup
 
+
+
+For the **server window** (go to rowhammer_tester/scripts):
+
+`source ~/ddr/rowhammer/rowhammer-tester/venv/bin/activate`
+
+
+```
+export TARGET=ddr4_datacenter_test_board
+```
+
+In the rowhammer_tester/scripts directory:
+```
+litex_server --udp --udp-ip 192.168.100.50 --udp-port 1234
+```
+Wait for a bit to see if it connects properly. If tit does not exit then all is well.
+
 Board IP address: 192.168.100.50
 
-Script:
+For the **client window**:
 
-`beam_bist.py`
+`source ~/ddr/rowhammer/rowhammer-tester/venv/bin/activate`
+
+
+```
+export TARGET=ddr4_datacenter_test_board
+```
+
+`python3 bios_console.py`: Connects to the litex system through the Etherbone
+
+Or run rowhammer test in beam test directory
+
+`python3 rowhammer_test.py`: Runs our simple BIST command.
 
 Issues:
 * Can't seem to connect to the USB terminal

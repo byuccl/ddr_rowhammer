@@ -40,6 +40,7 @@ class usb_uart_base():
     # UART constants
     TTY_SEARCH_DELAY = 2
     MAX_FIND_TTY_ATTEMPTS = 5
+    DEFAULT_UART_TIMEOUT = 5
 
     def __init__(self, 
         usb_uart_phys_port:str,     # USB UART port string (i.e. "1-4.2")
@@ -47,7 +48,7 @@ class usb_uart_base():
         baud_rate,
         logger = None,
         logger_prefix = "UART",
-        timeout = 10,
+        timeout = DEFAULT_UART_TIMEOUT,
         ):
 
         self.usb_uart_phys_port = usb_uart_phys_port
