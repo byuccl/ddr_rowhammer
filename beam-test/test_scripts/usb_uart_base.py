@@ -94,7 +94,8 @@ class usb_uart_base():
     def create_uart_serial(self):
         ''' Creates Serial object for uart '''
         self.serial_dev = self.get_uart_dev_str()
-        self.logging._info("Attempting to open:"+str(self.serial_dev)+" at baud "+str(self.baudrate))
+        self.logging._info("Attempting to open:"+str(self.serial_dev)+" at baud "+str(self.baudrate)+
+            " with timeout=" + str(self.timeout))
 
         if not self.serial_dev:
             return
