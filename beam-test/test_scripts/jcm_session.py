@@ -12,6 +12,8 @@ import threading
 import sys
 import time
 import subprocess
+
+import socket
 from datetime import datetime
 
 from paramiko import SSHClient, SSHException, AutoAddPolicy, \
@@ -119,7 +121,7 @@ class jcm_session():
                 new_client.set_missing_host_key_policy(AutoAddPolicy())
                 self._info(str(f"Connecting to JCM over SSH... (Attempt {(i+1)})"))
                 new_client.connect(self.jcm_ip_addr, username=self.username, password=self.password, 
-                    timeout=self.JCM_CONNECTION_TIMEOUT)
+                    timeout=self.JCM_CONNECTION_TIMEOUT,allow_agent=False)
                 self._info("SSH successful")
                 login_success = True
                 self.ssh_client = new_client
