@@ -52,6 +52,7 @@ ip link show
 6. Get the link to be up
 
 `sudo ip link set fpga0 up`
+
 `ip link show`
 
 `sudo ip addr add 192.168.100.2/24 dev fpga0`
@@ -67,4 +68,4 @@ ip link show
 
 More commands:
 
-litex_server --udp --udp-ip 192.168.100.50 --udp-port 1234
+`litex_server --udp --udp-ip 192.168.100.50 --udp-port 1234`
