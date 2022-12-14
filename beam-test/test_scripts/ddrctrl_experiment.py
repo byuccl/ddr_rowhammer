@@ -359,15 +359,15 @@ def setup_uartbone_state_actions(ex, st):
         ex.logger.error("Failed to connect to UART Bone")
     uart_bone_ident_addr = int(ex.args.uart_bone_ident,16)
     try:
-        ident_str = ex.uartbone.read_ident(uart_bone_ident_addr)\
+        ident_str = ex.uartbone.read_ident(uart_bone_ident_addr)
         ex.logger.info("UARTBONE ID Str="+ident_str)
-    except
+    except:
         ex.logger.error("UARTBone Timeout")
     # Read the current address in the debug
     try:
         i_addr = ex.uartbone.read(UARTBONE_DEBUG_ADDR + UARTBONE_DEBUG_I_ADDR)
         ex.logger.info(f"UARTBONE I ADDR={i_addr:08X}")
-    except
+    except:
         ex.logger.error("UARTBone Timeout")
 
 def enable_scrubbing_state_actions(ex, st):
