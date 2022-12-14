@@ -358,11 +358,17 @@ def setup_uartbone_state_actions(ex, st):
     if not ex.uart_fd:
         ex.logger.error("Failed to connect to UART Bone")
     uart_bone_ident_addr = int(ex.args.uart_bone_ident,16)
-    ident_str = ex.uartbone.read_ident(uart_bone_ident_addr)
-    ex.logger.info("UARTBONE ID Str="+ident_str)
+    try:
+        ident_str = ex.uartbone.read_ident(uart_bone_ident_addr)\
+        ex.logger.info("UARTBONE ID Str="+ident_str)
+    except
+        ex.logger.error("UARTBone Timeout")
     # Read the current address in the debug
-    i_addr = ex.uartbone.read(UARTBONE_DEBUG_ADDR + UARTBONE_DEBUG_I_ADDR)
-    ex.logger.info(f"UARTBONE I ADDR={i_addr:08X}")
+    try:
+        i_addr = ex.uartbone.read(UARTBONE_DEBUG_ADDR + UARTBONE_DEBUG_I_ADDR)
+        ex.logger.info(f"UARTBONE I ADDR={i_addr:08X}")
+    except
+        ex.logger.error("UARTBone Timeout")
 
 def enable_scrubbing_state_actions(ex, st):
     ''' Starts the scrubber
@@ -739,8 +745,11 @@ def reset_recovery_state_actions(ex, st):
     # where the UART is inactive.
 
     if ex.uartbone:
-        i_addr = ex.uartbone.read(UARTBONE_DEBUG_ADDR + UARTBONE_DEBUG_I_ADDR)
-        ex.logger.info(f"UARTBONE I ADDR={i_addr:08X}")
+        try:
+            i_addr = ex.uartbone.read(UARTBONE_DEBUG_ADDR + UARTBONE_DEBUG_I_ADDR)
+            ex.logger.info(f"UARTBONE I ADDR={i_addr:08X}")
+        except (RuntimeError) as error:
+            ex.logger.error("UARTBone Timeout")
     else:
         ex.logger.info("No UARTBONE for I ADDR read")
 
@@ -767,8 +776,11 @@ def reset_recovery_state_actions(ex, st):
     time.sleep(1)
 
     if ex.uartbone:
-        i_addr = ex.uartbone.read(UARTBONE_DEBUG_ADDR + UARTBONE_DEBUG_I_ADDR)
-        ex.logger.info(f"UARTBONE I ADDR={i_addr:08X}")
+        try:
+            i_addr = ex.uartbone.read(UARTBONE_DEBUG_ADDR + UARTBONE_DEBUG_I_ADDR)
+            ex.logger.info(f"UARTBONE I ADDR={i_addr:08X}")
+        except (RuntimeError) as error:
+            ex.logger.error("UARTBone Timeout")
 
 
 def unrecoverable_postmortum_state_actions(ex, st):

@@ -61,10 +61,21 @@ class usb_uart_bone(usb_uart_base):
     '''
 
 
-    def _read(self, length):
+    def _read(self, length, retries=1):
+        '''
+        Raw read function from the serial device. Reads the requested number of bytes.
+        '''
         r = bytes()
+        tries = 0
         while len(r) < length:
-            r += self.serial_fd.read(length - len(r))
+            result = self.serial_fd.read(length - len(r))
+            if len(result) == 0:   # This indicates that there was a timeout. Nothing was received in the timeout limit.
+                # Has the retry limit 
+                if tries >= retries:
+                    # Return the amount of data received before the timeout.
+                    return r
+                tries += 1
+            r += result
         return r
 
     def _write(self, data):
@@ -90,7 +101,11 @@ class usb_uart_bone(usb_uart_base):
         self._write([cmd, length_int])
         self._write(list((addr//4).to_bytes(4, byteorder="big")))
         for i in range(length_int):
-            value = int.from_bytes(self._read(4), "big")
+            read_4 = self._read(4)
+            if len(read_4) < 4:
+                # Did not get the amount of data expected
+                raise RuntimeError("Read timout")
+            value = int.from_bytes(read_4, "big")
             if self.debug:
                 print("read 0x{:08x} @ 0x{:08x}".format(value, addr + 4*i))
             if length is None:

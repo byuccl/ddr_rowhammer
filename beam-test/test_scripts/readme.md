@@ -93,7 +93,11 @@ To Do:
 
 # Test notes
 
-NUC usb dongle: 169.254.132.50
+NUC usb dongle: 169.254.132.50 ("DDR Experiemnt" label). enxa0cec803ae9e
+Netbooter IP - 169.254.131.160
+USB Ethernet - 169.254.132.50 (netmask 255.255.0.0)
+
+## DDR Data
 
 CTRL jcm (169.254.132.152)
 CTRL artix - Artix 19
@@ -101,8 +105,6 @@ CTRL artix - Artix 19
 DATA jcm - 169.254.132.151
 DATA artix - Artix 26
 
-Netbooter IP - 169.254.131.160
-USB Ethernet - 169.254.132.50 (netmask 255.255.0.0)
 
 
 ```
@@ -124,6 +126,8 @@ USB Ethernet - 169.254.132.50 (netmask 255.255.0.0)
 See Row Hammer Tester [Read the Docs](https://rowhammer-tester.readthedocs.io/en/latest/) 
 and [repository](https://github.com/antmicro/rowhammer-tester) for more details.
 We are using the **Data Center DRAM Tester** board.
+Refer to the 
+
 
 ## Physical Setup:
 
@@ -132,6 +136,12 @@ We are using the **Data Center DRAM Tester** board.
 3. Plug in uart for antmicro board into usb hub
 4. Plug ethernet usb dongle into usb hub
 5. Connect ethernet between dongle and board
+
+## Ethernet setup
+
+New Dongle id: enxa0cec875a7f9 (a0:ce:c8:75:a7:f9)
+(Note:there is a lost dongle somewhere)
+
 
 ## Software setup
 
