@@ -172,15 +172,25 @@ sudo ip link set fpga0 up
 
 For the **server window** (go to rowhammer_tester/scripts):
 
-`source ~/ddr/rowhammer/rowhammer-tester/venv/bin/activate`
+```
+source ~/ddr/rowhammer/rowhammer-tester/venv/bin/activate
+```
 
 
 ```
 export TARGET=ddr4_datacenter_test_board
 ```
 
+Turn on the rowhammer board:
+
+```
+python3 ~/ddr/ddr_mjw/ddr_rowhammer/beam-test/test_scripts/netbooter_control.py  --on 5
+```
+
+
 In the rowhammer_tester/scripts directory:
 ```
+cd ~/ddr/rowhammer/rowhammer-tester/rowhammer_tester/scripts
 litex_server --udp --udp-ip 192.168.100.50 --udp-port 1234
 ```
 Wait for a bit to see if it connects properly. If tit does not exit then all is well.
@@ -189,7 +199,11 @@ Board IP address: 192.168.100.50
 
 For the **client window**:
 
-`source ~/ddr/rowhammer/rowhammer-tester/venv/bin/activate`
+It looks like you need to run the bios console once to get the memory intialized and calibrated.
+
+```
+source ~/ddr/rowhammer/rowhammer-tester/venv/bin/activate
+```
 
 
 ```
