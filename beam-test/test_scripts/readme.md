@@ -55,7 +55,7 @@ uart bone (prog): 1-4.4.3
 
 Fault Injection (in another window)
 
-`python3 usb_uart_bone.py ---uartbone_phys_port --uartbone_phys_if --uartbone_baudrate -read`
+`python3 usb_uart_bone.py ---uartbone_phys_port xx --uartbone_phys_if xx --uartbone_baudrate 115200 -read xx`
 
 
 # Error Logs
@@ -93,6 +93,7 @@ To Do:
 
 # Test notes
 
+NUC usb dongle: 169.254.132.50
 
 CTRL jcm (169.254.132.152)
 CTRL artix - Artix 19
@@ -105,10 +106,40 @@ USB Ethernet - 169.254.132.50 (netmask 255.255.0.0)
 
 
 ```
-/dev/ttyUSB5 1-4.4.4.1 0   # general uart for data ddr
-/dev/ttyUSB4 1-4.4.3 1     # uart bone for data ddr?
-/dev/ttyUSB3 1-4.4.3 0     # programming port for data ddr
-/dev/ttyUSB2 1-4.4.2 0     # general uart for control ddr
-/dev/ttyUSB1 1-4.4.1 1     # uart bone for control DDR
 /dev/ttyUSB0 1-4.4.1 0     # programming port for control DDR
+/dev/ttyUSB1 1-4.4.1 1     # uart bone for control DDR
+/dev/ttyUSB2 1-4.4.2 0     # general uart for control ddr
+/dev/ttyUSB3 1-4.4.3 0     # programming port for data ddr
+/dev/ttyUSB4 1-4.4.3 1     # uart bone for data ddr?
+/dev/ttyUSB5 1-4.4.4.1 0   # general uart for data ddr
+/dev/ttyUSB6 1-4.4.4.3 0   # AntMicro USB (probably programming port)
+/dev/ttyUSB7 1-4.4.4.3 1   # AntMicro USB ?
+/dev/ttyUSB8 1-4.4.4.3 2   # AntMicro USB ?
+/dev/ttyUSB9 1-4.4.4.3 3   # AntMicro USB ?
 ```
+
+
+# Rowhammer tester
+
+See Row Hammer Tester [Read the Docs](https://rowhammer-tester.readthedocs.io/en/latest/) 
+and [repository](https://github.com/antmicro/rowhammer-tester) for more details.
+We are using the **Data Center DRAM Tester** board.
+
+## Physical Setup:
+
+1. Insert memory into antmicro card
+2. Plug power cord into antmicro and into netbooter
+3. Plug in uart for antmicro board into usb hub
+4. Plug ethernet usb dongle into usb hub
+5. Connect ethernet between dongle and board
+
+## Software setup
+
+Board IP address: 192.168.100.50
+
+Script:
+
+`beam_bist.py`
+
+Issues:
+* Can't seem to connect to the USB terminal
