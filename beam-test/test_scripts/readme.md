@@ -38,9 +38,9 @@ No Beam (fault injection)
 
 `python3 ddrctrl_experiment.py --jcm_part xc7a200t --bitstream /root/ddr_11_28.bit --log_dir ./tmp --jcm_clock 30_000_000 --frads_file xc7a200t_frad.txt --fault_injection 2 --uart_bone_ident 0xf0002000 --jcm_ip 169.254.132.152 --jcm_netbooter_port 1 --nexys_netbooter_port 2 --usb_uart_phys_port 1-4.4.2 --uartbone_phys_port 1-4.4.1`
 
-Beam (no fault injection)
+Beam (no fault injection) w/TMR
 
-`python3 ddrctrl_experiment.py --jcm_part xc7a200t --bitstream /root/ddr_11_28.bit --log_dir ./tmp --jcm_clock 30_000_000 --frads_file xc7a200t_frad.txt --fault_injection 0 --uart_bone_ident 0xf0002000 --jcm_ip 169.254.132.152 --jcm_netbooter_port 1 --nexys_netbooter_port 2 --usb_uart_phys_port 1-4.4.2 --uartbone_phys_port 1-4.4.1`
+`python3 ddrctrl_experiment.py --jcm_part xc7a200t --bitstream /root/ddr_11_28.bit --log_dir ./lansce2022 --jcm_clock 30_000_000 --frads_file xc7a200t_frad.txt --fault_injection 0 --uart_bone_ident 0xf0002000 --jcm_ip 169.254.132.152 --jcm_netbooter_port 1 --nexys_netbooter_port 2 --usb_uart_phys_port 1-4.4.2 --uartbone_phys_port 1-4.4.1`
 
 To Do:
   * Catch uartbone timeouts (instead of hanging)
@@ -108,7 +108,8 @@ DATA artix - Artix 26
 
 
 ```
-/dev/ttyUSB0 1-4.4.1 0     # programming port for control DDR
+/dev/ttyUSB0 1-4.4.1 0     # programmiWed 14 Dec 2022 05:03:52 PM MST
+ng port for control DDR
 /dev/ttyUSB1 1-4.4.1 1     # uart bone for control DDR
 /dev/ttyUSB2 1-4.4.2 0     # general uart for control ddr
 /dev/ttyUSB3 1-4.4.3 0     # programming port for data ddr
@@ -122,6 +123,13 @@ DATA artix - Artix 26
 
 
 # Rowhammer tester
+
+
+SEtting time after connecting internet:
+
+shrec@nuc4:~/ddr/ddr_mjw/ddr_rowhammer/beam-test/test_scripts$ timedatectl set-ntp off
+shrec@nuc4:~/ddr/ddr_mjw/ddr_rowhammer/beam-test/test_scripts$ timedatectl set-ntp on
+
 
 See Row Hammer Tester [Read the Docs](https://rowhammer-tester.readthedocs.io/en/latest/) 
 and [repository](https://github.com/antmicro/rowhammer-tester) for more details.
@@ -218,3 +226,13 @@ Or run rowhammer test in beam test directory
 
 Issues:
 * Can't seem to connect to the USB terminal
+
+For the **runtime window**:
+
+```
+source ~/ddr/rowhammer/rowhammer-tester/venv/bin/activate
+export TARGET=ddr4_datacenter_test_board
+cd ~/ddr/ddr_mjw/ddr_rowhammer/beam-test/test_scripts
+python3 rowhammer_test.py
+```
+
