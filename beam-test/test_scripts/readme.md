@@ -38,9 +38,14 @@ No Beam (fault injection)
 
 `python3 ddrctrl_experiment.py --jcm_part xc7a200t --bitstream /root/ddr_11_28.bit --log_dir ./tmp --jcm_clock 30_000_000 --frads_file xc7a200t_frad.txt --fault_injection 2 --uart_bone_ident 0xf0002000 --jcm_ip 169.254.132.152 --jcm_netbooter_port 1 --nexys_netbooter_port 2 --usb_uart_phys_port 1-4.4.2 --uartbone_phys_port 1-4.4.1`
 
-Beam (no fault injection) w/TMR
+Beam (no fault injection) wo/TMR
 
 `python3 ddrctrl_experiment.py --jcm_part xc7a200t --bitstream /root/ddr_11_28.bit --log_dir ./lansce2022 --jcm_clock 30_000_000 --frads_file xc7a200t_frad.txt --fault_injection 0 --uart_bone_ident 0xf0002000 --jcm_ip 169.254.132.152 --jcm_netbooter_port 1 --nexys_netbooter_port 2 --usb_uart_phys_port 1-4.4.2 --uartbone_phys_port 1-4.4.1`
+
+Beam (no fault injection) w/TMR
+
+`python3 ddrctrl_experiment.py --jcm_part xc7a200t --bitstream /root/ddr_11_28_tmr.bit --log_dir ./lansce2022 --jcm_clock 30_000_000 --frads_file xc7a200t_frad.txt --fault_injection 0 --uart_bone_ident 0xf0002000 --jcm_ip 169.254.132.152 --jcm_netbooter_port 1 --nexys_netbooter_port 2 --usb_uart_phys_port 1-4.4.2 --uartbone_phys_port 1-4.4.1`
+
 
 To Do:
   * Catch uartbone timeouts (instead of hanging)
@@ -267,4 +272,16 @@ Runs:
 
 * Arrival:
   * DDRCTRL crashed (same JCM problem as yesterday)
-  * 
+    * Added a check to see if the JCM is scrubbing before trying to configure. Addressed in log starting at 08_30_27
+    * It turns out we have been running the non-TMR bitstream since the start. Will continue with non-TMR for the day and run TMR for the rest of the test starting tonight
+  * ROWHAMMER
+    * Errors show the base address but do not show the bit (expected and read are the same)
+      * Need to see if I can figure out how to get the actual bad data
+    * The memory can completely fail.
+      * Need to provide an automated way to recover (need to reinitialize the memory)
+      * Perhaps modify the script to just run the bios code and run memtest manually
+  * DDRDATA
+    * It looks like there was a major error that cause a lot of problems but it seemed to have recovered. I don't think there is anything to change for this (as long as it recovers)
+    * There was a UART timeout delay. Scrubbing not enabled properly.
+      * Need to respond to UART timeout delays with a reboot of the system (until scrubbing can be fixed)
+      * Need to enable scrubbing (why not working?)

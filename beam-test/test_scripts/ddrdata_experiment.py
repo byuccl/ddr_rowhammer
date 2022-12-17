@@ -452,9 +452,9 @@ WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS
     '''
 
 def uart_recovery_state_actions(ex):
-    ''' For now, terminate
+    ''' For now, repower the nexys and start test over
     '''
-    return TERMINATING_STATE
+    return POWER_NEXYS_STATE
 
 
 def terminating_state_actions(ex):
