@@ -282,9 +282,11 @@ def enable_scrubbing_state_actions(ex):
         frads_file = ex.args.frads_file
     ITERATIONS = 100_000_000
 
-    if ex.args.fault_injection:
+    # Not sure why I ahve to do this
+    try:
+        ex.args.fault_injection
         inject_faults = ex.args.fault_injection
-    else:
+    except AttributeError:        
         inject_faults = 0
 
     result = ex.jcm.scrub_fpga(iterations=ITERATIONS, frads_file = frads_file, inject_faults = inject_faults, block=False)
@@ -594,6 +596,7 @@ def main():
     parser.add_argument("--bitstream", help="filename of bitstream", type=str)
     parser.add_argument("--default_bist_pattern", help="Pattern for memory test (i.e., 0x5a)", default = DEFAULT_BIST_PATTERN)
     parser.add_argument("--log_dir", help="Directory to store log files", type=str)
+    parser.add_argument("--frads_file", help="Name of frads filename", type=str)
     parser.add_argument("--enable_scrubbing", help="Directory to store log files", action='store_true')
     parser.add_argument("--single_step", help="Single step through state machine", action='store_true')
     args = parser.parse_args()

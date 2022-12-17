@@ -135,8 +135,9 @@ if __name__ == "__main__":
     else:
         iterations = 10
 
+    total_errors = 0
     for i in range(iterations):
-        logger.info("Iteration "+(str(i+1)))
+        logger.info(f"Iteration {i+1} ({total_errors} errors)")
         errors = hw_memtest(wb, 0x0, mem_range, [p], args.dbg)
         if len(errors) > 0:
             logger.info('!!! Failed pattern: {:08x} !!!'.format(p))
@@ -146,7 +147,7 @@ if __name__ == "__main__":
                         mem_base + e.offset * nbytes, wb.read(mem_base + e.offset * nbytes)))
                 logger.info('  data     = 0x{:x}'.format(e.data))
                 logger.info('  expected = 0x{:x}'.format(e.expected))
-        else:
-            logger.info("Test pattern OK!")
+        #else:
+        #    logger.info("Test pattern OK!")
 
     wb.close()

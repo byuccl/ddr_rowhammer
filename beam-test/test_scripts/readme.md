@@ -49,7 +49,14 @@ To Do:
 
 * With JCM (assume already configured)
 
-`python3 ddrdata_experiment.py --log_dir ./tmp --bitstream /root/ddr_11_28.bit --jcm_clock 30_000_000 --jcm_netbooter_port 4 --nexys_netbooter_port 3 --jcm_ip 169.254.132.151 --uart_phys_port 1-4.4.4.1`
+`python3 ddrdata_experiment.py --log_dir ./ --bitstream /root/ddr_11_28.bit --jcm_clock 30_000_000 --jcm_netbooter_port 4 --nexys_netbooter_port 3 --jcm_ip 169.254.132.151 --uart_phys_port 1-4.4.4.1`
+
+
+* With scrubbing
+
+```
+python3 ddrdata_experiment.py --log_dir ./lansce2022 --bitstream /root/ddr_11_28.bit --jcm_clock 30_000_000 --jcm_netbooter_port 4 --nexys_netbooter_port 3 --jcm_ip 169.254.132.151 --uart_phys_port 1-4.4.4.1 --enable_scrubbing --frads_file xc7a200t_frad.txt
+```
 
 uart bone (prog): 1-4.4.3
 
@@ -236,3 +243,19 @@ cd ~/ddr/ddr_mjw/ddr_rowhammer/beam-test/test_scripts
 python3 rowhammer_test.py
 ```
 
+# Notes
+
+Beam counter is 60 seconds ahead of this NUC time.
+
+## 12/16/2022:
+
+Runs: 
+* Started all three experiments at 16_11_57
+* Accidentally Ctrl-C DDR controller experiment and had to restart (19_34_08)
+* Stopped DDR CTRL again to move process onto a screen (named DDRCTRL). Started again at 19_51_03. This was accidently killed when existing screen with Ctrl-k (instead of Ctrl-a d)
+* Started DDR CTRL again again at 19_52_43 (screen DDRCTRL)
+* Stopped DDR data to (1) move it to a screen and (2) turn on JCM scrubbing. DDRDATA. Started again a few times for debugging (ignore incomplete versions). Some had read data. The long one is 20_33_44. Couldn't get JCM scrubbing working and moved on.
+* Stopped rowhammer to add screen and simplify log. Restarted with screen ROWHAMMER at
+
+* Run TMR CTRL DDR through the night (see if any errors in the morning)
+* 
