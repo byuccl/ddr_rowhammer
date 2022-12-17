@@ -224,11 +224,8 @@ It looks like you need to run the bios console once to get the memory intialized
 
 ```
 source ~/ddr/rowhammer/rowhammer-tester/venv/bin/activate
-```
-
-
-```
 export TARGET=ddr4_datacenter_test_board
+cd ~/ddr/rowhammer/rowhammer-tester/rowhammer_tester/scripts
 ```
 
 `python3 bios_console.py`: Connects to the litex system through the Etherbone
@@ -275,6 +272,7 @@ Runs:
     * Added a check to see if the JCM is scrubbing before trying to configure. Addressed in log starting at 08_30_27
     * It turns out we have been running the non-TMR bitstream since the start. Will continue with non-TMR for the day and run TMR for the rest of the test starting tonight
     * Got into an infinite loop trying to recover. Restarted manually at about 11:41 am
+    * Started TMR around 3:36 pm (for rest of test?)
   * ROWHAMMER
     * Errors show the base address but do not show the bit (expected and read are the same)
       * Need to see if I can figure out how to get the actual bad data

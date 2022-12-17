@@ -11,6 +11,8 @@ import sys
 import time
 from datetime import date, datetime
 from serial import Serial
+from test_logger import test_logger
+
 
 from timestampedfile import TimestampedFile
 
@@ -27,9 +29,10 @@ class serial_expect():
 
     def __init__(self, 
         serial_fd,
-        logging,
+        logger,
         pexpect_stdout = None,   # File handle for output of uart
         timestampformat = None,  # Timestamp specification to go on output (if desired)
+        logger_prefix = "EXPECT"
         ):
 
         if pexpect_stdout:
@@ -37,6 +40,12 @@ class serial_expect():
         else:
             self.logfile = None
         self.serial_fd = serial_fd
+        if not logger:
+            # Create an empty logger
+            self.logging = test_logger()
+        else:
+            self.logging = test_logger(logger, logger_prefix)
+
         self.logging = logging
 
     def create_uart_spawn(self):
@@ -47,11 +56,11 @@ class serial_expect():
             self.serial_fdspawn = fdspawn(self.serial_fd, encoding="utf-8", logfile=self.logfile, timeout=serial_expect.FDSPAWN_TIMEOUT)
         except pexpect.exceptions.TIMEOUT as error:
             #self.logging._error("TTY Timeout:"+str(error)+")")
-            self.logging.error("TTY Timeout:"+str(error)+")")
+            self.logging._error("TTY Timeout:"+str(error)+")")
             self.serial_fdspawn = None
         except Exception as error:
             #self.logging._error("Unexpected exception connecting to uart"+str(error))
-            self.logging.error("Unexpected exception connecting to uart"+str(error))
+            self.logging._error("Unexpected exception connecting to uart"+str(error))
             self.serial_fdspawn = None
         return self.serial_fdspawn
 
@@ -59,20 +68,20 @@ class serial_expect():
         ''' Send line over fdspawn handle '''
         if not self.serial_fdspawn:
             #self.logging._error("sendline call without active fdspan")
-            self.logging.error("sendline call without active fdspan")
+            self.logging._error("sendline call without active fdspan")
             return False
         try:
             self.serial_fdspawn.sendline(line)
         except Exception as error:
-            #self.logging.error("sendline error:"+str(error)+"\n"+traceback.format_exc())
-            self.logging.error("sendline error:"+str(error)+"\n"+traceback.format_exc())
+            #self.logging._error("sendline error:"+str(error)+"\n"+traceback.format_exc())
+            self.logging._error("sendline error:"+str(error)+"\n"+traceback.format_exc())
             return False
         return True
 
     def get_expect_str(self):
         ''' Return the last string received with expect '''
         if not self.serial_fdspawn:
-            self.logging.error("no active fdspan")
+            self.logging._error("no active fdspan")
             return None
         return self.serial_fdspawn.match.group(0)
 
@@ -85,24 +94,24 @@ class serial_expect():
         
         ''' Expext fdspawn handle '''
         if not self.serial_fdspawn:
-            self.logging.error("expect call without active fdspan")
+            self.logging._error("expect call without active fdspan")
             return None
         try:
             result = self.serial_fdspawn.expect(pattern=pattern, timeout=timeout)
         except pexpect.exceptions.TIMEOUT:
             self.timeout_error = True
-            self.logging.error(f"expect timeout (delay {timeout}s)")
+            self.logging._error(f"expect timeout (delay {timeout}s)")
             return None
         except pexpect.exceptions.EOF:
             self.EOF_error = True
-            self.logging.error(f"UART EOF with pattern:"+str(pattern))
+            self.logging._error(f"UART EOF with pattern:"+str(pattern))
             return None
         except UnicodeDecodeError:
-            self.logging.error("expect unicode error")
+            self.logging._error("expect unicode error")
             self.unicode_error = True
             return None
         except Exception as error:
-            self.logging.error("expect error:"+str(error))
+            self.logging._error("expect error:"+str(error))
             self.error = True
             return None
         return result

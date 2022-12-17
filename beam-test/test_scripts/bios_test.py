@@ -29,6 +29,7 @@ DEFAULT_LITEX_LOGIN_DELAY = 15
 DEFAULT_BIST_PATTERN = "0x5a5a5a5a"
 INITIAL_STARTING_STATE = "Initial Starting State"
 INITIAL_PROMPT_STATE = "Initial Prompt State"
+MEM_INIT_STATE = "Mem Init State"
 MEM_COMPARE_STATE = "Mem Compare State"
 TERMINATING_STATE = "Terminating State"
 
@@ -98,13 +99,31 @@ def expect_prompt(expect, number_of_enters=1,expect_timeout=DEFAULT_LITEX_LOGIN_
         Returns True if expect was successful, False otherwise
           Calling functions should query for details about failed expect
     '''
-    # Todo: Allow multiple attempts (if boot is slow)
+
     LITEX_LOGIN_PATTERN = "^.*litex[^>]*> "
     for i in range(number_of_enters):
         expect.sendline("\n")
     expect.expect(LITEX_LOGIN_PATTERN,timeout=expect_timeout)
     if expect.has_error():
         return False
+    return True
+
+def retry_expect_prompt(ex, number_of_enters=1,expect_retries = 0, expect_timeout=DEFAULT_LITEX_LOGIN_DELAY):
+    MAX_TRIES = expect_retries + 1
+    success = False
+    try_num = 0
+    while not success:
+        ex.logger.info(f"Expect prompt attempt #{try_num+1}")
+        expect_result = expect_prompt(ex.expect,number_of_enters=number_of_enters)
+        if not expect_result:
+            if try_num >= MAX_TRIES:
+                ex.logger.error("Maximum number of tries: exiting")
+                return False
+            time.sleep(15)
+            try_num += 1
+        else:
+            success = True
+    ex.logger.info("Login prompt success")
     return True
 
 def initial_starting_state_actions(ex):
@@ -115,23 +134,41 @@ def initial_starting_state_actions(ex):
 def initial_prompt_state_actions(ex):
     ''' Wait for the initial prompt
     '''
-    expect_result = expect_prompt(ex.expect,number_of_enters=2)
-    if not expect_result:
-        print("No expect string")
-        return TERMINATING_STATE
+    MAX_TRIES = 10
+    success = False
+    try_num = 0
+    while not success:
+        ex.logger.info(f"Initial prompt attempt #{try_num+1}")
+        expect_result = expect_prompt(ex.expect,number_of_enters=2)
+        if not expect_result:
+            if try_num >= MAX_TRIES:
+                ex.logger.error("Maximum number of tries: exiting")
+                return TERMINATING_STATE
+            time.sleep(15)
+            try_num += 1
+        else:
+            success = True
+    ex.logger.info("Login prompt success")
+
+    return MEM_INIT_STATE
+
+def mem_init_state_actions(ex):
     # Run the memory initialize command
     #mem_init_cmd = f"mem_write 0x40000000 0xa5a5a5a5 0x10000000 4"
     mem_init_cmd = f"mem_write 0x40000000 {ex.args.default_bist_pattern} 0x10000000 4"
     #mem_init_cmd = f"mem_write 0x40000000 {ex.args.default_bist_pattern} 0x100 4"
-    print(mem_init_cmd)
+    #print(mem_init_cmd)
+    if ex.args.skip_mem_init:
+        ex.logger.info("Skipping memory initialization")
+        return MEM_COMPARE_STATE
+
     send_result = ex.expect.sendline(mem_init_cmd)
-    #print(send_result)
-    # Get expect prompt
-    time.sleep(90) 
+    time.sleep(90)
     expect_result = expect_prompt(ex.expect,number_of_enters=2)
     if not expect_result:
-        print("No expect string")
+        ex.logger.info("No response")
         return TERMINATING_STATE
+
     return MEM_COMPARE_STATE
 
 def mem_compare_state_actions(ex):
@@ -144,19 +181,23 @@ def mem_compare_state_actions(ex):
     INIT_ADDR =          0x40000000
     COMPARE_ADDR =       0x60000000
     COMPARE_DIFF = COMPARE_ADDR - INIT_ADDR
-    COMPARE_INCREMENT =     0x10000
+    COMPARE_INCREMENT =     0x40000
     WORDS_TO_COMPARE =     COMPARE_INCREMENT // 4
     MAX_COMPARE =        0x08000000
+    COMPARE_INFO_MESSAGE_LENGTH = 0x800000
 
+    total_increment = 0
     for addr in range(INIT_ADDR,COMPARE_ADDR,COMPARE_INCREMENT):
         compare_addr = addr + COMPARE_DIFF
-        mem_compare_cmd = f"mem_cmp 0x{addr:08X} 0x{compare_addr:08X} {ex.args.default_bist_pattern} 0x{WORDS_TO_COMPARE:08X} 4"
-        print(mem_compare_cmd)
+        total_increment += COMPARE_INCREMENT
+        mem_compare_cmd = f"mem_cmp 0x{addr:08X} 0x{compare_addr:08X} 0x{WORDS_TO_COMPARE:08X} 4"
+        if total_increment % COMPARE_INFO_MESSAGE_LENGTH == 0:
+            ex.logger.info(mem_compare_cmd)
         send_result = ex.expect.sendline(mem_compare_cmd)
-        print(send_result)
+        #print(send_result)
         expect_result = expect_prompt(ex.expect,number_of_enters=1)
         if not expect_result:
-            print("No expect string")
+            ex.logger.info("No expect string")
             return TERMINATING_STATE
 
     return MEM_COMPARE_STATE
@@ -194,6 +235,11 @@ def build_experiment(args,logger,single_step=False):
     ))
 
     experiment.add_state(ExperimentState(
+        MEM_INIT_STATE,
+        mem_init_state_actions,
+    ))
+
+    experiment.add_state(ExperimentState(
         MEM_COMPARE_STATE,
         mem_compare_state_actions,
     ))
@@ -213,6 +259,7 @@ def main():
     parser.add_argument('-b', '--baudrate', default='1e6', help='Serial baud rate')
     parser.add_argument("--default_bist_pattern", help="Pattern for memory test (i.e., 0x5a)", default = DEFAULT_BIST_PATTERN)
     parser.add_argument("--log_dir", help="Directory to store log files", type=str)
+    parser.add_argument("--skip_mem_init", help="Skip memory initialization", action='store_true')
     args = parser.parse_args()
 
     wb = RemoteClient()
@@ -259,14 +306,20 @@ def main():
 
     print("Base filename:", log_filepath)
     logger = setup_logger(log_filepath,print_stdout = True)
-    
+
+    # Create UART stdout
+    uart_log_filename = create_log_path("UART",log_filename, log_dir)
+    # Create UART log file
+    uart_log_file = open(uart_log_filename,"w")
+
+
     experiment = build_experiment(args,logger,single_step = False)
     experiment.filebasename = log_filename
     experiment.log_dir = log_dir
 
     experiment.serial_fd = serial_fd
 
-    experiment.expect = serial_expect(serial_fd,logger)
+    experiment.expect = serial_expect(serial_fd,logger,pexpect_stdout=uart_log_file)
     experiment.expect.create_uart_spawn()
     experiment.start()
 
