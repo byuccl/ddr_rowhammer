@@ -195,10 +195,16 @@ def mem_compare_state_actions(ex):
             ex.logger.info(mem_compare_cmd)
         send_result = ex.expect.sendline(mem_compare_cmd)
         #print(send_result)
-        expect_result = expect_prompt(ex.expect,number_of_enters=1)
-        if not expect_result:
-            ex.logger.info("No expect string")
-            return TERMINATING_STATE
+        expect_result = False
+        max_tries = 20
+        tries = 0
+        while not expect_result:
+            expect_result = expect_prompt(ex.expect,number_of_enters=1)
+            if not expect_result:
+                tries += 1
+                ex.logger.info(f"Failed expect prompt try {tries}")
+                if tries >= max_tries:
+                    return TERMINATING_STATE
 
     return MEM_COMPARE_STATE
 
