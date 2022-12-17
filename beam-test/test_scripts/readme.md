@@ -189,6 +189,7 @@ For the **server window** (go to rowhammer_tester/scripts):
 
 ```
 source ~/ddr/rowhammer/rowhammer-tester/venv/bin/activate
+export TARGET=ddr4_datacenter_test_board
 ```
 
 
@@ -229,8 +230,9 @@ export TARGET=ddr4_datacenter_test_board
 
 Or run rowhammer test in beam test directory
 
-`python3 rowhammer_test.py`: Runs our simple BIST command.
-
+```
+python3 rowhammer_test.py --log_dir ./lansce2022/ --continuous
+```
 Issues:
 * Can't seem to connect to the USB terminal
 
@@ -240,7 +242,7 @@ For the **runtime window**:
 source ~/ddr/rowhammer/rowhammer-tester/venv/bin/activate
 export TARGET=ddr4_datacenter_test_board
 cd ~/ddr/ddr_mjw/ddr_rowhammer/beam-test/test_scripts
-python3 rowhammer_test.py
+python3 rowhammer_test.py --log_dir ./lansce2022/ --continuous
 ```
 
 # Notes
@@ -255,7 +257,14 @@ Runs:
 * Stopped DDR CTRL again to move process onto a screen (named DDRCTRL). Started again at 19_51_03. This was accidently killed when existing screen with Ctrl-k (instead of Ctrl-a d)
 * Started DDR CTRL again again at 19_52_43 (screen DDRCTRL)
 * Stopped DDR data to (1) move it to a screen and (2) turn on JCM scrubbing. DDRDATA. Started again a few times for debugging (ignore incomplete versions). Some had read data. The long one is 20_33_44. Couldn't get JCM scrubbing working and moved on.
-* Stopped rowhammer to add screen and simplify log. Restarted with screen ROWHAMMER at
+* Stopped rowhammer to add screen and simplify log. Restarted with screen ROWHAMMER at 20_36_46
+* DDRCTRL crashed at 9:39 pm. Restarted. Need to review and figure out what happened. Something goofy happened when I tried to restart it. Restarted again.
 
 * Run TMR CTRL DDR through the night (see if any errors in the morning)
 * 
+
+## 12/17/2022:
+
+* Arrival:
+  * DDRCTRL crashed (same JCM problem as yesterday)
+  * 

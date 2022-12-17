@@ -333,6 +333,12 @@ def configure_nexys_state_actions(ex, st):
     ''' Configures the Nexys board
         sets: ex.configure_ok
     '''
+
+    # Stop scrubbing (if it is going)
+    if ex.jcm.is_active():
+        ex.jcm.stop_scrub()
+        ex.jcm.jcm_thread.join()
+
     # Print id code
     result = ex.jcm.read_device_dna()
     if not result:
