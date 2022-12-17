@@ -147,13 +147,13 @@ class netbooter_control():
         return False
 
 
-    def turn_on_port(self, power_port):
+    def turn_on_port(self, power_port, cycle=False):
         ''' Turn netbooter port on '''
-        return self.control_port(power_port, True)
+        return self.control_port(power_port, True, cycle)
 
-    def turn_off_port(self, power_port):
+    def turn_off_port(self, power_port, cycle=False):
         ''' Turn netbooter port off '''
-        return self.control_port(power_port, False)
+        return self.control_port(power_port, False, cycle)
 
     def netbooter_group_args(parser):
         ''' Static function for creating netbooter argument group '''
@@ -167,6 +167,7 @@ def main():
     parser.add_argument_group(netbooter_control.netbooter_group_args(parser))
     parser.add_argument("--on", help="Turn on port", type=int)
     parser.add_argument("--off", help="Turn off port", type=int)
+    parser.add_argument("--cycle", help="Cycle port", type=int)
 
     args = parser.parse_args()
 
@@ -179,13 +180,17 @@ def main():
         print("Failed netbooter ping")
         return 1
 
+    cycle = False
+    if args.cycle:
+        cycle = True
+
     if args.on:
         port = args.on
-        netbooter.turn_on_port(port)
+        netbooter.turn_on_port(port,cycle)
 
     if args.off:
         port = args.off
-        netbooter.turn_off_port(port)
+        netbooter.turn_off_port(port,cycle)
 
 if __name__ == "__main__":
     main()

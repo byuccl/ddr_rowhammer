@@ -274,6 +274,7 @@ Runs:
   * DDRCTRL crashed (same JCM problem as yesterday)
     * Added a check to see if the JCM is scrubbing before trying to configure. Addressed in log starting at 08_30_27
     * It turns out we have been running the non-TMR bitstream since the start. Will continue with non-TMR for the day and run TMR for the rest of the test starting tonight
+    * Got into an infinite loop trying to recover. Restarted manually at about 11:41 am
   * ROWHAMMER
     * Errors show the base address but do not show the bit (expected and read are the same)
       * Need to see if I can figure out how to get the actual bad data
@@ -284,4 +285,4 @@ Runs:
     * It looks like there was a major error that cause a lot of problems but it seemed to have recovered. I don't think there is anything to change for this (as long as it recovers)
     * There was a UART timeout delay. Scrubbing not enabled properly.
       * Need to respond to UART timeout delays with a reboot of the system (until scrubbing can be fixed)
-      * Need to enable scrubbing (why not working?)
+    * Changed code to repower when the UART timesout (starting with 08_59_59 log)
