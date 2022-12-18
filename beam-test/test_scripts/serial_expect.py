@@ -46,8 +46,6 @@ class serial_expect():
         else:
             self.logging = test_logger(logger, logger_prefix)
 
-        self.logging = logging
-
     def create_uart_spawn(self):
         ''' Create Serial spawn object for pexpect. If this function is successful,
         the self.serial_fdspawn member is not None. Otherwise, None'''

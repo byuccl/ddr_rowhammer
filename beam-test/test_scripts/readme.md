@@ -228,7 +228,7 @@ export TARGET=ddr4_datacenter_test_board
 cd ~/ddr/rowhammer/rowhammer-tester/rowhammer_tester/scripts
 ```
 
-`python3 bios_console.py`: Connects to the litex system through the Etherbone
+`python3 ~/ddr/rowhammer/rowhammer-tester/rowhammer_tester/scripts/bios_console.py`: Connects to the litex system through the Etherbone
 
 Or run rowhammer test in beam test directory
 
@@ -284,3 +284,18 @@ Runs:
     * There was a UART timeout delay. Scrubbing not enabled properly.
       * Need to respond to UART timeout delays with a reboot of the system (until scrubbing can be fixed)
     * Changed code to repower when the UART timesout (starting with 08_59_59 log)
+
+## 12/18/2022:
+
+  * DDRCTRL
+    * It looks like there was some cyclic error mode. Need to go back and review and possibly address in the script
+    * 
+  * DDRDATA
+    * There are some block errors. Script seems ok
+  * DDRROWHAMMER
+    * review the UART log - some odd commands occuring (incorrect addr2)
+    * Note that the bios boot will start on its own - no need to run the bios_console.py script. It just takes a bit for the first prompt to occur
+    (first console is not catching - need to fix)
+    * Is there a way to start the server in the script so we can do everything in the script? (i.e., repower, start server, and then start script)
+    * 
+
