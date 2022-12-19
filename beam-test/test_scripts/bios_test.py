@@ -113,6 +113,22 @@ def expect_prompt(expect, number_of_enters=1,expect_timeout=DEFAULT_LITEX_LOGIN_
         return False
     return True
 
+def expect_prompt_wait(ex, max_tries, number_of_enters=2,expect_timeout=DEFAULT_LITEX_LOGIN_DELAY):
+    ''' This is called when we are in a bad state and just wanting to get
+    back to the prompt. Lots of enters and tests given to get to this point. 
+    returns True if the prompt is finally achieved, False otherwise
+    '''
+    expect_result = False
+    tries = 0
+    while not expect_result:
+        expect_result = expect_prompt(ex.expect,number_of_enters=number_of_enters,expect_timeout=expect_timeout)
+        if not expect_result:
+            tries += 1
+            ex.logger.info(f"Failed expect prompt try {tries}")
+            if tries >= max_tries:
+                return False
+    return True
+
 def retry_expect_prompt(ex, number_of_enters=1,expect_retries = 0, expect_timeout=DEFAULT_LITEX_LOGIN_DELAY):
     MAX_TRIES = expect_retries + 1
     success = False
@@ -252,7 +268,10 @@ def mem_init_state_actions(ex):
         ex.logger.info("Skipping memory initialization")
         return MEM_COMPARE_STATE
 
+    ex.logger.info(f"Issuing mem_write command (may take up to 90 seconds)")
     send_result = ex.expect.sendline(mem_init_cmd)
+    # Keep checking for litex prompt
+
     mem_init_delay_time = 90
     ex.logger.info(f"Giving time for mem_write command ({mem_init_delay_time} seconds)")
     time.sleep(mem_init_delay_time)
@@ -278,30 +297,71 @@ def mem_compare_state_actions(ex):
     WORDS_TO_COMPARE =     COMPARE_INCREMENT // 4
     MAX_COMPARE =        0x08000000
     COMPARE_INFO_MESSAGE_LENGTH = 0x800000
-    INTER_COMPARE_DELAY = 1.0
+    INTER_COMPARE_DELAY = 0.1 
 
     total_increment = 0
+    memory_errors = False
+    # Iterate over all memory ranges
     for addr in range(INIT_ADDR,COMPARE_ADDR,COMPARE_INCREMENT):
         compare_addr = addr + COMPARE_DIFF
         total_increment += COMPARE_INCREMENT
+
+        # Issue memory compare command
         mem_compare_cmd = f"mem_cmp 0x{addr:08X} 0x{compare_addr:08X} 0x{WORDS_TO_COMPARE:08X} 4"
         if total_increment % COMPARE_INFO_MESSAGE_LENGTH == 0:
             ex.logger.info(mem_compare_cmd)
         send_result = ex.expect.sendline(mem_compare_cmd)
-        time.sleep(INTER_COMPARE_DELAY)
-         #print(send_result)
-        expect_result = False
-        max_tries = 20
-        tries = 0
-        while not expect_result:
-            expect_result = expect_prompt(ex.expect,number_of_enters=0)
-            if not expect_result:
-                tries += 1
-                ex.logger.info(f"Failed expect prompt try {tries}")
-                if tries >= max_tries:
-                    return TERMINATING_STATE
+        time.sleep(INTER_COMPARE_DELAY) # Is this necessary?
 
-    return MEM_COMPARE_STATE
+        # look for and process result:
+        # success:
+        #  mem_cmp finished, same content.
+        # failure: (multiples of the following message)
+        #  Different memory content:
+        #  addr1: 0x45e0e000, content: 0x5afa5a5a
+        #  addr2: 0x65e0e000, content: 0x5a5a5a5a
+        SUCCESS_RESULT = "mem_cmp finished, same content."
+        FAILURE_RESULT = "Different memory content:"
+        ADDR_RESULT = "addr?: 0x........, content: 0x........"
+        LITEX_LOGIN_PATTERN = "^.*litex[^>]*> "
+        match_array = [SUCCESS_RESULT,FAILURE_RESULT]
+        # Match a line of data
+        match_index = ex.expect.expect(match_array,timeout=15)
+        if ex.expect.has_error():
+            ex.logger.error(f"Expect error")
+        elif ex.expect.serial_fdspawn.match:
+            # Matched one of the expected lines
+            if match_index == match_array.index(SUCCESS_RESULT):
+                # Expected result. Wait for expect prompt
+                expect_result = expect_prompt(ex.expect,number_of_enters=0)
+                if expect_result:
+                    # If I get the prompt, move on
+                    continue
+            elif match_index == match_array.index(FAILURE_RESULT):
+                ex.logger.info(f"Memory Error detected")
+                memory_errors = True
+                # Iterate over all of the possible messages until a prompt occurs for the next memory compare
+                prompt = False
+                error_match_array = [FAILURE_RESULT,ADDR_RESULT,LITEX_LOGIN_PATTERN]
+                while not prompt:
+                    match_index = ex.expect(match_array,timeout=15)
+                    if ex.expect.serial_fdspawn.match and match_index == error_match_array.index(LITEX_LOGIN_PATTERN):
+                        # We received a prompt. Can issue the next memory compare command for the next block
+                        prompt = True
+                    else:
+                        # Just skip over these error message lines for now
+                        pass
+        else:
+            # Didn't match one of the expected lines.
+            ex.logger.error(f"Response didn't match any expected result")
+            if not expect_prompt_wait(ex,max_tries=50):
+                return TERMINATING_STATE
+
+    # Completed a full check of all the memory
+    if memory_errors:
+        return MEM_INIT_STATE
+    else:
+        return MEM_COMPARE_STATE
 
 def terminating_state_actions(ex):
     ''' Terminates experiment

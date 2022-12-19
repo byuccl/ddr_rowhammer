@@ -303,6 +303,9 @@ Runs:
     * Need to review logs for counts
     * Didn't seem to reboot with BIST errors. Changed the logic and will try again
     * Need to incorporate the netbooter pshow command
+    * For the 21_03_16 log, I am getting bist errors when BIST errors are not occuring (see 05:19:38 line 2635 in the log file). There is an error, but the UART does not suggest an error. At 8:39 AM I started a new run to provide more information on why these errors keep coming (when there are no errors in the UART log). Watch for BIST errors throughout day.
+  * DDRDATA
+    * Just getting a very few big BIST error blocks. Not much to do here but to just collect more data.
   * ROWHAMMER
     * Need to see what error occured and how to properly handle it
   * Lattice
