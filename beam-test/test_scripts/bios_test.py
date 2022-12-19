@@ -257,7 +257,7 @@ def mem_init_state_actions(ex):
     ex.logger.info(f"Giving time for mem_write command ({mem_init_delay_time} seconds)")
     time.sleep(mem_init_delay_time)
  
-    expect_result = expect_prompt(ex.expect,number_of_enters=2)
+    expect_result = expect_prompt(ex.expect,number_of_enters=0)
     if not expect_result:
         ex.logger.info("No response")
         return TERMINATING_STATE
