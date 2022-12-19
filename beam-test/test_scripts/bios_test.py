@@ -210,7 +210,7 @@ def create_client_state_actions(ex):
 
     ex.serial_fd = serial_fd
 
-    ex.expect = serial_expect(serial_fd,ex.logger,pexpect_stdout=ex.uart_log_file)
+    ex.expect = serial_expect(serial_fd,ex.logger,pexpect_stdout=ex.uart_log_file, timestampformat = TIME_STRING_FORMAT)
     ex.expect.create_uart_spawn()
 
     return INITIAL_PROMPT_STATE
