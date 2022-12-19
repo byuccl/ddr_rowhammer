@@ -51,8 +51,9 @@ class netbooter_control():
         return subprocess.call(command) == 0
 
     def open_telnet(self):
-
-        ''' Open the telnet connection to the netbooter '''
+        ''' Open the telnet connection to the netbooter.
+             return True if it opened correctly, False otherwise
+        '''
         try:
             self.teln = telnetlib.Telnet(self.netbooter_ip_addr, timeout=self.TIMEOUT_NETBOOTER)
         except (Exception) as error:
@@ -79,6 +80,12 @@ class netbooter_control():
             self._error("Error Writing to telnet "+str(error))
             return False
         return True
+
+    def read_telnet(self):
+        ''' write telnet connection '''
+        if not self.teln:
+            return False
+        # Implement read_telnet logic
 
     def _control_string(self,power_port,turn_on):
         ''' Generate a control string for the port/function '''
@@ -147,6 +154,26 @@ class netbooter_control():
         # failed all attempts
         return False
 
+    def _pshow(self):
+        ''' Performs the 'pshow' command to determine the state of each port.
+        '''
+
+        # Issue pshow command
+        command = ("pshow").encode("ascii") + b"\r\n\r\n"
+        result = self.write_telnet(command)
+        if not result:
+            return None
+        # Wait before reading buffer
+        time.sleep(self.SLEEPTIME_NETBOOTER)
+
+        # Read netbooter result
+        try:
+            self.teln.read_some()
+        except (Exception) as error:
+            # try again (close?)
+            #print("Did not read_some")
+            pass
+        time.sleep(self.SLEEPTIME_NETBOOTER)
 
     def turn_on_port(self, power_port, cycle=False):
         ''' Turn netbooter port on '''
