@@ -11,6 +11,7 @@ import sys
 from serial import Serial
 from serial_expect import serial_expect
 import time
+from netbooter_control import netbooter_control
 
 from pathlib import Path
 from datetime import datetime
@@ -25,9 +26,13 @@ from rowhammer_tester.scripts.utils import RemoteClient, litex_server, read_iden
 # Format string for printing the date and time
 TIME_STRING_FORMAT = "%Y-%m-%d %H:%M:%S"
 DEFAULT_LITEX_LOGIN_DELAY = 15
+DEFAULT_NETBOOTER_PORT = 5
 
 DEFAULT_BIST_PATTERN = "0x5a5a5a5a"
 INITIAL_STARTING_STATE = "Initial Starting State"
+REPOWER_BOARD_STATE = "Repower Board State"
+START_SERVER_STATE = "Start Server State"
+CREATE_CLIENT_STATE = "Create Client State"
 INITIAL_PROMPT_STATE = "Initial Prompt State"
 MEM_INIT_STATE = "Mem Init State"
 MEM_COMPARE_STATE = "Mem Compare State"
@@ -129,11 +134,96 @@ def retry_expect_prompt(ex, number_of_enters=1,expect_retries = 0, expect_timeou
 def initial_starting_state_actions(ex):
     '''
     '''
+    #return INITIAL_PROMPT_STATE
+    return REPOWER_BOARD_STATE
+
+def repower_board_state_actions(ex):
+    '''
+    '''
+
+    # Make sure netbooter is accessible
+    netbooter_ip = ex.args.netbooter_ip
+    ex.netbooter = netbooter_control(netbooter_ip,ex.logger)
+    if not ex.netbooter.ping_netbooter():
+        ex.logger.error("Netbooter not on network")
+        return TERMINATING_STATE
+
+    # Repower the board
+    ex.netbooter.turn_off_port(ex.args.netbooter_port)
+    ex.netbooter.turn_on_port(ex.args.netbooter_port)
+
+    return START_SERVER_STATE
+
+def start_server_state_actions(ex):
+    '''
+    '''
+    post_boot_wait_time = 15
+    post_server_wait_time = 15
+    # Wait a bit for system to boot up
+    ex.logger.info(f"Giving time for system to boot ({post_boot_wait_time} seconds)")
+    time.sleep(post_boot_wait_time)
+    ex.logger.info("Starting Litex Server")
+    try:
+        litex_server()
+    except (Exception) as error:
+        print(str(error))
+        return TERMINATING_STATE
+    ex.logger.info(f"Giving time for server to start ({post_server_wait_time} seconds)")
+    time.sleep(post_server_wait_time)
+    return CREATE_CLIENT_STATE
+
+def create_client_state_actions(ex):
+    '''
+    '''
+    wb = RemoteClient()
+    wb.open()
+
+    # Need to figure out how to get read_ident working
+    #ex.logger.info("Board info:", read_ident(wb))
+
+    m, s = pty.openpty()
+    tty = os.ttyname(s)
+    ex.logger.info("LiteX Crossover UART created: {}".format(tty))
+
+    stop_event = threading.Event()
+    threads = [
+        threading.Thread(target=pty2crossover, args=[wb, m, stop_event], daemon=True),
+        threading.Thread(target=crossover2pty, args=[wb, m, stop_event], daemon=True),
+    ]
+    for thread in threads:
+        thread.start()
+
+    baudrate = int(float(ex.args.baudrate))
+    timout = 30
+    #print('Using serial backend: {} with baudrate {}'.format(args.term,baudrate))
+    ex.logger.info("Attempting to open:"+str(tty)+" at baud "+str(baudrate)+
+            " with timeout=" + str(timout))
+
+    try:
+        serial_fd = Serial(tty, baudrate=baudrate, timeout=timout)
+    except (Exception) as error:
+        # SerialException if device cannot be found or properly configured
+        # ValueError if values are incorrect
+        ex.logger.error("Failed to open:"+str(tty)+" ("+str(type(error))+":"+str(error)+")")
+        return TERMINATING_STATE
+    ex.logger.info("Serial port "+tty+" open")
+
+    ex.serial_fd = serial_fd
+
+    ex.expect = serial_expect(serial_fd,ex.logger,pexpect_stdout=ex.uart_log_file)
+    ex.expect.create_uart_spawn()
+
     return INITIAL_PROMPT_STATE
 
 def initial_prompt_state_actions(ex):
     ''' Wait for the initial prompt
     '''
+    # System has to boot up and calibrate the memory
+    boot_time = 30
+    send_result = ex.expect.sendline()
+    ex.logger.info(f"Giving time for bios to initialize ({boot_time} seconds)")
+    time.sleep(boot_time)
+
     MAX_TRIES = 10
     success = False
     try_num = 0
@@ -163,7 +253,10 @@ def mem_init_state_actions(ex):
         return MEM_COMPARE_STATE
 
     send_result = ex.expect.sendline(mem_init_cmd)
-    time.sleep(90)
+    mem_init_delay_time = 90
+    ex.logger.info(f"Giving time for mem_write command ({mem_init_delay_time} seconds)")
+    time.sleep(mem_init_delay_time)
+ 
     expect_result = expect_prompt(ex.expect,number_of_enters=2)
     if not expect_result:
         ex.logger.info("No response")
@@ -185,6 +278,7 @@ def mem_compare_state_actions(ex):
     WORDS_TO_COMPARE =     COMPARE_INCREMENT // 4
     MAX_COMPARE =        0x08000000
     COMPARE_INFO_MESSAGE_LENGTH = 0x800000
+    INTER_COMPARE_DELAY = 1.0
 
     total_increment = 0
     for addr in range(INIT_ADDR,COMPARE_ADDR,COMPARE_INCREMENT):
@@ -194,7 +288,8 @@ def mem_compare_state_actions(ex):
         if total_increment % COMPARE_INFO_MESSAGE_LENGTH == 0:
             ex.logger.info(mem_compare_cmd)
         send_result = ex.expect.sendline(mem_compare_cmd)
-        #print(send_result)
+        time.sleep(INTER_COMPARE_DELAY)
+         #print(send_result)
         expect_result = False
         max_tries = 20
         tries = 0
@@ -236,6 +331,21 @@ def build_experiment(args,logger,single_step=False):
     ))
 
     experiment.add_state(ExperimentState(
+        REPOWER_BOARD_STATE,
+        repower_board_state_actions,
+    ))
+
+    experiment.add_state(ExperimentState(
+        START_SERVER_STATE,
+        start_server_state_actions,
+    ))
+
+    experiment.add_state(ExperimentState(
+        CREATE_CLIENT_STATE,
+        create_client_state_actions,
+    ))
+
+    experiment.add_state(ExperimentState(
         INITIAL_PROMPT_STATE,
         initial_prompt_state_actions,
     ))
@@ -266,8 +376,11 @@ def main():
     parser.add_argument("--default_bist_pattern", help="Pattern for memory test (i.e., 0x5a)", default = DEFAULT_BIST_PATTERN)
     parser.add_argument("--log_dir", help="Directory to store log files", type=str)
     parser.add_argument("--skip_mem_init", help="Skip memory initialization", action='store_true')
+    parser.add_argument_group(netbooter_control.netbooter_group_args(parser))
+    parser.add_argument("--netbooter_port", help="Netbooter Port", type=int, default = DEFAULT_NETBOOTER_PORT)
     args = parser.parse_args()
 
+    '''
     wb = RemoteClient()
     wb.open()
     print("Board info:", read_ident(wb))
@@ -298,6 +411,7 @@ def main():
         print("Failed to open:"+str(tty)+" ("+str(type(error))+":"+str(error)+")")
         return None
     print("Serial port "+tty+" open")
+    '''
 
     # Set up logger settings
     log_dir = Path(".")
@@ -322,13 +436,11 @@ def main():
     experiment = build_experiment(args,logger,single_step = False)
     experiment.filebasename = log_filename
     experiment.log_dir = log_dir
-
-    experiment.serial_fd = serial_fd
-
-    experiment.expect = serial_expect(serial_fd,logger,pexpect_stdout=uart_log_file)
-    experiment.expect.create_uart_spawn()
+    experiment.uart_log_file = uart_log_file
     experiment.start()
 
+    '''
+    
     # open terminal and run pexpect
 
     # Write the value 0xa5a5a5a5 as a 32 bit word to 0x10000000 word locations
@@ -345,6 +457,7 @@ def main():
         thread.join(timeout=0.05)
 
     wb.close()
+    '''
 
 if __name__ == "__main__":
     main()

@@ -62,7 +62,7 @@ class serial_expect():
             self.serial_fdspawn = None
         return self.serial_fdspawn
 
-    def sendline(self,line):
+    def sendline(self,line='\n'):
         ''' Send line over fdspawn handle '''
         if not self.serial_fdspawn:
             #self.logging._error("sendline call without active fdspan")

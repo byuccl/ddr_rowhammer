@@ -294,8 +294,7 @@ Runs:
     * There are some block errors. Script seems ok
   * DDRROWHAMMER
     * review the UART log - some odd commands occuring (incorrect addr2)
-    * Note that the bios boot will start on its own - no need to run the bios_console.py script. It just takes a bit for the first prompt to occur
-    (first console is not catching - need to fix)
+    * Need to fix script so that it can boot on its own. Right now it only works when it has booted previously
     * Is there a way to start the server in the script so we can do everything in the script? (i.e., repower, start server, and then start script)
     * 
 
