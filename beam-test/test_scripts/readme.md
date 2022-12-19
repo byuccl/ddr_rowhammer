@@ -290,9 +290,23 @@ Runs:
   * DDRCTRL
     * It looks like there was some cyclic error mode. Need to go back and review and possibly address in the script
     * 8:00 pm: some sort of cyclic data error. Need to find a way to detect these and reboot.
+      * Added a test that will repower board after 50 BIST error messages. Not sure how to detect this BIST error bug.
   * DDRDATA
     * There are some block errors. Script seems ok
   * DDRROWHAMMER
     * Created stand alone script
     * Change number of enters to =0 for mem_cmp
 
+## 12/19/2022:
+
+  * DDRCTRL
+    * Need to review logs for counts
+    * Didn't seem to reboot with BIST errors. Changed the logic and will try again
+    * Need to incorporate the netbooter pshow command
+  * ROWHAMMER
+    * Need to see what error occured and how to properly handle it
+  * Lattice
+    * Need to automatically reboot lattice board as part of script
+
+# Post test follow up
+  * 

@@ -89,8 +89,10 @@ class netbooter_control():
         s = ("pset " + str(power_port) + " " + power_state).encode("ascii") + b"\r\n\r\n"
         return s
 
-    def control_port(self, power_port, turn_on = True, cycle=False):
-
+    def control_port(self, power_port, turn_on = True, cycle=False, sleep=1, attempts = 5):
+        '''
+        Perform actual command to the port.
+        '''
         if not turn_on:
             new_state = "Off"
             inverted_state = "On"
@@ -99,8 +101,7 @@ class netbooter_control():
             inverted_state = "Off"
 
         # Attempt command multile times
-        CONTROL_PORT_ATTEMPTS = 5
-        for attempt in range(CONTROL_PORT_ATTEMPTS):
+        for attempt in range(attempts):
             self._info(f"Attempt {(attempt+1)} to set port {power_port} with cycle={cycle}")
 
             # Open telnet
@@ -109,7 +110,7 @@ class netbooter_control():
                     # Try again
                     continue
             # Opened: wait a bit before communicating
-            time.sleep(1)
+            time.sleep(sleep)
 
             # Read netbooter port to clear buffer
             try:
@@ -118,7 +119,7 @@ class netbooter_control():
                 # try again (close?)
                 #print("Did not read_some")
                 continue
-            time.sleep(self.SLEEPTIME_NETBOOTER)
+            time.sleep(sleep)
 
             if cycle:
                 s = ("pset " + str(power_port) + " 0").encode("ascii") + b"\r\n\r\n"
@@ -128,7 +129,7 @@ class netbooter_control():
                     ##print("Failed write cycle")
                     continue
                 self._info("Setting port "+str(power_port)+" to "+inverted_state)
-                time.sleep(self.SLEEPTIME_NETBOOTER)
+                time.sleep(sleep)
 
             control_string = self._control_string(power_port, turn_on)
             if not self.write_telnet(control_string):
@@ -136,7 +137,7 @@ class netbooter_control():
                 #print("Failed write")
                 continue
             self._info(str("Setting port "+str(power_port)+" to "+new_state))
-            time.sleep(self.SLEEPTIME_NETBOOTER)
+            time.sleep(sleep)
 
             # Close telnet
             self.close_telnet()
