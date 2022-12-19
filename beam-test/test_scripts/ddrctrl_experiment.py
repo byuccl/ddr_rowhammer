@@ -59,7 +59,7 @@ DEFAULT_BIST_ADDR_MODE = 1 # Start reading/writing data with addresses linearly.
 DEFAULT_BIST_PATTERN = 0xa5 # Start reading/writing data with addresses linearly.
 LITEX_LOGIN_DELAY = 10
 
-MAX_BIST_ERRORS_BEFORE_REBOOT = 50
+MAX_BIST_ERRORS_BEFORE_REBOOT = 100
 
 UARTBONE_RESET_ADDR = 0xf0000800  # csr_base,ctrl
 UARTBONE_IDENT_ADDR = 0xf0002000  # csr_base,identifier_mem
@@ -605,7 +605,7 @@ def bist_execution_state_actions(ex, st):
                 total_errors = err+sec+ded
                 if total_errors > 0:            
                     consecutive_data_errors += 1
-                    ex.logger.error(f"BIST:Data Errors ({err},{sec},{ded}:{total_errors}/{consecutive_data_errors}-{total_bist_error_messages})")
+                    ex.logger.error(f"BIST:Data Errors ({err},{sec},{ded}:{total_errors}/{consecutive_data_errors}-{total_bist_error_messages}) {expect_str}")
                     print(ex.uart.serial_fdspawn.match.group(0))
                     total_bist_error_messages += 1
                     if total_bist_error_messages >= MAX_BIST_ERRORS_BEFORE_REBOOT:
