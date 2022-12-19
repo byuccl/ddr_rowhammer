@@ -59,6 +59,8 @@ DEFAULT_BIST_ADDR_MODE = 1 # Start reading/writing data with addresses linearly.
 DEFAULT_BIST_PATTERN = 0xa5 # Start reading/writing data with addresses linearly.
 LITEX_LOGIN_DELAY = 10
 
+MAX_BIST_ERRORS_BEFORE_REBOOT = 50
+
 UARTBONE_RESET_ADDR = 0xf0000800  # csr_base,ctrl
 UARTBONE_IDENT_ADDR = 0xf0002000  # csr_base,identifier_mem
 UARTBONE_DEBUG_ADDR = 0xf0001800  # csr_base,debug module
@@ -164,6 +166,7 @@ def variable_update_experiment_initialization(ex):
     start of the experiment. '''
     ex.failed_initial_login = 0
     ex.unrecoverable = False
+    ex.total_bist_error_messages = 0  # Indicates the number of accumulated bist error messages. Used to repower if too many occur
 
 def variable_update_successful_bist(ex):
     ''' Initalize/clear all variables that hold error state between
@@ -456,6 +459,7 @@ def bist_execution_state_actions(ex, st):
     ex.uart_ok = True
     ex.bist_error = False
     ex.dram_error = False
+    ex.bist_error_max = False
     # Initialize the BIST data error counters
     ex.bist.clear_data()
     # Flag counting valid data lines during BIST execution
@@ -602,6 +606,12 @@ def bist_execution_state_actions(ex, st):
                     consecutive_data_errors += 1
                     ex.logger.error(f"BIST:Data Errors ({err},{sec},{ded}:{total_errors}/{consecutive_data_errors})")
                     print(ex.uart.serial_fdspawn.match.group(0))
+                    ex.total_bist_error_messages += 1
+                    if ex.total_bist_error_messages >= MAX_BIST_ERRORS_BEFORE_REBOOT:
+                        # Reboot
+                        ex.bist_error_max = True
+
+
                     #if (total_errors) > DRAM_ERROR_THRESHOLD or \
                     #    consecutive_data_errors >= MAX_CONSECUTIVE_BAD_DATA_ERRORS:
                     if consecutive_data_errors >= MAX_CONSECUTIVE_BAD_DATA_ERRORS:
@@ -959,6 +969,7 @@ def build_experiment(args,logger,single_step=False):
         Transition(lambda ex, st: not ex.uart_ok, TERMINAL_RECOVERY_STATE),        
         Transition(lambda ex, st: ex.bist_error, BIST_RECOVERY_STATE),
         Transition(lambda ex, st: ex.dram_error, DRAM_RECOVERY_STATE),
+        Transition(lambda ex, st: ex.bist_error_max, POWER_NEXYS_STATE),
         # Shouldn't get here
         Transition(lambda ex, st: True, UNRECOVERABLE_POSTMORTUM_STATE)
     ))
