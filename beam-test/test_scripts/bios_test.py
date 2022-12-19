@@ -294,7 +294,7 @@ def mem_compare_state_actions(ex):
         max_tries = 20
         tries = 0
         while not expect_result:
-            expect_result = expect_prompt(ex.expect,number_of_enters=1)
+            expect_result = expect_prompt(ex.expect,number_of_enters=0)
             if not expect_result:
                 tries += 1
                 ex.logger.info(f"Failed expect prompt try {tries}")

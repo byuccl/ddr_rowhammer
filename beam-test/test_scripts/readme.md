@@ -289,12 +289,10 @@ Runs:
 
   * DDRCTRL
     * It looks like there was some cyclic error mode. Need to go back and review and possibly address in the script
-    * 
+    * 8:00 pm: some sort of cyclic data error. Need to find a way to detect these and reboot.
   * DDRDATA
     * There are some block errors. Script seems ok
   * DDRROWHAMMER
-    * review the UART log - some odd commands occuring (incorrect addr2)
-    * Need to fix script so that it can boot on its own. Right now it only works when it has booted previously
-    * Is there a way to start the server in the script so we can do everything in the script? (i.e., repower, start server, and then start script)
-    * 
+    * Created stand alone script
+    * Change number of enters to =0 for mem_cmp
 
