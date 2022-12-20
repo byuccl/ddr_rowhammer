@@ -147,6 +147,18 @@ def retry_expect_prompt(ex, number_of_enters=1,expect_retries = 0, expect_timeou
     ex.logger.info("Login prompt success")
     return True
 
+def delay_message(ex, msg, delay_time, delay_interval = 10):
+    remaining_time = delay_time
+    while remaining_time > 0:
+        ex.logger.info(f"{msg} ({remaining_time} seconds)")
+        if remaining_time < delay_interval:
+            sleep_time = remaining_time
+        else:
+            sleep_time = delay_interval
+        time.sleep(sleep_time)
+        remaining_time -= sleep_time
+
+
 def initial_starting_state_actions(ex):
     '''
     '''
@@ -156,6 +168,10 @@ def initial_starting_state_actions(ex):
 def repower_board_state_actions(ex):
     '''
     '''
+
+    #if ex.args.skip_mem_init:
+    #    ex.logger.info("Skipping initialization")
+    #    return MEM_COMPARE_STATE
 
     # Make sure netbooter is accessible
     netbooter_ip = ex.args.netbooter_ip
@@ -176,16 +192,14 @@ def start_server_state_actions(ex):
     post_boot_wait_time = 15
     post_server_wait_time = 15
     # Wait a bit for system to boot up
-    ex.logger.info(f"Giving time for HW to boot before starting Litex Server ({post_boot_wait_time} seconds)")
-    time.sleep(post_boot_wait_time)
+    delay_message(ex,"Giving time for HW to boot before starting Litex Server",post_boot_wait_time,delay_interval=5)
     ex.logger.info("Starting Litex Server")
     try:
         litex_server()
     except (Exception) as error:
         print(str(error))
         return TERMINATING_STATE
-    ex.logger.info(f"Giving time for Litex server to start without errors ({post_server_wait_time} seconds)")
-    time.sleep(post_server_wait_time)
+    delay_message(ex,"Giving time for Litex server to start without errors",post_server_wait_time,delay_interval=5)
     return CREATE_CLIENT_STATE
 
 def create_client_state_actions(ex):
@@ -211,7 +225,6 @@ def create_client_state_actions(ex):
 
     baudrate = int(float(ex.args.baudrate))
     timout = 30
-    #print('Using serial backend: {} with baudrate {}'.format(args.term,baudrate))
     ex.logger.info("Attempting to open:"+str(tty)+" at baud "+str(baudrate)+
             " with timeout=" + str(timout))
 
@@ -237,8 +250,7 @@ def initial_prompt_state_actions(ex):
     # System has to boot up and calibrate the memory
     boot_time = 30
     send_result = ex.expect.sendline()
-    ex.logger.info(f"Giving time for bios to initialize ({boot_time} seconds)")
-    time.sleep(boot_time)
+    delay_message(ex,"Giving time for bios to initialize memory",boot_time)
 
     MAX_TRIES = 10
     success = False
@@ -268,13 +280,14 @@ def mem_init_state_actions(ex):
         ex.logger.info("Skipping memory initialization")
         return MEM_COMPARE_STATE
 
-    ex.logger.info(f"Issuing mem_write command (may take up to 90 seconds)")
+    ex.logger.info(f"Issuing mem_write command")
     send_result = ex.expect.sendline(mem_init_cmd)
     # Keep checking for litex prompt
 
     mem_init_delay_time = 90
-    ex.logger.info(f"Giving time for mem_write command ({mem_init_delay_time} seconds)")
-    time.sleep(mem_init_delay_time)
+    delay_message(ex, "Giving time for mem_write command", mem_init_delay_time, delay_interval = 10)
+    #ex.logger.info(f"Giving time for mem_write command ({mem_init_delay_time} seconds)")
+    #time.sleep(mem_init_delay_time)
  
     expect_result = expect_prompt(ex.expect,number_of_enters=0)
     if not expect_result:
@@ -322,7 +335,9 @@ def mem_compare_state_actions(ex):
         #  addr2: 0x65e0e000, content: 0x5a5a5a5a
         SUCCESS_RESULT = "mem_cmp finished, same content."
         FAILURE_RESULT = "Different memory content:"
-        ADDR_RESULT = "addr?: 0x........, content: 0x........"
+        FAILURE_END = "mem_cmp finished, different content."
+        #addr1: 0x43000000, content: 0x12345432
+        ADDR_RESULT = "addr\d: 0x\w{8}, content: 0x\w{8}"
         LITEX_LOGIN_PATTERN = "^.*litex[^>]*> "
         match_array = [SUCCESS_RESULT,FAILURE_RESULT]
         # Match a line of data
@@ -342,13 +357,18 @@ def mem_compare_state_actions(ex):
                 memory_errors = True
                 # Iterate over all of the possible messages until a prompt occurs for the next memory compare
                 prompt = False
-                error_match_array = [FAILURE_RESULT,ADDR_RESULT,LITEX_LOGIN_PATTERN]
+                error_match_array = [FAILURE_RESULT,ADDR_RESULT,FAILURE_END,LITEX_LOGIN_PATTERN]
                 while not prompt:
-                    match_index = ex.expect.expect(match_array,timeout=15)
+                    match_index = ex.expect.expect(error_match_array,timeout=15)
                     if ex.expect.serial_fdspawn.match and match_index == error_match_array.index(LITEX_LOGIN_PATTERN):
                         # We received a prompt. Can issue the next memory compare command for the next block
+                        #ex.logger.info("Login prompt:"+ex.expect.serial_fdspawn.match.group(0))
                         prompt = True
+                    elif ex.expect.serial_fdspawn.match and match_index == error_match_array.index(ADDR_RESULT):
+                        # Print the address differences
+                        ex.logger.info(ex.expect.serial_fdspawn.match.group(0))
                     else:
+                        #ex.logger.info("No login prompt:"+ex.expect.serial_fdspawn.match.group(0))
                         # Just skip over these error message lines for now
                         pass
         else:

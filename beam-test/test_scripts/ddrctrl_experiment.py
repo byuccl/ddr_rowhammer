@@ -605,7 +605,8 @@ def bist_execution_state_actions(ex, st):
                 total_errors = err+sec+ded
                 if total_errors > 0:            
                     consecutive_data_errors += 1
-                    ex.logger.error(f"BIST:Data Errors ({err},{sec},{ded}:{total_errors}/{consecutive_data_errors}-{total_bist_error_messages}) {expect_str}")
+                    ex.logger.error(f"BIST:Data Errors ({err},{sec},{ded}:{total_errors}/{consecutive_data_errors}-{total_bist_error_messages})")
+                    ex.logger.error(f"BIST: expect string:{expect_str}")
                     print(ex.uart.serial_fdspawn.match.group(0))
                     total_bist_error_messages += 1
                     if total_bist_error_messages >= MAX_BIST_ERRORS_BEFORE_REBOOT:
