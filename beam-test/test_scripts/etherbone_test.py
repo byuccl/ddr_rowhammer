@@ -18,6 +18,11 @@ from datetime import datetime
 
 from rowhammer_tester.scripts.utils import RemoteClient, litex_server, read_ident
 
+'''
+Simple script for reading and writing to memory through the wishbone etherbone interface.
+This is used to inject faults into memory through the etherbone interface while the 
+etherbone console is executing.
+'''
 def main():
 
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)

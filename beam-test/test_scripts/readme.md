@@ -313,18 +313,59 @@ Runs:
   * Lattice
     * Need to automatically reboot lattice board as part of script
 
+## 12/20/2022:
+
+  * DDRCTRL
+    * Very little activity. One reboot, no bist errors
+    * Keep running TMR until completed
+  * DDRDATA
+    * Several big burst data events, otherwise quite
+    * Keep running for rest of test
+  * ROWHAMMER
+    * Two single-bit errors found
+    * Keep running for rest of test
+
+Evening:
+  * Clean up data room and take all stuff out
+
+## 12/21/2022:
+
+  * Cleanup
+    1. Close beam shutter
+    2. Gracefully stop all experiments (remove power)
+    3. Backup all log data
+    4. Shut down NUCs and start packing NUCs / control room cables and materials
+    5. Open beam area
+
+
 # Post test follow up
   * DDRCTRL
     * Review logs to identify various failure modes
     * Parse logs to obtain cross sections of various failure modes
     * Try to correlate failures with CRAM upsets and generate a sensitive CRAM upset list
-    * Run extensive fault injection on TMR and non-TMR to understand failure modes and continue instrumentation of system
+    * Run extensive fault injection on TMR and non-TMR to understand failure modes and continue instrumentation of system (what is happening when the processor fails?)
+      * Understand frozen hangs better (where is the code and what is the processor doing?)
     * Run BFAT on beam results
       * Through sensitive CRAM upset list
-      * all CRAM bits (to see what BFAT things will happen to each one)
+      * All CRAM bits (to see what BFAT things will happen to each one)
     * There seemed to be a ssh key issue when went to the beam. Try to replicate this and mitigate against this.
     * Archive with a zip file the DDR designs
-    * Understand frozen hangs better (where is the code and what is the processor doing?)
+    * Methods for improving speed of TMR (document how to create TMR)
+  * DDRDATA
+    * Figure out how to get scrubbing to work
+    * Parsing scripts
+    * Dig through failures manually to figure out what is going on
+  * ROWHAMMER
+    * Parse data and try to get a cross section of the memory
+      * Figure out how the module works in terms of memory addressing
+      * FIgure out which module the failures occured in
+    * Play around more with the rohammering and propose a rowhammering beam test
+    * Future: Larger beam so we can hit more memories.
+  * Andy's work
+  * ZCU 102 work
+  * Lattice
+    * Review logs to figure out why test is so sensitive
+    * Clean up scrubber/mask file work
   * Misc
     * Commit and merge all scripts
     * Start to generalize scripts and libraries
