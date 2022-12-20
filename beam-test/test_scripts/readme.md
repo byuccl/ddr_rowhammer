@@ -304,12 +304,33 @@ Runs:
     * Didn't seem to reboot with BIST errors. Changed the logic and will try again
     * Need to incorporate the netbooter pshow command
     * For the 21_03_16 log, I am getting bist errors when BIST errors are not occuring (see 05:19:38 line 2635 in the log file). There is an error, but the UART does not suggest an error. At 8:39 AM I started a new run to provide more information on why these errors keep coming (when there are no errors in the UART log). Watch for BIST errors throughout day.
+    * Run the non-TMR for a while to get more data (some logs are hung up)
   * DDRDATA
     * Just getting a very few big BIST error blocks. Not much to do here but to just collect more data.
   * ROWHAMMER
-    * Need to see what error occured and how to properly handle it
+    * Debuggging code to process memory errors and issue a mem_write to fix errors
+    * Need to play with rowhammer experiments in the beam
   * Lattice
     * Need to automatically reboot lattice board as part of script
 
 # Post test follow up
-  * 
+  * DDRCTRL
+    * Review logs to identify various failure modes
+    * Parse logs to obtain cross sections of various failure modes
+    * Try to correlate failures with CRAM upsets and generate a sensitive CRAM upset list
+    * Run extensive fault injection on TMR and non-TMR to understand failure modes and continue instrumentation of system
+    * Run BFAT on beam results
+      * Through sensitive CRAM upset list
+      * all CRAM bits (to see what BFAT things will happen to each one)
+    * There seemed to be a ssh key issue when went to the beam. Try to replicate this and mitigate against this.
+    * Archive with a zip file the DDR designs
+    * Understand frozen hangs better (where is the code and what is the processor doing?)
+  * Misc
+    * Commit and merge all scripts
+    * Start to generalize scripts and libraries
+    * Measure cross section of 7 series CRAM and compare with ICE/ICE-II
+    * Compute cross section of Lattice
+    * Experiment with uartbone. Why does it fail and can we recover it when it does fail?
+  * Future work
+    * Create Litex Linux using Antmicro board and ECC
+  

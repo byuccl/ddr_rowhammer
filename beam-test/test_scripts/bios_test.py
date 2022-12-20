@@ -176,7 +176,7 @@ def start_server_state_actions(ex):
     post_boot_wait_time = 15
     post_server_wait_time = 15
     # Wait a bit for system to boot up
-    ex.logger.info(f"Giving time for system to boot ({post_boot_wait_time} seconds)")
+    ex.logger.info(f"Giving time for HW to boot before starting Litex Server ({post_boot_wait_time} seconds)")
     time.sleep(post_boot_wait_time)
     ex.logger.info("Starting Litex Server")
     try:
@@ -184,7 +184,7 @@ def start_server_state_actions(ex):
     except (Exception) as error:
         print(str(error))
         return TERMINATING_STATE
-    ex.logger.info(f"Giving time for server to start ({post_server_wait_time} seconds)")
+    ex.logger.info(f"Giving time for Litex server to start without errors ({post_server_wait_time} seconds)")
     time.sleep(post_server_wait_time)
     return CREATE_CLIENT_STATE
 
@@ -344,7 +344,7 @@ def mem_compare_state_actions(ex):
                 prompt = False
                 error_match_array = [FAILURE_RESULT,ADDR_RESULT,LITEX_LOGIN_PATTERN]
                 while not prompt:
-                    match_index = ex.expect(match_array,timeout=15)
+                    match_index = ex.expect.expect(match_array,timeout=15)
                     if ex.expect.serial_fdspawn.match and match_index == error_match_array.index(LITEX_LOGIN_PATTERN):
                         # We received a prompt. Can issue the next memory compare command for the next block
                         prompt = True

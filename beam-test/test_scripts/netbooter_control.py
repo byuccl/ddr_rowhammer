@@ -85,7 +85,15 @@ class netbooter_control():
         ''' write telnet connection '''
         if not self.teln:
             return False
-        # Implement read_telnet logic
+
+        try:
+            result = self.teln.read_some()
+        except (Exception) as error:
+            # try again (close?)
+            #print("Did not read_some")
+            return None
+
+        return result
 
     def _control_string(self,power_port,turn_on):
         ''' Generate a control string for the port/function '''
@@ -196,6 +204,7 @@ def main():
     parser.add_argument("--on", help="Turn on port", type=int)
     parser.add_argument("--off", help="Turn off port", type=int)
     parser.add_argument("--cycle", help="Cycle port", type=int)
+    parser.add_argument("--show", help="Show status of ports", action='store_true')
 
     args = parser.parse_args()
 
