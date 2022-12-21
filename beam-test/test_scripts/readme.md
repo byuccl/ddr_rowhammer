@@ -330,6 +330,8 @@ Evening:
 
 ## 12/21/2022:
 
+
+
   * Cleanup
     1. Close beam shutter
     2. Gracefully stop all experiments (remove power)
@@ -337,6 +339,66 @@ Evening:
     4. Shut down NUCs and start packing NUCs / control room cables and materials
     5. Open beam area
 
+### Backup data
+
+DDR Backups
+```
+cd ~/ddr/beam_data/ddr
+mkdir ./tmp
+scp -rp shrec@99.99.99.12:~/ddr/ddr_mjw/ddr_rowhammer/beam-test/test_scripts/lansce2022/* ./tmp
+zip ddr_dec20.zip ./tmp/*
+rm -rf ~/ddr/beam_data/ddr/tmp
+```
+
+Processor Backups
+
+password:radiation
+```
+cd ~/ddr/beam_data/proc
+mkdir ./tmp
+scp -rp shrec@99.99.99.30:~/aew/scripts/rad_test_logs/* ./tmp
+zip -r proc_dec20.zip ./tmp/*
+rm -rf ~/ddr/beam_data/proc/tmp
+```
+
+VexLinux Backups
+
+password:radiation
+```
+cd ~/ddr/beam_data/vexlinux
+mkdir tmp_152
+mkdir tmp_153
+scp -rp shrec@99.99.99.30:~/VexLinuxTMR/JCM_repo/fault_injection/radiation_test/RT_logs_153/* ./tmp_153
+scp -rp shrec@99.99.99.30:~/VexLinuxTMR/JCM_repo/fault_injection/radiation_test/RT_logs_152/* ./tmp_152
+zip -r vex_dec20.zip ./tmp_152 ./tmp_153
+rm -rf ~/ddr/beam_data/vexlinux/tmp_152
+rm -rf ~/ddr/beam_data/vexlinux/tmp_153
+```
+
+Lattice Backups
+
+password:chrec
+```
+cd ~/ddr/beam_data/lattice
+mkdir tmp
+# this takes a long time
+scp -rp chrec@99.99.99.33:~/lattice_rad_test/rad_test_logs/* ./tmp
+# this takes a long time too
+scp -rp chrec@99.99.99.33:~/lattice_rad_test/changers* ./tmp
+zip lattice_dec20.zip ./tmp/*
+rm -rf ~/ddr/beam_data/lattice/tmp
+```
+
+Zcu102 Backups
+
+password:chrec
+```
+cd ~/ddr/beam_data/zcu102
+mkdir tmp
+scp -rp chrec@99.99.99.33:~/pcap_scrubbing/radTest/logs_2022/2022_12_* ./tmp
+zip -r zcu102_dec20.zip ./tmp/*
+rm -rf ~/ddr/beam_data/zcu102/tmp
+```
 
 # Post test follow up
   * DDRCTRL

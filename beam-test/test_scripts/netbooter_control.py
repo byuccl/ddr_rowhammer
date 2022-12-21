@@ -284,14 +284,14 @@ web v   Sets Web access ON/OFF(1/0)
 
     def _get_pshow_result(self):
         ''' Performs the 'pshow' command to determine the state of each port.
+        Returns a dictionary object containing all of the port information.
         '''
-
         command = ("pshow").encode("ascii") + b"\r\n"
-
         result = self.send_command(self, command)
         return result
 
     def pshow(self):
+        ''' Prints the results from the pshow command. '''
         result = self._get_pshow_result()
         #print(result)
         pshow_dict = self.parse_show_str(result)
