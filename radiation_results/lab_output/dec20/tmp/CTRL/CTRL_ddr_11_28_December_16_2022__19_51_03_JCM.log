@@ -1,0 +1,35 @@
+[2022-12-16 19:51:15] Creating JCM Hardware on port 0 with 0 shifts
+[2022-12-16 19:51:15] Using Default Chain String: [ 6 ]
+[2022-12-16 19:51:15] Changing JCM Clock. Old Rate=29411765 Request Rate=1000000 Actual rate=1000000
+[2022-12-16 19:51:15] Register 0x32=
+[2022-12-16 19:51:15]  0:0x812c023b
+[2022-12-16 19:51:15]  1:0x2a0f6504
+[2022-12-16 19:51:15] Changing JCM Clock. Old Rate=1000000 Request Rate=30000000 Actual rate=29411765
+[2022-12-16 19:51:15] Creating JCM Hardware on port 0 with 0 shifts
+[2022-12-16 19:51:15] Using Default Chain String: [ 6 ]
+[2022-12-16 19:51:15] **** Warning ****
+[2022-12-16 19:51:15]   Filename /root/ddr_11_28.bit does not have a '.bin' extension. Only '.bin' files can be used for this configuration command
+[2022-12-16 19:51:15] Configuring with file: /root/ddr_11_28.bit
+[2022-12-16 19:51:20] Configured Successfully
+[2022-12-16 19:51:21] JCM Scrubbing. Build Date Thu Jul 28 15:32:32 MDT 2022
+[2022-12-16 19:51:21] Execution time: Fri Jul 29 03:07:19 2022
+[2022-12-16 19:51:21] 
+[2022-12-16 19:51:21] Changing JCM Clock. Old Rate=29411765 Request Rate=30000000 Actual rate=29411765
+[2022-12-16 19:51:21] Creating JCM Hardware on port 0 with 0 shifts
+[2022-12-16 19:51:21] Using Default Chain String: [ 6 ]
+[2022-12-16 19:51:25] FPGA: xc7a200t (7_Series family) IDCode=0x13636093
+[2022-12-16 19:51:25] Read IDCODE Matched=0x13636093
+[2022-12-16 19:51:25] No readback file specified
+[2022-12-16 19:51:25] Number of OffSet words 101
+[2022-12-16 19:51:25] No readback file specified. Reading 18310 frames
+[2022-12-16 19:51:25] Number of OffSet words 101
+[2022-12-16 19:51:25] Number of OffSet words 101
+[2022-12-16 19:51:25] Part xc7a200t has 24802 frames. Family 7_Series has 101 words per frame
+[2022-12-16 19:51:25] Cycle 0: 2022-07-29 03:07:23
+[2022-12-16 19:51:30] Word 221431 (Frame index=2192 frame address=0x00001fa0 word=39 mask=0x01000000)
+[2022-12-16 19:51:30] 1 bit errors
+[2022-12-16 19:51:30] Cycle 1: 2022-07-29 03:07:27
+[2022-12-16 19:51:34] Word 1456224 (Frame index=14418 frame address=0x00423190 word=6 mask=0x00000010)
+[2022-12-16 19:51:34] 1 bit errors
+[2022-12-16 19:51:34] Cycle 2: 2022-07-29 03:07:31
+[2022-12-16 19:51:38] Cycle 3: 2022-07-29 03:07:36

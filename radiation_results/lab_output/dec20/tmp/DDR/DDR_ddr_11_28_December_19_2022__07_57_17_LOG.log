@@ -1,0 +1,50 @@
+[2022-12-19 07:57:17] INFO     STATE:Initial Starting State
+[2022-12-19 07:57:17] INFO     git commit information
+[2022-12-19 07:57:17] INFO     	git commit:b0d2c4e Added a test that will reboot the board and start over afte 50 BIST error messages
+[2022-12-19 07:57:17] INFO     	git commit date:Sun Dec 18 21:03:11 2022
+[2022-12-19 07:57:17] INFO     	git status:Sun Dec 18 21:03:11 2022
+[2022-12-19 07:57:17] INFO     		M beam-test/test_scripts/readme.md
+[2022-12-19 07:57:17] INFO     Command line information
+[2022-12-19 07:57:17] INFO     	Command line:['ddrdata_experiment.py', '--log_dir', './lansce2022', '--bitstream', '/root/ddr_11_28.bit', '--jcm_clock', '30_000_000', '--jcm_netbooter_port', '4', '--nexys_netbooter_port', '3', '--jcm_ip', '169.254.132.151', '--uart_phys_port', '1-4.4.4.1', '--enable_scrubbing', '--frads_file', 'xc7a200t_frad.txt']
+[2022-12-19 07:57:17] INFO     	arg:netbooter_ip=169.254.131.160
+[2022-12-19 07:57:17] INFO     	arg:nexys_netbooter_port=3
+[2022-12-19 07:57:17] INFO     	arg:jcm_netbooter_port=4
+[2022-12-19 07:57:17] INFO     	arg:jcm_ip=169.254.132.151
+[2022-12-19 07:57:17] INFO     	arg:jcm_part=xc7a200t
+[2022-12-19 07:57:17] INFO     	arg:jcm_clock=30000000
+[2022-12-19 07:57:17] INFO     	arg:repower_jcm=False
+[2022-12-19 07:57:17] INFO     	arg:disable_jcm=False
+[2022-12-19 07:57:17] INFO     	arg:uart_phys_port=1-4.4.4.1
+[2022-12-19 07:57:17] INFO     	arg:uart_phys_if=0
+[2022-12-19 07:57:17] INFO     	arg:uart_baudrate=115200
+[2022-12-19 07:57:17] INFO     	arg:bitstream=/root/ddr_11_28.bit
+[2022-12-19 07:57:17] INFO     	arg:default_bist_pattern=90
+[2022-12-19 07:57:17] INFO     	arg:log_dir=./lansce2022
+[2022-12-19 07:57:17] INFO     	arg:frads_file=xc7a200t_frad.txt
+[2022-12-19 07:57:17] INFO     	arg:enable_scrubbing=True
+[2022-12-19 07:57:17] INFO     	arg:single_step=False
+[2022-12-19 07:57:17] INFO     STATE:Netbooter Setup State
+[2022-12-19 07:57:17] INFO     STATE:JCM Setup State
+[2022-12-19 07:57:17] INFO     NETBOOTER:Attempt 1 to set port 4 with cycle=False
+[2022-12-19 07:57:20] ERROR    NETBOOTER:Error opening telnettimed out
+[2022-12-19 07:57:20] INFO     NETBOOTER:Attempt 2 to set port 4 with cycle=False
+[2022-12-19 07:57:24] INFO     NETBOOTER:Setting port 4 to On
+[2022-12-19 07:57:25] INFO     JCM ping attempt 1
+[2022-12-19 07:57:25] INFO     JCM:Logging in to JCM
+[2022-12-19 07:57:25] INFO     JCM:Connecting to JCM over SSH... (Attempt 1)
+[2022-12-19 07:57:26] INFO     JCM:SSH successful
+[2022-12-19 07:57:26] INFO     STATE:UART Setup State
+[2022-12-19 07:57:26] INFO     STATE:Power Nexys State
+[2022-12-19 07:57:26] INFO     NETBOOTER:Attempt 1 to set port 3 with cycle=False
+[2022-12-19 07:57:29] ERROR    NETBOOTER:Error opening telnettimed out
+[2022-12-19 07:57:29] INFO     NETBOOTER:Attempt 2 to set port 3 with cycle=False
+[2022-12-19 07:57:33] INFO     NETBOOTER:Setting port 3 to Off
+[2022-12-19 07:57:34] INFO     NETBOOTER:Attempt 1 to set port 3 with cycle=False
+[2022-12-19 07:57:36] INFO     NETBOOTER:Setting port 3 to On
+[2022-12-19 07:57:37] INFO     STATE:Connect UART State
+[2022-12-19 07:57:37] INFO     UART:Searching for ttyUSB device (Attempt 1) for port '1-4.4.4.1' IF '0'
+[2022-12-19 07:57:38] INFO     UART:Found tty device:/dev/ttyUSB3
+[2022-12-19 07:57:38] INFO     UART:Attempting to open:/dev/ttyUSB3 at baud 115200 with timeout=5
+[2022-12-19 07:57:38] ERROR    UART:Failed to open:/dev/ttyUSB3 (<class 'serial.serialutil.SerialException'>:[Errno 13] could not open port /dev/ttyUSB3: [Errno 13] Permission denied: '/dev/ttyUSB3')
+[2022-12-19 07:57:38] ERROR    UART:Unexpected exception connecting to uartThe fd argument is not an int. If this is a command string then maybe you want to use pexpect.spawn.
+[2022-12-19 07:57:38] INFO     STATE:Terminating State

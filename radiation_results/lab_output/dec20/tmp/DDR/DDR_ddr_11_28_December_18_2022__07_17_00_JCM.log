@@ -1,0 +1,13 @@
+[2022-12-18 07:17:11] Creating JCM Hardware on port 0 with 0 shifts
+[2022-12-18 07:17:11] Using Default Chain String: [ 6 ]
+[2022-12-18 07:17:11] Changing JCM Clock. Old Rate=29411765 Request Rate=1000000 Actual rate=1000000
+[2022-12-18 07:17:11] Register 0x32=
+[2022-12-18 07:17:11]  0:0x00db951b
+[2022-12-18 07:17:11]  1:0x1507af22
+[2022-12-18 07:17:11] Changing JCM Clock. Old Rate=1000000 Request Rate=30000000 Actual rate=29411765
+[2022-12-18 07:17:11] Creating JCM Hardware on port 0 with 0 shifts
+[2022-12-18 07:17:11] Using Default Chain String: [ 6 ]
+[2022-12-18 07:17:11] **** Warning ****
+[2022-12-18 07:17:11]   Filename /root/ddr_11_28.bit does not have a '.bin' extension. Only '.bin' files can be used for this configuration command
+[2022-12-18 07:17:11] Configuring with file: /root/ddr_11_28.bit
+[2022-12-18 07:17:17] Configured Successfully

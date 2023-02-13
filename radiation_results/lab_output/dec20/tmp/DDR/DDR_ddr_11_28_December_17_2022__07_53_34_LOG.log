@@ -1,0 +1,324 @@
+[2022-12-17 07:53:34] INFO     STATE:Initial Starting State
+[2022-12-17 07:53:34] INFO     git commit information
+[2022-12-17 07:53:34] INFO     	git commit:8f8859a Tried to get jcm scrubbing working. Added coutner for rowhammer
+[2022-12-17 07:53:34] INFO     	git commit date:Fri Dec 16 20:36:08 2022
+[2022-12-17 07:53:34] INFO     	git status:Fri Dec 16 20:36:08 2022
+[2022-12-17 07:53:34] INFO     		M beam-test/test_scripts/readme.md
+[2022-12-17 07:53:34] INFO     Command line information
+[2022-12-17 07:53:34] INFO     	Command line:['ddrdata_experiment.py', '--log_dir', './lansce2022', '--bitstream', '/root/ddr_11_28.bit', '--jcm_clock', '30_000_000', '--jcm_netbooter_port', '4', '--nexys_netbooter_port', '3', '--jcm_ip', '169.254.132.151', '--uart_phys_port', '1-4.4.4.1', '--enable_scrubbing', '--frads_file', 'xc7a200t_frad.txt']
+[2022-12-17 07:53:34] INFO     	arg:netbooter_ip=169.254.131.160
+[2022-12-17 07:53:34] INFO     	arg:nexys_netbooter_port=3
+[2022-12-17 07:53:34] INFO     	arg:jcm_netbooter_port=4
+[2022-12-17 07:53:34] INFO     	arg:jcm_ip=169.254.132.151
+[2022-12-17 07:53:34] INFO     	arg:jcm_part=xc7a200t
+[2022-12-17 07:53:34] INFO     	arg:jcm_clock=30000000
+[2022-12-17 07:53:34] INFO     	arg:repower_jcm=False
+[2022-12-17 07:53:34] INFO     	arg:disable_jcm=False
+[2022-12-17 07:53:34] INFO     	arg:uart_phys_port=1-4.4.4.1
+[2022-12-17 07:53:34] INFO     	arg:uart_phys_if=0
+[2022-12-17 07:53:34] INFO     	arg:uart_baudrate=115200
+[2022-12-17 07:53:34] INFO     	arg:bitstream=/root/ddr_11_28.bit
+[2022-12-17 07:53:34] INFO     	arg:default_bist_pattern=90
+[2022-12-17 07:53:34] INFO     	arg:log_dir=./lansce2022
+[2022-12-17 07:53:34] INFO     	arg:frads_file=xc7a200t_frad.txt
+[2022-12-17 07:53:34] INFO     	arg:enable_scrubbing=True
+[2022-12-17 07:53:34] INFO     	arg:single_step=False
+[2022-12-17 07:53:34] INFO     STATE:Netbooter Setup State
+[2022-12-17 07:53:34] INFO     STATE:JCM Setup State
+[2022-12-17 07:53:34] INFO     NETBOOTER:Attempt 1 to set port 4 with cycle=False
+[2022-12-17 07:53:36] INFO     NETBOOTER:Setting port 4 to On
+[2022-12-17 07:53:37] INFO     JCM ping attempt 1
+[2022-12-17 07:53:37] INFO     JCM:Logging in to JCM
+[2022-12-17 07:53:37] INFO     JCM:Connecting to JCM over SSH... (Attempt 1)
+[2022-12-17 07:53:38] INFO     JCM:SSH successful
+[2022-12-17 07:53:38] INFO     STATE:UART Setup State
+[2022-12-17 07:53:38] INFO     STATE:Power Nexys State
+[2022-12-17 07:53:38] INFO     NETBOOTER:Attempt 1 to set port 3 with cycle=False
+[2022-12-17 07:53:40] INFO     NETBOOTER:Setting port 3 to Off
+[2022-12-17 07:53:41] INFO     NETBOOTER:Attempt 1 to set port 3 with cycle=False
+[2022-12-17 07:53:43] INFO     NETBOOTER:Setting port 3 to On
+[2022-12-17 07:53:44] INFO     STATE:Connect UART State
+[2022-12-17 07:53:44] INFO     UART:Searching for ttyUSB device (Attempt 1) for port '1-4.4.4.1' IF '0'
+[2022-12-17 07:53:46] INFO     UART:Searching for ttyUSB device (Attempt 2) for port '1-4.4.4.1' IF '0'
+[2022-12-17 07:53:46] INFO     UART:Found tty device:/dev/ttyUSB5
+[2022-12-17 07:53:46] INFO     UART:Attempting to open:/dev/ttyUSB5 at baud 115200 with timeout=5
+[2022-12-17 07:53:46] INFO     UART:Serial port /dev/ttyUSB5 open
+[2022-12-17 07:53:46] INFO     STATE:Configure Nexys State
+[2022-12-17 07:53:46] INFO     JCM:Attempting JCM device DNA read
+[2022-12-17 07:53:46] INFO     JCM:Executing commmand on JCM
+	~/jcm_apps/jcm_jtag_reg.elf -r 50 --swap -w 64
+[2022-12-17 07:53:46] INFO     Device DNA:0:0x00db951b 1:0x1507af22
+[2022-12-17 07:53:46] INFO     JCM:Attempting JCM configuration
+[2022-12-17 07:53:46] INFO     JCM:Executing commmand on JCM
+	~/jcm_apps/jcm_config.elf --part xc7a200t -c 30000000 --jtag --config_file /root/ddr_11_28.bit
+[2022-12-17 07:53:52] INFO     JCM:Configuration Success
+[2022-12-17 07:53:52] INFO     STATE:Enable Scrubbing State
+[2022-12-17 07:53:52] INFO     JCM:Starting JCM scrubber
+[2022-12-17 07:53:52] INFO     JCM:Executing commmand on JCM
+	~/jcm_apps/jcm_scrubbing.elf --part xc7a200t -c 30000000 --jtag --iterations 100000000 --frad_file xc7a200t_frad.txt
+[2022-12-17 07:53:52] INFO     STATE:LiteX Login State
+[2022-12-17 07:53:53] INFO     STATE:Initialize Memory State
+[2022-12-17 07:53:53] INFO     STATE:Run Bist State
+[2022-12-17 07:53:53] INFO     BIST:Header
+[2022-12-17 07:54:07] INFO     BIST:Header
+[2022-12-17 07:54:22] INFO     BIST:Header
+[2022-12-17 07:54:37] INFO     BIST:Header
+[2022-12-17 07:54:52] INFO     BIST:Header
+[2022-12-17 07:55:07] INFO     BIST:Header
+[2022-12-17 07:55:22] INFO     BIST:Header
+[2022-12-17 07:55:37] INFO     BIST:Header
+[2022-12-17 07:55:52] INFO     BIST:Header
+[2022-12-17 07:56:07] INFO     BIST:Header
+[2022-12-17 07:56:22] INFO     BIST:Header
+[2022-12-17 07:56:37] INFO     BIST:Header
+[2022-12-17 07:56:52] INFO     BIST:Header
+[2022-12-17 07:57:07] INFO     BIST:Header
+[2022-12-17 07:57:22] INFO     BIST:Header
+[2022-12-17 07:57:37] INFO     BIST:Header
+[2022-12-17 07:57:52] INFO     BIST:Header
+[2022-12-17 07:58:07] INFO     BIST:Header
+[2022-12-17 07:58:22] INFO     BIST:Header
+[2022-12-17 07:58:37] INFO     BIST:Header
+[2022-12-17 07:58:52] INFO     BIST:Header
+[2022-12-17 07:59:07] INFO     BIST:Header
+[2022-12-17 07:59:22] INFO     BIST:Header
+[2022-12-17 07:59:37] INFO     BIST:Header
+[2022-12-17 07:59:52] INFO     BIST:Header
+[2022-12-17 08:00:07] INFO     BIST:Header
+[2022-12-17 08:00:22] INFO     BIST:Header
+[2022-12-17 08:00:37] INFO     BIST:Header
+[2022-12-17 08:00:52] INFO     BIST:Header
+[2022-12-17 08:01:07] INFO     BIST:Header
+[2022-12-17 08:01:22] INFO     BIST:Header
+[2022-12-17 08:01:37] INFO     BIST:Header
+[2022-12-17 08:01:52] INFO     BIST:Header
+[2022-12-17 08:02:07] INFO     BIST:Header
+[2022-12-17 08:02:22] INFO     BIST:Header
+[2022-12-17 08:02:37] INFO     BIST:Header
+[2022-12-17 08:02:52] INFO     BIST:Header
+[2022-12-17 08:03:07] INFO     BIST:Header
+[2022-12-17 08:03:22] INFO     BIST:Header
+[2022-12-17 08:03:37] INFO     BIST:Header
+[2022-12-17 08:03:52] INFO     BIST:Header
+[2022-12-17 08:04:07] INFO     BIST:Header
+[2022-12-17 08:04:22] INFO     BIST:Header
+[2022-12-17 08:04:37] INFO     BIST:Header
+[2022-12-17 08:04:52] INFO     BIST:Header
+[2022-12-17 08:05:07] INFO     BIST:Header
+[2022-12-17 08:05:22] INFO     BIST:Header
+[2022-12-17 08:05:37] INFO     BIST:Header
+[2022-12-17 08:05:52] INFO     BIST:Header
+[2022-12-17 08:06:07] INFO     BIST:Header
+[2022-12-17 08:06:22] INFO     BIST:Header
+[2022-12-17 08:06:37] INFO     BIST:Header
+[2022-12-17 08:06:52] INFO     BIST:Header
+[2022-12-17 08:07:07] INFO     BIST:Header
+[2022-12-17 08:07:22] INFO     BIST:Header
+[2022-12-17 08:07:37] INFO     BIST:Header
+[2022-12-17 08:07:52] INFO     BIST:Header
+[2022-12-17 08:08:07] INFO     BIST:Header
+[2022-12-17 08:08:22] INFO     BIST:Header
+[2022-12-17 08:08:37] INFO     BIST:Header
+[2022-12-17 08:08:52] INFO     BIST:Header
+[2022-12-17 08:09:07] INFO     BIST:Header
+[2022-12-17 08:09:22] INFO     BIST:Header
+[2022-12-17 08:09:37] INFO     BIST:Header
+[2022-12-17 08:09:52] INFO     BIST:Header
+[2022-12-17 08:10:07] INFO     BIST:Header
+[2022-12-17 08:10:22] INFO     BIST:Header
+[2022-12-17 08:10:37] INFO     BIST:Header
+[2022-12-17 08:10:52] INFO     BIST:Header
+[2022-12-17 08:11:07] INFO     BIST:Header
+[2022-12-17 08:11:22] INFO     BIST:Header
+[2022-12-17 08:11:38] INFO     BIST:Header
+[2022-12-17 08:11:53] INFO     BIST:Header
+[2022-12-17 08:12:08] INFO     BIST:Header
+[2022-12-17 08:12:23] INFO     BIST:Header
+[2022-12-17 08:12:38] INFO     BIST:Header
+[2022-12-17 08:12:53] INFO     BIST:Header
+[2022-12-17 08:13:08] INFO     BIST:Header
+[2022-12-17 08:13:23] INFO     BIST:Header
+[2022-12-17 08:13:38] INFO     BIST:Header
+[2022-12-17 08:13:53] INFO     BIST:Header
+[2022-12-17 08:14:08] INFO     BIST:Header
+[2022-12-17 08:14:23] INFO     BIST:Header
+[2022-12-17 08:14:38] INFO     BIST:Header
+[2022-12-17 08:14:53] INFO     BIST:Header
+[2022-12-17 08:15:08] INFO     BIST:Header
+[2022-12-17 08:15:23] INFO     BIST:Header
+[2022-12-17 08:15:38] INFO     BIST:Header
+[2022-12-17 08:15:53] INFO     BIST:Header
+[2022-12-17 08:16:08] INFO     BIST:Header
+[2022-12-17 08:16:23] INFO     BIST:Header
+[2022-12-17 08:16:38] INFO     BIST:Header
+[2022-12-17 08:16:53] INFO     BIST:Header
+[2022-12-17 08:17:08] INFO     BIST:Header
+[2022-12-17 08:17:23] INFO     BIST:Header
+[2022-12-17 08:17:38] INFO     BIST:Header
+[2022-12-17 08:17:53] INFO     BIST:Header
+[2022-12-17 08:18:08] INFO     BIST:Header
+[2022-12-17 08:18:23] INFO     BIST:Header
+[2022-12-17 08:18:38] INFO     BIST:Header
+[2022-12-17 08:18:53] INFO     BIST:Header
+[2022-12-17 08:19:08] INFO     BIST:Header
+[2022-12-17 08:19:23] INFO     BIST:Header
+[2022-12-17 08:19:38] INFO     BIST:Header
+[2022-12-17 08:19:53] INFO     BIST:Header
+[2022-12-17 08:20:08] INFO     BIST:Header
+[2022-12-17 08:20:23] INFO     BIST:Header
+[2022-12-17 08:20:38] INFO     BIST:Header
+[2022-12-17 08:20:53] INFO     BIST:Header
+[2022-12-17 08:21:08] INFO     BIST:Header
+[2022-12-17 08:21:23] INFO     BIST:Header
+[2022-12-17 08:21:38] INFO     BIST:Header
+[2022-12-17 08:21:53] INFO     BIST:Header
+[2022-12-17 08:22:08] INFO     BIST:Header
+[2022-12-17 08:22:23] INFO     BIST:Header
+[2022-12-17 08:22:38] INFO     BIST:Header
+[2022-12-17 08:22:53] INFO     BIST:Header
+[2022-12-17 08:23:08] INFO     BIST:Header
+[2022-12-17 08:23:23] INFO     BIST:Header
+[2022-12-17 08:23:38] INFO     BIST:Header
+[2022-12-17 08:23:53] INFO     BIST:Header
+[2022-12-17 08:24:08] INFO     BIST:Header
+[2022-12-17 08:24:23] INFO     BIST:Header
+[2022-12-17 08:24:38] INFO     BIST:Header
+[2022-12-17 08:24:53] INFO     BIST:Header
+[2022-12-17 08:25:08] INFO     BIST:Header
+[2022-12-17 08:25:23] INFO     BIST:Header
+[2022-12-17 08:25:38] INFO     BIST:Header
+[2022-12-17 08:25:53] INFO     BIST:Header
+[2022-12-17 08:26:08] INFO     BIST:Header
+[2022-12-17 08:26:23] INFO     BIST:Header
+[2022-12-17 08:26:38] INFO     BIST:Header
+[2022-12-17 08:26:53] INFO     BIST:Header
+[2022-12-17 08:27:08] INFO     BIST:Header
+[2022-12-17 08:27:23] INFO     BIST:Header
+[2022-12-17 08:27:38] INFO     BIST:Header
+[2022-12-17 08:27:53] INFO     BIST:Header
+[2022-12-17 08:28:08] INFO     BIST:Header
+[2022-12-17 08:28:23] INFO     BIST:Header
+[2022-12-17 08:28:38] INFO     BIST:Header
+[2022-12-17 08:28:53] INFO     BIST:Header
+[2022-12-17 08:29:08] INFO     BIST:Header
+[2022-12-17 08:29:23] INFO     BIST:Header
+[2022-12-17 08:29:38] INFO     BIST:Header
+[2022-12-17 08:29:53] INFO     BIST:Header
+[2022-12-17 08:30:08] INFO     BIST:Header
+[2022-12-17 08:30:23] INFO     BIST:Header
+[2022-12-17 08:30:38] INFO     BIST:Header
+[2022-12-17 08:30:53] INFO     BIST:Header
+[2022-12-17 08:31:08] INFO     BIST:Header
+[2022-12-17 08:31:23] INFO     BIST:Header
+[2022-12-17 08:31:38] INFO     BIST:Header
+[2022-12-17 08:31:53] INFO     BIST:Header
+[2022-12-17 08:32:08] INFO     BIST:Header
+[2022-12-17 08:32:23] INFO     BIST:Header
+[2022-12-17 08:32:38] INFO     BIST:Header
+[2022-12-17 08:32:53] INFO     BIST:Header
+[2022-12-17 08:33:08] INFO     BIST:Header
+[2022-12-17 08:33:23] INFO     BIST:Header
+[2022-12-17 08:33:38] INFO     BIST:Header
+[2022-12-17 08:33:53] INFO     BIST:Header
+[2022-12-17 08:34:08] INFO     BIST:Header
+[2022-12-17 08:34:23] INFO     BIST:Header
+[2022-12-17 08:34:38] INFO     BIST:Header
+[2022-12-17 08:34:53] INFO     BIST:Header
+[2022-12-17 08:35:08] INFO     BIST:Header
+[2022-12-17 08:35:23] INFO     BIST:Header
+[2022-12-17 08:35:38] INFO     BIST:Header
+[2022-12-17 08:35:53] INFO     BIST:Header
+[2022-12-17 08:36:08] INFO     BIST:Header
+[2022-12-17 08:36:23] INFO     BIST:Header
+[2022-12-17 08:36:38] INFO     BIST:Header
+[2022-12-17 08:36:53] INFO     BIST:Header
+[2022-12-17 08:37:08] INFO     BIST:Header
+[2022-12-17 08:37:23] INFO     BIST:Header
+[2022-12-17 08:37:38] INFO     BIST:Header
+[2022-12-17 08:37:53] INFO     BIST:Header
+[2022-12-17 08:38:08] INFO     BIST:Header
+[2022-12-17 08:38:23] INFO     BIST:Header
+[2022-12-17 08:38:38] INFO     BIST:Header
+[2022-12-17 08:38:53] INFO     BIST:Header
+[2022-12-17 08:39:08] INFO     BIST:Header
+[2022-12-17 08:39:23] INFO     BIST:Header
+[2022-12-17 08:39:38] INFO     BIST:Header
+[2022-12-17 08:39:53] INFO     BIST:Header
+[2022-12-17 08:40:08] INFO     BIST:Header
+[2022-12-17 08:40:23] INFO     BIST:Header
+[2022-12-17 08:40:38] INFO     BIST:Header
+[2022-12-17 08:40:53] INFO     BIST:Header
+[2022-12-17 08:41:08] INFO     BIST:Header
+[2022-12-17 08:41:23] INFO     BIST:Header
+[2022-12-17 08:41:38] INFO     BIST:Header
+[2022-12-17 08:41:53] INFO     BIST:Header
+[2022-12-17 08:42:08] INFO     BIST:Header
+[2022-12-17 08:42:23] INFO     BIST:Header
+[2022-12-17 08:42:38] INFO     BIST:Header
+[2022-12-17 08:42:53] INFO     BIST:Header
+[2022-12-17 08:43:08] INFO     BIST:Header
+[2022-12-17 08:43:23] INFO     BIST:Header
+[2022-12-17 08:43:38] INFO     BIST:Header
+[2022-12-17 08:43:53] INFO     BIST:Header
+[2022-12-17 08:44:08] INFO     BIST:Header
+[2022-12-17 08:44:23] INFO     BIST:Header
+[2022-12-17 08:44:38] INFO     BIST:Header
+[2022-12-17 08:44:53] INFO     BIST:Header
+[2022-12-17 08:45:08] INFO     BIST:Header
+[2022-12-17 08:45:23] INFO     BIST:Header
+[2022-12-17 08:45:38] INFO     BIST:Header
+[2022-12-17 08:45:53] INFO     BIST:Header
+[2022-12-17 08:46:08] INFO     BIST:Header
+[2022-12-17 08:46:23] INFO     BIST:Header
+[2022-12-17 08:46:38] INFO     BIST:Header
+[2022-12-17 08:46:53] INFO     BIST:Header
+[2022-12-17 08:47:08] INFO     BIST:Header
+[2022-12-17 08:47:23] INFO     BIST:Header
+[2022-12-17 08:47:38] INFO     BIST:Header
+[2022-12-17 08:47:53] INFO     BIST:Header
+[2022-12-17 08:48:08] INFO     BIST:Header
+[2022-12-17 08:48:23] INFO     BIST:Header
+[2022-12-17 08:48:38] INFO     BIST:Header
+[2022-12-17 08:48:53] INFO     BIST:Header
+[2022-12-17 08:49:08] INFO     BIST:Header
+[2022-12-17 08:49:23] INFO     BIST:Header
+[2022-12-17 08:49:38] INFO     BIST:Header
+[2022-12-17 08:49:53] INFO     BIST:Header
+[2022-12-17 08:50:08] INFO     BIST:Header
+[2022-12-17 08:50:23] INFO     BIST:Header
+[2022-12-17 08:50:38] INFO     BIST:Header
+[2022-12-17 08:50:53] INFO     BIST:Header
+[2022-12-17 08:51:08] INFO     BIST:Header
+[2022-12-17 08:51:23] INFO     BIST:Header
+[2022-12-17 08:51:38] INFO     BIST:Header
+[2022-12-17 08:51:53] INFO     BIST:Header
+[2022-12-17 08:52:08] INFO     BIST:Header
+[2022-12-17 08:52:23] INFO     BIST:Header
+[2022-12-17 08:52:38] INFO     BIST:Header
+[2022-12-17 08:52:53] INFO     BIST:Header
+[2022-12-17 08:53:08] INFO     BIST:Header
+[2022-12-17 08:53:23] INFO     BIST:Header
+[2022-12-17 08:53:38] INFO     BIST:Header
+[2022-12-17 08:53:53] INFO     BIST:Header
+[2022-12-17 08:54:08] INFO     BIST:Header
+[2022-12-17 08:54:23] INFO     BIST:Header
+[2022-12-17 08:54:38] INFO     BIST:Header
+[2022-12-17 08:54:53] INFO     BIST:Header
+[2022-12-17 08:55:08] INFO     BIST:Header
+[2022-12-17 08:55:23] INFO     BIST:Header
+[2022-12-17 08:55:38] INFO     BIST:Header
+[2022-12-17 08:55:53] INFO     BIST:Header
+[2022-12-17 08:56:08] INFO     BIST:Header
+[2022-12-17 08:56:23] INFO     BIST:Header
+[2022-12-17 08:56:38] INFO     BIST:Header
+[2022-12-17 08:56:53] INFO     BIST:Header
+[2022-12-17 08:57:08] INFO     BIST:Header
+[2022-12-17 08:57:23] INFO     BIST:Header
+[2022-12-17 08:57:38] INFO     BIST:Header
+[2022-12-17 08:57:53] INFO     BIST:Header
+[2022-12-17 08:58:08] INFO     BIST:Header
+[2022-12-17 08:58:23] INFO     BIST:Header
+[2022-12-17 08:58:38] INFO     BIST:Header
+[2022-12-17 08:58:53] INFO     BIST:Header
+[2022-12-17 08:59:08] INFO     BIST:Header
+[2022-12-17 08:59:23] INFO     BIST:Header

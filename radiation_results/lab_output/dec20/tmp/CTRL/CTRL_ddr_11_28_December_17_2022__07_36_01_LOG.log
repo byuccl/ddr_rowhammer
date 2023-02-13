@@ -1,0 +1,378 @@
+[2022-12-17 07:36:01] INFO     STATE:Initial Starting State
+[2022-12-17 07:36:01] INFO     git commit information
+[2022-12-17 07:36:01] INFO     	git commit:8f8859a Tried to get jcm scrubbing working. Added coutner for rowhammer
+[2022-12-17 07:36:01] INFO     	git commit date:Fri Dec 16 20:36:08 2022
+[2022-12-17 07:36:01] INFO     	git status:Fri Dec 16 20:36:08 2022
+[2022-12-17 07:36:01] INFO     		M beam-test/test_scripts/readme.md
+[2022-12-17 07:36:01] INFO     Command line information
+[2022-12-17 07:36:01] INFO     	Command line:['ddrctrl_experiment.py', '--jcm_part', 'xc7a200t', '--bitstream', '/root/ddr_11_28.bit', '--log_dir', './lansce2022', '--jcm_clock', '30_000_000', '--frads_file', 'xc7a200t_frad.txt', '--fault_injection', '0', '--uart_bone_ident', '0xf0002000', '--jcm_ip', '169.254.132.152', '--jcm_netbooter_port', '1', '--nexys_netbooter_port', '2', '--usb_uart_phys_port', '1-4.4.2', '--uartbone_phys_port', '1-4.4.1']
+[2022-12-17 07:36:01] INFO     	arg:bitstream=/root/ddr_11_28.bit
+[2022-12-17 07:36:01] INFO     	arg:netbooter_ip=169.254.131.160
+[2022-12-17 07:36:01] INFO     	arg:jcm_ip=169.254.132.152
+[2022-12-17 07:36:01] INFO     	arg:jcm_part=xc7a200t
+[2022-12-17 07:36:01] INFO     	arg:jcm_clock=30000000
+[2022-12-17 07:36:01] INFO     	arg:usb_uart_phys_port=1-4.4.2
+[2022-12-17 07:36:01] INFO     	arg:uart_litex_baudrate=115200
+[2022-12-17 07:36:01] INFO     	arg:uartbone_phys_port=1-4.4.1
+[2022-12-17 07:36:01] INFO     	arg:uartbone_phys_if=0
+[2022-12-17 07:36:01] INFO     	arg:uartbone_baudrate=115200
+[2022-12-17 07:36:01] INFO     	arg:repower_jcm=False
+[2022-12-17 07:36:01] INFO     	arg:disable_scrubbing=False
+[2022-12-17 07:36:01] INFO     	arg:fault_injection=0
+[2022-12-17 07:36:01] INFO     	arg:frads_file=xc7a200t_frad.txt
+[2022-12-17 07:36:01] INFO     	arg:jcm_netbooter_port=1
+[2022-12-17 07:36:01] INFO     	arg:nexys_netbooter_port=2
+[2022-12-17 07:36:01] INFO     	arg:log_dir=./lansce2022
+[2022-12-17 07:36:01] INFO     	arg:single_step=False
+[2022-12-17 07:36:01] INFO     	arg:bist_mem_burst_length=8192
+[2022-12-17 07:36:01] INFO     	arg:bist_addr_mode=1
+[2022-12-17 07:36:01] INFO     	arg:bist_pattern=165
+[2022-12-17 07:36:01] INFO     	arg:no_uart_bone=False
+[2022-12-17 07:36:01] INFO     	arg:uart_bone_ident=0xf0002000
+[2022-12-17 07:36:01] INFO     STATE:Netbooter Setup State
+[2022-12-17 07:36:01] INFO     STATE:JCM Setup State
+[2022-12-17 07:36:01] INFO     NETBOOTER:Attempt 1 to set port 1 with cycle=False
+[2022-12-17 07:36:03] INFO     NETBOOTER:Setting port 1 to On
+[2022-12-17 07:36:04] INFO     JCM ping attempt 1
+[2022-12-17 07:36:04] INFO     JCM:Logging in to JCM
+[2022-12-17 07:36:04] INFO     JCM:Connecting to JCM over SSH... (Attempt 1)
+[2022-12-17 07:36:04] INFO     JCM:SSH successful
+[2022-12-17 07:36:04] INFO     STATE:UART Setup State
+[2022-12-17 07:36:04] INFO     STATE:Power Nexys State
+[2022-12-17 07:36:04] INFO     NETBOOTER:Attempt 1 to set port 2 with cycle=False
+[2022-12-17 07:36:06] INFO     NETBOOTER:Setting port 2 to Off
+[2022-12-17 07:36:07] INFO     NETBOOTER:Attempt 1 to set port 2 with cycle=False
+[2022-12-17 07:36:09] INFO     NETBOOTER:Setting port 2 to On
+[2022-12-17 07:36:10] INFO     STATE:Connect UART State
+[2022-12-17 07:36:12] INFO     UART:Searching for ttyUSB device (Attempt 1)
+[2022-12-17 07:36:12] INFO     UART:Found tty device:/dev/ttyUSB2
+[2022-12-17 07:36:12] INFO     UART:Serial port /dev/ttyUSB2 open
+[2022-12-17 07:36:12] INFO     STATE:Configure Nexys State
+[2022-12-17 07:36:12] INFO     JCM:Attempting JCM device DNA read
+[2022-12-17 07:36:12] INFO     JCM:Executing commmand on JCM
+	~/jcm_apps/jcm_jtag_reg.elf -r 50 --swap -w 64
+[2022-12-17 07:36:12] INFO     Device DNA:0:0x812c023b 1:0x2a0f6504
+[2022-12-17 07:36:12] INFO     JCM:Attempting JCM configuration
+[2022-12-17 07:36:12] INFO     JCM:Executing commmand on JCM
+	~/jcm_apps/jcm_config.elf --part xc7a200t -c 30000000 --jtag --config_file /root/ddr_11_28.bit
+[2022-12-17 07:36:18] INFO     JCM:Configuration Success
+[2022-12-17 07:36:18] INFO     STATE:Setup UARTBone State
+[2022-12-17 07:36:18] INFO     UARTBONE:Searching for ttyUSB device (Attempt 1) for port '1-4.4.1' IF '0'
+[2022-12-17 07:36:18] INFO     UARTBONE:Found tty device:/dev/ttyUSB0
+[2022-12-17 07:36:18] INFO     UARTBONE:Attempting to open:/dev/ttyUSB0 at baud 115200 with timeout=5
+[2022-12-17 07:36:18] INFO     UARTBONE:Serial port /dev/ttyUSB0 open
+[2022-12-17 07:36:19] INFO     UARTBONE ID Str=LiteX SoC on Nexys Video 2022-11-28 18:17:18
+[2022-12-17 07:36:19] INFO     UARTBONE I ADDR=000012E8
+[2022-12-17 07:36:19] INFO     STATE:Enable Scrubbing State
+[2022-12-17 07:36:19] INFO     JCM:Starting JCM scrubber
+[2022-12-17 07:36:19] INFO     JCM:Executing commmand on JCM
+	~/jcm_apps/jcm_scrubbing.elf --part xc7a200t -c 30000000 --jtag --iterations 100000000 --frad_file xc7a200t_frad.txt
+[2022-12-17 07:36:19] INFO     STATE:LiteX Login State
+[2022-12-17 07:36:19] INFO     STATE:Start BIST State
+[2022-12-17 07:36:19] INFO     STATE:BIST Execution State
+[2022-12-17 07:36:19] INFO     BIST:Bad title line (1):8192 1 0 2
+[2022-12-17 07:36:19] INFO     BIST:Header (first)
+[2022-12-17 07:36:31] INFO     BIST:Header (ok)
+[2022-12-17 07:36:42] INFO     BIST:Header (ok)
+[2022-12-17 07:36:54] INFO     BIST:Header (ok)
+[2022-12-17 07:37:06] INFO     BIST:Header (ok)
+[2022-12-17 07:37:17] INFO     BIST:Header (ok)
+[2022-12-17 07:37:29] INFO     BIST:Header (ok)
+[2022-12-17 07:37:40] INFO     BIST:Header (ok)
+[2022-12-17 07:37:52] INFO     BIST:Header (ok)
+[2022-12-17 07:38:04] INFO     BIST:Header (ok)
+[2022-12-17 07:38:15] INFO     BIST:Header (ok)
+[2022-12-17 07:38:27] INFO     BIST:Header (ok)
+[2022-12-17 07:38:38] INFO     BIST:Header (ok)
+[2022-12-17 07:38:50] INFO     BIST:Header (ok)
+[2022-12-17 07:39:02] INFO     BIST:Header (ok)
+[2022-12-17 07:39:13] INFO     BIST:Header (ok)
+[2022-12-17 07:39:25] INFO     BIST:Header (ok)
+[2022-12-17 07:39:36] INFO     BIST:Header (ok)
+[2022-12-17 07:39:48] INFO     BIST:Header (ok)
+[2022-12-17 07:40:00] INFO     BIST:Header (ok)
+[2022-12-17 07:40:11] INFO     BIST:Header (ok)
+[2022-12-17 07:40:23] INFO     BIST:Header (ok)
+[2022-12-17 07:40:35] INFO     BIST:Header (ok)
+[2022-12-17 07:40:46] INFO     BIST:Header (ok)
+[2022-12-17 07:40:58] INFO     BIST:Header (ok)
+[2022-12-17 07:41:09] INFO     BIST:Header (ok)
+[2022-12-17 07:41:21] INFO     BIST:Header (ok)
+[2022-12-17 07:41:33] INFO     BIST:Header (ok)
+[2022-12-17 07:41:44] INFO     BIST:Header (ok)
+[2022-12-17 07:41:56] INFO     BIST:Header (ok)
+[2022-12-17 07:42:07] INFO     BIST:Header (ok)
+[2022-12-17 07:42:19] INFO     BIST:Header (ok)
+[2022-12-17 07:42:31] INFO     BIST:Header (ok)
+[2022-12-17 07:42:42] INFO     BIST:Header (ok)
+[2022-12-17 07:42:54] INFO     BIST:Header (ok)
+[2022-12-17 07:43:05] INFO     BIST:Header (ok)
+[2022-12-17 07:43:17] INFO     BIST:Header (ok)
+[2022-12-17 07:43:29] INFO     BIST:Header (ok)
+[2022-12-17 07:43:40] INFO     BIST:Header (ok)
+[2022-12-17 07:43:52] INFO     BIST:Header (ok)
+[2022-12-17 07:44:04] INFO     BIST:Header (ok)
+[2022-12-17 07:44:15] INFO     BIST:Header (ok)
+[2022-12-17 07:44:27] INFO     BIST:Header (ok)
+[2022-12-17 07:44:38] INFO     BIST:Header (ok)
+[2022-12-17 07:44:50] INFO     BIST:Header (ok)
+[2022-12-17 07:45:02] INFO     BIST:Header (ok)
+[2022-12-17 07:45:13] INFO     BIST:Header (ok)
+[2022-12-17 07:45:25] INFO     BIST:Header (ok)
+[2022-12-17 07:45:36] INFO     BIST:Header (ok)
+[2022-12-17 07:45:48] INFO     BIST:Header (ok)
+[2022-12-17 07:46:00] INFO     BIST:Header (ok)
+[2022-12-17 07:46:11] INFO     BIST:Header (ok)
+[2022-12-17 07:46:23] INFO     BIST:Header (ok)
+[2022-12-17 07:46:35] INFO     BIST:Header (ok)
+[2022-12-17 07:46:46] INFO     BIST:Header (ok)
+[2022-12-17 07:46:58] INFO     BIST:Header (ok)
+[2022-12-17 07:47:09] INFO     BIST:Header (ok)
+[2022-12-17 07:47:21] INFO     BIST:Header (ok)
+[2022-12-17 07:47:33] INFO     BIST:Header (ok)
+[2022-12-17 07:47:44] INFO     BIST:Header (ok)
+[2022-12-17 07:47:56] INFO     BIST:Header (ok)
+[2022-12-17 07:48:07] INFO     BIST:Header (ok)
+[2022-12-17 07:48:19] INFO     BIST:Header (ok)
+[2022-12-17 07:48:31] INFO     BIST:Header (ok)
+[2022-12-17 07:48:42] INFO     BIST:Header (ok)
+[2022-12-17 07:48:54] INFO     BIST:Header (ok)
+[2022-12-17 07:49:05] INFO     BIST:Header (ok)
+[2022-12-17 07:49:17] INFO     BIST:Header (ok)
+[2022-12-17 07:49:29] INFO     BIST:Header (ok)
+[2022-12-17 07:49:40] INFO     BIST:Header (ok)
+[2022-12-17 07:49:52] INFO     BIST:Header (ok)
+[2022-12-17 07:50:04] INFO     BIST:Header (ok)
+[2022-12-17 07:50:15] INFO     BIST:Header (ok)
+[2022-12-17 07:50:27] INFO     BIST:Header (ok)
+[2022-12-17 07:50:38] INFO     BIST:Header (ok)
+[2022-12-17 07:50:50] INFO     BIST:Header (ok)
+[2022-12-17 07:51:02] INFO     BIST:Header (ok)
+[2022-12-17 07:51:13] INFO     BIST:Header (ok)
+[2022-12-17 07:51:25] INFO     BIST:Header (ok)
+[2022-12-17 07:51:36] INFO     BIST:Header (ok)
+[2022-12-17 07:51:48] INFO     BIST:Header (ok)
+[2022-12-17 07:52:00] INFO     BIST:Header (ok)
+[2022-12-17 07:52:11] INFO     BIST:Header (ok)
+[2022-12-17 07:52:23] INFO     BIST:Header (ok)
+[2022-12-17 07:52:34] INFO     BIST:Header (ok)
+[2022-12-17 07:52:46] INFO     BIST:Header (ok)
+[2022-12-17 07:52:58] INFO     BIST:Header (ok)
+[2022-12-17 07:53:09] INFO     BIST:Header (ok)
+[2022-12-17 07:53:21] INFO     BIST:Header (ok)
+[2022-12-17 07:53:33] INFO     BIST:Header (ok)
+[2022-12-17 07:53:44] INFO     BIST:Header (ok)
+[2022-12-17 07:53:56] INFO     BIST:Header (ok)
+[2022-12-17 07:54:07] INFO     BIST:Header (ok)
+[2022-12-17 07:54:19] INFO     BIST:Header (ok)
+[2022-12-17 07:54:31] INFO     BIST:Header (ok)
+[2022-12-17 07:54:42] INFO     BIST:Header (ok)
+[2022-12-17 07:54:54] INFO     BIST:Header (ok)
+[2022-12-17 07:55:05] INFO     BIST:Header (ok)
+[2022-12-17 07:55:17] INFO     BIST:Header (ok)
+[2022-12-17 07:55:29] INFO     BIST:Header (ok)
+[2022-12-17 07:55:40] INFO     BIST:Header (ok)
+[2022-12-17 07:55:52] INFO     BIST:Header (ok)
+[2022-12-17 07:56:03] INFO     BIST:Header (ok)
+[2022-12-17 07:56:15] INFO     BIST:Header (ok)
+[2022-12-17 07:56:27] INFO     BIST:Header (ok)
+[2022-12-17 07:56:38] INFO     BIST:Header (ok)
+[2022-12-17 07:56:50] INFO     BIST:Header (ok)
+[2022-12-17 07:57:02] INFO     BIST:Header (ok)
+[2022-12-17 07:57:13] INFO     BIST:Header (ok)
+[2022-12-17 07:57:25] INFO     BIST:Header (ok)
+[2022-12-17 07:57:36] INFO     BIST:Header (ok)
+[2022-12-17 07:57:48] INFO     BIST:Header (ok)
+[2022-12-17 07:58:00] INFO     BIST:Header (ok)
+[2022-12-17 07:58:11] INFO     BIST:Header (ok)
+[2022-12-17 07:58:23] INFO     BIST:Header (ok)
+[2022-12-17 07:58:34] INFO     BIST:Header (ok)
+[2022-12-17 07:58:46] INFO     BIST:Header (ok)
+[2022-12-17 07:58:58] INFO     BIST:Header (ok)
+[2022-12-17 07:59:09] INFO     BIST:Header (ok)
+[2022-12-17 07:59:21] INFO     BIST:Header (ok)
+[2022-12-17 07:59:32] INFO     BIST:Header (ok)
+[2022-12-17 07:59:44] INFO     BIST:Header (ok)
+[2022-12-17 07:59:56] INFO     BIST:Header (ok)
+[2022-12-17 08:00:07] INFO     BIST:Header (ok)
+[2022-12-17 08:00:19] INFO     BIST:Header (ok)
+[2022-12-17 08:00:31] INFO     BIST:Header (ok)
+[2022-12-17 08:00:42] INFO     BIST:Header (ok)
+[2022-12-17 08:00:54] INFO     BIST:Header (ok)
+[2022-12-17 08:01:05] INFO     BIST:Header (ok)
+[2022-12-17 08:01:17] INFO     BIST:Header (ok)
+[2022-12-17 08:01:29] INFO     BIST:Header (ok)
+[2022-12-17 08:01:40] INFO     BIST:Header (ok)
+[2022-12-17 08:01:52] INFO     BIST:Header (ok)
+[2022-12-17 08:02:03] INFO     BIST:Header (ok)
+[2022-12-17 08:02:15] INFO     BIST:Header (ok)
+[2022-12-17 08:02:27] INFO     BIST:Header (ok)
+[2022-12-17 08:02:38] INFO     BIST:Header (ok)
+[2022-12-17 08:02:50] INFO     BIST:Header (ok)
+[2022-12-17 08:03:01] INFO     BIST:Header (ok)
+[2022-12-17 08:03:13] INFO     BIST:Header (ok)
+[2022-12-17 08:03:25] INFO     BIST:Header (ok)
+[2022-12-17 08:03:36] INFO     BIST:Header (ok)
+[2022-12-17 08:03:48] INFO     BIST:Header (ok)
+[2022-12-17 08:04:00] INFO     BIST:Header (ok)
+[2022-12-17 08:04:11] INFO     BIST:Header (ok)
+[2022-12-17 08:04:23] INFO     BIST:Header (ok)
+[2022-12-17 08:04:34] INFO     BIST:Header (ok)
+[2022-12-17 08:04:46] INFO     BIST:Header (ok)
+[2022-12-17 08:04:58] INFO     BIST:Header (ok)
+[2022-12-17 08:05:09] INFO     BIST:Header (ok)
+[2022-12-17 08:05:21] INFO     BIST:Header (ok)
+[2022-12-17 08:05:32] INFO     BIST:Header (ok)
+[2022-12-17 08:05:44] INFO     BIST:Header (ok)
+[2022-12-17 08:05:56] INFO     BIST:Header (ok)
+[2022-12-17 08:06:07] INFO     BIST:Header (ok)
+[2022-12-17 08:06:19] INFO     BIST:Header (ok)
+[2022-12-17 08:06:31] INFO     BIST:Header (ok)
+[2022-12-17 08:06:42] INFO     BIST:Header (ok)
+[2022-12-17 08:06:54] INFO     BIST:Header (ok)
+[2022-12-17 08:07:05] INFO     BIST:Header (ok)
+[2022-12-17 08:07:17] INFO     BIST:Header (ok)
+[2022-12-17 08:07:29] INFO     BIST:Header (ok)
+[2022-12-17 08:07:40] INFO     BIST:Header (ok)
+[2022-12-17 08:07:52] INFO     BIST:Header (ok)
+[2022-12-17 08:08:03] INFO     BIST:Header (ok)
+[2022-12-17 08:08:15] INFO     BIST:Header (ok)
+[2022-12-17 08:08:27] INFO     BIST:Header (ok)
+[2022-12-17 08:08:38] INFO     BIST:Header (ok)
+[2022-12-17 08:08:50] INFO     BIST:Header (ok)
+[2022-12-17 08:09:01] INFO     BIST:Header (ok)
+[2022-12-17 08:09:13] INFO     BIST:Header (ok)
+[2022-12-17 08:09:25] INFO     BIST:Header (ok)
+[2022-12-17 08:09:36] INFO     BIST:Header (ok)
+[2022-12-17 08:09:48] INFO     BIST:Header (ok)
+[2022-12-17 08:10:00] INFO     BIST:Header (ok)
+[2022-12-17 08:10:11] INFO     BIST:Header (ok)
+[2022-12-17 08:10:23] INFO     BIST:Header (ok)
+[2022-12-17 08:10:34] INFO     BIST:Header (ok)
+[2022-12-17 08:10:46] INFO     BIST:Header (ok)
+[2022-12-17 08:10:58] INFO     BIST:Header (ok)
+[2022-12-17 08:11:09] INFO     BIST:Header (ok)
+[2022-12-17 08:11:21] INFO     BIST:Header (ok)
+[2022-12-17 08:11:32] INFO     BIST:Header (ok)
+[2022-12-17 08:11:44] INFO     BIST:Header (ok)
+[2022-12-17 08:11:56] INFO     BIST:Header (ok)
+[2022-12-17 08:12:07] INFO     BIST:Header (ok)
+[2022-12-17 08:12:19] INFO     BIST:Header (ok)
+[2022-12-17 08:12:30] INFO     BIST:Header (ok)
+[2022-12-17 08:12:42] INFO     BIST:Header (ok)
+[2022-12-17 08:12:54] INFO     BIST:Header (ok)
+[2022-12-17 08:13:05] INFO     BIST:Header (ok)
+[2022-12-17 08:13:17] INFO     BIST:Header (ok)
+[2022-12-17 08:13:42] ERROR    UART:expect timeout (delay 15s)
+[2022-12-17 08:13:42] INFO     STATE:Terminal Recovery State
+[2022-12-17 08:13:42] INFO     UART:Serial port /dev/ttyUSB2 closed
+[2022-12-17 08:13:45] INFO     UART:Searching for ttyUSB device (Attempt 1)
+[2022-12-17 08:13:45] INFO     UART:Found tty device:/dev/ttyUSB2
+[2022-12-17 08:13:45] INFO     UART:Serial port /dev/ttyUSB2 open
+[2022-12-17 08:13:55] ERROR    UART:expect timeout (delay 10s)
+[2022-12-17 08:13:55] INFO     STATE:Reset Recovery State
+[2022-12-17 08:13:55] INFO     UARTBONE I ADDR=00001358
+[2022-12-17 08:13:55] INFO     Issuing UART bone reset
+[2022-12-17 08:13:56] INFO     UARTBONE I ADDR=000001F8
+[2022-12-17 08:13:56] INFO     STATE:LiteX Login State
+[2022-12-17 08:13:56] INFO     STATE:Start BIST State
+[2022-12-17 08:13:56] INFO     STATE:BIST Execution State
+[2022-12-17 08:13:56] INFO     BIST:Bad title line (1):8192 1 0 2
+[2022-12-17 08:13:56] INFO     BIST:Header (first)
+[2022-12-17 08:14:08] INFO     BIST:Header (ok)
+[2022-12-17 08:14:20] INFO     BIST:Header (ok)
+[2022-12-17 08:14:31] INFO     BIST:Header (ok)
+[2022-12-17 08:14:43] INFO     BIST:Header (ok)
+[2022-12-17 08:14:54] INFO     BIST:Header (ok)
+[2022-12-17 08:15:06] INFO     BIST:Header (ok)
+[2022-12-17 08:15:18] INFO     BIST:Header (ok)
+[2022-12-17 08:15:29] INFO     BIST:Header (ok)
+[2022-12-17 08:15:41] INFO     BIST:Header (ok)
+[2022-12-17 08:15:52] INFO     BIST:Header (ok)
+[2022-12-17 08:16:04] INFO     BIST:Header (ok)
+[2022-12-17 08:16:16] INFO     BIST:Header (ok)
+[2022-12-17 08:16:27] INFO     BIST:Header (ok)
+[2022-12-17 08:16:39] INFO     BIST:Header (ok)
+[2022-12-17 08:16:50] INFO     BIST:Header (ok)
+[2022-12-17 08:17:02] INFO     BIST:Header (ok)
+[2022-12-17 08:17:24] ERROR    UART:expect timeout (delay 15s)
+[2022-12-17 08:17:24] INFO     STATE:Terminal Recovery State
+[2022-12-17 08:17:24] INFO     UART:Serial port /dev/ttyUSB2 closed
+[2022-12-17 08:17:27] INFO     UART:Searching for ttyUSB device (Attempt 1)
+[2022-12-17 08:17:27] INFO     UART:Found tty device:/dev/ttyUSB2
+[2022-12-17 08:17:27] INFO     UART:Serial port /dev/ttyUSB2 open
+[2022-12-17 08:17:37] ERROR    UART:expect timeout (delay 10s)
+[2022-12-17 08:17:37] INFO     STATE:Reset Recovery State
+[2022-12-17 08:17:37] INFO     UARTBONE I ADDR=00001350
+[2022-12-17 08:17:37] INFO     Issuing UART bone reset
+[2022-12-17 08:17:38] INFO     UARTBONE I ADDR=000001F8
+[2022-12-17 08:17:38] INFO     STATE:LiteX Login State
+[2022-12-17 08:17:39] INFO     STATE:Start BIST State
+[2022-12-17 08:17:39] INFO     STATE:BIST Execution State
+[2022-12-17 08:17:39] INFO     BIST:Bad title line (1):8192 1 0 2
+[2022-12-17 08:17:39] INFO     BIST:Header (first)
+[2022-12-17 08:17:50] INFO     BIST:Header (ok)
+[2022-12-17 08:18:02] INFO     BIST:Header (ok)
+[2022-12-17 08:18:13] INFO     BIST:Header (ok)
+[2022-12-17 08:18:25] INFO     BIST:Header (ok)
+[2022-12-17 08:18:37] INFO     BIST:Header (ok)
+[2022-12-17 08:18:48] INFO     BIST:Header (ok)
+[2022-12-17 08:19:00] INFO     BIST:Header (ok)
+[2022-12-17 08:19:12] INFO     BIST:Header (ok)
+[2022-12-17 08:19:23] INFO     BIST:Header (ok)
+[2022-12-17 08:19:35] INFO     BIST:Header (ok)
+[2022-12-17 08:19:46] INFO     BIST:Header (ok)
+[2022-12-17 08:19:58] INFO     BIST:Header (ok)
+[2022-12-17 08:20:10] INFO     BIST:Header (ok)
+[2022-12-17 08:20:21] INFO     BIST:Header (ok)
+[2022-12-17 08:20:33] INFO     BIST:Header (ok)
+[2022-12-17 08:20:44] INFO     BIST:Header (ok)
+[2022-12-17 08:20:56] INFO     BIST:Header (ok)
+[2022-12-17 08:21:08] INFO     BIST:Header (ok)
+[2022-12-17 08:21:19] INFO     BIST:Header (ok)
+[2022-12-17 08:21:31] INFO     BIST:Header (ok)
+[2022-12-17 08:21:42] INFO     BIST:Header (ok)
+[2022-12-17 08:21:54] INFO     BIST:Header (ok)
+[2022-12-17 08:22:06] INFO     BIST:Header (ok)
+[2022-12-17 08:22:17] INFO     BIST:Header (ok)
+[2022-12-17 08:22:29] INFO     BIST:Header (ok)
+[2022-12-17 08:22:41] INFO     BIST:Header (ok)
+[2022-12-17 08:22:52] INFO     BIST:Header (ok)
+[2022-12-17 08:23:04] INFO     BIST:Header (ok)
+[2022-12-17 08:23:15] INFO     BIST:Header (ok)
+[2022-12-17 08:23:27] INFO     BIST:Header (ok)
+[2022-12-17 08:23:39] INFO     BIST:Header (ok)
+[2022-12-17 08:23:50] INFO     BIST:Header (ok)
+[2022-12-17 08:24:02] INFO     BIST:Header (ok)
+[2022-12-17 08:24:13] INFO     BIST:Header (ok)
+[2022-12-17 08:24:25] INFO     BIST:Header (ok)
+[2022-12-17 08:24:37] INFO     BIST:Header (ok)
+[2022-12-17 08:24:48] INFO     BIST:Header (ok)
+[2022-12-17 08:25:00] INFO     BIST:Header (ok)
+[2022-12-17 08:25:11] INFO     BIST:Header (ok)
+[2022-12-17 08:25:23] INFO     BIST:Header (ok)
+[2022-12-17 08:25:35] INFO     BIST:Header (ok)
+[2022-12-17 08:25:46] INFO     BIST:Header (ok)
+[2022-12-17 08:25:58] INFO     BIST:Header (ok)
+[2022-12-17 08:26:10] INFO     BIST:Header (ok)
+[2022-12-17 08:26:21] INFO     BIST:Header (ok)
+[2022-12-17 08:26:33] INFO     BIST:Header (ok)
+[2022-12-17 08:26:44] INFO     BIST:Header (ok)
+[2022-12-17 08:26:56] INFO     BIST:Header (ok)
+[2022-12-17 08:27:08] INFO     BIST:Header (ok)
+[2022-12-17 08:27:19] INFO     BIST:Header (ok)
+[2022-12-17 08:27:31] INFO     BIST:Header (ok)
+[2022-12-17 08:27:42] INFO     BIST:Header (ok)
+[2022-12-17 08:27:54] INFO     BIST:Header (ok)
+[2022-12-17 08:28:06] INFO     BIST:Header (ok)
+[2022-12-17 08:28:17] INFO     BIST:Header (ok)
+[2022-12-17 08:28:29] INFO     BIST:Header (ok)
+[2022-12-17 08:28:40] INFO     BIST:Header (ok)
+[2022-12-17 08:28:52] INFO     BIST:Header (ok)
+[2022-12-17 08:29:04] INFO     BIST:Header (ok)
+[2022-12-17 08:29:15] INFO     BIST:Header (ok)
+[2022-12-17 08:29:27] INFO     BIST:Header (ok)
+[2022-12-17 08:29:39] INFO     BIST:Header (ok)
+[2022-12-17 08:29:50] INFO     BIST:Header (ok)
+[2022-12-17 08:30:02] INFO     BIST:Header (ok)
+[2022-12-17 08:30:13] INFO     BIST:Header (ok)
