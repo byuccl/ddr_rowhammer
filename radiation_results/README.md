@@ -4,9 +4,9 @@ Obtain summary of feedback for CTRL radiation experiment.
 
 ### To run:
 
-Run ```make nontmr``` to obtain events for all non-tmr tests at once.
+Run ```make nontmr``` to obtain events for all non-tmr tests at once output in a text file.
 
-Run ```make tmr``` to obtain events for all tmr tests at once.
+Run ```make tmr``` to obtain events for all tmr tests at once output in a text file.
 
 
 
