@@ -1,0 +1,901 @@
+{'./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_17_2022__11_41_08_LOG.log': './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_17_2022__11_41_08_UART.log'}
+Reading File:  ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_17_2022__11_41_08_LOG.log
+Number of lines in log file:  1428
+LOG_FILE_WARNING: Line 345 has no log data, skipping. Data: 	~/jcm_apps/jcm_jtag_reg.elf -r 50 --swap -w 64
+LOG_FILE_WARNING: Line 349 has no log data, skipping. Data: 	~/jcm_apps/jcm_config.elf --part xc7a200t -c 30000000 --jtag --config_file /root/ddr_11_28.bit
+LOG_FILE_WARNING: Line 361 has no log data, skipping. Data: 	~/jcm_apps/jcm_scrubbing.elf --part xc7a200t -c 30000000 --jtag --iterations 100000000 --frad_file xc7a200t_frad.txt
+LOG_FILE_WARNING: Line 537 has no log data, skipping. Data: 	~/jcm_apps/jcm_jtag_reg.elf -r 50 --swap -w 64
+LOG_FILE_WARNING: Line 541 has no log data, skipping. Data: 	~/jcm_apps/jcm_config.elf --part xc7a200t -c 30000000 --jtag --config_file /root/ddr_11_28.bit
+LOG_FILE_WARNING: Line 553 has no log data, skipping. Data: 	~/jcm_apps/jcm_scrubbing.elf --part xc7a200t -c 30000000 --jtag --iterations 100000000 --frad_file xc7a200t_frad.txt
+Number of lines in uart file:  11685
+Test contains the following single or groups of events:
+1 memory, 4 timeout, 1 other
+
+Mem event group 0, File: ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_17_2022__11_41_08_UART.log
+[2022-12-17 14:11:30] ERRORS (128-bit words): 512
+[2022-12-17 14:11:30] error addr: 0x5250c00c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c01c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c02c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c03c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c04c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c05c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c06c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c07c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c08c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c09c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c0ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c0bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c0cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c0dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c0ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c0fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c10c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c11c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c12c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c13c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c14c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c15c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c16c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c17c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c18c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c19c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c1ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c1bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c1cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c1dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c1ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c1fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c20c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c21c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c22c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c23c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c24c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c25c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c26c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c27c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c28c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c29c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c2ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c2bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c2cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c2dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c2ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c2fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c30c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c31c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c32c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c33c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c34c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c35c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c36c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c37c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c38c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c39c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c3ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c3bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c3cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c3dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c3ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c3fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c40c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c41c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c42c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c43c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c44c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c45c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c46c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c47c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c48c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c49c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c4ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c4bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c4cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c4dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c4ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c4fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c50c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c51c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c52c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c53c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c54c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c55c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c56c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c57c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c58c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c59c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c5ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c5bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c5cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c5dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c5ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c5fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c60c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c61c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c62c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250c63c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] ERRORS (32-bit words): 512
+[2022-12-17 14:11:30] ERRORS (128-bit words): 512
+[2022-12-17 14:11:30] error addr: 0x5250e00c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250e01c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250e02c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250e03c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250e04c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250e05c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250e06c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250e07c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:30] error addr: 0x5250e08c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e09c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e0ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e0bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e0cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e0dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e0ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e0fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e10c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e11c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e12c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e13c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e14c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e15c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e16c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e17c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e18c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e19c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e1ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e1bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e1cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e1dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e1ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e1fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e20c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e21c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e22c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e23c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e24c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e25c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e26c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e27c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e28c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e29c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e2ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e2bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e2cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e2dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e2ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e2fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e30c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e31c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e32c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e33c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e34c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e35c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e36c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e37c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e38c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e39c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e3ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e3bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e3cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e3dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e3ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e3fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e40c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e41c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e42c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e43c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e44c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e45c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e46c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e47c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e48c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e49c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e4ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e4bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e4cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e4dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e4ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e4fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e50c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e51c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e52c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e53c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e54c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e55c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e56c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e57c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e58c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e59c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e5ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e5bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e5cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e5dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e5ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e5fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e60c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e61c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e62c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5250e63c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] ERRORS (32-bit words): 512
+[2022-12-17 14:11:31] ERRORS (128-bit words): 512
+[2022-12-17 14:11:31] error addr: 0x5251000c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251001c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251002c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251003c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251004c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251005c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251006c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251007c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251008c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251009c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x525100ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x525100bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x525100cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x525100dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x525100ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x525100fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251010c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251011c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251012c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251013c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251014c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251015c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251016c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251017c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251018c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251019c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x525101ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x525101bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x525101cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x525101dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x525101ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x525101fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251020c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251021c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251022c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251023c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251024c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251025c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251026c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251027c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251028c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251029c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x525102ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x525102bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x525102cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x525102dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x525102ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x525102fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251030c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251031c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251032c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251033c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251034c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251035c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251036c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251037c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251038c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251039c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x525103ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x525103bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x525103cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x525103dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x525103ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x525103fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251040c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251041c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251042c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251043c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251044c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251045c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251046c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251047c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251048c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x5251049c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x525104ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x525104bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x525104cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x525104dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:31] error addr: 0x525104ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525104fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251050c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251051c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251052c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251053c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251054c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251055c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251056c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251057c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251058c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251059c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525105ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525105bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525105cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525105dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525105ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525105fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251060c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251061c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251062c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251063c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] ERRORS (32-bit words): 512
+[2022-12-17 14:11:32] ERRORS (128-bit words): 512
+[2022-12-17 14:11:32] error addr: 0x5251200c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251201c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251202c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251203c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251204c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251205c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251206c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251207c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251208c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251209c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525120ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525120bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525120cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525120dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525120ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525120fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251210c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251211c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251212c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251213c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251214c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251215c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251216c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251217c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251218c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251219c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525121ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525121bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525121cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525121dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525121ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525121fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251220c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251221c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251222c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251223c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251224c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251225c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251226c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251227c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251228c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251229c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525122ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525122bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525122cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525122dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525122ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525122fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251230c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251231c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251232c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251233c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251234c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251235c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251236c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251237c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251238c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251239c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525123ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525123bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525123cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525123dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525123ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525123fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251240c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251241c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251242c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251243c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251244c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251245c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251246c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251247c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251248c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251249c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525124ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525124bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525124cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525124dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525124ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525124fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251250c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251251c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251252c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251253c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251254c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251255c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251256c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251257c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251258c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251259c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525125ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525125bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525125cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525125dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525125ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525125fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251260c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251261c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251262c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251263c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] ERRORS (32-bit words): 512
+[2022-12-17 14:11:32] ERRORS (128-bit words): 512
+[2022-12-17 14:11:32] error addr: 0x5251400c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251401c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251402c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251403c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251404c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251405c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251406c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251407c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251408c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251409c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525140ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525140bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525140cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525140dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525140ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525140fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251410c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251411c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251412c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251413c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251414c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251415c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251416c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251417c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251418c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251419c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525141ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525141bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525141cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525141dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525141ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525141fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251420c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251421c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251422c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251423c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251424c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251425c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251426c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251427c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251428c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x5251429c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525142ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525142bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525142cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525142dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:32] error addr: 0x525142ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525142fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251430c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251431c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251432c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251433c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251434c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251435c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251436c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251437c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251438c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251439c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525143ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525143bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525143cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525143dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525143ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525143fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251440c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251441c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251442c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251443c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251444c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251445c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251446c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251447c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251448c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251449c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525144ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525144bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525144cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525144dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525144ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525144fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251450c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251451c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251452c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251453c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251454c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251455c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251456c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251457c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251458c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251459c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525145ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525145bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525145cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525145dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525145ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525145fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251460c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251461c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251462c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251463c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] ERRORS (32-bit words): 512
+[2022-12-17 14:11:33] ERRORS (128-bit words): 512
+[2022-12-17 14:11:33] error addr: 0x5251600c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251601c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251602c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251603c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251604c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251605c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251606c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251607c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251608c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251609c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525160ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525160bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525160cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525160dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525160ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525160fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251610c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251611c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251612c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251613c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251614c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251615c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251616c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251617c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251618c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251619c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525161ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525161bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525161cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525161dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525161ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525161fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251620c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251621c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251622c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251623c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251624c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251625c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251626c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251627c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251628c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251629c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525162ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525162bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525162cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525162dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525162ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525162fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251630c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251631c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251632c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251633c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251634c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251635c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251636c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251637c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251638c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251639c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525163ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525163bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525163cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525163dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525163ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525163fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251640c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251641c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251642c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251643c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251644c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251645c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251646c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251647c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251648c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251649c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525164ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525164bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525164cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525164dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525164ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525164fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251650c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251651c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251652c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251653c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251654c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251655c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251656c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251657c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251658c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251659c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525165ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525165bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525165cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525165dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525165ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525165fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251660c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251661c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251662c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251663c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] ERRORS (32-bit words): 512
+[2022-12-17 14:11:33] ERRORS (128-bit words): 512
+[2022-12-17 14:11:33] error addr: 0x5251800c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251801c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251802c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251803c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251804c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251805c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251806c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251807c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251808c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x5251809c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525180ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525180bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525180cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525180dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525180ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:33] error addr: 0x525180fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:34] error addr: 0x5251810c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:34] error addr: 0x5251811c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:34] error addr: 0x5251812c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:34] error addr: 0x5251813c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:34] error addr: 0x5251814c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:34] error addr: 0x5251815c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:34] error addr: 0x5251816c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:34] error addr: 0x5251817c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:34] error addr: 0x5251818c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:34] error addr: 0x5251819c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:34] error addr: 0x525181ac, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:34] error addr: 0x525181bc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:34] error addr: 0x525181cc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:34] error addr: 0x525181dc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:34] error addr: 0x525181ec, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:34] error addr: 0x525181fc, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:34] error addr: 0x5251820c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:34] error addr: 0x5251821c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:34] error addr: 0x5251822c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:34] error addr: 0x5251823c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:34] error addr: 0x5251824c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:34] error addr: 0x5251825c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:34] error addr: 0x5251826c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:34] error addr: 0x5251827c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:34] error addr: 0x5251828c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:34] error addr: 0x5251829c, content: 0xa5a585a5, expected: 0xa5a5a5a5
+[2022-12-17 14:11:34] ERRORS (32-bit words): 42
+[2022-12-17 14:11:35]          940          940         1641       3584
+
+Timeout event group 0, File: ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_17_2022__11_41_08_UART.log
+[2022-12-17 12:28:55]          941
+[2022-12-17 12:29:31] [1m        __
+[2022-12-17 12:29:31] [1m        __   _ __      _  __[0m
+[2022-12-17 12:29:31] [1m       / /  (_) /____ | |/_/[0m
+[2022-12-17 12:29:31] [1m      / /__/ / __/ -_)>  <[0m
+[2022-12-17 12:29:31] [1m     /____/_/\__/\__/_/|_|[0m
+[2022-12-17 12:29:31] [1m   Build your hardware, easily![0m
+[2022-12-17 12:29:31]  (c) Copyright 2012-2022 Enjoy-Digital
+[2022-12-17 12:29:31]  (c) Copyright 2007-2015 M-Labs
+[2022-12-17 12:29:31]  BIOS built on Nov 28 2022 18:17:22
+[2022-12-17 12:29:31]  BIOS CRC passed (b0e744c8)
+[2022-12-17 12:29:31]  LiteX git sha1: f707551c
+[2022-12-17 12:29:31] --=============== [1mSoC[0m ==================--
+[2022-12-17 12:29:31] [1mCPU[0m:		VexRiscv @ 75MHz
+[2022-12-17 12:29:31] [1mBUS[0m:		WISHBONE 32-bit @ 4GiB
+[2022-12-17 12:29:31] [1mCSR[0m:		32-bit data
+[2022-12-17 12:29:31] [1mROM[0m:		128KiB
+[2022-12-17 12:29:31] [1mSRAM[0m:		8KiB
+[2022-12-17 12:29:31] [1mL2[0m:		8KiB
+[2022-12-17 12:29:31] [1mSDRAM[0m:		524288KiB 16-bit @ 600MT/s (CL-7 CWL-5)
+[2022-12-17 12:29:31] --========== [1mInitialization[0m ============--
+[2022-12-17 12:29:31] Initializing SDRAM @0x40000000...
+[2022-12-17 12:29:31] Switching SDRAM to software control.
+[2022-12-17 12:29:31] Read leveling:
+[2022-12-17 12:29:31]   m0, b00: |00000000000000000000000000000000| delays: -
+[2022-12-17 12:29:31]   m0, b01: |11111111100000000000000000000000| delays: 04+-04
+[2022-12-17 12:29:31]   m0, b02: |00000000000111111111111111111100| delays: 21+-10
+[2022-12-17 12:29:31]   m0, b03: |00000000000000000000000000000000| delays: -
+[2022-12-17 12:29:31]   m0, b04: |00000000000000000000000000000000| delays: -
+[2022-12-17 12:29:31]   m0, b05: |00000000000000000000000000000000| delays: -
+[2022-12-17 12:29:31]   m0, b06: |00000000000000000000000000000000| delays: -
+[2022-12-17 12:29:31]   m0, b07: |00000000000000000000000000000000| delays: -
+[2022-12-17 12:29:31]   best: m0, b02 delays: 20+-09
+[2022-12-17 12:29:31]   m1, b00: |00000000000000000000000000000000| delays: -
+[2022-12-17 12:29:31]   m1, b01: |11111111100000000000000000000000| delays: 04+-04
+[2022-12-17 12:29:31]   m1, b02: |00000000001111111111111111111100| delays: 20+-10
+[2022-12-17 12:29:31]   m1, b03: |00000000000000000000000000000000| delays: -
+[2022-12-17 12:29:31]   m1, b04: |00000000000000000000000000000000| delays: -
+[2022-12-17 12:29:31]   m1, b05: |00000000000000000000000000000000| delays: -
+[2022-12-17 12:29:31]   m1, b06: |00000000000000000000000000000000| delays: -
+[2022-12-17 12:29:31]   m1, b07: |00000000000000000000000000000000| delays: -
+[2022-12-17 12:29:31]   best: m1, b02 delays: 20+-10
+[2022-12-17 12:29:31] Switching SDRAM to hardware control.
+[2022-12-17 12:29:31] Memtest at 0x40000000 (2.0MiB)...
+[2022-12-17 12:29:31]   Write: 0x40000000-0x40000000 0B
+[2022-12-17 12:29:31]   Write: 0x40000000-0x40200000 2.0MiB
+[2022-12-17 12:29:31]    Read: 0x40000000-0x40000000 0B
+[2022-12-17 12:29:31]    Read: 0x40000000-0x40200000 2.0MiB
+[2022-12-17 12:29:31] Memtest OK
+[2022-12-17 12:29:31] Memspeed at 0x40000000 (Sequential, 2.0MiB)...
+[2022-12-17 12:29:31]   Write speed: 26.2MiB/s
+[2022-12-17 12:29:31]    Read speed: 35.1MiB/s
+[2022-12-17 12:29:31] --============== [1mBoot[0m ==================--
+[2022-12-17 12:29:31] Booting from serial...
+[2022-12-17 12:29:31] Press Q or ESC to abort boot completely.
+[2022-12-17 12:29:31] sL5DdSMmkekro
+[2022-12-17 12:29:31] Timeout
+[2022-12-17 12:29:31] No boot medium found
+[2022-12-17 12:29:31] --============= [1mConsole[0m ================--
+[2022-12-17 12:29:31] [92;1mlitex[0m> sdram_bist_pat 165
+[2022-12-17 12:29:31] sdram_bist_pat 165
+[2022-12-17 12:29:31] [92;1mlitex[0m>
+[2022-12-17 12:29:31] [92;1mlitex[0m>
+[2022-12-17 12:29:31] [92;1mlitex[0m> sdram_bist 8192 1 0 2
+[2022-12-17 12:29:31] sdram_bist 8192 1 0 2
+[2022-12-17 12:29:31] Starting SDRAM BIST with length=8192, addr_mode=1, data_mode=0 wmode=2
+[2022-12-17 12:29:31] WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS
+
+Timeout event group 1, File: ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_17_2022__11_41_08_UART.log
+[2022-12-17 12:58:05] [1m        __   _ __      _  __[0m
+[2022-12-17 12:58:05] [1m       / /  (_) /____ | |/_/[0m
+[2022-12-17 12:58:05] [1m      / /__/ / __/ -_)>  <[0m
+[2022-12-17 12:58:05] [1m     /____/_/\__/\__/_/|_|[0m
+[2022-12-17 12:58:05] [1m   Build your hardware, easily![0m
+[2022-12-17 12:58:05]  (c) Copyright 2012-2022 Enjoy-Digital
+[2022-12-17 12:58:05]  (c) Copyright 2007-2015 M-Labs
+[2022-12-17 12:58:05]  BIOS built on Nov 28 2022 18:17:22
+[2022-12-17 12:58:30]  BIOS CRC failed (expected
+[2022-12-17 12:58:30] [1m        __   _ __      _  __[0m
+[2022-12-17 12:58:30] [1m       / /  (_) /____ | |/_/[0m
+[2022-12-17 12:58:30] [1m      / /__/ / __/ -_)>  <[0m
+[2022-12-17 12:58:30] [1m     /____/_/\__/\__/_/|_|[0m
+[2022-12-17 12:58:30] [1m   Build your hardware, easily![0m
+[2022-12-17 12:58:30]  (c) Copyright 2012-2022 Enjoy-Digital
+[2022-12-17 12:58:30]  (c) Copyright 2007-2015 M-Labs
+[2022-12-17 12:58:30]  BIOS built on Nov 28 2022 18:17:22
+[2022-12-17 12:58:30]  BIOS CRC passed (b0e744c8)
+[2022-12-17 12:58:30]  LiteX git sha1: f707551c
+[2022-12-17 12:58:30] --=============== [1mSoC[0m ==================--
+[2022-12-17 12:58:30] [1mCPU[0m:		VexRiscv @ 75MHz
+[2022-12-17 12:58:30] [1mBUS[0m:		WISHBONE 32-bit @ 4GiB
+[2022-12-17 12:58:30] [1mCSR[0m:		32-bit data
+[2022-12-17 12:58:30] [1mROM[0m:		128KiB
+[2022-12-17 12:58:30] [1mSRAM[0m:		8KiB
+[2022-12-17 12:58:30] [1mL2[0m:		8KiB
+[2022-12-17 12:58:30] [1mSDRAM[0m:		524288KiB 16-bit @ 600MT/s (CL-7 CWL-5)
+[2022-12-17 12:58:30] --========== [1mInitialization[0m ============--
+[2022-12-17 12:58:30] Initializing SDRAM @0x40000000...
+[2022-12-17 12:58:30] Switching SDRAM to software control.
+[2022-12-17 12:58:30] Read leveling:
+[2022-12-17 12:58:30]   m0, b00: |00000000000000000000000000000000| delays: -
+[2022-12-17 12:58:30]   m0, b01: |11111111100000000000000000000000| delays: 04+-04
+[2022-12-17 12:58:30]   m0, b02: |00000000000111111111111111111100| delays: 21+-10
+[2022-12-17 12:58:30]   m0, b03: |00000000000000000000000000000000| delays: -
+[2022-12-17 12:58:30]   m0, b04: |00000000000000000000000000000000| delays: -
+[2022-12-17 12:58:30]   m0, b05: |00000000000000000000000000000000| delays: -
+[2022-12-17 12:58:30]   m0, b06: |00000000000000000000000000000000| delays: -
+[2022-12-17 12:58:30]   m0, b07: |00000000000000000000000000000000| delays: -
+[2022-12-17 12:58:30]   best: m0, b02 delays: 20+-09
+[2022-12-17 12:58:30]   m1, b00: |00000000000000000000000000000000| delays: -
+[2022-12-17 12:58:30]   m1, b01: |11111111100000000000000000000000| delays: 04+-04
+[2022-12-17 12:58:30]   m1, b02: |00000000001111111111111111111100| delays: 20+-10
+[2022-12-17 12:58:30]   m1, b03: |00000000000000000000000000000000| delays: -
+[2022-12-17 12:58:30]   m1, b04: |00000000000000000000000000000000| delays: -
+[2022-12-17 12:58:30]   m1, b05: |00000000000000000000000000000000| delays: -
+[2022-12-17 12:58:30]   m1, b06: |00000000000000000000000000000000| delays: -
+[2022-12-17 12:58:30]   m1, b07: |00000000000000000000000000000000| delays: -
+[2022-12-17 12:58:30]   best: m1, b02 delays: 20+-10
+[2022-12-17 12:58:30] Switching SDRAM to hardware control.
+[2022-12-17 12:58:30] Memtest at 0x40000000 (2.0MiB)...
+[2022-12-17 12:58:30]   Write: 0x40000000-0x40000000 0B
+[2022-12-17 12:58:30]   Write: 0x40000000-0x40200000 2.0MiB
+[2022-12-17 12:58:30]    Read: 0x40000000-0x40000000 0B
+[2022-12-17 12:58:30]    Read: 0x40000000-0x40200000 2.0MiB
+[2022-12-17 12:58:30] Memtest OK
+[2022-12-17 12:58:30] Memspeed at 0x40000000 (Sequential, 2.0MiB)...
+[2022-12-17 12:58:30]   Write speed: 26.2MiB/s
+[2022-12-17 12:58:30]    Read speed: 35.1MiB/s
+[2022-12-17 12:58:30] --============== [1mBoot[0m ==================--
+[2022-12-17 12:58:30] Booting from serial...
+[2022-12-17 12:58:30] Press Q or ESC to abort boot completely.
+[2022-12-17 12:58:30] sL5DdSMmkekro
+[2022-12-17 12:58:30] Timeout
+[2022-12-17 12:58:30] No boot medium found
+[2022-12-17 12:58:30] --============= [1mConsole[0m ================--
+[2022-12-17 12:58:30] [92;1mlitex[0m> sdram_bist_pat 165
+[2022-12-17 12:58:30] sdram_bist_pat 165
+[2022-12-17 12:58:30] [92;1mlitex[0m>
+[2022-12-17 12:58:30] [92;1mlitex[0m>
+[2022-12-17 12:58:30] [92;1mlitex[0m> sdram_bist 8192 1 0 2
+[2022-12-17 12:58:30] sdram_bist 8192 1 0 2
+[2022-12-17 12:58:30] Starting SDRAM BIST with length=8192, addr_mode=1, data_mode=0 wmode=2
+[2022-12-17 12:58:30] WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS
+
+Timeout event group 2, File: ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_17_2022__11_41_08_UART.log
+[2022-12-17 13:26:17]          941          940         2174
+[2022-12-17 13:26:28] [1m        __   _ __      _  __[0m
+[2022-12-17 13:26:28] [1m       / /  (_) /____ | |/_/[0m
+[2022-12-17 13:26:28] [1m      / /__/ / __/ -_)>  <[0m
+[2022-12-17 13:26:28] [1m     /____/_/\__/\__/_/|_|[0m
+[2022-12-17 13:26:28] [1m   Build your hardware, easily![0m
+[2022-12-17 13:26:28]  (c) Copyright 2012-2022 Enjoy-Digital
+[2022-12-17 13:26:28]  (c) Copyright 2007-2015 M-Labs
+[2022-12-17 13:26:28]  BIOS built on Nov 28 2022 18:17:22
+[2022-12-17 13:26:28]  BIOS CRC passed (b0e744c8)
+[2022-12-17 13:26:28]  LiteX git sha1: f707551c
+[2022-12-17 13:26:28] --=============== [1mSoC[0m ==================--
+[2022-12-17 13:26:28] [1mCPU[0m:		VexRiscv @ 75MHz
+[2022-12-17 13:26:28] [1mBUS[0m:		WISHBONE 32-bit @ 4GiB
+[2022-12-17 13:26:28] [1mCSR[0m:		32-bit data
+[2022-12-17 13:26:28] [1mROM[0m:		128KiB
+[2022-12-17 13:26:28] [1mSRAM[0m:		8KiB
+[2022-12-17 13:26:28] [1mL2[0m:		8KiB
+[2022-12-17 13:26:28] [1mSDRAM[0m:		524288KiB 16-bit @ 600MT/s (CL-7 CWL-5)
+[2022-12-17 13:26:28] --========== [1mInitialization[0m ============--
+[2022-12-17 13:26:28] Initializing SDRAM @0x40000000...
+[2022-12-17 13:26:28] Switching SDRAM to software control.
+[2022-12-17 13:26:28] Read leveling:
+[2022-12-17 13:26:28]   m0, b00: |00000000000000000000000000000000| delays: -
+[2022-12-17 13:26:28]   m0, b01: |11111111100000000000000000000000| delays: 04+-04
+[2022-12-17 13:26:28]   m0, b02: |00000000000111111111111111111100| delays: 20+-09
+[2022-12-17 13:26:28]   m0, b03: |00000000000000000000000000000000| delays: -
+[2022-12-17 13:26:28]   m0, b04: |00000000000000000000000000000000| delays: -
+[2022-12-17 13:26:28]   m0, b05: |00000000000000000000000000000000| delays: -
+[2022-12-17 13:26:28]   m0, b06: |00000000000000000000000000000000| delays: -
+[2022-12-17 13:26:28]   m0, b07: |00000000000000000000000000000000| delays: -
+[2022-12-17 13:26:28]   best: m0, b02 delays: 20+-09
+[2022-12-17 13:26:28]   m1, b00: |00000000000000000000000000000000| delays: -
+[2022-12-17 13:26:28]   m1, b01: |11111111100000000000000000000000| delays: 04+-04
+[2022-12-17 13:26:28]   m1, b02: |00000000001111111111111111111100| delays: 20+-10
+[2022-12-17 13:26:28]   m1, b03: |00000000000000000000000000000000| delays: -
+[2022-12-17 13:26:28]   m1, b04: |00000000000000000000000000000000| delays: -
+[2022-12-17 13:26:28]   m1, b05: |00000000000000000000000000000000| delays: -
+[2022-12-17 13:26:28]   m1, b06: |00000000000000000000000000000000| delays: -
+[2022-12-17 13:26:28]   m1, b07: |00000000000000000000000000000000| delays: -
+[2022-12-17 13:26:28]   best: m1, b02 delays: 20+-10
+[2022-12-17 13:26:28] Switching SDRAM to hardware control.
+[2022-12-17 13:26:28] Memtest at 0x40000000 (2.0MiB)...
+[2022-12-17 13:26:28]   Write: 0x40000000-0x40000000 0B
+[2022-12-17 13:26:28]   Write: 0x40000000-0x40200000 2.0MiB
+[2022-12-17 13:26:28]    Read: 0x40000000-0x40000000 0B
+[2022-12-17 13:26:28]    Read: 0x40000000-0x40200000 2.0MiB
+[2022-12-17 13:26:28] Memtest OK
+[2022-12-17 13:26:28] Memspeed at 0x40000000 (Sequential, 2.0MiB)...
+[2022-12-17 13:26:28]   Write speed: 26.2MiB/s
+[2022-12-17 13:26:28]    Read speed: 35.1MiB/s
+[2022-12-17 13:26:28] --============== [1mBoot[0m ==================--
+[2022-12-17 13:26:28] Booting from serial...
+[2022-12-17 13:26:28] Press Q or ESC to abort boot completely.
+[2022-12-17 13:26:28] sL5DdSMmkekro
+[2022-12-17 13:26:28] Timeout
+[2022-12-17 13:26:28] No boot medium found
+[2022-12-17 13:26:28] --============= [1mConsole[0m ================--
+[2022-12-17 13:26:28] [92;1mlitex[0m> sdram_bist_pat 165
+[2022-12-17 13:26:28] sdram_bist_pat 165
+[2022-12-17 13:26:28] [92;1mlitex[0m>
+[2022-12-17 13:26:28] [92;1mlitex[0m>
+[2022-12-17 13:26:28] [92;1mlitex[0m> sdram_bist 8192 1 0 2
+[2022-12-17 13:26:28] sdram_bist 8192 1 0 2
+[2022-12-17 13:26:28] Starting SDRAM BIST with length=8192, addr_mode=1, data_mode=0 wmode=2
+[2022-12-17 13:26:28] WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS
+
+Timeout event group 3, File: ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_17_2022__11_41_08_UART.log
+[2022-12-17 14:17:02] [92;1mlitex[0m>
+[2022-12-17 14:17:02] [92;1mlitex[0m>
+[2022-12-17 14:17:02] [92;1mlitex[0m> sdram_bist 8192 1 0 2
+[2022-12-17 14:17:02] sdram_bist 8192 1 0 2
+[2022-12-17 14:17:02] Starting SDRAM BIST with length=8192, addr_mode=1, data_mode=0 wmode=2
+[2022-12-17 14:17:02] WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS
+
+Other event group 0, File: ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_17_2022__11_41_08_UART.log
+[2022-12-17 14:51:44]           21          940         1882          0
+[2022-12-17 14:51:46]          941          940         2356          0
+[2022-12-17 14:51:46] WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS
+Test contains the following single or groups of events:
+1 memory, 4 timeout, 1 other
+
+End of test events

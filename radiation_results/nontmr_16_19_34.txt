@@ -1,0 +1,10 @@
+{'./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__19_34_08_LOG.log': './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__19_34_08_UART.log'}
+Reading File:  ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__19_34_08_LOG.log
+Number of lines in log file:  156
+Number of lines in uart file:  818
+Test contains the following single or groups of events:
+0 memory, 0 timeout, 0 other
+Test contains the following single or groups of events:
+0 memory, 0 timeout, 0 other
+
+End of test events

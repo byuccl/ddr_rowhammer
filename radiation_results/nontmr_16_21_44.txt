@@ -1,0 +1,251 @@
+{'./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__21_44_01_LOG.log': './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__21_44_01_UART.log'}
+Reading File:  ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__21_44_01_LOG.log
+Number of lines in log file:  765
+LOG_FILE_WARNING: Line 754 has no log data, skipping. Data: ~/jcm_apps/jcm_jtag_reg.elf -r 50 --swap -w 64
+LOG_FILE_WARNING: Line 760 has no log data, skipping. Data: ~/jcm_apps/jcm_config.elf --part xc7a200t -c 30000000 --jtag --config_file /root/ddr_11_28.bit
+Number of lines in uart file:  5951
+Test contains the following single or groups of events:
+3 memory, 1 timeout, 0 other
+
+Mem event group 0, File: ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__21_44_01_UART.log
+[2022-12-16 21:49:53] ERRORS (128-bit words): 1
+[2022-12-16 21:49:53] error addr: 0x56b2b82c, content: 0xa5a5a7a5, expected: 0xa5a5a5a5
+[2022-12-16 21:49:53] ERRORS (32-bit words): 1
+[2022-12-16 21:49:53] ERRORS (128-bit words): 1
+[2022-12-16 21:49:53] error addr: 0x56c9ad9c, content: 0xa5a5a7a5, expected: 0xa5a5a5a5
+[2022-12-16 21:49:53] ERRORS (32-bit words): 1
+[2022-12-16 21:49:53] ERRORS (128-bit words): 1
+[2022-12-16 21:49:53] error addr: 0x56d0590c, content: 0xa5a5a7a5, expected: 0xa5a5a5a5
+[2022-12-16 21:49:53] ERRORS (32-bit words): 1
+[2022-12-16 21:49:53] ERRORS (128-bit words): 1
+[2022-12-16 21:49:53] error addr: 0x56d0f5ec, content: 0xa5a5a7a5, expected: 0xa5a5a5a5
+[2022-12-16 21:49:53] ERRORS (32-bit words): 1
+[2022-12-16 21:49:53] ERRORS (128-bit words): 1
+[2022-12-16 21:49:53] error addr: 0x56d6a3fc, content: 0xa5a5a7a5, expected: 0xa5a5a5a5
+[2022-12-16 21:49:53] ERRORS (32-bit words): 1
+[2022-12-16 21:49:53] ERRORS (128-bit words): 1
+[2022-12-16 21:49:53] error addr: 0x56d9bbfc, content: 0xa5a5a7a5, expected: 0xa5a5a5a5
+[2022-12-16 21:49:53] ERRORS (32-bit words): 1
+[2022-12-16 21:49:53]          940          940         2486          6
+
+Mem event group 1, File: ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__21_44_01_UART.log
+[2022-12-16 21:49:56]          941          940         3433          6
+[2022-12-16 21:49:56] WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS
+[2022-12-16 21:49:56] ERRORS (128-bit words): 1
+[2022-12-16 21:49:56] error addr: 0x5acd848c, content: 0xa5a5a7a5, expected: 0xa5a5a5a5
+[2022-12-16 21:49:56] ERRORS (32-bit words): 1
+[2022-12-16 21:49:58]          940          940         3907          7
+
+Mem event group 2, File: ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__21_44_01_UART.log
+[2022-12-16 21:52:00]          941          940         2749          7
+[2022-12-16 21:52:00] ERRORS (128-bit words): -1
+[2022-12-16 21:52:00] ERRORS (32-bit words): 0
+[2022-12-16 21:52:00] ERRORS (128-bit words): -1
+[2022-12-16 21:52:00] ERRORS (32-bit words): 0
+[2022-12-16 21:52:00] ERRORS (128-bit words): -1
+[2022-12-16 21:52:00] ERRORS (32-bit words): 0
+[2022-12-16 21:52:00] ERRORS (128-bit words): -1
+[2022-12-16 21:52:00] ERRORS (32-bit words): 0
+[2022-12-16 21:52:00] ERRORS (128-bit words): -1
+[2022-12-16 21:52:00] ERRORS (32-bit words): 0
+[2022-12-16 21:52:00] ERRORS (128-bit words): -1
+[2022-12-16 21:52:00] ERRORS (32-bit words): 0
+[2022-12-16 21:52:00] ERRORS (128-bit words): -1
+[2022-12-16 21:52:00] ERRORS (32-bit words): 0
+[2022-12-16 21:52:01] ERRORS (128-bit words): -1
+[2022-12-16 21:52:01] ERRORS (32-bit words): 0
+[2022-12-16 21:52:01] ERRORS (128-bit words): -1
+[2022-12-16 21:52:01] ERRORS (32-bit words): 0
+[2022-12-16 21:52:01] ERRORS (128-bit words): -1
+[2022-12-16 21:52:01] ERRORS (32-bit words): 0
+[2022-12-16 21:52:01] ERRORS (128-bit words): -1
+[2022-12-16 21:52:01] ERRORS (32-bit words): 0
+[2022-12-16 21:52:01] ERRORS (128-bit words): -1
+[2022-12-16 21:52:01] ERRORS (32-bit words): 0
+[2022-12-16 21:52:01] ERRORS (128-bit words): -1
+[2022-12-16 21:52:01] ERRORS (32-bit words): 0
+[2022-12-16 21:52:01] ERRORS (128-bit words): -1
+[2022-12-16 21:52:01] ERRORS (32-bit words): 0
+[2022-12-16 21:52:01] ERRORS (128-bit words): -1
+[2022-12-16 21:52:01] ERRORS (32-bit words): 0
+[2022-12-16 21:52:01] ERRORS (128-bit words): -1
+[2022-12-16 21:52:01] ERRORS (32-bit words): 0
+[2022-12-16 21:52:01] ERRORS (128-bit words): -1
+[2022-12-16 21:52:01] ERRORS (32-bit words): 0
+[2022-12-16 21:52:01] ERRORS (128-bit words): -1
+[2022-12-16 21:52:01] ERRORS (32-bit words): 0
+[2022-12-16 21:52:01] ERRORS (128-bit words): -1
+[2022-12-16 21:52:01] ERRORS (32-bit words): 0
+[2022-12-16 21:52:02] ERRORS (128-bit words): -1
+[2022-12-16 21:52:02] ERRORS (32-bit words): 0
+[2022-12-16 21:52:02] ERRORS (128-bit words): -1
+[2022-12-16 21:52:02] ERRORS (32-bit words): 0
+[2022-12-16 21:52:02] ERRORS (128-bit words): -1
+[2022-12-16 21:52:02] ERRORS (32-bit words): 0
+[2022-12-16 21:52:02] ERRORS (128-bit words): -1
+[2022-12-16 21:52:02] ERRORS (32-bit words): 0
+[2022-12-16 21:52:02] ERRORS (128-bit words): -1
+[2022-12-16 21:52:02] ERRORS (32-bit words): 0
+[2022-12-16 21:52:02] ERRORS (128-bit words): -1
+[2022-12-16 21:52:02] ERRORS (32-bit words): 0
+[2022-12-16 21:52:02] ERRORS (128-bit words): -1
+[2022-12-16 21:52:02] ERRORS (32-bit words): 0
+[2022-12-16 21:52:02] ERRORS (128-bit words): -1
+[2022-12-16 21:52:02] ERRORS (32-bit words): 0
+[2022-12-16 21:52:02] ERRORS (128-bit words): -1
+[2022-12-16 21:52:02] ERRORS (32-bit words): 0
+[2022-12-16 21:52:02] ERRORS (128-bit words): -1
+[2022-12-16 21:52:02] ERRORS (32-bit words): 0
+[2022-12-16 21:52:02] ERRORS (128-bit words): -1
+[2022-12-16 21:52:02] ERRORS (32-bit words): 0
+[2022-12-16 21:52:02] ERRORS (128-bit words): -1
+[2022-12-16 21:52:02] ERRORS (32-bit words): 0
+[2022-12-16 21:52:02] ERRORS (128-bit words): -1
+[2022-12-16 21:52:03] ERRORS (32-bit words): 0
+[2022-12-16 21:52:03] ERRORS (128-bit words): -1
+[2022-12-16 21:52:03] ERRORS (32-bit words): 0
+[2022-12-16 21:52:03] ERRORS (128-bit words): -1
+[2022-12-16 21:52:03] ERRORS (32-bit words): 0
+[2022-12-16 21:52:03] ERRORS (128-bit words): -1
+[2022-12-16 21:52:03] ERRORS (32-bit words): 0
+[2022-12-16 21:52:03] ERRORS (128-bit words): -1
+[2022-12-16 21:52:03] ERRORS (32-bit words): 0
+[2022-12-16 21:52:03] ERRORS (128-bit words): -1
+[2022-12-16 21:52:03] ERRORS (32-bit words): 0
+[2022-12-16 21:52:03] ERRORS (128-bit words): -1
+[2022-12-16 21:52:03] ERRORS (32-bit words): 0
+[2022-12-16 21:52:03] ERRORS (128-bit words): -1
+[2022-12-16 21:52:03] ERRORS (32-bit words): 0
+[2022-12-16 21:52:03] ERRORS (128-bit words): -1
+[2022-12-16 21:52:03] ERRORS (32-bit words): 0
+[2022-12-16 21:52:03] ERRORS (128-bit words): -1
+[2022-12-16 21:52:03] ERRORS (32-bit words): 0
+[2022-12-16 21:52:03] ERRORS (128-bit words): -1
+[2022-12-16 21:52:03] ERRORS (32-bit words): 0
+[2022-12-16 21:52:03] ERRORS (128-bit words): -1
+[2022-12-16 21:52:03] ERRORS (32-bit words): 0
+[2022-12-16 21:52:03] ERRORS (128-bit words): -1
+[2022-12-16 21:52:04] ERRORS (32-bit words): 0
+[2022-12-16 21:52:04] ERRORS (128-bit words): -1
+[2022-12-16 21:52:04] ERRORS (32-bit words): 0
+[2022-12-16 21:52:04] ERRORS (128-bit words): -1
+[2022-12-16 21:52:04] ERRORS (32-bit words): 0
+[2022-12-16 21:52:04] ERRORS (128-bit words): -1
+[2022-12-16 21:52:04] ERRORS (32-bit words): 0
+[2022-12-16 21:52:04] ERRORS (128-bit words): -1
+[2022-12-16 21:52:04] ERRORS (32-bit words): 0
+[2022-12-16 21:52:04] ERRORS (128-bit words): -1
+[2022-12-16 21:52:04] ERRORS (32-bit words): 0
+[2022-12-16 21:52:04] ERRORS (128-bit words): -1
+[2022-12-16 21:52:04] ERRORS (32-bit words): 0
+[2022-12-16 21:52:04] ERRORS (128-bit words): -1
+[2022-12-16 21:52:04] ERRORS (32-bit words): 0
+[2022-12-16 21:52:04] ERRORS (128-bit words): -1
+[2022-12-16 21:52:04] ERRORS (32-bit words): 0
+[2022-12-16 21:52:04] ERRORS (128-bit words): -1
+[2022-12-16 21:52:04] ERRORS (32-bit words): 0
+[2022-12-16 21:52:04] ERRORS (128-bit words): -1
+[2022-12-16 21:52:04] ERRORS (32-bit words): 0
+[2022-12-16 21:52:04] ERRORS (128-bit words): -1
+[2022-12-16 21:52:04] ERRORS (32-bit words): 0
+[2022-12-16 21:52:04] ERRORS (128-bit words): -1
+[2022-12-16 21:52:04] ERRORS (32-bit words): 0
+[2022-12-16 21:52:05] ERRORS (128-bit words): -1
+[2022-12-16 21:52:05] ERRORS (32-bit words): 0
+[2022-12-16 21:52:05] ERRORS (128-bit words): -1
+[2022-12-16 21:52:05] ERRORS (32-bit words): 0
+[2022-12-16 21:52:05] ERRORS (128-bit words): -1
+[2022-12-16 21:52:05] ERRORS (32-bit words): 0
+[2022-12-16 21:52:05] ERRORS (128-bit words): -1
+[2022-12-16 21:52:05] ERRORS (32-bit words): 0
+[2022-12-16 21:52:05] ERRORS (128-bit words): -1
+[2022-12-16 21:52:05] ERRORS (32-bit words): 0
+[2022-12-16 21:52:05] ERRORS (128-bit words): -1
+[2022-12-16 21:52:05] ERRORS (32-bit words): 0
+[2022-12-16 21:52:05] ERRORS (128-bit words): -1
+[2022-12-16 21:52:05] ERRORS (32-bit words): 0
+[2022-12-16 21:52:05] ERRORS (128-bit words): -1
+[2022-12-16 21:52:05] ERRORS (32-bit words): 0
+[2022-12-16 21:52:05] ERRORS (128-bit words): -1
+[2022-12-16 21:52:05] ERRORS (32-bit words): 0
+[2022-12-16 21:52:05] ERRORS (128-bit words): -1
+[2022-12-16 21:52:05] ERRORS (32-bit words): 0
+[2022-12-16 21:52:05] ERRORS (128-bit words): -1
+[2022-12-16 21:52:05] ERRORS (32-bit words): 0
+[2022-12-16 21:52:05] ERRORS (128-bit words): -1
+[2022-12-16 21:52:05] ERRORS (32-bit words): 0
+[2022-12-16 21:52:05] ERRORS (128-bit words): -1
+[2022-12-16 21:52:06] ERRORS (32-bit words): 0
+[2022-12-16 21:52:07]          941          940         3223 4294967234
+
+Timeout event group 0, File: ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__21_44_01_UART.log
+[2022-12-16 21:52:25]
+[2022-12-16 21:52:36] [1m        __   _ __      _  __[0m
+[2022-12-16 21:52:36] [1m       / /  (_) /____ | |/_/[0m
+[2022-12-16 21:52:36] [1m      / /__/ / __/ -_)>  <[0m
+[2022-12-16 21:52:36] [1m     /____/_/\__/\__/_/|_|[0m
+[2022-12-16 21:52:36] [1m   Build your hardware, easily![0m
+[2022-12-16 21:52:36]  (c) Copyright 2012-2022 Enjoy-Digital
+[2022-12-16 21:52:36]  (c) Copyright 2007-2015 M-Labs
+[2022-12-16 21:52:36]  BIOS built on Nov 28 2022 18:17:22
+[2022-12-16 21:52:36]  BIOS CRC passed (b0e744c8)
+[2022-12-16 21:52:36]  LiteX git sha1: f707551c
+[2022-12-16 21:52:36] --=============== [1mSoC[0m ==================--
+[2022-12-16 21:52:36] [1mCPU[0m:		VexRiscv @ 75MHz
+[2022-12-16 21:52:36] [1mBUS[0m:		WISHBONE 32-bit @ 4GiB
+[2022-12-16 21:52:36] [1mCSR[0m:		32-bit data
+[2022-12-16 21:52:36] [1mROM[0m:		128KiB
+[2022-12-16 21:52:36] [1mSRAM[0m:		8KiB
+[2022-12-16 21:52:36] [1mL2[0m:		8KiB
+[2022-12-16 21:52:36] [1mSDRAM[0m:		524288KiB 16-bit @ 600MT/s (CL-7 CWL-5)
+[2022-12-16 21:52:36] --========== [1mInitialization[0m ============--
+[2022-12-16 21:52:36] Initializing SDRAM @0x40000000...
+[2022-12-16 21:52:36] Switching SDRAM to software control.
+[2022-12-16 21:52:36] Read leveling:
+[2022-12-16 21:52:36]   m0, b00: |00000000000000000000000000000000| delays: -
+[2022-12-16 21:52:36]   m0, b01: |11111111100000000000000000000000| delays: 04+-04
+[2022-12-16 21:52:36]   m0, b02: |00000000000111111111111111111100| delays: 20+-09
+[2022-12-16 21:52:36]   m0, b03: |00000000000000000000000000000000| delays: -
+[2022-12-16 21:52:36]   m0, b04: |00000000000000000000000000000000| delays: -
+[2022-12-16 21:52:36]   m0, b05: |00000000000000000000000000000000| delays: -
+[2022-12-16 21:52:36]   m0, b06: |00000000000000000000000000000000| delays: -
+[2022-12-16 21:52:36]   m0, b07: |00000000000000000000000000000000| delays: -
+[2022-12-16 21:52:36]   best: m0, b02 delays: 20+-09
+[2022-12-16 21:52:36]   m1, b00: |00000000000000000000000000000000| delays: -
+[2022-12-16 21:52:36]   m1, b01: |11111111100000000000000000000000| delays: 04+-04
+[2022-12-16 21:52:36]   m1, b02: |00000000001111111111111111111100| delays: 20+-10
+[2022-12-16 21:52:36]   m1, b03: |00000000000000000000000000000000| delays: -
+[2022-12-16 21:52:36]   m1, b04: |00000000000000000000000000000000| delays: -
+[2022-12-16 21:52:36]   m1, b05: |00000000000000000000000000000000| delays: -
+[2022-12-16 21:52:36]   m1, b06: |00000000000000000000000000000000| delays: -
+[2022-12-16 21:52:36]   m1, b07: |00000000000000000000000000000000| delays: -
+[2022-12-16 21:52:36]   best: m1, b02 delays: 20+-10
+[2022-12-16 21:52:36] Switching SDRAM to hardware control.
+[2022-12-16 21:52:36] Memtest at 0x40000000 (2.0MiB)...
+[2022-12-16 21:52:36]   Write: 0x40000000-0x40000000 0B
+[2022-12-16 21:52:36]   Write: 0x40000000-0x40200000 2.0MiB
+[2022-12-16 21:52:36]    Read: 0x40000000-0x40000000 0B
+[2022-12-16 21:52:36]    Read: 0x40000000-0x40200000 2.0MiB
+[2022-12-16 21:52:36] Memtest OK
+[2022-12-16 21:52:36] Memspeed at 0x40000000 (Sequential, 2.0MiB)...
+[2022-12-16 21:52:36]   Write speed: 26.2MiB/s
+[2022-12-16 21:52:36]    Read speed: 35.1MiB/s
+[2022-12-16 21:52:36] --============== [1mBoot[0m ==================--
+[2022-12-16 21:52:36] Booting from serial...
+[2022-12-16 21:52:36] Press Q or ESC to abort boot completely.
+[2022-12-16 21:52:36] sL5DdSMmkekro
+[2022-12-16 21:52:36] Timeout
+[2022-12-16 21:52:36] No boot medium found
+[2022-12-16 21:52:36] --============= [1mConsole[0m ================--
+[2022-12-16 21:52:36] [92;1mlitex[0m> sdram_bist_pat 165
+[2022-12-16 21:52:36] sdram_bist_pat 165
+[2022-12-16 21:52:36] [92;1mlitex[0m>
+[2022-12-16 21:52:36] [92;1mlitex[0m>
+[2022-12-16 21:52:36] [92;1mlitex[0m> sdram_bist 8192 1 0 2
+[2022-12-16 21:52:36] sdram_bist 8192 1 0 2
+[2022-12-16 21:52:36] Starting SDRAM BIST with length=8192, addr_mode=1, data_mode=0 wmode=2
+[2022-12-16 21:52:36] WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS
+Test contains the following single or groups of events:
+3 memory, 1 timeout, 0 other
+
+End of test events

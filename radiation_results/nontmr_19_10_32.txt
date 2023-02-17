@@ -1,0 +1,1234 @@
+{'./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_19_2022__10_32_48_LOG.log': './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_19_2022__10_32_48_UART.log'}
+Reading File:  ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_19_2022__10_32_48_LOG.log
+Number of lines in log file:  2859
+LOG_FILE_WARNING: Line 1150 has no log data, skipping. Data: 	~/jcm_apps/jcm_jtag_reg.elf -r 50 --swap -w 64
+LOG_FILE_WARNING: Line 1154 has no log data, skipping. Data: 	~/jcm_apps/jcm_config.elf --part xc7a200t -c 30000000 --jtag --config_file /root/ddr_11_28.bit
+LOG_FILE_WARNING: Line 1166 has no log data, skipping. Data: 	~/jcm_apps/jcm_scrubbing.elf --part xc7a200t -c 30000000 --jtag --iterations 100000000 --frad_file xc7a200t_frad.txt
+LOG_FILE_WARNING: Line 1858 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 1859 has no log data, skipping. Data:          941
+LOG_FILE_WARNING: Line 1939 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 1940 has no log data, skipping. Data:          940          940         144
+LOG_FILE_WARNING: Line 1942 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 1943 has no log data, skipping. Data:          941          940
+LOG_FILE_WARNING: Line 1959 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 1960 has no log data, skipping. Data:          941          940         2994
+LOG_FILE_WARNING: Line 1962 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 1963 has no log data, skipping. Data:          941          940         3468
+LOG_FILE_WARNING: Line 1965 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 1966 has no log data, skipping. Data:          941          940         3942
+LOG_FILE_WARNING: Line 1985 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 1986 has no log data, skipping. Data:          941          940         2205
+LOG_FILE_WARNING: Line 1988 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 1989 has no log data, skipping. Data:          941          940         2679
+LOG_FILE_WARNING: Line 1991 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 1992 has no log data, skipping. Data:          941          940         3153
+LOG_FILE_WARNING: Line 1994 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 1995 has no log data, skipping. Data:          941          940         3627
+LOG_FILE_WARNING: Line 2003 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 2004 has no log data, skipping. Data:          941          940          373
+LOG_FILE_WARNING: Line 2006 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 2007 has no log data, skipping. Data:          941          940          847
+LOG_FILE_WARNING: Line 2009 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 2010 has no log data, skipping. Data:          941          940         1321
+LOG_FILE_WARNING: Line 2012 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 2013 has no log data, skipping. Data:          941          940         1795
+LOG_FILE_WARNING: Line 2028 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 2029 has no log data, skipping. Data:          941          940          801
+LOG_FILE_WARNING: Line 2031 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 2032 has no log data, skipping. Data:          941          940         1275
+LOG_FILE_WARNING: Line 2034 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 2035 has no log data, skipping. Data:          941          940         1748
+LOG_FILE_WARNING: Line 2037 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 2038 has no log data, skipping. Data:          941          940         2222
+LOG_FILE_WARNING: Line 2066 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 2067 has no log data, skipping. Data:          941          940         1360
+LOG_FILE_WARNING: Line 2069 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 2070 has no log data, skipping. Data:          941          940         1834
+LOG_FILE_WARNING: Line 2072 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 2073 has no log data, skipping. Data:          941          940         2307
+LOG_FILE_WARNING: Line 2075 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 2076 has no log data, skipping. Data:          941          940         2781
+LOG_FILE_WARNING: Line 2173 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 2174 has no log data, skipping. Data:          941          940         2248
+LOG_FILE_WARNING: Line 2176 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 2177 has no log data, skipping. Data:          941          940         2722
+LOG_FILE_WARNING: Line 2179 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 2180 has no log data, skipping. Data:          941          940         3195
+LOG_FILE_WARNING: Line 2182 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 2183 has no log data, skipping. Data:          941          940         3669
+LOG_FILE_WARNING: Line 2192 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 2193 has no log data, skipping. Data:          941          940          584
+LOG_FILE_WARNING: Line 2195 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 2196 has no log data, skipping. Data:          941          940         1058
+LOG_FILE_WARNING: Line 2198 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 2199 has no log data, skipping. Data:          941          940         1532
+LOG_FILE_WARNING: Line 2214 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 2215 has no log data, skipping. Data:          941          940          543
+LOG_FILE_WARNING: Line 2217 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 2218 has no log data, skipping. Data:          941          940         1017
+LOG_FILE_WARNING: Line 2220 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 2221 has no log data, skipping. Data:          941          940         1490
+LOG_FILE_WARNING: Line 2223 has no log data, skipping. Data: 
+LOG_FILE_WARNING: Line 2224 has no log data, skipping. Data:          941          940         1964
+LOG_FILE_WARNING: Line 2618 has no log data, skipping. Data: 	~/jcm_apps/jcm_jtag_reg.elf -r 50 --swap -w 64
+LOG_FILE_WARNING: Line 2622 has no log data, skipping. Data: 	~/jcm_apps/jcm_config.elf --part xc7a200t -c 30000000 --jtag --config_file /root/ddr_11_28.bit
+LOG_FILE_WARNING: Line 2634 has no log data, skipping. Data: 	~/jcm_apps/jcm_scrubbing.elf --part xc7a200t -c 30000000 --jtag --iterations 100000000 --frad_file xc7a200t_frad.txt
+LOG_FILE_WARNING: Line 2695 has no log data, skipping. Data: 	~/jcm_apps/jcm_jtag_reg.elf -r 50 --swap -w 64
+LOG_FILE_WARNING: Line 2699 has no log data, skipping. Data: 	~/jcm_apps/jcm_config.elf --part xc7a200t -c 30000000 --jtag --config_file /root/ddr_11_28.bit
+LOG_FILE_WARNING: Line 2711 has no log data, skipping. Data: 	~/jcm_apps/jcm_scrubbing.elf --part xc7a200t -c 30000000 --jtag --iterations 100000000 --frad_file xc7a200t_frad.txt
+Number of lines in uart file:  23353
+Test contains the following single or groups of events:
+1 memory, 4 timeout, 6 other
+
+Mem event group 0, File: ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_19_2022__10_32_48_UART.log
+[2022-12-19 16:14:45] ERRORS (128-bit words): 186
+[2022-12-19 16:14:45] error addr: 0x4e34c000, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c010, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c020, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c030, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c040, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c050, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c060, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c070, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c080, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c090, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c0a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c0b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c0c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c0d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c0e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c0f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c100, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c110, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c120, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c130, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c140, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c150, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c160, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c170, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c180, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c190, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c1a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c1b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c1c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c1d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c1e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c1f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c200, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c210, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c220, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c230, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c240, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c250, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c260, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c270, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c280, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c290, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c2a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c2b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c2c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c2d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c2e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c2f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c300, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c310, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c320, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c330, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c340, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c350, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c360, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c370, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c380, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c390, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c3a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c3b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c3c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c3d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c3e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c3f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c400, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c410, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c420, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c430, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c440, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c450, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c460, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c470, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c480, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c490, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c4a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c4b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c4c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c4d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c4e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c4f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c500, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c510, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c520, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c530, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c540, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c550, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c560, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c570, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c580, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c590, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c5a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c5b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c5c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c5d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c5e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c5f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c600, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c610, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c620, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34c630, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] ERRORS (32-bit words): 512
+[2022-12-19 16:14:45] ERRORS (128-bit words): 512
+[2022-12-19 16:14:45] error addr: 0x4e34e000, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e010, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e020, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e030, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e040, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e050, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e060, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e070, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e080, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e090, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e0a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e0b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e0c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e0d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e0e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e0f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e100, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e110, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e120, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e130, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e140, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e150, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e160, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e170, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e180, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e190, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e1a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e1b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e1c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e1d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e1e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e1f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e200, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e210, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e220, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e230, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e240, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e250, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:45] error addr: 0x4e34e260, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e270, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e280, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e290, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e2a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e2b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e2c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e2d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e2e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e2f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e300, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e310, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e320, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e330, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e340, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e350, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e360, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e370, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e380, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e390, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e3a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e3b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e3c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e3d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e3e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e3f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e400, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e410, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e420, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e430, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e440, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e450, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e460, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e470, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e480, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e490, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e4a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e4b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e4c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e4d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e4e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e4f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e500, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e510, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e520, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e530, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e540, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e550, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e560, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e570, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e580, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e590, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e5a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e5b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e5c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e5d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e5e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e5f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e600, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e610, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e620, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e34e630, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] ERRORS (32-bit words): 512
+[2022-12-19 16:14:46] ERRORS (128-bit words): 512
+[2022-12-19 16:14:46] error addr: 0x4e350000, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350010, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350020, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350030, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350040, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350050, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350060, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350070, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350080, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350090, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3500a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3500b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3500c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3500d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3500e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3500f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350100, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350110, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350120, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350130, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350140, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350150, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350160, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350170, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350180, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350190, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3501a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3501b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3501c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3501d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3501e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3501f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350200, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350210, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350220, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350230, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350240, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350250, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350260, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350270, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350280, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350290, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3502a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3502b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3502c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3502d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3502e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3502f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350300, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350310, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350320, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350330, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350340, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350350, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350360, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350370, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350380, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350390, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3503a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3503b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3503c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3503d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3503e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3503f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350400, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350410, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350420, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350430, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350440, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350450, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350460, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350470, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350480, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350490, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3504a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3504b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3504c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3504d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3504e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3504f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350500, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350510, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350520, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350530, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350540, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350550, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350560, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350570, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350580, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350590, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3505a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3505b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3505c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3505d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3505e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e3505f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350600, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350610, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350620, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e350630, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] ERRORS (32-bit words): 512
+[2022-12-19 16:14:46] ERRORS (128-bit words): 512
+[2022-12-19 16:14:46] error addr: 0x4e352000, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e352010, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e352020, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e352030, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e352040, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e352050, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e352060, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:46] error addr: 0x4e352070, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352080, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352090, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3520a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3520b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3520c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3520d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3520e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3520f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352100, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352110, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352120, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352130, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352140, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352150, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352160, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352170, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352180, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352190, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3521a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3521b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3521c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3521d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3521e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3521f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352200, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352210, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352220, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352230, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352240, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352250, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352260, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352270, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352280, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352290, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3522a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3522b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3522c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3522d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3522e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3522f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352300, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352310, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352320, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352330, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352340, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352350, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352360, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352370, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352380, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352390, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3523a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3523b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3523c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3523d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3523e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3523f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352400, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352410, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352420, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352430, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352440, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352450, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352460, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352470, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352480, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352490, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3524a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3524b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3524c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3524d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3524e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3524f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352500, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352510, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352520, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352530, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352540, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352550, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352560, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352570, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352580, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352590, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3525a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3525b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3525c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3525d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3525e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3525f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352600, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352610, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352620, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e352630, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] ERRORS (32-bit words): 512
+[2022-12-19 16:14:47] ERRORS (128-bit words): 512
+[2022-12-19 16:14:47] error addr: 0x4e354000, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354010, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354020, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354030, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354040, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354050, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354060, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354070, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354080, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354090, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3540a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3540b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3540c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3540d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3540e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3540f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354100, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354110, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354120, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354130, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354140, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354150, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354160, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354170, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354180, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354190, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3541a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3541b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3541c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3541d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3541e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3541f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354200, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354210, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354220, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354230, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354240, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354250, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354260, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354270, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354280, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354290, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3542a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3542b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3542c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3542d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3542e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3542f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354300, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354310, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354320, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354330, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354340, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354350, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354360, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354370, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354380, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354390, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3543a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3543b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3543c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3543d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3543e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3543f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354400, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354410, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354420, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354430, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354440, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354450, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354460, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354470, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354480, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e354490, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3544a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3544b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:47] error addr: 0x4e3544c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3544d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3544e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3544f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e354500, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e354510, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e354520, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e354530, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e354540, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e354550, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e354560, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e354570, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e354580, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e354590, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3545a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3545b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3545c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3545d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3545e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3545f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e354600, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e354610, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e354620, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e354630, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] ERRORS (32-bit words): 512
+[2022-12-19 16:14:48] ERRORS (128-bit words): 512
+[2022-12-19 16:14:48] error addr: 0x4e356000, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356010, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356020, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356030, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356040, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356050, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356060, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356070, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356080, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356090, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3560a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3560b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3560c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3560d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3560e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3560f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356100, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356110, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356120, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356130, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356140, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356150, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356160, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356170, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356180, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356190, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3561a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3561b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3561c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3561d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3561e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3561f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356200, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356210, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356220, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356230, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356240, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356250, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356260, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356270, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356280, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356290, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3562a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3562b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3562c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3562d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3562e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3562f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356300, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356310, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356320, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356330, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356340, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356350, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356360, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356370, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356380, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356390, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3563a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3563b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3563c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3563d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3563e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3563f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356400, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356410, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356420, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356430, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356440, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356450, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356460, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356470, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356480, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356490, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3564a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3564b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3564c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3564d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3564e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3564f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356500, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356510, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356520, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356530, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356540, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356550, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356560, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356570, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356580, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356590, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3565a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3565b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3565c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3565d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3565e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3565f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356600, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356610, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356620, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e356630, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] ERRORS (32-bit words): 512
+[2022-12-19 16:14:48] ERRORS (128-bit words): 512
+[2022-12-19 16:14:48] error addr: 0x4e358000, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e358010, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e358020, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e358030, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e358040, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e358050, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e358060, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e358070, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e358080, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e358090, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3580a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3580b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3580c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3580d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3580e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3580f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e358100, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e358110, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e358120, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e358130, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e358140, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e358150, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e358160, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e358170, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e358180, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e358190, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3581a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3581b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3581c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3581d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3581e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3581f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e358200, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e358210, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e358220, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e358230, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e358240, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e358250, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e358260, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e358270, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e358280, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e358290, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3582a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3582b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3582c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:48] error addr: 0x4e3582d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e3582e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e3582f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e358300, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e358310, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e358320, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e358330, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e358340, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e358350, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e358360, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e358370, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e358380, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e358390, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e3583a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e3583b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e3583c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e3583d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e3583e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e3583f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e358400, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e358410, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e358420, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e358430, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e358440, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e358450, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e358460, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e358470, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e358480, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e358490, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e3584a0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e3584b0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e3584c0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e3584d0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e3584e0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e3584f0, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e358500, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e358510, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e358520, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e358530, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e358540, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e358550, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e358560, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] error addr: 0x4e358570, content: 0x85a5a5a5, expected: 0xa5a5a5a5
+[2022-12-19 16:14:49] ERRORS (32-bit words): 88
+[2022-12-19 16:14:49]          940          940         1446       3258
+
+Timeout event group 0, File: ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_19_2022__10_32_48_UART.log
+[2022-12-19 14:24:02] [1m        __   _ __      _  __[0m
+[2022-12-19 14:24:02] [1m       / /  (_) /____ | |/_/[0m
+[2022-12-19 14:24:02] [1m      / /__/ / __/ -_)>  <[0m
+[2022-12-19 14:24:02] [1m     /____/_/\__/\__/_/|_|[0m
+[2022-12-19 14:24:02] [1m   Build your hardware, easily![0m
+[2022-12-19 14:24:02]  (c) Copyright 2012-2022 Enjoy-Digital
+[2022-12-19 14:24:02]  (c) Copyright 2007-2015 M-Labs
+[2022-12-19 14:24:02]  BIOS built on Nov 28 2022 18:17:22
+[2022-12-19 14:24:02]  BIOS CRC failed (expected b0e744c8, got 7e8cc638)
+[2022-12-19 14:24:02]  The system will continue, but expect problems.
+[2022-12-19 14:24:02]  LiteX git sha1: f707551c
+[2022-12-19 14:24:02] --=============== [1mSoC[0m ==================--
+[2022-12-19 14:24:02] [1mCPU[0m:		VexRiscv @ 75MHz
+[2022-12-19 14:24:02] [1mBUS[0m:		WISHBONE 32-bit @ 4GiB
+[2022-12-19 14:24:02] [1mCSR[0m:		32-bit data
+[2022-12-19 14:24:02] [1mROM[0m:		128KiB
+[2022-12-19 14:24:02] [1mSRAM[0m:		8KiB
+[2022-12-19 14:24:02] [1mL2[0m:		8KiB
+[2022-12-19 14:24:02] [1mSDRAM[0m:		524288KiB 16-bit @ 600MT/s (CL-7 CWL-5)
+[2022-12-19 14:24:02] --========== [1mInitialization[0m ============--
+[2022-12-19 14:24:02] Initializing SDRAM @0x40000000...
+[2022-12-19 14:24:02] Switching SDRAM to software control.
+[2022-12-19 14:24:02] Read leveling:
+[2022-12-19 14:24:02]   m0, b00: |00000000000000000000000000000000| delays: -
+[2022-12-19 14:24:02]   m0, b01: |11111111100000000000000000000000| delays: 04+-04
+[2022-12-19 14:24:02]   m0, b02: |00000000000111111111111111111100| delays: 20+-09
+[2022-12-19 14:24:02]   m0, b03: |00000000000000000000000000000000| delays: -
+[2022-12-19 14:24:02]   m0, b04: |00000000000000000000000000000000| delays: -
+[2022-12-19 14:24:02]   m0, b05: |00000000000000000000000000000000| delays: -
+[2022-12-19 14:24:02]   m0, b06: |00000000000000000000000000000000| delays: -
+[2022-12-19 14:24:02]   m0, b07: |00000000000000000000000000000000| delays: -
+[2022-12-19 14:24:02]   best: m0, b02 delays: 20+-09
+[2022-12-19 14:24:02]   m1, b00: |00000000000000000000000000000000| delays: -
+[2022-12-19 14:24:02]   m1, b01: |11111111100000000000000000000000| delays: 04+-04
+[2022-12-19 14:24:02]   m1, b02: |00000000001111111111111111111100| delays: 20+-10
+[2022-12-19 14:24:02]   m1, b03: |00000000000000000000000000000000| delays: -
+[2022-12-19 14:24:02]   m1, b04: |00000000000000000000000000000000| delays: -
+[2022-12-19 14:24:02]   m1, b05: |00000000000000000000000000000000| delays: -
+[2022-12-19 14:24:02]   m1, b06: |00000000000000000000000000000000| delays: -
+[2022-12-19 14:24:02]   m1, b07: |00000000000000000000000000000000| delays: -
+[2022-12-19 14:24:02]   best: m1, b02 delays: 20+-10
+[2022-12-19 14:24:02] Switching SDRAM to hardware control.
+[2022-12-19 14:24:02] Memtest at 0x40000000 (2.0MiB)...
+[2022-12-19 14:24:02]   Write: 0x40000000-0x40000000 0B
+[2022-12-19 14:24:02]   Write: 0x40000000-0x40200000 2.0MiB
+[2022-12-19 14:24:02]    Read: 0x40000000-0x40000000 0B
+[2022-12-19 14:24:02]    Read: 0x40000000-0x40200000 2.0MiB
+[2022-12-19 14:24:02] Memtest OK
+[2022-12-19 14:24:02] Memspeed at 0x40000000 (Sequential, 2.0MiB)...
+[2022-12-19 14:24:02]   Write speed: 26.2MiB/s
+[2022-12-19 14:24:02]    Read speed: 35.1MiB/s
+[2022-12-19 14:24:02] --============== [1mBoot[0m ==================--
+[2022-12-19 14:24:02] Booting from serial...
+[2022-12-19 14:24:02] Press Q or ESC to abort boot completely.
+[2022-12-19 14:24:02] sL5DdSMmkekro
+[2022-12-19 14:24:02] Timeout
+[2022-12-19 14:24:02] No boot medium found
+[2022-12-19 14:24:02] --============= [1mConsole[0m ================--
+[2022-12-19 14:24:02] [92;1mlitex[0m> sdram_bist_pat 165
+[2022-12-19 14:24:02] sdram_bist_pat 165
+[2022-12-19 14:24:02] [92;1mlitex[0m>
+[2022-12-19 14:24:02] [92;1mlitex[0m>
+[2022-12-19 14:24:02] [92;1mlitex[0m> sdram_bist 8192 1 0 2
+[2022-12-19 14:24:02] sdram_bist 8192 1 0 2
+[2022-12-19 14:24:02] Starting SDRAM BIST with length=8192, addr_mode=1, data_mode=0 wmode=2
+[2022-12-19 14:24:02] WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS
+
+Timeout event group 1, File: ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_19_2022__10_32_48_UART.log
+[2022-12-19 15:02:15] [1m        __   _ __      _  __[0m
+[2022-12-19 15:02:15] [1m       / /  (_) /____ | |/_/[0m
+[2022-12-19 15:02:15] [1m      / /__/ / __/ -_)>  <[0m
+[2022-12-19 15:02:15] [1m     /____/_/\__/\__/_/|_|[0m
+[2022-12-19 15:02:15] [1m   Build your hardware, easily![0m
+[2022-12-19 15:02:15]  (c) Copyright 2012-2022 Enjoy-Digital
+[2022-12-19 15:02:15]  (c) Copyright 2007-2015 M-Labs
+[2022-12-19 15:02:15]  BIOS built on Nov 28 2022 18:17:22
+[2022-12-19 15:02:15]  BIOS CRC failed (expected b0e744c8, got 7c9c1a80)
+[2022-12-19 15:02:15]  The system will continue, but expect problems.
+[2022-12-19 15:02:15]  LiteX git sha1: f707551c
+[2022-12-19 15:02:15] --=============== [1mSoC[0m ==================--
+[2022-12-19 15:02:15] [1mCPU[0m:		VexRiscv @ 75MHz
+[2022-12-19 15:02:15] [1mBUS[0m:		WISHBONE 32-bit @ 4GiB
+[2022-12-19 15:02:15] [1mCSR[0m:		32-bit data
+[2022-12-19 15:02:15] [1mROM[0m:		128KiB
+[2022-12-19 15:02:15] [1mSRAM[0m:		8KiB
+[2022-12-19 15:02:15] [1mL2[0m:		8KiB
+[2022-12-19 15:02:15] [1mSDRAM[0m:		524288KiB 16-bit @ 600MT/s (CL-7 CWL-5)
+[2022-12-19 15:02:15] --========== [1mInitialization[0m ============--
+[2022-12-19 15:02:15] Initializing SDRAM @0x40000000...
+[2022-12-19 15:02:15] Switching SDRAM to software control.
+[2022-12-19 15:02:15] Read leveling:
+[2022-12-19 15:02:15]   m0, b00: |00000000000000000000000000000000| delays: -
+[2022-12-19 15:02:15]   m0, b01: |11111111100000000000000000000000| delays: 04+-04
+[2022-12-19 15:02:15]   m0, b02: |00000000000111111111111111111100| delays: 20+-09
+[2022-12-19 15:02:15]   m0, b03: |00000000000000000000000000000000| delays: -
+[2022-12-19 15:02:15]   m0, b04: |00000000000000000000000000000000| delays: -
+[2022-12-19 15:02:15]   m0, b05: |00000000000000000000000000000000| delays: -
+[2022-12-19 15:02:15]   m0, b06: |00000000000000000000000000000000| delays: -
+[2022-12-19 15:02:15]   m0, b07: |00000000000000000000000000000000| delays: -
+[2022-12-19 15:02:15]   best: m0, b02 delays: 20+-09
+[2022-12-19 15:02:15]   m1, b00: |00000000000000000000000000000000| delays: -
+[2022-12-19 15:02:15]   m1, b01: |11111111100000000000000000000000| delays: 04+-04
+[2022-12-19 15:02:15]   m1, b02: |00000000001111111111111111111100| delays: 20+-10
+[2022-12-19 15:02:15]   m1, b03: |00000000000000000000000000000000| delays: -
+[2022-12-19 15:02:15]   m1, b04: |00000000000000000000000000000000| delays: -
+[2022-12-19 15:02:15]   m1, b05: |00000000000000000000000000000000| delays: -
+[2022-12-19 15:02:15]   m1, b06: |00000000000000000000000000000000| delays: -
+[2022-12-19 15:02:15]   m1, b07: |00000000000000000000000000000000| delays: -
+[2022-12-19 15:02:15]   best: m1, b02 delays: 20+-10
+[2022-12-19 15:02:15] Switching SDRAM to hardware control.
+[2022-12-19 15:02:15] Memtest at 0x40000000 (2.0MiB)...
+[2022-12-19 15:02:15]   Write: 0x40000000-0x40000000 0B
+[2022-12-19 15:02:15]   Write: 0x40000000-0x40200000 2.0MiB
+[2022-12-19 15:02:15]    Read: 0x40000000-0x40000000 0B
+[2022-12-19 15:02:15]    Read: 0x40000000-0x40200000 2.0MiB
+[2022-12-19 15:02:15] Memtest OK
+[2022-12-19 15:02:15] Memspeed at 0x40000000 (Sequential, 2.0MiB)...
+[2022-12-19 15:02:15]   Write speed: 26.2MiB/s
+[2022-12-19 15:02:15]    Read speed: 35.1MiB/s
+[2022-12-19 15:02:15] --============== [1mBoot[0m ==================--
+[2022-12-19 15:02:15] Booting from serial...
+[2022-12-19 15:02:15] Press Q or ESC to abort boot completely.
+[2022-12-19 15:02:15] sL5DdSMmkekro
+[2022-12-19 15:02:15] Timeout
+[2022-12-19 15:02:15] No boot medium found
+[2022-12-19 15:02:15] --============= [1mConsole[0m ================--
+[2022-12-19 15:02:15] [92;1mlitex[0m> sdram_bist_pat 165
+[2022-12-19 15:02:15] sdram_bist_pat 165
+[2022-12-19 15:02:15] [92;1mlitex[0m>
+[2022-12-19 15:02:15] [92;1mlitex[0m>
+[2022-12-19 15:02:15] [92;1mlitex[0m> sdram_bist 8192 1 0 2
+[2022-12-19 15:02:15] sdram_bist 8192 1 0 2
+[2022-12-19 15:02:15] Starting SDRAM BIST with length=8192, addr_mode=1, data_mode=0 wmode=2
+[2022-12-19 15:02:15] WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS
+
+Timeout event group 2, File: ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_19_2022__10_32_48_UART.log
+[2022-12-19 16:52:32] [1m        __   _ __      _  __[0m
+[2022-12-19 16:52:32] [1m       / /  (_) /____ | |/_/[0m
+[2022-12-19 16:52:32] [1m      / /__/ / __/ -_)>  <[0m
+[2022-12-19 16:52:32] [1m     /____/_/\__/\__/_/|_|[0m
+[2022-12-19 16:52:32] [1m   Build your hardware, easily![0m
+[2022-12-19 16:52:32]  (c) Copyright 2012-2022 Enjoy-Digital
+[2022-12-19 16:52:32]  (c) Copyright 2007-2015 M-Labs
+[2022-12-19 16:52:32]  BIOS built on Nov 28 2022 18:17:22
+[2022-12-19 16:52:32]  BIOS CRC failed (expected b0e744c8, got 75aeeaa0)
+[2022-12-19 16:52:32]  The system will continue, but expect problems.
+[2022-12-19 16:52:32]  LiteX git sha1: f707551c
+[2022-12-19 16:52:32] --=============== [1mSoC[0m ==================--
+[2022-12-19 16:52:32] [1mCPU[0m:		VexRiscv @ 75MHz
+[2022-12-19 16:52:32] [1mBUS[0m:		WISHBONE 32-bit @ 4GiB
+[2022-12-19 16:52:32] [1mCSR[0m:		32-bit data
+[2022-12-19 16:52:32] [1mROM[0m:		128KiB
+[2022-12-19 16:52:32] [1mSRAM[0m:		8KiB
+[2022-12-19 16:52:32] [1mL2[0m:		8KiB
+[2022-12-19 16:52:32] [1mSDRAM[0m:		524288KiB 16-bit @ 600MT/s (CL-7 CWL-5)
+[2022-12-19 16:52:32] --========== [1mInitialization[0m ============--
+[2022-12-19 16:52:32] Initializing SDRAM @0x40000000...
+[2022-12-19 16:52:32] Switching SDRAM to software control.
+[2022-12-19 16:52:32] Read leveling:
+[2022-12-19 16:52:32]   m0, b00: |00000000000000000000000000000000| delays: -
+[2022-12-19 16:52:32]   m0, b01: |11111111100000000000000000000000| delays: 04+-04
+[2022-12-19 16:52:32]   m0, b02: |00000000000111111111111111111100| delays: 20+-09
+[2022-12-19 16:52:32]   m0, b03: |00000000000000000000000000000000| delays: -
+[2022-12-19 16:52:32]   m0, b04: |00000000000000000000000000000000| delays: -
+[2022-12-19 16:52:32]   m0, b05: |00000000000000000000000000000000| delays: -
+[2022-12-19 16:52:32]   m0, b06: |00000000000000000000000000000000| delays: -
+[2022-12-19 16:52:32]   m0, b07: |00000000000000000000000000000000| delays: -
+[2022-12-19 16:52:32]   best: m0, b02 delays: 20+-09
+[2022-12-19 16:52:32]   m1, b00: |00000000000000000000000000000000| delays: -
+[2022-12-19 16:52:32]   m1, b01: |11111111100000000000000000000000| delays: 04+-04
+[2022-12-19 16:52:32]   m1, b02: |00000000001111111111111111111100| delays: 20+-10
+[2022-12-19 16:52:32]   m1, b03: |00000000000000000000000000000000| delays: -
+[2022-12-19 16:52:32]   m1, b04: |00000000000000000000000000000000| delays: -
+[2022-12-19 16:52:32]   m1, b05: |00000000000000000000000000000000| delays: -
+[2022-12-19 16:52:32]   m1, b06: |00000000000000000000000000000000| delays: -
+[2022-12-19 16:52:32]   m1, b07: |00000000000000000000000000000000| delays: -
+[2022-12-19 16:52:32]   best: m1, b02 delays: 20+-10
+[2022-12-19 16:52:32] Switching SDRAM to hardware control.
+[2022-12-19 16:52:32] Memtest at 0x40000000 (2.0MiB)...
+[2022-12-19 16:52:32]   Write: 0x40000000-0x40000000 0B
+[2022-12-19 16:52:32]   Write: 0x40000000-0x40200000 2.0MiB
+[2022-12-19 16:52:32]    Read: 0x40000000-0x40000000 0B
+[2022-12-19 16:52:32]    Read: 0x40000000-0x40200000 2.0MiB
+[2022-12-19 16:52:32] Memtest OK
+[2022-12-19 16:52:32] Memspeed at 0x40000000 (Sequential, 2.0MiB)...
+[2022-12-19 16:52:32]   Write speed: 26.2MiB/s
+[2022-12-19 16:52:32]    Read speed: 35.1MiB/s
+[2022-12-19 16:52:32] --============== [1mBoot[0m ==================--
+[2022-12-19 16:52:32] Booting from serial...
+[2022-12-19 16:52:32] Press Q or ESC to abort boot completely.
+[2022-12-19 16:52:32] sL5DdSMmkekro
+[2022-12-19 16:52:32] Timeout
+[2022-12-19 16:52:32] No boot medium found
+[2022-12-19 16:52:32] --============= [1mConsole[0m ================--
+[2022-12-19 16:52:32] [92;1mlitex[0m> sdram_bist_pat 165
+[2022-12-19 16:52:32] sdram_bist_pat 165
+[2022-12-19 16:52:32] [92;1mlitex[0m>
+[2022-12-19 16:52:32] [92;1mlitex[0m>
+[2022-12-19 16:52:32] [92;1mlitex[0m> sdram_bist 8192 1 0 2
+[2022-12-19 16:52:32] sdram_bist 8192 1 0 2
+[2022-12-19 16:52:32] Starting SDRAM BIST with length=8192, addr_mode=1, data_mode=0 wmode=2
+[2022-12-19 16:52:32] WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS
+
+Timeout event group 3, File: ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_19_2022__10_32_48_UART.log
+[2022-12-19 17:58:46]          941          940         1431
+[2022-12-19 17:59:23] [1m        __   _ __      _  __[0m
+[2022-12-19 17:59:23] [1m       / /  (_) /____ | |/_/[0m
+[2022-12-19 17:59:23] [1m      / /__/ / __/ -_)>  <[0m
+[2022-12-19 17:59:23] [1m     /____/_/\__/\__/_/|_|[0m
+[2022-12-19 17:59:23] [1m   Build your hardware, easily![0m
+[2022-12-19 17:59:23]  (c) Copyright 2012-2022 Enjoy-Digital
+[2022-12-19 17:59:23]  (c) Copyright 2007-2015 M-Labs
+[2022-12-19 17:59:23]  BIOS built on Nov 28 2022 18:17:22
+[2022-12-19 17:59:23]  BIOS CRC passed (b0e744c8)
+[2022-12-19 17:59:23]  LiteX git sha1: f707551c
+[2022-12-19 17:59:23] --=============== [1mSoC[0m ==================--
+[2022-12-19 17:59:23] [1mCPU[0m:		VexRiscv @ 75MHz
+[2022-12-19 17:59:23] [1mBUS[0m:		WISHBONE 32-bit @ 4GiB
+[2022-12-19 17:59:23] [1mCSR[0m:		32-bit data
+[2022-12-19 17:59:23] [1mROM[0m:		128KiB
+[2022-12-19 17:59:23] [1mSRAM[0m:		8KiB
+[2022-12-19 17:59:23] [1mL2[0m:		8KiB
+[2022-12-19 17:59:23] [1mSDRAM[0m:		524288KiB 16-bit @ 600MT/s (CL-7 CWL-5)
+[2022-12-19 17:59:23] --========== [1mInitialization[0m ============--
+[2022-12-19 17:59:23] Initializing SDRAM @0x40000000...
+[2022-12-19 17:59:23] Switching SDRAM to software control.
+[2022-12-19 17:59:23] Read leveling:
+[2022-12-19 17:59:23]   m0, b00: |00000000000000000000000000000000| delays: -
+[2022-12-19 17:59:23]   m0, b01: |11111111100000000000000000000000| delays: 04+-04
+[2022-12-19 17:59:23]   m0, b02: |00000000000111111111111111111100| delays: 21+-10
+[2022-12-19 17:59:23]   m0, b03: |00000000000000000000000000000000| delays: -
+[2022-12-19 17:59:23]   m0, b04: |00000000000000000000000000000000| delays: -
+[2022-12-19 17:59:23]   m0, b05: |00000000000000000000000000000000| delays: -
+[2022-12-19 17:59:23]   m0, b06: |00000000000000000000000000000000| delays: -
+[2022-12-19 17:59:23]   m0, b07: |00000000000000000000000000000000| delays: -
+[2022-12-19 17:59:23]   best: m0, b02 delays: 21+-10
+[2022-12-19 17:59:23]   m1, b00: |00000000000000000000000000000000| delays: -
+[2022-12-19 17:59:23]   m1, b01: |11111111100000000000000000000000| delays: 04+-04
+[2022-12-19 17:59:23]   m1, b02: |00000000001111111111111111111100| delays: 20+-10
+[2022-12-19 17:59:23]   m1, b03: |00000000000000000000000000000000| delays: -
+[2022-12-19 17:59:23]   m1, b04: |00000000000000000000000000000000| delays: -
+[2022-12-19 17:59:23]   m1, b05: |00000000000000000000000000000000| delays: -
+[2022-12-19 17:59:23]   m1, b06: |00000000000000000000000000000000| delays: -
+[2022-12-19 17:59:23]   m1, b07: |00000000000000000000000000000000| delays: -
+[2022-12-19 17:59:23]   best: m1, b02 delays: 20+-10
+[2022-12-19 17:59:23] Switching SDRAM to hardware control.
+[2022-12-19 17:59:23] Memtest at 0x40000000 (2.0MiB)...
+[2022-12-19 17:59:23]   Write: 0x40000000-0x40000000 0B
+[2022-12-19 17:59:23]   Write: 0x40000000-0x40200000 2.0MiB
+[2022-12-19 17:59:23]    Read: 0x40000000-0x40000000 0B
+[2022-12-19 17:59:23]    Read: 0x40000000-0x40200000 2.0MiB
+[2022-12-19 17:59:23] Memtest OK
+[2022-12-19 17:59:23] Memspeed at 0x40000000 (Sequential, 2.0MiB)...
+[2022-12-19 17:59:23]   Write speed: 26.2MiB/s
+[2022-12-19 17:59:23]    Read speed: 35.1MiB/s
+[2022-12-19 17:59:23] --============== [1mBoot[0m ==================--
+[2022-12-19 17:59:23] Booting from serial...
+[2022-12-19 17:59:23] Press Q or ESC to abort boot completely.
+[2022-12-19 17:59:23] sL5DdSMmkekro
+[2022-12-19 17:59:24] Timeout
+[2022-12-19 17:59:24] No boot medium found
+[2022-12-19 17:59:24] --============= [1mConsole[0m ================--
+[2022-12-19 17:59:24] [92;1mlitex[0m> sdram_bist_pat 165
+[2022-12-19 17:59:24] sdram_bist_pat 165
+[2022-12-19 17:59:24] [92;1mlitex[0m>
+[2022-12-19 17:59:24] [92;1mlitex[0m>
+[2022-12-19 17:59:24] [92;1mlitex[0m> sdram_bist 8192 1 0 2
+[2022-12-19 17:59:24] sdram_bist 8192 1 0 2
+[2022-12-19 17:59:24] Starting SDRAM BIST with length=8192, addr_mode=1, data_mode=0 wmode=2
+[2022-12-19 17:59:24] WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS
+
+Other event group 0, File: ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_19_2022__10_32_48_UART.log
+[2022-12-19 11:17:01]           43          940         1753          0
+[2022-12-19 11:17:03]          941          940         2227          0
+
+Other event group 1, File: ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_19_2022__10_32_48_UART.log
+[2022-12-19 12:13:13]          941           47         3121          0
+[2022-12-19 12:13:15]          941          940         3594          0
+
+Other event group 2, File: ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_19_2022__10_32_48_UART.log
+[2022-12-19 13:51:48] .
+[2022-12-19 13:51:48]      Write speed:  /s     Read speed:  Memtest at %p (   bus errors:  %d/%ld
+[2022-12-19 13:51:48]     addr errors: %d/%ld
+[2022-12-19 13:51:48]     data errors: %d/%ld
+[2022-12-19 13:51:48]   Memtest KO
+[2022-12-19 13:51:48]  Memtest OK
+[2022-12-19 13:51:48]  Switching SDRAM to software control.
+[2022-12-19 13:51:48]    Switching SDRAM to hardware control.
+[2022-12-19 13:51:48]    Setting SDRAM Mode Register to defaults.
+[2022-12-19 13:51:48]    delays: -   delays: %02d+-%02d    m%d, b%02d: | |     best: m%d, b%02d  Read leveling:
+[2022-12-19 13:51:48]  Initializing SDRAM @0x%08lx...
+[2022-12-19 13:51:48]  ERRORS (32-bit words): %lu
+[2022-12-19 13:51:48]  ERRORS (%d-bit words): %d
+[2022-12-19 13:51:49]   Write once mode not compatible                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+[2022-12-19 13:51:53]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+[2022-12-19 13:51:55]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+[2022-12-19 13:52:10] [1m        __   _ __      _  __[0m
+[2022-12-19 13:52:10] [1m       / /  (_) /____ | |/_/[0m
+[2022-12-19 13:52:10] [1m      / /__/ / __/ -_)>  <[0m
+[2022-12-19 13:52:10] [1m     /____/_/\__/\__/_/|_|[0m
+[2022-12-19 13:52:10] [1m   Build your hardware, easily![0m
+[2022-12-19 13:52:10]  (c) Copyright 2012-2022 Enjoy-Digital
+[2022-12-19 13:52:10]  (c) Copyright 2007-2015 M-Labs
+[2022-12-19 13:52:10]  BIOS built on Nov 28 2022 18:17:22
+[2022-12-19 13:52:10]  BIOS CRC passed (b0e744c8)
+[2022-12-19 13:52:10]  LiteX git sha1: f707551c
+[2022-12-19 13:52:10] --=============== [1mSoC[0m ==================--
+[2022-12-19 13:52:10] [1mCPU[0m:		VexRiscv @ 75MHz
+[2022-12-19 13:52:10] [1mBUS[0m:		WISHBONE 32-bit @ 4GiB
+[2022-12-19 13:52:10] [1mCSR[0m:		32-bit data
+[2022-12-19 13:52:10] [1mROM[0m:		128KiB
+[2022-12-19 13:52:10] [1mSRAM[0m:		8KiB
+[2022-12-19 13:52:10] [1mL2[0m:		8KiB
+[2022-12-19 13:52:10] [1mSDRAM[0m:		524288KiB 16-bit @ 600MT/s (CL-7 CWL-5)
+[2022-12-19 13:52:10] --========== [1mInitialization[0m ============--
+[2022-12-19 13:52:10] Initializing SDRAM @0x40000000...
+[2022-12-19 13:52:10] Switching SDRAM to software control.
+[2022-12-19 13:52:10] Read leveling:
+[2022-12-19 13:52:10]   m0, b00: |00000000000000000000000000000000| delays: -
+[2022-12-19 13:52:10]   m0, b01: |11111111100000000000000000000000| delays: 04+-04
+[2022-12-19 13:52:10]   m0, b02: |00000000000111111111111111111100| delays: 21+-10
+[2022-12-19 13:52:10]   m0, b03: |00000000000000000000000000000000| delays: -
+[2022-12-19 13:52:10]   m0, b04: |00000000000000000000000000000000| delays: -
+[2022-12-19 13:52:10]   m0, b05: |00000000000000000000000000000000| delays: -
+[2022-12-19 13:52:10]   m0, b06: |00000000000000000000000000000000| delays: -
+[2022-12-19 13:52:10]   m0, b07: |00000000000000000000000000000000| delays: -
+[2022-12-19 13:52:10]   best: m0, b02 delays: 21+-10
+[2022-12-19 13:52:10]   m1, b00: |00000000000000000000000000000000| delays: -
+[2022-12-19 13:52:10]   m1, b01: |11111111100000000000000000000000| delays: 04+-04
+[2022-12-19 13:52:10]   m1, b02: |00000000001111111111111111111100| delays: 20+-10
+[2022-12-19 13:52:10]   m1, b03: |00000000000000000000000000000000| delays: -
+[2022-12-19 13:52:10]   m1, b04: |00000000000000000000000000000000| delays: -
+[2022-12-19 13:52:10]   m1, b05: |00000000000000000000000000000000| delays: -
+[2022-12-19 13:52:10]   m1, b06: |00000000000000000000000000000000| delays: -
+[2022-12-19 13:52:10]   m1, b07: |00000000000000000000000000000000| delays: -
+[2022-12-19 13:52:10]   best: m1, b02 delays: 20+-10
+[2022-12-19 13:52:10] Switching SDRAM to hardware control.
+[2022-12-19 13:52:10] Memtest at 0x40000000 (2.0MiB)...
+[2022-12-19 13:52:10]   Write: 0x40000000-0x40000000 0B
+[2022-12-19 13:52:10]   Write: 0x40000000-0x40200000 2.0MiB
+[2022-12-19 13:52:10]    Read: 0x40000000-0x40000000 0B
+[2022-12-19 13:52:10]    Read: 0x40000000-0x40200000 2.0MiB
+[2022-12-19 13:52:10] Memtest OK
+[2022-12-19 13:52:10] Memspeed at 0x40000000 (Sequential, 2.0MiB)...
+[2022-12-19 13:52:10]   Write speed: 26.2MiB/s
+[2022-12-19 13:52:10]    Read speed: 35.1MiB/s
+[2022-12-19 13:52:10] --============== [1mBoot[0m ==================--
+[2022-12-19 13:52:10] Booting from serial...
+[2022-12-19 13:52:10] Press Q or ESC to abort boot completely.
+[2022-12-19 13:52:10] sL5DdSMmkekro
+[2022-12-19 13:52:10] Timeout
+[2022-12-19 13:52:10] No boot medium found
+[2022-12-19 13:52:10] --============= [1mConsole[0m ================--
+[2022-12-19 13:52:10] [92;1mlitex[0m> sdram_bist_pat 165
+[2022-12-19 13:52:10] sdram_bist_pat 165
+[2022-12-19 13:52:10] [92;1mlitex[0m>
+[2022-12-19 13:52:10] [92;1mlitex[0m>
+[2022-12-19 13:52:10] [92;1mlitex[0m> sdram_bist 8192 1 0 2
+[2022-12-19 13:52:10] sdram_bist 8192 1 0 2
+[2022-12-19 13:52:10] Starting SDRAM BIST with length=8192, addr_mode=1, data_mode=0 wmode=2
+[2022-12-19 13:52:10] WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS
+
+Other event group 3, File: ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_19_2022__10_32_48_UART.log
+[2022-12-19 15:46:24]         1023         1023          493          0
+[2022-12-19 15:46:26]         1023         1023          967          0
+[2022-12-19 15:46:27]         1023         1023         1440          0
+[2022-12-19 15:46:28]         1023         1023         1914          0
+[2022-12-19 15:46:30]         1023         1023         2388          0
+[2022-12-19 15:46:31]          941          940         2862          0
+
+Other event group 4, File: ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_19_2022__10_32_48_UART.log
+[2022-12-19 15:59:41]           941          940         1159          0
+[2022-12-19 15:59:42]          941          940         1633          0
+
+Other event group 5, File: ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_19_2022__10_32_48_UART.log
+[2022-12-19 18:05:30]          941                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               940         1402          0
+[2022-12-19 18:05:48]          941
+[2022-12-19 18:06:23] [1m        __   _ __      _  __[0m
+[2022-12-19 18:06:23] [1m       / /  (_) /____ | |/_/[0m
+[2022-12-19 18:06:23] [1m      / /__/ / __/ -_)>  <[0m
+[2022-12-19 18:06:23] [1m     /____/_/\__/\__/_/|_|[0m
+[2022-12-19 18:06:23] [1m   Build your hardware, easily![0m
+[2022-12-19 18:06:23]  (c) Copyright 2012-2022 Enjoy-Digital
+[2022-12-19 18:06:23]  (c) Copyright 2007-2015 M-Labs
+[2022-12-19 18:06:23]  BIOS built on Nov 28 2022 18:17:22
+[2022-12-19 18:06:23]  BIOS CRC passed (b0e744c8)
+[2022-12-19 18:06:23]  LiteX git sha1: f707551c
+[2022-12-19 18:06:23] --=============== [1mSoC[0m ==================--
+[2022-12-19 18:06:23] [1mCPU[0m:		VexRiscv @ 75MHz
+[2022-12-19 18:06:23] [1mBUS[0m:		WISHBONE 32-bit @ 4GiB
+[2022-12-19 18:06:23] [1mCSR[0m:		32-bit data
+[2022-12-19 18:06:23] [1mROM[0m:		128KiB
+[2022-12-19 18:06:23] [1mSRAM[0m:		8KiB
+[2022-12-19 18:06:23] [1mL2[0m:		8KiB
+[2022-12-19 18:06:23] [1mSDRAM[0m:		524288KiB 16-bit @ 600MT/s (CL-7 CWL-5)
+[2022-12-19 18:06:23] --========== [1mInitialization[0m ============--
+[2022-12-19 18:06:23] Initializing SDRAM @0x40000000...
+[2022-12-19 18:06:23] Switching SDRAM to software control.
+[2022-12-19 18:06:23] Read leveling:
+[2022-12-19 18:06:23]   m0, b00: |00000000000000000000000000000000| delays: -
+[2022-12-19 18:06:23]   m0, b01: |11111111100000000000000000000000| delays: 04+-04
+[2022-12-19 18:06:23]   m0, b02: |00000000000111111111111111111110| delays: 21+-10
+[2022-12-19 18:06:23]   m0, b03: |00000000000000000000000000000000| delays: -
+[2022-12-19 18:06:23]   m0, b04: |00000000000000000000000000000000| delays: -
+[2022-12-19 18:06:23]   m0, b05: |00000000000000000000000000000000| delays: -
+[2022-12-19 18:06:23]   m0, b06: |00000000000000000000000000000000| delays: -
+[2022-12-19 18:06:23]   m0, b07: |00000000000000000000000000000000| delays: -
+[2022-12-19 18:06:23]   best: m0, b02 delays: 21+-10
+[2022-12-19 18:06:23]   m1, b00: |00000000000000000000000000000000| delays: -
+[2022-12-19 18:06:23]   m1, b01: |11111111100000000000000000000000| delays: 04+-04
+[2022-12-19 18:06:23]   m1, b02: |00000000001111111111111111111100| delays: 20+-10
+[2022-12-19 18:06:23]   m1, b03: |00000000000000000000000000000000| delays: -
+[2022-12-19 18:06:23]   m1, b04: |00000000000000000000000000000000| delays: -
+[2022-12-19 18:06:23]   m1, b05: |00000000000000000000000000000000| delays: -
+[2022-12-19 18:06:23]   m1, b06: |00000000000000000000000000000000| delays: -
+[2022-12-19 18:06:23]   m1, b07: |00000000000000000000000000000000| delays: -
+[2022-12-19 18:06:23]   best: m1, b02 delays: 20+-10
+[2022-12-19 18:06:23] Switching SDRAM to hardware control.
+[2022-12-19 18:06:23] Memtest at 0x40000000 (2.0MiB)...
+[2022-12-19 18:06:23]   Write: 0x40000000-0x40000000 0B
+[2022-12-19 18:06:23]   Write: 0x40000000-0x40200000 2.0MiB
+[2022-12-19 18:06:23]    Read: 0x40000000-0x40000000 0B
+[2022-12-19 18:06:23]    Read: 0x40000000-0x40200000 2.0MiB
+[2022-12-19 18:06:23] Memtest OK
+[2022-12-19 18:06:23] Memspeed at 0x40000000 (Sequential, 2.0MiB)...
+[2022-12-19 18:06:23]   Write speed: 26.2MiB/s
+[2022-12-19 18:06:24]    Read speed: 35.1MiB/s
+[2022-12-19 18:06:24] --============== [1mBoot[0m ==================--
+[2022-12-19 18:06:24] Booting from serial...
+[2022-12-19 18:06:24] Press Q or ESC to abort boot completely.
+[2022-12-19 18:06:24] sL5DdSMmkekro
+[2022-12-19 18:06:24] Timeout
+[2022-12-19 18:06:24] No boot medium found
+[2022-12-19 18:06:24] --============= [1mConsole[0m ================--
+[2022-12-19 18:06:24] [92;1mlitex[0m> sdram_bist_pat 165
+[2022-12-19 18:06:24] sdram_bist_pat 165
+[2022-12-19 18:06:24] [92;1mlitex[0m>
+[2022-12-19 18:06:24] [92;1mlitex[0m>
+[2022-12-19 18:06:24] [92;1mlitex[0m> sdram_bist 8192 1 0 2
+[2022-12-19 18:06:24] sdram_bist 8192 1 0 2
+[2022-12-19 18:06:24] Starting SDRAM BIST with length=8192, addr_mode=1, data_mode=0 wmode=2
+[2022-12-19 18:06:24] WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS
+Test contains the following single or groups of events:
+1 memory, 4 timeout, 6 other
+
+End of test events
