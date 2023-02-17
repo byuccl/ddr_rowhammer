@@ -1,9 +1,20 @@
 {'./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_tmr_December_19_2022__08_39_03_LOG.log': './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_tmr_December_19_2022__08_39_03_UART.log'}
+
 Reading File:  ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_tmr_December_19_2022__08_39_03_LOG.log
 Number of lines in log file:  655
 Number of lines in uart file:  5305
+
+
+
+
+
 Test contains the following single or groups of events:
 0 memory, 0 timeout, 0 other
+
+
+
+
+
 Test contains the following single or groups of events:
 0 memory, 0 timeout, 0 other
 

@@ -1,41 +1,52 @@
 {'./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16__15_52_14_LOG.log': './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16__15_52_14_UART.log', './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__15_57_38_LOG.log': './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__15_57_38_UART.log', './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__16_11_53_LOG.log': './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__16_11_53_UART.log', './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__19_34_08_LOG.log': './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__19_34_08_UART.log', './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__19_51_03_LOG.log': './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__19_51_03_UART.log', './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__19_52_43_LOG.log': './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__19_52_43_UART.log', './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__21_38_10_LOG.log': './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__21_38_10_UART.log', './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__21_44_01_LOG.log': './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__21_44_01_UART.log', './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_17_2022__07_36_01_LOG.log': './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_17_2022__07_36_01_UART.log', './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_17_2022__08_30_27_LOG.log': './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_17_2022__08_30_27_UART.log', './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_17_2022__11_41_08_LOG.log': './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_17_2022__11_41_08_UART.log', './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_19_2022__10_32_48_LOG.log': './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_19_2022__10_32_48_UART.log'}
+
 Reading File:  ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16__15_52_14_LOG.log
 Number of lines in log file:  100
 Number of lines in uart file:  300
+
 Reading File:  ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__15_57_38_LOG.log
 Number of lines in log file:  135
 Number of lines in uart file:  601
+
 Reading File:  ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__16_11_53_LOG.log
 Number of lines in log file:  1114
 Number of lines in uart file:  9438
+
 Reading File:  ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__19_34_08_LOG.log
 Number of lines in log file:  156
 Number of lines in uart file:  818
+
 Reading File:  ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__19_51_03_LOG.log
 Number of lines in log file:  75
 Number of lines in uart file:  79
+
 Reading File:  ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__19_52_43_LOG.log
 Number of lines in log file:  636
 LOG_FILE_WARNING: Line 625 has no log data, skipping. Data: ~/jcm_apps/jcm_jtag_reg.elf -r 50 --swap -w 64
 LOG_FILE_WARNING: Line 631 has no log data, skipping. Data: ~/jcm_apps/jcm_config.elf --part xc7a200t -c 30000000 --jtag --config_file /root/ddr_11_28.bit
 Number of lines in uart file:  5956
+
 Reading File:  ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__21_38_10_LOG.log
 Number of lines in log file:  200
 Number of lines in uart file:  609
+
 Reading File:  ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__21_44_01_LOG.log
 Number of lines in log file:  765
 LOG_FILE_WARNING: Line 754 has no log data, skipping. Data: ~/jcm_apps/jcm_jtag_reg.elf -r 50 --swap -w 64
 LOG_FILE_WARNING: Line 760 has no log data, skipping. Data: ~/jcm_apps/jcm_config.elf --part xc7a200t -c 30000000 --jtag --config_file /root/ddr_11_28.bit
 Number of lines in uart file:  5951
+
 Reading File:  ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_17_2022__07_36_01_LOG.log
 Number of lines in log file:  377
 Number of lines in uart file:  2663
+
 Reading File:  ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_17_2022__08_30_27_LOG.log
 Number of lines in log file:  1436
 LOG_FILE_WARNING: Line 263 has no log data, skipping. Data: 	~/jcm_apps/jcm_jtag_reg.elf -r 50 --swap -w 64
 LOG_FILE_WARNING: Line 267 has no log data, skipping. Data: 	~/jcm_apps/jcm_config.elf --part xc7a200t -c 30000000 --jtag --config_file /root/ddr_11_28.bit
 LOG_FILE_WARNING: Line 279 has no log data, skipping. Data: 	~/jcm_apps/jcm_scrubbing.elf --part xc7a200t -c 30000000 --jtag --iterations 100000000 --frad_file xc7a200t_frad.txt
 Number of lines in uart file:  10253
+
 Reading File:  ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_17_2022__11_41_08_LOG.log
 Number of lines in log file:  1428
 LOG_FILE_WARNING: Line 345 has no log data, skipping. Data: 	~/jcm_apps/jcm_jtag_reg.elf -r 50 --swap -w 64
@@ -45,6 +56,7 @@ LOG_FILE_WARNING: Line 537 has no log data, skipping. Data: 	~/jcm_apps/jcm_jtag
 LOG_FILE_WARNING: Line 541 has no log data, skipping. Data: 	~/jcm_apps/jcm_config.elf --part xc7a200t -c 30000000 --jtag --config_file /root/ddr_11_28.bit
 LOG_FILE_WARNING: Line 553 has no log data, skipping. Data: 	~/jcm_apps/jcm_scrubbing.elf --part xc7a200t -c 30000000 --jtag --iterations 100000000 --frad_file xc7a200t_frad.txt
 Number of lines in uart file:  11685
+
 Reading File:  ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_19_2022__10_32_48_LOG.log
 Number of lines in log file:  2859
 LOG_FILE_WARNING: Line 1150 has no log data, skipping. Data: 	~/jcm_apps/jcm_jtag_reg.elf -r 50 --swap -w 64
@@ -123,6 +135,11 @@ LOG_FILE_WARNING: Line 2695 has no log data, skipping. Data: 	~/jcm_apps/jcm_jta
 LOG_FILE_WARNING: Line 2699 has no log data, skipping. Data: 	~/jcm_apps/jcm_config.elf --part xc7a200t -c 30000000 --jtag --config_file /root/ddr_11_28.bit
 LOG_FILE_WARNING: Line 2711 has no log data, skipping. Data: 	~/jcm_apps/jcm_scrubbing.elf --part xc7a200t -c 30000000 --jtag --iterations 100000000 --frad_file xc7a200t_frad.txt
 Number of lines in uart file:  23353
+
+
+
+
+
 Test contains the following single or groups of events:
 6 memory, 21 timeout, 13 other
 
@@ -6711,6 +6728,11 @@ Other event group 12, File: ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_
 [2022-12-19 18:06:24] sdram_bist 8192 1 0 2
 [2022-12-19 18:06:24] Starting SDRAM BIST with length=8192, addr_mode=1, data_mode=0 wmode=2
 [2022-12-19 18:06:24] WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS
+
+
+
+
+
 Test contains the following single or groups of events:
 6 memory, 21 timeout, 13 other
 

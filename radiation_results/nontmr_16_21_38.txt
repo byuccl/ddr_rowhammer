@@ -1,7 +1,13 @@
 {'./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__21_38_10_LOG.log': './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__21_38_10_UART.log'}
+
 Reading File:  ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__21_38_10_LOG.log
 Number of lines in log file:  200
 Number of lines in uart file:  609
+
+
+
+
+
 Test contains the following single or groups of events:
 0 memory, 7 timeout, 0 other
 
@@ -480,6 +486,11 @@ Timeout event group 6, File: ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December
 [2022-12-16 21:43:39] sdram_bist 8192 1 0 2
 [2022-12-16 21:43:39] Starting SDRAM BIST with length=8192, addr_mode=1, data_mode=0 wmode=2
 [2022-12-16 21:43:39] WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS
+
+
+
+
+
 Test contains the following single or groups of events:
 0 memory, 7 timeout, 0 other
 

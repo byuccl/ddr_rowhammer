@@ -1,9 +1,15 @@
 {'./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__21_44_01_LOG.log': './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__21_44_01_UART.log'}
+
 Reading File:  ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_16_2022__21_44_01_LOG.log
 Number of lines in log file:  765
 LOG_FILE_WARNING: Line 754 has no log data, skipping. Data: ~/jcm_apps/jcm_jtag_reg.elf -r 50 --swap -w 64
 LOG_FILE_WARNING: Line 760 has no log data, skipping. Data: ~/jcm_apps/jcm_config.elf --part xc7a200t -c 30000000 --jtag --config_file /root/ddr_11_28.bit
 Number of lines in uart file:  5951
+
+
+
+
+
 Test contains the following single or groups of events:
 3 memory, 1 timeout, 0 other
 
@@ -245,6 +251,11 @@ Timeout event group 0, File: ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December
 [2022-12-16 21:52:36] sdram_bist 8192 1 0 2
 [2022-12-16 21:52:36] Starting SDRAM BIST with length=8192, addr_mode=1, data_mode=0 wmode=2
 [2022-12-16 21:52:36] WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS
+
+
+
+
+
 Test contains the following single or groups of events:
 3 memory, 1 timeout, 0 other
 

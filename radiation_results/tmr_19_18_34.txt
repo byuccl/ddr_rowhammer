@@ -1,7 +1,13 @@
 {'./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_tmr_December_19_2022__18_34_25_LOG.log': './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_tmr_December_19_2022__18_34_25_UART.log'}
+
 Reading File:  ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_tmr_December_19_2022__18_34_25_LOG.log
 Number of lines in log file:  4286
 Number of lines in uart file:  37796
+
+
+
+
+
 Test contains the following single or groups of events:
 0 memory, 0 timeout, 4 other
 
@@ -86,6 +92,11 @@ Other event group 3, File: ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_tmr_Decemb
 [2022-12-20 05:07:29]           00           00           00          0
 [2022-12-20 05:07:31]           00           00           00          0
 [2022-12-20 05:07:32]          941          940         2972          0
+
+
+
+
+
 Test contains the following single or groups of events:
 0 memory, 0 timeout, 4 other
 

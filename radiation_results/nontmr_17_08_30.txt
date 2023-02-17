@@ -1,10 +1,16 @@
 {'./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_17_2022__08_30_27_LOG.log': './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_17_2022__08_30_27_UART.log'}
+
 Reading File:  ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_17_2022__08_30_27_LOG.log
 Number of lines in log file:  1436
 LOG_FILE_WARNING: Line 263 has no log data, skipping. Data: 	~/jcm_apps/jcm_jtag_reg.elf -r 50 --swap -w 64
 LOG_FILE_WARNING: Line 267 has no log data, skipping. Data: 	~/jcm_apps/jcm_config.elf --part xc7a200t -c 30000000 --jtag --config_file /root/ddr_11_28.bit
 LOG_FILE_WARNING: Line 279 has no log data, skipping. Data: 	~/jcm_apps/jcm_scrubbing.elf --part xc7a200t -c 30000000 --jtag --iterations 100000000 --frad_file xc7a200t_frad.txt
 Number of lines in uart file:  10253
+
+
+
+
+
 Test contains the following single or groups of events:
 0 memory, 2 timeout, 3 other
 
@@ -2279,6 +2285,11 @@ Other event group 2, File: ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_December_1
 [2022-12-17 09:12:59]          466          415         4047          0
 [2022-12-17 09:13:00]          571          522          227          0
 [2022-12-17 09:13:00] WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS
+
+
+
+
+
 Test contains the following single or groups of events:
 0 memory, 2 timeout, 3 other
 

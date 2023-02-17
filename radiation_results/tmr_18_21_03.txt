@@ -1,7 +1,13 @@
 {'./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_tmr_December_18_2022__21_03_16_LOG.log': './lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_tmr_December_18_2022__21_03_16_UART.log'}
+
 Reading File:  ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_tmr_December_18_2022__21_03_16_LOG.log
 Number of lines in log file:  3755
 Number of lines in uart file:  30822
+
+
+
+
+
 Test contains the following single or groups of events:
 1 memory, 0 timeout, 0 other
 
@@ -646,6 +652,11 @@ Mem event group 0, File: ./lab_output/dec20/tmp/CTRL/CTRL_ddr_11_28_tmr_December
 [2022-12-19 05:19:38] ERRORS (32-bit words): 24
 [2022-12-19 05:19:38]          940          940         3900       1054
 [2022-12-19 05:19:38] WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS
+
+
+
+
+
 Test contains the following single or groups of events:
 1 memory, 0 timeout, 0 other
 
