@@ -45,8 +45,8 @@ LOG_ERR_STR = "LOG_FILE_INFO: Line {} has no log data, skipping. Data: {}"
 HEADER_DATA_REGEX = "\[2022-12-[12][0-9] [012][0-9]:[0-5][0-9]:[0-5][0-9]\] WR-BW\(MiB\/s\) RD-BW\(MiB\/s\)  TESTED\(MiB\)     ERRORS"
 STATS_DATA_REGEX = "\[2022-12-[12][0-9] [012][0-9]:[0-5][0-9]:[0-5][0-9]\] {10}9[2-6][0-9] {10}9[2-6][0-9] {9}[ 1-4][ 0-9][ 0-9][0-9] [ 0-9]{9}[0-9]"
 TIME_REGEX = "\[2022-12-[12][0-9] [012][0-9]:[0-5][0-9]:[0-5][0-9]\]"
-SUMMARY_STR = "Test contains the following single or groups of events:\n{} memory, {} timeout, {} other"
-READING_FILE_STR = "Reading File: "
+SUMMARY_STR = "\n\n\n\n\nTest contains the following single or groups of events:\n{} memory, {} timeout, {} other"
+READING_FILE_STR = "\nReading File: "
 NUM_LOG_FILE_LINES_STR = "Number of lines in log file: "
 NUM_UART_FILE_LINES_STR = "Number of lines in uart file: "
 MEM_ERR_HEADER_STR = "\nMem event group {}, File: {}"
@@ -500,7 +500,9 @@ class DataLog:
                 for errIndex in range(len(self.otherErrorList[index])):
                     print(self.otherErrorList[index][errIndex])
 
-            
+            # Print out summary statement
+        print(SUMMARY_STR.format(len(self.memoryErrorList), len(self.timeOutErrorList), len(self.otherErrorList)))
+        print(END_OF_TEST_STR)
 
 # class DataLog:
 
