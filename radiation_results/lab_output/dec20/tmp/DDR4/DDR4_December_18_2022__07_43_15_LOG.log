@@ -1,6 +1,0 @@
-[2022-12-18 07:43:15] INFO     STATE:Initial Starting State
-[2022-12-18 07:43:15] INFO     STATE:Initial Prompt State
-[2022-12-18 07:43:15] INFO     Initial prompt attempt #1
-[2022-12-18 07:43:30] ERROR    EXPECT:expect timeout (delay 15s)
-[2022-12-18 07:43:30] INFO     Login prompt success
-[2022-12-18 07:43:30] INFO     STATE:Mem Init State
