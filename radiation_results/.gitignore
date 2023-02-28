@@ -1,0 +1,6 @@
+
+# Ignore all temporary files
+tmp/
+
+# Ignore the original zip file
+dec20.zip
