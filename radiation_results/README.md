@@ -2,6 +2,13 @@
 
 Obtain summary of feedback for CTRL radiation experiment.
 
+## Non-TMR Tests
+
+^ File ^ Notes ^
+| ---- | ----- |
+| nontmr_16_15_52 | No events |
+| nontmr_16_15_57 | No events |
+
 ### To run:
 
 Run ```make nontmr``` to obtain events for all non-tmr tests at once output in a text file.
