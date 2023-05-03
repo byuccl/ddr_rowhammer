@@ -38,6 +38,8 @@ The software would continuously read the BIST registers and report on errors fro
 The non-tmr controller test logs are named `CTRL_ddr_11_28_December_xx_2022_hh_mm_ss_xxx.log`.
 The tmr controller test logs are named `CTRL_ddr_11_28_tmr_December_xx_2022_hh_mm_ss_xxx.log`.
 
+The core used for this test is based on Dr. Scott Lloyd's system that is a modification of the original DDR BIST system.
+
 After bootup, the processor initialiates DDR testing with the following two commands:
 ```
 sdram_bist_pat 165
@@ -51,17 +53,42 @@ The output of the processor after executing this command is:
 ```
 Starting SDRAM BIST with length=8192, addr_mode=1, data_mode=0 wmode=2
 ```
-The first parameter, 8192, specifies the burst size of an individual read or write (2^13) (bytes).
-The second parameter, 1, is the address mode and controls how addresses are changed during the test.
-'0' is fixed, meaning keep the address the same, '1' is increment address by one, and '2' is use a random address.
-The third parameter, 0, is the data mode.
-'0' indicates that the data is fixed and '1' indicates the need to use random data.
-The fourth parameter, 2, is the write mode.
+
+The _first_ parameter specifies the number of bytes to transfer for individual reads and writes (note: this is different from the default DDR BIST system in which the address parameter specifies the number of DRAM transactions to complete for each read and write).
+For this command, the value 8192 (2^13) bytes are read and written at a time.
+For this board, there is a 16-bit (2 byte) data interface resulting in 32-bits (4 bytes) transferred each clock cycle (double data rate).
+The DDR is running at a clock 4x of the system clock.
+For every system clock, there are 2 bytes per clock edge x 2 clock edges per clock cycle x 4 DDR clocks per system clock = 16 bytes (128 bits) per transaction.
+The 8192 bytes are thus broken up into 8192/16 = 512 transactions.
+The system clock rate is 100 MHz (10 ns/clock) resulting in 512 x 10ns = 5.12 us per transaction.
+Note that this command parameter approach is different than the default BIST system and unique to Dr. Lloyd's implementation.
+
+The _second_ parameter, 1, is the address mode and controls how addresses are changed during the test.
+'0' is fixed, meaning keep the address the same, '1' is increment address by one, and '2' specifies to use a random address.
+The incrementing address mode is used for this experiment.
+Note that the "address" here refers to the address of a block of 16 bytes (i.e., a single transaction).
+When the address is incrementing by 1, it is actually incrementing by 16.
+
+The _third_ parameter, 0, is the data mode.
+'0' indicates that the data is fixed (i.e., the pattern given with the `sdram_bist_pat`), '1' is data increment mode, and '2' is random mode.
+
+The _fourth)_ parameter, 2, is the write mode.
 A '0' indicates that no writing will occur (only BIST reads).
 A '1' indicates that the BIST should write once and continuosly read after that.
-A '2' indicates that the BIST should write and then do a read back and forth.
+In mode '2' indicates that the BIST should write and then do a read back and forth.
+In this mode, it writes the pattern data to all of the addresses in a single burst (specified by the burst length).
+It then performs multiple burst writes until the entire memory has been written.
+Next, it reads the entire memory one transaction at a time and compares the read data against the expected data.
+If there is a mismatch between the expected value and the read value then an error counter is incremented.
 
-In this configuration, the BIST is using linearly increasing addresses, a fixed data pattern, and a write followd by a read write mode.
+Notes on the software:
+* 
+
+Questions for Tyler:
+- How many transactions are done for every line that is printed in the UART? The UART indicates about 2 seconds for each line. This is a lot of transactions.
+- What is the difference between the ERROR column count and the error messages in the middle of a line? See non TMR 21_44_01 file at line 324.
+- How does address roll over work? Does it just keep rolling over or does it start from address 0 at certain times?
+
 
 
 
