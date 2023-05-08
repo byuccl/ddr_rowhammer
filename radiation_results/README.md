@@ -31,6 +31,14 @@ Unlike the Linux test completed last year with the VexRisc processor, this test 
 As such failures in the DDR should not cause the processor to fail.
 The goal of this test is to understand actual DDR interface failures without having to deal with failures in the processor (for the linux test failures in the DDR would cause the processor to fail).
 
+**Organization of the DDR Memory**
+The DDR3 part on this board uses a single 512 MiByte part (2^29 bytes).
+The DDR controller organizes transactions as 16 bytes (2^4) (see below) so each addressable region of the memory from the BIST perspective is 2^(29-4) = 2^25 or 25 bits.
+These 25 bits are organized as follows:
+* The least significant seven bits are the column address ([6:0] for BIST or [10:4] for processor)
+* The next three bits are the bank address ([9:7] for BIST or [13:11] for processor)
+* The next 15 bits are the row address ([24:10] for BIST or [28:14] for processor)
+
 This design was a basic VexRiscv system for the NexysVideo board with the addition of the DDR and BIST module.
 The software in this design would start the BIST reading to find DRAM errors.
 The software would continuously read the BIST registers and report on errors from the BIST module register counts.
@@ -68,11 +76,12 @@ The _second_ parameter, 1, is the address mode and controls how addresses are ch
 The incrementing address mode is used for this experiment.
 Note that the "address" here refers to the address of a block of 16 bytes (i.e., a single transaction).
 When the address is incrementing by 1, it is actually incrementing by 16.
+Note that the core will just roll over back to zero when the maximum address is reached.
 
 The _third_ parameter, 0, is the data mode.
 '0' indicates that the data is fixed (i.e., the pattern given with the `sdram_bist_pat`), '1' is data increment mode, and '2' is random mode.
 
-The _fourth)_ parameter, 2, is the write mode.
+The _fourth_ parameter, 2, is the write mode.
 A '0' indicates that no writing will occur (only BIST reads).
 A '1' indicates that the BIST should write once and continuosly read after that.
 In mode '2' indicates that the BIST should write and then do a read back and forth.
@@ -82,87 +91,66 @@ Next, it reads the entire memory one transaction at a time and compares the read
 If there is a mismatch between the expected value and the read value then an error counter is incremented.
 
 Notes on the software:
-* 
+* Writes 8196 bytes to the first address (512 transactions or 5.12 us)
+* Waits for 100 ms (Dr. Lloyd indicates this delay is necessary to avoid some sort of deadlock that is not understood)
+* Reads 8196 bytes at this first address (performs the compare in parallel with the read)
+* Waits for 100 ms
+* Increments the address (by 1 transaction/16 bytes)
+* After 10 times in a row, it prints out a message to the UART to summarize the results
+* After 8 of these messages, a new header is printed as well
+* If there is an error found, a dedicated error message will print for each address in error
 
 Questions for Tyler:
-- How many transactions are done for every line that is printed in the UART? The UART indicates about 2 seconds for each line. This is a lot of transactions.
 - What is the difference between the ERROR column count and the error messages in the middle of a line? See non TMR 21_44_01 file at line 324.
-- How does address roll over work? Does it just keep rolling over or does it start from address 0 at certain times?
-
-
-
-
-
+- What is going on with the [Timeout](tmp/CTRL_ddr_11_28_December_16_2022__21_38_10_UART.log#204) message in this example? (search code). What is timing out? This seems to be part of a working system so it is not in error but it is confusing.
+- Help me figure out what is going on [here](tmp/CTRL_ddr_11_28_December_16_2022__21_44_01_UART.log#444)
 
 ## Non-TMR Tests
 
 ### Runs with no events
 
-nontmr_16_15_57, nontmr_16_19_34, nontmr_16_19_51, nontmr_16_15_52
+* CTRL_ddr_11_28_December_16_2022__15_57_38_LOG.log
+* CTRL_ddr_11_28_December_16_2022__19_34_08_LOG.log
+* CTRL_ddr_11_28_December_16_2022__19_51_03_LOG.log
+* CTRL_ddr_11_28_December_16_2022__19_52_43_LOG.log
 
-### nontmr_16_16_11
+### [CTRL_ddr_11_28_December_16_2022__16_11_53_LOG.log](tmp/CTRL_ddr_11_28_December_16_2022__16_11_53_LOG.log)
 
-No errors but Tyler notes  2 "speed events"
+<!-- Note the anchor to a heading. Put all words in heading in lower case with a dash where the spaces were -->
+* [Speed Event](#bist-speed-error)@ [18:11:06](tmp/CTRL_ddr_11_28_December_16_2022__16_11_53_UART.log#L5597)
 
-### nontmr_16_19_52
+### [CTRL_ddr_11_28_December_16_2022__19_52_43_LOG.log](tmp/CTRL_ddr_11_28_December_16_2022__19_52_43_LOG.log)
 
-* [2022-12-16 20:55:41] ERROR    BIST:Data Errors (633,0,0:633/1)
-  * Error shows up at UART soooner - why the delay?
-  * UART: [2022-12-16 20:55:34] ERRORS (128-bit words): 8
-  * UART recovers at: [2022-12-16 20:55:41]          940          940          633        957
-  * LOG gives multiple errors even though UART recovers
-*  ERROR    UART:expect timeout (delay 15s)
-  * JCM fails to reconfigure and script ends
-  * TIMEOUT-* ()
+* [Data Error](#bist-data-error)@[20:55:41](tmp/CTRL_ddr_11_28_December_16_2022__19_52_43_UART.log#L2975)
+* [UART Timeout](#uart-timeout)@[21:29:56](tmp/CTRL_ddr_11_28_December_16_2022__19_52_43_LOG.log#L601)
+  * [JCM Hang](#jcm-hang)@[21:30:28](tmp/CTRL_ddr_11_28_December_16_2022__19_52_43_LOG.log#L625)
 
-### nontmr_16_21_38
+### [CTRL_ddr_11_28_December_16_2022__21_38_10_LOG.log](tmp/CTRL_ddr_11_28_December_16_2022__21_38_10_LOG.log)
 
-* [2022-12-16 21:40:29] ERROR    UART:expect timeout (delay 15s)
-  * Reboot issue (not enough time to reboot or fails during reboot and needs to be reconfigured) 
+* [UART Timeout Hang](#uart-timeout-hang)@[21:40:29](tmp/CTRL_ddr_11_28_December_16_2022__21_38_10_LOG.log#L84)
 
-### nontmr_16_21_44
+### [CTRL_ddr_11_28_December_16_2022__21_44_01_LOG.log](tmp/CTRL_ddr_11_28_December_16_2022__21_44_01_LOG.log)
 
-* [2022-12-16 21:49:53] ERROR    BIST:Data Errors (2486,0,0:2486/1)
-  * Several errors but recovered
-    * [2022-12-16 21:49:53] error addr: 0x56b2b82c, content: 0xa5a5a7a5, expected: 0xa5a5a5a5
-    * [2022-12-16 21:49:56] error addr: 0x5acd848c, content: 0xa5a5a7a5, expected: 0xa5a5a5a5
-  * DRAM_BURST_ERROR-RECOVER
-* [2022-12-16 21:52:07] ERROR    BIST:Data Errors (3216,0,0:3216/1)
-  * UART: [2022-12-16 21:52:00] ERRORS (128-bit words): -1
-    * **Need to figure out what is going on here**
-  * DRAM error does not recover ()
-* [2022-12-16 21:52:22] ERROR    UART:expect timeout (delay 15s)
-  * TIMEOUT-RESET-RECOVER event
-* [2022-12-16 23:46:55] ERROR    UART:expect timeout (delay 15s)
-  * JCM Scrubber problem - script failed because of timeout issue
-  * TIMEOUT-* (not sure if it would have recovered or not)
+* [Data Error](#bist-data-error)@[21:49:53](tmp/CTRL_ddr_11_28_December_16_2022__21_44_01_LOG.log#L103) - [recovers](tmp/CTRL_ddr_11_28_December_16_2022__21_44_01_UART.log#341)
+* [BIST Printout Error](#bist-printout-error)@[21:52:07](tmp/CTRL_ddr_11_28_December_16_2022__21_44_01_LOG.log#L124) ([UART](tmp/CTRL_ddr_11_28_December_16_2022__21_44_01_UART.log#444))
+* [UART Timeout](#uart-timeout)@[21:52:35](tmp/CTRL_ddr_11_28_December_16_2022__21_44_01_LOG.log#L131)
+* [UART Timeout](#uart-timeout)@[23:46:55](tmp/CTRL_ddr_11_28_December_16_2022__21_44_01_LOG.log#L730)
+  * [JCM Hang](#jcm-hang)@[21:47:17](tmp/CTRL_ddr_11_28_December_16_2022__21_44_01_LOG.log#L754)
 
+### [CTRL_ddr_11_28_December_17_2022__07_36_01_LOG.log](tmp/CTRL_ddr_11_28_December_17_2022__07_36_01_LOG.log)
 
-### nontmr_17_07_36
+* [UART Timeout](#uart-timeout)@[08:13:42](tmp/CTRL_ddr_11_28_December_17_2022__07_36_01_LOG.log#L266)
+* [UART Timeout](#uart-timeout)@[08:13:42](tmp/CTRL_ddr_11_28_December_17_2022__07_36_01_LOG.log#L297)  
 
-* [2022-12-17 08:13:42] ERROR    UART:expect timeout (delay 15s)
-  * TIMEOUT-RESET-RECOVER event
-* [2022-12-17 08:17:24] ERROR    UART:expect timeout (delay 15s)
-  * TIMEOUT-RESET-RECOVER event
-  
+### [CTRL_ddr_11_28_December_17_2022__08_30_27_LOG.log](tmp/CTRL_ddr_11_28_December_17_2022__08_30_27_LOG.log)
 
-### nontmr_17_08_30
+* [UART Timeout](#uart-timeout)@[08:46:44](tmp/CTRL_ddr_11_28_December_17_2022__08_30_27_LOG.log#L153)
 
-* [2022-12-17 08:46:44] ERROR    UART:expect timeout (delay 15s)
-  * TIMEOUT-RESET-RECOVER event
-* [2022-12-17 09:00:18] ERROR    BIST:Data Errors (900,0,0:900/1)
-  * It looks like the script is working properly but the UART is garbelled (why not a unicode error?)
-  * Multiple attempts to connect
-  * [2022-12-17 09:01:04] reboot (uart)
-  * UNICODE-REPOWER event or UART-REPOWER event
-* [2022-12-17 11:22:58] ERROR    UART:expect timeout (delay 15s)
-  * Got in some feedback loop of resetting and rebooting continually. Probably has bad code as it gets stuck in reboot
-  * Need to change the script so that multiple successive attempst at rebooting will result in repower.
-  * Two events:
-    * UART error but not sure if it is recoverable or not
-    * SRAM program upset
+* [UART Garbled](#uart-garbled)@[09:00:18](tmp/CTRL_ddr_11_28_December_17_2022__08_30_27_LOG.log#L237) - [UART](tmp/CTRL_ddr_11_28_December_17_2022__08_30_27_UART.log#L1477)
+  * [rebooted](tmp/CTRL_ddr_11_28_December_17_2022__08_30_27_LOG.log#L245)
+* [UART timeout loop](#uart-timeout-loop)@[11:22:58](tmp/CTRL_ddr_11_28_December_17_2022__08_30_27_LOG.log#L1018)
 
-### nontmr_17_11_41
+### [CTRL_ddr_11_28_December_17_2022__11_41_08_LOG.log](tmp/CTRL_ddr_11_28_December_17_2022__11_41_08_LOG.log)
 
 * [2022-12-17 12:28:52] ERROR    UART:expect timeout (delay 15s)
   * TIMEOUT-REPOWER event
@@ -177,7 +165,7 @@ No errors but Tyler notes  2 "speed events"
   * Did not need a reset to recover - just needed to reconnect over the uART and restart
   * TIMEOUT-UART-RECOVER event
 
-### nontmr_19_10_32
+### [CTRL_ddr_11_28_December_19_2022__10_32_48_LOG.log](tmp/CTRL_ddr_11_28_December_19_2022__10_32_48_LOG.log)
 
 * [2022-12-19 13:51:47] ERROR    UART:expect unicode error
   * [2022-12-19 13:51:48] in UART log indicates that the program went bad. Lots of errors. Appears to hang at the end. **Need to understand and interpret these error messages**
@@ -226,6 +214,7 @@ No errors but Tyler notes  2 "speed events"
 
 
 ### tmr_17_15_35
+radiation_results/tmp/CTRL_ddr_11_28_tmr_December_17_2022__15_35_49_LOG.log
 
 * [2022-12-17 16:11:58] ERROR    BIST:Data Errors (3534,0,0:3534/1)
   * resolved: [2022-12-17 16:11:58]          940          940         3534       5120
@@ -242,10 +231,12 @@ No errors but Tyler notes  2 "speed events"
   * stuck here until the end
 
 ### tmr_18_07_15.txt
+radiation_results/tmp/CTRL_ddr_11_28_tmr_December_18_2022__07_15_59_LOG.log
 
 No errors
 
 ### tmr_18_07_26.txt
+radiation_results/tmp/CTRL_ddr_11_28_tmr_December_18_2022__07_26_49_LOG.log
 
 * [2022-12-18 12:43:27] ERROR    BIST:Data Errors (1295,0,0:1295/1)
   * DRAM_BURST_ERROR-RECOVER
@@ -258,10 +249,12 @@ No errors
   * This one is difficult to detect because it happens in the middle of the previous error that isn't getting cleared
     
 ### tmr_18_20_01.txt
+radiation_results/tmp/CTRL_ddr_11_28_tmr_December_18_2022__20_01_01_LOG.log
 
 No errors
 
 ### tmr_18_21_03.txt
+radiation_results/tmp/CTRL_ddr_11_28_tmr_December_18_2022__21_03_16_LOG.log
 
 There is a note in which we reboot after 50 BIST errrs (i.e., the message that keeps coming). I should have left this the way it was. Not sure this worked.
 
@@ -269,29 +262,35 @@ There is a note in which we reboot after 50 BIST errrs (i.e., the message that k
   * DRAM_BURST_ERROR-RECOVER
 
 ### tmr_19_07_57.txt
+radiation_results/tmp/CTRL_ddr_11_28_tmr_December_19_2022__07_57_13_LOG.log
 
 no errors
 
 ### tmr_19_08_22.txt
+radiation_results/tmp/CTRL_ddr_11_28_tmr_December_19_2022__08_22_46_LOG.log
 
 no errors
 
 ### tmr_19_08_39.txt
+radiation_results/tmp/CTRL_ddr_11_28_tmr_December_19_2022__08_39_03_LOG.log
 
 no error
 
 ### tmr_19_18_34.txt
+radiation_results/tmp/CTRL_ddr_11_28_tmr_December_19_2022__18_34_25_LOG.log
 
 * [2022-12-20 03:05:36] ERROR    UART:expect unicode error
   * Followed by [2022-12-20 03:05:51] ERROR    UART:expect timeout (delay 15s)
   * TIMEOUT-RESET-RECOVER event
 
 ### tmr_20_08_05.txt
+radiation_results/tmp/CTRL_ddr_11_28_tmr_December_20_2022__08_05_34_LOG.log
 
 * [2022-12-20 12:31:49] ERROR    UART:expect timeout (delay 15s)
   * TIMEOUT-RESET-RECOVER event
 
 ### tmr_20_17_47.txt
+radiation_results/tmp/CTRL_ddr_11_28_tmr_December_20_2022__17_47_55_LOG.log
 
 no error
 
@@ -339,44 +338,44 @@ Continuous reads are performed because we want to identify data failures (athoug
 Notes:
 * Single error takes lots of messages before repairing. Need to modify script to distinguish between these bursts (and not log everything) and the single bit errors we saw. Seems like a SEFI.
 
-## DDR_ddr_11_28_December_16__15_52_53_LOG.log
+## [DDR_ddr_11_28_December_16__15_52_53_LOG.log](tmp/DDR_ddr_11_28_December_16__15_52_53_LOG.log)
 
 The filename format was changed after this.
 No errors
 
-## DDR_ddr_11_28_December_16_2022__15_57_43_LOG.log
+## [DDR_ddr_11_28_December_16_2022__15_57_43_LOG.log](tmp/DDR_ddr_11_28_December_16_2022__15_57_43_LOG.log)
 
 No errors
 
-## DDR_ddr_11_28_December_16_2022__16_11_57_LOG.log
+## [DDR_ddr_11_28_December_16_2022__16_11_57_LOG.log] DDR_ddr_11_28_December_16_2022__16_11_57_LOG.log
 
 No errors
 
-## DDR_ddr_11_28_December_16_2022__20_12_00_LOG.log
+## [DDR_ddr_11_28_December_16_2022__20_12_00_LOG.log]
 
 Didn't fully start, no errors
 
-## DDR_ddr_11_28_December_16_2022__20_13_55_LOG.log
+## [DDR_ddr_11_28_December_16_2022__20_13_55_LOG.log]
 
 Didn't fully start, no errors
 
-## DDR_ddr_11_28_December_16_2022__20_15_07_LOG.log
+## [DDR_ddr_11_28_December_16_2022__20_15_07_LOG.log]
 
 Didn't fully start, no errors
 
-## DDR_ddr_11_28_December_16_2022__20_18_03_LOG.log
+## [DDR_ddr_11_28_December_16_2022__20_18_03_LOG.log]
 
 Didn't fully start, no errors
 
-## DDR_ddr_11_28_December_16_2022__20_20_57_LOG.log
+## [DDR_ddr_11_28_December_16_2022__20_20_57_LOG.log]
 
 Didn't fully start, no errors
 
-## DDR_ddr_11_28_December_16_2022__20_21_38_LOG.log
+## [DDR_ddr_11_28_December_16_2022__20_21_38_LOG.log]
 
 no errors
 
-## DDR_ddr_11_28_December_16_2022__20_33_44_LOG.log
+## [DDR_ddr_11_28_December_16_2022__20_33_44_LOG.log]
 
 * [2022-12-16 22:37:56] ERROR    BIST:ERROR 0x40002100 XOR=0x02020200
   * [2022-12-16 22:41:22] INFO     BIST:Header
@@ -390,11 +389,11 @@ no errors
   * Did we manually shut off?
 
 
-## DDR_ddr_11_28_December_17_2022__07_53_34_LOG.log
+## [DDR_ddr_11_28_December_17_2022__07_53_34_LOG.log]
 
 No errors
 
-## DDR_ddr_11_28_December_17_2022__08_59_59_LOG.log
+## [DDR_ddr_11_28_December_17_2022__08_59_59_LOG.log]
 
 * [2022-12-17 10:56:30] ERROR    BIST:ERROR 0x4f70c700 XOR=0x00000020
   * Single-bit error
@@ -416,11 +415,11 @@ No errors
 * [2022-12-18 00:10:43] ERROR    BIST:ERROR 0x4c000000 XOR=0x00200020
   * [2022-12-18 00:13:50] INFO     BIST:Header
 
-## DDR_ddr_11_28_December_18_2022__07_17_00_LOG.log
+## DDR_ddr_11_28_December_18_2022__07_17_00_LOG.log]
 
 No errors
 
-## DDR_ddr_11_28_December_18_2022__07_26_53_LOG.log
+## [DDR_ddr_11_28_December_18_2022__07_26_53_LOG.log]
 
 * [2022-12-18 18:58:56] ERROR    BIST:ERROR 0x5a003908 XOR=0x00200020
   * [2022-12-18 19:00:36] INFO     BIST:Header
@@ -433,11 +432,11 @@ No errors
 * [2022-12-19 04:27:13] ERROR    BIST:ERROR 0x44002000 XOR=0x20002020
   * [2022-12-19 04:30:09] INFO     BIST:Header
 
-## DDR_ddr_11_28_December_19_2022__07_57_17_LOG.log
+## [DDR_ddr_11_28_December_19_2022__07_57_17_LOG.log]
 
 Did not start, no errors
 
-## DDR_ddr_11_28_December_19_2022__08_01_25_LOG.log
+## [DDR_ddr_11_28_December_19_2022__08_01_25_LOG.log]
 
 * [2022-12-19 08:51:58] ERROR    BIST:ERROR 0x52108ed4 XOR=0x00000008
   * single bit
@@ -453,12 +452,12 @@ Did not start, no errors
   * [2022-12-20 06:39:48] INFO     BIST:Header
 
 
-## DDR_ddr_11_28_December_20_2022__08_05_40_LOG.log
+## [DDR_ddr_11_28_December_20_2022__08_05_40_LOG.log]
 
 * [2022-12-20 11:34:24] ERROR    BIST:ERROR 0x40002100 XOR=0x80808080
   * [2022-12-20 11:36:05] INFO     BIST:Header
 
-## DDR_ddr_11_28_December_20_2022__17_48_02_LOG.log
+## [DDR_ddr_11_28_December_20_2022__17_48_02_LOG.log]
 
 * [2022-12-20 17:52:29] ERROR    BIST:ERROR 0x40001900 XOR=0x01000101
   * [2022-12-20 17:54:06] INFO     BIST:Header
@@ -467,19 +466,19 @@ Did not start, no errors
 
 Why do some of the early logs not have UART output? Was this something that was changed?
 
-## DDR4_December_16__15_54_15.log
+## [DDR4_December_16__15_54_15.log]
 
 No issues (no uart)
 
-## DDR4_December_16_2022__15_56_27.log
+## [DDR4_December_16_2022__15_56_27.log]
 
 No issues (no uart)
 
-## DDR4_December_16_2022__16_11_59.log
+## [DDR4_December_16_2022__16_11_59.log]
 
 No issues (no uart)
 
-## DDR4_December_16_2022__20_36_46.log
+## [DDR4_December_16_2022__20_36_46.log]
 
 
 Failure event at [2022-12-17 02:05:33]. 
@@ -504,11 +503,11 @@ Starting at iteration 31107 with address 0x7539a000 and going until address 0x75
 
 **Todo** There are likely more errors burried in this report. Need to write a script to find them (i.e., first time an error occurs print it and then ignore it from then out)
 
-## DDR4_December_17_2022__08_11_11.log
+## [DDR4_December_17_2022__08_11_11.log]
 
 No errors
 
-## DDR4_December_17_2022__13_29_09.log
+## [DDR4_December_17_2022__13_29_09.log]
 
 An error - need to write script to filter out and find all new errors.
 
@@ -519,11 +518,11 @@ An error - need to write script to filter out and find all new errors.
 [2022-12-17 14:13:44] INFO       expected = 0xa5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5
 
 
-## DDR4_December_17_2022__15_22_27.log
+## [DDR4_December_17_2022__15_22_27.log]
 
 No errors
 
-## DDR4_December_17_2022__16_02_59_LOG.log
+## [DDR4_December_17_2022__16_02_59_LOG.log]
 
 At this point, switched over to the command line and logged the UART (there is a corresponding UART with each log file from this point on).
 Note that there are some odd control characters in the UART log.
@@ -531,81 +530,235 @@ It looks like there are a bunch of short runs at this point to debug the logging
 
 No Errors
 
-## DDR4_December_17_2022__16_08_01_LOG.log
+## [DDR4_December_17_2022__16_08_01_LOG.log]
 
 Short log, no errors
 
-## DDR4_December_17_2022__16_10_17_LOG.log
+## [DDR4_December_17_2022__16_10_17_LOG.log]
 
-## DDR4_December_17_2022__16_15_33_LOG.log
+## [DDR4_December_17_2022__16_15_33_LOG.log]
 
 First long overnight run.
 
 It is not clear that this new approach is checking the full memory space of the memory since it is using the processor interface and the smaller memory space.
 **TODO**: figure out how much of the memory space this test is actually testing.
 
-## DDR4_December_18_2022__07_27_34_LOG.log
+## [DDR4_December_18_2022__07_27_34_LOG.log]
 
 Short empty debug run. It looks like there are a bunch of debug runs at this point.
 
-## DDR4_December_18_2022__07_28_50_LOG.log
+## [DDR4_December_18_2022__07_28_50_LOG.log]
 
 short debug run
 
-## DDR4_December_18_2022__07_33_18_LOG.log
+## [DDR4_December_18_2022__07_33_18_LOG.log]
 
 short empty debug run
 
-## DDR4_December_18_2022__07_36_30_LOG.log
+## [DDR4_December_18_2022__07_36_30_LOG.log]
 
 short empty debug run
 
-## DDR4_December_18_2022__07_37_35_LOG.log
+## [DDR4_December_18_2022__07_37_35_LOG.log]
 
 short empty debug run
 
-## DDR4_December_18_2022__07_43_15_LOG.log
+## [DDR4_December_18_2022__07_43_15_LOG.log]
 
 short empty debug run
 
-## DDR4_December_18_2022__07_46_07_LOG.log
+## [DDR4_December_18_2022__07_46_07_LOG.log]
 
 Longer run but no errors.
 
-## DDR4_December_18_2022__10_49_29_LOG.log
+## [DDR4_December_18_2022__10_49_29_LOG.log]
 
 No errors
 
-## DDR4_December_18_2022__17_24_45_LOG.log
+## [DDR4_December_18_2022__17_24_45_LOG.log]
 
 Runt run, no data
 
-## DDR4_December_18_2022__17_28_27_LOG.log
+## [DDR4_December_18_2022__17_28_27_LOG.log]
 
 Overnight run. Some expect errors.
 **TODO**: figure out what happened here.
 
-## DDR4_December_19_2022__07_57_23_LOG.log
+## [DDR4_December_19_2022__07_57_23_LOG.log]
 
 Short run, no errors
 
-## DDR4_December_19_2022__09_37_41_LOG.log
+## [DDR4_December_19_2022__09_37_41_LOG.log]
 
 No errors
 
-## DDR4_December_19_2022__18_16_00_LOG.log
+## [DDR4_December_19_2022__18_16_00_LOG.log]
 
 No errors
 Error detected at end? **TODO** look at UART
 
-## DDR4_December_19_2022__19_54_23_LOG.log
+## [DDR4_December_19_2022__19_54_23_LOG.log]
 
 Some memory errors detected. **TODO** Look into
 
-## DDR4_December_20_2022__08_05_48_LOG.log
+## [DDR4_December_20_2022__08_05_48_LOG.log]
 
 No errors
 
-## DDR4_December_20_2022__17_48_09_LOG.log
+## [DDR4_December_20_2022__17_48_09_LOG.log]
 
 No errors
+
+
+# Error Signatures
+
+## Controller Test
+
+### BIST Speed Error
+
+In a speed error, the memory speed reported deviates from the expected value.
+Something has happened to the speed calculation (perhaps an upset in the speed conter registers?).
+In this example below, the speed recovers through scrubbing.
+Need to annotate all of these from Tyler's script.
+
+```
+[2022-12-16 18:11:06]          941          940         2371          0
+[2022-12-16 18:11:07]          941          940         2845          0
+[2022-12-16 18:11:09]          681          760         3207          0
+[2022-12-16 18:11:10]          491          600         3479          0
+[2022-12-16 18:11:11]          491          600         3752          0
+[2022-12-16 18:11:12]          491          600         4024          0
+[2022-12-16 18:11:12] WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS
+[2022-12-16 18:11:14]          491          600          200          0
+[2022-12-16 18:11:15]          721          790          580          0
+[2022-12-16 18:11:16]          941          940         1054          0
+[2022-12-16 18:11:18]          941          940         1528          0
+[2022-12-16 18:11:19]          941          940         2002          0```
+```
+
+[example](tmp/CTRL_ddr_11_28_December_16_2022__16_11_53_UART.log#L5597)
+
+### BIST Data Error
+
+Errors occur at a single bit position for multiple addresses.
+This is likely due to an upset in the data path of the SDRAM controller.
+The error goes away after scrubbing.
+Note that the error shows up on the UART first and then shows up on the LOG file next after it parses the UART.
+
+**LOG error:**
+
+```
+[2022-12-16 20:55:32] INFO     BIST:Header (ok)
+[2022-12-16 20:55:41] ERROR    BIST:Data Errors (633,0,0:633/1)
+[2022-12-16 20:55:43] ERROR    BIST:Data Errors (474,0,0:474/2)
+[2022-12-16 20:55:44] ERROR    BIST:Data Errors (474,0,0:474/3)
+[2022-12-16 20:55:46] ERROR    BIST:Data Errors (474,0,0:474/4)
+[2022-12-16 20:55:47] ERROR    BIST:Data Errors (474,0,0:474/5)
+[2022-12-16 20:55:49] ERROR    BIST:Data Errors (473,0,0:473/6)
+[2022-12-16 20:55:50] ERROR    BIST:Data Errors (474,0,0:474/7)
+[2022-12-16 20:55:50] INFO     BIST:Header (err 7)
+[2022-12-16 20:56:02] INFO     BIST:Header (ok)
+[2022-12-16 20:56:03] ERROR    BIST:Data Errors (862,0,0:862/1)
+[2022-12-16 20:56:13] INFO     BIST:Header (err 1)
+[2022-12-16 20:56:25] INFO     BIST:Header (ok)
+```
+
+**UART error:**
+```
+[2022-12-16 20:55:32] WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS
+[2022-12-16 20:55:33]          941          940          159          0
+[2022-12-16 20:55:34] ERRORS (128-bit words): 8
+[2022-12-16 20:55:34] error addr: 0x555a4fd8, content: 0xe5a5a5a5, expected: 0xa5a5a5a5
+[2022-12-16 20:55:34] error addr: 0x555a5000, content: 0xe5a5a5a5, expected: 0xa5a5a5a5
+[2022-12-16 20:55:34] error addr: 0x555a5800, content: 0xe5a5a5a5, expected: 0xa5a5a5a5
+[2022-12-16 20:55:34] error addr: 0x555a5dd8, content: 0xe5a5a5a5, expected: 0xa5a5a5a5
+[2022-12-16 20:55:34] error addr: 0x555a5f58, content: 0xe5a5a5a5, expected: 0xa5a5a5a5
+[2022-12-16 20:55:34] error addr: 0x555a5f98, content: 0xe5a5a5a5, expected: 0xa5a5a5a5
+[2022-12-16 20:55:34] error addr: 0x555a5fc8, content: 0xe5a5a5a5, expected: 0xa5a5a5a5
+[2022-12-16 20:55:34] error addr: 0x555a5fd8, content: 0xe5a5a5a5, expected: 0xa5a5a5a5
+[2022-12-16 20:55:34] ERRORS (32-bit words): 8
+[2022-12-16 20:55:34] ERRORS (128-bit words): 7
+```
+
+In this example, the error shows up at [20:55:34](tmp/CTRL_ddr_11_28_December_16_2022__19_52_43_UART.log#L2975) in the UART log.
+It shows up at [20:55:41](tmp/CTRL_ddr_11_28_December_16_2022__19_52_43_LOG.log#399) in the master log.
+The errors go away at time 20:55:41 in the UART log.
+The master LOG seems to sporadically detect errors even though the UART log does not have errors.
+
+
+### BIST Printout Error
+
+This error occurs when there are lots of meaningless BIST errors that occur in the UART in the middle of the BIST.
+These messages are not the logging but something wrong with the BIST.
+This causes the pexpect to reboot the processor.
+[LOG example](tmp/CTRL_ddr_11_28_December_16_2022__21_44_01_LOG.log#L124) - [UART example](tmp/CTRL_ddr_11_28_December_16_2022__21_44_01_UART.log#444)
+
+```
+[2022-12-16 21:52:00] ERRORS (128-bit words): -1
+[2022-12-16 21:52:00] ERRORS (32-bit words): 0
+[2022-12-16 21:52:00] ERRORS (128-bit words): -1
+[2022-12-16 21:52:00] ERRORS (32-bit words): 0
+[2022-12-16 21:52:00] ERRORS (128-bit words): -1
+[2022-12-16 21:52:00] ERRORS (32-bit words): 0
+[2022-12-16 21:52:00] ERRORS (128-bit words): -1
+[2022-12-16 21:52:00] ERRORS (32-bit words): 0
+[2022-12-16 21:52:00] ERRORS (128-bit words): -1
+[2022-12-16 21:52:00] ERRORS (32-bit words): 0
+[2022-12-16 21:52:00] ERRORS (128-bit words): -1
+[2022-12-16 21:52:00] ERRORS (32-bit words): 0
+[2022-12-16 21:52:00] ERRORS (128-bit words): -1
+[2022-12-16 21:52:00] ERRORS (32-bit words): 0
+...
+```
+
+### UART Timeout
+
+This occurs when the pexpect script does not receive a response after some amount of time.
+This is likely a result of the processor hanging.
+The master script will try to reboot the processor and reconnect.
+
+### UART Garbled
+
+The UART prints a bunch of junk but it is not labelled as a Unicode error.
+
+[Example](tmp/CTRL_ddr_11_28_December_17_2022__08_30_27_UART.log#L1477)
+```
+[2022-12-17 09:00:18]                                                                                                                                                           33              900              900            900
+[2022-12-17 09:00:18]     [92    paxi     ax: 
+[2022-12-17 09:00:18] 	[92i    pax:    [92    paxi     s`s                                             
+[2022-12-17 09:00:18] 	                                                             
+[2022-12-17 09:00:18] 	                                                             
+[2022-12-17 09:00:18] 	                                                             
+```
+
+### UART Timeout Hang
+
+This error starts with a simple [UART timeout error](#uart-timeout).
+An example of the start of this error can be found [here](tmp/CTRL_ddr_11_28_December_16_2022__21_38_10_LOG.log#L84).
+The script attempts to reboot the system so that the UART responds (see [example](tmp/CTRL_ddr_11_28_December_16_2022__21_38_10_UART.log#149) of the reboot in the UART).
+The processor seems to reboot properly but the [last message](tmp/CTRL_ddr_11_28_December_16_2022__21_38_10_UART.log#214) is the header before the BIST prints data out.
+The system hangs here and is reboot again.
+This rebooting occurs over and over until the test fails.
+It is likely that the BIST has an error and the FPGA needs to be reconfigured.
+It is possible that the timout delay is not long enough but I doubt it.
+
+### UART Timeout Loop
+
+A UART timeout occurs and just loops repeatedly.
+The rest of the test is just UART timouts.
+
+### JCM Hang
+
+This fatal error occurs when the JCM does not respond.
+The script is written to exit the test when the JCM hangs.
+The script should be updated to repower the JCM and try to connect again (for some number of times).
+See [this example](tmp/CTRL_ddr_11_28_December_16_2022__19_52_43_LOG.log#L625)
+
+
+
+# Test Improvements
+
+* Resolve the BIST data error parsing issue ([see BIST data error](#bist-data-error)) for details and an example.
+* Resolve the [JCM Hang](#jcm-hang) error by repowering the JCM and trying to reconnect multiple times if a command fails.
+* Resolve the [UART Timout Hang](#uart-timeout-hang) error. If you get multiple successive uart timeouts, then reconfigure the board and try again. Perhaps add more time to the timout delay for the UART. This is related to the [UART timeout loop](#uart-timeout-loop) - need a maximum number of timeouts.
+* Detect speed errors in the log and just note them (don't do anything).
