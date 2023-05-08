@@ -1,4 +1,20 @@
 
+# Migen Notes
+
+### LiteDRAM Bist Fifo
+
+Migen, Litex, and LiteDRAM each have their own code to implement their own fifo. The one described here will be the one in litex>soc>interconnect>stream.py, called , as this is the version used in the DMA, used by the LiteDRAM Bist. 
+
+![image](https://user-images.githubusercontent.com/83432874/236911630-1c5172f1-c5f1-447b-9130-3102bfa185e8.png)
+
+This is the fifo running in the DMA reader, connected to the Bist checker that reads from the DRAM and checks the data. 
+- The fifo has a sink object and a source object, and data travels from the sink to the source. Both the sink and source contains ```data```, ```ready```, and ```valid``` variables/signals.
+- This specific fifo, although not shown, has a depth of 16. 
+  - To fill up the fifo, for each clock cycle that sink.ready is high, the correct data must be set in sink.data, and sink.valid must be set high. 
+  - To empty the data, for each clock cycle that source.valid is high, source.ready must be set high. 
+  - If the fifo reaches the maximum depth, sink.ready will go low until data is used by the source.
+  - An example of these being used is in LiteDRAM>frontend>dma.py.
+
 # Guide to our DRAM Bist
 
 The commands we have edited / added to the bios and have actively used in our last radiation test are the following:
@@ -7,6 +23,11 @@ The commands we have edited / added to the bios and have actively used in our la
 sdram_bist_pat <value>
 sdram_bist <length> [<addr_mode>] [<data_mode>] [<write_mode>]
 ```
+
+- ```length```: defines the number of bytes to write. 
+- ```addr_mode```: defines if the address should remain fixed the entire test (value 0), if the address should increment each time (value 1, starts at zero and increments by one),  or if random address values should be used (value 2).
+- ```data_mode```: defines if the data to be written should be a fixed value (value 0), if the data value should increment each time (value 1), or if random data values should be used (value 2).
+- ```write_mode```: defines if the bist should only read data (value 0), if the bist should perform one write and then a read (value 1), or if the bist should perform a burst write and then a burst read over and over again (value 2).
 
 Other commands we added to the bios are the following:
 
@@ -20,11 +41,46 @@ sdram_delay_set
 sdram_mr_scrub
 ```
 
-Guide to LiteDRAM:
+### Software
+
+The following are CSR registers controlling the Bist via software:
+
+- sdram_generator.reset: A signal used to reset the state machine.
+- sdram_generator.base: The starting address that the bist should write to.
+- sdram_generator.end: The maximum DRAM address that the Bist should write to
+- sdram_generator.length: The number of DRAM words to write. (A DRAM word in this case is enough bytes to fill one transaction to the DRAM.)
+- sdram_generator.mode: The data mode. The data is created, written and read in the Bist state machine itself, not in software.
+- sdram_generator.start: The signal to start the generator state machine.
+- sdram_generator.done: A register to read. This helps us know if the generator state machine is finished.
+- sdram_generator.ticks: A register to keep track of the number of ticks throughout the burst write.
+- sdram_generator.pattern: A register to control the data pattern to write to the dram if the data mode is 'fixed'.
+
+- sdram_checker.reset: A signal used to reset the state machine. This also resets the error count.
+- sdram_checker.base: The starting address that the Bist should read from.
+- sdram_checker.end: The maximum DRAM address that the Bist should read from.
+- sdram_checker.length: The number of DRAM words to read.
+- sdram_checker.mode: The data mode. If the mode is fixed, the data is read from a csr register, otherwise it is read from a memory module.
+- sdram_checker.start: The signal to start the checker state machine.
+- sdram_checker.done: A register to read. This helps us know if the checker state machine is finished.
+- sdram_checker.ticks: A register to keep track of the number of ticks throughout the burst write.
+- sdram_checker.errors: A register to read that keeps track of the number of errors counted in the checker state machine.
+- sdram_checker.pattern: A register to control the data pattern to check after reading from the dram if the data mode is 'fixed'.
+
+# Guide to LiteDRAM:
+
+To declare a port to be used in LiteDRAM, 
 
 This is an example of a write, followed by a read, with the native protocol driven by the vexriscv cpu with the Alveo U280 board:
 
 ![image](https://user-images.githubusercontent.com/83432874/236324037-058adcdc-b427-431a-8326-fae1d834171f.png)
+
+Here is an example of a burst write with the bist: (The command run was ```sdram_bist 100 0```, where a hundred bursts occured with no random addressing)
+
+![image](https://user-images.githubusercontent.com/83432874/236509942-5c885ffb-70dc-493b-8658-87fe66b89756.png)
+
+Here is an example of a burst read with the bist, occuring a small time after this burst write:
+
+![image](https://user-images.githubusercontent.com/83432874/236510439-30ca8725-f98f-4069-95b9-7778d9213499.png)
 
 The native protocol works accordingly:
   1. The address is placed in the cmd.addr signal, and cmd.valid is set high. (In this case, this is a single write to addr = 0x0 and a single read from addr = 0x0400000.)
@@ -47,3 +103,21 @@ The native protocol works accordingly:
        * i.e. it is not during transaction with another bank
        * i.e. no other bank's arbiter granted permission for this master (with
          bank.lock being active)
+         
+  - In all examples I've seen, with bist and with cpu, the lock signal has been set low.
+  
+
+  
+## Tools (found in litedram.frontend)
+
+
+
+### DMA
+
+This is a class that takes a LiteDRAM port using the native or axi protocol and converts the signals into a smaller, simpler set of signals to be used. It includes a 'fifo' migen module with a default depth of 16. It is used by LiteDRAM's bist.
+
+# Address Translation
+
+
+
+
