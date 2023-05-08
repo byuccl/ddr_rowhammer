@@ -68,7 +68,7 @@ The following are CSR registers controlling the Bist via software:
 
 # Guide to LiteDRAM:
 
-To declare a port to be used in LiteDRAM, 
+### Native protocol
 
 This is an example of a write, followed by a read, with the native protocol driven by the vexriscv cpu with the Alveo U280 board:
 
