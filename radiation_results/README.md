@@ -101,8 +101,7 @@ Notes on the software:
 * If there is an error found, a dedicated error message will print for each address in error
 
 Questions for Tyler:
-- What is the difference between the ERROR column count and the error messages in the middle of a line? See non TMR 21_44_01 file at line 324.
-- What is going on with the [Timeout](tmp/CTRL_ddr_11_28_December_16_2022__21_38_10_UART.log#204) message in this example? (search code). What is timing out? This seems to be part of a working system so it is not in error but it is confusing.
+- What is the difference between the ERROR column count and the error messages in the middle of a line? See [this example](tmp/CTRL_ddr_11_28_December_16_2022__19_52_43_UART.log#L2975)
 - Help me figure out what is going on [here](tmp/CTRL_ddr_11_28_December_16_2022__21_44_01_UART.log#444)
 
 ## Non-TMR Tests
@@ -122,7 +121,7 @@ Questions for Tyler:
 ### [CTRL_ddr_11_28_December_16_2022__19_52_43_LOG.log](tmp/CTRL_ddr_11_28_December_16_2022__19_52_43_LOG.log)
 
 * [Data Error](#bist-data-error)@[20:55:41](tmp/CTRL_ddr_11_28_December_16_2022__19_52_43_UART.log#L2975)
-* [UART Timeout](#uart-timeout)@[21:29:56](tmp/CTRL_ddr_11_28_December_16_2022__19_52_43_LOG.log#L601)
+* [UART Timeout - Repower recovery](#uart-timeout)@[21:29:56](tmp/CTRL_ddr_11_28_December_16_2022__19_52_43_LOG.log#L601)
   * [JCM Hang](#jcm-hang)@[21:30:28](tmp/CTRL_ddr_11_28_December_16_2022__19_52_43_LOG.log#L625)
 
 ### [CTRL_ddr_11_28_December_16_2022__21_38_10_LOG.log](tmp/CTRL_ddr_11_28_December_16_2022__21_38_10_LOG.log)
@@ -133,37 +132,32 @@ Questions for Tyler:
 
 * [Data Error](#bist-data-error)@[21:49:53](tmp/CTRL_ddr_11_28_December_16_2022__21_44_01_LOG.log#L103) - [recovers](tmp/CTRL_ddr_11_28_December_16_2022__21_44_01_UART.log#341)
 * [BIST Printout Error](#bist-printout-error)@[21:52:07](tmp/CTRL_ddr_11_28_December_16_2022__21_44_01_LOG.log#L124) ([UART](tmp/CTRL_ddr_11_28_December_16_2022__21_44_01_UART.log#444))
-* [UART Timeout](#uart-timeout)@[21:52:35](tmp/CTRL_ddr_11_28_December_16_2022__21_44_01_LOG.log#L131)
-* [UART Timeout](#uart-timeout)@[23:46:55](tmp/CTRL_ddr_11_28_December_16_2022__21_44_01_LOG.log#L730)
+* [UART Timeout - reset recovery](#uart-timeout)@[21:52:35](tmp/CTRL_ddr_11_28_December_16_2022__21_44_01_LOG.log#L131)
+* [UART Timeout - repower recovery](#uart-timeout)@[23:46:55](tmp/CTRL_ddr_11_28_December_16_2022__21_44_01_LOG.log#L730)
   * [JCM Hang](#jcm-hang)@[21:47:17](tmp/CTRL_ddr_11_28_December_16_2022__21_44_01_LOG.log#L754)
 
 ### [CTRL_ddr_11_28_December_17_2022__07_36_01_LOG.log](tmp/CTRL_ddr_11_28_December_17_2022__07_36_01_LOG.log)
 
-* [UART Timeout](#uart-timeout)@[08:13:42](tmp/CTRL_ddr_11_28_December_17_2022__07_36_01_LOG.log#L266)
-* [UART Timeout](#uart-timeout)@[08:13:42](tmp/CTRL_ddr_11_28_December_17_2022__07_36_01_LOG.log#L297)  
+* [UART Timeout - reset recovery](#uart-timeout)@[08:13:42](tmp/CTRL_ddr_11_28_December_17_2022__07_36_01_LOG.log#L266)
+* [UART Timeout - reset recovery](#uart-timeout)@[08:13:42](tmp/CTRL_ddr_11_28_December_17_2022__07_36_01_LOG.log#L297)  
 
 ### [CTRL_ddr_11_28_December_17_2022__08_30_27_LOG.log](tmp/CTRL_ddr_11_28_December_17_2022__08_30_27_LOG.log)
 
-* [UART Timeout](#uart-timeout)@[08:46:44](tmp/CTRL_ddr_11_28_December_17_2022__08_30_27_LOG.log#L153)
-
+* [UART Timeout -reset recovery](#uart-timeout)@[08:46:44](tmp/CTRL_ddr_11_28_December_17_2022__08_30_27_LOG.log#L153)
 * [UART Garbled](#uart-garbled)@[09:00:18](tmp/CTRL_ddr_11_28_December_17_2022__08_30_27_LOG.log#L237) - [UART](tmp/CTRL_ddr_11_28_December_17_2022__08_30_27_UART.log#L1477)
   * [rebooted](tmp/CTRL_ddr_11_28_December_17_2022__08_30_27_LOG.log#L245)
 * [UART timeout loop](#uart-timeout-loop)@[11:22:58](tmp/CTRL_ddr_11_28_December_17_2022__08_30_27_LOG.log#L1018)
 
 ### [CTRL_ddr_11_28_December_17_2022__11_41_08_LOG.log](tmp/CTRL_ddr_11_28_December_17_2022__11_41_08_LOG.log)
 
-* [2022-12-17 12:28:52] ERROR    UART:expect timeout (delay 15s)
-  * TIMEOUT-REPOWER event
-* [2022-12-17 12:57:51] ERROR    UART:expect timeout (delay 15s)
-  * TIMEOUT-REPOWER event
-* [2022-12-17 13:26:14] ERROR    UART:expect timeout (delay 15s)
-  * TIMEOUT-RESET-RECOVER event
-* [2022-12-17 14:11:35] ERROR    BIST:Data Errors (1641,0,0:1641/1)
-  * [2022-12-17 14:11:30] error addr: 0x5250c00c, content: 0xa5a585a5, expected: 0xa5a5a5a5
-  * (lots of incorrect log messages - only one error)
-* [2022-12-17 14:16:59] ERROR    UART:expect timeout (delay 15s)
-  * Did not need a reset to recover - just needed to reconnect over the uART and restart
-  * TIMEOUT-UART-RECOVER event
+* [UART Timeout - repower recovery](#uart-timeout)@[12:28:52](tmp/CTRL_ddr_11_28_December_17_2022__11_41_08_LOG.log#L321)
+* [UART Timeout - repower recovery](#uart-timeout)@[12:57:51](tmp/CTRL_ddr_11_28_December_17_2022__11_41_08_LOG.log#L513)
+* [UART Timeout - reset recovery](#uart-timeout)@[13:26:14](tmp/CTRL_ddr_11_28_December_17_2022__11_41_08_LOG.log#L702)
+* [Data Error](#bist-data-error)@[14:11:35](tmp/CTRL_ddr_11_28_December_17_2022__11_41_08_LOG.log#L950) - [UART 14:11:30](tmp/CTRL_ddr_11_28_December_17_2022__11_41_08_UART.log#7144)
+   * Recovers @14:11:35
+   * Lots of incorrect data errors even though 
+* [UART Timeout - uart connect recovery](#uart-timeout)@[14:16:59](tmp/CTRL_ddr_11_28_December_17_2022__11_41_08_LOG.log#L1017)
+
 
 ### [CTRL_ddr_11_28_December_19_2022__10_32_48_LOG.log](tmp/CTRL_ddr_11_28_December_19_2022__10_32_48_LOG.log)
 
@@ -302,7 +296,6 @@ no error
 * What are we doing with UART unicode errors to try and recover? Are we trying to send UART commands? It is not clear that anything can be done.
 * There is a "bad title line" in LOG when the system first boots. Need to fix this.
 * There was a BIST data error that was actually a UART error. Need to adjust the parser to look specifically for uART errors vs. BIST errors. (see [2022-12-19 15:59:41] in UART log)
-* There is an issue with the log script when an error occurs within the memory resulting in a burst of errors. The errors get fixed (likely due to scrubbing) but the log sends periodic messages until some other failure causes the system to reboot. This isn't a recurring problem in the actual system but a problem with the script. nontmr_16_19_52: [2022-12-16 20:55:41]
 * UART UARTBONE I ADDR insight (**We need to figure out the code addresses**)
   * The address is read during the "Setup UARTBone State" during initialization. It reads 000012E8 in this state
   * It is read in the "Reset Recovery State" (before and after issuing reset)
@@ -715,7 +708,10 @@ This causes the pexpect to reboot the processor.
 
 This occurs when the pexpect script does not receive a response after some amount of time.
 This is likely a result of the processor hanging.
-The master script will try to reboot the processor and reconnect.
+There are several different recovery mechanisms:
+  * **Reconnect Recovery**: The USB disconnects and reconnects to see if that fixes the problem. I don't think this recovery mechanism has succeeded.
+  * **Reset Recover**: A reset signal is asserted and the processor will try to run again
+  * **Repower Recovery**: The reset recovery fails and so the board repowers
 
 ### UART Garbled
 
@@ -762,3 +758,4 @@ See [this example](tmp/CTRL_ddr_11_28_December_16_2022__19_52_43_LOG.log#L625)
 * Resolve the [JCM Hang](#jcm-hang) error by repowering the JCM and trying to reconnect multiple times if a command fails.
 * Resolve the [UART Timout Hang](#uart-timeout-hang) error. If you get multiple successive uart timeouts, then reconfigure the board and try again. Perhaps add more time to the timout delay for the UART. This is related to the [UART timeout loop](#uart-timeout-loop) - need a maximum number of timeouts.
 * Detect speed errors in the log and just note them (don't do anything).
+* BIST errors sometimes generate a lot of LOG messages even afer the DRAM has recovered: [LOG example](tmp/CTRL_ddr_11_28_December_17_2022__11_41_08_LOG.log#L950) and [UART example](tmp/CTRL_ddr_11_28_December_17_2022__11_41_08_UART.log#7144)
