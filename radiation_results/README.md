@@ -102,7 +102,7 @@ Notes on the software:
 
 Questions for Tyler:
 - What is the difference between the ERROR column count and the error messages in the middle of a line? See [this example](tmp/CTRL_ddr_11_28_December_16_2022__19_52_43_UART.log#L2975)
-- Help me figure out what is going on [here](tmp/CTRL_ddr_11_28_December_16_2022__21_44_01_UART.log#444)
+- Help me figure out what is going on [here](tmp/CTRL_ddr_11_28_December_16_2022__21_44_01_UART.log#L444)
 
 ## Non-TMR Tests
 
