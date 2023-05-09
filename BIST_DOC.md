@@ -45,26 +45,34 @@ sdram_mr_scrub
 
 The following are CSR registers controlling the Bist via software:
 
-- sdram_generator.reset: A signal used to reset the state machine.
-- sdram_generator.base: The starting address that the bist should write to.
-- sdram_generator.end: The maximum DRAM address that the Bist should write to
-- sdram_generator.length: The number of DRAM words to write. (A DRAM word in this case is enough bytes to fill one transaction to the DRAM.)
-- sdram_generator.mode: The data mode. The data is created, written and read in the Bist state machine itself, not in software.
-- sdram_generator.start: The signal to start the generator state machine.
-- sdram_generator.done: A register to read. This helps us know if the generator state machine is finished.
-- sdram_generator.ticks: A register to keep track of the number of ticks throughout the burst write.
-- sdram_generator.pattern: A register to control the data pattern to write to the dram if the data mode is 'fixed'.
+  * sdram_generator.reset: A signal used to reset the state machine.
+  * sdram_generator.base: The starting address that the bist should write to.
+  * sdram_generator.end: The maximum DRAM address that the Bist should write to
+  * sdram_generator.length: The number of DRAM words to write. (A DRAM word in this case is enough bytes to fill one transaction to the DRAM.)
+  * sdram_generator.mode: The data mode. The data is created, written and read in the Bist state machine itself, not in software.
+  * sdram_generator.start: The signal to start the generator state machine.
+  * sdram_generator.done: A register to read. This helps us know if the generator state machine is finished.
+  * sdram_generator.ticks: A register to keep track of the number of ticks throughout the burst write.
+  * sdram_generator.pattern: A register to control the data pattern to write to the dram if the data mode is 'fixed'.
+  * sdram_checker.reset: A signal used to reset the state machine. This also resets the error count.
+  * sdram_checker.base: The starting address that the Bist should read from.
+  * sdram_checker.end: The maximum DRAM address that the Bist should read from.
+  * sdram_checker.length: The number of DRAM words to read.
+  * sdram_checker.mode: The data mode. If the mode is fixed, the data is read from a csr register, otherwise it is read from a memory module.
+  * sdram_checker.start: The signal to start the checker state machine.
+  * sdram_checker.done: A register to read. This helps us know if the checker state machine is finished.
+  * sdram_checker.ticks: A register to keep track of the number of ticks throughout the burst write.
+  * sdram_checker.errors: A register to read that keeps track of the number of errors counted in the checker state machine.
+  * sdram_checker.pattern: A register to control the data pattern to check after reading from the dram if the data mode is 'fixed'.
 
-- sdram_checker.reset: A signal used to reset the state machine. This also resets the error count.
-- sdram_checker.base: The starting address that the Bist should read from.
-- sdram_checker.end: The maximum DRAM address that the Bist should read from.
-- sdram_checker.length: The number of DRAM words to read.
-- sdram_checker.mode: The data mode. If the mode is fixed, the data is read from a csr register, otherwise it is read from a memory module.
-- sdram_checker.start: The signal to start the checker state machine.
-- sdram_checker.done: A register to read. This helps us know if the checker state machine is finished.
-- sdram_checker.ticks: A register to keep track of the number of ticks throughout the burst write.
-- sdram_checker.errors: A register to read that keeps track of the number of errors counted in the checker state machine.
-- sdram_checker.pattern: A register to control the data pattern to check after reading from the dram if the data mode is 'fixed'.
+Our bist ran the following way:
+
+- First, the command ```sdram_bist_pat 165``` was called. In hex, the value of 165 is 0xa5. This value was written to both the sdram_generator.pattern and sdram_checker.pattern CSR registers. It was replicated enough times and concatenated to fill the entire space of the DRAM controller data width.
+- Next, the command ```sdram_bist 8192 1 0 2``` was issued.
+  - The software first checked that the length of bytes, 8192, was a power of 2. The software also checked the length against a minimum, which was the number of bytes to fill one DRAM controller transaction. (For example, the minimum length allowed when running this program with the nexys video board was 16 bytes: the maximum amount for a one-burst write to the DRAM.) 
+  - After the checks, and after the software initialized global error, length, and tick counters to zero, the software enetered a forever-running loop. An ```if``` statement checked on the beginning of each loop if the user inputed any character during execution, and if true, the statement ran a ```break``` command and exited the bist loop.
+  - A new loop is entered into which starts the writing and reading. 
+    - First, the CSR registers controlling the generator are updated. First, the register sdram_generator.reset is set high, then low, to reset the generator state machine. For the incrementing address mode, sdram_generator.base is first set to zero, sdram_generator.end is set to base + length, and sdram_generator.length is set to the length. The register sdram_generator.mode, the data mode, is set to 0, indicating the data is in a fixed data mode and should be checked by a CSR register. After this, the statement ```cdelay(100)``` is run, which delays the software program for about 100 ms. 
 
 # Guide to LiteDRAM:
 
@@ -116,7 +124,9 @@ The native protocol works accordingly:
 
 This is a class that takes a LiteDRAM port using the native or axi protocol and converts the signals into a smaller, simpler set of signals to be used. It includes a 'fifo' migen module with a default depth of 16. It is used by LiteDRAM's bist.
 
-# Address Translation
+  - The bist would write 8192 bytes in a burst write, and then read the same amount back, incrementing the error counter every time the data read back did not match the data expected. (The controller would write 32 * 4 bits, 16 bytes, every DRAM controller transaction to the DRAM.)
+  - The address mode was set to 1, on incrementing mode. The bist has two address signals, one for the writer and one for the reader. The writer would first start with its address at 0, and increment it by 1 every burst write. The reader would use its own address variable, starting at 
+   - Global counter variables keeping track of the error counts and total write length, read length, number of ticks for writing, and number of ticks for reading were set to zero, 
 
 
 
