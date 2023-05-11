@@ -161,152 +161,123 @@ Questions for Tyler:
 
 ### [CTRL_ddr_11_28_December_19_2022__10_32_48_LOG.log](tmp/CTRL_ddr_11_28_December_19_2022__10_32_48_LOG.log)
 
-* [2022-12-19 13:51:47] ERROR    UART:expect unicode error
-  * [2022-12-19 13:51:48] in UART log indicates that the program went bad. Lots of errors. Appears to hang at the end. **Need to understand and interpret these error messages**
-  * [2022-12-19 13:51:49] Lots of "null" characters sent over UART (over 15k). Three lines of continuous "null" characters
-  * [2022-12-19 13:51:54] in LOG soft reset issued
-  * [2022-12-19 13:51:55] in LOG unicode error (reset doesn't seem to fix problem - NULL in UART)
-  * [2022-12-19 13:52:00] in LOG power on
-  * [2022-12-19 13:52:09] in LOG configuration complete
-  * [2022-12-19 13:52:10] in UART : booting starts
-  * UNICODE-REPOWER event
-* [2022-12-19 14:23:47] ERROR    UART:expect timeout (delay 15s)
-  * [2022-12-19 14:23:32] - UART last time a UART message arrives
-  * [2022-12-19 14:24:01] - LOG Reset issued
-  * [2022-12-19 14:24:02] - UART reboot starts (and recovers)
-  * TIMEOUT-RESET-RECOVER event
-* [2022-12-19 15:02:01] ERROR    UART:expect timeout (delay 15s)
-  * TIMEOUT-RESET-RECOVER event
-* [2022-12-19 15:59:42] ERROR    BIST:Data Errors (941,0,0:941/1-0) 940         1159          0
-  * UART:[2022-12-19 15:59:41]           941          940         1159          0
-  * This isn't actually a data error. This is a UART error that recovered. 
-  * UART_ERROR-RECOVER
-* [2022-12-19 16:14:49] ERROR    BIST:Data Errors (144,0,0:144/1-1) 88
-  * First Error:[2022-12-19 16:14:49]
-    * UART: [2022-12-19 16:14:45] ERRORS (128-bit words): 186
-    * Errors start at 0x4e34c000 and stop at 0x4e358570 ([2022-12-19 16:14:49]). content: 0x85a5a5a5, expected: 0xa5a5a5a5 (looks like a single bit failure)
-  * Second Error:[2022-12-19 16:17:25]
-    * No errors in UART log - bug in logging script
-  * Other errors (no UART errors)
-    * [2022-12-19 16:20:30] - batch 3 (no errors in UART log)
-    * [2022-12-19 16:21:40] - batch 4 (no errors in UART log)
-    * [2022-12-19 16:23:59] - batch 5 (no errors in UART log)
-    * [2022-12-19 16:28:50] - batch 6 (no errors in UART log)
-    * [2022-12-19 16:45:46] - batch 7 (no errors in UART log)
-    * [2022-12-19 16:47:49] - batch 8 (no errors in UART log)
-    * [2022-12-19 16:50:07] - batch 9(no errors in UART log)
-  * DRAM_BURST_ERROR-RECOVER
-* [2022-12-19 16:52:18] UART timeout, UART Bone reset recovery
-  * TIMEOUT-RESET-RECOVER event
-* [2022-12-19 17:58:43] UART timeout, repower recovery
-  * TIMEOUT-REPOWER event
-* [2022-12-19 18:05:45] UART timeout, mulitple attempts, final repower recovery
-  * TIMEOUT-REPOWER event
+* [Unicode Error - repower recovery](#unicode-error)@[13:51:47](tmp/CTRL_ddr_11_28_December_19_2022__10_32_48_LOG.log#L1102) - [uart](tmp/CTRL_ddr_11_28_December_19_2022__10_32_48_UART.log#L9297)
+  * In this case there was a single unicode error and it looks like the processor was executing random code. The processor was reset but this did not recover. The processor was repowered and it did recover.  
+* [UART timeout - reset recovery](#uart-timeout)@[14:23:47](tmp/CTRL_ddr_11_28_December_19_2022__10_32_48_LOG.log#L1335)
+* [UART timeout - reset recovery](#uart-timeout)@[15:02:01](tmp/CTRL_ddr_11_28_December_19_2022__10_32_48_LOG.log#L1546)
+* [Unicode Error](#unicode-error)@[15:59:42](tmp/CTRL_ddr_11_28_December_19_2022__10_32_48_LOG.log#L1858) - [uart](tmp/CTRL_ddr_11_28_December_19_2022__10_32_48_UART.log#L15390).
+   * This is a single byte unicode error that was masked as a bist data error (the output was corrupted)
+   * This is really a UART error rather than a unicode error
+* [BIST Error](#bist-data-error)@[16:14:49](tmp/CTRL_ddr_11_28_December_19_2022__10_32_48_LOG.log#L1939) - [uart](tmp/CTRL_ddr_11_28_December_19_2022__10_32_48_UART.log#L16091). Recovers at  [16:14:49](tmp/CTRL_ddr_11_28_December_19_2022__10_32_48_UART.log#L16793)
+   * Logger thinks there are errors (logging bug)
+* [UART timeout - reset recovery](#uart-timeout)@[16:52:18](tmp/CTRL_ddr_11_28_December_19_2022__10_32_48_LOG.log#L2237)
+* [UART timeout - repower recovery](#uart-timeout)@[17:58:43](tmp/CTRL_ddr_11_28_December_19_2022__10_32_48_LOG.log#L2593)
+* [UART timeout - repower recovery](#uart-timeout)@[17:58:43](tmp/CTRL_ddr_11_28_December_19_2022__10_32_48_LOG.log#L2671)
 
 
 ## TMR Controller Tests
 
 
-### tmr_17_15_35
-radiation_results/tmp/CTRL_ddr_11_28_tmr_December_17_2022__15_35_49_LOG.log
+### [CTRL_ddr_11_28_tmr_December_17_2022__15_35_49_LOG.log](tmp/CTRL_ddr_11_28_tmr_December_17_2022__15_35_49_LOG.log)
 
-* [2022-12-17 16:11:58] ERROR    BIST:Data Errors (3534,0,0:3534/1)
-  * resolved: [2022-12-17 16:11:58]          940          940         3534       5120
-  * DRAM_BURST_ERROR-RECOVER
-* [2022-12-17 17:35:11] ERROR    UART:expect timeout (delay 15s)
-  * TIMEOUT-RESET-RECOVER event
-* [2022-12-17 20:44:08] ERROR    BIST:Data Errors (3523,0,0:3523/1)
-  * resovled: [2022-12-17 20:44:08]
-  * DRAM_BURST_ERROR-RECOVER
-* [2022-12-18 05:35:32] ERROR    UART:expect timeout (delay 15s)
-  * TIMEOUT-RESET-RECOVER event
-* [2022-12-18 06:22:36] ERROR    BIST:Max consecutive bad data lines
-  * [2022-12-18 06:20:46] %lu %lu %lu %lu
-  * stuck here until the end
+* [BIST Error](#bist-data-error)@[16:11:58](tmp/CTRL_ddr_11_28_tmr_December_17_2022__15_35_49_LOG.log#L260) - [uart](tmp/CTRL_ddr_11_28_tmr_December_17_2022__15_35_49_UART.log#L1727). Recovers at  [16:11:58](tmp/CTRL_ddr_11_28_tmr_December_17_2022__15_35_49_UART.log#L2697)
+* [UART timeout - reset recovery](#uart-timeout)@[17:35:11](tmp/CTRL_ddr_11_28_tmr_December_17_2022__15_35_49_LOG.log#L757)
+* [BIST Error](#bist-data-error)@[20:44:08](tmp/CTRL_ddr_11_28_tmr_December_17_2022__15_35_49_LOG.log#L1747) - [uart](tmp/CTRL_ddr_11_28_tmr_December_17_2022__15_35_49_UART.log#L15374). Recovers at  [20:44:08](tmp/CTRL_ddr_11_28_tmr_December_17_2022__15_35_49_UART.log#L16624)
+* [UART timeout - reset recovery](#uart-timeout)@[05:35:32](tmp/CTRL_ddr_11_28_tmr_December_17_2022__15_35_49_LOG.log#L4864)
+* [BIST bad data lines](#bist-bad-data-lines)@[06:22:36](tmp/CTRL_ddr_11_28_tmr_December_17_2022__15_35_49_LOG.log#L5121) - [uart](tmp/CTRL_ddr_11_28_tmr_December_17_2022__15_35_49_UART.log#L43483). **Does not recover**
 
-### tmr_18_07_15.txt
-radiation_results/tmp/CTRL_ddr_11_28_tmr_December_18_2022__07_15_59_LOG.log
+
+### [CTRL_ddr_11_28_tmr_December_18_2022__07_15_59_LOG.log](tmp/CTRL_ddr_11_28_tmr_December_18_2022__07_15_59_LOG.log)
 
 No errors
 
-### tmr_18_07_26.txt
-radiation_results/tmp/CTRL_ddr_11_28_tmr_December_18_2022__07_26_49_LOG.log
+### [CTRL_ddr_11_28_tmr_December_18_2022__07_26_49_LOG.log](tmp/CTRL_ddr_11_28_tmr_December_18_2022__07_26_49_LOG.log)
 
-* [2022-12-18 12:43:27] ERROR    BIST:Data Errors (1295,0,0:1295/1)
-  * DRAM_BURST_ERROR-RECOVER
-* [2022-12-18 15:48:43] ERROR    UART:expect timeout (delay 15s)
-  * TIMEOUT-RESET-RECOVER event
-* [2022-12-18 16:14:27] ERROR    BIST:Data Errors (2858,0,0:2858/1)
-  * DRAM_BURST_ERROR-RECOVER
-* [2022-12-18 18:48:31] ERROR    BIST:Data Errors (1960,0,0:1960/1)
-  * DRAM_BURST_ERROR-RECOVER
-  * This one is difficult to detect because it happens in the middle of the previous error that isn't getting cleared
+* [BIST Error](#bist-data-error)@[12:43:27](tmp/CTRL_ddr_11_28_tmr_December_18_2022__07_26_49_LOG.log#L1709) - [uart](tmp/CTRL_ddr_11_28_tmr_December_18_2022__07_26_49_UART.log#L14772). Recovers at  [12:43:27](tmp/CTRL_ddr_11_28_tmr_December_18_2022__07_26_49_UART.log#L16026)
+* [UART timeout - reset recovery](#uart-timeout)@[15:48:43](tmp/CTRL_ddr_11_28_tmr_December_17_2022__15_35_49_LOG.log#L2943)
+* [BIST Error](#bist-data-error)@[16:14:27](tmp/CTRL_ddr_11_28_tmr_December_18_2022__07_26_49_LOG.log#L3090) - [uart](tmp/CTRL_ddr_11_28_tmr_December_18_2022__07_26_49_UART.log#L25879). Recovers at  [12:43:27](tmp/CTRL_ddr_11_28_tmr_December_18_2022__07_26_49_UART.log#L26372)
+* [BIST Error](#bist-data-error)@[18:48:31](tmp/CTRL_ddr_11_28_tmr_December_18_2022__07_26_49_LOG.log#L4240) - [uart](tmp/CTRL_ddr_11_28_tmr_December_18_2022__07_26_49_UART.log#L33551). Recovers at  [12:43:27](tmp/CTRL_ddr_11_28_tmr_December_18_2022__07_26_49_UART.log#L34401). **This overlaps with previous**
+
     
-### tmr_18_20_01.txt
-radiation_results/tmp/CTRL_ddr_11_28_tmr_December_18_2022__20_01_01_LOG.log
+### [CTRL_ddr_11_28_tmr_December_18_2022__20_01_01_LOG.log](tmp/CTRL_ddr_11_28_tmr_December_18_2022__20_01_01_LOG.log)
 
 No errors
 
-### tmr_18_21_03.txt
-radiation_results/tmp/CTRL_ddr_11_28_tmr_December_18_2022__21_03_16_LOG.log
+### [CTRL_ddr_11_28_tmr_December_18_2022__21_03_16_LOG.log](tmp/CTRL_ddr_11_28_tmr_December_18_2022__21_03_16_LOG.log)
 
 There is a note in which we reboot after 50 BIST errrs (i.e., the message that keeps coming). I should have left this the way it was. Not sure this worked.
 
-* [2022-12-19 05:19:38] ERROR    BIST:Data Errors (3900,0,0:3900/1)
-  * DRAM_BURST_ERROR-RECOVER
+* [BIST Error](#bist-data-error)@[05:19:38](tmp/CTRL_ddr_11_28_tmr_December_18_2022__21_03_16_LOG.log#L2635) - [uart](tmp/CTRL_ddr_11_28_tmr_December_18_2022__21_03_16_UART.log#L23132). Recovers at  [12:43:27](tmp/CTRL_ddr_11_28_tmr_December_18_2022__21_03_16_LOG.log#L23769).
 
-### tmr_19_07_57.txt
-radiation_results/tmp/CTRL_ddr_11_28_tmr_December_19_2022__07_57_13_LOG.log
 
-no errors
-
-### tmr_19_08_22.txt
-radiation_results/tmp/CTRL_ddr_11_28_tmr_December_19_2022__08_22_46_LOG.log
+### [CTRL_ddr_11_28_tmr_December_19_2022__07_57_13_LOG.log](tmp/CTRL_ddr_11_28_tmr_December_19_2022__07_57_13_LOG.log)
 
 no errors
 
-### tmr_19_08_39.txt
-radiation_results/tmp/CTRL_ddr_11_28_tmr_December_19_2022__08_39_03_LOG.log
+### [CTRL_ddr_11_28_tmr_December_19_2022__08_22_46_LOG.log](tmp/CTRL_ddr_11_28_tmr_December_19_2022__08_22_46_LOG.log)
+
+no errors
+
+### [CTRL_ddr_11_28_tmr_December_19_2022__08_39_03_LOG.log](tmp/CTRL_ddr_11_28_tmr_December_19_2022__08_39_03_LOG.log)
 
 no error
 
-### tmr_19_18_34.txt
-radiation_results/tmp/CTRL_ddr_11_28_tmr_December_19_2022__18_34_25_LOG.log
+### [CTRL_ddr_11_28_tmr_December_19_2022__18_34_25_LOG.log](tmp/CTRL_ddr_11_28_tmr_December_19_2022__18_34_25_LOG.log)
 
-* [2022-12-20 03:05:36] ERROR    UART:expect unicode error
-  * Followed by [2022-12-20 03:05:51] ERROR    UART:expect timeout (delay 15s)
-  * TIMEOUT-RESET-RECOVER event
+[Unicode Error - reboot](#unicode-error)@[03:05:36](tmp/CTRL_ddr_11_28_tmr_December_19_2022__18_34_25_LOG.log#L2713) - [uart](tmp/CTRL_ddr_11_28_tmr_December_19_2022__18_34_25_UART.log#L23814)
+  * Some odd printing of random characters followed by a reboot
+  * [UART timeout - reset recovery](#uart-timeout)@[03:05:36](tmp/CTRL_ddr_11_28_tmr_December_19_2022__18_34_25_LOG.log#L2726)
 
-### tmr_20_08_05.txt
-radiation_results/tmp/CTRL_ddr_11_28_tmr_December_20_2022__08_05_34_LOG.log
 
-* [2022-12-20 12:31:49] ERROR    UART:expect timeout (delay 15s)
-  * TIMEOUT-RESET-RECOVER event
+### [CTRL_ddr_11_28_tmr_December_20_2022__08_05_34_LOG.log](tmp/CTRL_ddr_11_28_tmr_December_20_2022__08_05_34_LOG.log)
 
-### tmr_20_17_47.txt
-radiation_results/tmp/CTRL_ddr_11_28_tmr_December_20_2022__17_47_55_LOG.log
+  * [UART timeout - reset recovery](#uart-timeout)@[12:31:49](tmp/CTRL_ddr_11_28_tmr_December_20_2022__08_05_34_LOG.log#L1447)
+
+### [CTRL_ddr_11_28_tmr_December_20_2022__17_47_55_LOG.log](radiation_results/tmp/CTRL_ddr_11_28_tmr_December_20_2022__17_47_55_LOG.log)
 
 no error
 
 
-## General controller test thoughts:
+## Summary 
 
-* We don't seem to have very many non-TMR processor failures. Need many more events to have statistical confidence
-* It looks like we just repowered the board after reset recovery. We should try reconfiguring the board with the JCM inbetween a reset and a repower
+### General controller test thoughts:
+
+* We didn't get a lot of errors for confidence.
+* We seem to get more timout errors for non-TMR over TMR suggesting that the procesor is more reliable in TMR than non-TMR (although the confidence is week). It may be interesting to dig through the timeout errors in TMR to see what is causing the processor to fail.
+* The DRAM errors seem not to change suggesting that DRAM errors will occur in either with similar frequency (although the data needs to be computed)
+* It is not clear how useful this test is at radiation. We can reproduce this sort of thing all we like with fault injection and may not be worth the effort for radition testing. The Linux ECC board is probably the best for the next radiation test.
+
+
 * What are we doing with UART unicode errors to try and recover? Are we trying to send UART commands? It is not clear that anything can be done.
-* There is a "bad title line" in LOG when the system first boots. Need to fix this.
 * There was a BIST data error that was actually a UART error. Need to adjust the parser to look specifically for uART errors vs. BIST errors. (see [2022-12-19 15:59:41] in UART log)
-* UART UARTBONE I ADDR insight (**We need to figure out the code addresses**)
-  * The address is read during the "Setup UARTBone State" during initialization. It reads 000012E8 in this state
-  * It is read in the "Reset Recovery State" (before and after issuing reset)
-    * Before: 1350,1358
-    * After: 20028 (reboot), 1F8 (ok), 20 (reboot), 1350 (reboot)
 * There is a reboot continuous loop problem that occurs when reboots fail. Need to check for this and cause a repower/reconfigure. See nontmr_17_08_30, [2022-12-17 08:46:44]
 * nontmr_16_21_44 [2022-12-16 21:52:07] LOG - need to figure out what this error is. Review code to understand.
 * Need to reboot JCM or do something with the JCM when the JCM fails. See nontmr_16_21_44, [2022-12-16 23:46:55] and nontmr_16_19_52:[2022-12-16 21:29:56]
 * The processor code or UART failed resulting bad output during bist (%lu %lu %lu %lu). It looked like everything was working except the output. Resulted in  "BIST:Bad data line" errors indefinitely but did not fix anything. Should have resulted in a soft reset. See tmr_17_15_35 [2022-12-18 06:22:36]
 
+### Test Improvements
 
+* The BIST is currently setup to do a small DDR transfer and then do a long wait before proceeding to thetest. The duty cycle of the DRAM is very low. Need to investiage commands that do larger bursts and figure out how to reduce the delay between the write and the read check.
+* Resolve the BIST data error parsing issue ([see BIST data error](#bist-data-error)) for details and an example. This error never leaves the log even though it recovers.
+* Resolve the [JCM Hang](#jcm-hang) error by repowering the JCM and trying to reconnect multiple times if a command fails.
+* Resolve the [UART Timout Hang](#uart-timeout-hang) error. If you get multiple successive uart timeouts, then reconfigure the board and try again. Perhaps add more time to the timout delay for the UART. This is related to the [UART timeout loop](#uart-timeout-loop) - need a maximum number of timeouts.
+* Detect speed errors in the log and just note them (don't do anything).
+* BIST errors sometimes generate a lot of LOG messages even afer the DRAM has recovered: [LOG example](tmp/CTRL_ddr_11_28_December_17_2022__11_41_08_LOG.log#L950) and [UART example](tmp/CTRL_ddr_11_28_December_17_2022__11_41_08_UART.log#7144)
+* Resolve [BIST bad data lines](#bist-bad-data-lines)@[06:22:36](tmp/CTRL_ddr_11_28_tmr_December_17_2022__15_35_49_LOG.log#L5121). Need to reboot processor.
+* It looks like we just repowered the board after reset recovery. We should try reconfiguring the board with the JCM inbetween a reset and a repower
+* There is a "bad title line" in LOG when the system first boots. Need to fix this.
+
+
+### Post Analysis
+
+* Figure out fluence of TMR and non TMR
+* Count the events we saw and get some cross sections
+* Look at BFAT for those TMR timout errors to see why the processor is failing
+* UART UARTBONE I ADDR insight (**We need to figure out the code addresses**)
+  * The address is read during the "Setup UARTBone State" during initialization. It reads 000012E8 in this state
+  * It is read in the "Reset Recovery State" (before and after issuing reset)
+    * Before: 1350,1358
+    * After: 20028 (reboot), 1F8 (ok), 20 (reboot), 1350 (reboot)
 
 # DDR VexRiscv Tests
 
@@ -704,6 +675,28 @@ This causes the pexpect to reboot the processor.
 ...
 ```
 
+
+### BIST Bad Data Lines
+
+The UART printout on the BIST wigs out and just prints bad data.
+The script allows this to go on too long - processor needs rebooting.
+
+```
+[2022-12-18 06:20:46] %lu %lu %lu %lu
+[2022-12-18 06:20:47] %lu %lu %lu %lu
+[2022-12-18 06:20:49] %lu %lu %lu %lu
+[2022-12-18 06:20:50] %lu %lu %lu %lu
+[2022-12-18 06:20:52] %lu %lu %lu %lu
+[2022-12-18 06:20:52] WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS
+[2022-12-18 06:20:53] %lu %lu %lu %lu
+[2022-12-18 06:20:55] %lu %lu %lu %lu
+[2022-12-18 06:20:56] %lu %lu %lu %lu
+[2022-12-18 06:20:57] %lu %lu %lu %lu
+[2022-12-18 06:20:59] %lu %lu %lu %lu
+[2022-12-18 06:21:00] %lu %lu %lu %lu
+```
+
+
 ### UART Timeout
 
 This occurs when the pexpect script does not receive a response after some amount of time.
@@ -750,12 +743,9 @@ The script is written to exit the test when the JCM hangs.
 The script should be updated to repower the JCM and try to connect again (for some number of times).
 See [this example](tmp/CTRL_ddr_11_28_December_16_2022__19_52_43_LOG.log#L625)
 
+### Unicode Error
+
+This occurs when the UART starts sending bogus data
 
 
-# Test Improvements
 
-* Resolve the BIST data error parsing issue ([see BIST data error](#bist-data-error)) for details and an example.
-* Resolve the [JCM Hang](#jcm-hang) error by repowering the JCM and trying to reconnect multiple times if a command fails.
-* Resolve the [UART Timout Hang](#uart-timeout-hang) error. If you get multiple successive uart timeouts, then reconfigure the board and try again. Perhaps add more time to the timout delay for the UART. This is related to the [UART timeout loop](#uart-timeout-loop) - need a maximum number of timeouts.
-* Detect speed errors in the log and just note them (don't do anything).
-* BIST errors sometimes generate a lot of LOG messages even afer the DRAM has recovered: [LOG example](tmp/CTRL_ddr_11_28_December_17_2022__11_41_08_LOG.log#L950) and [UART example](tmp/CTRL_ddr_11_28_December_17_2022__11_41_08_UART.log#7144)
