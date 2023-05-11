@@ -32,8 +32,11 @@ As such failures in the DDR should not cause the processor to fail.
 The goal of this test is to understand actual DDR interface failures without having to deal with failures in the processor (for the linux test failures in the DDR would cause the processor to fail).
 
 **Organization of the DDR Memory**
-The DDR3 part on this board uses a single 512 MiByte part (2^29 bytes).
-The DDR controller organizes transactions as 16 bytes (2^4) (see below) so each addressable region of the memory from the BIST perspective is 2^(29-4) = 2^25 or 25 bits.
+The DDR3 part on this board uses a single 512 MiByte part (2^29 bytes or 0x2000_0000).
+The memory is mapped to address 0x4000_0000 and ends at 0x5FFF_FFFF.
+
+The DDR controller organizes transactions as 16 bytes (2^4) (see below).
+Each addressable region of the memory from the BIST perspective is 2^(29-4) = 2^25 or 25 bits.
 These 25 bits are organized as follows:
 * The least significant seven bits are the column address ([6:0] for BIST or [10:4] for processor)
 * The next three bits are the bank address ([9:7] for BIST or [13:11] for processor)
@@ -296,94 +299,89 @@ sdram_bist 8192 1 0 1
 After executing these commands, the user interface is not used unless there is a problem with the BIST behavior.
 The test pattern uses 90 or 0x5A.
 The BIST is using linearly increasing addresses, a fixed data pattern, and a single write followd by continuous reads.
+There is no reapir of errors that occur in the memory.
 Continuous reads are performed because we want to identify data failures (athought we should have fixed them - see notes below).
 
 
 Notes:
 * Single error takes lots of messages before repairing. Need to modify script to distinguish between these bursts (and not log everything) and the single bit errors we saw. Seems like a SEFI.
 
-## [DDR_ddr_11_28_December_16__15_52_53_LOG.log](tmp/DDR_ddr_11_28_December_16__15_52_53_LOG.log)
+## Test Files
+
+### [DDR_ddr_11_28_December_16__15_52_53_LOG.log](tmp/DDR_ddr_11_28_December_16__15_52_53_LOG.log)
 
 The filename format was changed after this.
 No errors
 
-## [DDR_ddr_11_28_December_16_2022__15_57_43_LOG.log](tmp/DDR_ddr_11_28_December_16_2022__15_57_43_LOG.log)
+### [DDR_ddr_11_28_December_16_2022__15_57_43_LOG.log](tmp/DDR_ddr_11_28_December_16_2022__15_57_43_LOG.log)
 
 No errors
 
-## [DDR_ddr_11_28_December_16_2022__16_11_57_LOG.log] DDR_ddr_11_28_December_16_2022__16_11_57_LOG.log
+### [DDR_ddr_11_28_December_16_2022__16_11_57_LOG.log](tmp/DDR_ddr_11_28_December_16_2022__16_11_57_LOG.log) 
 
 No errors
 
-## [DDR_ddr_11_28_December_16_2022__20_12_00_LOG.log]
+### [DDR_ddr_11_28_December_16_2022__20_12_00_LOG.log](tmp/DDR_ddr_11_28_December_16_2022__20_12_00_LOG.log)
 
 Didn't fully start, no errors
 
-## [DDR_ddr_11_28_December_16_2022__20_13_55_LOG.log]
+### [DDR_ddr_11_28_December_16_2022__20_13_55_LOG.log](tmp/DDR_ddr_11_28_December_16_2022__20_13_55_LOG.log)
 
 Didn't fully start, no errors
 
-## [DDR_ddr_11_28_December_16_2022__20_15_07_LOG.log]
+### [DDR_ddr_11_28_December_16_2022__20_15_07_LOG.log](tmp/DDR_ddr_11_28_December_16_2022__20_15_07_LOG.log)
 
 Didn't fully start, no errors
 
-## [DDR_ddr_11_28_December_16_2022__20_18_03_LOG.log]
+### [DDR_ddr_11_28_December_16_2022__20_18_03_LOG.log](tmp/DDR_ddr_11_28_December_16_2022__20_18_03_LOG.log)
 
 Didn't fully start, no errors
 
-## [DDR_ddr_11_28_December_16_2022__20_20_57_LOG.log]
+### [DDR_ddr_11_28_December_16_2022__20_20_57_LOG.log](tmp/DDR_ddr_11_28_December_16_2022__20_20_57_LOG.log)
 
 Didn't fully start, no errors
 
-## [DDR_ddr_11_28_December_16_2022__20_21_38_LOG.log]
+### [DDR_ddr_11_28_December_16_2022__20_21_38_LOG.log](tmp/DDR_ddr_11_28_December_16_2022__20_21_38_LOG.log)
 
 no errors
 
-## [DDR_ddr_11_28_December_16_2022__20_33_44_LOG.log]
+### [DDR_ddr_11_28_December_16_2022__20_33_44_LOG.log](tmp/DDR_ddr_11_28_December_16_2022__20_33_44_LOG.log)
 
-* [2022-12-16 22:37:56] ERROR    BIST:ERROR 0x40002100 XOR=0x02020200
-  * [2022-12-16 22:41:22] INFO     BIST:Header
-* [2022-12-17 01:03:53] ERROR    BIST:ERROR 0x54000008 XOR=0x20202020
-  * [2022-12-17 01:05:24] INFO     BIST:Header
-* [2022-12-17 06:42:49] ERROR    BIST:ERROR 0x44000810 XOR=0x22202020
-  * [2022-12-17 06:46:47] INFO     BIST:Header
-* [2022-12-17 06:57:12] ERROR    BIST:ERROR 0x476ef008 XOR=0x01000001
-  * [2022-12-17 07:00:19] INFO     BIST:Header
-* [2022-12-17 07:20:44] ERROR    UART:expect timeout (delay 15s)
-  * Did we manually shut off?
+* [DDR Burst Error](#ddr-burst-error)@[22:37:56](tmp/DDR_ddr_11_28_December_16_2022__20_33_44_LOG.log#L560) - [recover](tmp/DDR_ddr_11_28_December_16_2022__20_33_44_LOG.log#L28166). [UART](tmp/DDR_ddr_11_28_December_16_2022__20_33_44_UART.log#L4525) - [recover](tmp/DDR_ddr_11_28_December_16_2022__20_33_44_UART.log#L48563)
+* [DDR Burst Error](#ddr-burst-error)@[01:03:53](tmp/DDR_ddr_11_28_December_16_2022__20_33_44_LOG.log#L28736) - [recover](tmp/DDR_ddr_11_28_December_16_2022__20_33_44_LOG.log#L40927). [UART](tmp/DDR_ddr_11_28_December_16_2022__20_33_44_UART.log#L53696) - [recover](tmp/DDR_ddr_11_28_December_16_2022__20_33_44_UART.log#L74055)
+* [DDR Burst Error](#ddr-burst-error)@[06:42:49](tmp/DDR_ddr_11_28_December_16_2022__20_33_44_LOG.log#L42277). [UART](tmp/DDR_ddr_11_28_December_16_2022__20_33_44_UART.log#L86201)
+* [DDR Burst Error](#ddr-burst-error)@[06:57:12](tmp/DDR_ddr_11_28_December_16_2022__20_33_44_LOG.log#L75087)
+* Manually disconnect?@[07:20:44](tmp/DDR_ddr_11_28_December_16_2022__20_33_44_LOG.log#L100025)
 
 
-## [DDR_ddr_11_28_December_17_2022__07_53_34_LOG.log]
+### [DDR_ddr_11_28_December_17_2022__07_53_34_LOG.log](/tmp/DDR_ddr_11_28_December_17_2022__07_53_34_LOG.log)
 
 No errors
 
-## [DDR_ddr_11_28_December_17_2022__08_59_59_LOG.log]
+### [DDR_ddr_11_28_December_17_2022__08_59_59_LOG.log](tmp/DDR_ddr_11_28_December_17_2022__08_59_59_LOG.log)
 
-* [2022-12-17 10:56:30] ERROR    BIST:ERROR 0x4f70c700 XOR=0x00000020
-  * Single-bit error
-* [2022-12-17 11:37:40] ERROR    BIST:ERROR 0x56002908 XOR=0x80008080
-  * start of big burst error
-  * seems to be repaired by [2022-12-17 16:33:45] (confirmed in UART)
-* [2022-12-17 17:02:55] ERROR    BIST:ERROR 0x5c002800 XOR=0x20200020
-  * Ends by [2022-12-17 17:06:10] INFO     BIST:Header
-* [2022-12-17 17:11:53] ERROR    BIST:ERROR 0x58201800 XOR=0x58983A0E
-  * ends by [2022-12-17 17:12:00] INFO     BIST:Header
-* [2022-12-17 17:14:25] ERROR    BIST:ERROR 0x4c003800 XOR=0x02000000
-  * [2022-12-17 17:17:42] INFO     BIST:Header
-* [2022-12-17 17:19:27] ERROR    BIST:ERROR 0x5dbce008 XOR=0x08080808
-  * [2022-12-17 17:21:10] INFO     BIST:Header
-* [2022-12-17 22:10:43] ERROR    BIST:ERROR 0x58201900 XOR=0x01000000
-  * [2022-12-17 22:12:08] INFO     BIST:Header
-* [2022-12-17 23:17:49] ERROR    BIST:ERROR 0x4cb21800 XOR=0x25AFA595
-  * [2022-12-17 23:17:58] INFO     BIST:Header
-* [2022-12-18 00:10:43] ERROR    BIST:ERROR 0x4c000000 XOR=0x00200020
-  * [2022-12-18 00:13:50] INFO     BIST:Header
+* [DDR Sinle Error](#ddr-single-error)@[10:56:30](tmp/DDR_ddr_11_28_December_17_2022__08_59_59_LOG.log#L525) - [UART](tmp/DDR_ddr_11_28_December_17_2022__08_59_59_UART.log#L4249)
+* [DDR Burst Error](#ddr-single-error)@[11:37:40](tmp/DDR_ddr_11_28_December_17_2022__08_59_59_LOG.log#L5733)
+* [DDR Burst Error](#ddr-single-error)@[17:02:55](tmp/DDR_ddr_11_28_December_17_2022__08_59_59_LOG.log#L83805)
+* [DDR Burst Error](#ddr-single-error)@[17:11:53](tmp/DDR_ddr_11_28_December_17_2022__08_59_59_LOG.log#L109904)
+  * Not much time between the recover of the last burst
+* [DDR Burst Error](#ddr-single-error)@[17:14:25](tmp/DDR_ddr_11_28_December_17_2022__08_59_59_LOG.log#L110714)
+  * Not much time between the recover of the last burst
+* [DDR Burst Error](#ddr-single-error)@[17:19:27](tmp/DDR_ddr_11_28_December_17_2022__08_59_59_LOG.log#L137349)
+  * Not much time between the recover of the last burst
+* [DDR Burst Error](#ddr-single-error)@[22:10:43](tmp/DDR_ddr_11_28_December_17_2022__08_59_59_LOG.log#L150435)
+* [DDR Burst Error](#ddr-single-error)@[23:17:49](tmp/DDR_ddr_11_28_December_17_2022__08_59_59_LOG.log#L161800)
+* [DDR Burst Error](#ddr-single-error)@[00:10:43](tmp/DDR_ddr_11_28_December_17_2022__08_59_59_LOG.log#L162811)
 
-## DDR_ddr_11_28_December_18_2022__07_17_00_LOG.log]
+Search for: to find end of BIST error for Log/UART
+BIST:Header
+WR-BW
+
+### [DDR_ddr_11_28_December_18_2022__07_17_00_LOG.log](tmp/DDR_ddr_11_28_December_18_2022__07_17_00_LOG.log)
 
 No errors
 
-## [DDR_ddr_11_28_December_18_2022__07_26_53_LOG.log]
+### [DDR_ddr_11_28_December_18_2022__07_26_53_LOG.log](tmp/DDR_ddr_11_28_December_18_2022__07_26_53_LOG.log)
 
 * [2022-12-18 18:58:56] ERROR    BIST:ERROR 0x5a003908 XOR=0x00200020
   * [2022-12-18 19:00:36] INFO     BIST:Header
@@ -396,11 +394,11 @@ No errors
 * [2022-12-19 04:27:13] ERROR    BIST:ERROR 0x44002000 XOR=0x20002020
   * [2022-12-19 04:30:09] INFO     BIST:Header
 
-## [DDR_ddr_11_28_December_19_2022__07_57_17_LOG.log]
+### [DDR_ddr_11_28_December_19_2022__07_57_17_LOG.log](tmp/DDR_ddr_11_28_December_19_2022__07_57_17_LOG.log)
 
 Did not start, no errors
 
-## [DDR_ddr_11_28_December_19_2022__08_01_25_LOG.log]
+### [DDR_ddr_11_28_December_19_2022__08_01_25_LOG.log](tmp/DDR_ddr_11_28_December_19_2022__08_01_25_LOG.log)
 
 * [2022-12-19 08:51:58] ERROR    BIST:ERROR 0x52108ed4 XOR=0x00000008
   * single bit
@@ -416,17 +414,77 @@ Did not start, no errors
   * [2022-12-20 06:39:48] INFO     BIST:Header
 
 
-## [DDR_ddr_11_28_December_20_2022__08_05_40_LOG.log]
+### [DDR_ddr_11_28_December_20_2022__08_05_40_LOG.log](tmp/DDR_ddr_11_28_December_20_2022__08_05_40_LOG.log)
 
 * [2022-12-20 11:34:24] ERROR    BIST:ERROR 0x40002100 XOR=0x80808080
   * [2022-12-20 11:36:05] INFO     BIST:Header
 
-## [DDR_ddr_11_28_December_20_2022__17_48_02_LOG.log]
+### [DDR_ddr_11_28_December_20_2022__17_48_02_LOG.log](tmp/DDR_ddr_11_28_December_20_2022__17_48_02_LOG.log)
 
 * [2022-12-20 17:52:29] ERROR    BIST:ERROR 0x40001900 XOR=0x01000101
   * [2022-12-20 17:54:06] INFO     BIST:Header
 
+## Error Types
+
+### DDR Burst Error
+
+This error involves a burst of errors at consecutive addresses.
+At some point the error goes away (repaired?). There is no writing of data so how this repair occurs is unclear. Perhaps the internal controller is upset and gets repaired and next time around everything is ok.
+In some cases we get a burst followed by a short "repair" and then another burst. Need to look at these to see patterns and recover.
+
+* Need to analyze these errors to measure the range of the errors and see what boundaries these errors fall in (i.e., do they fall in a row/column or bank?)
+* Future: check to see if it recovers. If not, need to do a write to try and recover actively.
+* Future: Don't print out so many messages when there is an error. Wait until it recovers or when it times out
+
+### DDR Single Error
+
+A single bit is upset. The error goes away but there is no writing. Is this an "in-flight" error on the DDR?
+* Future: need to "repair" upsets if we see them at the same address more than once.
+
+## Future Test
+
+* See if burst error recovers and print out addresses
+* Qusetions for Tyler
+  - How does this command work and differ from the others
+  - How is data being repaired or is it being repaired?
+  - How could the errors occur that we are seeing?
+  - Does our script do any repairing?
+
+-------------------------------------------------------------
 # DDR4 Test
+-------------------------------------------------------------
+
+We are using a 16 GB memory (see [wiki](https://github.com/byuccl/ddr_rowhammer/wiki/AntMicro-DataCenter-Board) for more details).
+The Litex system is using 32-bit addresses which only allows for 4 GB address space.
+The BIST core can address the full 16 GB of memory but the processor cannot.
+The memory is assigned to address 0x4000_0000 and only maps 0x4000_0000 (2^30 or 1 GB) of the address space (i.e., 0x4000_0000 to 0x7FFF_FFFF) to the processor (i.e., 1/16th of the memory).
+
+
+
+**Fix below** 
+
+For this board, there is a 64-bit (8 byte) data interface for each clock edge.
+For a clock cycle running Double data rate, you have 128-bits (16 bytes) transferred each clock cycle ().
+The DDR is running at a clock 4x of the system clock.
+For every system clock, there are 8 bytes per clock edge x 2 clock edges per clock cycle x 4 DDR clocks per system clock = 64 bytes (512 bits) per transaction.
+
+The address space is 16 GB or 34 byte addressable address bits.
+
+From the controllers perspective, there are 28 address bits where each address represents one transaction or 64 bytes (2^28 x 2^6 = 2^34).
+The 28 address bits are organized as follows:
+*
+
+For the DIMM, there are 31 address bits where each DIMM address addresses 8 bytes (i.e., 64 bits).
+From the DIMM's perspective, the 32 address bits are organized as follows:
+* 
+
+**old from DDR3**
+The DDR controller organizes transactions as 16 bytes (2^4) (see below) so each addressable region of the memory from the BIST perspective is 2^(29-4) = 2^25 or 25 bits.
+These 25 bits are organized as follows:
+* The least significant seven bits are the column address ([6:0] for BIST or [10:4] for processor)
+* The next three bits are the bank address ([9:7] for BIST or [13:11] for processor)
+* The next 15 bits are the row address ([24:10] for BIST or [28:14] for processor)
+
 
 Why do some of the early logs not have UART output? Was this something that was changed?
 
@@ -442,7 +500,7 @@ No issues (no uart)
 
 No issues (no uart)
 
-## [DDR4_December_16_2022__20_36_46.log]
+## [DDR4_December_16_2022__20_36_46.log](tmp/DDR4_December_16_2022__20_36_46.log)
 
 
 Failure event at [2022-12-17 02:05:33]. 
@@ -467,11 +525,11 @@ Starting at iteration 31107 with address 0x7539a000 and going until address 0x75
 
 **Todo** There are likely more errors burried in this report. Need to write a script to find them (i.e., first time an error occurs print it and then ignore it from then out)
 
-## [DDR4_December_17_2022__08_11_11.log]
+## [DDR4_December_17_2022__08_11_11.log](tmp/DDR4_December_17_2022__08_11_11.log)
 
 No errors
 
-## [DDR4_December_17_2022__13_29_09.log]
+## [DDR4_December_17_2022__13_29_09.log](tmp/DDR4_December_17_2022__13_29_09.log)
 
 An error - need to write script to filter out and find all new errors.
 
@@ -482,11 +540,13 @@ An error - need to write script to filter out and find all new errors.
 [2022-12-17 14:13:44] INFO       expected = 0xa5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5
 
 
-## [DDR4_December_17_2022__15_22_27.log]
+## [DDR4_December_17_2022__15_22_27.log](tmp/DDR4_December_17_2022__15_22_27.log)
 
 No errors
 
-## [DDR4_December_17_2022__16_02_59_LOG.log]
+## [DDR4_December_17_2022__16_02_59_LOG.log](tmp/DDR4_December_17_2022__16_02_59_LOG.log)
+
+**TEST CHANGED**
 
 At this point, switched over to the command line and logged the UART (there is a corresponding UART with each log file from this point on).
 Note that there are some odd control characters in the UART log.
@@ -494,36 +554,36 @@ It looks like there are a bunch of short runs at this point to debug the logging
 
 No Errors
 
-## [DDR4_December_17_2022__16_08_01_LOG.log]
+## [DDR4_December_17_2022__16_08_01_LOG.log](tmp/DDR4_December_17_2022__16_08_01_LOG.log)
 
 Short log, no errors
 
-## [DDR4_December_17_2022__16_10_17_LOG.log]
+## [DDR4_December_17_2022__16_10_17_LOG.log](tmp/DDR4_December_17_2022__16_10_17_LOG.log)
 
-## [DDR4_December_17_2022__16_15_33_LOG.log]
+## [DDR4_December_17_2022__16_15_33_LOG.log](tmp/DDR4_December_17_2022__16_15_33_LOG.log)
 
 First long overnight run.
 
 It is not clear that this new approach is checking the full memory space of the memory since it is using the processor interface and the smaller memory space.
 **TODO**: figure out how much of the memory space this test is actually testing.
 
-## [DDR4_December_18_2022__07_27_34_LOG.log]
+## [DDR4_December_18_2022__07_27_34_LOG.log](tmp/DDR4_December_18_2022__07_27_34_LOG.log)
 
 Short empty debug run. It looks like there are a bunch of debug runs at this point.
 
-## [DDR4_December_18_2022__07_28_50_LOG.log]
+## [DDR4_December_18_2022__07_28_50_LOG.log](tmp/DDR4_December_18_2022__07_28_50_LOG.log)
 
 short debug run
 
-## [DDR4_December_18_2022__07_33_18_LOG.log]
+## [DDR4_December_18_2022__07_33_18_LOG.log](tmp/DDR4_December_18_2022__07_33_18_LOG.log)
 
 short empty debug run
 
-## [DDR4_December_18_2022__07_36_30_LOG.log]
+## [DDR4_December_18_2022__07_36_30_LOG.log](tmp/DDR4_December_18_2022__07_36_30_LOG.log)
 
 short empty debug run
 
-## [DDR4_December_18_2022__07_37_35_LOG.log]
+## [DDR4_December_18_2022__07_37_35_LOG.log](tmp/DDR4_December_18_2022__07_37_35_LOG.log)
 
 short empty debug run
 
@@ -543,7 +603,7 @@ No errors
 
 Runt run, no data
 
-## [DDR4_December_18_2022__17_28_27_LOG.log]
+## [DDR4_December_18_2022__17_28_27_LOG.log](tmp/DDR4_December_18_2022__17_28_27_LOG.log)
 
 Overnight run. Some expect errors.
 **TODO**: figure out what happened here.
@@ -556,20 +616,20 @@ Short run, no errors
 
 No errors
 
-## [DDR4_December_19_2022__18_16_00_LOG.log]
+## [DDR4_December_19_2022__18_16_00_LOG.log](tmp/DDR4_December_19_2022__18_16_00_LOG.log)
 
 No errors
 Error detected at end? **TODO** look at UART
 
-## [DDR4_December_19_2022__19_54_23_LOG.log]
+## [DDR4_December_19_2022__19_54_23_LOG.log](tmp/DDR4_December_19_2022__19_54_23_LOG.log)
 
 Some memory errors detected. **TODO** Look into
 
-## [DDR4_December_20_2022__08_05_48_LOG.log]
+## [DDR4_December_20_2022__08_05_48_LOG.log](tmp/DDR4_December_20_2022__08_05_48_LOG.log)
 
 No errors
 
-## [DDR4_December_20_2022__17_48_09_LOG.log]
+## [DDR4_December_20_2022__17_48_09_LOG.log](tmp/DDR4_December_20_2022__17_48_09_LOG.log)
 
 No errors
 
