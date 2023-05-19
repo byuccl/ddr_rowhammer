@@ -1,29 +1,71 @@
-[submodule "beam-test/soc/dependencies/litex"]
-	path = beam-test/soc/dependencies/litex
-	url = https://github.com/TommyCox/litex.git
-	branch = beam-test
-[submodule "beam-test/soc/dependencies/litedram"]
-	path = beam-test/soc/dependencies/litedram
-	url = https://github.com/TommyCox/litedram.git
-	branch = beam-test
 [submodule "beam-test/soc/dependencies/litex-boards"]
 	path = beam-test/soc/dependencies/litex-boards
-	url = https://github.com/litex-hub/litex-boards.git
+	url = https://github.com/tr-rocks/litex-boards
+[submodule "beam-test/soc/dependencies/litex"]
+	path = beam-test/soc/dependencies/litex
+	url = https://github.com/byuccl/litex
+	branch = beam-test-updated-bist
 [submodule "beam-test/soc/dependencies/liteeth"]
 	path = beam-test/soc/dependencies/liteeth
-	url = https://github.com/enjoy-digital/liteeth.git
+	url = https://github.com/enjoy-digital/liteeth
 [submodule "beam-test/soc/dependencies/liteiclink"]
 	path = beam-test/soc/dependencies/liteiclink
-	url = https://github.com/enjoy-digital/liteiclink.git
+	url = https://github.com/enjoy-digital/liteiclink
+[submodule "beam-test/soc/dependencies/litejesd204b"]
+	path = beam-test/soc/dependencies/litejesd204b
+	url = https://github.com/enjoy-digital/litejesd204b
+[submodule "beam-test/soc/dependencies/litepcie"]
+	path = beam-test/soc/dependencies/litepcie
+	url = https://github.com/enjoy-digital/litepcie
+[submodule "beam-test/soc/dependencies/litesata"]
+	path = beam-test/soc/dependencies/litesata
+	url = https://github.com/enjoy-digital/litesata
+[submodule "beam-test/soc/dependencies/litescope"]
+	path = beam-test/soc/dependencies/litescope
+	url = https://github.com/enjoy-digital/litescope
+[submodule "beam-test/soc/dependencies/litesdcard"]
+	path = beam-test/soc/dependencies/litesdcard
+	url = https://github.com/enjoy-digital/litesdcard
+[submodule "beam-test/soc/dependencies/litespi"]
+	path = beam-test/soc/dependencies/litespi
+	url = https://github.com/litex-hub/litespi
+[submodule "beam-test/soc/dependencies/litedram"]
+	path = beam-test/soc/dependencies/litedram
+	url = https://github.com/byuccl/litedram
+	branch = beam-test-updated-bist
+[submodule "beam-test/soc/dependencies/migen"]
+	path = beam-test/soc/dependencies/migen
+	url = https://github.com/m-labs/migen
+[submodule "beam-test/soc/dependencies/openocd"]
+	path = beam-test/soc/dependencies/openocd
+	url = https://github.com/ntfreak/openocd.git
+[submodule "beam-test/soc/dependencies/pythondata-cpu-lm32"]
+	path = beam-test/soc/dependencies/pythondata-cpu-lm32
+	url = https://github.com/litex-hub/pythondata-cpu-lm32
+[submodule "beam-test/soc/dependencies/pythondata-cpu-mor1kx"]
+	path = beam-test/soc/dependencies/pythondata-cpu-mor1kx
+	url = https://github.com/litex-hub/pythondata-cpu-mor1kx
+[submodule "beam-test/soc/dependencies/pythondata-cpu-naxriscv"]
+	path = beam-test/soc/dependencies/pythondata-cpu-naxriscv
+	url = https://github.com/litex-hub/pythondata-cpu-naxriscv
+[submodule "beam-test/soc/dependencies/pythondata-cpu-serv"]
+	path = beam-test/soc/dependencies/pythondata-cpu-serv
+	url = https://github.com/litex-hub/pythondata-cpu-serv
 [submodule "beam-test/soc/dependencies/pythondata-cpu-vexriscv"]
 	path = beam-test/soc/dependencies/pythondata-cpu-vexriscv
-	url = https://github.com/litex-hub/pythondata-cpu-vexriscv.git
-[submodule "beam-test/soc/dependencies/pythondata-software-picolibc"]
-	path = beam-test/soc/dependencies/pythondata-software-picolibc
-	url = https://github.com/litex-hub/pythondata-software-picolibc
+	url = https://github.com/litex-hub/pythondata-cpu-vexriscv
+[submodule "beam-test/soc/dependencies/pythondata-cpu-vexriscv-smp"]
+	path = beam-test/soc/dependencies/pythondata-cpu-vexriscv-smp
+	url = https://github.com/litex-hub/pythondata-cpu-vexriscv-smp
+[submodule "beam-test/soc/dependencies/pythondata-misc-tapcfg"]
+	path = beam-test/soc/dependencies/pythondata-misc-tapcfg
+	url = https://github.com/litex-hub/pythondata-misc-tapcfg
+[submodule "beam-test/soc/dependencies/pythondata-misc-usb_ohci"]
+	path = beam-test/soc/dependencies/pythondata-misc-usb_ohci
+	url = https://github.com/litex-hub/pythondata-misc-usb_ohci
 [submodule "beam-test/soc/dependencies/pythondata-software-compiler_rt"]
 	path = beam-test/soc/dependencies/pythondata-software-compiler_rt
 	url = https://github.com/litex-hub/pythondata-software-compiler_rt
-[submodule "beam-test/soc/dependencies/migen"]
-	path = beam-test/soc/dependencies/migen
-	url = https://github.com/m-labs/migen.git
+[submodule "beam-test/soc/dependencies/pythondata-software-picolibc"]
+	path = beam-test/soc/dependencies/pythondata-software-picolibc
+	url = https://github.com/litex-hub/pythondata-software-picolibc
