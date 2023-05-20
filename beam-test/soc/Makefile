@@ -48,7 +48,7 @@ $(RISCV_TOOLCHAIN):
 	@echo ------------------------------------------
 	@echo Downloading and extracting RISCV Toolchain
 	@echo ------------------------------------------
-	apt install gcc-riscv64-linux-gnu
+	sudo apt install gcc-riscv64-linux-gnu
 	@echo
 	@echo -------------------DONE-------------------
 
