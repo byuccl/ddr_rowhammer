@@ -99,5 +99,5 @@ load: | env.sh
 	@echo Loading Design
 	@echo ------------------------------------------
 	. ./env.sh; \
-	python $(PYTHON_FLAGS) $(BUILD_TARGET) --load
+	python $(PYTHON_FLAGS) ./dependencies/litex-boards/litex_boards/targets/$(BUILD_TARGET) --load
 	@echo -------------------DONE-------------------
