@@ -1,6 +1,3 @@
-[submodule "beam-test/soc/dependencies/litex-boards"]
-	path = beam-test/soc/dependencies/litex-boards
-	url = https://github.com/tr-rocks/litex-boards
 [submodule "beam-test/soc/dependencies/liteeth"]
 	path = beam-test/soc/dependencies/liteeth
 	url = https://github.com/enjoy-digital/liteeth
@@ -67,3 +64,6 @@
 [submodule "beam-test/soc/dependencies/litedram"]
 	path = beam-test/soc/dependencies/litedram
 	url = https://github.com/byuccl/litedram
+[submodule "beam-test/soc/dependencies/litex-boards"]
+	path = beam-test/soc/dependencies/litex-boards
+	url = https://github.com/tr-rocks/litex-boards
