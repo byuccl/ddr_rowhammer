@@ -63,7 +63,7 @@ env.sh: $(PYTHON_VENV) $(RISCV_TOOLCHAIN)
 	@echo ------------------------------------------
 	echo 'alias source=. # So vivado and make work together.' > ./env.sh
 	echo '. $(PYTHON_VENV)/bin/activate' >> ./env.sh
-	echo ". /tools/Xilinx/Vivado/$(VIVADO_VERSION)/settings64.sh" >> ./env.sh
+	echo ". $(VIVADO_LOCATION)/$(VIVADO_VERSION)/settings64.sh" >> ./env.sh
 	@echo -------------------DONE-------------------
 
 env: env.sh
