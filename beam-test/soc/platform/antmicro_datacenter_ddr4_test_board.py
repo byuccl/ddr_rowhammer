@@ -59,18 +59,18 @@ _io = [
                 "AC16 AC17 AB16 AA19 AB15 AD16 AC18 AC19",
                 "AF17 AE17 AF20 AD19 AE15 AE16 AF19 AD18",
                 "Y18  Y17  W14  V14  AA20 AA15 V18  W16",
-                "AA18 AB19 V16  W15  AB17 AA17 V19  V17",
-                "AF3  AE5  AD6  AC6  AF2  AE3  AE6  AD5"), # ECC pins
+                "AA18 AB19 V16  W15  AB17 AA17 V19  V17"),
+                # "AF3  AE5  AD6  AC6  AF2  AE3  AE6  AD5"), # ECC pins
             IOStandard("SSTL12_T_DCI")),
         Subsignal("dqs_p",   Pins(
                 "W10  B17 W6   D19 AB1 L19 AA5 J15",
-                "AD20 T24 AE18 P19 W18 R16 Y15 M25",
-                "AF5  AC8"),
+                "AD20 T24 AE18 P19 W18 R16 Y15 M25"), 
+                # "AF5  AC8"), # ECC pins
             IOStandard("DIFF_HSUL_12")),
         Subsignal("dqs_n",   Pins(
                 "W9   A17 W5   D20 AC1 L20 AB5 J16",
-                "AE20 T25 AF18 P20 W19 R17 Y16 L25",
-                "AF4  AD8"),
+                "AE20 T25 AF18 P20 W19 R17 Y16 L25"),
+                # "AF4  AD8"), # ECC pins
             IOStandard("DIFF_HSUL_12")),
         Subsignal("clk_p",   Pins("AE12"), IOStandard("DIFF_SSTL12_DCI")),
         Subsignal("clk_n",   Pins("AF12"), IOStandard("DIFF_SSTL12_DCI")),

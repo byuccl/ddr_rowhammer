@@ -109,6 +109,7 @@ class BaseSoC(SoCCore):
                 is_rdimm         = True,
             )
             self.add_sdram("sdram",
+                with_bist               = True,
                 phy                     = self.ddrphy,
                 module                  = MTA18ASF2G72PZ(sys_clk_freq, "1:4"),
                 l2_cache_size           = kwargs.get("l2_size", 8192),
