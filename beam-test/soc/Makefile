@@ -109,3 +109,7 @@ load: | env.sh
 	. ./env.sh; \
 	python $(PYTHON_FLAGS) ./dependencies/litex-boards/litex_boards/targets/$(BUILD_TARGET) --load
 	@echo -------------------DONE-------------------
+
+clean:
+	rm -r .pyenv && rm -r linux-on-litex-vexriscv/build
+	git submodule deinit -f dependencies
