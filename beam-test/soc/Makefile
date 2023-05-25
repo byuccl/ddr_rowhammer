@@ -75,12 +75,21 @@ $(PYTHON_VENV)/dependencies_installed.txt: | env.sh
 	@echo ------------------------------------------
 	@echo Installing build dependnecies.
 	@echo ------------------------------------------
+	git submodule update --init linux-on-litex-vexriscv
 	git submodule update --init --recursive dependencies
 	. ./env.sh && pip install -r ./requirements.txt
 	@echo Installed dependencies on $$(date). > $(PYTHON_VENV)/dependencies_installed.txt
 	@echo -------------------DONE-------------------
 
-deps: $(PYTHON_VENV)/dependencies_installed.txt
+# -------------------------------------- #
+
+move_target_platform:
+	cd dependencies/litex-boards/litex_boards/targets/ && rm antmicro_datacenter_ddr4_test_board.py
+	cd dependencies/litex-boards/litex_boards/platforms/ && rm antmicro_datacenter_ddr4_test_board.py
+	cp ./target/antmicro_datacenter_ddr4_test_board.py dependencies/litex-boards/litex_boards/targets/
+	cp ./platform/antmicro_datacenter_ddr4_test_board.py dependencies/litex-boards/litex_boards/platforms/
+
+deps: $(PYTHON_VENV)/dependencies_installed.txt move_target_platform
 
 # -------------------------------------- #
 
