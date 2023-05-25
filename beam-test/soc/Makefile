@@ -112,3 +112,6 @@ load: | env.sh
 	cd linux-on-litex-vexriscv && ./make.py --board datacenter --load
 	# python $(PYTHON_FLAGS) ./dependencies/litex-boards/litex_boards/targets/$(BUILD_TARGET) --load 
 	@echo -------------------DONE-------------------
+
+clean:
+	rm -r .pyenv && rm linux-on-litex-vexriscv/build
