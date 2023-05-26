@@ -48,7 +48,8 @@ $(RISCV_TOOLCHAIN):
 	@echo ------------------------------------------
 	@echo Downloading and extracting RISCV Toolchain
 	@echo ------------------------------------------
-	sudo apt install gcc-riscv64-linux-gnu
+	curl -fSL# https://static.dev.sifive.com/dev-tools/freedom-tools/v2020.08/$(RISCV_TOOLCHAIN).tar.gz > $(RISCV_TOOLCHAIN).tar.gz
+	tar -xzf $(RISCV_TOOLCHAIN).tar.gz --checkpoint=.10000
 	@echo
 	@echo -------------------DONE-------------------
 
@@ -64,6 +65,7 @@ env.sh: $(PYTHON_VENV) $(RISCV_TOOLCHAIN)
 	echo 'alias source=. # So vivado and make work together.' > ./env.sh
 	echo '. $(PYTHON_VENV)/bin/activate' >> ./env.sh
 	echo ". $(VIVADO_LOCATION)/$(VIVADO_VERSION)/settings64.sh" >> ./env.sh
+	echo 'export PATH="$$PATH:$$(pwd)/$(RISCV_TOOLCHAIN)/bin"' >> ./env.sh
 	@echo -------------------DONE-------------------
 
 env: env.sh
