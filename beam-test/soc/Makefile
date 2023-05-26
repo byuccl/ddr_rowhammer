@@ -111,5 +111,6 @@ load: | env.sh
 	@echo -------------------DONE-------------------
 
 clean:
-	rm -r .pyenv && rm -r build
 	git submodule deinit -f dependencies
+	rm -r .pyenv && rm -r build
+	
