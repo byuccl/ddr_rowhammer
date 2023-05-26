@@ -459,10 +459,6 @@ The Litex system is using 32-bit addresses which only allows for 4 GB address sp
 The BIST core can address the full 16 GB of memory but the processor cannot.
 The memory is assigned to address 0x4000_0000 and only maps 0x4000_0000 (2^30 or 1 GB) of the address space (i.e., 0x4000_0000 to 0x7FFF_FFFF) to the processor (i.e., 1/16th of the memory).
 
-
-
-**Fix below** 
-
 For this board, there is a 64-bit (8 byte) data interface for each clock edge.
 For a clock cycle running Double data rate, you have 128-bits (16 bytes) transferred each clock cycle ().
 The DDR is running at a clock 4x of the system clock.
@@ -472,38 +468,34 @@ The address space is 16 GB or 34 byte addressable address bits.
 
 From the controllers perspective, there are 28 address bits where each address represents one transaction or 64 bytes (2^28 x 2^6 = 2^34).
 The 28 address bits are organized as follows:
-*
+* Least significant 17 bits are for the row address: [16:0]
+* Next four addresses are for the bank address: [20:17]
+* Top 7 bits are for the column address: [27:21]
 
 For the DIMM, there are 31 address bits where each DIMM address addresses 8 bytes (i.e., 64 bits).
 From the DIMM's perspective, the 32 address bits are organized as follows:
 * 
 
-**old from DDR3**
-The DDR controller organizes transactions as 16 bytes (2^4) (see below) so each addressable region of the memory from the BIST perspective is 2^(29-4) = 2^25 or 25 bits.
-These 25 bits are organized as follows:
-* The least significant seven bits are the column address ([6:0] for BIST or [10:4] for processor)
-* The next three bits are the bank address ([9:7] for BIST or [13:11] for processor)
-* The next 15 bits are the row address ([24:10] for BIST or [28:14] for processor)
-
-
 Why do some of the early logs not have UART output? Was this something that was changed?
 
-## [DDR4_December_16__15_54_15.log]
+## Test Logs
+
+### [DDR4_December_16__15_54_15.log]
 
 No issues (no uart)
 
-## [DDR4_December_16_2022__15_56_27.log]
+### [DDR4_December_16_2022__15_56_27.log]
 
 No issues (no uart)
 
-## [DDR4_December_16_2022__16_11_59.log]
+### [DDR4_December_16_2022__16_11_59.log]
 
 No issues (no uart)
 
-## [DDR4_December_16_2022__20_36_46.log](tmp/DDR4_December_16_2022__20_36_46.log)
+### [DDR4_December_16_2022__20_36_46.log](tmp/DDR4_December_16_2022__20_36_46.log)
 
 
-Failure event at [2022-12-17 02:05:33]. 
+Failure event at [2022-12-17 02:05:33](tmp/DDR4_December_16_2022__20_36_46.log#L24428). 
 Nothing is repaired and the logs print out errors until experiment is restarted. 
 It looks like this is a single bit upset that was not repaired and thus the errors persist every cycle.
 Error occured at address 0x7693c780 (which chip?).
@@ -513,7 +505,7 @@ Error occured at address 0x7693c780 (which chip?).
 [2022-12-17 02:05:33] INFO       data     = 0xa5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a525a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5
 [2022-12-17 02:05:33] INFO       expected = 0xa5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5
 
-In the midst of all this noise there appeared to be another failure.
+In the midst of all this noise there appeared to be another failure@[03:36:14](tmp/DDR4_December_16_2022__20_36_46.log#L57899).
 Unlike the previous error that just repeated once every iteration, this one appers to have lots of errors in a single iteration.
 Starting at iteration 31107 with address 0x7539a000 and going until address 0x753fbfc0
 
@@ -523,15 +515,13 @@ Starting at iteration 31107 with address 0x7539a000 and going until address 0x75
 [2022-12-17 03:36:46] INFO       data     = 0xa5a5a5a5a5aea5a5a5a5a5a5a5afa5a5a5a5a5a5a5afa5a5a5a5a5a5a5afa5a5a5a5a5a5a5afa5a5a5a5a5a5a5afa5a5a5a5a5a5a5afa5a5a5a5a5a5a5afa5a5
 [2022-12-17 03:36:46] INFO       expected = 0xa5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5
 
-**Todo** There are likely more errors burried in this report. Need to write a script to find them (i.e., first time an error occurs print it and then ignore it from then out)
-
-## [DDR4_December_17_2022__08_11_11.log](tmp/DDR4_December_17_2022__08_11_11.log)
+### [DDR4_December_17_2022__08_11_11.log](tmp/DDR4_December_17_2022__08_11_11.log)
 
 No errors
 
-## [DDR4_December_17_2022__13_29_09.log](tmp/DDR4_December_17_2022__13_29_09.log)
+### [DDR4_December_17_2022__13_29_09.log](tmp/DDR4_December_17_2022__13_29_09.log)
 
-An error - need to write script to filter out and find all new errors.
+An error@[14:13:43](tmp/DDR4_December_17_2022__13_29_09.log#L3318) - need to write script to filter out and find all new errors.
 
 [2022-12-17 14:13:43] INFO     Iteration 3304 (0 errors)
 [2022-12-17 14:13:44] INFO     !!! Failed pattern: a5a5a5a5 !!!
@@ -540,99 +530,109 @@ An error - need to write script to filter out and find all new errors.
 [2022-12-17 14:13:44] INFO       expected = 0xa5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5
 
 
-## [DDR4_December_17_2022__15_22_27.log](tmp/DDR4_December_17_2022__15_22_27.log)
+### [DDR4_December_17_2022__15_22_27.log](tmp/DDR4_December_17_2022__15_22_27.log)
 
 No errors
 
-## [DDR4_December_17_2022__16_02_59_LOG.log](tmp/DDR4_December_17_2022__16_02_59_LOG.log)
+### [DDR4_December_17_2022__16_02_59_LOG.log](tmp/DDR4_December_17_2022__16_02_59_LOG.log) - [uart](tmp/DDR4_December_17_2022__16_02_59_UART.log)
 
 **TEST CHANGED**
 
 At this point, switched over to the command line and logged the UART (there is a corresponding UART with each log file from this point on).
-Note that there are some odd control characters in the UART log.
+**Note** that there are some odd control characters in the UART log.
 It looks like there are a bunch of short runs at this point to debug the logging.
 
 No Errors
 
-## [DDR4_December_17_2022__16_08_01_LOG.log](tmp/DDR4_December_17_2022__16_08_01_LOG.log)
+### [DDR4_December_17_2022__16_08_01_LOG.log](tmp/DDR4_December_17_2022__16_08_01_LOG.log)
 
 Short log, no errors
 
-## [DDR4_December_17_2022__16_10_17_LOG.log](tmp/DDR4_December_17_2022__16_10_17_LOG.log)
+### [DDR4_December_17_2022__16_10_17_LOG.log](tmp/DDR4_December_17_2022__16_10_17_LOG.log)
 
-## [DDR4_December_17_2022__16_15_33_LOG.log](tmp/DDR4_December_17_2022__16_15_33_LOG.log)
+### [DDR4_December_17_2022__16_15_33_LOG.log](tmp/DDR4_December_17_2022__16_15_33_LOG.log)
 
 First long overnight run.
 
 It is not clear that this new approach is checking the full memory space of the memory since it is using the processor interface and the smaller memory space.
 **TODO**: figure out how much of the memory space this test is actually testing.
 
-## [DDR4_December_18_2022__07_27_34_LOG.log](tmp/DDR4_December_18_2022__07_27_34_LOG.log)
+### [DDR4_December_18_2022__07_27_34_LOG.log](tmp/DDR4_December_18_2022__07_27_34_LOG.log)
 
 Short empty debug run. It looks like there are a bunch of debug runs at this point.
 
-## [DDR4_December_18_2022__07_28_50_LOG.log](tmp/DDR4_December_18_2022__07_28_50_LOG.log)
+### [DDR4_December_18_2022__07_28_50_LOG.log](tmp/DDR4_December_18_2022__07_28_50_LOG.log)
 
 short debug run
 
-## [DDR4_December_18_2022__07_33_18_LOG.log](tmp/DDR4_December_18_2022__07_33_18_LOG.log)
+### [DDR4_December_18_2022__07_33_18_LOG.log](tmp/DDR4_December_18_2022__07_33_18_LOG.log)
 
 short empty debug run
 
-## [DDR4_December_18_2022__07_36_30_LOG.log](tmp/DDR4_December_18_2022__07_36_30_LOG.log)
+### [DDR4_December_18_2022__07_36_30_LOG.log](tmp/DDR4_December_18_2022__07_36_30_LOG.log)
 
 short empty debug run
 
-## [DDR4_December_18_2022__07_37_35_LOG.log](tmp/DDR4_December_18_2022__07_37_35_LOG.log)
+### [DDR4_December_18_2022__07_37_35_LOG.log](tmp/DDR4_December_18_2022__07_37_35_LOG.log)
 
 short empty debug run
 
-## [DDR4_December_18_2022__07_43_15_LOG.log]
+### [DDR4_December_18_2022__07_43_15_LOG.log](tmp/DDR4_December_18_2022__07_43_15_LOG.log)
 
 short empty debug run
 
-## [DDR4_December_18_2022__07_46_07_LOG.log]
+### [DDR4_December_18_2022__07_46_07_LOG.log](tmp/DDR4_December_18_2022__07_46_07_LOG.log)
 
 Longer run but no errors.
 
-## [DDR4_December_18_2022__10_49_29_LOG.log]
+### [DDR4_December_18_2022__10_49_29_LOG.log](temp/DDR4_December_18_2022__10_49_29_LOG.log)
 
 No errors
 
-## [DDR4_December_18_2022__17_24_45_LOG.log]
+### [DDR4_December_18_2022__17_24_45_LOG.log](tmp/DDR4_December_18_2022__17_24_45_LOG.log)
 
 Runt run, no data
 
-## [DDR4_December_18_2022__17_28_27_LOG.log](tmp/DDR4_December_18_2022__17_28_27_LOG.log)
+### [DDR4_December_18_2022__17_28_27_LOG.log](tmp/DDR4_December_18_2022__17_28_27_LOG.log)
 
-Overnight run. Some expect errors.
-**TODO**: figure out what happened here.
+EXPECT errors@[00:45:40](tmp/DDR4_December_18_2022__17_28_27_LOG.log#L881) - [uart](tmp/DDR4_December_18_2022__17_28_27_UART.log)
 
-## [DDR4_December_19_2022__07_57_23_LOG.log]
+There is a EXPECT error every time there is a memory difference since the script is not setup to detect these.
+Need to write script to extract these errors.
+
+### [DDR4_December_19_2022__07_57_23_LOG.log](tmp/DDR4_December_19_2022__07_57_23_LOG.log)
 
 Short run, no errors
 
-## [DDR4_December_19_2022__09_37_41_LOG.log]
+### [DDR4_December_19_2022__09_37_41_LOG.log](tmp/DDR4_December_19_2022__09_37_41_LOG.log)
 
 No errors
 
-## [DDR4_December_19_2022__18_16_00_LOG.log](tmp/DDR4_December_19_2022__18_16_00_LOG.log)
-
-No errors
-Error detected at end? **TODO** look at UART
-
-## [DDR4_December_19_2022__19_54_23_LOG.log](tmp/DDR4_December_19_2022__19_54_23_LOG.log)
-
-Some memory errors detected. **TODO** Look into
-
-## [DDR4_December_20_2022__08_05_48_LOG.log](tmp/DDR4_December_20_2022__08_05_48_LOG.log)
+### [DDR4_December_19_2022__18_16_00_LOG.log](tmp/DDR4_December_19_2022__18_16_00_LOG.log)
 
 No errors
 
-## [DDR4_December_20_2022__17_48_09_LOG.log](tmp/DDR4_December_20_2022__17_48_09_LOG.log)
+### [DDR4_December_19_2022__19_54_23_LOG.log](tmp/DDR4_December_19_2022__19_54_23_LOG.log)
+
+Memory error@[22:40:05](tmp/DDR4_December_19_2022__19_54_23_LOG.log#L1531) - [uart](tmp/DDR4_December_19_2022__19_54_23_UART.log#L141830)
+
+
+### [DDR4_December_20_2022__08_05_48_LOG.log](tmp/DDR4_December_20_2022__08_05_48_LOG.log)
 
 No errors
 
+### [DDR4_December_20_2022__17_48_09_LOG.log](tmp/DDR4_December_20_2022__17_48_09_LOG.log)
+
+No errors
+
+## Test followup
+
+* Need to write scripts to find all errors in first phase of testing (first time a bit fails)
+* Need to write scripts to find all errors in second phase of testing (EXPECT errors and mem_mcp)
+
+Test Changes
+* Need to fix any errors to remove the continious error messages
+* It would be nice to have a 64 bit word to write insteaad of a byte so we can see which bit is affected
 
 # Error Signatures
 
