@@ -111,5 +111,5 @@ load: | env.sh
 	@echo -------------------DONE-------------------
 
 clean:
-	rm -r .pyenv && rm -r linux-on-litex-vexriscv/build
+	rm -r .pyenv && rm -r build
 	git submodule deinit -f dependencies
