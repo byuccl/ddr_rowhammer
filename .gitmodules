@@ -58,12 +58,12 @@
 [submodule "beam-test/soc/dependencies/pythondata-software-picolibc"]
 	path = beam-test/soc/dependencies/pythondata-software-picolibc
 	url = https://github.com/litex-hub/pythondata-software-picolibc
-[submodule "beam-test/soc/dependencies/litedram"]
-	path = beam-test/soc/dependencies/litedram
-	url = https://github.com/byuccl/litedram
 [submodule "beam-test/soc/dependencies/litex"]
 	path = beam-test/soc/dependencies/litex
 	url = https://github.com/byuccl/litex
 [submodule "beam-test/soc/dependencies/litex-boards"]
 	path = beam-test/soc/dependencies/litex-boards
 	url = https://github.com/litex-hub/litex-boards
+[submodule "beam-test/soc/dependencies/litedram"]
+	path = beam-test/soc/dependencies/litedram
+	url = https://github.com/byuccl/litedram
