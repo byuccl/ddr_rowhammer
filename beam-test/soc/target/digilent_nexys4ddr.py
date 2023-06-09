@@ -141,7 +141,7 @@ def main():
     if args.load:
         prog = soc.platform.create_programmer()
         prog.load_bitstream(builder.get_bitstream_filename(mode="sram"))
-        prog.flash(0, os.path.join(builder.gateware_dir, "digilent_nexys4ddr.bin"))
+        # prog.flash(0, os.path.join(builder.gateware_dir, "digilent_nexys4ddr.bin"))
 
 
 if __name__ == "__main__":
