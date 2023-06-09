@@ -85,8 +85,16 @@ $(PYTHON_VENV)/dependencies_installed.txt: | env.sh
 move_target_platform:
 	cd dependencies/litex-boards/litex_boards/targets/ && rm antmicro_datacenter_ddr4_test_board.py
 	cd dependencies/litex-boards/litex_boards/platforms/ && rm antmicro_datacenter_ddr4_test_board.py
+	cd dependencies/litex-boards/litex_boards/targets/ && rm digilent_nexys4ddr.py
+	cd dependencies/litex-boards/litex_boards/platforms/ && rm digilent_nexys4ddr.py
+	cd dependencies/litex-boards/litex_boards/targets/ && rm digilent_nexys_video.py
+	cd dependencies/litex-boards/litex_boards/platforms/ && rm digilent_nexys_video.py
 	cp ./target/antmicro_datacenter_ddr4_test_board.py dependencies/litex-boards/litex_boards/targets/
 	cp ./platform/antmicro_datacenter_ddr4_test_board.py dependencies/litex-boards/litex_boards/platforms/
+	cp ./target/digilent_nexys4ddr.py dependencies/litex-boards/litex_boards/targets/
+	cp ./platform/digilent_nexys4ddr.py dependencies/litex-boards/litex_boards/platforms/
+	cp ./target/digilent_nexys_video.py dependencies/litex-boards/litex_boards/targets/
+	cp ./platform/digilent_nexys_video.py dependencies/litex-boards/litex_boards/platforms/
 
 deps: $(PYTHON_VENV)/dependencies_installed.txt move_target_platform
 
