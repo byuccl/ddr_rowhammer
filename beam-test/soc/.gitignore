@@ -5,3 +5,4 @@ env.sh
 riscv64-unknown-elf-gcc-10.1.0-2020.08.2-x86_64-linux-ubuntu14*
 csr.csv
 *.pyc
+*.log

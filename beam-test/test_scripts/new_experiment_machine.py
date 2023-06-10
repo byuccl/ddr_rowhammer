@@ -10,24 +10,6 @@ import logging
 # Classes
 # -------------------------------------- #
 
-class Transition():
-    """Explicity stores a state transition.
-    
-    Parameters:
-        condition (function): A function taking two objects as parameters (NewExperiment, ExperimentState) and returning a Boolean.
-            This function will be called with the parent experiment and state objects do determine if the experiment should
-            transition to the associated state. Experiment and state objects are passed so that member variables can be
-            tested. Ideally, this function can be declared as a lambda in the initializer, but an existing function can
-            be passed instead if Mealy outputs are desired.
-        state_name (str): The name of the state to transition to if the condition is satisfied.
-    """
-    def __init__(self, condition: Callable, state_name: str) -> None:
-        self.__test_condition = condition
-        self.target_state = state_name
-
-    def satisfied(self, experiment, state) -> bool:
-        return self.__test_condition(experiment, state) == True
-
 class ExperimentState():
     """Represents an experiment state.
     
@@ -38,38 +20,16 @@ class ExperimentState():
                 The parent experiment object.
                 This state object.
             These allow access to experiment-level and state-level variables.
-        transitions (Transition): Some number of transition objects must follow the actions.
-            Transitions will be checked in the order provided.
-            The first transition satisfied (returning True) will be used.
-            Subsequent transitions will not be checked if a prior transition is satisfied.
     """
-    def __init__(self, name: str, actions: Callable, *args) -> None:
+    def __init__(self, name: str, actions: Callable) -> None:
         self.name = name
         self.__action_function = actions
-        self.__transition_table = args
-        assert len(self.__transition_table) > 0, "No transitions were specified."
 
-    def do_transitions(self, experiment) -> None:
-        """Sets the experiment's next state based on provided transitions.
-        
-        If none are matched, error will be thrown."""
-        # Check transition objects in order.
-        for transition in self.__transition_table:
-            # Check if conditions are satisfied.
-            if transition.satisfied(experiment, self):
-                # Set next state to transition target.
-                experiment.set_next_state(transition.target_state)
-                # Stop checking other conditions.
-                return
-        
-        # Throw an error if no transition conditions were matched.
-        assert False, f"No transition conditions were matched for state {self.name}."
-
-    def do_actions(self, experiment) -> None:
+    def do_actions(self, experiment) -> str:
         """Runs the state actions by calling the action function."""
-        self.__action_function(experiment, self)
+        return self.__action_function(experiment)
 
-class Experiment():
+class NewExperiment():
     def __init__(self, logging = None, single_step = False) -> None:
         # -------------------------------------- #
         # "Private" Member Variables
@@ -83,7 +43,7 @@ class Experiment():
         self.__states = dict()
 
         # Stores the name of the next state to run.
-        self.__next_state = ""
+        self.__next_state_name = ""
 
         # Logger for state transitions
         self._logging = logging
@@ -100,11 +60,12 @@ class Experiment():
         if self._single_step:
             input(f"Press enter to continue for state:{state_name}")
         self.__current_state = state_name
-        #if self._logging:
-        self._logging.info("STATE:"+state_name)
+        if self._logging:
+            self._logging.info("STATE:"+state_name)
         target_state = self.__states[state_name]
-        target_state.do_actions(self)
-        target_state.do_transitions(self)
+        result = target_state.do_actions(self)
+        #print("result state="+result)
+        return result
 
     # -------------------------------------- #
     # Public Methods
@@ -119,14 +80,13 @@ class Experiment():
         assert new_state.name not in self.__states.keys(), f"State '{new_state.name}' already exists."
         # Save the state in this experiment by it's name.
         self.__states[new_state.name] = new_state
-
+        # SEt the initial state if it has not been set yet
+        if not self.__next_state_name:
+            self.set_next_state(new_state.name)
+            
     def get_current_state(self) -> str:
         """Returns the name of the current state that is running."""
         return self.__current_state
-
-    def get_next_state(self) -> str:
-        """Returns the name of the next state that will be run."""
-        return self.__next_state
 
     def set_next_state(self, state_name: str) -> None:
         """This sets the next state that will be run.
@@ -137,7 +97,7 @@ class Experiment():
         # Throw an error if the target state doesn't exist in this experiment.
         assert state_name in self.__states.keys(), f"State '{state_name}' doesn't exist."
         # Save the name of the next state to execute.
-        self.__next_state = state_name
+        self.__next_state_name = state_name
 
     def start(self) -> None:
         """Starts/runs the experiment by executing the next state."""
@@ -145,8 +105,11 @@ class Experiment():
         self.__stop = False
         # Run while stop flag is not set.
         while not self.__stop:
-            self.__run_state(self.__next_state)
-    
+            #print("cur_state:"+self.__next_state_name)
+            next_state_str = self.__run_state(self.__next_state_name)
+            #print("next state="+next_state_str)
+            self.set_next_state(next_state_str)
+
     def stop(self) -> None:
         """Stops the experiment at the end of the current state."""
         self.__stop = True
@@ -167,16 +130,13 @@ if __name__ == "__main__":
     # -------------------------------------- #
 
     # Define some state actions.
-    def initial_actions(experiment, state):
+    def initial_actions(experiment):
         print("This is the initial state!")
         experiment.counter = 0
+        return "Increment State"
 
     # Create the state object.
-    initial_state = ExperimentState(
-        "Initial State",
-        initial_actions,
-        Transition(lambda ex, st: True, "Increment State")
-    )
+    initial_state = ExperimentState("Initial State",initial_actions)
 
     # Add state to experiment.
     experiment.add_state(initial_state)
@@ -184,26 +144,23 @@ if __name__ == "__main__":
     # -------------------------------------- #
     threshold = 5
 
-    def increment_actions(experiment, state):
+    def increment_actions(experiment):
         experiment.counter += 1
         print(f"Incremented Counter: {experiment.counter - 1} -> {experiment.counter}")
         # print("Now sleeping for 1 second.")
         sleep(1)
+        if experiment.counter >= threshold:
+            return "End State"
+        return "Increment State"
 
-    experiment.add_state(ExperimentState(
-        "Increment State",
-        increment_actions,
-        Transition(lambda ex, st: ex.counter >= threshold, "End State"),
-        Transition(lambda ex, st: True, "Increment State") # Comment this line out to get an error.
-    ))
+    experiment.add_state(ExperimentState("Increment State",increment_actions))
 
     # -------------------------------------- #
 
-    experiment.add_state(ExperimentState(
-        "End State",
-        lambda ex, st: ex.stop(),
-        Transition(lambda ex, st: True, "End State")
-    ))
+    def end_state_actions(ex):
+        ex.stop()
+        return "End State"
+    experiment.add_state(ExperimentState("End State",end_state_actions,))
 
     # -------------------------------------- #
     # Running the experiment.

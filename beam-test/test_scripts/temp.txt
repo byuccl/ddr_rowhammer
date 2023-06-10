@@ -1,0 +1,112 @@
+[2022-11-09 16:54:58] Changing JCM Clock. Old Rate=29411765 Request Rate=30000000 Actual rate=29411765
+[2022-11-09 16:54:58] Creating JCM Hardware on port 0 with 0 shifts
+[2022-11-09 16:54:58] Using Default Chain String: [ 6 ]
+[2022-11-09 16:54:58] **** Warning ****
+[2022-11-09 16:54:58]   Filename /root/newtobetmred_tmr.bit does not have a '.bin' extension. Only '.bin' files can be used for this configuration command
+[2022-11-09 16:54:58] Configuring with file: /root/newtobetmred_tmr.bit
+[2022-11-09 16:55:03] Configured Successfully
+[2022-11-09 16:55:03] JCM Scrubbing. Build Date Thu Jul 28 15:32:32 MDT 2022
+[2022-11-09 16:55:03] Execution time: Thu Aug  4 00:49:04 2022
+[2022-11-09 16:55:03] 
+[2022-11-09 16:55:03] Changing JCM Clock. Old Rate=29411765 Request Rate=30000000 Actual rate=29411765
+[2022-11-09 16:55:03] Creating JCM Hardware on port 0 with 0 shifts
+[2022-11-09 16:55:03] Using Default Chain String: [ 6 ]
+[2022-11-09 16:55:07] FPGA: xc7a200t (7_Series family) IDCode=0x13636093
+[2022-11-09 16:55:07] Read IDCODE Matched=0x13636093
+[2022-11-09 16:55:07] No readback file specified
+[2022-11-09 16:55:07] Number of OffSet words 101
+[2022-11-09 16:55:07] No readback file specified. Reading 18310 frames
+[2022-11-09 16:55:07] Number of OffSet words 101
+[2022-11-09 16:55:07] Number of OffSet words 101
+[2022-11-09 16:55:07] Part xc7a200t has 24802 frames. Family 7_Series has 101 words per frame
+[2022-11-09 16:55:07] Cycle 0: 2022-08-04 00:49:08
+[2022-11-09 16:55:12] Cycle 1: 2022-08-04 00:49:12
+[2022-11-09 16:55:16] 0 total bit errors
+[2022-11-09 16:55:16] JCM Scrubbing. Build Date Thu Jul 28 15:32:32 MDT 2022
+[2022-11-09 16:55:16] Execution time: Thu Aug  4 00:49:17 2022
+[2022-11-09 16:55:16] 
+[2022-11-09 16:55:16] Changing JCM Clock. Old Rate=29411765 Request Rate=30000000 Actual rate=29411765
+[2022-11-09 16:55:16] Creating JCM Hardware on port 0 with 0 shifts
+[2022-11-09 16:55:16] Using Default Chain String: [ 6 ]
+[2022-11-09 16:55:20] FPGA: xc7a200t (7_Series family) IDCode=0x13636093
+[2022-11-09 16:55:20] Read IDCODE Matched=0x13636093
+[2022-11-09 16:55:20] No readback file specified
+[2022-11-09 16:55:20] Number of OffSet words 101
+[2022-11-09 16:55:20] No readback file specified. Reading 18310 frames
+[2022-11-09 16:55:20] Number of OffSet words 101
+[2022-11-09 16:55:20] Number of OffSet words 101
+[2022-11-09 16:55:20] Part xc7a200t has 24802 frames. Family 7_Series has 101 words per frame
+[2022-11-09 16:55:20] Cycle 0: 2022-08-04 00:49:21
+[2022-11-09 16:55:24] FI: Injecting Fault bit 95447, word 2982 (frame index 29, address 0x0000001d, word 53, bit 23)
+[2022-11-09 16:55:24] 18310 frames
+[2022-11-09 16:55:24]     Mask=0x00800000 Old=0x00000000 New=0x00800000
+[2022-11-09 16:55:24] Word 2982 (Frame index=29 frame address=0x0000001d word=53 mask=0x00800000)
+[2022-11-09 16:55:24] 1 bit errors
+[2022-11-09 16:55:24] Cycle 1: 2022-08-04 00:49:25
+[2022-11-09 16:55:28] FI: Injecting Fault bit 37203901, word 1162621 (frame index 11511, address 0x00420789, word 10, bit 29)
+[2022-11-09 16:55:28] 18310 frames
+[2022-11-09 16:55:28]     Mask=0x20000000 Old=0x00000000 New=0x20000000
+[2022-11-09 16:55:28] Word 1162621 (Frame index=11511 frame address=0x00420789 word=10 mask=0x20000000)
+[2022-11-09 16:55:28] 1 bit errors
+[2022-11-09 16:55:28] Cycle 2: 2022-08-04 00:49:29
+[2022-11-09 16:55:33] FI: Injecting Fault bit 53330079, word 1666564 (frame index 16500, address 0x00441a9e, word 64, bit 31)
+[2022-11-09 16:55:33] 18310 frames
+[2022-11-09 16:55:33]     Mask=0x80000000 Old=0x00000000 New=0x80000000
+[2022-11-09 16:55:33] 2 total bit errors
+[2022-11-09 16:55:33] JCM Scrubbing. Build Date Thu Jul 28 15:32:32 MDT 2022
+[2022-11-09 16:55:33] Execution time: Thu Aug  4 00:49:34 2022
+[2022-11-09 16:55:33] 
+[2022-11-09 16:55:33] Changing JCM Clock. Old Rate=29411765 Request Rate=30000000 Actual rate=29411765
+[2022-11-09 16:55:33] Creating JCM Hardware on port 0 with 0 shifts
+[2022-11-09 16:55:33] Using Default Chain String: [ 6 ]
+[2022-11-09 16:55:37] FPGA: xc7a200t (7_Series family) IDCode=0x13636093
+[2022-11-09 16:55:37] Read IDCODE Matched=0x13636093
+[2022-11-09 16:55:37] No readback file specified
+[2022-11-09 16:55:37] Number of OffSet words 101
+[2022-11-09 16:55:37] No readback file specified. Reading 18310 frames
+[2022-11-09 16:55:37] Number of OffSet words 101
+[2022-11-09 16:55:37] Number of OffSet words 101
+[2022-11-09 16:55:37] Part xc7a200t has 24802 frames. Family 7_Series has 101 words per frame
+[2022-11-09 16:55:37] Cycle 0: 2022-08-04 00:49:38
+[2022-11-09 16:55:41] Cycle 1: 2022-08-04 00:49:42
+[2022-11-09 16:55:45] 0 total bit errors
+[2022-11-09 16:55:45] JCM Scrubbing. Build Date Thu Jul 28 15:32:32 MDT 2022
+[2022-11-09 16:55:45] Execution time: Thu Aug  4 00:49:46 2022
+[2022-11-09 16:55:45] 
+[2022-11-09 16:55:45] Changing JCM Clock. Old Rate=29411765 Request Rate=30000000 Actual rate=29411765
+[2022-11-09 16:55:45] Creating JCM Hardware on port 0 with 0 shifts
+[2022-11-09 16:55:45] Using Default Chain String: [ 6 ]
+[2022-11-09 16:55:50] FPGA: xc7a200t (7_Series family) IDCode=0x13636093
+[2022-11-09 16:55:50] Read IDCODE Matched=0x13636093
+[2022-11-09 16:55:50] No readback file specified
+[2022-11-09 16:55:50] Number of OffSet words 101
+[2022-11-09 16:55:50] No readback file specified. Reading 18310 frames
+[2022-11-09 16:55:50] Number of OffSet words 101
+[2022-11-09 16:55:50] Number of OffSet words 101
+[2022-11-09 16:55:50] Part xc7a200t has 24802 frames. Family 7_Series has 101 words per frame
+[2022-11-09 16:55:50] Cycle 0: 2022-08-04 00:49:50
+[2022-11-09 16:55:54] Cycle 1: 2022-08-04 00:49:55
+[2022-11-09 16:55:58] Cycle 2: 2022-08-04 00:49:59
+[2022-11-09 16:56:02] Cycle 3: 2022-08-04 00:50:03
+[2022-11-09 16:56:06] 0 total bit errors
+[2022-11-09 16:56:07] JCM Scrubbing. Build Date Thu Jul 28 15:32:32 MDT 2022
+[2022-11-09 16:56:07] Execution time: Thu Aug  4 00:50:08 2022
+[2022-11-09 16:56:07] 
+[2022-11-09 16:56:07] Changing JCM Clock. Old Rate=29411765 Request Rate=30000000 Actual rate=29411765
+[2022-11-09 16:56:07] Creating JCM Hardware on port 0 with 0 shifts
+[2022-11-09 16:56:07] Using Default Chain String: [ 6 ]
+[2022-11-09 16:56:12] FPGA: xc7a200t (7_Series family) IDCode=0x13636093
+[2022-11-09 16:56:12] Read IDCODE Matched=0x13636093
+[2022-11-09 16:56:12] No readback file specified
+[2022-11-09 16:56:12] Number of OffSet words 101
+[2022-11-09 16:56:12] No readback file specified. Reading 18310 frames
+[2022-11-09 16:56:12] Number of OffSet words 101
+[2022-11-09 16:56:12] Number of OffSet words 101
+[2022-11-09 16:56:12] Part xc7a200t has 24802 frames. Family 7_Series has 101 words per frame
+[2022-11-09 16:56:12] Cycle 0: 2022-08-04 00:50:12
+[2022-11-09 16:56:16] Cycle 1: 2022-08-04 00:50:17
+[2022-11-09 16:56:20] Cycle 2: 2022-08-04 00:50:21
+[2022-11-09 16:56:24] Scrubbing paused: (select number and press 'enter')
+[2022-11-09 16:56:24] 0) Quit
+[2022-11-09 16:56:24] Any other key) Resume
+[2022-11-09 16:56:24] 0 total bit errors

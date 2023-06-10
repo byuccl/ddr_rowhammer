@@ -64,6 +64,7 @@ env.sh: $(PYTHON_VENV) $(RISCV_TOOLCHAIN)
 	echo 'alias source=. # So vivado and make work together.' > ./env.sh
 	echo '. $(PYTHON_VENV)/bin/activate' >> ./env.sh
 	echo ". $(VIVADO_LOCATION)/$(VIVADO_VERSION)/settings64.sh" >> ./env.sh
+	echo "export PATH=$PATH: ../../../yinstruments/yinstruments" >> ./env.sh
 	@echo -------------------DONE-------------------
 
 env: env.sh

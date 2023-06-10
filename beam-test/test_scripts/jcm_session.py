@@ -1,0 +1,531 @@
+#!/usr/bin/env python3
+
+#  python3 jcm_session.py --jcm_ip 169.254.132.152 --jcm_part xc7a200t --bitfile ~/newtobetmred_tmr.bit
+
+import argparse
+import logging
+import traceback
+import re
+import os
+import random
+import threading
+import sys
+import time
+import subprocess
+
+import socket
+from datetime import datetime
+
+from paramiko import SSHClient, SSHException, AutoAddPolicy, \
+                    BadHostKeyException, AuthenticationException, buffered_pipe
+
+TIME_STRING_FORMAT = "%Y-%m-%d %H:%M:%S"
+# Number of JCM pings before failure
+JCM_PING_COUNT_LIMIT = 10
+# JCM Ping Delay
+JCM_PING_DELAY = 10
+
+class jcm_session():
+    '''
+    Represents a session on the JCM. This class is used to simplify the operation
+    and control of the JCM.
+
+    ssh_client: if None, there is no ssh_client open. If not None, represents the open jcm ssh_client.
+    jcm_ip_addr: IP address of the JCM (string)
+    logging: The logger used by the session messages
+    jtag_clock: Clock rate for JTAG operations
+    jcm_print: Print function for JCM output (takes arguments of str)
+    username: username for ssh connection
+    password: password for ssh connection
+    '''
+
+    # JCM constants
+    JCM_CONNECTION_TIMEOUT = 30 # Max amount of time to try to connect to JCM
+    JCM_LOGIN_ATTEMPTS = 5
+    JCM_DEFAULT_CLOCK_RATE = 10_000_000
+    JCM_DEFAULT_IP = "169.254.132.152"
+
+    #def _default_jcm_print(str):
+    #    ''' Default function for printing JCM output. This can be overriden in the constructor. '''
+    #    print(str, end="")
+
+    def __init__(self, 
+        jcm_ip_addr:str, 
+        part, 
+        jtag_clock = JCM_DEFAULT_CLOCK_RATE, 
+        status_logging = None,
+        stdout = None,
+        stdout_timeprefix = None,
+        username='root', password='chrec') -> None:
+
+        self.ssh_client = None
+        self.jcm_ip_addr = jcm_ip_addr
+        self.logging = status_logging
+        self.part = part
+        self.jtag_clock = jtag_clock
+        self.status_logging = status_logging
+        self.stdout = stdout
+        self.stdout_timeprefix = stdout_timeprefix
+        self.username = username
+        self.password = password
+        # references to the I/O of the JCM commands
+        self.jcm_stdin = None
+        self.jcm_stdout = None
+        self.jcm_stderr = None
+        # Thread object for executing JCM thread
+        self.jcm_thread = None
+
+        # Flag indicating the jcm execution thread is active
+        self.jcm_active = False
+        # Flag instructing the jcm execution thread to stop
+        self.halt_jcm_flag = False
+
+
+    def _info(self, str):
+        ''' Send an 'info' message to the logger. '''
+        if self.status_logging:
+            self.logging.info("JCM:"+str)
+
+    def _error(self, str):
+        ''' Send an 'error' message to the logger. '''
+        if self.status_logging:
+            self.logging.error("JCM:"+str)
+
+    def _print_std_out(self, line):
+        ''' Print JCM standard output '''
+        if self.stdout:
+            if self.stdout_timeprefix:
+                time_prefix = str("["+time.strftime(self.stdout_timeprefix)+"] ")
+                line = time_prefix + line
+            self.stdout.write(line)
+            self.stdout.flush()
+
+    def close_jcm(self):
+        ''' Closes JCM SSH session'''
+        if self.ssh_client:
+            self.ssh_client.close()
+            self._info("JCM SSH closed")
+        else:
+            self._info("JCM SSH session not open - cannot close")
+
+    def open_jcm(self):
+        ''' Opens a JCM SSH session.
+        returns True if session is successfully open, False otherwise
+        '''
+        self._info("Logging in to JCM")
+        login_success = False
+        for i in range(self.JCM_LOGIN_ATTEMPTS):
+            try:
+                new_client = SSHClient()
+                new_client.load_system_host_keys()
+                new_client.set_missing_host_key_policy(AutoAddPolicy())
+                self._info(str(f"Connecting to JCM over SSH... (Attempt {(i+1)})"))
+                new_client.connect(self.jcm_ip_addr, username=self.username, password=self.password, 
+                    timeout=self.JCM_CONNECTION_TIMEOUT,allow_agent=False)
+                self._info("SSH successful")
+                login_success = True
+                self.ssh_client = new_client
+                break
+            except (BadHostKeyException, AuthenticationException,
+                SSHException, socket.error, buffered_pipe.PipeTimeout, socket.timeout) as error:
+                self._error(error)
+                new_client.close()
+                self.ssh_client = None
+        return login_success
+
+    def is_active(self):
+        ''' Indicates whether the JCM has an active command thread '''
+        return self.jcm_active
+
+    def stop_jcm(self):
+        ''' Set flag to halt jcm '''
+        self.halt_jcm_flag = True
+
+    # Execute an arbitrary JCM command
+    def execute_jcm_command(self, command:str, block=True, save_output=False):
+        ''' Execute an arbitrary JCM command. This method will attempt to start the command
+        immediately. If the command cannot be started successfully, this function will return
+        a False. If the command starts successfully, the function will eventually return
+        True. A new thread will be created for the full
+        execution of the command. If 'block' is True, this function will not return until the 
+        command finished execution. 
+        
+        Other functions will need to block on this thread or can stop the thread
+        by setting the stop flag.
+
+        '''
+
+        if not self.ssh_client:
+            self._error(f"No open JCM client. Cannot perform command\n{command}")
+            return True
+
+        if self.jcm_active:
+            self._error(f"JCM currently executing a command. Cannot perform command\n{command}")
+            if not self.jcm_thread:
+                self._error("\tjcm_thread does not exists: inconsistent state")
+            else:
+                # Print something out about the thread to help in debugging
+                self._error("\tjcm_thred:"+str(self.jcm_thread))
+            return True
+
+        # Prepare flag for being stopped externally
+        self.halt_jcm_flag = False
+
+        self._info(f"Executing commmand on JCM\n\t{command}")
+
+        # Attempt to start the command
+        try:
+            (self.jcm_stdin, self.jcm_stdout, self.jcm_stderr) = \
+                self.ssh_client.exec_command(command,timeout=self.JCM_CONNECTION_TIMEOUT)
+        except SSHException as error:
+            self._error(error)
+            return False
+
+        # Command started successfully. Create new thread for execution of command
+        self.jcm_thread_output = []
+        self.jcm_active = True
+        self.jcm_thread = threading.Thread(target=self._jcm_execution_thread, args=(save_output,))
+        self.jcm_thread.start()
+ 
+        # Block?
+        if block:
+            thread = self.jcm_thread
+            thread.join()  # Add timeout? Catch exception?
+        return True
+
+    def _jcm_execution_thread(self,save_output):
+        ''' Thread function for jcm command. This thread will exit when the execution process
+        ends or when the external flag stops the process.
+
+        save_output: indicates that the stdout for the thread should be saved in the class member: 'jcm_thread_output'
+        '''
+
+        # Iterate over the lines until the process ends
+        while not self.jcm_stdout.channel.exit_status_ready():
+            
+            if self.halt_jcm_flag:
+                # Send a Ctrl-C to the scrubber or kill scrubber directly
+                self.jcm_stdin.shutdown(2)
+                #self.scrub_stdout.shutdown(2)
+                # This should cause the exit_status_ready() to return false
+
+            # See if the flag has been set to stop the scrubbing
+            try:
+                # Read line from stdout
+                line = self.jcm_stdout.readline()
+                if save_output:
+                    self.jcm_thread_output.append(line)
+                if len(line) > 0:
+                    self._print_std_out(line)
+                # Read line from stderr
+                '''
+                line = self.jcm_stderr.readline()
+                if "\n" in line:
+                    if save_output:
+                        self.jcm_thread_output.append(line)
+                    self._print_std_out(line)
+                '''
+ 
+            except(buffered_pipe.PipeTimeout, socket.timeout) as error:
+                self.logging.error("Scrubbing: ",error)
+                # return?
+
+        # Reset active flag
+        self.jcm_active = False
+        return
+
+    def configure_fpga(self, bitstream_filename):
+        ''' Configure FPGA
+        returns 'True' if configuration was successful, False otherwise.
+        '''
+        self._info("Attempting JCM configuration")
+
+        # Default configuration command
+        CONFIGURATION_COMMAND = "~/jcm_apps/jcm_config.elf --part {part} -c {clock_rate} --jtag --config_file {bitstream}"
+        config_command = CONFIGURATION_COMMAND.format(part=self.part, clock_rate = self.jtag_clock, bitstream=bitstream_filename)
+
+        command_ret = self.execute_jcm_command(config_command, block=True, save_output=True)
+        if not command_ret:
+            return False
+            
+        # Iterate over the output to see if it configured correctly
+        for line in self.jcm_thread_output:
+            #print(line)
+            if "Success" in line:
+                self._info("Configuration Success")
+                return True
+        self._error("Configuration Failed")
+        # Print output for failure
+        for line in self.jcm_thread_output:
+            print(line)
+
+        return False
+
+    def read_device_dna(self):
+        '''
+        110010 (50) is 64 bit FUSE_DNA register
+        010111 (23) is 57 bit XSC_DNA register
+[root@arch jcm_apps]# ./jcm_jtag_reg.elf -r 50 --swap -w 64
+Creating JCM Hardware on port 0 with 0 shifts
+Using Default Chain String: [ 6 ]
+JCM Clock=1000000
+Register 0x32=
+ 0:0x01b72a37
+ 1:0x2a0f5e44
+[root@arch jcm_apps]#
+
+[root@arch jcm_apps]# ./jcm_jtag_reg.elf -r 23 --swap -w 57
+Creating JCM Hardware on port 0 with 0 shifts
+Using Default Chain String: [ 6 ]
+JCM Clock=1000000
+Register 0x17=
+ 0:0xffffffff
+ 1:0xffffffff
+[root@arch jcm_apps]# ./jcm_jtag_reg.elf -r 23 --swap -w 57
+
+        '''
+        self._info("Attempting JCM device DNA read")
+
+        # Default configuration command
+        CONFIGURATION_COMMAND = "~/jcm_apps/jcm_jtag_reg.elf -r 50 --swap -w 64"
+        #config_command = CONFIGURATION_COMMAND.format(part=self.part, clock_rate = self.jtag_clock, bitstream=bitstream_filename)
+
+        command_ret = self.execute_jcm_command(CONFIGURATION_COMMAND, block=True, save_output=True)
+        if not command_ret:
+            return False
+            
+        # Iterate over the output to see if it configured correctly
+        line0 = None
+        line1 = None
+        for line in self.jcm_thread_output:
+            #print(line)
+            if "0:" in line:
+                line0 = line.strip()
+            elif "1:" in line:
+                line1 = line.strip()
+        if not line0 or not line1:
+            self._error("Problem reading device DNA")
+            return None
+        return [line0, line1]
+
+    def readback(self, clockrate, part, frad_file, readback_file, capture=False, glut_b = False):
+        '''
+[root@arch jcm_apps]# mkdir /mnt/ramdisk
+[root@arch jcm_apps]# mount -t ramfs -o size 64m /mnt/ramdisk
+
+./jcm_apps/jcm_readback.elf -c 30000000 --part xc7a200t --frad_file ./xc7a200t_frad.txt --write_readback /mnt/ramdisk/temp.bin --jtag
+
+        '''
+        self._info("Attempting JCM readback")
+
+        # Default configuration command
+        CONFIGURATION_COMMAND = f"~/jcm_apps/jcm_readback.elf -c {clockrate} -part {part} --frad_file {frad_file} --write_readback {readback_file}"
+        if capture:
+            CONFIGURATION_COMMAND += " --capture"
+        if glut_b:
+            CONFIGURATION_COMMAND += " --glut_b"
+
+        command_ret = self.execute_jcm_command(CONFIGURATION_COMMAND, block=True, save_output=True)
+        if not command_ret:
+            return False
+            
+        # Iterate over the output to see if it configured correctly
+        # Check for problems?
+        return self.jcm_thread_output
+
+
+    def create_frad_list(self, frads_filename):
+        pass
+
+    def scrub_fpga(self, iterations=10_000_000, frads_file = None, readback_file = None, inject_faults=0, block=False):
+
+        self._info("Starting JCM scrubber")
+        
+        # Scrubbing and fault injection commands
+        SCRUBBING_COMMAND = "~/jcm_apps/jcm_scrubbing.elf --part {part} -c {clock} --jtag --iterations {iterations}"
+        command = SCRUBBING_COMMAND.format(part=self.part, clock=self.jtag_clock, iterations=iterations)
+        if frads_file:
+            command += f" --frad_file {frads_file}"
+        if readback_file:
+            command += f" --readback_file {readback_file}"
+        if inject_faults > 0:
+            command += f" --inject_fault {inject_faults}"
+
+        command_ret = self.execute_jcm_command(command, block=block, save_output=False)
+        if not command_ret:
+            return False
+
+        # Scrubbing started and the thread is going
+        return True
+
+    def stop_scrub(self):
+        if not self.jcm_active:
+            self._error("Cannot stop scrub: jcm not active")
+            return False
+        self._info("Stopping JCM scrubber")
+        self.jcm_stdin.write(" \n")
+        time.sleep(1)
+        self.jcm_stdin.write("0\n")
+        time.sleep(1)
+
+    def jcm_ping(self):
+        command = ['ping', "-c", '1', self.jcm_ip_addr]
+        return subprocess.call(command) == 0
+
+    # Static methods
+
+    def jcm_setup(filename, args, logger = None, stdout_timeprefix = TIME_STRING_FORMAT):
+        '''
+        Creates a log file for the JCM
+        Creates a JCM session from arguments, a logger, etc.
+        Ping JCM to make sure it is there
+        '''
+        # Create JCM log file
+        jcm_log_file = open(filename,"w")
+        # TODO: need to close jcm_log_file: where?
+
+        # Create JCM object
+        jcm = jcm_session.create_jcm_from_args(args, logger, jcm_log_file, stdout_timeprefix = stdout_timeprefix)
+
+        # Ping JCM (wait until ping before trying to connect)
+        for i in range(JCM_PING_COUNT_LIMIT):
+            ping_true = jcm.jcm_ping()
+            logger.info(f"JCM ping attempt {i+1}")
+            if ping_true:
+                break
+            time.sleep(JCM_PING_DELAY)
+        if not ping_true:
+            logger.error("JCM ping failed")
+            return None
+        # Create JCM ssh connection
+        if not jcm.open_jcm():
+            return None
+        return jcm
+
+    def jcm_group_args(parser):
+        ''' Static function for creating JCM argument group '''
+        jcm_arg_group = parser.add_argument_group("JCM")
+        jcm_arg_group.add_argument("--jcm_ip", help="JCM IP Address", default = jcm_session.JCM_DEFAULT_IP)
+        jcm_arg_group.add_argument("--jcm_part", help="JCM Part Name", default = "xc7a200t")
+        jcm_arg_group.add_argument("--jcm_clock", help="JCM Clock Rate", type=int, default = jcm_session.JCM_DEFAULT_CLOCK_RATE)
+
+    def create_jcm_from_args(args, status_logging, stdout, stdout_timeprefix = None, username="root", password="chrec"):
+        ''' Static function for creating JCM argument group '''
+
+        jcm = jcm_session(args.jcm_ip, args.jcm_part, jtag_clock=args.jcm_clock, status_logging = status_logging,
+            stdout = stdout, stdout_timeprefix = stdout_timeprefix, username = username, password = password
+        )
+        return jcm
+
+def main():
+    ''' This main function demonstrates some common JCM uses using the threads. '''
+    parser = argparse.ArgumentParser()
+    parser.add_argument_group(jcm_session.jcm_group_args(parser))
+    # Add arguments
+    parser.add_argument("--bitfile",required=True)
+    parser.add_argument("--fradlist",default="xc7a200t_frad.txt")
+    parser.add_argument("--jcm_file",type=str)
+    parser.add_argument("--noscrub",action='store_true')
+
+    args = parser.parse_args()
+
+    # create jcm object
+    TIME_STRING_FORMAT = "%Y-%m-%d %H:%M:%S"
+    logging.basicConfig(level=logging.INFO, datefmt=TIME_STRING_FORMAT)    
+
+    # Create JCM output logger
+    if args.jcm_file:
+        jcm_output = open(args.jcm_file,"w")
+    else:
+        jcm_output = sys.stdout
+
+    jcm = jcm_session.create_jcm_from_args(args, logging, stdout = jcm_output, stdout_timeprefix=TIME_STRING_FORMAT)
+
+    test_num = 1
+    # 1. Connect with JCM
+    print(f"\n{test_num}: Main:Attempting to open JCM")
+    if not jcm.open_jcm():
+        print("JCM open failed")
+        return 1
+    test_num += 1
+
+    # 2. Configure with a bitfile
+    bitstream_filename = args.bitfile
+    # --bitfile /root/newtobetmred_tmr.bit
+    print(f"\n{test_num}: Main:Attempting to configure with JCM using bitfile ",bitstream_filename)
+    if not jcm.configure_fpga(bitstream_filename):
+        print("Main:Failed configure")
+        return 1
+    test_num += 1
+
+    if args.noscrub:
+        return
+        
+    # 3. Perform scrubbing (blocking, no frads file, no readback file)
+    frads_file = args.fradlist
+    print(f"\n{test_num}: Main:Attempting to scrub and block")
+    if not jcm.scrub_fpga(iterations=2, block=True, frads_file = frads_file):
+        print("Main:Failed scrubbing")
+        return 1
+    test_num += 1
+
+    # 4. Perform scrubbing (blocking, no frads file, no readback file) and inject faults
+    frads_file = args.fradlist
+    print(f"\n{test_num}: Main:Attempting to scrub and block and inject faults")
+    if not jcm.scrub_fpga(iterations=3, block=True, frads_file = frads_file, inject_faults=1):
+        print("Main:Failed scrubbing")
+        return 1
+    test_num += 1
+
+    # 5. Perform scrubbing, JCM ends scrubber, wait on thread (no blocking, no frads file, no readback file)
+    print(f"\n{test_num}: Main:Attempting to scrub and no block (wait on thread)")
+    if not jcm.scrub_fpga(iterations=2, frads_file = frads_file, block=False):
+        return 1
+    # Wait for thread to end
+    print("jcm active before join",jcm.is_active())
+    jcm.jcm_thread.join()
+    print("jcm active after join",jcm.is_active())
+    test_num += 1
+
+
+    # 5. Perform scrubbing, JCM ends scrubber, wait on flag (no blocking, no frads file, no readback file)
+    print(f"\n{test_num}: Main:Attempting to scrub and no block (wait on flag)")
+    if not jcm.scrub_fpga(iterations=4, frads_file = frads_file, block=False):
+        return 1
+    # Wait for thread to end
+    start_time = datetime.now()
+    max_seconds = 5 * 60
+    while jcm.jcm_active:
+        print("Main:JCM still active")
+        time.sleep(2)
+        time_delay = (datetime.now() - start_time).total_seconds()
+        if time_delay > max_seconds:
+            print("Wating too long")
+            return 1
+    print("Main:JCM finished scrubbing")
+    print("jcm active before join",jcm.is_active())
+    jcm.jcm_thread.join()
+    print("jcm active after join",jcm.is_active())
+
+    # 6. Perform scrubbing, wait on flag, have main send command to stop scrubber
+    print(f"\n{test_num}: Main:Attempting to scrub and stop from JCM")
+    if not jcm.scrub_fpga(iterations=100, frads_file = frads_file, block=False):
+        return 1
+    # Wait for thread to end
+    print("Main: doing other work on new thread")
+    for i in range(7):
+        print(" Main: waiting")
+        time.sleep(2)
+    print("Main:Stopping scrub over stdin")
+    jcm.stop_scrub()
+    print("Main:Swaiting for thread to end")
+    print("jcm active before join ",jcm.is_active())
+    jcm.jcm_thread.join()
+    print("jcm active after join",jcm.is_active())
+
+    jcm.close_jcm()
+
+    return 0
+
+if __name__ == "__main__":
+    main()

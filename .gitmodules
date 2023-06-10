@@ -46,12 +46,14 @@
 [submodule "beam-test/soc/dependencies/pythondata-cpu-vexriscv-smp"]
 	path = beam-test/soc/dependencies/pythondata-cpu-vexriscv-smp
 	url = https://github.com/litex-hub/pythondata-cpu-vexriscv-smp
+	ignore = dirty
 [submodule "beam-test/soc/dependencies/pythondata-misc-tapcfg"]
 	path = beam-test/soc/dependencies/pythondata-misc-tapcfg
 	url = https://github.com/litex-hub/pythondata-misc-tapcfg
 [submodule "beam-test/soc/dependencies/pythondata-misc-usb_ohci"]
 	path = beam-test/soc/dependencies/pythondata-misc-usb_ohci
 	url = https://github.com/litex-hub/pythondata-misc-usb_ohci
+	ignore = dirty
 [submodule "beam-test/soc/dependencies/pythondata-software-compiler_rt"]
 	path = beam-test/soc/dependencies/pythondata-software-compiler_rt
 	url = https://github.com/litex-hub/pythondata-software-compiler_rt
@@ -61,6 +63,7 @@
 [submodule "beam-test/soc/dependencies/litex-boards"]
 	path = beam-test/soc/dependencies/litex-boards
 	url = https://github.com/litex-hub/litex-boards
+	ignore = dirty
 [submodule "beam-test/soc/dependencies/litedram"]
 	path = beam-test/soc/dependencies/litedram
 	url = https://github.com/byuccl/litedram

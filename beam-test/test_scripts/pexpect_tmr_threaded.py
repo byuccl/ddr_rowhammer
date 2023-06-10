@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
-# Questions?
-# - Do I need to give a message at the start of each action? 
+
+# BAsed on 
+# https://github.com/byuccl/VexLinuxTMR/blob/main/JCM_repo/lancse_radiation_tmr_logging.py
 
 import pexpect
 import argparse
@@ -16,6 +17,8 @@ import os
 import numpy as np
 import random
 import socket
+
+import threading
 
 from paramiko import SSHClient, SSHException, AutoAddPolicy, \
                     BadHostKeyException, AuthenticationException, buffered_pipe
@@ -58,7 +61,6 @@ SDRAM_INIT_TIMEOUT = 5 # Time expected at least for scrubbing/init commands to r
 CLOSE_BIST_TIMEOUT = 10 # Time expected to close bist
 BOARD_REPROGRAM_TIMEOUT = 10 # Time expected to connect or reconnect to litex
 FAULT_TIMER_MAX = 2 # 2 second fault injections
-MAX_ALIVE_CNT = 30 # Max amount of time to try to connect to JCM
 
 LITEX_BAUDRATE = 115200 # Baud rate to innitialize comm port object
 
@@ -83,9 +85,6 @@ MAX_ERROR_CNT = 0xFFFFFFFF # Errors have maxed out if either value reaches this 
 MAX_ERROR_CNT_CYCLES = 30 # After 30 cycles of errors incrementing, make transition.
 MAX_PAUSE_ERROR_CNT_CYCLES = 10 # After 10 cycles of errors non_incrementing, make transition
 
-CORRECTION_FAULT_INJECTION_COMMAND = "~/jcm_apps/jcm_fault_inject.elf --part {fpga} -c 20000000 --jtag --frad_file {frads} --readback_file {design}.rb --target_frame {frame} --target_word {word} --target_bit {bit}"
-FAULT_INJECTION_COMMAND = "~/jcm_apps/jcm_random_fault_inject.elf --part {fpga} -c 20000000 --jtag --frad_file {frads} --seed {seed} --readback_file ~/jcm_apps/jcm_readback.rb"
-CONFIGURATION_COMMAND = "~/jcm_apps/jcm_config.elf --part {part} -c 20000000 --jtag --config_file {bitstream}"
 JCM_IP_ADDRESS = "169.254.132.152"
 PART = "xc7a200t"
 BITFILE = "./newtobetmred_tmr.bit"
@@ -102,54 +101,78 @@ RAND_ARG = 1 # Start reading/writing data with addresses linearly.
 
 FAULT_INJECTION_ENABLED = True # Run fault injection.
 
+class jcm_session():
+    '''
+    Represents a session on the JCM. This class is used to simplify the operation
+    and control of the JCM.
 
-print_jcm_fout = open('jcm_times_20.txt', 'w') # JCM text file
+    ssh_client: if None, there is no ssh_client open. If not None, represents the ssh_client.
+    jcm_ip_addr: IP address of the JCM (string)
+    jtag_clock: Clock rate for JTAG operations
+    username: username for ssh connection
+    password: password for ssh connection
+    '''
 
+    # JCM constants
+    JCM_CONNECTION_TIMEOUT = 30 # Max amount of time to try to connect to JCM
+    JCM_LOGIN_ATTEMPTS = 5
+    JCM_DEFAULT_CLOCK_RATE = 10_000_000
 
+    def __init__(self, jcm_ip_addr:str, jtag_clock = JCM_DEFAULT_CLOCK_RATE, username='root', password='chrec') -> None:
+        self.ssh_client = None
+        self.jcm_ip_addr = jcm_ip_addr
+        self.jtag_clock = jtag_clock
+        self.username = username
+        self.password = password
 
-class jcm_control():
+    def close_jcm(self):
+        ''' Closes JCM SSH session'''
+        if self.ssh_client:
+            self.ssh_client.close()
+            print("JCM SSH closed")
+        else:
+            print("JCM SSH session not open - cannot close")
 
-    def close_jcm(new_client):
-        new_client.close()
-        print("SSH closed")
-
-# Logs into the jcm using paramiko. 
-# Returns a SSHClient object
-    def login_to_jcm(ip_addr:str):
-        print("Logging in to JCM, Time: ", file=print_jcm_fout)
-        while(1):
+    def open_jcm(self):
+        ''' Opens a JCM SSH session '''
+        print("Logging in to JCM")
+        login_success = False
+        for i in range(self.JCM_LOGIN_ATTEMPTS):
             try:
                 new_client = SSHClient()
                 new_client.load_system_host_keys()
                 new_client.set_missing_host_key_policy(AutoAddPolicy())
-                print("Connecting to JCM over SSH...", file=print_jcm_fout)
-                new_client.connect(ip_addr, username='root', password='chrec', timeout=MAX_ALIVE_CNT)
+                print("Connecting to JCM over SSH... (Attempt {})", (i+1), file=print_jcm_fout)
+                new_client.connect(self.jcm_ip_addr, username=self.username, password=self.password, 
+                    timeout=self.JCM_CONNECTION_TIMEOUT)
                 print("SSH successful!", file=print_jcm_fout)
+                login_success = True
                 break
             except (BadHostKeyException, AuthenticationException,
                 SSHException, socket.error, buffered_pipe.PipeTimeout, socket.timeout) as error:
                 print(error, file=print_jcm_fout)
                 new_client.close()
-        return new_client
+                new_client = None
+        return login_success
 
+    # Configure the FPGA using jcm_config.elf
+    def configure_fpga(self, part, bitstream_filename):
+        print("Sending config command to JCM, Time: ", file=print_jcm_fout)
 
-# Configure the FPGA using jcm_config.elf
-    def configure_fpga(ssh_client):
-        print("Sending config command to JCM, Time: ", datetime.now().time(), file=print_jcm_fout)
+        # Default configuration command
+        CONFIGURATION_COMMAND = "~/jcm_apps/jcm_config.elf --part {part} -c {clock_rate} --jtag --config_file {bitstream}"
 
-        config_command = CONFIGURATION_COMMAND.format(part=PART, bitstream=BITFILE)
+        config_command = CONFIGURATION_COMMAND.format(part=part, bitstream=bitstream_filename)
         print(config_command, file=print_jcm_fout)
 
-        for i in range(JCM_LOGIN_LOOPS):
-            try:
-                print("Running config command, Time: ", datetime.now().time(), file=print_jcm_fout)
-                stdin, stdout, stderr = ssh_client.exec_command(config_command,timeout=JCM_TIMEOUT_IN_SECONDS)
-                break
-            except SSHException as error:
-                print(error, file=print_jcm_fout)
-                logging.info("SSHException: Timeout occured or request was rejected opening channel to JCM. Retrying command.")
-                print("[", time.strftime(TIME_STRING_FORMAT), "] SSHException: Timeout occured or request was rejected opening channel to JCM. Retrying command.")
-                ssh_client = jcm_control.login_to_jcm(JCM_IP_ADDRESS)
+        try:
+            print("Running config command, Time: ", datetime.now().time(), file=print_jcm_fout)
+            stdin, stdout, stderr = ssh_client.exec_command(config_command,timeout=JCM_TIMEOUT_IN_SECONDS)
+        except SSHException as error:
+            print(error, file=print_jcm_fout)
+            logging.info("SSHException: Timeout occured or request was rejected opening channel to JCM. Retrying command.")
+            print("[", time.strftime(TIME_STRING_FORMAT), "] SSHException: Timeout occured or request was rejected opening channel to JCM. Retrying command.")
+            ssh_client = jcm_control.login_to_jcm(JCM_IP_ADDRESS)
 
         while not stdout.channel.exit_status_ready():
             try:
@@ -163,8 +186,7 @@ class jcm_control():
                     if "Success" in line:
                         print("Configured Successfully!", file=print_jcm_fout)
                         break
-
-                    if "[root@arch" in line:
+                    else:
                         print("ERROR in configure_fpga", file=print_jcm_fout)
                         break
             
@@ -174,122 +196,87 @@ class jcm_control():
                 return 1
         return 0
 
-    def inject_fault(ssh_client):
-        '''
-        Injects a fault
-        '''
+    # Spawn a thread to perform JCM scrubbing. inject_faults indicates the number of faults to inject per scrub
+    # Note that the JCM login session has already been established
+    def spawn_jcm_scrubbing(ssh_client, fpga_part, frads_file, readback_file, iterations, inject_faults=0):
+        #print("Sending config command to JCM, Time: ", datetime.now().time(), file=print_jcm_fout)
 
-        global frame_to_correct
-        global word_to_correct
-        global bit_to_correct
-        global location_to_correct
+        # This is a global variable that is used to let the main thread know that scrubbing is OK.
+        # When there is a problem with scrubbing, this variable is set to 0
+        global SCRUBBING_OK
+        SCRUBBING_OK = True
+        # This flag is set by the main thread. We will check this flag and halt scrubbing
+        # when it is set to zero
+        global CONTINUE_SCRUBBING
         
-        print(time.strftime(TIME_STRING_FORMAT),"Injecting Location", file=print_jcm_fout)
+        # Scrubbing and fault injection commands
+        SCRUBBING_COMMAND = "~/jcm_apps/jcm_scrubbing.elf --part {fpga} -c 38000000 --jtag " \
+                        "--frad_file {frads_file} --iterations {iterations} --readback_file {readback}"
+        FAULT_INJECTION_COMMAND = SCRUBBING_COMMAND + " --inject_fault {faults}"
 
-        if NUC_SEED is None:
-            jcm_seed = str(np.uint32(time.time() * 1000))
+
+        if inject_faults > 0:
+            # Inject faults
+            config_command = SCRUBBING_COMMAND.format(fpga=fpga_part, frads_file= frads_file, iterations=iterations, 
+                readback_file = readback_file,faults = inject_faults)
         else:
-            jcm_seed = random.randint(0, 4000000000)
+            # No fault injection
+            config_command = FAULT_INJECTION_COMMAND.format(fpga=fpga_part, frads_file= frads_file, iterations=iterations, 
+                readback_file = readback_file)
 
-        command = FAULT_INJECTION_COMMAND.format(fpga = PART, frads = FRADS,seed=jcm_seed)
+        print(config_command, file=print_jcm_fout)
 
-        print("Before", file=print_jcm_fout)
+        command_success = False
         for i in range(JCM_LOGIN_LOOPS):
             try:
-                stdin, stdout, stderr = ssh_client.exec_command(command, timeout = JCM_TIMEOUT_IN_SECONDS)
+                print("Running scrubbing command, Time {} attempt {} ", datetime.now().time(), i+1, file=print_jcm_fout)
+                stdin, stdout, stderr = ssh_client.exec_command(config_command,timeout=JCM_TIMEOUT_IN_SECONDS)
+                command_success = True
                 break
             except SSHException as error:
                 print(error, file=print_jcm_fout)
-                print("[", time.strftime(TIME_STRING_FORMAT), "] SSHException: Timeout occured or request was rejected opening channel to JCM. Retrying exec_command.")
-                
+                logging.info("SSHException: Timeout occured or request was rejected opening channel to JCM. Retrying command.")
+                print("[", time.strftime(TIME_STRING_FORMAT), "] SSHException: Timeout occured or request was rejected opening channel to JCM. Retrying command.")
+                # TODO: We should NOT try to login again. We already ahve logged in. 
+                #print("TODO: Fix this")
+                #ssh_client = jcm_control.login_to_jcm(JCM_IP_ADDRESS)
+        if not command_success:
+            SCRUBBING_OK = False
+            return 1
 
-        print("After", file=print_jcm_fout)
-        
-        line = ""
-        keep_reading = True
 
-        time_start = time.time()
-        while keep_reading:
-            cur_time = time.time()
-            if (cur_time - time_start > 30):
-                print("Restarting script", file=print_jcm_fout)
-                os.execv(sys.executable, ['python3'] + sys.argv) # Restarts the program
-            
-            line = stdout.readline()
-            if (not line.isspace()) and line != '':
-                print(time.strftime(TIME_STRING_FORMAT),   " : ", line, file=print_jcm_fout)
+        while not stdout.channel.exit_status_ready():
+            try:
+                line = stdout.readline()
                 line = "[{}] ".format(time.strftime(TIME_STRING_FORMAT)) + line
-                if "Failed!" in line:
+                print(line, file=print_jcm_fout)
+
+                # TODO: We may want to parse the JCM scrubber so that we detect SEFIs or scrubbing anomolise
+
+                # Check flag for scrubbing. If the flag goes low, kill the scrubber and exit
+                if not CONTINUE_SCRUBBING:
+                    print("CONTINUE_SCRUBBING now false. Quitting scrubber.")
+                    TODO: send a "Ctrl-C" to the scrubber to kill it
+                    SCRUBBING_OK = False
                     return 1
-                if "Injecting Frame" in line:
-                    search_string = "Frame (0x[0-9A-F]{8})"
-                    m = re.search(search_string, line)
-                    if m:
-                        frame_to_correct = m.group(1)
-                    search_string = "word ([0-9]+ )"
-                    m = re.search(search_string, line)
-                    if m:
-                        word_to_correct = m.group(1)
-                    search_string = "bit ([0-9]+)"
-                    m = re.search(search_string, line)
-                    if m:
-                        bit_to_correct = m.group(1)
 
-                    location_to_correct = frame_to_correct + ' ' + word_to_correct + bit_to_correct
-                    # write_to_log("Injected location " + location_to_correct, jcm_log)
-                    
-                if "Fault Injection Succeeded!" in line:
-                    line = "[{}] ".format(time.strftime(TIME_STRING_FORMAT)) + "Fault Injected!\n"
-                    print("Fault injection succeeded!", file=print_jcm_fout)
-                    keep_reading = False
-
-
-    def correct_fault(ssh_client):
-        '''
-        Injects a fault to correct it
-        '''
-        global frame_to_correct
-        global word_to_correct
-        global bit_to_correct
-        global location_to_correct
-        global CORRECTION_FAULT_INJECTION_COMMAND
-        global DESIGN
-        global FAULT_INJECTION_ENABLED
-
-        location = location_to_correct[2:]
-        location = location.split()
-        inject_address = hex(int(location[0],16))
-        inject_word = int(location[1])
-        inject_bit = int(location[2])
-
-        command = CORRECTION_FAULT_INJECTION_COMMAND.format(fpga = PART, frads = FRADS, design = DESIGN, frame = inject_address, word = inject_word, bit = inject_bit)
-        stdin, stdout, stderr = ssh_client.exec_command(command)
-        
-        line = ""
-        time_start = time.time()
-        keep_reading = True
-        while keep_reading:
-            
-            if not FAULT_INJECTION_ENABLED:
+            except(buffered_pipe.PipeTimeout, socket.timeout) as error:
+                print("ERROR in scrubbing", file=print_jcm_fout)
+                print(error, file=print_jcm_fout)
+                SCRUBBING_OK = False
                 return 1
-            
-            cur_time = time.time()
-            if (cur_time-time_start >30):
-                os.execv(sys.executable, ['python3'] + sys.argv) # Restarts the program
-            line = stdout.readline()
-            if (not line.isspace()) and line != '':
-                print(time.strftime(TIME_STRING_FORMAT), " : ", line, file=print_jcm_fout)
-                line = "[{}] ".format(time.strftime(TIME_STRING_FORMAT)) + line
-                if "Failed!" in line:
-                    return 1
-                if "Fault Injection Succeeded!" in line:
-                    line = "[{}] ".format(time.strftime(TIME_STRING_FORMAT)) + "Fault Corrected!\n"
-                    print("Fault correction succeeded!", file=print_jcm_fout)
-                    keep_reading = False
+        
+        SCRUBBING_OK = False
+        return 0
+
 
 
 class boardcontrol():
+    '''
+    This class includes the actions to be performed in the states.
 
+    It also includes the state variables of the experiment that the action functions must query.
+    '''
     """Set variables to pass around"""
 
     # Number for dev port in /dev/ttyUSBX (int)
@@ -935,18 +922,20 @@ def build_experiment():
 
     # State constants
     INITIAL_STARTING_STATE = "Initial Starting State"
+    REPOWER_STATE = "Repower State"
+
     PLUGGED_IN_STATE = "Plugged In State"
     TTY_CONNECTION_FAILURE = "TTY Connection Failure"
     LOGIN_JCM_STATE = "Login JCM State"
     CONFIGURE_FPGA_STATE = "Configure FPGA State"
     CONNECT_TO_LITEX_STATE = "Connect To Litex"
     EXPECT_LITEX_PROMPT_STATE = "Expect Litex Prompt State"
-    REPOWER_STATE = "Repower State"
-    INJECT_FIRST_FAULT_STATE = "Inject First Fault State"
+    #INJECT_FIRST_FAULT_STATE = "Inject First Fault State"
     SEND_BIST_COMMAND_STATE = "Send Bist Command State"
     EXPECT_TITLE_OR_DATA_STATE = "Expect Title Or Data State"
-    CORRECT_FAULT_RECONFIGURE_BOARD_STATE = "Correct Fault Reconfigure Board"
-    CORRECT_FAULT_STATE = "Correct Fault State"
+    SPAWN_SCRUBBING_STATE = "Spawn Configuration Scrubbing State"
+    #CORRECT_FAULT_RECONFIGURE_BOARD_STATE = "Correct Fault Reconfigure Board"
+    #CORRECT_FAULT_STATE = "Correct Fault State"
     CHECK_IF_ERRORS_EXIST_STATE = "Check If Errors Exist State"
     CHECK_IF_ERRORS_INCREMENT_STATE = "Check If Errors Increment State"
     CHECK_IF_FAULT_INJECT_STATE = "Check If Fault Inject State"
@@ -967,6 +956,13 @@ def build_experiment():
     experiment.add_state(ExperimentState(
         INITIAL_STARTING_STATE,
         boardcontrol.start_actions,
+        Transition(lambda ex, st: True, REPOWER_STATE)
+    ))
+
+    # REPOWER_STATE
+    experiment.add_state(ExperimentState(
+        REPOWER_STATE,
+        boardcontrol.repower_board_actions,
         Transition(lambda ex, st: True, PLUGGED_IN_STATE)
     ))
 
@@ -980,7 +976,7 @@ def build_experiment():
         Transition(lambda ex, st: True, LOGIN_JCM_STATE)
     ))
 
-    # Create give up state (termination state)
+    # TTY_CONNECTION_FAILURE
     experiment.add_state(ExperimentState(
         TTY_CONNECTION_FAILURE,
         boardcontrol.give_up_actions,
@@ -988,14 +984,14 @@ def build_experiment():
         Transition(lambda ex, st: True, TTY_CONNECTION_FAILURE)
     ))
 
-    # Create login jcm state
+    # LOGIN_JCM_STATE
     experiment.add_state(ExperimentState(
         LOGIN_JCM_STATE,
         boardcontrol.jcm_login_actions,
         Transition(lambda ex, st: True, CONFIGURE_FPGA_STATE)
     ))
 
-    # Create configure fpga state
+    # CONFIGURE_FPGA_STATE
     experiment.add_state(ExperimentState(
         CONFIGURE_FPGA_STATE,
         boardcontrol.jcm_configure_board_actions,
@@ -1003,7 +999,7 @@ def build_experiment():
         Transition(lambda ex, st: True, PLUGGED_IN_STATE)
     ))
 
-    # Create connect to litex state
+    # CONNECT_TO_LITEX_STATE
     experiment.add_state(ExperimentState(
         CONNECT_TO_LITEX_STATE,
         boardcontrol.connect_to_litex_serial_actions,
@@ -1011,27 +1007,29 @@ def build_experiment():
         Transition(lambda ex, st: True, REPOWER_STATE)
     ))
 
-    # Create expect litex prompt state
+    # EXPECT_LITEX_PROMPT_STATE
     experiment.add_state(ExperimentState(
         EXPECT_LITEX_PROMPT_STATE,
         boardcontrol.expect_litex_prompt_actions,
-        Transition(lambda ex, st: ex.expect_litex_return_val == 0, INJECT_FIRST_FAULT_STATE),
+        Transition(lambda ex, st: ex.expect_litex_return_val == 0, SPAWN_SCRUBBING_STATE),
         Transition(lambda ex, st: True, REPOWER_STATE)
     ))
 
-    # Create repower state
+    # SPAWN_SCRUBBING_STATE
     experiment.add_state(ExperimentState(
-        REPOWER_STATE,
-        boardcontrol.repower_board_actions,
-        Transition(lambda ex, st: True, PLUGGED_IN_STATE)
+        SPAWN_SCRUBBING_STATE,
+        boardcontrol.spawn_jcm_scrubbing,
+        Transition(lambda ex, st: True, SEND_BIST_COMMAND_STATE)
     ))
 
     # Create inject first fault state
+    '''
     experiment.add_state(ExperimentState(
         INJECT_FIRST_FAULT_STATE,
         boardcontrol.create_first_fault_actions,
         Transition(lambda ex, st: True, SEND_BIST_COMMAND_STATE)
     ))
+    '''
 
     # Create send bist command state
     experiment.add_state(ExperimentState(
@@ -1135,7 +1133,8 @@ def build_experiment():
 def main():
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--netbooter-port", help="netbooter outlet number that the FPGA is connected to", default=NETBOOTER_PORT, type=int, required=False)
+    parser.add_argument("--netbooter-port", help="netbooter outlet number that the FPGA is connected to", 
+        default=NETBOOTER_PORT, type=int, required=False)
     parser.add_argument("--netbooter-ip", help="Ip address to connect to netbooter", default=NETBOOTER_IP, required=False)
     parser.add_argument("--mem-burst-length", help="Bist memory burst length", default=BURST_LENGTH, type=int, required=False)
     parser.add_argument("--addr-mode", help="Address mode, how Bist should read and write memory: 0=fixed, 1=linear, 2=random", default=RAND_ARG, type=int, required=False)
@@ -1148,7 +1147,8 @@ def main():
     boardcontrol.addr_mode = args.addr_mode
 
     # Set up logger settings
-    logging.basicConfig(filename="times_20.txt", level=logging.INFO, datefmt=TIME_STRING_FORMAT, format='%(asctime)s %(levelname)-8s %(message)s')
+    logging.basicConfig(filename="times_20.txt", level=logging.INFO, datefmt=TIME_STRING_FORMAT, 
+        format='%(asctime)s %(levelname)-8s %(message)s')
     
     experiment = build_experiment()
     experiment.start()
@@ -1164,12 +1164,16 @@ Updated state machine using threads
 
 1. Init state
    - Just a start message
-2. Repower board
+2. Power down JCM and NexysVideo
+2. Repower/Reboot JCM (But don't log in - do other steps while the JCM boots)
+   - Make sure JCM is in a good state
+2. Repower FPGA board
    - We want to start the experiment in a fresh state
 3. Initialize UART connection (for UARTBone and UART serial)
   - Force repower the UART connection?
   - Log the UART serial from here out
 4. JCM Login
+  - Do some pings until the network is up
   - All JCM traffic logged to a dedicated file
 5. JCM Configuration
   - This is blocking - we don't move to the next state until this is done.
