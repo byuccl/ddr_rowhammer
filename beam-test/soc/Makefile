@@ -78,6 +78,7 @@ $(PYTHON_VENV)/dependencies_installed.txt: | env.sh
 	git submodule update --init --recursive dependencies
 	. ./env.sh && pip install -r ./requirements.txt
 	export PATH=$(PATH):$(PWD)/../../../yinstruments/yinstruments
+	pip install pexpect paramiko pyudev
 	@echo Installed dependencies on $$(date). > $(PYTHON_VENV)/dependencies_installed.txt
 	@echo -------------------DONE-------------------
 
