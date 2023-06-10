@@ -54,7 +54,8 @@ JCM_PING_DELAY = 10
 
 UARTBONE_UART_BASENAME = "uartbone"
 
-DEFAULT_BIST_BURST_LENGTH = 0x2000 # Default burst length
+DEFAULT_BIST_BURST_LENGTH = 0xfffffff # Default burst length
+DEFAULT_BIST_DELAY_SECONDS = 0 # Default number of seconds to delay.
 DEFAULT_BIST_ADDR_MODE = 1 # Start reading/writing data with addresses linearly.
 DEFAULT_BIST_PATTERN = 0xa5 # Start reading/writing data with addresses linearly.
 LITEX_LOGIN_DELAY = 10
@@ -71,11 +72,13 @@ class bist_state(object):
 
     def __init__(self, 
         bist_mem_burst_length:int,
+        bist_mem_delay_seconds:int,
         bist_addr_mode:int,
         bist_pattern:int,
         ) -> None:
         ''' Initialize class '''
         self.bist_mem_burst_length = bist_mem_burst_length
+        self.bist_mem_delay_seconds = bist_mem_delay_seconds
         self.bist_addr_mode = bist_addr_mode
         self.bist_pattern = bist_pattern
 
@@ -94,17 +97,17 @@ class bist_state(object):
     def get_bist_command_str(self):
         ''' Creates a string for the sdram_bist command (Based on parameters of this object)
         litex> sdram_bist
-        sdram_bist <length> [<addr_mode>] [<data_mode>] [<write_mode>]
-        length    : DMA block size in bytes
-        addr_mode : 0=fixed (starts at zero), 1=inc, 2=random
-        data_mode : 0=pattern, 1=inc, 2=random
-        write_mode: 0=no_write, 1=write_once, 2=write_and_read
+        sdram_bist <length> [<delay>] [<addr_mode>] [<write_mode>]
+        length    : Number of transactions per read write (1 = 8 bytes)
+        delay     : Number of seconds to delay after each check (default: 0)
+        addr_mode : 0=fixed (starts at zero), 1=inc (default: 1)
+        write_mode: 0=write_once_read_always, 1=write_and_read_always (default: 1)
         '''
         #cmd_str = "sdram_bist " + str(self.bist_mem_burst_length) + " " + str(self.bist_addr_mode)
         # address_mode = 1 (increment)
         # data_mode = 0 (pattern)
         # write_mode = 2 (write and read)
-        cmd_str = "sdram_bist " + str(self.bist_mem_burst_length) + " 1 0 2"
+        cmd_str = "sdram_bist " + str(self.bist_mem_burst_length) + " " + str(self.bist_mem_delay_seconds) + " 0 0"
         return cmd_str
 
     def clear_data(self):
@@ -428,7 +431,7 @@ def start_bist_state_actions(ex, st):
     ''' Issues the BIST command
         sets: does not impact state
     '''
-    ex.bist = bist_state(ex.args.bist_mem_burst_length, ex.args.bist_addr_mode, ex.args.bist_pattern)
+    ex.bist = bist_state(ex.args.bist_mem_burst_length, ex.args.bist_mem_delay_seconds, ex.args.bist_addr_mode, ex.args.bist_pattern)
 
     # Send initial bist pattern
     bist_command = ex.bist.get_bist_pattern_command_str()
@@ -471,13 +474,15 @@ def bist_execution_state_actions(ex, st):
     # BIST title line
     #^M                          WR-BW(MiB/s) RD-BW(MiB/s)  TESTED(MiB)     ERRORS        SEC        DED
     #BIST_TITLE_REGEX = "WR-BW\(MiB/s\) RD-BW\(MiB/s\)  TESTED\(MiB\)     ERRORS        SEC        DED"
-    BIST_TITLE_REGEX = "WR-BW\(MiB/s\) RD-BW\(MiB/s\)  TESTED\(MiB\)     ERRORS(        SEC        DED)?"
+    # BIST_TITLE_REGEX = "WR-BW\(MiB/s\) RD-BW\(MiB/s\)  TESTED\(MiB\)     ERRORS(        SEC        DED)?"
+    BIST_TITLE_REGEX = " WRITE TICKS   READ TICKS TOTAL WRITES  TOTAL READS  WR-SPEED(MiB/s)  RD-SPEED(MiB/s)      ADDRESSES TESTED     ERRORS\n"
     # BIST data line
     #^M                                   646          654          324          0          0          0
     #BIST_DATA_REGEX = "\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+"
-    BIST_DATA_REGEX = "\d+\s+\d+\s+\d+\s+\d+"
+    BIST_DATA_REGEX = "\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+"
     #ERRORS (CPU): 0
-    BIST_ERROR_MSG_REGEX = "ERRORS (CPU): (\d+)"
+    # BIST_ERROR_MSG_REGEX = "ERRORS (CPU): (\d+)"
+    BIST_ERROR_MSG_REGEX = "ERROR at address 0x\d+: data read: "
 
 
     BIST_TEXT_DELAY = 15
@@ -487,9 +492,11 @@ def bist_execution_state_actions(ex, st):
     MAX_CONSECUTIVE_BAD_DATA_ERRORS = 8
     DRAM_ERROR_THRESHOLD = 100
     MIN_BIST_TIME_DIFF_SECONDS = 4
+    print("Initialized")
 
     # Iterate over lines until an error occurs (will need to break out on an error condition)
     while(1):
+        print("Start of while loop")
 
         # Constants indicating position in regex array of each expression
         TITLE_INDEX=0
@@ -498,6 +505,7 @@ def bist_execution_state_actions(ex, st):
 
         # Get a line of data
         match_index = ex.uart.expect([BIST_TITLE_REGEX,BIST_DATA_REGEX,BIST_ERROR_MSG_REGEX],timeout=BIST_TEXT_DELAY)
+        print("Match index: ", match_index)
 
         # Process expect system errors
         if ex.uart.has_uart_error():
@@ -526,6 +534,7 @@ def bist_execution_state_actions(ex, st):
 
         # No system errors in string - evaluate the string
         if expecting_title: 
+            print("Expecting title")
             
             # is this an error message line? If so, ignore
             if ex.uart.serial_fdspawn.match and match_index == ERROR_MSG_INDEX:
@@ -542,7 +551,7 @@ def bist_execution_state_actions(ex, st):
                     bist_status = "first"
                     first_title_line = False
                 else:
-                    if valid_data_lines == 8:
+                    if valid_data_lines == 10:
                         # received 8 valid data lines
                         bist_status = "ok"
                         ###############################
@@ -588,6 +597,7 @@ def bist_execution_state_actions(ex, st):
                 continue
 
         else: # Expecting Data
+            print("expecting data")
 
             # is this an error message line? If so, ignore
             if ex.uart.serial_fdspawn.match and match_index == ERROR_MSG_INDEX:
@@ -598,7 +608,7 @@ def bist_execution_state_actions(ex, st):
                 # execpting data and received valid data line
                 expect_str = ex.uart.serial_fdspawn.match.group(0)
                 DataLineNumber += 1
-                if DataLineNumber == 8: 
+                if DataLineNumber == 10: 
                     expecting_title = True # Now expecting title
                 # Check for data errors
                 (err,sec,ded) = ex.bist.new_errors(expect_str)
@@ -1089,6 +1099,7 @@ def main():
     parser.add_argument("--log_dir", help="Directory to store log files", type=str)
     parser.add_argument("--single_step", help="Single step through state machine", action='store_true')
     parser.add_argument("--bist_mem_burst_length", help="Burst length of BIST command", type=int, default = DEFAULT_BIST_BURST_LENGTH)
+    parser.add_argument("--bist_mem_delay_seconds", help="How long to delay reading/writing in seconds", type=int, default = DEFAULT_BIST_DELAY_SECONDS)
     parser.add_argument("--bist_addr_mode", help="Burst length of BIST command", type=int, default=DEFAULT_BIST_ADDR_MODE)
     parser.add_argument("--bist_pattern", help="BIST Pattern for memory test", type=int, default=DEFAULT_BIST_PATTERN)
     parser.add_argument("--no_uart_bone", help="Disable UART wishbone interface", action='store_true')
