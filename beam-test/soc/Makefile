@@ -107,7 +107,7 @@ build: deps | env.sh
 	@echo Building SoC.
 	@echo ------------------------------------------
 	. ./env.sh; \
-	python $(PYTHON_FLAGS) ./dependencies/litex-boards/litex_boards/targets/$(BUILD_TARGET) --build $(BUILD_FLAGS)
+	python3 $(PYTHON_FLAGS) ./dependencies/litex-boards/litex_boards/targets/$(BUILD_TARGET) --build $(BUILD_FLAGS)
 	@echo -------------------DONE-------------------
 
 # -------------------------------------- #
@@ -117,7 +117,7 @@ load: | env.sh
 	@echo Loading Design
 	@echo ------------------------------------------
 	. ./env.sh; \
-	python $(PYTHON_FLAGS) ./dependencies/litex-boards/litex_boards/targets/$(BUILD_TARGET) --load
+	python3 $(PYTHON_FLAGS) ./dependencies/litex-boards/litex_boards/targets/$(BUILD_TARGET) --load
 	@echo -------------------DONE-------------------
 
 clean:
