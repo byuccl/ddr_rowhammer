@@ -2,7 +2,7 @@
 ### Current commands
 
 * Still working on this. Here is a command to run.
-```python3 ../test_scripts/ddrctrl_experiment.py --test_name beamtestexample --usb_uart_phys_port 1-4.4 --usb_uart_phys_if 1```
+```python3 ../test_scripts/ddrcontinuous_experiment.py --test_name beamtestexample --usb_uart_phys_port 1-4.4 --usb_uart_phys_if 1```
 
 
 Previous commands:
