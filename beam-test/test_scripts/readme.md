@@ -1,8 +1,11 @@
-<!-- 
-username:wirthlin
-token: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 
--->
 
+### Current commands
+
+* Still working on this. Here is a command to run.
+```python3 ../test_scripts/ddrctrl_experiment.py --test_name beamtestexample --usb_uart_phys_port 1-4.4 --usb_uart_phys_if 1```
+
+
+Previous commands:
 
 # DDR Rowhammer scripts
 
