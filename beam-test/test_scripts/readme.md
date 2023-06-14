@@ -1,11 +1,36 @@
 
 ### Current commands
 
-* Still working on this. Here is a command to run.
-```python3 ../test_scripts/ddrcontinuous_experiment.py --test_name beamtestexample --usb_uart_phys_port 1-4.4 --usb_uart_phys_if 1```
+Continuous BIST version running smoothly with netbooter. 
 
+Physical port and interface for boards:
+Nexys4ddr:                  Physical port: 1-4.4     Interface: 1
+Nexys Video:                Physical port: 1-4.2     Interface: 0
+Antmicro Datacenter board:  Physical port: 1-4.1     Interface: 2
 
-Previous commands:
+This is how I set the bist up:
+First, I cloned the ddr_rowhammer repository and yinstruments repository.
+Then I navigated inside the ddr_rowhammer directory, and checkout the beam-test-changed-bist branch. 
+
+```
+git clone https://github.com/byuccl/ddr_rowhammer/
+git clone https://github.com/byuccl/yinstruments/
+cd ddr_rowhammer
+git checkout beam-test-changed-bist
+```
+
+Then I navigated into the directories beam_test/soc/, and ran `make deps`. [This is a link to documentation on our makefile.](https://github.com/byuccl/ddr_rowhammer/wiki/Instructions-to-setup-our-BIST-designs)
+
+```
+cd beam-test/soc
+make deps
+```
+
+Note: We have a file called `env.sh` that adds the repository 'yinstruments' through a relative path.
+
+Navigate into the 
+
+Previous documentation:
 
 # DDR Rowhammer scripts
 
