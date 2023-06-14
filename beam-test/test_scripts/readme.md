@@ -1,12 +1,12 @@
 
-### Current commands
+### BIST Version
 
 Continuous BIST version running smoothly with netbooter. 
 
-Physical port and interface for boards:
-Nexys4ddr:                  Physical port: 1-4.4     Interface: 1
-Nexys Video:                Physical port: 1-4.2     Interface: 0
-Antmicro Datacenter board:  Physical port: 1-4.1     Interface: 2
+Physical port and interface for boards, as well as current netbooter ports:
+Nexys4ddr:                  Physical port: 1-4.4     Interface: 1     Netbooter port: 2
+Nexys Video:                Physical port: 1-4.2     Interface: 0     Netbooter port: 3
+Antmicro Datacenter board:  Physical port: 1-4.1     Interface: 2     Netbooter port: 1
 
 This is how I set the bist up:
 First, I cloned the ddr_rowhammer repository and yinstruments repository.
@@ -28,7 +28,32 @@ make deps
 
 Note: We have a file called `env.sh` that adds the repository 'yinstruments' through a relative path.
 
-Navigate into the 
+Finally, I sourced the file 'env.sh' and navigated into the test_scripts directory where I can now run the scripts.
+
+```
+source env.sh
+cd ../test_scripts/
+```
+
+### Current commands
+
+Here are the current commands that run the continuous version of the BIST:
+
+For the antmicro datacenter board:
+```
+python3 ddrcontinuous_experiment.py --test_name testexperiment --usb_uart_phys_port 1-4.1 --usb_uart_phys_if 2 --netbooter_ip 169.254.131.160 --board_netbooter_port 1
+```
+
+For the nexys video board:
+```
+python3 ddrcontinuous_experiment.py --test_name testexperiment --usb_uart_phys_port 1-4.2 --usb_uart_phys_if 0 --netbooter_ip 169.254.131.160 --board_netbooter_port 3
+```
+
+For the nexys4ddr board:
+```
+python3 ddrcontinuous_experiment.py --test_name testexperiment --usb_uart_phys_port 1-4.4 --usb_uart_phys_if 1 --netbooter_ip 169.254.131.160 --board_netbooter_port 2
+```
+
 
 Previous documentation:
 
