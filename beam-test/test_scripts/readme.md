@@ -26,7 +26,7 @@ cd beam-test/soc
 make deps
 ```
 
-Note: We have a file called `env.sh` that adds the repository 'yinstruments' through a relative path.
+Note: We have a file called `env.sh` that adds the repository 'yinstruments' to PATH through a relative path.
 
 Finally, I sourced the file 'env.sh' and navigated into the test_scripts directory where I can now run the scripts.
 
@@ -54,6 +54,8 @@ For the nexys4ddr board:
 python3 ddrcontinuous_experiment.py --test_name testexperiment --usb_uart_phys_port 1-4.4 --usb_uart_phys_if 1 --netbooter_ip 169.254.131.160 --board_netbooter_port 2
 ```
 
+Notes:
+Nexys4ddr board 
 
 Previous documentation:
 
