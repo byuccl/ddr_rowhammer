@@ -57,8 +57,8 @@ UARTBONE_UART_BASENAME = "uartbone"
 DEFAULT_BIST_BURST_LENGTH = 0xfffffff # Default burst length
 DEFAULT_BIST_DELAY_SECONDS = 0 # Default number of seconds to delay.
 DEFAULT_BIST_ADDR_MODE = 1 # Start reading/writing data with addresses linearly.
-DEFAULT_BIST_PATTERN = 0xa5 # Start reading/writing data with addresses linearly.
-LITEX_LOGIN_DELAY = 10
+DEFAULT_BIST_PATTERN = 0xa5a5a5a5 # Start reading/writing data with addresses linearly.
+LITEX_LOGIN_DELAY = 12
 
 MAX_BIST_ERRORS_BEFORE_REBOOT = 100
 
@@ -107,36 +107,36 @@ class bist_state(object):
         # address_mode = 1 (increment)
         # data_mode = 0 (pattern)
         # write_mode = 2 (write and read)
-        cmd_str = "sdram_bist " + str(self.bist_mem_burst_length) + " " + str(self.bist_mem_delay_seconds) + " 0 0"
+        cmd_str = "sdram_bist " + str(self.bist_mem_burst_length) + " " + str(self.bist_mem_delay_seconds) + " 1 0"
         return cmd_str
 
     def clear_data(self):
         ''' Clear's the error counts of the class.'''
         self.error_cnt = 0
-        self.sec_cnt = 0
-        self.ded_cnt = 0
+        # self.sec_cnt = 0
+        # self.ded_cnt = 0
 
     def new_errors(self,result_str):
         ''' Evaluates data string. New errors as a tuple. '''
-        ERROR_MSG_INDEX = 3 # Error number at index 3 of matched string
-        SEC_MSG_INDEX = 4 # Sec error number at index 4 of matched string
-        DED_MSG_INDEX = 5 # Ded error number at index 5 of matched string
+        ERROR_MSG_INDEX = 7 # Error number at index 3 of matched string
+        # SEC_MSG_INDEX = 4 # Sec error number at index 4 of matched string
+        # DED_MSG_INDEX = 5 # Ded error number at index 5 of matched string
         result_list = result_str.split()
         new_error_cnt = int(result_list[ERROR_MSG_INDEX])
-        if len(result_list) > 4:
-            new_sec_cnt = int(result_list[SEC_MSG_INDEX])
-            new_ded_cnt = int(result_list[DED_MSG_INDEX])
-        else:
-            new_sec_cnt = 0
-            new_ded_cnt = 0
+        # if len(result_list) > 4:
+        #     new_sec_cnt = int(result_list[SEC_MSG_INDEX])
+        #     new_ded_cnt = int(result_list[DED_MSG_INDEX])
+        # else:
+        #     new_sec_cnt = 0
+        #     new_ded_cnt = 0
         new_errors = new_error_cnt - self.error_cnt
-        new_sec_errors = new_sec_cnt - self.sec_cnt
-        new_ded_errors = new_ded_cnt - self.ded_cnt
+        # new_sec_errors = new_sec_cnt - self.sec_cnt
+        # new_ded_errors = new_ded_cnt - self.ded_cnt
         # update internal variables
         self.error_cnt = new_error_cnt
-        self.sec_cnt = new_sec_cnt
-        self.ded_cnt = new_ded_cnt
-        return (new_errors, new_sec_errors, new_ded_errors)
+        # self.sec_cnt = new_sec_cnt
+        # self.ded_cnt = new_ded_cnt
+        return (new_errors) #, new_sec_errors, new_ded_errors)
 
     def new_data_str(self,result_str):
         ''' Evaluates data string. Returns False if no new errors. True with new errors. '''
@@ -315,10 +315,10 @@ def uart_setup_state_actions(ex, st):
     ex.uart = uart_control(ex.args.usb_uart_phys_port, ex.args.usb_uart_phys_if, uart_stdout = uart_log_file, logging = ex.logger, timestampformat = TIME_STRING_FORMAT)
 
 
-def power_nexys_state_actions(ex, st):
-    ''' Power cycle nexys board (no status) '''
-    turn_off_cmd = ex.netbooter.turn_off_port(ex.args.nexys_netbooter_port)
-    turn_on_cmd = ex.netbooter.turn_on_port(ex.args.nexys_netbooter_port)
+def power_board_state_actions(ex, st):
+    ''' Power cycle board board (no status) '''
+    turn_off_cmd = ex.netbooter.turn_off_port(ex.args.board_netbooter_port)
+    turn_on_cmd = ex.netbooter.turn_on_port(ex.args.board_netbooter_port)
     ex.netbooter_ok = turn_off_cmd and turn_on_cmd
     # Initialize global state variables when starting over
     variable_update_experiment_initialization(ex)
@@ -334,8 +334,8 @@ def connect_uart_state_actions(ex, st):
         return
     ex.uart_ok = True
 
-def configure_nexys_state_actions(ex, st):
-    ''' Configures the Nexys board
+def configure_board_state_actions(ex, st):
+    ''' Configures the board
         sets: ex.configure_ok
     '''
 
@@ -419,7 +419,7 @@ def initial_litex_prompt_state_actions(ex, st):
         ex.login_litex = True
         ex.failed_initial_login = 0  # Reset counter for next time around
     else:
-        # Failed login, go back to repower of NEXYS until max attempts
+        # Failed login, go back to repower the board until max attempts
         if ex.failed_initial_login >= MAX_LOGIN_ATTEMPS:
             # Failed too many times - give up
             ex.initial_login_terminate = True
@@ -491,12 +491,10 @@ def bist_execution_state_actions(ex, st):
     MAX_CONSECUTIVE_BAD_DATA_LINES = 10
     MAX_CONSECUTIVE_BAD_DATA_ERRORS = 8
     DRAM_ERROR_THRESHOLD = 100
-    MIN_BIST_TIME_DIFF_SECONDS = 4
-    print("Initialized")
+    MIN_BIST_TIME_DIFF_SECONDS = 2
 
     # Iterate over lines until an error occurs (will need to break out on an error condition)
     while(1):
-        print("Start of while loop")
 
         # Constants indicating position in regex array of each expression
         TITLE_INDEX=0
@@ -505,7 +503,7 @@ def bist_execution_state_actions(ex, st):
 
         # Get a line of data
         match_index = ex.uart.expect([BIST_TITLE_REGEX,BIST_DATA_REGEX,BIST_ERROR_MSG_REGEX],timeout=BIST_TEXT_DELAY)
-        print("Match index: ", match_index)
+        # print("Match index: ", match_index)
 
         # Process expect system errors
         if ex.uart.has_uart_error():
@@ -534,11 +532,11 @@ def bist_execution_state_actions(ex, st):
 
         # No system errors in string - evaluate the string
         if expecting_title: 
-            print("Expecting title")
+            # print("Expecting title")
             
             # is this an error message line? If so, ignore
             if ex.uart.serial_fdspawn.match and match_index == ERROR_MSG_INDEX:
-                print("ERR MSG")
+                # print("ERR MSG")
                 continue
 
             # Is this a valid title line?
@@ -551,7 +549,7 @@ def bist_execution_state_actions(ex, st):
                     bist_status = "first"
                     first_title_line = False
                 else:
-                    if valid_data_lines == 10:
+                    if valid_data_lines == 9:
                         # received 8 valid data lines
                         bist_status = "ok"
                         ###############################
@@ -597,27 +595,29 @@ def bist_execution_state_actions(ex, st):
                 continue
 
         else: # Expecting Data
-            print("expecting data")
+            # print("expecting data")
 
             # is this an error message line? If so, ignore
             if ex.uart.serial_fdspawn.match and match_index == ERROR_MSG_INDEX:
-                print("ERR MSG")
+                # print("ERR MSG")
                 continue
 
             if ex.uart.serial_fdspawn.match and match_index == DATA_INDEX:
                 # execpting data and received valid data line
                 expect_str = ex.uart.serial_fdspawn.match.group(0)
                 DataLineNumber += 1
-                if DataLineNumber == 10: 
+                if DataLineNumber == 9: 
                     expecting_title = True # Now expecting title
                 # Check for data errors
-                (err,sec,ded) = ex.bist.new_errors(expect_str)
-                total_errors = err+sec+ded
+                # (err,sec,ded) = ex.bist.new_errors(expect_str)
+                (err) = ex.bist.new_errors(expect_str)
+                total_errors = err #+sec+ded
                 if total_errors > 0:            
                     consecutive_data_errors += 1
-                    ex.logger.error(f"BIST:Data Errors ({err},{sec},{ded}:{total_errors}/{consecutive_data_errors}-{total_bist_error_messages})")
+                    # ex.logger.error(f"BIST:Data Errors ({err},{sec},{ded}:{total_errors}/{consecutive_data_errors}-{total_bist_error_messages})")
+                    ex.logger.error(f"BIST:Data Errors ({err}:{total_errors}/{consecutive_data_errors}-{total_bist_error_messages})")
                     ex.logger.error(f"BIST: expect string:{expect_str}")
-                    print(ex.uart.serial_fdspawn.match.group(0))
+                    # print(ex.uart.serial_fdspawn.match.group(0))
                     total_bist_error_messages += 1
                     if total_bist_error_messages >= MAX_BIST_ERRORS_BEFORE_REBOOT:
                         # Reboot
@@ -854,9 +854,9 @@ def build_experiment(args,logger,single_step=False):
     NETBOOTER_SETUP_STATE = "Netbooter Setup State"
     JCM_SETUP_STATE = "JCM Setup State"
     UART_SETUP_STATE = "UART Setup State"
-    POWER_NEXYS_STATE = "Power Nexys State"
+    POWER_BOARD_STATE = "Power Board State"
     CONNECT_UART_STATE = "Connect UART State"
-    CONFIGURE_NEXYS_STATE = "Configure Nexys State"
+    CONFIGURE_BOARD_STATE = "Configure Board State"
     SETUP_UARTBONE_STATE = "Setup UARTBone State"
     ENABLE_SCRUBBING_STATE = "Enable Scrubbing State"
     LITEX_PROMPT_STATE = "LiteX Login State"
@@ -883,19 +883,19 @@ def build_experiment(args,logger,single_step=False):
     experiment.add_state(ExperimentState(
         INITIAL_STARTING_STATE,
         initial_starting_state_actions,
-        Transition(lambda ex, st: True, UART_SETUP_STATE)
+        Transition(lambda ex, st: True, NETBOOTER_SETUP_STATE)
     ))
 
     # No netbooter for now 
 
-    # # NETBOOTER_SETUP_STATE
-    # # - Check for netbooter and initialize data structures. Make sure it responds on the network
-    # experiment.add_state(ExperimentState(
-    #     NETBOOTER_SETUP_STATE,
-    #     netbooter_setup_state_actions,
-    #     Transition(lambda ex, st: ex.netbooter_ok, JCM_SETUP_STATE),
-    #     Transition(lambda ex, st: True, TERMINATING_STATE)
-    # ))
+    # NETBOOTER_SETUP_STATE
+    # - Check for netbooter and initialize data structures. Make sure it responds on the network
+    experiment.add_state(ExperimentState(
+        NETBOOTER_SETUP_STATE,
+        netbooter_setup_state_actions,
+        Transition(lambda ex, st: ex.netbooter_ok, UART_SETUP_STATE),
+        Transition(lambda ex, st: True, TERMINATING_STATE)
+    ))
 
     # No JCM for now
 
@@ -913,19 +913,19 @@ def build_experiment(args,logger,single_step=False):
     experiment.add_state(ExperimentState(
         UART_SETUP_STATE,
         uart_setup_state_actions,
-        Transition(lambda ex, st: True, CONNECT_UART_STATE)
+        Transition(lambda ex, st: True, POWER_BOARD_STATE)
     ))
 
     # No netbooter for now
 
-    # # POWER_NEXYS_STATE
-    # # - Intialize JCM data structure, repower (if necessary), and create connection
-    # experiment.add_state(ExperimentState(
-    #     POWER_NEXYS_STATE,
-    #     power_nexys_state_actions,
-    #     Transition(lambda ex, st: ex.netbooter_ok, CONNECT_UART_STATE),
-    #     Transition(lambda ex, st: True, TERMINATING_STATE)
-    # ))
+    # POWER_BOARD_STATE
+    # - Intialize JCM data structure, repower (if necessary), and create connection
+    experiment.add_state(ExperimentState(
+        POWER_BOARD_STATE,
+        power_board_state_actions,
+        Transition(lambda ex, st: ex.netbooter_ok, CONNECT_UART_STATE),
+        Transition(lambda ex, st: True, TERMINATING_STATE)
+    ))
 
     # CONNECT_UART_STATE
     # - Connect the UART
@@ -936,11 +936,11 @@ def build_experiment(args,logger,single_step=False):
         Transition(lambda ex, st: True, TERMINATING_STATE)
     ))
 
-    # # CONFIGURE_NEXYS_STATE
+    # # CONFIGURE_BOARD_STATE
     # # - Configure FPGA
     # experiment.add_state(ExperimentState(
-    #     CONFIGURE_NEXYS_STATE,
-    #     configure_nexys_state_actions,
+    #     CONFIGURE_BOARD_STATE,
+    #     configure_board_state_actions,
     #     Transition(lambda ex, st: ex.configure_ok, SETUP_UARTBONE_STATE),
     #     Transition(lambda ex, st: True, TERMINATING_STATE)
     # ))
@@ -968,7 +968,7 @@ def build_experiment(args,logger,single_step=False):
         LITEX_PROMPT_STATE,
         initial_litex_prompt_state_actions,
         Transition(lambda ex, st: ex.login_litex, START_BIST_STATE),
-        Transition(lambda ex, st: not ex.initial_login_terminate, POWER_NEXYS_STATE),
+        Transition(lambda ex, st: not ex.initial_login_terminate, POWER_BOARD_STATE),
         Transition(lambda ex, st: True, TERMINATING_STATE)
     ))
 
@@ -985,7 +985,7 @@ def build_experiment(args,logger,single_step=False):
     experiment.add_state(ExperimentState(
         BIST_EXECUTION_STATE,
         bist_execution_state_actions,
-        Transition(lambda ex, st: ex.bist_error_max, CONNECT_UART_STATE), #POWER_NEXYS_STATE
+        Transition(lambda ex, st: ex.bist_error_max, POWER_BOARD_STATE), 
         Transition(lambda ex, st: not ex.uart_ok, TERMINAL_RECOVERY_STATE),        
         Transition(lambda ex, st: ex.bist_error, BIST_RECOVERY_STATE),
         Transition(lambda ex, st: ex.dram_error, DRAM_RECOVERY_STATE),
@@ -1095,7 +1095,7 @@ def main():
     parser.add_argument("--fault_injection", help="Enable fault injection during scrubbing. Param=# of faults per cycle", type=int)
     parser.add_argument("--frads_file", help="Name of frads filename", type=str)
     parser.add_argument("--jcm_netbooter_port", help="Netbooter port for JCM", type=int, default=1)
-    parser.add_argument("--nexys_netbooter_port", help="Netbooter port for Nexys", type=int, default=2)
+    parser.add_argument("--board_netbooter_port", help="Netbooter port for specific board", type=int, default=2)
     parser.add_argument("--log_dir", help="Directory to store log files", type=str)
     parser.add_argument("--single_step", help="Single step through state machine", action='store_true')
     parser.add_argument("--bist_mem_burst_length", help="Burst length of BIST command", type=int, default = DEFAULT_BIST_BURST_LENGTH)
