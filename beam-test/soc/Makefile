@@ -62,8 +62,8 @@ env.sh: $(PYTHON_VENV) $(RISCV_TOOLCHAIN)
 	@echo Writing environment configuration to script.
 	@echo ------------------------------------------
 	echo 'alias source=. # So vivado and make work together.' > ./env.sh
-	echo 'source $(PYTHON_VENV)/bin/activate' >> ./env.sh
-	echo "source $(VIVADO_LOCATION)/$(VIVADO_VERSION)/settings64.sh" >> ./env.sh
+	echo '. $(PYTHON_VENV)/bin/activate' >> ./env.sh
+	echo ". $(VIVADO_LOCATION)/$(VIVADO_VERSION)/settings64.sh" >> ./env.sh
 	echo "export PATH=$(PATH):$(PWD)/../../../yinstruments/yinstruments" >> ./env.sh
 	@echo -------------------DONE-------------------
 
@@ -77,8 +77,8 @@ $(PYTHON_VENV)/dependencies_installed.txt: | env.sh
 	@echo Installing build dependnecies.
 	@echo ------------------------------------------
 	git submodule update --init --recursive dependencies
-	source ./env.sh && pip install -r ./requirements.txt
-	source ./env.sh && pip install pexpect paramiko pyudev
+	. ./env.sh && pip install -r ./requirements.txt
+	. ./env.sh && pip install pexpect paramiko pyudev
 	@echo Installed dependencies on $$(date). > $(PYTHON_VENV)/dependencies_installed.txt
 	@echo -------------------DONE-------------------
 
@@ -106,7 +106,8 @@ build: deps | env.sh
 	@echo ------------------------------------------
 	@echo Building SoC.
 	@echo ------------------------------------------
-	source ./env.sh && python3 $(PYTHON_FLAGS) ./dependencies/litex-boards/litex_boards/targets/$(BUILD_TARGET) --build $(BUILD_FLAGS)
+	. ./env.sh; \
+	python3 $(PYTHON_FLAGS) ./dependencies/litex-boards/litex_boards/targets/$(BUILD_TARGET) --build $(BUILD_FLAGS)
 	@echo -------------------DONE-------------------
 
 # -------------------------------------- #
@@ -115,7 +116,8 @@ load: | env.sh
 	@echo ------------------------------------------
 	@echo Loading Design
 	@echo ------------------------------------------
-	source ./env.sh && python3 $(PYTHON_FLAGS) ./dependencies/litex-boards/litex_boards/targets/$(BUILD_TARGET) --load
+	. ./env.sh; \
+	python3 $(PYTHON_FLAGS) ./dependencies/litex-boards/litex_boards/targets/$(BUILD_TARGET) --load
 	@echo -------------------DONE-------------------
 
 clean:
