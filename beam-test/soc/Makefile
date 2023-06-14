@@ -48,7 +48,8 @@ $(RISCV_TOOLCHAIN):
 	@echo ------------------------------------------
 	@echo Downloading and extracting RISCV Toolchain
 	@echo ------------------------------------------
-	sudo apt install gcc-riscv64-linux-gnu
+	curl -fSL# https://static.dev.sifive.com/dev-tools/freedom-tools/v2020.08/$(RISCV_TOOLCHAIN).tar.gz > $(RISCV_TOOLCHAIN).tar.gz
+	tar -xzf $(RISCV_TOOLCHAIN).tar.gz --checkpoint=.10000
 	@echo
 	@echo -------------------DONE-------------------
 
@@ -64,7 +65,7 @@ env.sh: $(PYTHON_VENV) $(RISCV_TOOLCHAIN)
 	echo 'alias source=. # So vivado and make work together.' > ./env.sh
 	echo '. $(PYTHON_VENV)/bin/activate' >> ./env.sh
 	echo ". $(VIVADO_LOCATION)/$(VIVADO_VERSION)/settings64.sh" >> ./env.sh
-	echo "export PATH=$(PATH):$(PWD)/../../../yinstruments/yinstruments" >> ./env.sh
+	echo 'export PATH="$$PATH:$$(pwd)/$(RISCV_TOOLCHAIN)/bin"' >> ./env.sh
 	@echo -------------------DONE-------------------
 
 env: env.sh
@@ -74,11 +75,10 @@ env: env.sh
 
 $(PYTHON_VENV)/dependencies_installed.txt: | env.sh
 	@echo ------------------------------------------
-	@echo Installing build dependnecies.
+	@echo Installing build dependencies.
 	@echo ------------------------------------------
 	git submodule update --init --recursive dependencies
 	. ./env.sh && pip install -r ./requirements.txt
-	. ./env.sh && pip install pexpect paramiko pyudev
 	@echo Installed dependencies on $$(date). > $(PYTHON_VENV)/dependencies_installed.txt
 	@echo -------------------DONE-------------------
 
