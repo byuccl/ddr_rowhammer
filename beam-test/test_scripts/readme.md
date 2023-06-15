@@ -31,7 +31,7 @@ Finally, I sourced the file 'env.sh', installed dependencies for the pexpect scr
 ```
 source env.sh
 pip install pexpect paramiko pyudev
-export PATH=$PATH:$PWD/../../../yinstruments/yinstruments
+export PYTHONPATH=$PYTHONPATH:$PWD/../../../yinstruments/yinstruments
 cd ../test_scripts/
 ```
 
