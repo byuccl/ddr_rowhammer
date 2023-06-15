@@ -68,22 +68,6 @@ class netbooter_control():
         return subprocess.call(command) == 0
 
 
-    def check_connection(self):
-
-        '''
-        See if a connection to a port on the netbooter is possible.
-
-        Function 'is_on' returns true if port is on, false if off,
-        and 'None' if it failed to connect.
-        '''
-        self._info("Checking connection to netbooter")
-        if self.netbooter_ctrl.is_on(STARTING_PORT) == None:
-            self._error("Error opening telnet")
-            return False
-        self._info("Connected to Netbooter")
-        return True
-
-
     def turn_on_port(self, power_port, cycle=False):
 
         '''

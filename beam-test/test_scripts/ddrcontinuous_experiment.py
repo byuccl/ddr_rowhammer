@@ -58,6 +58,9 @@ DEFAULT_BIST_BURST_LENGTH = 0xfffffff # Default burst length
 DEFAULT_BIST_DELAY_SECONDS = 0 # Default number of seconds to delay.
 DEFAULT_BIST_ADDR_MODE = 1 # Start reading/writing data with addresses linearly.
 DEFAULT_BIST_PATTERN = 0xa5a5a5a5 # Start reading/writing data with addresses linearly.
+DEFAULT_DELAY_BIST_STARTING_ADDR = 0x0 # Start the reading/writing at address 0
+DEFAULT_DELAY_BIST_LENGTH = 0xfffffff
+
 LITEX_LOGIN_DELAY = 12
 
 MAX_BIST_ERRORS_BEFORE_REBOOT = 100
@@ -67,24 +70,18 @@ UARTBONE_IDENT_ADDR = 0xf0002000  # csr_base,identifier_mem
 UARTBONE_DEBUG_ADDR = 0xf0001800  # csr_base,debug module
 UARTBONE_DEBUG_I_ADDR = 0x0 
 
-class bist_state(object):
-    ''' This class keeps track of the state of a running bist command '''
+
+class bist_common(object):
 
     def __init__(self, 
         bist_mem_burst_length:int,
-        bist_mem_delay_seconds:int,
-        bist_addr_mode:int,
         bist_pattern:int,
         ) -> None:
         ''' Initialize class '''
         self.bist_mem_burst_length = bist_mem_burst_length
-        self.bist_mem_delay_seconds = bist_mem_delay_seconds
-        self.bist_addr_mode = bist_addr_mode
         self.bist_pattern = bist_pattern
 
         self.error_cnt = 0
-        self.sec_cnt = 0
-        self.ded_cnt = 0
 
     def get_bist_pattern_command_str(self):
         '''
@@ -93,6 +90,44 @@ class bist_state(object):
         '''
         cmd_str = "sdram_bist_pat " + str(self.bist_pattern)
         return cmd_str
+
+    def clear_data(self):
+        ''' Clear's the error counts of the class.'''
+        self.error_cnt = 0
+
+    def new_errors(self,result_str):
+        ''' Evaluates data string. New errors as a tuple. '''
+        ERROR_MSG_INDEX = 7 # Error number at index 7 of matched string
+
+        result_list = result_str.split()
+        new_error_cnt = int(result_list[ERROR_MSG_INDEX])
+        new_errors = new_error_cnt - self.error_cnt
+        
+        # update internal variables
+        self.error_cnt = new_error_cnt
+        return new_errors #, new_sec_errors, new_ded_errors)
+
+    def new_data_str(self,result_str):
+        ''' Evaluates data string. Returns False if no new errors. True with new errors. '''
+        error = self.new_errors(result_str)
+        if error > 0:
+            return True
+        return False
+
+
+
+class bist_continuous_state(bist_common):
+    ''' This class keeps track of the state of a continuously-running bist command '''
+
+    def __init__(self, 
+        bist_mem_burst_length:int,
+        bist_pattern:int,
+        bist_addr_mode:int,
+        ):
+        self.bist_addr_mode = bist_addr_mode
+        bist_common.__init__(self, 
+                             bist_mem_burst_length=bist_mem_burst_length,
+                             bist_pattern = bist_pattern)
 
     def get_bist_command_str(self):
         ''' Creates a string for the sdram_bist command (Based on parameters of this object)
@@ -107,43 +142,53 @@ class bist_state(object):
         # address_mode = 1 (increment)
         # data_mode = 0 (pattern)
         # write_mode = 2 (write and read)
-        cmd_str = "sdram_bist " + str(self.bist_mem_burst_length) + " " + str(self.bist_mem_delay_seconds) + " 1 0"
+        cmd_str = "sdram_bist " + str(self.bist_mem_burst_length) + " 0 1 0"
         return cmd_str
 
-    def clear_data(self):
-        ''' Clear's the error counts of the class.'''
-        self.error_cnt = 0
-        # self.sec_cnt = 0
-        # self.ded_cnt = 0
 
-    def new_errors(self,result_str):
-        ''' Evaluates data string. New errors as a tuple. '''
-        ERROR_MSG_INDEX = 7 # Error number at index 3 of matched string
-        # SEC_MSG_INDEX = 4 # Sec error number at index 4 of matched string
-        # DED_MSG_INDEX = 5 # Ded error number at index 5 of matched string
-        result_list = result_str.split()
-        new_error_cnt = int(result_list[ERROR_MSG_INDEX])
-        # if len(result_list) > 4:
-        #     new_sec_cnt = int(result_list[SEC_MSG_INDEX])
-        #     new_ded_cnt = int(result_list[DED_MSG_INDEX])
-        # else:
-        #     new_sec_cnt = 0
-        #     new_ded_cnt = 0
-        new_errors = new_error_cnt - self.error_cnt
-        # new_sec_errors = new_sec_cnt - self.sec_cnt
-        # new_ded_errors = new_ded_cnt - self.ded_cnt
-        # update internal variables
-        self.error_cnt = new_error_cnt
-        # self.sec_cnt = new_sec_cnt
-        # self.ded_cnt = new_ded_cnt
-        return (new_errors) #, new_sec_errors, new_ded_errors)
 
-    def new_data_str(self,result_str):
-        ''' Evaluates data string. Returns False if no new errors. True with new errors. '''
-        (error,sec,ded) = self.new_errors(result_str)
-        if error+sec+ded > 0:
-            return True
-        return False
+
+
+
+class bist_delay_state(bist_common):
+    ''' This class keeps track of the state of multiple non-continuous bist commands '''
+
+    def __init__(self,
+                 bist_pattern:int,
+                 beg_addr:int = DEFAULT_DELAY_BIST_STARTING_ADDR, 
+                 bist_mem_burst_length:int = DEFAULT_DELAY_BIST_LENGTH,
+                 ):
+        self.beg_addr = beg_addr
+        self.length = bist_mem_burst_length
+        bist_common.__init__(self, 
+                             bist_mem_burst_length=bist_mem_burst_length,
+                             bist_pattern = bist_pattern)
+
+    def get_bist_write_command_str(self):
+        ''' Creates a string for the sdram_bist_writer command (Based on parameters of this object)
+        litex> sdram_bist_writer
+        sdram_bist_writer <beginning_address> <length>
+        beginning address : Starting address
+        length : Length of burst writes to write
+        '''
+        
+        cmd_str = "sdram_bist_writer " + str(self.beg_addr) + " " + str(self.length)
+        return cmd_str
+    
+    def get_bist_read_command_str(self, 
+                                  ):
+        ''' Creates a string for the sdram_bist_writer command (Based on parameters of this object)
+        litex> sdram_bist_reader
+        sdram_bist_reader <beginning_address> <length>
+        beginning address : Starting address
+        length : Length of burst writes to write
+        '''
+        
+        cmd_str = "sdram_bist_reader " + str(self.beg_addr) + " " + str(self.length)
+        return cmd_str
+
+
+
 
 
 def signal_handler(sig, frame):
@@ -431,20 +476,38 @@ def start_bist_state_actions(ex, st):
     ''' Issues the BIST command
         sets: does not impact state
     '''
-    ex.bist = bist_state(ex.args.bist_mem_burst_length, ex.args.bist_mem_delay_seconds, ex.args.bist_addr_mode, ex.args.bist_pattern)
+
+    # Choose a class based on desired mode
+    if ex.args.continuous_bist_mode:
+        ex.bist = bist_continuous_state(
+            bist_mem_burst_length = ex.args.bist_mem_burst_length, 
+            bist_addr_mode = ex.args.bist_addr_mode, 
+            bist_pattern = ex.args.bist_pattern)
+    else:
+        ex.bist = bist_delay_state(
+            bist_mem_burst_length = ex.args.bist_mem_burst_length, 
+            bist_pattern = ex.args.bist_pattern,
+        )
 
     # Send initial bist pattern
     bist_command = ex.bist.get_bist_pattern_command_str()
     result = ex.uart.sendline(bist_command)
-
-    # Send initial bist command
     expect_result = expect_prompt(ex)
-    bist_command = ex.bist.get_bist_command_str()
-    result = ex.uart.sendline(bist_command)
+
+    # For the noncontinuous mode, finish here and send the 
+    # first command in the next state, else send a continuous
+    # BIST command to the controller.
+        
+    if ex.args.continuous_bist_mode:
+        # Send initial bist command
+        bist_command = ex.bist.get_bist_command_str()
+        result = ex.uart.sendline(bist_command)
+    
     # Initialize all cross state variables
     variable_update_successful_bist(ex)
+    
 
-def bist_execution_state_actions(ex, st):
+def bist_execution_continuous_state_actions(ex, st):
     ''' Watch the execution of the BIST command and respond to errors. 
     The experiment should operate in this state for most of the time. 
     sets:
@@ -643,6 +706,18 @@ def bist_execution_state_actions(ex, st):
                     ex.logger.error("BIST:Max consecutive bad data lines")
                     ex.bist_error = True # System error: will go to a recovery state
                     break
+
+
+
+def bist_execution_delay_state_actions(ex, st):
+    ''' 
+    Continually send non-continuous BIST commands to the DRAM.
+
+    Watch the execution of the BIST command and respond to errors. 
+    The experiment should operate in this state for most of the time. 
+    sets:
+        sets: uart_ok (uart_errors), dram_error, reconfigure
+    '''
 
 def dram_recovery_state_actions(ex, st):
     ''' 
@@ -860,8 +935,10 @@ def build_experiment(args,logger,single_step=False):
     SETUP_UARTBONE_STATE = "Setup UARTBone State"
     ENABLE_SCRUBBING_STATE = "Enable Scrubbing State"
     LITEX_PROMPT_STATE = "LiteX Login State"
-    START_BIST_STATE = "Start BIST State"
-    BIST_EXECUTION_STATE = "BIST Execution State"
+    START_BIST_DELAY_STATE = "Start BIST Delay State"
+    BIST_EXECUTION_DELAY_STATE = "BIST Execution Delay State"
+    START_BIST_CONTINUOUS_STATE = "Start BIST Continuous State"
+    BIST_EXECUTION_CONTINUOUS_STATE = "BIST Execution Continuous State"
     TERMINAL_RECOVERY_STATE = "Terminal Recovery State"
     RESET_RECOVERY_STATE = "Reset Recovery State"
     BIST_RECOVERY_STATE = "BIST Recovery State"
@@ -967,24 +1044,29 @@ def build_experiment(args,logger,single_step=False):
     experiment.add_state(ExperimentState(
         LITEX_PROMPT_STATE,
         initial_litex_prompt_state_actions,
-        Transition(lambda ex, st: ex.login_litex, START_BIST_STATE),
+        Transition(lambda ex, st: ex.login_litex, START_BIST_CONTINUOUS_STATE),
         Transition(lambda ex, st: not ex.initial_login_terminate, POWER_BOARD_STATE),
         Transition(lambda ex, st: True, TERMINATING_STATE)
     ))
 
-    # START_BIST_STATE
+    # START_BIST_CONTINUOUS_STATE
     # - Start BIST command
     experiment.add_state(ExperimentState(
-        START_BIST_STATE,
+        START_BIST_CONTINUOUS_STATE,
         start_bist_state_actions,
-        Transition(lambda ex, st: True, BIST_EXECUTION_STATE)
+        Transition(lambda ex, st: ex.args.continuous_bist_mode, BIST_EXECUTION_CONTINUOUS_STATE),
+        Transition(lambda ex, st: True, BIST_EXECUTION_DELAY_STATE)
     ))
 
-    # BIST_EXECUTION_STATE
+    ############################################################################################
+    # Added states for non-continuous mode
+    ############################################################################################
+
+    # BIST_EXECUTION_DELAY_STATE
     # - Process an execution of the BIST
     experiment.add_state(ExperimentState(
-        BIST_EXECUTION_STATE,
-        bist_execution_state_actions,
+        BIST_EXECUTION_DELAY_STATE,
+        bist_execution_delay_state_actions,
         Transition(lambda ex, st: ex.bist_error_max, POWER_BOARD_STATE), 
         Transition(lambda ex, st: not ex.uart_ok, TERMINAL_RECOVERY_STATE),        
         Transition(lambda ex, st: ex.bist_error, BIST_RECOVERY_STATE),
@@ -992,6 +1074,27 @@ def build_experiment(args,logger,single_step=False):
         # Shouldn't get here
         Transition(lambda ex, st: True, UNRECOVERABLE_POSTMORTUM_STATE)
     ))
+
+    ############################################################################################
+
+    ############################################################################################
+    # Original states for continuous mode
+    ############################################################################################
+
+    # BIST_EXECUTION_CONTINUOUS_STATE
+    # - Process an execution of the BIST
+    experiment.add_state(ExperimentState(
+        BIST_EXECUTION_CONTINUOUS_STATE,
+        bist_execution_continuous_state_actions,
+        Transition(lambda ex, st: ex.bist_error_max, POWER_BOARD_STATE), 
+        Transition(lambda ex, st: not ex.uart_ok, TERMINAL_RECOVERY_STATE),        
+        Transition(lambda ex, st: ex.bist_error, BIST_RECOVERY_STATE),
+        Transition(lambda ex, st: ex.dram_error, DRAM_RECOVERY_STATE),
+        # Shouldn't get here
+        Transition(lambda ex, st: True, UNRECOVERABLE_POSTMORTUM_STATE)
+    ))
+
+    ############################################################################################
 
     # DRAM_RECOVERY_STATE
     experiment.add_state(ExperimentState(
@@ -1099,11 +1202,11 @@ def main():
     parser.add_argument("--log_dir", help="Directory to store log files", type=str)
     parser.add_argument("--single_step", help="Single step through state machine", action='store_true')
     parser.add_argument("--bist_mem_burst_length", help="Burst length of BIST command", type=int, default = DEFAULT_BIST_BURST_LENGTH)
-    parser.add_argument("--bist_mem_delay_seconds", help="How long to delay reading/writing in seconds", type=int, default = DEFAULT_BIST_DELAY_SECONDS)
     parser.add_argument("--bist_addr_mode", help="Burst length of BIST command", type=int, default=DEFAULT_BIST_ADDR_MODE)
     parser.add_argument("--bist_pattern", help="BIST Pattern for memory test", type=int, default=DEFAULT_BIST_PATTERN)
     parser.add_argument("--no_uart_bone", help="Disable UART wishbone interface", action='store_true')
     parser.add_argument("--uart_bone_ident", help="Hex Address of uart bone identifier register", default=UARTBONE_IDENT_ADDR)
+    parser.add_argument("--continuous_bist_mode", help="Run the BIST in continuous mode", action='store_true')
     args = parser.parse_args()
 
     # Set up logger settings
