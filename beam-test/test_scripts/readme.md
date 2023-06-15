@@ -26,12 +26,12 @@ cd beam-test/soc
 make deps
 ```
 
-Note: We have a file called `env.sh` that adds the repository 'yinstruments' to PATH through a relative path.
-
-Finally, I sourced the file 'env.sh' and navigated into the test_scripts directory where I can now run the scripts.
+Finally, I sourced the file 'env.sh', installed dependencies for the pexpect scripts, set the repository 'yinstruments' to the path, and navigated into the test_scripts directory where I can now run the scripts.
 
 ```
 source env.sh
+pip install pexpect paramiko pyudev
+export PATH=$PATH:$PWD/../../../yinstruments/yinstruments
 cd ../test_scripts/
 ```
 
