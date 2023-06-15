@@ -1109,7 +1109,7 @@ def build_experiment(args,logger,single_step=False):
     experiment.add_state(ExperimentState(
         BIST_RECOVERY_STATE,
         bist_recovery_state_actions,
-        Transition(lambda ex, st: ex.uart_ok, BIST_EXECUTION_STATE),
+        Transition(lambda ex, st: ex.uart_ok, BIST_EXECUTION_CONTINUOUS_STATE),
         Transition(lambda ex, st: True, TERMINAL_RECOVERY_STATE)
     ))
 
@@ -1117,7 +1117,7 @@ def build_experiment(args,logger,single_step=False):
     experiment.add_state(ExperimentState(
         TERMINAL_RECOVERY_STATE,
         terminal_recovery_state_actions,
-        Transition(lambda ex, st: ex.uart_ok and ex.login_litex, BIST_EXECUTION_STATE),
+        Transition(lambda ex, st: ex.uart_ok and ex.login_litex, BIST_EXECUTION_CONTINUOUS_STATE),
         Transition(lambda ex, st: True, RESET_RECOVERY_STATE)
     ))
 
