@@ -12,7 +12,8 @@ import sys
 import time
 import telnetlib
 import subprocess
-from pdu.netbooter import Netbooter, PDU
+from pdu.netbooter import Netbooter
+
 
 
 STANDARD_TELNET_PORT = 23
