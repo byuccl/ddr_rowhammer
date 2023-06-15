@@ -26,7 +26,7 @@ cd beam-test/soc
 make deps
 ```
 
-Finally, I sourced the file 'env.sh', set the repository 'yinstruments' to the path, and navigated into the test_scripts directory where I can now run the scripts.
+Finally, I sourced the file 'env.sh', installed dependencies for the pexpect scripts, set the repository 'yinstruments' to the path, and navigated into the test_scripts directory where I can now run the scripts.
 
 ```
 source env.sh
