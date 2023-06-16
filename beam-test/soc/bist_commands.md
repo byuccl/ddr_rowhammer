@@ -29,3 +29,4 @@ Bist port data width: 128
 
 Put all the output examples here
 
+Note that for this command you cant 'stop' the continuous BIST by hitting enter.
