@@ -18,14 +18,52 @@ Bist port data width: 128
 ```
 This indicates that each controller read or write involves 128 bits (16 bytes).
 The actual DDR device is 16 bits but the controller abstracts this away.
-There are 25 address bits where each address is 16 bytes for a total memory size of 2<sup>25</sup> x 16 = 512 MB. 
+There are 25 address bits where each address is 16 bytes for a total memory size of 2<sup>25</sup> x 2<sup>4</sup> = 2<sup>29</sup> = 512 MB. 
 
 
 ## sdram_bist_pat
 
+This command sets the data pattern used for data writing and data reading.
+For writes, this pattern indicates the value written to the DRAM.
+For reads, this pattern indicates the value expected within the DRAM.
+The command is invoked as follows: ```sdram_bist_pat <pattern>```.
+There is no output for this command
+The pattern is a 32-bit value entered as text hexidecimal with the leading `0x`.
+Since the data width of most controllers is greater that 32-bits, the pattern will be replicated and concatenated to fill the entire DRAM controller data width.
+For example, if the pattern is set to `0xa5a5a5a5` and the data width is 128-bits, then the 32-bit value will be replicated 4 times to get the full 128 bits or,
+```
+0xa5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5
+```
+
+Example:
+```
+litex> sdram_bist_pat 0xa5a5a5a5
+```
+
 ## sdram_bist_writer
 
+This command writes the previously set 'pattern' into the controller at the beginning controller address and for the given number of additional elements.
+The command is invoked as follows: ```sdram_bist_writer <beginning address> <length>```.
+The 'beginning address' is the first _controller_ address to write to and it is input as a hexidecimal or integer number (use the '0x' qualifier to specify a hexidecimal number).
+The 'length' is the number of writes to perform **plus 1**. 
+This parameter can be either hexidemcimal or integer.
+The following command will write the previously set pattern to controller addresses 0x0-0x1ffffff.
+```
+litex> sdram_bist_writer 0x0 0x1ffffff
+
+Put output below
+```
+
+
 ## sdram_bist_reader
+
+This command performs a read starting at the beginning address and for the given number of additional elements. 
+sdram_bist_reader <beginning address> <length>
+Starts reading data from the beginning controller address to the beginning controller address + length.
+If data doesn’t match entire data read back, addresses and data output as errors.
+![image](https://github.com/byuccl/ddr_rowhammer/assets/5183707/d0b2d32e-9cc0-4e8c-9c16-aad6c7f6ee8c)
+
+
 
 ## sdram_bist
 
