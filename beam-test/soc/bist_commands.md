@@ -104,6 +104,7 @@ The command is invoked as follows: `sdram_bist <address> <length> [delay] [addr_
   * The optional `write_mode` parameter determines how writes occur for subsequent atomic operations  (Default: 1)
      * 0: write-once-read-always mode. For 'addr_mode' 0, this will write to the constant range once and all subsequent atomic operations will be read only. For 'addr_mode' 1, this will write a value to each atomic operation until the address rolls over back to zero. At that point, no more writes will occur and the BIST will only read for each atomic operation
      * 1:  for write-read-always mode. For this mode, an atomic operation performs a write and then a read. 
+  * The optional `max errors` parameter determines the maximum number of errors to print out. The default is 0 (i.e., print all errors).
 
 
 
