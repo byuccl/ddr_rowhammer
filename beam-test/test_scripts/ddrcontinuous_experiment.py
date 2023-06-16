@@ -22,6 +22,7 @@ from pathlib import Path
 from datetime import datetime
 from subprocess import run
 
+
 from netbooter_control import netbooter_control
 from jcm_session import jcm_session
 from uart_control import uart_control
@@ -60,6 +61,7 @@ DEFAULT_BIST_ADDR_MODE = 1 # Start reading/writing data with addresses linearly.
 DEFAULT_BIST_PATTERN = 0xa5a5a5a5 # Start reading/writing data with addresses linearly.
 DEFAULT_DELAY_BIST_STARTING_ADDR = 0x0 # Start the reading/writing at address 0
 DEFAULT_DELAY_BIST_LENGTH = 0xfffffff
+DEFAULT_BIST_NONCONT_DELAY_SEC = 300
 
 LITEX_LOGIN_DELAY = 12
 
@@ -94,18 +96,6 @@ class bist_common(object):
     def clear_data(self):
         ''' Clear's the error counts of the class.'''
         self.error_cnt = 0
-
-    def new_errors(self,result_str):
-        ''' Evaluates data string. New errors as a tuple. '''
-        ERROR_MSG_INDEX = 7 # Error number at index 7 of matched string
-
-        result_list = result_str.split()
-        new_error_cnt = int(result_list[ERROR_MSG_INDEX])
-        new_errors = new_error_cnt - self.error_cnt
-        
-        # update internal variables
-        self.error_cnt = new_error_cnt
-        return new_errors #, new_sec_errors, new_ded_errors)
 
     def new_data_str(self,result_str):
         ''' Evaluates data string. Returns False if no new errors. True with new errors. '''
@@ -144,6 +134,18 @@ class bist_continuous_state(bist_common):
         # write_mode = 2 (write and read)
         cmd_str = "sdram_bist " + str(self.bist_mem_burst_length) + " 0 1 0"
         return cmd_str
+    
+    def new_errors(self,result_str):
+        ''' Evaluates data string. New errors as a tuple. '''
+        ERROR_MSG_INDEX = 7 # Error number at index 7 of matched string
+
+        result_list = result_str.split()
+        new_error_cnt = int(result_list[ERROR_MSG_INDEX])
+        new_errors = new_error_cnt - self.error_cnt
+        
+        # update internal variables
+        self.error_cnt = new_error_cnt
+        return new_errors #, new_sec_errors, new_ded_errors)
 
 
 
@@ -186,6 +188,18 @@ class bist_delay_state(bist_common):
         
         cmd_str = "sdram_bist_reader " + str(self.beg_addr) + " " + str(self.length)
         return cmd_str
+    
+    def new_errors(self,result_str):
+        ''' Evaluates data string. New errors as a tuple. '''
+        ERROR_MSG_INDEX = 20 # Error number at index 7 of matched string
+
+        result_list = result_str.split()
+        new_error_cnt = int(result_list[ERROR_MSG_INDEX])
+        new_errors = new_error_cnt - self.error_cnt
+        
+        # update internal variables
+        self.error_cnt = new_error_cnt
+        return new_errors #, new_sec_errors, new_ded_errors)
 
 
 
@@ -718,6 +732,76 @@ def bist_execution_delay_state_actions(ex, st):
     sets:
         sets: uart_ok (uart_errors), dram_error, reconfigure
     '''
+    BIST_SINGLECMD_DELAY = 30
+    BIST_TITLE_DATA_REGEX = " WRITE TICKS   READ TICKS TOTAL WRITES  TOTAL READS  WR-SPEED\(MiB\/s\)  RD-SPEED\(MiB\/s\)      ADDRESSES TESTED     ERRORS\n\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+0x[[:xdigit:]]{7}-0x[[:xdigit:]]{7}\s+\d+\n"
+    TITLEDATA_INDEX = 0
+    MAX_CONSECUTIVE_BAD_DATA_ERRORS = 8
+
+    valid_data_lines = 0
+
+    while(1):
+
+        # Start by sending a write command, expect result back.
+        bist_command = ex.bist.get_bist_write_command_str()
+        result = ex.uart.sendline(bist_command)
+
+
+
+        match_index = ex.uart.expect([BIST_TITLE_DATA_REGEX],timeout=BIST_SINGLECMD_DELAY)
+        
+        while(1):
+            
+            
+            # Send a read command, expect result back.
+            bist_command = ex.bist.get_bist_read_command_str()
+            result = ex.uart.sendline(bist_command)
+
+            match_index = ex.uart.expect([BIST_TITLE_DATA_REGEX],timeout=BIST_SINGLECMD_DELAY)
+
+            # Check for a match and that it matches the correct index
+            if(ex.uart.serial_fdspawn.match and match_index == TITLEDATA_INDEX):
+
+                # Get the matched string
+                expect_str = ex.uart.serial_fdspawn.match.group(0)
+
+                # Get the new errors
+                (err) = ex.bist.new_errors(expect_str)
+
+                # If errors found, display string
+                if err > 0:
+                    consecutive_data_errors += 1
+
+                    ex.logger.error(f"BIST:Data Errors ({err}:{err}/{consecutive_data_errors}-{total_bist_error_messages})")
+                    ex.logger.error(f"BIST: expect string:{expect_str}")
+                    # print(ex.uart.serial_fdspawn.match.group(0))
+                    total_bist_error_messages += 1
+
+                    # if total_bist_error_messages >= MAX_BIST_ERRORS_BEFORE_REBOOT:
+                    #     # Reboot
+                    #     ex.logger.error(f"BIST:Max BIST Errors reached")
+                    #     ex.bist_error_max = True
+
+                    # if consecutive_data_errors >= MAX_CONSECUTIVE_BAD_DATA_ERRORS:
+                    #     # Need to repair data errors
+                    #     ex.dram_error = True
+                    #     return
+                    
+                    break
+
+                else: # no new errors
+                    valid_data_lines += 1
+                    consecutive_data_errors = 0 # Clear consecutive error flag
+
+                    time.sleep(ex.args.noncontinuous_bist_delay)
+
+                    print("Line of data (ok)")
+
+                    continue
+                    
+
+
+            scrubbing_flag = False
+
 
 def dram_recovery_state_actions(ex, st):
     ''' 
@@ -1207,6 +1291,7 @@ def main():
     parser.add_argument("--no_uart_bone", help="Disable UART wishbone interface", action='store_true')
     parser.add_argument("--uart_bone_ident", help="Hex Address of uart bone identifier register", default=UARTBONE_IDENT_ADDR)
     parser.add_argument("--continuous_bist_mode", help="Run the BIST in continuous mode", action='store_true')
+    parser.add_argument("--noncontinuous_bist_delay", help="Argument to control the delay between commands (in seconds)", default=DEFAULT_BIST_NONCONT_DELAY_SEC)
     args = parser.parse_args()
 
     # Set up logger settings
