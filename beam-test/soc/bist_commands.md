@@ -58,10 +58,27 @@ Put output below
 ## sdram_bist_reader
 
 This command performs a read starting at the beginning address and for the given number of additional elements. 
-sdram_bist_reader <beginning address> <length>
-Starts reading data from the beginning controller address to the beginning controller address + length.
-If data doesn’t match entire data read back, addresses and data output as errors.
-![image](https://github.com/byuccl/ddr_rowhammer/assets/5183707/d0b2d32e-9cc0-4e8c-9c16-aad6c7f6ee8c)
+The command will compare the value at each location against the previously defined pattern.
+If there are errors, this command will report the errors to the console output.
+The command is invoked as follows: ```sdram_bist_reader <beginning address> <length>```.
+The 'beginning address' is the first _controller_ address to read from and it is input as a hexidecimal or integer number (use the '0x' qualifier to specify a hexidecimal number).
+The 'length' is the number of writes to perform **plus 1**. 
+This parameter can be either hexidemcimal or integer.
+
+The following command will read the memory from addresses 0x0-0x1ffffff with no errors
+```
+litex> sdram_bist_reader 0x0 0x1ffffff
+
+Put output below
+```
+
+The following command will read the memory from addresses 0xf-0x13 with errors
+```
+litex> sdram_bist_reader 0xf 0x4
+
+Put output below
+```
+
 
 
 
