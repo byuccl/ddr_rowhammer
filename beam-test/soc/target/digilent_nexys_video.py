@@ -76,6 +76,7 @@ class BaseSoC(SoCCore):
         vadj                   = "1.2V",
         with_video_terminal    = False,
         with_video_framebuffer = False,
+        uart_bone              = "usb_fifo",
         **kwargs):
         platform = digilent_nexys_video.Platform(toolchain=toolchain)
 
@@ -157,6 +158,9 @@ class BaseSoC(SoCCore):
             self.leds = LedChaser(
                 pads         = platform.request_all("user_led"),
                 sys_clk_freq = sys_clk_freq)
+            
+        if uart_bone:
+            self.add_uartbone(name=uart_bone, baudrate=115200)
 
         # VADJ -------------------------------------------------------------------------------------
         vadj_map = {"1.2V": 0b00, "1.8V": 0b01, "2.5V": 0b10, "3.3V": 0b11}
@@ -175,6 +179,7 @@ def main():
     parser.add_target_argument("--with-sata",            action="store_true", help="Enable SATA support (over FMCRAID).")
     parser.add_target_argument("--sata-gen",             default="2",         help="SATA Gen.", choices=["1", "2"])
     parser.add_target_argument("--vadj",                 default="1.2V",      help="FMC VADJ value.", choices=["1.2V", "1.8V", "2.5V", "3.3V"])
+    parser.add_target_argument("--uart_bone",        default="usb_fifo", help="Add uartbone with given serial device.")
     viopts = parser.target_group.add_mutually_exclusive_group()
     viopts.add_argument("--with-video-terminal",    action="store_true", help="Enable Video Terminal (HDMI).")
     viopts.add_argument("--with-video-framebuffer", action="store_true", help="Enable Video Framebuffer (HDMI).")
@@ -189,6 +194,7 @@ def main():
         vadj                   = args.vadj,
         with_video_terminal    = args.with_video_terminal,
         with_video_framebuffer = args.with_video_framebuffer,
+        uart_bone              = args.uart_bone,
         **parser.soc_argdict
     )
     if args.with_spi_sdcard:
