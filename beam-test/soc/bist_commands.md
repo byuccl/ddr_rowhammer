@@ -44,7 +44,6 @@ This command sets the data pattern used for data writing and data reading.
 For writes, this pattern indicates the value written to the DRAM.
 For reads, this pattern indicates the value expected within the DRAM.
 The command is invoked as follows: ```sdram_bist_pat <pattern>```.
-There is no output for this command
 The pattern is a 32-bit value entered as text hexidecimal with the leading `0x`.
 Since the data width of most controllers is greater that 32-bits, the pattern will be replicated and concatenated to fill the entire DRAM controller data width.
 For example, if the pattern is set to `0xa5a5a5a5` and the data width is 128-bits, then the 32-bit value will be replicated 4 times to fill the full 128 bits. Ex:
@@ -53,6 +52,15 @@ For example, if the pattern is set to `0xa5a5a5a5` and the data width is 128-bit
 ```
 
 The output for this command is the entire pattern set with this command.
+
+Example with the Nexys Video board:
+```
+litex> sdram_bist_pat 0xa5a5a5a5
+
+Pattern set to: a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+
+litex>
+```
 
 
 Example with the Antmicro Datacenter board:
@@ -75,9 +83,21 @@ The following command will write the previously set pattern to controller addres
 This example is with the Nexys Video board.
 ```
 litex> sdram_bist_writer 0x0 0x1ffffff
+DRAM controller has address width 25, data width 128 in bits
+Writing from address 0 to address 1ffffff ...Done
+ WRITE TICKS   READ TICKS TOTAL WRITES  TOTAL READS  WR-SPEED(MiB/s)  RD-SPEED(MiB/s)      ADDRESSES TESTED     ERRORS
+    39422426            0     33554432            0             1293                0   0x0000000-0x1ffffff          0
+Finishing state machine ...Done
 
-Put output below
+litex>
 ```
+
+**Description of relevant columns**
+* **WRITE TICKS** is the number of clock cycles taken to write to all the specified addresses.
+* **TOTAL WRITES** is the total number of controller transactions writing to the DRAM that have taken place, one per address.
+* **WR-SPEED** takes the above 'WRITE TICKS' and 'TOTAL WRITES' and calculates the average speed of the writes in MiB/s.
+* **ADDRESSES TESTED** lists a range of all the addresses written to.
+* **ERRORS** is the number of errors encountered. (Always 0 for the sdram_bist_writer command, could be nonzero when reading and checking data from the bist.)
 
 Example with the Antmicro Datacenter board:
 ```
@@ -107,17 +127,46 @@ The following command will read the memory from addresses 0x0-0x1ffffff with no 
 This example is with the Nexys Video board.
 ```
 litex> sdram_bist_reader 0x0 0x1ffffff
+DRAM controller has address width 25, data width 128 in bits
+Reading from address 0 to address 1ffffff
+ WRITE TICKS   READ TICKS TOTAL WRITES  TOTAL READS  WR-SPEED(MiB/s)  RD-SPEED(MiB/s)      ADDRESSES TESTED     ERRORS
+           0     38772028            0     33554432                0             1315   0x0000000-0x1ffffff          0
+Finishing state machine ...Done
 
-Put output below
+litex>
 ```
 
-**Explain what the different columns of the read output are**
+**Description of Relevant Columns**
+
+* **READ TICKS** is the number of clock cycles taken to read all the specified addresses. 
+* **TOTAL READS** is the total number of controller transactions reading from the DRAM that have taken place, one per address.
+* **RD-SPEED** takes the above 'READ TICKS' and 'TOTAL READS' and calculates the average speed of the reads in MiB/s.
+* **ADDRESSES TESTED** lists a range of all the addresses written to.
+* **ERRORS** is the number of errors encountered. 
 
 The following command will read the memory from addresses 0xf-0x13 with errors
 ```
 litex> sdram_bist_reader 0xf 0x4
 
-Put output below
+litex> sdram_bist_reader 0xf 0x4
+DRAM controller has address width 25, data width 128 in bits
+Reading from address f to address 13
+
+Error address range: 0xf-0x13, Num Errors: 5, Data expected:
+
+a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+
+   ADDRESS    DATA
+ 0x000000f:  a5a5a5a4 a5a5a5a4 a5a5a5a4 a5a5a5a4
+ 0x0000010:  a5a5a5a4 a5a5a5a4 a5a5a5a4 a5a5a5a4
+ 0x0000011:  a5a5a5a4 a5a5a5a4 a5a5a5a4 a5a5a5a4
+ 0x0000012:  a5a5a5a4 a5a5a5a4 a5a5a5a4 a5a5a5a4
+ 0x0000013:  a5a5a5a4 a5a5a5a4 a5a5a5a4 a5a5a5a4
+ WRITE TICKS   READ TICKS TOTAL WRITES  TOTAL READS  WR-SPEED(MiB/s)  RD-SPEED(MiB/s)      ADDRESSES TESTED     ERRORS
+           0           22            0            5                0              345   0x000000f-0x0000013          5
+Finishing state machine ...Done
+
+litex>
 ```
 
 Example with Antmicro Datacenter board and no errors:
@@ -185,21 +234,77 @@ An atomic operation involves a write command to some number of addresses followe
 The number of addresses is specified in the command line.
 After performing an atomic BIST operation, a message is printed to the screen and another atomic operation is performed as specified by the command line arguments.
 
-The command is invoked as follows: `sdram_bist <address> <length> [delay] [addr_mode] [write_mode] [max errors]`
-  * The required 'address' parameter specifies the starting address for this BIST command.
-  * The required 'length' parameter specifies the number of DRAM addresses to test. The actual size of address is controller specific (see `sdram_bist_info` to determine this size). 
-  * The optional 'delay' parameter indicates the delay in seconds between the ending of writing/reading. The default is zero
+The command is invoked as follows: `sdram_bist <base> <length> [max errors] [addr_mode] [write_mode] [delay]`
+  * The required 'base' parameter specifies the starting address for this BIST command.
+  * The required 'length' parameter specifies the number of DRAM addresses to test. The actual size of address is controller specific (see `sdram_bist_info` to determine this size).
+  * The optional `max errors` parameter determines the maximum number of errors to print out. The default is 0 (i.e., print all errors).
   * The optional 'addr_mode' parameter specifies how the address is incremented after completing an atomic BIST operation (default 1)
      * 0: Run the BIST over a constant range of address. This means that _all_ BIST atomic operations occur at the same address range.
      * 1: Increment the address. This means that after each BIST atomic operation, the address register will be incremented and the next BIST operation will occur at the next address following the last BIST atomic operation. Note that with this mode, the address register will roll over back to zero if the maximum address has been reached.
   * The optional `write_mode` parameter determines how writes occur for subsequent atomic operations  (Default: 1)
      * 0: write-once-read-always mode. For 'addr_mode' 0, this will write to the constant range once and all subsequent atomic operations will be read only. For 'addr_mode' 1, this will write a value to each atomic operation until the address rolls over back to zero. At that point, no more writes will occur and the BIST will only read for each atomic operation
      * 1:  for write-read-always mode. For this mode, an atomic operation performs a write and then a read. 
-  * The optional `max errors` parameter determines the maximum number of errors to print out. The default is 0 (i.e., print all errors).
+  * The optional 'delay' parameter indicates the delay in seconds between the ending of writing/reading. The default is zero.
 
+Example with Nexys Video board with addr_mode = 1 and write_mode = 0 with no errors.
+```
+litex> sdram_bist 0x0 0x1ffffff 0 1 0 0
+DRAM controller has address width 25, data width 128 in bits
+Starting Bist with length 33554431, address mode 1, wmode 0 at clock frequency 100000000
+ WRITE TICKS   READ TICKS TOTAL WRITES  TOTAL READS  WR-SPEED(MiB/s)  RD-SPEED(MiB/s)      ADDRESSES TESTED     ERRORS
+    39422475     38771973     33554432     33554432             1293             1315   0x0000000-0x1ffffff          0
+           0     38772028            0     33554432                0             1315   0x0000000-0x1ffffff          0
+           0     38772025            0     33554432                0             1315   0x0000000-0x1ffffff          0
+           0     38771971            0     33554432                0             1315   0x0000000-0x1ffffff          0
+           0     38772034            0     33554432                0             1315   0x0000000-0x1ffffff          0
+           0     38772028            0     33554432                0             1315   0x0000000-0x1ffffff          0
+           0     38771971            0     33554432                0             1315   0x0000000-0x1ffffff          0
+           0     38771971            0     33554432                0             1315   0x0000000-0x1ffffff          0
+           0     38772034            0     33554432                0             1315   0x0000000-0x1ffffff          0
+           0     38772030            0     33554432                0             1315   0x0000000-0x1ffffff          0
+ WRITE TICKS   READ TICKS TOTAL WRITES  TOTAL READS  WR-SPEED(MiB/s)  RD-SPEED(MiB/s)      ADDRESSES TESTED     ERRORS
+           0     38771965            0     33554432                0             1315   0x0000000-0x1ffffff          0
+           0     38771965            0     33554432                0             1315   0x0000000-0x1ffffff          0
+```
 
+Example with Nexys Video board with addr_mode = 1 and write_mode = 0 with a few errors.
+```
+litex> sdram_bist 0x0 0x1ffffff 0 1 0 0
+DRAM controller has address width 25, data width 128 in bits
+Starting Bist with length 33554431, address mode 1, wmode 0 at clock frequency 100000000
+ WRITE TICKS   READ TICKS TOTAL WRITES  TOTAL READS  WR-SPEED(MiB/s)  RD-SPEED(MiB/s)      ADDRESSES TESTED     ERRORS
 
-Put all the output examples here
+Error address range: 0x0-0x1ffffff, Num Errors: 6, Data expected:
+
+a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+   ADDRESS    DATA
+ 0x0000000:         0        0        0        0
+ 0x0000001:         0        0        0        0
+ 0x0000002:         0        0        0        0
+ 0x1fffffd:         0        0        0        0
+ 0x1fffffe:         0        0        0        0
+ 0x1ffffff:         0        0        0        0
+    39422485     38771967     33554432     33554432             1293             1315   0x0000000-0x1ffffff          6
+    39422418     38772036     33554432     33554432             1293             1315   0x0000000-0x1ffffff          6
+           0     38772034            0     33554432                0             1315   0x0000000-0x1ffffff          6
+           0     38772034            0     33554432                0             1315   0x0000000-0x1ffffff          6
+           0     38771965            0     33554432                0             1315   0x0000000-0x1ffffff          6
+           0     38771965            0     33554432                0             1315   0x0000000-0x1ffffff          6
+           0     38772034            0     33554432                0             1315   0x0000000-0x1ffffff          6
+           0     38772034            0     33554432                0             1315   0x0000000-0x1ffffff          6
+           0     38771966            0     33554432                0             1315   0x0000000-0x1ffffff          6
+           0     38771966            0     33554432                0             1315   0x0000000-0x1ffffff          6
+ WRITE TICKS   READ TICKS TOTAL WRITES  TOTAL READS  WR-SPEED(MiB/s)  RD-SPEED(MiB/s)      ADDRESSES TESTED     ERRORS
+           0     38772028            0     33554432                0             1315   0x0000000-0x1ffffff          6
+           0     38772034            0     33554432                0             1315   0x0000000-0x1ffffff          6
+           0     38771971            0     33554432                0             1315   0x0000000-0x1ffffff          6
+
+litex>
+```
+
+**NOTE:** When the BIST reads errors, it will automatically write in the range of addresses where it saw the errors. 
+The BIST can be turned off when any character is pressed.
+When errors are found, a line will print the range of addresses where the errors were found, the number of errors, the data expected, and lastly a column of addresses and data containing the errors. 
 
 Example with Antmicro Datacenter board, addr_mode = 0 and write_mode = 0
 ```
