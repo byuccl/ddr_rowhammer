@@ -245,7 +245,7 @@ The command is invoked as follows: `sdram_bist <base> <length> [max errors] [add
      * 0: read-always mode. For 'addr_mode' 0, this will write to the constant range once and all subsequent atomic operations will be read only. 
      * 1: write_once_read_always mode. For 'addr_mode' 1, this will write a value to each atomic operation until the address rolls over back to zero. At that point, no more writes will occur and the BIST will only read for each atomic operation
      * 2: write-read-always mode. For this mode, an atomic operation performs a write and then a read.
-  * The optional 'error_break' parameter, if set high, will stop the BIST if errors are found. The default value is zero.
+  * The optional 'error_break' parameter, if set high, will stop the BIST after errors are found and a summary data line is output. The default value is zero.
   * The optional 'delay' parameter indicates the delay in seconds between the ending of writing/reading. The default is zero.
 
 Example with Nexys Video board with addr_mode = 1 and write_mode = 1 with no errors.
