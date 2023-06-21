@@ -37,6 +37,16 @@ Bist port data width: 512
 
 litex>
 ```
+
+Example for Nexys4DDR board:
+```
+litex> sdram_bist_info
+
+Bist port address width: 24
+Bist port data width: 64
+
+litex>
+```
   
 ## sdram_bist_pat
 
