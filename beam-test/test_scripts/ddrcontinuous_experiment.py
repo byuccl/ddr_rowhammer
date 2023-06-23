@@ -60,6 +60,7 @@ NEXYS4DDR_BOARDNAME = "nexys4ddr"
 DATABOARD_BOARDNAME = "databoard"
 
 DEFAULT_PREFIX = "CTRL"
+BIST_ERROR_MSG_REGEX = "\d+:  \d+"
 
 DEFAULT_BIST_BURST_LENGTH = 0xfffffff # Default burst length
 DEFAULT_BIST_DELAY_SECONDS = 0 # Default number of seconds to delay.
@@ -228,8 +229,7 @@ class bist_delay_state(bist_common):
         cmd_str = "sdram_bist_writer " + str(self.beg_addr) + " " + str(self.length)
         return cmd_str
     
-    def get_bist_read_command_str(self, 
-                                  ):
+    def get_bist_read_command_str(self):
         ''' Creates a string for the sdram_bist_writer command (Based on parameters of this object)
         litex> sdram_bist_reader
         sdram_bist_reader <beginning_address> <length> <max_error_out>
@@ -243,9 +243,10 @@ class bist_delay_state(bist_common):
     
     def new_errors(self,result_str):
         ''' Evaluates data string. New errors as a tuple. '''
-        ERROR_MSG_INDEX = 20 # Error number at index 7 of matched string
+        ERROR_MSG_INDEX = 20 # Error number at index 20 of matched string
 
         result_list = result_str.split()
+        print(result_list)
         new_error_cnt = int(result_list[ERROR_MSG_INDEX])
         new_errors = new_error_cnt - self.error_cnt
         
@@ -280,6 +281,7 @@ def variable_update_experiment_initialization(ex):
     start of the experiment. '''
     ex.failed_initial_login = 0
     ex.unrecoverable = False
+    ex.previous_reboot_state = 0 # variable indicating if state machine has attempted reboot
 
 def variable_update_successful_bist(ex):
     ''' Initalize/clear all variables that hold error state between
@@ -621,7 +623,6 @@ def bist_execution_continuous_state_actions(ex, st):
     BIST_DATA_REGEX = "\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+"
     #ERRORS (CPU): 0
     # BIST_ERROR_MSG_REGEX = "ERRORS (CPU): (\d+)"
-    BIST_ERROR_MSG_REGEX = "\d+:  \d+"
 
 
     BIST_TEXT_DELAY = 15
@@ -710,6 +711,7 @@ def bist_execution_continuous_state_actions(ex, st):
                         # Update the last successful bist time
                         last_successful_bist = current_successful_bist
                         variable_update_successful_bist(ex)
+                        variable_update_experiment_initialization(ex)
                     else:
                         errors = 8 - valid_data_lines
                         bist_status = f"err {errors}"
@@ -729,6 +731,7 @@ def bist_execution_continuous_state_actions(ex, st):
                     ex.bist_error_max = True
                     break
                 if consecutive_bad_title_lines > MAX_CONSECUTIVE_BAD_TITLE_LINES:
+                    ex.previous_bist_max_consecutive_bad_titles += 1
                     ex.logger.error("BIST:Max consecutive bad title lines (no. {lines})".format(lines = ex.previous_bist_max_consecutive_bad_titles))
                     ex.bist_error = True # System error: will go to a recovery state
                     break
@@ -806,6 +809,7 @@ def bist_execution_delay_state_actions(ex, st):
     LITEX_LOGIN_PATTERN = "^.*litex[^>]*> "
     TITLEDATA_INDEX = 0
     LITEX_LOGIN_PATTERN_INDEX = 1
+    ERR_DISPLAY_INDEX = 2
     DLAY_STATE_MAX_CONSECUTIVE_BAD_DATA_ERRORS = 8
 
     delay_state_consecutive_bad_data_lines = 0
@@ -819,7 +823,7 @@ def bist_execution_delay_state_actions(ex, st):
         # Process expect system errors
         if ex.uart.has_uart_error():
             # General UART errors (Timeout, etc)
-            ex.uart_ok = False # State change to repair uart
+            ex.delay_state_uart_ok = False # State change to repair uart
             return False
 
         elif ex.uart.unicode_error:
@@ -831,7 +835,7 @@ def bist_execution_delay_state_actions(ex, st):
                 return None
             elif ex.delay_state_consecutive_unicode_errors >= MAX_CONSECUTIVE_UNICODE_ERRORS:
                 ex.logger.error("BIST:Max Consecitive Unicode Errors:",ex.delay_state_consecutive_unicode_errors)
-            ex.uart_ok = False # State change to repair uart
+            ex.delay_state_uart_ok = False # State change to repair uart
             return False
         else:
             if ex.delay_state_consecutive_unicode_errors > 0:
@@ -854,26 +858,27 @@ def bist_execution_delay_state_actions(ex, st):
         uart_result = check_for_uart_errors(ex)
         # If timeout, EOF, or many unicode errors occur, exit.
         if uart_result == False:
-            ex.delay_state_uart_ok = False
             return
         # If one unicode error occurs, try again.
         elif uart_result == None:
             continue
         
-        if (match_index == TITLEDATA_INDEX):
+        if (ex.uart.serial_fdspawn.match and match_index == TITLEDATA_INDEX):
             ex.logger.info("BIST:Writer successful")
+            delay_state_consecutive_bad_data_lines = 0
+            
         else:
-            ex.logger.info("BIST:Bad data ():"+ex.uart.serial_fdspawn.match.group(0))
             delay_state_consecutive_bad_data_lines += 1
+            ex.logger.info(f"BIST:Bad data (match_index:{match_index}):({delay_state_consecutive_bad_data_lines}):"+ex.uart.serial_fdspawn.match.group(0))
+            
             if (delay_state_consecutive_bad_data_lines >= DLAY_STATE_MAX_CONSECUTIVE_BAD_DATA_ERRORS):
                 ex.logger.error("BIST:Max consecutive bad data lines reached")
-                
-            if (match_index == LITEX_LOGIN_PATTERN):
-                continue
-            
+                ex.bist_max_error = True
+            continue
         
         while(1):
             
+            ex.logger.info("BIST:Starting Reader")
             # Send a read command, expect result back.
             bist_command = ex.bist.get_bist_read_command_str()
             result = ex.uart.sendline(bist_command)
@@ -889,7 +894,7 @@ def bist_execution_delay_state_actions(ex, st):
             # Check for a match and that it matches the correct index
             if(ex.uart.serial_fdspawn.match and match_index == TITLEDATA_INDEX):
 
-                print("BIST:")
+                ex.logger.info("BIST:Reader successful")
 
                 # Get the matched string
                 expect_str = ex.uart.serial_fdspawn.match.group(0)
@@ -904,41 +909,82 @@ def bist_execution_delay_state_actions(ex, st):
                     ex.logger.error(f"BIST:Data Errors ({err}:{err}/{consecutive_data_errors}-{total_bist_error_messages})")
                     ex.logger.error(f"BIST: expect string:{expect_str}")
                     # print(ex.uart.serial_fdspawn.match.group(0))
-                    total_bist_error_messages += 1
 
-                    # if total_bist_error_messages >= MAX_BIST_ERRORS_BEFORE_REBOOT:
-                    #     # Reboot
-                    #     ex.logger.error(f"BIST:Max BIST Errors reached")
-                    #     ex.bist_error_max = True
-
-                    # if consecutive_data_errors >= MAX_CONSECUTIVE_BAD_DATA_ERRORS:
-                    #     # Need to repair data errors
-                    #     ex.dram_error = True
-                    #     return
+                    if consecutive_data_errors >= DLAY_STATE_MAX_CONSECUTIVE_BAD_DATA_ERRORS:
+                        # Need to repair data errors
+                        ex.dram_error = True
+                        return
                     
                     break
 
                 else: # no new errors
-                    valid_data_lines += 1
                     consecutive_data_errors = 0 # Clear consecutive error flag
-
+                    ex.logger.info("BIST:Delay for {delay} seconds".format(delay = ex.args.noncontinuous_bist_delay))
                     time.sleep(ex.args.noncontinuous_bist_delay)
-
-                    print("Line of data (ok)")
-
                     continue
+            else:
+                delay_state_consecutive_bad_data_lines += 1
+                ex.logger.info(f"BIST:Bad data (match_index:{match_index}):({delay_state_consecutive_bad_data_lines}):"+ex.uart.serial_fdspawn.match.group(0))
+                
+                if (delay_state_consecutive_bad_data_lines >= DLAY_STATE_MAX_CONSECUTIVE_BAD_DATA_ERRORS):
+                    ex.logger.error("BIST:Max consecutive bad data lines reached")
+                    ex.bist_max_error = True
+                continue
                     
 
 
             scrubbing_flag = False
 
 
+def reboot_state_actions(ex, st):
+    '''
+    Set of methods to run a reboot cmd. Board is reconfigured if 
+    '''
+    
+    NO_REBOOT_ATTEMPT = 0
+    ATTEMPTED_REBOOT_CMD = 1
+    ATTEMPTED_REBOOT_UARTBONE = 2
+
+    
+    ex.uart_ok = True
+    ex.reboot_uartbone = False
+    ex.reconfigure = False
+    
+    # Stop BIST command
+    ex.uart.sendline("\n\n")
+    
+    # Expect Litex Prompt
+    expect_result = expect_prompt(ex)
+    if not expect_result:
+        ex.uart_ok = False
+        return
+    
+    if ex.previous_reboot_state == NO_REBOOT_ATTEMPT:
+        ex.logger.info("BIST:Reboot")
+        ex.previous_reboot_state = ATTEMPTED_REBOOT_CMD
+        # ex.previous_bist_data_repair = DRAM_REBOOT_STEP
+        ex.uart.sendline("reboot")
+        if not expect_prompt(ex):
+            ex.uart_ok = False
+        return
+    elif ex.previous_reboot_state == ATTEMPTED_REBOOT_CMD:
+        ex.logger.info("BIST:Previous reboot cmd attempted, using uartbone")
+        ex.previous_reboot_state = ATTEMPTED_REBOOT_UARTBONE
+        ex.reboot_uartbone = True
+        return
+    else:
+        ex.logger.info("BIST:Reboot methods attempted, reconfiguring")
+        ex.reconfigure = True
+        return
+
+    
+
 def dram_recovery_state_actions(ex, st):
     ''' 
     Attempts to repair the DRAM interface
     '''
     ex.uart_ok = True
-    ex.reconfigure = False
+    ex.reboot = False
     # Stop BIST command
     ex.uart.sendline("\n\n")
     # Search for Litex prompt
@@ -953,7 +999,6 @@ def dram_recovery_state_actions(ex, st):
     DRAM_DELAY_SCRUB_STEP = 3
     DRAM_CALIBRATE_STEP = 4
     DRAM_INIT_STEP = 5
-    DRAM_REBOOT_STEP = 6
 
     ex.logger.info(f"BIST:Recovery level={ex.previous_bist_data_repair}")
 
@@ -991,16 +1036,13 @@ def dram_recovery_state_actions(ex, st):
             ex.uart_ok = False
         return
     elif ex.previous_bist_data_repair == DRAM_INIT_STEP:
-        ex.logger.info("BIST:Reboot")
-        ex.previous_bist_data_repair = DRAM_REBOOT_STEP
-        ex.uart.sendline("reboot")
-        if not expect_prompt(ex):
-            ex.uart_ok = False
+        ex.logger.info("BIST:Failed all scrubbing commands - reboot")
+        ex.reboot = True
         return
 
     # If I get here, we have exhausted all tests. Just reconfigure
-    ex.logger.info("BIST:Failed all recovery - reconfigure")
-    ex.reconfigure = True
+    # ex.logger.info("BIST:Failed all recovery - reconfigure")
+    # ex.reconfigure = True
 
 def bist_recovery_state_actions(ex, st):
     ''' This action is performed when the BIST command is acting up and we want
@@ -1024,9 +1066,10 @@ def bist_recovery_state_actions(ex, st):
     if not expect_result:
         ex.uart_ok = False
         return
-    # Restart BIST command
-    bist_command = ex.bist.get_bist_command_str()
-    result = ex.uart.sendline(bist_command)
+    # Restart BIST command (if in continuous mode)
+    if ex.args.continuous_bist_mode:
+        bist_command = ex.bist.get_bist_command_str()
+        result = ex.uart.sendline(bist_command)
 
 def terminal_recovery_state_actions(ex, st):
     ''' This action is performed when there was some sort of UART problem. 
@@ -1068,9 +1111,10 @@ def terminal_recovery_state_actions(ex, st):
     if not expect_result:
         ex.uart_ok = False
         return
-    # Restart BIST command
-    bist_command = ex.bist.get_bist_command_str()
-    result = ex.uart.sendline(bist_command)
+    # Restart BIST command (if in continuous mode)
+    if ex.args.continuous_bist_mode:
+        bist_command = ex.bist.get_bist_command_str()
+        result = ex.uart.sendline(bist_command)
 
 def reset_recovery_state_actions(ex, st):
 
@@ -1169,6 +1213,7 @@ def build_experiment(args,logger,single_step=False):
     START_BIST_CONTINUOUS_STATE = "Start BIST Continuous State"
     BIST_EXECUTION_CONTINUOUS_STATE = "BIST Execution Continuous State"
     TERMINAL_RECOVERY_STATE = "Terminal Recovery State"
+    REBOOT_RECOVERY_STATE = "Reboot Recovery State"
     RESET_RECOVERY_STATE = "Reset Recovery State"
     BIST_RECOVERY_STATE = "BIST Recovery State"
     DRAM_RECOVERY_STATE = "DRAM Recovery State"
@@ -1296,9 +1341,8 @@ def build_experiment(args,logger,single_step=False):
     experiment.add_state(ExperimentState(
         BIST_EXECUTION_DELAY_STATE,
         bist_execution_delay_state_actions,
-        Transition(lambda ex, st: ex.bist_error_max, POWER_BOARD_STATE), 
-        Transition(lambda ex, st: not ex.uart_ok, TERMINAL_RECOVERY_STATE),        
-        Transition(lambda ex, st: ex.bist_error, BIST_RECOVERY_STATE),
+        Transition(lambda ex, st: ex.bist_error_max, REBOOT_RECOVERY_STATE), 
+        Transition(lambda ex, st: not ex.delay_state_uart_ok, TERMINAL_RECOVERY_STATE),        
         Transition(lambda ex, st: ex.dram_error, DRAM_RECOVERY_STATE),
         # Shouldn't get here
         Transition(lambda ex, st: True, UNRECOVERABLE_POSTMORTUM_STATE)
@@ -1315,7 +1359,7 @@ def build_experiment(args,logger,single_step=False):
     experiment.add_state(ExperimentState(
         BIST_EXECUTION_CONTINUOUS_STATE,
         bist_execution_continuous_state_actions,
-        Transition(lambda ex, st: ex.bist_error_max, POWER_BOARD_STATE), 
+        Transition(lambda ex, st: ex.bist_error_max, REBOOT_RECOVERY_STATE), 
         Transition(lambda ex, st: not ex.uart_ok, TERMINAL_RECOVERY_STATE),        
         Transition(lambda ex, st: ex.bist_error, BIST_RECOVERY_STATE),
         Transition(lambda ex, st: ex.dram_error, DRAM_RECOVERY_STATE),
@@ -1329,9 +1373,20 @@ def build_experiment(args,logger,single_step=False):
     experiment.add_state(ExperimentState(
         DRAM_RECOVERY_STATE,
         dram_recovery_state_actions,
+        Transition(lambda ex, st: ex.reboot, REBOOT_RECOVERY_STATE),
         Transition(lambda ex, st: ex.uart_ok, BIST_RECOVERY_STATE),
-        Transition(lambda ex, st: not ex.uart_ok or ex.reconfigure, UNRECOVERABLE_POSTMORTUM_STATE),
+        Transition(lambda ex, st: not ex.uart_ok, UNRECOVERABLE_POSTMORTUM_STATE),
         Transition(lambda ex, st: True, UNRECOVERABLE_POSTMORTUM_STATE)
+    ))
+    
+    experiment.add_state(ExperimentState(
+        REBOOT_RECOVERY_STATE,
+        reboot_state_actions,
+        Transition(lambda ex, st: not ex.uart_ok, TERMINAL_RECOVERY_STATE),
+        Transition(lambda ex, st: ex.reboot_uartbone, RESET_RECOVERY_STATE),
+        Transition(lambda ex, st: ex.reconfigure, UNRECOVERABLE_POSTMORTUM_STATE),
+        # Shouldn't get here
+        Transition(lambda ex, st: True, BIST_RECOVERY_STATE)
     ))
 
     # BIST_RECOVERY_STATE
@@ -1364,7 +1419,8 @@ def build_experiment(args,logger,single_step=False):
     experiment.add_state(ExperimentState(
         UNRECOVERABLE_POSTMORTUM_STATE,
         unrecoverable_postmortum_state_actions,
-        Transition(lambda ex, st: True, CONNECT_UART_STATE)
+        # Currently, the way to reconfigure is with flash memory.
+        Transition(lambda ex, st: True, POWER_BOARD_STATE) #CONNECT_UART_STATE 
     ))
 
     # TERMINATING_STATE
