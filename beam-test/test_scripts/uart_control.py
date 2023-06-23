@@ -80,7 +80,7 @@ class uart_control():
         tty = None
         while tty_find_attempt < uart_control.MAX_TTY_FIND_ATTEMPTS and not tty:
             time.sleep(uart_control.TTY_SEARCH_DELAY)
-            self._info(f"Searching for ttyUSB device (Attempt {tty_find_attempt})")
+            self._info(f"Searching for ttyUSB device (Attempt {tty_find_attempt}) for port "+self.usb_uart_phys_port+" IF "+self.usb_uart_phys_if)
             try:
                 tty = find_dev_file_ttyUSB(self.usb_uart_phys_port, self.usb_uart_phys_if)
             except (USBFindError) as error:

@@ -41,17 +41,17 @@ Here are the current commands that run the continuous version of the BIST:
 
 For the antmicro datacenter board:
 ```
-python3 ddrcontinuous_experiment.py --test_name testexperiment --usb_uart_phys_port 1-4.1 --usb_uart_phys_if 2 --netbooter_ip 169.254.131.160 --board_netbooter_port 1
+python3 ddrcontinuous_experiment.py --test_name testexperiment --usb_uart_phys_port 1-4.4 --usb_uart_phys_if 2 --netbooter_ip 169.254.131.160 --board_netbooter_port 1 --no_uart_bone --continuous --test_board_name databoard --test_prefix EXAMPLE_DDR4
 ```
 
 For the nexys video board:
 ```
-python3 ddrcontinuous_experiment.py --test_name testexperiment --usb_uart_phys_port 1-4.2 --usb_uart_phys_if 0 --netbooter_ip 169.254.131.160 --board_netbooter_port 3
+python3 ddrcontinuous_experiment.py --test_name testexperiment --usb_uart_phys_port 1-4.2 --usb_uart_phys_if 0 --netbooter_ip 169.254.131.160 --board_netbooter_port 3 --uartbone_phys_port 1-4.1 --uartbone_phys_if 0 --uart_bone_ident 0xf0002000 --continuous --test_board_name nexys_video --test_prefix EXAMPLE_DDR3
 ```
 
 For the nexys4ddr board:
 ```
-python3 ddrcontinuous_experiment.py --test_name testexperiment --usb_uart_phys_port 1-4.4 --usb_uart_phys_if 1 --netbooter_ip 169.254.131.160 --board_netbooter_port 2
+python3 ddrcontinuous_experiment.py --test_name testexperiment --usb_uart_phys_port 1-4.3 --usb_uart_phys_if 1 --netbooter_ip 169.254.131.160 --board_netbooter_port 2 --no_uart_bone --continuous --test_board_name nexys4ddr --test_prefix EXAMPLE_DDR2
 ```
 
 Notes:

@@ -55,6 +55,12 @@ JCM_PING_DELAY = 10
 
 UARTBONE_UART_BASENAME = "uartbone"
 
+NEXYS_VIDEO_BOARDNAME = "nexys_video"
+NEXYS4DDR_BOARDNAME = "nexys4ddr"
+DATABOARD_BOARDNAME = "databoard"
+
+DEFAULT_PREFIX = "CTRL"
+
 DEFAULT_BIST_BURST_LENGTH = 0xfffffff # Default burst length
 DEFAULT_BIST_DELAY_SECONDS = 0 # Default number of seconds to delay.
 DEFAULT_BIST_ADDR_MODE = 1 # Start reading/writing data with addresses linearly.
@@ -65,12 +71,52 @@ DEFAULT_BIST_NONCONT_DELAY_SEC = 300
 
 LITEX_LOGIN_DELAY = 12
 
+MAX_ERRORS_TO_DISPLAY = 1000
 MAX_BIST_ERRORS_BEFORE_REBOOT = 100
+MAX_CONSEC_BAD_TITLES_DATA = 5
+MAX_CONSECUTIVE_UNICODE_ERRORS = 20
 
-UARTBONE_RESET_ADDR = 0xf0000800  # csr_base,ctrl
-UARTBONE_IDENT_ADDR = 0xf0002000  # csr_base,identifier_mem
-UARTBONE_DEBUG_ADDR = 0xf0001800  # csr_base,debug module
+UARTBONE_RESET_ADDR = 0xf0000800     # csr_base,ctrl
+UARTBONE_IDENT_ADDR = 0xf0002000     # csr_base,identifier_mem
+UARTBONE_DEBUG_ADDR = 0xf0001800     # csr_base,debug module
+UARTBONE_FSM_STATE_ADDR = 0xf00000c8 # csr_base,fsm_state
 UARTBONE_DEBUG_I_ADDR = 0x0 
+
+
+# Timing settings for the Antmicro Datacenter board
+class antmicro_databoard():
+    
+    def __init__(self):
+        
+        MIN_BIST_TIME_DIFF_SECONDS = 2.5
+        LITEX_LOGIN_DELAY = 10
+        
+        self.execution_speed = MIN_BIST_TIME_DIFF_SECONDS
+        self.litex_login_delay = LITEX_LOGIN_DELAY
+        
+        
+# Timing settings for the digilent nexys video board.
+class digilent_nexys_video():
+    
+    def __init__(self):
+        
+        MIN_BIST_TIME_DIFF_SECONDS = 0.3
+        LITEX_LOGIN_DELAY = 10
+        
+        self.execution_speed = MIN_BIST_TIME_DIFF_SECONDS
+        self.litex_login_delay = LITEX_LOGIN_DELAY
+        
+# Timing settings for the digilent nexys video board.
+class digilent_nexys4ddr():
+    
+    def __init__(self):
+        
+        MIN_BIST_TIME_DIFF_SECONDS = 0.15
+        LITEX_LOGIN_DELAY = 15
+        
+        self.execution_speed = MIN_BIST_TIME_DIFF_SECONDS
+        self.litex_login_delay = LITEX_LOGIN_DELAY
+        
 
 
 class bist_common(object):
@@ -122,17 +168,20 @@ class bist_continuous_state(bist_common):
     def get_bist_command_str(self):
         ''' Creates a string for the sdram_bist command (Based on parameters of this object)
         litex> sdram_bist
-        sdram_bist <length> [<delay>] [<addr_mode>] [<write_mode>]
-        length    : Number of transactions per read write (1 = 8 bytes)
-        delay     : Number of seconds to delay after each check (default: 0)
-        addr_mode : 0=fixed (starts at zero), 1=inc (default: 1)
-        write_mode: 0=write_once_read_always, 1=write_and_read_always (default: 1)
+        sdram_bist <base> <length> [<max_errors>] [<addr_mode>] [<write_mode>] [<error_break>] [<delay>]
+        base_addr    : Starting address of BIST
+        length       : Number of transactions per read write (1 = 80 bits)
+        max_errors   : Max number of errors to display (default: 0)
+        addr_mode    : 0=fixed (starts at zero), 1=inc (default: 1)
+        write_mode   : 0=read_always, 1=write_once_read_always, 2=write_and_read_always (default: 0)
+        error_break  : 0=dont stop BIST if errors found, 1=stop BIST if errors found (default: 0)
+        delay        : Number of seconds to delay after each check (default: 0)
         '''
         #cmd_str = "sdram_bist " + str(self.bist_mem_burst_length) + " " + str(self.bist_addr_mode)
         # address_mode = 1 (increment)
         # data_mode = 0 (pattern)
         # write_mode = 2 (write and read)
-        cmd_str = "sdram_bist " + str(self.bist_mem_burst_length) + " 0 1 0"
+        cmd_str = "sdram_bist 0x0 " + str(self.bist_mem_burst_length) + " " + str(MAX_ERRORS_TO_DISPLAY) + " 0 1 0 0"
         return cmd_str
     
     def new_errors(self,result_str):
@@ -140,6 +189,8 @@ class bist_continuous_state(bist_common):
         ERROR_MSG_INDEX = 7 # Error number at index 7 of matched string
 
         result_list = result_str.split()
+        # print(result_list)
+        # print(len(result_list))
         new_error_cnt = int(result_list[ERROR_MSG_INDEX])
         new_errors = new_error_cnt - self.error_cnt
         
@@ -181,12 +232,13 @@ class bist_delay_state(bist_common):
                                   ):
         ''' Creates a string for the sdram_bist_writer command (Based on parameters of this object)
         litex> sdram_bist_reader
-        sdram_bist_reader <beginning_address> <length>
+        sdram_bist_reader <beginning_address> <length> <max_error_out>
         beginning address : Starting address
         length : Length of burst writes to write
+        max_error_out: Max number of errors to display (default: 0)
         '''
         
-        cmd_str = "sdram_bist_reader " + str(self.beg_addr) + " " + str(self.length)
+        cmd_str = "sdram_bist_reader " + str(self.beg_addr) + " " + str(self.length) + " " + str(MAX_ERRORS_TO_DISPLAY)
         return cmd_str
     
     def new_errors(self,result_str):
@@ -233,8 +285,10 @@ def variable_update_successful_bist(ex):
     ''' Initalize/clear all variables that hold error state between
     states. Used when a successful BIST execution sequence occurs. '''
     # Flag indicating that this is a fresh BIST (not coming in with errors)
-    ex.previous_bist_uart_error = False    # Flag indicating a previous BIST system error occured
-    ex.previous_bist_data_repair = 0       # variable indicating what repair has been made
+    ex.previous_bist_uart_error = False             # Flag indicating a previous BIST system error occured
+    ex.previous_bist_data_repair = 0                # variable indicating what repair has been made
+    ex.previous_bist_max_consecutive_bad_titles = 0 # variable indicating previous bad title lines occured
+    ex.previous_bist_max_consecutive_data_lines = 0 # variable indicating previous bad data lines occured.
     ex.issued_reset = False # Indicates a reset value was recently initiated
     ex.unrecoverable = False
 
@@ -469,10 +523,19 @@ def initial_litex_prompt_state_actions(ex, st):
     ''' Check for initial litex prompt.         
         sets: ex.login_litex (encapsulates uart issues) 
     '''
+    
+    # Choose board for timing settings
+    if ex.args.test_board_name == NEXYS4DDR_BOARDNAME:
+        ex.board = digilent_nexys4ddr()
+    elif ex.args.test_board_name == NEXYS_VIDEO_BOARDNAME:
+        ex.board = digilent_nexys_video()
+    elif ex.args.test_board_name == DATABOARD_BOARDNAME:
+        ex.board = antmicro_databoard()
+    
     MAX_LOGIN_ATTEMPS = 3
     ex.login_litex = False
     ex.initial_login_terminate = False
-    expect_result = expect_prompt(ex)
+    expect_result = expect_prompt(ex, expect_timeout = ex.board.litex_login_delay)
     if expect_result:
         # All is good - move on
         ex.login_litex = True
@@ -555,20 +618,17 @@ def bist_execution_continuous_state_actions(ex, st):
     BIST_TITLE_REGEX = " WRITE TICKS   READ TICKS TOTAL WRITES  TOTAL READS  WR-SPEED\(MiB/s\)  RD-SPEED\(MiB/s\)      ADDRESSES TESTED     ERRORS"
     # BIST data line
     #^M                                   646          654          324          0          0          0
-    #BIST_DATA_REGEX = "\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+"
     BIST_DATA_REGEX = "\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+"
     #ERRORS (CPU): 0
     # BIST_ERROR_MSG_REGEX = "ERRORS (CPU): (\d+)"
-    BIST_ERROR_MSG_REGEX = "ERROR at address 0x\d+: data read: "
+    BIST_ERROR_MSG_REGEX = "\d+:  \d+"
 
 
     BIST_TEXT_DELAY = 15
-    MAX_CONSECUTIVE_UNICODE_ERRORS = 20
     MAX_CONSECUTIVE_BAD_TITLE_LINES = 10
     MAX_CONSECUTIVE_BAD_DATA_LINES = 10
     MAX_CONSECUTIVE_BAD_DATA_ERRORS = 8
     DRAM_ERROR_THRESHOLD = 100
-    MIN_BIST_TIME_DIFF_SECONDS = 2
 
     # Iterate over lines until an error occurs (will need to break out on an error condition)
     while(1):
@@ -641,7 +701,7 @@ def bist_execution_continuous_state_actions(ex, st):
                             bist_time_difference = current_successful_bist - last_successful_bist
                             # If the BIST occurred too quickly, exit and start over
                             execution_diff = bist_time_difference.total_seconds()
-                            if execution_diff < MIN_BIST_TIME_DIFF_SECONDS:
+                            if execution_diff < ex.board.execution_speed:
                                 ex.logger.error(f"BIST: Execution completed too fast ({execution_diff} s)")
                                 ex.bist_error = True
                                 return
@@ -664,8 +724,12 @@ def bist_execution_continuous_state_actions(ex, st):
             else: # have an invalid title line
                 consecutive_bad_title_lines += 1
                 ex.logger.info(f"BIST:Bad title line ({consecutive_bad_title_lines}):"+ex.uart.serial_fdspawn.match.group(0))
+                if ex.previous_bist_max_consecutive_bad_titles >= MAX_CONSEC_BAD_TITLES_DATA:
+                    ex.logger.error("BIST:Max consecutive times of consecutive bad title lines reached (no. {lines})".format(lines = ex.previous_bist_max_consecutive_bad_titles))
+                    ex.bist_error_max = True
+                    break
                 if consecutive_bad_title_lines > MAX_CONSECUTIVE_BAD_TITLE_LINES:
-                    ex.logger.error("BIST:Max consecutive bad title lines")
+                    ex.logger.error("BIST:Max consecutive bad title lines (no. {lines})".format(lines = ex.previous_bist_max_consecutive_bad_titles))
                     ex.bist_error = True # System error: will go to a recovery state
                     break
                 # Skip to next line for bad title
@@ -716,8 +780,13 @@ def bist_execution_continuous_state_actions(ex, st):
             else: # bad data line
                 consecutive_bad_data_lines += 1
                 ex.logger.info(f"BIST:Bad data line ({consecutive_bad_data_lines})")
+                if (ex.previous_bist_max_consecutive_data_lines >= MAX_CONSEC_BAD_TITLES_DATA):
+                    ex.logger.error("BIST:Max consecutive times of consecutive bad data lines reached (no. {lines})".format(lines = ex.previous_bist_max_consecutive_data_lines))
+                    ex.bist_error_max = True 
+                    break
                 if consecutive_bad_data_lines >= MAX_CONSECUTIVE_BAD_DATA_LINES:
-                    ex.logger.error("BIST:Max consecutive bad data lines")
+                    ex.previous_bist_max_consecutive_data_lines += 1
+                    ex.logger.error("BIST:Max consecutive bad data lines (no. {lines})".format(lines = ex.previous_bist_max_consecutive_data_lines))
                     ex.bist_error = True # System error: will go to a recovery state
                     break
 
@@ -733,33 +802,94 @@ def bist_execution_delay_state_actions(ex, st):
         sets: uart_ok (uart_errors), dram_error, reconfigure
     '''
     BIST_SINGLECMD_DELAY = 30
-    BIST_TITLE_DATA_REGEX = " WRITE TICKS   READ TICKS TOTAL WRITES  TOTAL READS  WR-SPEED\(MiB\/s\)  RD-SPEED\(MiB\/s\)      ADDRESSES TESTED     ERRORS\n\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+0x[[:xdigit:]]{7}-0x[[:xdigit:]]{7}\s+\d+\n"
+    BIST_TITLE_DATA_REGEX = " WRITE TICKS   READ TICKS TOTAL WRITES  TOTAL READS  WR-SPEED\(MiB\/s\)  RD-SPEED\(MiB\/s\)      ADDRESSES TESTED     ERRORS\n\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+0x[[:xdigit:]]{7}-0x[[:xdigit:]]{7}\s+\d+\n\n^.*litex[^>]*> "
+    LITEX_LOGIN_PATTERN = "^.*litex[^>]*> "
     TITLEDATA_INDEX = 0
-    MAX_CONSECUTIVE_BAD_DATA_ERRORS = 8
+    LITEX_LOGIN_PATTERN_INDEX = 1
+    DLAY_STATE_MAX_CONSECUTIVE_BAD_DATA_ERRORS = 8
 
-    valid_data_lines = 0
+    delay_state_consecutive_bad_data_lines = 0
+    ex.delay_state_uart_ok = False
+    ex.delay_state_consecutive_unicode_errors = 0
+    
+    
+    # Concatenate everything to check for UART errors in one function.
+    def check_for_uart_errors(ex):
+        
+        # Process expect system errors
+        if ex.uart.has_uart_error():
+            # General UART errors (Timeout, etc)
+            ex.uart_ok = False # State change to repair uart
+            return False
+
+        elif ex.uart.unicode_error:
+            # Unicode errors over UART (look for a consecutive number of them)
+            ex.delay_state_consecutive_unicode_errors += 1
+            if ex.delay_state_consecutive_unicode_errors == 1:
+                ex.logger.info("BIST:First Unicode Error")
+                # Don't process this unicode error line
+                return None
+            elif ex.delay_state_consecutive_unicode_errors >= MAX_CONSECUTIVE_UNICODE_ERRORS:
+                ex.logger.error("BIST:Max Consecitive Unicode Errors:",ex.delay_state_consecutive_unicode_errors)
+            ex.uart_ok = False # State change to repair uart
+            return False
+        else:
+            if ex.delay_state_consecutive_unicode_errors > 0:
+                ex.delay_state_consecutive_unicode_errors == 0
+        return True
+        
+        
+    #Initially print out the delay of this state in seconds
+    ex.logger.info("BIST:Starting delay state machine ({time} second delay)".format(time = ex.args.noncontinuous_bist_delay))
 
     while(1):
 
+        ex.logger.info("BIST:Starting Writer")
         # Start by sending a write command, expect result back.
         bist_command = ex.bist.get_bist_write_command_str()
         result = ex.uart.sendline(bist_command)
 
-
-
-        match_index = ex.uart.expect([BIST_TITLE_DATA_REGEX],timeout=BIST_SINGLECMD_DELAY)
+        match_index = ex.uart.expect([BIST_TITLE_DATA_REGEX, LITEX_LOGIN_PATTERN],timeout=BIST_SINGLECMD_DELAY)
+        
+        uart_result = check_for_uart_errors(ex)
+        # If timeout, EOF, or many unicode errors occur, exit.
+        if uart_result == False:
+            ex.delay_state_uart_ok = False
+            return
+        # If one unicode error occurs, try again.
+        elif uart_result == None:
+            continue
+        
+        if (match_index == TITLEDATA_INDEX):
+            ex.logger.info("BIST:Writer successful")
+        else:
+            ex.logger.info("BIST:Bad data ():"+ex.uart.serial_fdspawn.match.group(0))
+            delay_state_consecutive_bad_data_lines += 1
+            if (delay_state_consecutive_bad_data_lines >= DLAY_STATE_MAX_CONSECUTIVE_BAD_DATA_ERRORS):
+                ex.logger.error("BIST:Max consecutive bad data lines reached")
+                
+            if (match_index == LITEX_LOGIN_PATTERN):
+                continue
+            
         
         while(1):
-            
             
             # Send a read command, expect result back.
             bist_command = ex.bist.get_bist_read_command_str()
             result = ex.uart.sendline(bist_command)
 
-            match_index = ex.uart.expect([BIST_TITLE_DATA_REGEX],timeout=BIST_SINGLECMD_DELAY)
+            match_index = ex.uart.expect([BIST_TITLE_DATA_REGEX, LITEX_LOGIN_PATTERN],timeout=BIST_SINGLECMD_DELAY)
+            
+            uart_result = check_for_uart_errors(ex)
+            if uart_result == False:
+                return
+            elif uart_result == None:
+                continue
 
             # Check for a match and that it matches the correct index
             if(ex.uart.serial_fdspawn.match and match_index == TITLEDATA_INDEX):
+
+                print("BIST:")
 
                 # Get the matched string
                 expect_str = ex.uart.serial_fdspawn.match.group(0)
@@ -886,6 +1016,14 @@ def bist_recovery_state_actions(ex, st):
     if not expect_result:
         ex.uart_ok = False
         return
+    
+    # Set BIST pattern command
+    bist_command = ex.bist.get_bist_pattern_command_str()
+    result = ex.uart.sendline(bist_command)
+    expect_result = expect_prompt(ex)
+    if not expect_result:
+        ex.uart_ok = False
+        return
     # Restart BIST command
     bist_command = ex.bist.get_bist_command_str()
     result = ex.uart.sendline(bist_command)
@@ -923,6 +1061,13 @@ def terminal_recovery_state_actions(ex, st):
         # Exit without closing the uart
         return
     ex.login_litex = True
+    # Set BIST pattern command
+    bist_command = ex.bist.get_bist_pattern_command_str()
+    result = ex.uart.sendline(bist_command)
+    expect_result = expect_prompt(ex)
+    if not expect_result:
+        ex.uart_ok = False
+        return
     # Restart BIST command
     bist_command = ex.bist.get_bist_command_str()
     result = ex.uart.sendline(bist_command)
@@ -984,20 +1129,20 @@ def unrecoverable_postmortum_state_actions(ex, st):
     # at this point, the previous reset didn't work (or wasn't issued).
     # stop scrubbing and reconfigure
 
-    ex.jcm.stop_scrub()
+    # ex.jcm.stop_scrub()
 
 def terminating_state_actions(ex, st):
     ''' Terminates experiment
         no state change
     '''
-    # Stop scrubbing (if it is going)
-    if ex.jcm.is_active():
-        ex.jcm.stop_scrub()
-        ex.jcm.jcm_thread.join()
+    # # Stop scrubbing (if it is going)
+    # if ex.jcm.is_active():
+    #     ex.jcm.stop_scrub()
+    #     ex.jcm.jcm_thread.join()
 
-    # Close the JCM (if it was setup properly)
-    if ex.jcm_ok:
-        ex.jcm.close_jcm()
+    # # Close the JCM (if it was setup properly)
+    # if ex.jcm_ok:
+    #     ex.jcm.close_jcm()
 
     # Close the uart?
 
@@ -1093,7 +1238,7 @@ def build_experiment(args,logger,single_step=False):
     experiment.add_state(ExperimentState(
         CONNECT_UART_STATE,
         connect_uart_state_actions,
-        Transition(lambda ex, st: ex.uart_ok, LITEX_PROMPT_STATE),
+        Transition(lambda ex, st: ex.uart_ok, SETUP_UARTBONE_STATE),
         Transition(lambda ex, st: True, TERMINATING_STATE)
     ))
 
@@ -1106,13 +1251,13 @@ def build_experiment(args,logger,single_step=False):
     #     Transition(lambda ex, st: True, TERMINATING_STATE)
     # ))
 
-    # # SETUP_UARTBONE_STATE
-    # experiment.add_state(ExperimentState(
-    #     SETUP_UARTBONE_STATE,
-    #     setup_uartbone_state_actions,
-    #     #Transition(lambda ex, st: ex.configure_ok, ENABLE_SCRUBBING_STATE),
-    #     Transition(lambda ex, st: True, ENABLE_SCRUBBING_STATE)
-    # ))
+    # SETUP_UARTBONE_STATE
+    experiment.add_state(ExperimentState(
+        SETUP_UARTBONE_STATE,
+        setup_uartbone_state_actions,
+        #Transition(lambda ex, st: ex.configure_ok, ENABLE_SCRUBBING_STATE),
+        Transition(lambda ex, st: True, LITEX_PROMPT_STATE) #ENABLE_SCRUBBING_STATE)
+    ))
 
     # # ENABLE_SCRUBBING_STATE
     # # - Turn on scrubbing
@@ -1193,7 +1338,8 @@ def build_experiment(args,logger,single_step=False):
     experiment.add_state(ExperimentState(
         BIST_RECOVERY_STATE,
         bist_recovery_state_actions,
-        Transition(lambda ex, st: ex.uart_ok, BIST_EXECUTION_CONTINUOUS_STATE),
+        Transition(lambda ex, st: ex.uart_ok and ex.args.continuous_bist_mode, BIST_EXECUTION_CONTINUOUS_STATE),
+        Transition(lambda ex, st: ex.uart_ok, BIST_EXECUTION_DELAY_STATE),
         Transition(lambda ex, st: True, TERMINAL_RECOVERY_STATE)
     ))
 
@@ -1201,7 +1347,8 @@ def build_experiment(args,logger,single_step=False):
     experiment.add_state(ExperimentState(
         TERMINAL_RECOVERY_STATE,
         terminal_recovery_state_actions,
-        Transition(lambda ex, st: ex.uart_ok and ex.login_litex, BIST_EXECUTION_CONTINUOUS_STATE),
+        Transition(lambda ex, st: ex.uart_ok and ex.login_litex and ex.args.continuous_bist_mode, BIST_EXECUTION_CONTINUOUS_STATE),
+        Transition(lambda ex, st: ex.uart_ok and ex.login_litex, BIST_EXECUTION_DELAY_STATE),
         Transition(lambda ex, st: True, RESET_RECOVERY_STATE)
     ))
 
@@ -1271,6 +1418,9 @@ def main():
     parser = argparse.ArgumentParser()
     #parser.add_argument("--bitstream", help="filename of bitstream", type=str, required=True)
     parser.add_argument("--test_name", help="Name for test", type=str, required=True)
+    parser.add_argument("--test_board_name", help="Name of the board being tested to add board settings (Options: "+NEXYS4DDR_BOARDNAME+", "+NEXYS_VIDEO_BOARDNAME+", "+DATABOARD_BOARDNAME+")", 
+                        choices=[NEXYS4DDR_BOARDNAME, NEXYS_VIDEO_BOARDNAME, DATABOARD_BOARDNAME], 
+                        required=True)
     parser.add_argument_group(netbooter_control.netbooter_group_args(parser))
     parser.add_argument_group(jcm_session.jcm_group_args(parser))
     parser.add_argument_group(uart_control.uart_group_args(parser))
@@ -1292,10 +1442,11 @@ def main():
     parser.add_argument("--uart_bone_ident", help="Hex Address of uart bone identifier register", default=UARTBONE_IDENT_ADDR)
     parser.add_argument("--continuous_bist_mode", help="Run the BIST in continuous mode", action='store_true')
     parser.add_argument("--noncontinuous_bist_delay", help="Argument to control the delay between commands (in seconds)", default=DEFAULT_BIST_NONCONT_DELAY_SEC)
+    parser.add_argument("--test_prefix", help="Test Prefix (CTRL, DDR4, etc.)", default=DEFAULT_PREFIX)
     args = parser.parse_args()
 
     # Set up logger settings
-    filebasename = create_base_filename(args.test_name)
+    filebasename = create_base_filename(args.test_name, prefix=args.test_prefix)
     log_dir = Path(".")
     if args.log_dir:
         log_dir = Path(args.log_dir)

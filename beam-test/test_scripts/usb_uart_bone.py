@@ -203,7 +203,7 @@ def main():
         data = int(wargs[1],16)
         val = usb_uartbone.write(address, data)
     if args.ident:
-        ident_str = usb_uartbone.read_ident()
+        ident_str = usb_uartbone.read_ident(addr)
         print(ident_str)
 
     # 0xf0001800 (start of id - read bytes until null)

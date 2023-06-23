@@ -239,6 +239,8 @@ class usb_uart_base():
         if default_baud:
             arg.default=default_baud
             arg.required=False
+        # In case that we are using one USB for both uartbone and terminal output
+        uart_arg_group.add_argument("--uartbone_crossover_build", action='store_true', help="Use for designs without extra USB uartbone bridge (Use the same USB for both BIST and UARTBONE)")
         return uart_arg_group
 
     def get_uart_args(args, base_str:str):
