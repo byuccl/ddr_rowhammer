@@ -39,19 +39,40 @@ cd ../test_scripts/
 
 Here are the current commands that run the continuous version of the BIST:
 
-For the antmicro datacenter board:
+**Antmicro datacenter board**:
+
+Continuous mode:
 ```
-python3 ddrcontinuous_experiment.py --test_name testexperiment --usb_uart_phys_port 1-4.4 --usb_uart_phys_if 2 --netbooter_ip 169.254.131.160 --board_netbooter_port 1 --no_uart_bone --continuous --test_board_name databoard --test_prefix EXAMPLE_DDR4
+python3 ddrcontinuous_experiment.py --test_name testexperiment --usb_uart_phys_port 1-4.4 --usb_uart_phys_if 2 --netbooter_ip 169.254.131.160 --board_netbooter_port 1 --no_uart_bone --continuous --test_board_name databoard --test_prefix EXAMPLE_DDR4_CONTINUOUS
 ```
 
-For the nexys video board:
+Noncontinuous mode:
 ```
-python3 ddrcontinuous_experiment.py --test_name testexperiment --usb_uart_phys_port 1-4.2 --usb_uart_phys_if 0 --netbooter_ip 169.254.131.160 --board_netbooter_port 3 --uartbone_phys_port 1-4.1 --uartbone_phys_if 0 --uart_bone_ident 0xf0002000 --continuous --test_board_name nexys_video --test_prefix EXAMPLE_DDR3
+python3 ddrcontinuous_experiment.py --test_name testexperiment --usb_uart_phys_port 1-4.4 --usb_uart_phys_if 2 --netbooter_ip 169.254.131.160 --board_netbooter_port 1 --no_uart_bone --test_board_name databoard --noncontinuous_bist_delay 300 --test_prefix EXAMPLE_DDR4_NONCONTINUOUS
 ```
 
-For the nexys4ddr board:
+**Nexys video board**:
+
+Continuous mode:
 ```
-python3 ddrcontinuous_experiment.py --test_name testexperiment --usb_uart_phys_port 1-4.3 --usb_uart_phys_if 1 --netbooter_ip 169.254.131.160 --board_netbooter_port 2 --no_uart_bone --continuous --test_board_name nexys4ddr --test_prefix EXAMPLE_DDR2
+python3 ddrcontinuous_experiment.py --test_name testexperiment --usb_uart_phys_port 1-4.2 --usb_uart_phys_if 0 --netbooter_ip 169.254.131.160 --board_netbooter_port 3 --uartbone_phys_port 1-4.1 --uartbone_phys_if 0 --uart_bone_ident 0xf0002000 --continuous --test_board_name nexys_video --test_prefix EXAMPLE_DDR3_CONTINUOUS
+```
+
+Noncontinuous mode:
+```
+python3 ddrcontinuous_experiment.py --test_name testexperiment --usb_uart_phys_port 1-4.2 --usb_uart_phys_if 0 --netbooter_ip 169.254.131.160 --board_netbooter_port 3 --uartbone_phys_port 1-4.1 --uartbone_phys_if 0 --uart_bone_ident 0xf0002000 --noncontinuous_bist_delay 300 --test_board_name nexys_video --test_prefix EXAMPLE_DDR3_NONCONTINUOUS 
+```
+
+**Nexys4ddr board**:
+
+Continuous mode:
+```
+python3 ddrcontinuous_experiment.py --test_name testexperiment --usb_uart_phys_port 1-4.3 --usb_uart_phys_if 1 --netbooter_ip 169.254.131.160 --board_netbooter_port 2 --no_uart_bone --continuous --test_board_name nexys4ddr --test_prefix EXAMPLE_DDR2_CONTINUOUS
+```
+
+Noncontinuous mode:
+```
+python3 ddrcontinuous_experiment.py --test_name testexperiment --usb_uart_phys_port 1-4.3 --usb_uart_phys_if 1 --netbooter_ip 169.254.131.160 --board_netbooter_port 2 --no_uart_bone --noncontinuous_bist_delay 300 --test_board_name nexys4ddr --test_prefix EXAMPLE_DDR2_NONCONTINUOUS
 ```
 
 Notes:
