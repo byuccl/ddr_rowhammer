@@ -853,23 +853,23 @@ def bist_execution_delay_state_actions(ex, st):
     while(1):
 
         ex.logger.info("BIST:Starting Writer")
-        # # Start by sending a write command, expect result back.
-        # bist_command = ex.bist.get_bist_write_command_str()
-        # result = ex.uart.sendline(bist_command)
+        # Start by sending a write command, expect result back.
+        bist_command = ex.bist.get_bist_write_command_str()
+        result = ex.uart.sendline(bist_command)
 
-        # match_index = ex.uart.expect([LITEX_LOGIN_PATTERN],timeout=BIST_SINGLECMD_DELAY)
+        match_index = ex.uart.expect([LITEX_LOGIN_PATTERN],timeout=BIST_SINGLECMD_DELAY)
         
-        # uart_result = check_for_uart_errors(ex)
-        # # If timeout, EOF, or many unicode errors occur, exit.
-        # if uart_result == False:
-        #     return
-        # # If one unicode error occurs, try again.
-        # elif uart_result == None:
-        #     continue
+        uart_result = check_for_uart_errors(ex)
+        # If timeout, EOF, or many unicode errors occur, exit.
+        if uart_result == False:
+            return
+        # If one unicode error occurs, try again.
+        elif uart_result == None:
+            continue
         
-        if True:# (ex.uart.serial_fdspawn.match and 
-            # match_index == LITEX_LOGIN_PATTERN_INDEX and
-            # re.search(BIST_TITLE_DATA_REGEX, ex.uart.serial_fdspawn.match.group(0)) != None):
+        if (ex.uart.serial_fdspawn.match and 
+            match_index == LITEX_LOGIN_PATTERN_INDEX and
+            re.search(BIST_TITLE_DATA_REGEX, ex.uart.serial_fdspawn.match.group(0)) != None):
             ex.logger.info("BIST:Writer successful")
             delay_state_consecutive_bad_data_lines = 0
             
