@@ -110,7 +110,11 @@ class uart_control():
 
     def close_uart_serial(self):
         ''' Close serial port'''
-        self._info("Serial port "+self.serial_dev+" closed")
+        if (self.serial_dev == None):
+            self._info("Serial port already closed")
+            return
+        else:
+            self._info("Serial port "+self.serial_dev+" closed")
         self.serial_dev = None
         self.serial_fd.close()
         self.serial_fd = None
@@ -143,7 +147,7 @@ class uart_control():
             return False
         return True
 
-    def get_expect_str(self):
+    def get_expect_str(self): 
         ''' Return the last string received with expect '''
         if not self.serial_fdspawn:
             self._error("no active fdspan")
