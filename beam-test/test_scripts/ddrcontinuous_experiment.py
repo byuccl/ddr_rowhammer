@@ -186,7 +186,7 @@ class bist_continuous_state(bist_common):
         # address_mode = 1 (increment)
         # data_mode = 0 (pattern)
         # write_mode = 2 (write and read)
-        cmd_str = "sdram_bist 0x0 " + str(self.bist_mem_burst_length) + " " + str(self.bist_max_errors_display) + " 0 0 0 0"
+        cmd_str = "sdram_bist 0x0 " + str(self.bist_mem_burst_length) + " " + str(self.bist_max_errors_display) + " 0 1 0 0"
         return cmd_str
     
     def new_errors(self,result_str):
