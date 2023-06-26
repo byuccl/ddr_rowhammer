@@ -64,9 +64,9 @@
 	path = beam-test/soc/dependencies/litex-boards
 	url = https://github.com/litex-hub/litex-boards
 	ignore = dirty
-[submodule "beam-test/soc/dependencies/litedram"]
-	path = beam-test/soc/dependencies/litedram
-	url = https://github.com/byuccl/litedram
 [submodule "beam-test/soc/dependencies/litex"]
 	path = beam-test/soc/dependencies/litex
 	url = https://github.com/byuccl/litex
+[submodule "beam-test/soc/dependencies/litedram"]
+	path = beam-test/soc/dependencies/litedram
+	url = https://github.com/byuccl/litedram

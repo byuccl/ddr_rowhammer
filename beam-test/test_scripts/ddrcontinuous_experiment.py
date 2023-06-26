@@ -60,12 +60,12 @@ NEXYS4DDR_BOARDNAME = "nexys4ddr"
 DATABOARD_BOARDNAME = "databoard"
 
 DEFAULT_PREFIX = "CTRL"
-BIST_ERROR_MSG_REGEX = "\d+:  \d+"
+BIST_ERROR_MSG_REGEX = '\d+:  \d+'
 
 DEFAULT_BIST_BURST_LENGTH = 0xfffffff # Default burst length
 DEFAULT_BIST_DELAY_SECONDS = 0 # Default number of seconds to delay.
 DEFAULT_BIST_ADDR_MODE = 1 # Start reading/writing data with addresses linearly.
-DEFAULT_BIST_PATTERN = 0xa5a5a5a4 # Start reading/writing data with addresses linearly.
+DEFAULT_BIST_PATTERN = 0xa5a5a5a5 # Start reading/writing data with addresses linearly.
 DEFAULT_DELAY_BIST_STARTING_ADDR = 0x0 # Start the reading/writing at address 0
 DEFAULT_DELAY_BIST_LENGTH = 0xfffffff
 DEFAULT_BIST_NONCONT_DELAY_SEC = 300
@@ -125,10 +125,12 @@ class bist_common(object):
     def __init__(self, 
         bist_mem_burst_length:int,
         bist_pattern:int,
+        bist_max_errors_display:int,
         ) -> None:
         ''' Initialize class '''
         self.bist_mem_burst_length = bist_mem_burst_length
         self.bist_pattern = bist_pattern
+        self.bist_max_errors_display = bist_max_errors_display
 
         self.error_cnt = 0
 
@@ -158,13 +160,15 @@ class bist_continuous_state(bist_common):
 
     def __init__(self, 
         bist_mem_burst_length:int,
+        bist_max_errors_display:int,
         bist_pattern:int,
         bist_addr_mode:int,
         ):
         self.bist_addr_mode = bist_addr_mode
         bist_common.__init__(self, 
                              bist_mem_burst_length=bist_mem_burst_length,
-                             bist_pattern = bist_pattern)
+                             bist_pattern = bist_pattern,
+                             bist_max_errors_display=bist_max_errors_display)
 
     def get_bist_command_str(self):
         ''' Creates a string for the sdram_bist command (Based on parameters of this object)
@@ -182,12 +186,12 @@ class bist_continuous_state(bist_common):
         # address_mode = 1 (increment)
         # data_mode = 0 (pattern)
         # write_mode = 2 (write and read)
-        cmd_str = "sdram_bist 0x0 " + str(self.bist_mem_burst_length) + " " + str(MAX_ERRORS_TO_DISPLAY) + " 0 1 0 0"
+        cmd_str = "sdram_bist 0x0 " + str(self.bist_mem_burst_length) + " " + str(self.bist_max_errors_display) + " 0 0 0 0"
         return cmd_str
     
     def new_errors(self,result_str):
         ''' Evaluates data string. New errors as a tuple. '''
-        ERROR_MSG_INDEX = 2 # 7 # Error number at index 7 of matched string
+        ERROR_MSG_INDEX = 1 # Error number at index 7 of matched string (unless errors are output)
 
         result_list = result_str.split()
         # print(result_list)
@@ -211,12 +215,14 @@ class bist_delay_state(bist_common):
                  bist_pattern:int,
                  beg_addr:int = DEFAULT_DELAY_BIST_STARTING_ADDR, 
                  bist_mem_burst_length:int = DEFAULT_DELAY_BIST_LENGTH,
+                 bist_max_errors_display:int = MAX_ERRORS_TO_DISPLAY
                  ):
         self.beg_addr = beg_addr
         self.length = bist_mem_burst_length
         bist_common.__init__(self, 
                              bist_mem_burst_length=bist_mem_burst_length,
-                             bist_pattern = bist_pattern)
+                             bist_pattern = bist_pattern,
+                             bist_max_errors_display=bist_max_errors_display)
 
     def get_bist_write_command_str(self):
         ''' Creates a string for the sdram_bist_writer command (Based on parameters of this object)
@@ -238,7 +244,7 @@ class bist_delay_state(bist_common):
         max_error_out: Max number of errors to display (default: 0)
         '''
         
-        cmd_str = "sdram_bist_reader " + str(self.beg_addr) + " " + str(self.length) + " " + str(MAX_ERRORS_TO_DISPLAY)
+        cmd_str = "sdram_bist_reader " + str(self.beg_addr) + " " + str(self.length) + " " + str(self.bist_max_errors_display)
         return cmd_str
     
     def new_errors(self,result_str):
@@ -284,13 +290,13 @@ def variable_update_experiment_initialization(ex):
     ex.failed_initial_login = 0
     ex.unrecoverable = False
     ex.previous_reboot_state = 0 # variable indicating if state machine has attempted reboot
+    ex.previous_bist_data_repair = 0                # variable indicating what repair has been made
 
 def variable_update_successful_bist(ex):
     ''' Initalize/clear all variables that hold error state between
     states. Used when a successful BIST execution sequence occurs. '''
     # Flag indicating that this is a fresh BIST (not coming in with errors)
     ex.previous_bist_uart_error = False             # Flag indicating a previous BIST system error occured
-    ex.previous_bist_data_repair = 0                # variable indicating what repair has been made
     ex.previous_bist_max_consecutive_bad_titles = 0 # variable indicating previous bad title lines occured
     ex.previous_bist_max_consecutive_data_lines = 0 # variable indicating previous bad data lines occured.
     ex.issued_reset = False # Indicates a reset value was recently initiated
@@ -448,6 +454,7 @@ def connect_uart_state_actions(ex, st):
     # Create a spawned file handle for reading/writing to the serial port
     serial_fdspawn = ex.uart.create_uart_spawn()
     if not serial_fdspawn:
+        ex.uart_ok = False
         return
     ex.uart_ok = True
 
@@ -564,11 +571,13 @@ def start_bist_state_actions(ex, st):
         ex.bist = bist_continuous_state(
             bist_mem_burst_length = ex.args.bist_mem_burst_length, 
             bist_addr_mode = ex.args.bist_addr_mode, 
-            bist_pattern = ex.args.bist_pattern)
+            bist_pattern = ex.args.bist_pattern,
+            bist_max_errors_display=ex.args.max_errors_to_display)
     else:
         ex.bist = bist_delay_state(
             bist_mem_burst_length = ex.args.bist_mem_burst_length, 
             bist_pattern = ex.args.bist_pattern,
+            bist_max_errors_display=ex.args.max_errors_to_display
         )
 
     # Send initial bist pattern
@@ -623,15 +632,15 @@ def bist_execution_continuous_state_actions(ex, st):
     BIST_TITLE_REGEX = " WRITE TICKS   READ TICKS TOTAL WRITES  TOTAL READS  WR-SPEED\(MiB/s\)  RD-SPEED\(MiB/s\)      ADDRESSES TESTED     ERRORS"
     # BIST data line
     #^M                                   646          654          324          0          0          0
-    BIST_DATA_REGEX = "\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+"
+    BIST_DATA_REGEX = "\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+0x[0-9a-fA-F]{7}-0x[0-9a-fA-F]{7}\s+\d+"
     #ERRORS (CPU): 0
     # BIST_ERROR_MSG_REGEX = "ERRORS (CPU): (\d+)"
 
 
-    BIST_TEXT_DELAY = 15
+    BIST_TEXT_DELAY = 30
     MAX_CONSECUTIVE_BAD_TITLE_LINES = 10
     MAX_CONSECUTIVE_BAD_DATA_LINES = 10
-    MAX_CONSECUTIVE_BAD_DATA_ERRORS = 8
+    MAX_CONSECUTIVE_BAD_DATA_ERRORS = 4
     DRAM_ERROR_THRESHOLD = 100
 
     # Iterate over lines until an error occurs (will need to break out on an error condition)
@@ -761,11 +770,12 @@ def bist_execution_continuous_state_actions(ex, st):
                 total_errors = err #+sec+ded
                 if total_errors > 0:            
                     consecutive_data_errors += 1
+                    total_bist_error_messages += 1
                     # ex.logger.error(f"BIST:Data Errors ({err},{sec},{ded}:{total_errors}/{consecutive_data_errors}-{total_bist_error_messages})")
                     ex.logger.error(f"BIST:Data Errors ({err}:{total_errors}/{consecutive_data_errors}-{total_bist_error_messages})")
                     ex.logger.error(f"BIST: expect string:{expect_str}")
                     # print(ex.uart.serial_fdspawn.match.group(0))
-                    total_bist_error_messages += 1
+                    
                     if total_bist_error_messages >= MAX_BIST_ERRORS_BEFORE_REBOOT:
                         # Reboot
                         ex.logger.error(f"BIST:Max BIST Errors reached")
@@ -1098,16 +1108,33 @@ def terminal_recovery_state_actions(ex, st):
     Try to reconnect the terminal: close, reopen, and get login prompt. 
     sets the ex.uart_ok, ex.login_litex
     '''
-    # Close the existing serial port (and spawn object)
-    ex.uart.close_uart_serial()   
+
+    #################################################
+
     ex.login_litex = False
     ex.uart_ok = False
-    time.sleep(1)
 
     # Check previous uart error. If so, then just reconfigure
     if ex.previous_bist_uart_error:
         return # uart_ok flag is False causing failure
     ex.previous_bist_uart_error = True
+
+    # Close the existing serial port (and spawn object)
+    ex.uart.close_uart_serial()   
+    time.sleep(1)
+    
+    #################################################
+
+    # # Close the existing serial port (and spawn object)
+    # ex.uart.close_uart_serial()   
+    # ex.login_litex = False
+    # ex.uart_ok = False
+    # time.sleep(1)
+
+    # # Check previous uart error. If so, then just reconfigure
+    # if ex.previous_bist_uart_error:
+    #     return # uart_ok flag is False causing failure
+    # ex.previous_bist_uart_error = True
 
     # Create a spawned file handle for reading/writing to the serial port
     serial_fdspawn = ex.uart.create_uart_spawn()
@@ -1142,6 +1169,8 @@ def reset_recovery_state_actions(ex, st):
         try:
             i_addr = ex.uartbone.read(UARTBONE_DEBUG_ADDR + UARTBONE_DEBUG_I_ADDR)
             ex.logger.info(f"UARTBONE I ADDR={i_addr:08X}")
+            state_num = ex.uartbone.read(UARTBONE_FSM_STATE_ADDR + UARTBONE_DEBUG_I_ADDR)
+            ex.logger.info(f"UARTBONE FSM_STATE_NUM={state_num:08X}")
         except (RuntimeError) as error:
             ex.logger.error("UARTBone Timeout")
     else:
@@ -1516,6 +1545,7 @@ def main():
     parser.add_argument("--continuous_bist_mode", help="Run the BIST in continuous mode", action='store_true')
     parser.add_argument("--noncontinuous_bist_delay", help="Argument to control the delay between commands (in seconds)", type=int, default=DEFAULT_BIST_NONCONT_DELAY_SEC)
     parser.add_argument("--test_prefix", help="Test Prefix (CTRL, DDR4, etc.)", default=DEFAULT_PREFIX)
+    parser.add_argument("--max_errors_to_display", help="Number of errors to display in either mode", type=int, default=MAX_ERRORS_TO_DISPLAY)
     args = parser.parse_args()
 
     # Set up logger settings

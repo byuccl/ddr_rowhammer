@@ -89,7 +89,8 @@ class uart_control():
                 tty_find_attempt += 1
 
         if not tty:
-            self._error("Cannot find serial device:"+str(error))
+            # self._error("Cannot find serial device:"+str(error))
+            self._error("Cannot find serial device")
             return None
         self._info("Found tty device:"+str(tty))
         return str(tty)
