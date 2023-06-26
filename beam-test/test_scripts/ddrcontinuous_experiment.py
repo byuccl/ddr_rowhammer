@@ -186,7 +186,7 @@ class bist_continuous_state(bist_common):
         # address_mode = 1 (increment)
         # data_mode = 0 (pattern)
         # write_mode = 2 (write and read)
-        cmd_str = "sdram_bist 0x0 " + str(self.bist_mem_burst_length) + " " + str(self.bist_max_errors_display) + " 0 0 0 0"
+        cmd_str = "sdram_bist 0x0 " + str(self.bist_mem_burst_length) + " " + str(self.bist_max_errors_display) + " 0 1 0 0"
         return cmd_str
     
     def new_errors(self,result_str):
@@ -716,7 +716,7 @@ def bist_execution_continuous_state_actions(ex, st):
                     bist_status = "first"
                     first_title_line = False
                 else:
-                    if valid_data_lines == 9:
+                    if valid_data_lines == 10:
                         # received 8 valid data lines
                         bist_status = "ok"
                         ###############################
@@ -779,7 +779,7 @@ def bist_execution_continuous_state_actions(ex, st):
                 # execpting data and received valid data line
                 expect_str = ex.uart.serial_fdspawn.match.group(0)
                 DataLineNumber += 1
-                if DataLineNumber == 9: 
+                if DataLineNumber == 10: 
                     expecting_title = True # Now expecting title
                 # Check for data errors
                 # (err,sec,ded) = ex.bist.new_errors(expect_str)
