@@ -1,0 +1,1 @@
+python3 ddrcontinuous_experiment.py --test_name testexperiment --usb_uart_phys_port 1-4.1 --usb_uart_phys_if 0 --lindy_ip 169.254.132.210 --board_lindy_port 1 --uartbone_phys_port 1-4.2 --uartbone_phys_if 0 --uart_bone_ident 0xf0002000 --noncontinuous_bist_delay 300 --test_board_name nexys_video --test_prefix DDR3_IDLE  --log_dir chipir2023
