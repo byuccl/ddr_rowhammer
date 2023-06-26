@@ -1,16 +1,13 @@
 
-### BIST Version
-
-Continuous BIST version running smoothly with netbooter. 
+### BIST Experiment setup
 
 Physical port and interface for boards, as well as current netbooter ports:
 Nexys4ddr:                  Physical port: 1-4.4     Interface: 1     Netbooter port: 2
 Nexys Video:                Physical port: 1-4.2     Interface: 0     Netbooter port: 3
 Antmicro Datacenter board:  Physical port: 1-4.1     Interface: 2     Netbooter port: 1
 
-This is how I set the bist up:
-First, I cloned the ddr_rowhammer repository and yinstruments repository.
-Then I navigated inside the ddr_rowhammer directory, and checkout the beam-test-changed-bist branch. 
+First, clone the ddr_rowhammer repository and yinstruments repository.
+Then navigate inside the ddr_rowhammer directory, and checkout the beam-test-changed-bist branch. 
 
 ```
 git clone https://github.com/byuccl/ddr_rowhammer/
@@ -19,14 +16,14 @@ cd ddr_rowhammer
 git checkout beam-test-changed-bist
 ```
 
-Then I navigated into the directories beam_test/soc/, and ran `make deps`. [This is a link to documentation on our makefile.](https://github.com/byuccl/ddr_rowhammer/wiki/Instructions-to-setup-our-BIST-designs)
+Then navigate into the directories beam_test/soc/, and run `make deps`. [This is a link to documentation on our makefile.](https://github.com/byuccl/ddr_rowhammer/wiki/Instructions-to-setup-our-BIST-designs)
 
 ```
 cd beam-test/soc
 make deps
 ```
 
-Finally, I sourced the file 'env.sh', installed dependencies for the pexpect scripts, set the repository 'yinstruments' to the path, and navigated into the test_scripts directory where I can now run the scripts.
+Finally, sourced the file 'env.sh', install dependencies for the pexpect scripts, set the repository 'yinstruments' to the path, and navigated into the test_scripts directory where the scripts can now be run.
 
 ```
 source env.sh
@@ -35,9 +32,9 @@ export PYTHONPATH=$PYTHONPATH:$PWD/../../../yinstruments/yinstruments
 cd ../test_scripts/
 ```
 
-### Current commands
+### Commands
 
-Here are the current commands that run the continuous version of the BIST:
+Here are the commands that run the continuous version of the BIST:
 
 **Antmicro datacenter board**:
 
