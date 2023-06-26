@@ -23,7 +23,7 @@ from datetime import datetime
 from subprocess import run
 
 
-from netbooter_control import netbooter_control
+from netbooter_control import netbooter_control, lindy_control
 from jcm_session import jcm_session
 from uart_control import uart_control
 
@@ -380,13 +380,28 @@ def netbooter_setup_state_actions(ex, st):
     ''' Checks for the netbooter network connectivity
         sets: ex.netbooter_ok
     '''
-    ex.netbooter_ok = False
+    ex.lindy_ok = False
     netbooter_ip = ex.args.netbooter_ip
     ex.netbooter = netbooter_control(netbooter_ip,ex.logger)
     if not ex.netbooter.ping_netbooter():
         ex.logger.error("Netbooter not on network")
         return
-    ex.netbooter_ok = True
+    ex.lindy_ok = True
+
+
+def lindy_setup_state_actions(ex, st):
+    ''' Checks for the lindy network connectivity
+        sets: ex.lindy_ok
+    '''
+    ex.lindy_ok = False
+    lindy_ip = ex.args.lindy_ip
+    ex.lindy = lindy_control(lindy_ip,ex.logger)
+    if not ex.lindy.ping_lindy():
+        ex.logger.error("Lindy not on network")
+        return
+    ex.lindy_ok = True
+
+
 
 def jcm_setup_state_actions(ex, st):
     ''' Power cycles JCM (if needed), creates JCM log file, creates the JCM object, and opens the JCM
@@ -398,10 +413,10 @@ def jcm_setup_state_actions(ex, st):
     ex.jcm_ok = False
     # First power off JCM (if necessary)
     if ex.args.repower_jcm:
-        ex.netbooter.turn_off_port(ex.args.jcm_netbooter_port)
+        ex.lindy.turn_off_port(ex.args.jcm_netbooter_port)
         time.sleep(3)
     # Power on JCM (may already be powered)
-    ex.netbooter.turn_on_port(ex.args.jcm_netbooter_port)
+    ex.lindy.turn_on_port(ex.args.jcm_netbooter_port)
 
     # Create JCM output logger
     jcm_log_filename = create_log_path("JCM",ex.filebasename, ex.log_dir)
@@ -440,9 +455,11 @@ def uart_setup_state_actions(ex, st):
 
 def power_board_state_actions(ex, st):
     ''' Power cycle board board (no status) '''
-    turn_off_cmd = ex.netbooter.turn_off_port(ex.args.board_netbooter_port)
-    turn_on_cmd = ex.netbooter.turn_on_port(ex.args.board_netbooter_port)
-    ex.netbooter_ok = turn_off_cmd and turn_on_cmd
+    turn_off_cmd = ex.lindy.turn_off_port(ex.args.board_lindy_port)
+    time.sleep(ex.args.lindy_delay_sec)
+    turn_on_cmd = ex.lindy.turn_on_port(ex.args.board_lindy_port)
+    time.sleep(ex.args.lindy_delay_sec)
+    ex.lindy_ok = turn_off_cmd and turn_on_cmd
     # Initialize global state variables when starting over
     variable_update_experiment_initialization(ex)
 
@@ -1246,6 +1263,7 @@ def build_experiment(args,logger,single_step=False):
     # State constants
     INITIAL_STARTING_STATE = "Initial Starting State"
     NETBOOTER_SETUP_STATE = "Netbooter Setup State"
+    LINDY_SETUP_STATE = "Lindy Setup State"
     JCM_SETUP_STATE = "JCM Setup State"
     UART_SETUP_STATE = "UART Setup State"
     POWER_BOARD_STATE = "Power Board State"
@@ -1280,21 +1298,26 @@ def build_experiment(args,logger,single_step=False):
     experiment.add_state(ExperimentState(
         INITIAL_STARTING_STATE,
         initial_starting_state_actions,
-        Transition(lambda ex, st: True, NETBOOTER_SETUP_STATE)
+        Transition(lambda ex, st: True, LINDY_SETUP_STATE)
     ))
 
-    # No netbooter for now 
+    # # NETBOOTER_SETUP_STATE
+    # # - Check for netbooter and initialize data structures. Make sure it responds on the network
+    # experiment.add_state(ExperimentState(
+    #     NETBOOTER_SETUP_STATE,
+    #     netbooter_setup_state_actions,
+    #     Transition(lambda ex, st: ex.netbooter_ok, UART_SETUP_STATE),
+    #     Transition(lambda ex, st: True, TERMINATING_STATE)
+    # ))
 
-    # NETBOOTER_SETUP_STATE
+    # LINDY_SETUP_STATE
     # - Check for netbooter and initialize data structures. Make sure it responds on the network
     experiment.add_state(ExperimentState(
-        NETBOOTER_SETUP_STATE,
-        netbooter_setup_state_actions,
-        Transition(lambda ex, st: ex.netbooter_ok, UART_SETUP_STATE),
+        LINDY_SETUP_STATE,
+        lindy_setup_state_actions,
+        Transition(lambda ex, st: ex.lindy_ok, UART_SETUP_STATE),
         Transition(lambda ex, st: True, TERMINATING_STATE)
     ))
-
-    # No JCM for now
 
     # # JCM_SETUP_STATE
     # # - Intialize JCM data structure, repower (if necessary), and create connection
@@ -1313,14 +1336,12 @@ def build_experiment(args,logger,single_step=False):
         Transition(lambda ex, st: True, POWER_BOARD_STATE)
     ))
 
-    # No netbooter for now
-
     # POWER_BOARD_STATE
     # - Intialize JCM data structure, repower (if necessary), and create connection
     experiment.add_state(ExperimentState(
         POWER_BOARD_STATE,
         power_board_state_actions,
-        Transition(lambda ex, st: ex.netbooter_ok, CONNECT_UART_STATE),
+        Transition(lambda ex, st: ex.lindy_ok, CONNECT_UART_STATE),
         Transition(lambda ex, st: True, TERMINATING_STATE)
     ))
 
@@ -1523,7 +1544,7 @@ def main():
     parser.add_argument("--test_board_name", help="Name of the board being tested to add board settings (Options: "+NEXYS4DDR_BOARDNAME+", "+NEXYS_VIDEO_BOARDNAME+", "+DATABOARD_BOARDNAME+")", 
                         choices=[NEXYS4DDR_BOARDNAME, NEXYS_VIDEO_BOARDNAME, DATABOARD_BOARDNAME], 
                         required=True)
-    parser.add_argument_group(netbooter_control.netbooter_group_args(parser))
+    parser.add_argument_group(lindy_control.lindy_group_args(parser))
     parser.add_argument_group(jcm_session.jcm_group_args(parser))
     parser.add_argument_group(uart_control.uart_group_args(parser))
     uartbone_args = usb_uart_base.uart_group_args(parser,UARTBONE_UART_BASENAME, 
@@ -1534,7 +1555,7 @@ def main():
     parser.add_argument("--fault_injection", help="Enable fault injection during scrubbing. Param=# of faults per cycle", type=int)
     parser.add_argument("--frads_file", help="Name of frads filename", type=str)
     parser.add_argument("--jcm_netbooter_port", help="Netbooter port for JCM", type=int, default=1)
-    parser.add_argument("--board_netbooter_port", help="Netbooter port for specific board", type=int, default=2)
+    parser.add_argument("--board_lindy_port", help="Lindy port for specific board", type=int, default=2)
     parser.add_argument("--log_dir", help="Directory to store log files", type=str)
     parser.add_argument("--single_step", help="Single step through state machine", action='store_true')
     parser.add_argument("--bist_mem_burst_length", help="Burst length of BIST command", type=int, default = DEFAULT_BIST_BURST_LENGTH)
