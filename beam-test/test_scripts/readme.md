@@ -43,12 +43,12 @@ Here are the current commands that run the continuous version of the BIST:
 
 Continuous mode:
 ```
-python3 ddrcontinuous_experiment.py --test_name testexperiment --usb_uart_phys_port 1-4.4 --usb_uart_phys_if 2 --lindy_ip 169.254.132.210 --board_lindy_port 8 --no_uart_bone --continuous --test_board_name databoard --test_prefix EXAMPLE_DDR4_CONTINUOUS
+python3 ddrcontinuous_experiment.py --lindy_delay_sec 10 --test_name testexperiment --usb_uart_phys_port 1-4.4 --usb_uart_phys_if 2 --lindy_ip 169.254.132.210 --board_lindy_port 8 --no_uart_bone --continuous --test_board_name databoard --test_prefix EXAMPLE_DDR4_CONTINUOUS
 ```
 
 Noncontinuous mode:
 ```
-python3 ddrcontinuous_experiment.py --test_name testexperiment --usb_uart_phys_port 1-4.4 --usb_uart_phys_if 2 --lindy_ip 169.254.132.210 --board_lindy_port 8 --no_uart_bone --test_board_name databoard --noncontinuous_bist_delay 300 --test_prefix EXAMPLE_DDR4_NONCONTINUOUS
+python3 ddrcontinuous_experiment.py --lindy_delay_sec 10 --test_name testexperiment --usb_uart_phys_port 1-4.4 --usb_uart_phys_if 2 --lindy_ip 169.254.132.210 --board_lindy_port 8 --no_uart_bone --test_board_name databoard --noncontinuous_bist_delay 300 --test_prefix EXAMPLE_DDR4_NONCONTINUOUS
 ```
 
 **Nexys video board**:
