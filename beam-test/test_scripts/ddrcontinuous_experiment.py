@@ -843,7 +843,7 @@ def bist_execution_delay_state_actions(ex, st):
     LITEX_LOGIN_PATTERN = "^.*litex[^>]*> "
     LITEX_LOGIN_PATTERN_INDEX = 0
     ERR_DISPLAY_INDEX = 1
-    DLAY_STATE_MAX_CONSECUTIVE_BAD_DATA_ERRORS = 3
+    DLAY_STATE_MAX_CONSECUTIVE_BAD_DATA_ERRORS = 5
 
     delay_state_consecutive_bad_data_lines = 0
     consecutive_data_errors = 0
@@ -879,7 +879,7 @@ def bist_execution_delay_state_actions(ex, st):
         
         
     #Initially print out the delay of this state in seconds
-    ex.logger.info("BIST:Starting delay state machine ({time} second delay)".format(time = ex.args.noncontinuous_bist_delay))
+    #ex.logger.info("BIST:Starting delay state machine ({time} second delay)".format(time = ex.args.noncontinuous_bist_delay))
 
     while(1):
 
@@ -962,7 +962,12 @@ def bist_execution_delay_state_actions(ex, st):
                         # Need to repair data errors
                         ex.dram_error = True
                         return
+                    # for now, just ignore the errors and complete the regular delay and continue
+                    ex.logger.info("BIST:Delay for {delay} seconds".format(delay = ex.args.noncontinuous_bist_delay))
+                    time.sleep(ex.args.noncontinuous_bist_delay)
+                    continue
                     
+                    # Old break
                     break
 
                 else: # no new errors
