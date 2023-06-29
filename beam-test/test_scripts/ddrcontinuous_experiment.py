@@ -1048,7 +1048,8 @@ def dram_recovery_state_actions(ex, st):
     if ex.previous_bist_data_repair == NO_BIST_ERROR:
         # This is the first repair for data
         ex.logger.info("BIST:Restart BIST")
-        ex.previous_bist_data_repair = RESTART_BIST_STEP
+        # For now, don't escalate the BIST recover. Just repeat starting BIST
+        #ex.previous_bist_data_repair = RESTART_BIST_STEP
         return
     elif ex.previous_bist_data_repair == RESTART_BIST_STEP:
         ex.logger.info("BIST:SDRAM MR Scrub")
