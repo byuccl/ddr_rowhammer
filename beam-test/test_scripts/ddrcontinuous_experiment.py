@@ -338,6 +338,7 @@ def expect_prompt(ex, number_of_enters=1,expect_timeout=LITEX_LOGIN_DELAY):
         ex.uart.sendline("\n\n")
     ex.uart.expect(LITEX_LOGIN_PATTERN,timeout=expect_timeout)
     if ex.uart.has_error():
+        ex.logger.info("Shell Prompt UART Expect Timeout")
         return False
     return True
 
@@ -675,6 +676,7 @@ def bist_execution_continuous_state_actions(ex, st):
         # Process expect system errors
         if ex.uart.has_uart_error():
             # General UART errors (Timeout, etc)
+            ex.logger.info("BIST Command UART Expect Timeout")
             ex.uart_ok = False # State change to repair uart
             return 
 
@@ -889,6 +891,7 @@ def bist_execution_delay_state_actions(ex, st):
         uart_result = check_for_uart_errors(ex)
         # If timeout, EOF, or many unicode errors occur, exit.
         if uart_result == False:
+            ex.logger.info("BIST:Starting Writer UART Expect Timeout")
             return
         # If one unicode error occurs, try again.
         elif uart_result == None:
@@ -927,6 +930,7 @@ def bist_execution_delay_state_actions(ex, st):
             
             uart_result = check_for_uart_errors(ex)
             if uart_result == False:
+                ex.logger.info("BIST:Starting Reader UART Expect Timeout")
                 return
             elif uart_result == None:
                 continue
