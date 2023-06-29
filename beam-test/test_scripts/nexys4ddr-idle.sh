@@ -1,1 +1,1 @@
-python3 ddrcontinuous_experiment.py --test_name testexperiment --usb_uart_phys_port 1-4.3 --usb_uart_phys_if 1 --lindy_ip 169.254.132.210 --board_lindy_port 2 --no_uart_bone --noncontinuous_bist_delay 300 --test_board_name nexys4ddr --test_prefix DDR2_IDLE --log_dir chipir2023
+python3 ddrcontinuous_experiment.py --test_name testexperiment --usb_uart_phys_port 1-4.2 --usb_uart_phys_if 1 --lindy_ip 169.254.132.212 --board_lindy_port 1 --no_uart_bone --noncontinuous_bist_delay 300 --test_board_name nexys4ddr --test_prefix DDR2_IDLE --log_dir chipir2023
