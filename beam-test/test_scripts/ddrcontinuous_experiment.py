@@ -670,7 +670,7 @@ def bist_execution_continuous_state_actions(ex, st):
         ERROR_MSG_INDEX=2
 
         # Get a line of data
-        match_index = ex.uart.expect([BIST_TITLE_REGEX,BIST_DATA_REGEX,BIST_ERROR_MSG_REGEX],timeout=BIST_TEXT_DELAY)
+        match_index = ex.uart.expect([BIST_TITLE_REGEX,BIST_DATA_REGEX,BIST_ERROR_MSG_REGEX],timeout=ex.args.bist_text_delay)
         # print("Match index: ", match_index)
 
         # Process expect system errors
@@ -1572,6 +1572,7 @@ def main():
     parser.add_argument("--noncontinuous_bist_delay", help="Argument to control the delay between commands (in seconds)", type=int, default=DEFAULT_BIST_NONCONT_DELAY_SEC)
     parser.add_argument("--test_prefix", help="Test Prefix (CTRL, DDR4, etc.)", default=DEFAULT_PREFIX)
     parser.add_argument("--max_errors_to_display", help="Number of errors to display in either mode", type=int, default=MAX_ERRORS_TO_DISPLAY)
+    parser.add_argument("--bist_text_delay", help="Number of seconds to delay for bist command", type=int, default=BIST_TEXT_DELAY)
     args = parser.parse_args()
 
     # Set up logger settings
