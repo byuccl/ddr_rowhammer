@@ -83,6 +83,9 @@ UARTBONE_DEBUG_ADDR = 0xf0001800     # csr_base,debug module
 UARTBONE_FSM_STATE_ADDR = 0xf00000c8 # csr_base,fsm_state
 UARTBONE_DEBUG_I_ADDR = 0x0 
 
+BIST_TEXT_DELAY = 30
+
+
 
 # Timing settings for the Antmicro Datacenter board
 class antmicro_databoard():
@@ -655,7 +658,6 @@ def bist_execution_continuous_state_actions(ex, st):
     # BIST_ERROR_MSG_REGEX = "ERRORS (CPU): (\d+)"
 
 
-    BIST_TEXT_DELAY = 30
     MAX_CONSECUTIVE_BAD_TITLE_LINES = 10
     MAX_CONSECUTIVE_BAD_DATA_LINES = 10
     MAX_CONSECUTIVE_BAD_DATA_ERRORS = 4
