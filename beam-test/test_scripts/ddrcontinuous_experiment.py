@@ -888,7 +888,7 @@ def bist_execution_delay_state_actions(ex, st):
         bist_command = ex.bist.get_bist_write_command_str()
         result = ex.uart.sendline(bist_command)
 
-        match_index = ex.uart.expect([LITEX_LOGIN_PATTERN],timeout=BIST_SINGLECMD_DELAY)
+        match_index = ex.uart.expect([LITEX_LOGIN_PATTERN],timeout=ex.args.bist_text_delay)
         
         uart_result = check_for_uart_errors(ex)
         # If timeout, EOF, or many unicode errors occur, exit.
@@ -910,7 +910,7 @@ def bist_execution_delay_state_actions(ex, st):
 
             # For now, ignore failed writes
             continue
-            
+
             delay_state_consecutive_bad_data_lines += 1
             ex.logger.info(f"BIST:Bad data (match_index:{match_index}):({delay_state_consecutive_bad_data_lines}):"+ex.uart.serial_fdspawn.match.group(0))
             
@@ -929,11 +929,11 @@ def bist_execution_delay_state_actions(ex, st):
 
             time.sleep(1)
             
-            match_index = ex.uart.expect([LITEX_LOGIN_PATTERN, BIST_ERROR_MSG_REGEX],timeout=BIST_SINGLECMD_DELAY)
+            match_index = ex.uart.expect([LITEX_LOGIN_PATTERN, BIST_ERROR_MSG_REGEX],timeout=ex.args.bist_text_delay)
 
             # If errors are displayed, ignore until the litex prompt appears
             while(match_index == ERR_DISPLAY_INDEX):
-                match_index = ex.uart.expect([LITEX_LOGIN_PATTERN, BIST_ERROR_MSG_REGEX],timeout=BIST_SINGLECMD_DELAY)
+                match_index = ex.uart.expect([LITEX_LOGIN_PATTERN, BIST_ERROR_MSG_REGEX],timeout=ex.args.bist_text_delay)
             
             uart_result = check_for_uart_errors(ex)
             if uart_result == False:
