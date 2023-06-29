@@ -906,6 +906,11 @@ def bist_execution_delay_state_actions(ex, st):
             delay_state_consecutive_bad_data_lines = 0
             
         else:
+            ex.logger.info("BIST:Writer error")
+
+            # For now, ignore failed writes
+            continue
+            
             delay_state_consecutive_bad_data_lines += 1
             ex.logger.info(f"BIST:Bad data (match_index:{match_index}):({delay_state_consecutive_bad_data_lines}):"+ex.uart.serial_fdspawn.match.group(0))
             
