@@ -960,13 +960,14 @@ def bist_execution_delay_state_actions(ex, st):
 
                     if consecutive_data_errors >= DLAY_STATE_MAX_CONSECUTIVE_BAD_DATA_ERRORS:
                         # Need to repair data errors
+                        ex.logger.error(f"BIST:Max consecutive data errors reached")
                         ex.dram_error = True
                         return
                     # for now, just ignore the errors and complete the regular delay and continue
                     ex.logger.info("BIST:Delay for {delay} seconds".format(delay = ex.args.noncontinuous_bist_delay))
                     time.sleep(ex.args.noncontinuous_bist_delay)
                     continue
-                    
+
                     # Old break
                     break
 
@@ -982,7 +983,7 @@ def bist_execution_delay_state_actions(ex, st):
                 if (delay_state_consecutive_bad_data_lines >= DLAY_STATE_MAX_CONSECUTIVE_BAD_DATA_ERRORS):
                     ex.logger.error("BIST:Max consecutive bad data lines reached")
                     ex.bist_max_error = True
-                    break
+                    #break
                 continue
                     
 
