@@ -375,7 +375,7 @@ class DataLog:
 
                 # Check if line is part of Bootup 
                 if (lineType == LINE_TYPE_BEG):
-                    for index in range(len(uart_regex_dicts.boot_regex_list)):
+                    for index in range(len(uart_regex_dicts.boot_regex_list)): 
                         if re.search(uart_regex_dicts.boot_regex_list[index], line) != None:
                             lineType = TYPE_BOOT_REGEX
                             lineTypeIndex = index
@@ -592,19 +592,11 @@ class DataLog:
                     # Print the error group information (now that errors have been found)
                     self._print_error_cnt(error_group_index, index)
 
-                    # While we have not reached the end of the error list/section for the 
-                    # time errors are read, send the dynamic errors to be output.
-                    # while (index < len(self.uartData.bistLines)) and ((self.uartData.bistLines[index].lineTypeIndex == ERROR_DATA_OUTPUT_INDEX_IDLE and
-                    #                                                     self.uartData.bistLines[index].lineType == TYPE_BIST_IDLE_REGEX) or
-                    #                                                     (self.uartData.bistLines[index].lineType != TYPE_BIST_IDLE_ERROR_REGEX and
-                    #                                                     ((index + 1) < len(self.uartData.bistLines)) and
-                    #                                                     (self.uartData.bistLines[index].lineTypeIndex == ERROR_DATA_OUTPUT_INDEX_IDLE) and 
-                    #                                                     (self.uartData.bistLines[index].lineType == TYPE_BIST_IDLE_REGEX))):
                     while (index < len(self.uartData.bistLines)) and ((self.uartData.bistLines[index].lineType == TYPE_BIST_IDLE_ERROR_REGEX and 
                                                                        self.uartData.bistLines[index].lineTypeIndex == ERROR_LIST_INDEX) or
                                                                         (((index + 1) < len(self.uartData.bistLines)) and
-                                                                        (self.uartData.bistLines[index + 1].lineTypeIndex == ERROR_DATA_OUTPUT_INDEX_IDLE) and 
-                                                                        (self.uartData.bistLines[index + 1].lineType == TYPE_BIST_IDLE_REGEX))):
+                                                                        (self.uartData.bistLines[index + 1].lineTypeIndex == ERROR_LIST_INDEX) and 
+                                                                        (self.uartData.bistLines[index + 1].lineType == TYPE_BIST_IDLE_ERROR_REGEX))):
 
                         # I've noticed in the data that there are times when random lines 
                         # are output while errors are seen. This ensures we only read lines

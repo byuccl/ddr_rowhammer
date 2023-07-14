@@ -163,7 +163,7 @@ Events:
 Events:
 - The script ran the test in the pattern of Test 15: running the writer once, then the reader 5 times, and if errors occured in all these 5 
   times, the BIST simply closed and restarted. 
-- The test ran from 20:07:18 to about 23:33:27 with minor incidents: 
+- The test ran from 20:07:18 to about 23:33:27 normally, running the reader every 5 minutes. 
   - The error count remained in the single digits during this entire time, with a max error count of 9.
   - A UART timeout occured at 20:23:21, where the reader stopped midway outputting a line of data to summarize the output. The board was repowered.
   - A UART timeout occured at 20:39:34 for the same exact reason as the timeout above. The board was again repowered.
@@ -171,8 +171,16 @@ Events:
   - A UART timeout occured at 23:17:28. Amidst a few unicode errors, the writer stopped midway outputting a line of data to summarize the output. The board was repowered.  
   - A UART timeout occured at 23:33:27. After sending the reading command, a few lines output, but it appears the reader didn't run. The board was repowered.
 - After the board repowered at 23:33:27, bizarre behavior happened up until about 00:02:41, when another UART timeout occured and the board was again repowered.
-  - At first, the writer runs once normally, and the reader ran and counted 3 data errors, but while the BIST was displaying errors, the BIST output many more erroneous addresses above the 3 originally recorded. The error count for the next BIST reads climbs up to 268435456, which isn't possible as there are only 16777215 total addresses in the DRAM. There is some register corruption going on here. The data output at these addresses mostly matched what we expected in the beginning, although more than 3 do not. I believe one of the problems is that the register holding the data to match the data read back is going bad here,
-  - Second, at this point, our script starts sending reading commands every 1-3 seconds
+  - At first, the writer ran once normally, and the reader ran and counted 3 data errors, but while the BIST was displaying errors, the BIST output many more erroneous addresses above the 3 originally recorded. The error count for the next BIST reads climbs up to 268435456, which isn't possible as there are only 16777215 total addresses in the DRAM. There is some register corruption going on here. The data output at these addresses mostly matched what we expected in the beginning, although more than 3 do not. I believe one of the problems is that the register holding the data to match the data read back is going bad here.
+  - The pexpect script failed to recognize matching data 579 times. The data that did not match was the number of addresses tested. The range changed from 0x0000000 - 0x0ffffff to 0x10000000-0x10ffffff, although this range of addresses doesn't exist with the DDR2. Our script was missing a return statement if it recognized bad data too many times in a row, thus it continued in a perpetual loop of sending reading commands. At 00:02:42, a UART timeout occured after sending the reading command returned with the response "Command not found". Data in the output started becoming corrupted at 00:02:10. The board was repowered as a result of the timeout.
+  - Another UART Timeout immediately occured afterwards, at 00:04:09, after sending the writing command and receiving no output. The board was again repowered. After this, the BIST ran normally, running the reader every 5 minutes. 
+    - Eight more UART timeouts occured before the end of the test, all of which resulted in the Lindy repowering the board. One occured while waiting for output from a writing command, and the other seven occured while waiting for output from the reading command. 
+  - The error count remained in the single digits during this entire time, with a max error count of 9.
+
+### Idle Test 17 ( 2023-06-30 08:18:34 - 2023-06-30 17:32:24 )
+
+Events:
+- 
 
 ### Continuous Test 17 ( 2023-07-01 07:54:00 - 2023-07-01 07:55:32 )
 
