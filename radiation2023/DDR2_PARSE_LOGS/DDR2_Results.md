@@ -82,8 +82,8 @@ Events:
   several times.
 - Up from 9:29:59 to the end of the test, even after the board has repowered and continues to repower several times, random letters 
   and characters begin to output in the messages, and portions of messages are scattered in the output.
-- There is a bug in which, after leaving a BIST recovery mode, the writer writes 1 - 3 times in a row before running the reader. This
-  seems to happen all throughout this test and other tests in which errors occur.
+- There is a bug in which, after leaving a BIST recovery mode, the pexpect script does not find expected data from the writer all the 
+  time, and the writer will run 1-3 times until it is successful.
 
 ### Idle Test 8 ( 2023-06-29 09:56:37 - 2023-06-29 09:58:11 )
 
@@ -129,8 +129,8 @@ Events:
 - The log is saying at the end of the test: Reader successful, Delay for 300 seconds. Was it delaying for this long? Also, at the very
   end of the test, why did it only  print out one error address when the error count was 3? I believe there is some script modification
   and debugging going on here.
-- As in Idle test 7, there appears to be a bug in which, after leaving a BIST recovery mode, the writer writes 1 - 3 times in a row 
-  before running the reader. 
+- As in Idle test 7, there appears to be a bug in which, after leaving a BIST recovery mode, the pexpect script runs the writer at a 
+  maximum of 3 times, as the pexpect script does not find expected data and therefore runs it again.
 
 ### Idle Test 13 ( 2023-06-29 19:26:24 - 2023-06-29 19:47:00 )
 
@@ -180,9 +180,22 @@ Events:
 ### Idle Test 17 ( 2023-06-30 08:18:34 - 2023-06-30 17:32:24 )
 
 Events:
-- 
+- No UART timeouts occured during the entire test.
+- The total number of errors after each read in the entire test remained in the single digits, with the maximum reaching 7.
+- The total number of addresses that printed out with data errors was 11. 
+- The pexpect script wrote to the entire memory once, then read from it five times. After every five reads, the Bist simply stopped and restarted, and the issue mentioned originally in Idle Test 7 with the writer running three times at minimum again appears here. The cycle of five reads, restarting the bist, and the writer running three times continues until the end of the test.
+
+### Idle Test 18 ( 2023-06-30 17:33:20 - 2023-06-30 20:11:57 )
+
+Events: 
+- Two UART timeouts occured, both from starting the reader and timing out from no output.
+- The total number of addressses that printed out with data errors was 23.
 
 ### Continuous Test 17 ( 2023-07-01 07:54:00 - 2023-07-01 07:55:32 )
+
+Events:
+- 8 UART Timeouts occured: 5 after starting the reader and no data returned, 1 after starting the writer and no data returned, and 2 after starting the reader and getting unicode errors, which led to the Terminal Recovery state that tried to close and reopen the ttyUSB device and send input but failed receiving output.
+- This character, '', started outputting in random places in the output. 
 
 
 

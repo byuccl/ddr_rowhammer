@@ -1,0 +1,1344 @@
+
+Reading File:  ../DDR2_IDLE_testexperiment_July_01_2023__07_57_39_UART.log
+Number of lines in uart file:  3416
+3417
+Printing Dynamic Errors
+
+
+
+[ 7 / 1 /2023 at  7 : 58 : 0 ]
+
+Error group count:  1
+
+ Num Errors: 3 
+
+Error New:    0x078ec96:  a5a5a1a5 a5a5a5a5
+Error New:    0x0adc6a6:  a5a5a5a5 ada5a5a5
+Error New:    0x0df1440:  a5a5a5a5 a5a5a5a7
+
+
+
+[ 7 / 1 /2023 at  8 : 3 : 2 ]
+
+Error group count:  2
+
+ Num Errors: 7 
+
+Error New:    0x01f5ae8:  a5a5a5a5 a5a5a4a5
+Error New:    0x082e8e9:  a5a5a5a5 a7a5a5a5
+Error New:    0x0a88ff3:  a5a4a5a5 a5a5a5a5
+Error New:    0x0c352a0:  a5a5a5a5 a5a5a5a4
+
+
+
+[ 7 / 1 /2023 at  8 : 8 : 4 ]
+
+Error group count:  3
+
+ Num Errors: 7 
+
+
+
+
+[ 7 / 1 /2023 at  8 : 13 : 7 ]
+
+Error group count:  4
+
+ Num Errors: 8 
+
+Error New:    0x0240aaa:  a4a5a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  8 : 18 : 10 ]
+
+Error group count:  5
+
+ Num Errors: 9 
+
+Error New:    0x036a949:  a5a5a5a5 a5a5e5a5
+
+
+
+[ 7 / 1 /2023 at  8 : 18 : 13 ]
+
+Error group count:  6
+
+ Num Errors: 5 
+
+Error Gone:    0x082e8e9:  a5a5a5a5 a7a5a5a5
+Error Gone:    0x0a88ff3:  a5a4a5a5 a5a5a5a5
+Error Gone:    0x0c352a0:  a5a5a5a5 a5a5a5a4
+Error Gone:    0x0240aaa:  a4a5a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  8 : 23 : 14 ]
+
+Error group count:  7
+
+ Num Errors: 6 
+
+Error New:    0x0a88ff3:  a5a4a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  8 : 28 : 15 ]
+
+Error group count:  8
+
+ Num Errors: 6 
+
+
+
+
+[ 7 / 1 /2023 at  8 : 39 : 24 ]
+
+Error group count:  9
+
+ Num Errors: 4 
+
+Error Gone:    0x0adc6a6:  a5a5a5a5 ada5a5a5
+Error Gone:    0x0a88ff3:  a5a4a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  8 : 44 : 26 ]
+
+Error group count:  10
+
+ Num Errors: 5 
+
+Error New:    0x0a88ff3:  a5a4a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  8 : 49 : 29 ]
+
+Error group count:  11
+
+ Num Errors: 6 
+
+Error New:    0x0240aaa:  a4a5a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  8 : 54 : 31 ]
+
+Error group count:  12
+
+ Num Errors: 8 
+
+Error New:    0x03a428a:  ada5a5a5 a5a5a5a5
+Error New:    0x03b25bc:  a5a5a5a5 a5a5a5b5
+
+
+
+[ 7 / 1 /2023 at  8 : 59 : 34 ]
+
+Error group count:  13
+
+ Num Errors: 9 
+
+Error New:    0x01e484e:  a5a5a5a5 a5a5a585
+
+
+
+[ 7 / 1 /2023 at  8 : 59 : 38 ]
+
+Error group count:  14
+
+ Num Errors: 4 
+
+Error Gone:    0x0a88ff3:  a5a4a5a5 a5a5a5a5
+Error Gone:    0x0240aaa:  a4a5a5a5 a5a5a5a5
+Error Gone:    0x03a428a:  ada5a5a5 a5a5a5a5
+Error Gone:    0x03b25bc:  a5a5a5a5 a5a5a5b5
+Error Gone:    0x01e484e:  a5a5a5a5 a5a5a585
+
+
+
+[ 7 / 1 /2023 at  9 : 4 : 39 ]
+
+Error group count:  15
+
+ Num Errors: 8 
+
+Error New:    0x0240aaa:  a4a5a5a5 a5a5a5a5
+Error New:    0x03eeb43:  a5b5a5a5 a5a5a5a5
+Error New:    0x0d5615d:  a5a5a525 a5a5a5a5
+Error New:    0x0fe20e2:  a5a4a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  9 : 9 : 40 ]
+
+Error group count:  16
+
+ Num Errors: 9 
+
+Error New:    0x0251b5d:  a5a5a5a5 a585a5a5
+
+
+
+[ 7 / 1 /2023 at  9 : 14 : 41 ]
+
+Error group count:  17
+
+ Num Errors: 10 
+
+Error New:    0x0b1040b:  b5a5a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  9 : 19 : 42 ]
+
+Error group count:  18
+
+ Num Errors: 10 
+
+
+
+
+[ 7 / 1 /2023 at  9 : 24 : 43 ]
+
+Error group count:  19
+
+ Num Errors: 11 
+
+Error New:    0x0ec3c61:  a5a5a5a1 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  9 : 24 : 47 ]
+
+Error group count:  20
+
+ Num Errors: 6 
+
+Error Gone:    0x0240aaa:  a4a5a5a5 a5a5a5a5
+Error Gone:    0x03eeb43:  a5b5a5a5 a5a5a5a5
+Error Gone:    0x0d5615d:  a5a5a525 a5a5a5a5
+Error Gone:    0x0b1040b:  b5a5a5a5 a5a5a5a5
+Error Gone:    0x0ec3c61:  a5a5a5a1 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  9 : 29 : 48 ]
+
+Error group count:  21
+
+ Num Errors: 7 
+
+Error New:    0x0ddacfa:  a5a5a5a7 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  9 : 34 : 49 ]
+
+Error group count:  22
+
+ Num Errors: 7 
+
+
+
+
+[ 7 / 1 /2023 at  9 : 39 : 50 ]
+
+Error group count:  23
+
+ Num Errors: 9 
+
+Error New:    0x0240aaa:  a4a5a5a5 a5a5a5a5
+Error New:    0x0986372:  a5a5a1a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  9 : 44 : 51 ]
+
+Error group count:  24
+
+ Num Errors: 10 
+
+Error New:    0x0d04af0:  a5a5a525 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  9 : 49 : 53 ]
+
+Error group count:  25
+
+ Num Errors: 11 
+
+Error New:    0x0b8ec51:  a5a5a5a5 a5a5a5e5
+
+
+
+[ 7 / 1 /2023 at  9 : 49 : 57 ]
+
+Error group count:  26
+
+ Num Errors: 8 
+
+Error Gone:    0x0ddacfa:  a5a5a5a7 a5a5a5a5
+Error Gone:    0x0240aaa:  a4a5a5a5 a5a5a5a5
+Error Gone:    0x0986372:  a5a5a1a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  9 : 54 : 58 ]
+
+Error group count:  27
+
+ Num Errors: 8 
+
+
+
+
+[ 7 / 1 /2023 at  10 : 6 : 5 ]
+
+Error group count:  28
+
+ Num Errors: 7 
+
+Error New:    0x0aed81b:  a5a5a5a5 a7a5a5a5
+Error Gone:    0x01f5ae8:  a5a5a5a5 a5a5a4a5
+Error Gone:    0x0251b5d:  a5a5a5a5 a585a5a5
+
+
+
+[ 7 / 1 /2023 at  10 : 11 : 8 ]
+
+Error group count:  29
+
+ Num Errors: 11 
+
+Error New:    0x01f5ae8:  a5a5a5a5 a5a5a4a5
+Error New:    0x0240aaa:  a4a5a5a5 a5a5a5a5
+Error New:    0x0251b5d:  a5a5a5a5 a585a5a5
+Error New:    0x0c131ad:  85a5a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  10 : 16 : 11 ]
+
+Error group count:  30
+
+ Num Errors: 11 
+
+
+
+
+[ 7 / 1 /2023 at  10 : 21 : 14 ]
+
+Error group count:  31
+
+ Num Errors: 11 
+
+
+
+
+[ 7 / 1 /2023 at  10 : 26 : 17 ]
+
+Error group count:  32
+
+ Num Errors: 11 
+
+
+
+
+[ 7 / 1 /2023 at  10 : 26 : 21 ]
+
+Error group count:  33
+
+ Num Errors: 5 
+
+Error Gone:    0x0d04af0:  a5a5a525 a5a5a5a5
+Error Gone:    0x0aed81b:  a5a5a5a5 a7a5a5a5
+Error Gone:    0x0240aaa:  a4a5a5a5 a5a5a5a5
+Error Gone:    0x0251b5d:  a5a5a5a5 a585a5a5
+Error Gone:    0x0c131ad:  85a5a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  10 : 31 : 22 ]
+
+Error group count:  34
+
+ Num Errors: 6 
+
+
+
+
+[ 7 / 1 /2023 at  10 : 36 : 23 ]
+
+Error group count:  35
+
+ Num Errors: 8 
+
+Error New:    0x0108741:  a5a5a5a5 a5a7a5a5
+Error New:    0x0c131ad:  85a5a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  10 : 41 : 24 ]
+
+Error group count:  36
+
+ Num Errors: 8 
+
+
+
+
+[ 7 / 1 /2023 at  10 : 46 : 25 ]
+
+Error group count:  37
+
+ Num Errors: 11 
+
+Error New:    0x054d942:  a5a5a5a5 a585a5a5
+Error New:    0x09fd697:  a5a5a5a1 a5a5a5a5
+Error New:    0x0d56efd:  a5a5a5a5 a4a5a5a5
+
+
+
+[ 7 / 1 /2023 at  10 : 51 : 27 ]
+
+Error group count:  38
+
+ Num Errors: 12 
+
+Error New:    0x076d69d:  a5a5a5a5 a5a5a5a4
+
+
+
+[ 7 / 1 /2023 at  10 : 51 : 31 ]
+
+Error group count:  39
+
+ Num Errors: 4 
+
+Error Gone:    0x036a949:  a5a5a5a5 a5a5e5a5
+Error Gone:    0x0b8ec51:  a5a5a5a5 a5a5a5e5
+Error Gone:    0x0108741:  a5a5a5a5 a5a7a5a5
+Error Gone:    0x0c131ad:  85a5a5a5 a5a5a5a5
+Error Gone:    0x054d942:  a5a5a5a5 a585a5a5
+Error Gone:    0x09fd697:  a5a5a5a1 a5a5a5a5
+Error Gone:    0x0d56efd:  a5a5a5a5 a4a5a5a5
+Error Gone:    0x076d69d:  a5a5a5a5 a5a5a5a4
+
+
+
+[ 7 / 1 /2023 at  10 : 56 : 32 ]
+
+Error group count:  40
+
+ Num Errors: 6 
+
+Error New:    0x036a949:  a5a5a5a5 a5a5e5a5
+Error New:    0x0c131ad:  85a5a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  11 : 1 : 33 ]
+
+Error group count:  41
+
+ Num Errors: 8 
+
+Error New:    0x0251b5d:  a5a5a5a5 a585a5a5
+Error New:    0x0b8ec51:  a5a5a5a5 a5a5a5e5
+
+
+
+[ 7 / 1 /2023 at  11 : 12 : 41 ]
+
+Error group count:  42
+
+ Num Errors: 4 
+
+Error Gone:    0x0251b5d:  a5a5a5a5 a585a5a5
+Error Gone:    0x0b8ec51:  a5a5a5a5 a5a5a5e5
+
+
+
+[ 7 / 1 /2023 at  11 : 17 : 44 ]
+
+Error group count:  43
+
+ Num Errors: 7 
+
+Error New:    0x0000000:  a5a5a5a5 a5a5a4a5
+Error Gone:    0x078ec96:  a5a5a1a5 a5a5a5a5
+Error Gone:    0x0df1440:  a5a5a5a5 a5a5a5a7
+Error Gone:    0x0fe20e2:  a5a4a5a5 a5a5a5a5
+Error Gone:    0x01f5ae8:  a5a5a5a5 a5a5a4a5
+Error Gone:    0x036a949:  a5a5a5a5 a5a5e5a5
+Error Gone:    0x0c131ad:  85a5a5a5 a5a5a5a5
+
+Unexpected data printed or Timeout occured
+
+
+
+
+[ 7 / 1 /2023 at  11 : 18 : 50 ]
+
+Error group count:  44
+
+ Num Errors: 4 
+
+Error New:    0x01f5ae8:  a5a5a5a5 a5a5a4a5
+Error New:    0x036a949:  a5a5a5a5 a5a5e5a5
+Error New:    0x078ec96:  a5a5a1a5 a5a5a5a5
+Error New:    0x0df1440:  a5a5a5a5 a5a5a5a7
+Error New:    0x0fe20e2:  a5a4a5a5 a5a5a5a5
+Error Gone:    0x0000000:  a5a5a5a5 a5a5a4a5
+
+
+
+[ 7 / 1 /2023 at  11 : 23 : 53 ]
+
+Error group count:  45
+
+ Num Errors: 9 
+
+Error New:    0x0240aaa:  a4a5a5a5 a5a5a5a5
+Error New:    0x0251b5d:  a5a5a5a5 a585a5a5
+Error New:    0x07364e8:  a5a4a5a5 a5a5a5a5
+Error New:    0x0c131ad:  85a5a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  11 : 44 : 7 ]
+
+Error group count:  46
+
+ Num Errors: 11 
+
+Error New:    0x01ff440:  a5a5a5a5 a5a5a5a7
+Error Gone:    0x01f5ae8:  a5a5a5a5 a5a5a4a5
+Error Gone:    0x036a949:  a5a5a5a5 a5a5e5a5
+Error Gone:    0x078ec96:  a5a5a1a5 a5a5a5a5
+Error Gone:    0x0df1440:  a5a5a5a5 a5a5a5a7
+Error Gone:    0x0fe20e2:  a5a4a5a5 a5a5a5a5
+Error Gone:    0x0240aaa:  a4a5a5a5 a5a5a5a5
+Error Gone:    0x0251b5d:  a5a5a5a5 a585a5a5
+Error Gone:    0x07364e8:  a5a4a5a5 a5a5a5a5
+Error Gone:    0x0c131ad:  85a5a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  11 : 54 : 10 ]
+
+Error group count:  47
+
+ Num Errors: 11 
+
+Error New:    0x02e14e8:  a5a4a5a5 a5a5a5a5
+Error Gone:    0x01ff440:  a5a5a5a5 a5a5a5a7
+
+
+
+[ 7 / 1 /2023 at  12 : 14 : 18 ]
+
+Error group count:  48
+
+ Num Errors: 5 
+
+Error New:    0x0125877:  b5a5a5a5 a5a5a5a5
+Error Gone:    0x02e14e8:  a5a4a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  12 : 45 : 35 ]
+
+Error group count:  49
+
+ Num Errors: 9 
+
+Error New:    0x012764f:  a5a5a5a5 a5a5e5a5
+Error New:    0x01f5ae8:  a5a5a5a5 a5a5a4a5
+Error New:    0x029fdba:  a5a4a5a5 a5a5a5a5
+Error New:    0x036a949:  a5a5a5a5 a5a5e5a5
+Error New:    0x078ec96:  a5a5a1a5 a5a5a5a5
+Error New:    0x0a4c9f8:  a5a5a5a5 a525a5a5
+Error New:    0x0c131ad:  85a5a5a5 a5a5a5a5
+Error New:    0x0df1440:  a5a5a5a5 a5a5a5a7
+Error New:    0x0fe20e2:  a5a4a5a5 a5a5a5a5
+Error Gone:    0x0125877:  b5a5a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  12 : 51 : 44 ]
+
+Error group count:  50
+
+ Num Errors: 9 
+
+
+
+
+[ 7 / 1 /2023 at  12 : 56 : 47 ]
+
+Error group count:  51
+
+ Num Errors: 9 
+
+
+
+
+[ 7 / 1 /2023 at  13 : 1 : 50 ]
+
+Error group count:  52
+
+ Num Errors: 10 
+
+Error New:    0x0b8ec51:  a5a5a5a5 a5a5a5e5
+
+
+
+[ 7 / 1 /2023 at  13 : 6 : 53 ]
+
+Error group count:  53
+
+ Num Errors: 11 
+
+Error New:    0x0e2476a:  a5a5a5a5 a5a5ada5
+
+
+
+[ 7 / 1 /2023 at  13 : 7 : 59 ]
+
+Error group count:  54
+
+ Num Errors: 8 
+
+Error Gone:    0x036a949:  a5a5a5a5 a5a5e5a5
+Error Gone:    0x0b8ec51:  a5a5a5a5 a5a5a5e5
+Error Gone:    0x0e2476a:  a5a5a5a5 a5a5ada5
+
+
+
+[ 7 / 1 /2023 at  13 : 14 : 8 ]
+
+Error group count:  55
+
+ Num Errors: 8 
+
+Error New:    0x036a949:  a5a5a5a5 a5a5e5a5
+Error Gone:    0x029fdba:  a5a4a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  13 : 19 : 11 ]
+
+Error group count:  56
+
+ Num Errors: 9 
+
+Error New:    0x029fdba:  a5a4a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  13 : 24 : 15 ]
+
+Error group count:  57
+
+ Num Errors: 9 
+
+
+
+
+[ 7 / 1 /2023 at  13 : 29 : 18 ]
+
+Error group count:  58
+
+ Num Errors: 9 
+
+
+
+
+[ 7 / 1 /2023 at  13 : 34 : 21 ]
+
+Error group count:  59
+
+ Num Errors: 10 
+
+Error New:    0x0240aaa:  a4a5a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  13 : 34 : 25 ]
+
+Error group count:  60
+
+ Num Errors: 8 
+
+Error Gone:    0x029fdba:  a5a4a5a5 a5a5a5a5
+Error Gone:    0x0240aaa:  a4a5a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  13 : 45 : 32 ]
+
+Error group count:  61
+
+ Num Errors: 7 
+
+Error Gone:    0x036a949:  a5a5a5a5 a5a5e5a5
+
+
+
+[ 7 / 1 /2023 at  13 : 50 : 35 ]
+
+Error group count:  62
+
+ Num Errors: 10 
+
+Error New:    0x029fdba:  a5a4a5a5 a5a5a5a5
+Error New:    0x034fe9e:  a5a5a5a5 a5a5a7a5
+Error New:    0x0be6bd5:  a5a5a5a5 a5a5a5a7
+
+
+
+[ 7 / 1 /2023 at  13 : 56 : 44 ]
+
+Error group count:  63
+
+ Num Errors: 7 
+
+Error Gone:    0x029fdba:  a5a4a5a5 a5a5a5a5
+Error Gone:    0x034fe9e:  a5a5a5a5 a5a5a7a5
+Error Gone:    0x0be6bd5:  a5a5a5a5 a5a5a5a7
+
+
+
+[ 7 / 1 /2023 at  14 : 1 : 47 ]
+
+Error group count:  64
+
+ Num Errors: 10 
+
+Error New:    0x034fe9e:  a5a5a5a5 a5a5a7a5
+Error New:    0x036a949:  a5a5a5a5 a5a5e5a5
+Error New:    0x0814fa5:  a5a5a5a5 a7a5a5a5
+
+
+
+[ 7 / 1 /2023 at  14 : 6 : 50 ]
+
+Error group count:  65
+
+ Num Errors: 12 
+
+Error New:    0x029fdba:  a5a4a5a5 a5a5a5a5
+Error New:    0x0b8ec51:  a5a5a5a5 a5a5a5e5
+
+
+
+[ 7 / 1 /2023 at  14 : 11 : 53 ]
+
+Error group count:  66
+
+ Num Errors: 12 
+
+
+
+
+[ 7 / 1 /2023 at  14 : 16 : 56 ]
+
+Error group count:  67
+
+ Num Errors: 13 
+
+Error New:    0x073ef53:  a525a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  14 : 17 : 1 ]
+
+Error group count:  68
+
+ Num Errors: 10 
+
+Error New:    0x0e2476a:  a5a5a5a5 a5a5ada5
+Error Gone:    0x0814fa5:  a5a5a5a5 a7a5a5a5
+Error Gone:    0x029fdba:  a5a4a5a5 a5a5a5a5
+Error Gone:    0x0b8ec51:  a5a5a5a5 a5a5a5e5
+Error Gone:    0x073ef53:  a525a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  14 : 22 : 2 ]
+
+Error group count:  69
+
+ Num Errors: 12 
+
+Error New:    0x0b588f9:  a5a5a5a5 a5a5a5a7
+Error New:    0x0d04af0:  a5a5a525 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  14 : 27 : 3 ]
+
+Error group count:  70
+
+ Num Errors: 12 
+
+
+
+
+[ 7 / 1 /2023 at  14 : 32 : 4 ]
+
+Error group count:  71
+
+ Num Errors: 14 
+
+Error New:    0x0bb8558:  a5a5a5b5 a5a5a5a5
+Error New:    0x0fd1f3b:  a5a5a5a4 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  14 : 37 : 5 ]
+
+Error group count:  72
+
+ Num Errors: 14 
+
+
+
+
+[ 7 / 1 /2023 at  14 : 42 : 6 ]
+
+Error group count:  73
+
+ Num Errors: 14 
+
+
+
+
+[ 7 / 1 /2023 at  14 : 42 : 10 ]
+
+Error group count:  74
+
+ Num Errors: 9 
+
+Error Gone:    0x034fe9e:  a5a5a5a5 a5a5a7a5
+Error Gone:    0x0e2476a:  a5a5a5a5 a5a5ada5
+Error Gone:    0x0b588f9:  a5a5a5a5 a5a5a5a7
+Error Gone:    0x0d04af0:  a5a5a525 a5a5a5a5
+Error Gone:    0x0fd1f3b:  a5a5a5a4 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  14 : 47 : 11 ]
+
+Error group count:  75
+
+ Num Errors: 12 
+
+Error New:    0x032a567:  a7a5a5a5 a5a5a5a5
+Error New:    0x034fe9e:  a5a5a5a5 a5a5a7a5
+Error New:    0x0b588f9:  a5a5a5a5 a5a5a5a7
+
+
+
+[ 7 / 1 /2023 at  14 : 52 : 12 ]
+
+Error group count:  76
+
+ Num Errors: 12 
+
+
+
+
+[ 7 / 1 /2023 at  14 : 57 : 13 ]
+
+Error group count:  77
+
+ Num Errors: 13 
+
+Error New:    0x0a45bf9:  a5a5a5a5 a5a1a5a5
+
+
+
+[ 7 / 1 /2023 at  15 : 8 : 21 ]
+
+Error group count:  78
+
+ Num Errors: 8 
+
+Error Gone:    0x032a567:  a7a5a5a5 a5a5a5a5
+Error Gone:    0x034fe9e:  a5a5a5a5 a5a5a7a5
+Error Gone:    0x0b588f9:  a5a5a5a5 a5a5a5a7
+Error Gone:    0x0a45bf9:  a5a5a5a5 a5a1a5a5
+
+
+
+[ 7 / 1 /2023 at  15 : 13 : 24 ]
+
+Error group count:  79
+
+ Num Errors: 11 
+
+Error New:    0x0b8ec51:  a5a5a5a5 a5a5a5e5
+Error New:    0x0e5564e:  a5a5a5a5 a5e5a5a5
+
+
+
+[ 7 / 1 /2023 at  15 : 18 : 27 ]
+
+Error group count:  80
+
+ Num Errors: 14 
+
+Error New:    0x0a0df61:  a5a5a5a5 a5a5a5a4
+Error New:    0x0a367b0:  a5a5a585 a5a5a5a5
+Error New:    0x0e71062:  a5a5a5a5 a5a7a5a5
+
+
+
+[ 7 / 1 /2023 at  15 : 23 : 30 ]
+
+Error group count:  81
+
+ Num Errors: 16 
+
+Error New:    0x00593e2:  a5a5a5a5 a5ada5a5
+Error New:    0x0240aaa:  a4a5a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  15 : 28 : 34 ]
+
+Error group count:  82
+
+ Num Errors: 16 
+
+
+
+
+[ 7 / 1 /2023 at  15 : 28 : 38 ]
+
+Error group count:  83
+
+ Num Errors: 9 
+
+Error Gone:    0x036a949:  a5a5a5a5 a5a5e5a5
+Error Gone:    0x0a0df61:  a5a5a5a5 a5a5a5a4
+Error Gone:    0x0a367b0:  a5a5a585 a5a5a5a5
+Error Gone:    0x0e71062:  a5a5a5a5 a5a7a5a5
+Error Gone:    0x00593e2:  a5a5a5a5 a5ada5a5
+Error Gone:    0x0240aaa:  a4a5a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  15 : 33 : 39 ]
+
+Error group count:  84
+
+ Num Errors: 10 
+
+
+
+
+[ 7 / 1 /2023 at  15 : 38 : 40 ]
+
+Error group count:  85
+
+ Num Errors: 11 
+
+Error New:    0x0c97db1:  a5a5a5a5 a5a5a5a1
+
+
+
+[ 7 / 1 /2023 at  15 : 49 : 48 ]
+
+Error group count:  86
+
+ Num Errors: 9 
+
+Error Gone:    0x0e5564e:  a5a5a5a5 a5e5a5a5
+Error Gone:    0x0c97db1:  a5a5a5a5 a5a5a5a1
+
+###################################################################################################################################################################
+
+
+Printing Errors found and their frequencies: 
+| Frequency    | Error
+|           82 |   0x078ec96:  a5a5a1a5 a5a5a5a5
+|           82 |   0x0df1440:  a5a5a5a5 a5a5a5a7
+|           80 |   0x01f5ae8:  a5a5a5a5 a5a5a4a5
+|           69 |   0x036a949:  a5a5a5a5 a5a5e5a5
+|           68 |   0x0fe20e2:  a5a4a5a5 a5a5a5a5
+|           50 |   0x0c131ad:  85a5a5a5 a5a5a5a5
+|           38 |   0x012764f:  a5a5a5a5 a5a5e5a5
+|           38 |   0x0a4c9f8:  a5a5a5a5 a525a5a5
+|           28 |   0x0b8ec51:  a5a5a5a5 a5a5a5e5
+|           21 |   0x0240aaa:  a4a5a5a5 a5a5a5a5
+|           18 |   0x0251b5d:  a5a5a5a5 a585a5a5
+|           16 |   0x0bb8558:  a5a5a5b5 a5a5a5a5
+|           14 |   0x0d04af0:  a5a5a525 a5a5a5a5
+|           14 |   0x029fdba:  a5a4a5a5 a5a5a5a5
+|           14 |   0x034fe9e:  a5a5a5a5 a5a5a7a5
+|           10 |   0x0a88ff3:  a5a4a5a5 a5a5a5a5
+|            8 |   0x0adc6a6:  a5a5a5a5 ada5a5a5
+|            8 |   0x0b588f9:  a5a5a5a5 a5a5a5a7
+|            7 |   0x0e2476a:  a5a5a5a5 a5a5ada5
+|            7 |   0x0e5564e:  a5a5a5a5 a5e5a5a5
+|            5 |   0x03eeb43:  a5b5a5a5 a5a5a5a5
+|            5 |   0x0d5615d:  a5a5a525 a5a5a5a5
+|            5 |   0x0ddacfa:  a5a5a5a7 a5a5a5a5
+|            5 |   0x0aed81b:  a5a5a5a5 a7a5a5a5
+|            4 |   0x082e8e9:  a5a5a5a5 a7a5a5a5
+|            4 |   0x0c352a0:  a5a5a5a5 a5a5a5a4
+|            4 |   0x0108741:  a5a5a5a5 a5a7a5a5
+|            4 |   0x0814fa5:  a5a5a5a5 a7a5a5a5
+|            3 |   0x0b1040b:  b5a5a5a5 a5a5a5a5
+|            3 |   0x0986372:  a5a5a1a5 a5a5a5a5
+|            3 |   0x0fd1f3b:  a5a5a5a4 a5a5a5a5
+|            3 |   0x032a567:  a7a5a5a5 a5a5a5a5
+|            3 |   0x0a0df61:  a5a5a5a5 a5a5a5a4
+|            3 |   0x0a367b0:  a5a5a585 a5a5a5a5
+|            3 |   0x0e71062:  a5a5a5a5 a5a7a5a5
+|            2 |   0x03a428a:  ada5a5a5 a5a5a5a5
+|            2 |   0x03b25bc:  a5a5a5a5 a5a5a5b5
+|            2 |   0x054d942:  a5a5a5a5 a585a5a5
+|            2 |   0x09fd697:  a5a5a5a1 a5a5a5a5
+|            2 |   0x0d56efd:  a5a5a5a5 a4a5a5a5
+|            2 |   0x00593e2:  a5a5a5a5 a5ada5a5
+|            1 |   0x01e484e:  a5a5a5a5 a5a5a585
+|            1 |   0x0ec3c61:  a5a5a5a1 a5a5a5a5
+|            1 |   0x076d69d:  a5a5a5a5 a5a5a5a4
+|            1 |   0x0000000:  a5a5a5a5 a5a5a4a5
+|            1 |   0x07364e8:  a5a4a5a5 a5a5a5a5
+|            1 |   0x01ff440:  a5a5a5a5 a5a5a5a7
+|            1 |   0x02e14e8:  a5a4a5a5 a5a5a5a5
+|            1 |   0x0125877:  b5a5a5a5 a5a5a5a5
+|            1 |   0x0be6bd5:  a5a5a5a5 a5a5a5a7
+|            1 |   0x073ef53:  a525a5a5 a5a5a5a5
+|            1 |   0x0a45bf9:  a5a5a5a5 a5a1a5a5
+|            1 |   0x0c97db1:  a5a5a5a5 a5a5a5a1
+
+###################################################################################################################################################################
+
+
+Printing Unmatched BIST lines:
+
+[2023-07-01 07:57:51] 
+
+[2023-07-01 08:18:12] [92;1mlitex[sdram_bist_writer 0 268435455
+
+[2023-07-01 08:18:12] 0m> sdram_bist_pat 2779096485
+
+[2023-07-01 08:18:12] [92;1mlitex[sdram_bist_writer 0 268435455
+
+[2023-07-01 08:18:12] 0m> sdram_bist_writer 0 268435455
+
+[2023-07-01 08:18:12] Writing from address 0 to address ffffff ...sdram_bist_writer 0 268435455
+
+[2023-07-01 08:18:12] Done
+
+[2023-07-01 08:18:12] DRAM controller has address width 24, data width 6sdram_bist_reader 0 268435455 1000
+
+[2023-07-01 08:18:13] 4 in bits
+
+[2023-07-01 08:59:36] [92;1mlitex[sdram_bist_writer 0 268435455
+
+[2023-07-01 08:59:36] 0m> sdram_bist_pat 2779096485
+
+[2023-07-01 08:59:36] [92;1mlitexsdram_bist_writer 0 268435455
+
+[2023-07-01 08:59:36] [0m> sdram_bist_writer 0 268435455
+
+[2023-07-01 08:59:36] Writing from address 0 to address ffffff ...sdram_bist_writer 0 268435455
+
+[2023-07-01 08:59:37] Done
+
+[2023-07-01 08:59:37] DRAM controller has address width 24, data widthsdram_bist_reader 0 268435455 1000
+
+[2023-07-01 08:59:38]  64 in bits
+
+[2023-07-01 09:24:46] [92;1mlitex[0msdram_bist_writer 0 268435455
+
+[2023-07-01 09:24:46] > sdram_bist_pat 2779096485
+
+[2023-07-01 09:24:46] [92;1mlitex[0sdram_bist_writer 0 268435455
+
+[2023-07-01 09:24:46] m> sdram_bist_writer 0 268435455
+
+[2023-07-01 09:24:46] Writing from address 0 to address ffffff ...sdram_bist_writer 0 268435455
+
+[2023-07-01 09:24:46] Done
+
+[2023-07-01 09:24:46] DRAM controller has address width 24, data width 64 sdram_bist_reader 0 268435455 1000
+
+[2023-07-01 09:24:47] in bits
+
+[2023-07-01 09:49:54] [92;1mlit
+
+[2023-07-01 09:49:55] ex[0m> 
+
+[2023-07-01 09:49:55] [92;1mlitex[sdram_bist_writer 0 268435455
+
+[2023-07-01 09:49:55] 0m> sdram_bist_pat 2779096485
+
+[2023-07-01 09:49:55] [92;1mlitexsdram_bist_writer 0 268435455
+
+[2023-07-01 09:49:55] [0m> sdram_bist_writer 0 268435455
+
+[2023-07-01 09:49:55] Writing from address 0 to address ffffff ...sdram_bist_writer 0 268435455
+
+[2023-07-01 09:49:56] Done
+
+[2023-07-01 09:49:56] DRAM controller has address width 24, data width 6sdram_bist_reader 0 268435455 1000
+
+[2023-07-01 09:49:57] 4 in bits
+
+[2023-07-01 10:26:20] [92;1mlitexsdram_bist_writer 0 268435455
+
+[2023-07-01 10:26:20] [0m> sdram_bist_pat 2779096485
+
+[2023-07-01 10:26:20] [92;1mlitexsdram_bist_writer 0 268435455
+
+[2023-07-01 10:26:20] [0m> sdram_bist_writer 0 268435455
+
+[2023-07-01 10:26:20] Writing from address 0 to address ffffff ...sdram_bist_writer 0 268435455
+
+[2023-07-01 10:26:20] Done
+
+[2023-07-01 10:26:20] DRAM controller has address width 24, data width sdram_bist_reader 0 268435455 1000
+
+[2023-07-01 10:26:21] 64 in bits
+
+[2023-07-01 10:51:29] [92
+
+[2023-07-01 10:51:30] ;1mlitex[0m> 
+
+[2023-07-01 10:51:30] [92;1mlitex[sdram_bist_writer 0 268435455
+
+[2023-07-01 10:51:30] 0m> sdram_bist_pat 2779096485
+
+[2023-07-01 10:51:30] [92;1mlitexsdram_bist_writer 0 268435455
+
+[2023-07-01 10:51:30] [0m> sdram_bist_writer 0 268435455
+
+[2023-07-01 10:51:30] Writing from address 0 to address ffffff ...sdram_bist_writer 0 268435455
+
+[2023-07-01 10:51:30] Done
+
+[2023-07-01 10:51:30] DRAM controller has address width 24, data width sdram_bist_reader 0 268435455 1000
+
+[2023-07-01 10:51:31] 64 in bits
+
+[2023-07-01 11:06:34] [92;1mlitex[0m> sdram_bist_reader 0 268435455 1000
+
+[2023-07-01 11:06:34] Dir
+
+[2023-07-01 11:11:34] Error address r?: 5 0x 251;5=:  :5:5:   70sdram_bist_reader 0 268435455 1000
+
+[2023-07-01 11:39:05] [92;1mlitexsdram_bist_writer 0 268435455
+
+[2023-07-01 11:39:05] [0m> sdram_bist_pat 2779096485
+
+[2023-07-01 11:39:05] [92;1mlitexsdram_bist_writer 0 268435455
+
+[2023-07-01 11:39:05] [0m> sdram_bist_writer 0 268435455
+
+[2023-07-01 11:39:05] Writing from address 0 to address ffffff ...sdram_bist_writer 0 268435455
+
+[2023-07-01 11:39:05] Done
+
+[2023-07-01 11:39:05] DRAM controller has address width 24, data width sdram_bist_reader 0 268435455 1000
+
+[2023-07-01 11:39:06] 64 in bits
+
+[2023-07-01 12:04:12] DRAM controller has address width 16, data width 64 in bits
+
+[2023-07-01 12:04:14]            0     17844333            0     16777216                0              534   0x0000000-0x0fffff7          4
+
+[2023-07-01 12:04:14] [92;1mli
+
+[2023-07-01 12:04:15] tex[0m> 
+
+[2023-07-01 12:04:15] [92;1mlitexsdram_bist_writer 0 268435455
+
+[2023-07-01 12:04:15] [0m> sdram_bist_pat 2779096485
+
+[2023-07-01 12:04:15] [92;1mlitexsdram_bist_writer 0 268435455
+
+[2023-07-01 12:04:15] [0m> sdram_bist_writer 0 268435455
+
+[2023-07-01 12:04:15] DRAM controller has address width 16, data width 64 in bits
+
+[2023-07-01 12:04:15] Writing from address 0 to address ffffff ...sdram_bist_writer 0 268435455
+
+[2023-07-01 12:04:15] Done
+
+[2023-07-01 12:04:15]     18164085            0     16777216            0              524                0   0x0000000-0x0fffff7          0
+
+[2023-07-01 12:04:15] DRAM controller has address width 16, data widthsdram_bist_reader 0 268435455 1000
+
+[2023-07-01 12:04:16]  64 in bits
+
+[2023-07-01 12:04:16]     18164117            0     16777216            0              524                0   0x0000000-0x0fffff7          0
+
+[2023-07-01 12:04:16] DRAM controller has address width 16, data width 64 in bits
+
+[2023-07-01 12:04:16]     18164112            0     16777216            0              524                0   0x0000000-0x0fffff7          0
+
+[2023-07-01 12:04:16] DRAM controller has address width 16, data width 64 in bits
+
+[2023-07-01 12:09:17]            0     17844334            0     16777216                0              534   0x0000000-0x0fffff7          1
+
+[2023-07-01 12:09:17] DRAM controller has address width 16, data width 64 in bits
+
+[2023-07-01 12:14:18]            0     17844334            0     16777216                0              534   0x0000000-0x0fffff7          3
+
+[2023-07-01 12:14:18] DRAM controller has address width 16, data width 64 in bits
+
+[2023-07-01 12:19:20]            0     17844331            0     16777216                0              534   0x0000000-0x0fffff7          5
+
+[2023-07-01 12:19:20] DRAM controller has address width 16, data width 64 in bits
+
+[2023-07-01 12:24:21]            0     17844337            0     16777216                0              534   0x0000000-0x0fffff7          7
+
+[2023-07-01 12:24:21] DRAM controller has address width 16, data width 64 in bits
+
+[2023-07-01 12:29:22]            0     17844333            0     16777216                0              534   0x0000000-0x0fffff7          6
+
+[2023-07-01 12:29:22] DRAM controller has address width 16, data width 64 in bits
+
+[2023-07-01 12:29:24]            0     17844334            0     16777216                0              534   0x0000000-0x0fffff7          5
+
+[2023-07-01 12:29:25] [92;1mlitex[sdram_bist_writer 0 268435455
+
+[2023-07-01 12:29:25] 0m> sdram_bist_pat 2779096485
+
+[2023-07-01 12:29:25] [92;1mlitex[sdram_bist_writer 0 268435455
+
+[2023-07-01 12:29:25] 0m> sdram_bist_writer 0 268435455
+
+[2023-07-01 12:29:25] DRAM controller has address width 16, data width 64 in bits
+
+[2023-07-01 12:29:25] Writing from address 0 to address ffffff ...sdram_bist_writer 0 268435455
+
+[2023-07-01 12:29:25] Done
+
+[2023-07-01 12:29:25]     18164087            0     16777216            0              524                0   0x0000000-0x0fffff7          0
+
+[2023-07-01 12:29:25] DRAM controller has address width 16, data width 6sdram_bist_reader 0 268435455 1000
+
+[2023-07-01 12:29:26] 4 in bits
+
+[2023-07-01 12:29:26]     18164112            0     16777216            0              524                0   0x0000000-0x0fffff7          0
+
+[2023-07-01 12:29:26] DRAM controller has address width 16, data width 64 in bits
+
+[2023-07-01 12:29:26]     18164115            0     16777216            0              524                0   0x0000000-0x0fffff7          0
+
+[2023-07-01 12:29:26] DRAM controller has address width 16, data width 64 in bits
+
+[2023-07-01 12:34:27]            0     17844337            0     16777216                0              534   0x0000000-0x0fffff7          3
+
+[2023-07-01 12:34:27] DRAM controller has address width 16, data width 64 in bits
+
+[2023-07-01 12:39:28]            0     17844332            0     16777216                0              534   0x0000000-0x0fffff7          3
+
+[2023-07-01 13:07:26]            0     17844330            0     16777216                0 
+
+[2023-07-01 13:29:20]            0     17844335            0            0                0                0   0x0000000-0x0ffffff          9
+
+[2023-07-01 13:34:23]            0     17844330            0            0                0                0   0x0000000-0x0ffffff         10
+
+[2023-07-01 13:34:24] [92;1mlitex[0sdram_bist_writer 0 268435455
+
+[2023-07-01 13:34:24] m> sdram_bist_pat 2779096485
+
+[2023-07-01 13:34:24] [92;1mlitex[sdram_bist_writer 0 268435455
+
+[2023-07-01 13:34:24] 0m> sdram_bist_writer 0 268435455
+
+[2023-07-01 13:34:24] Writing from address 0 to address ffffff ...sdram_bist_writer 0 268435455
+
+[2023-07-01 13:34:24] Done
+
+[2023-07-01 13:34:24] DRAM controller has address width 24, data width 64sdram_bist_reader 0 268435455 1000
+
+[2023-07-01 13:34:25]  in bits
+
+[2023-07-01 13:39:26]            0     17844334            0            0                0                0   0x0000000-0x0ffffff          8
+
+[2023-07-01 13:45:31]   bus errors:  0/256
+
+[2023-07-01 13:45:31]   addr errors: 0/8192
+
+[2023-07-01 13:45:31]   data errors: 1/524288
+
+[2023-07-01 13:45:31] Memtest KO
+
+[2023-07-01 13:45:31] Memory initialization failed
+
+[2023-07-01 14:16:59] [92;1mlitex[sdram_bist_writer 0 268435455
+
+[2023-07-01 14:16:59] 0m> sdram_bist_pat 2779096485
+
+[2023-07-01 14:16:59] [92;1mlitex[sdram_bist_writer 0 268435455
+
+[2023-07-01 14:16:59] 0m> sdram_bist_writer 0 268435455
+
+[2023-07-01 14:16:59] Writing from address 0 to address ffffff ...sdram_bist_writer 0 268435455
+
+[2023-07-01 14:16:59] Done
+
+[2023-07-01 14:17:00] DRAM controller has address width 24, data width 64sdram_bist_reader 0 268435455 1000
+
+[2023-07-01 14:17:01]  in bits
+
+[2023-07-01 14:42:08] [9
+
+[2023-07-01 14:42:09] 2;1mlitex[0m> 
+
+[2023-07-01 14:42:09] [92;1mlitexsdram_bist_writer 0 268435455
+
+[2023-07-01 14:42:09] [0m> sdram_bist_pat 2779096485
+
+[2023-07-01 14:42:09] [92;1mlitexsdram_bist_writer 0 268435455
+
+[2023-07-01 14:42:09] [0m> sdram_bist_writer 0 268435455
+
+[2023-07-01 14:42:09] Writing from address 0 to address ffffff ...sdram_bist_writer 0 268435455
+
+[2023-07-01 14:42:09] Done
+
+[2023-07-01 14:42:09] DRAM controller has address width 24, data width sdram_bist_reader 0 268435455 1000
+
+[2023-07-01 14:42:10] 64 in bits
+
+[2023-07-01 15:08:20]   bus errors:  0/256
+
+[2023-07-01 15:08:20]   addr errors: 0/8192
+
+[2023-07-01 15:08:20]   data errors: 1/524288
+
+[2023-07-01 15:08:20] Memtest KO
+
+[2023-07-01 15:08:20] Memory initialization failed
+
+[2023-07-01 15:28:37] [92;1mlitexsdram_bist_writer 0 268435455
+
+[2023-07-01 15:28:37] [0m> sdram_bist_pat 2779096485
+
+[2023-07-01 15:28:37] [92;1mlitexsdram_bist_writer 0 268435455
+
+[2023-07-01 15:28:37] [0m> sdram_bist_writer 0 268435455
+
+[2023-07-01 15:28:37] Writing from address 0 to address ffffff ...sdram_bist_writer 0 268435455
+
+[2023-07-01 15:28:37] Done
+
+[2023-07-01 15:28:37] DRAM controller has address width 24, data width sdram_bist_reader 0 268435455 1000
+
+[2023-07-01 15:28:38] 64 in bits
+

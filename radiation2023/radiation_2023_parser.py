@@ -24,7 +24,7 @@ import pickle
 # For enum variables
 from enum import Enum
 
-UART_TIME_REGEX = "\[2023-0((6-(2[6-9]|30))|(7-0[1-2])) [0-2][0-9]:[0-5][0-9]:[0-5][0-9]\]"
+UART_TIME_REGEX = "\[2023-0((6-(2[6-9]|30))|(7-0[1-3])) [0-2][0-9]:[0-5][0-9]:[0-5][0-9]\]"
 LITEX_PROMPT_REGEX = UART_TIME_REGEX + " [\x1B]\[92;1mlitex[\x1B]\[0m> "
 
 TYPE_BOOT_REGEX = 0
