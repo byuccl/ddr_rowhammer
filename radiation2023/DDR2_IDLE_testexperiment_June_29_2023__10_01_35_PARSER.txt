@@ -1,0 +1,207 @@
+
+Reading File:  DDR2_IDLE_testexperiment_June_29_2023__10_01_35_UART.log
+Number of lines in uart file:  454
+455
+Printing Dynamic Errors
+
+
+
+[ 6 / 29 /2023 at  10 : 1 : 56 ]
+
+Error group count:  1
+
+ Num Errors: 1 
+
+Error New:    0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  10 : 1 : 57 ]
+
+Error group count:  2
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  10 : 1 : 58 ]
+
+Error group count:  3
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  10 : 2 : 1 ]
+
+Error group count:  4
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  10 : 2 : 2 ]
+
+Error group count:  5
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  10 : 2 : 3 ]
+
+Error group count:  6
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  10 : 2 : 6 ]
+
+Error group count:  7
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  10 : 2 : 7 ]
+
+Error group count:  8
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  10 : 2 : 8 ]
+
+Error group count:  9
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  10 : 2 : 10 ]
+
+Error group count:  10
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  10 : 2 : 12 ]
+
+Error group count:  11
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  10 : 2 : 13 ]
+
+Error group count:  12
+
+ Num Errors: 1 
+
+
+###################################################################################################################################################################
+
+
+Printing Errors found and their frequencies: 
+| Frequency    | Error
+|           12 |   0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+###################################################################################################################################################################
+
+
+Printing Unmatched BIST lines:
+
+[2023-06-29 10:01:47] 
+
+[2023-06-29 10:01:58] [92;1mlitex[0
+
+[2023-06-29 10:01:59] m> 
+
+[2023-06-29 10:01:59] [92;1mlitex[sdram_bist_writer 0 268435455
+
+[2023-06-29 10:01:59] 0m> sdram_bist_pat 2779096485
+
+[2023-06-29 10:01:59] Writing from asdram_bist_writer 0 268435455
+
+[2023-06-29 10:02:00] ddress 0 to address ffffff ...Done
+
+[2023-06-29 10:02:00] [92;1mlitex[0m> sdram_bsdram_bist_reader 0 268435455 1000
+
+[2023-06-29 10:02:01] ist_writer 0 268435455
+
+[2023-06-29 10:02:03] [92;1mlitex[0msdram_mr_scrub
+
+[2023-06-29 10:02:03] > 
+
+[2023-06-29 10:02:03] Switch
+
+[2023-06-29 10:02:04] ing SDRAM to hardware control.
+
+[2023-06-29 10:02:04] [92;1mlitex[0m>sdram_bist_writer 0 268435455
+
+[2023-06-29 10:02:04]  sdram_bist_pat 2779096485
+
+[2023-06-29 10:02:04] [92;1mlitex[0msdram_bist_writer 0 268435455
+
+[2023-06-29 10:02:04] > sdram_bist_writer 0 268435455
+
+[2023-06-29 10:02:04] Writing from address 0 to address ffffff ...sdram_bist_writer 0 268435455
+
+[2023-06-29 10:02:04] Done
+
+[2023-06-29 10:02:05] DRAM controller has address width 24, data width 64 sdram_bist_reader 0 268435455 1000
+
+[2023-06-29 10:02:06] in bits
+
+[2023-06-29 10:02:08] [92;1mlitexsdram_delay_scrub
+
+[2023-06-29 10:02:08] [0m> 
+
+[2023-06-29 10:02:09] [92;1mlitex[0m> ssdram_bist_writer 0 268435455
+
+[2023-06-29 10:02:09] dram_bist_pat 2779096485
+
+[2023-06-29 10:02:09] [92;1mlitex[0m>sdram_bist_writer 0 268435455
+
+[2023-06-29 10:02:09]  sdram_bist_writer 0 268435455
+
+[2023-06-29 10:02:09] Writing from address 0 to address ffffff ...sdram_bist_writer 0 268435455
+
+[2023-06-29 10:02:09] Done
+
+[2023-06-29 10:02:09] DRAM controller has address width 24, data width 64 insdram_bist_reader 0 268435455 1000
+
+[2023-06-29 10:02:10]  bits
+
+[2023-06-29 10:02:13] [92;1mlitex[sdram_cal
+
+[2023-06-29 10:02:13] 0m> 
+
+[2023-06-29 10:02:13]   m0, b00: |00000000000000000000000
+
+[2023-06-29 10:02:14] 000000000| delays: -
+
+[2023-06-29 10:02:14] [92;1mlitex[0m>sdram_bist_writer 0 268435455
+
+[2023-06-29 10:02:14]  sdram_bist_writer 0 268435455
+
+[2023-06-29 10:02:14] Writing from address 0 to address ffffff ...sdram_bist_writer 0 268435455
+
+[2023-06-29 10:02:14] Done
+
+[2023-06-29 10:02:14] DRAM controller has address width 24, data width 64 isdram_bist_reader 0 268435455 1000
+

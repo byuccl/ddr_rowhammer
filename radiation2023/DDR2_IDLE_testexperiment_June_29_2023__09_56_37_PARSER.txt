@@ -1,0 +1,496 @@
+
+Reading File:  DDR2_IDLE_testexperiment_June_29_2023__09_56_37_UART.log
+Number of lines in uart file:  1181
+1182
+Printing Dynamic Errors
+
+
+
+[ 6 / 29 /2023 at  9 : 56 : 58 ]
+
+Error group count:  1
+
+ Num Errors: 1 
+
+Error New:    0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  9 : 56 : 59 ]
+
+Error group count:  2
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 57 : 0 ]
+
+Error group count:  3
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 57 : 3 ]
+
+Error group count:  4
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 57 : 4 ]
+
+Error group count:  5
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 57 : 5 ]
+
+Error group count:  6
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 57 : 7 ]
+
+Error group count:  7
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 57 : 9 ]
+
+Error group count:  8
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 57 : 10 ]
+
+Error group count:  9
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 57 : 12 ]
+
+Error group count:  10
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 57 : 14 ]
+
+Error group count:  11
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 57 : 15 ]
+
+Error group count:  12
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 57 : 17 ]
+
+Error group count:  13
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 57 : 18 ]
+
+Error group count:  14
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 57 : 20 ]
+
+Error group count:  15
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 57 : 22 ]
+
+Error group count:  16
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 57 : 23 ]
+
+Error group count:  17
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 57 : 25 ]
+
+Error group count:  18
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 57 : 29 ]
+
+Error group count:  19
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 57 : 30 ]
+
+Error group count:  20
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 57 : 32 ]
+
+Error group count:  21
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 57 : 53 ]
+
+Error group count:  22
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 57 : 54 ]
+
+Error group count:  23
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 57 : 55 ]
+
+Error group count:  24
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 57 : 58 ]
+
+Error group count:  25
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 57 : 59 ]
+
+Error group count:  26
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 58 : 0 ]
+
+Error group count:  27
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 58 : 2 ]
+
+Error group count:  28
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 58 : 4 ]
+
+Error group count:  29
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 58 : 5 ]
+
+Error group count:  30
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 58 : 7 ]
+
+Error group count:  31
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 58 : 9 ]
+
+Error group count:  32
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  9 : 58 : 10 ]
+
+Error group count:  33
+
+ Num Errors: 1 
+
+
+###################################################################################################################################################################
+
+
+Printing Errors found and their frequencies: 
+| Frequency    | Error
+|           33 |   0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+###################################################################################################################################################################
+
+
+Printing Unmatched BIST lines:
+
+[2023-06-29 09:56:49] 
+
+[2023-06-29 09:57:00] [92;1mlitex[
+
+[2023-06-29 09:57:01] 0m> 
+
+[2023-06-29 09:57:01] [92;1mlitexsdram_bist_writer 0 268435455
+
+[2023-06-29 09:57:01] [0m> sdram_bist_pat 2779096485
+
+[2023-06-29 09:57:01] [92;1mlitexsdram_bist_writer 0 268435455
+
+[2023-06-29 09:57:01] [0m> sdram_bist_writer 0 268435455
+
+[2023-06-29 09:57:01] Writing from address 0 to address ffffff ...sdram_bist_writer 0 268435455
+
+[2023-06-29 09:57:02] Done
+
+[2023-06-29 09:57:02] DRAM controller has address width 24, data widthsdram_bist_reader 0 268435455 1000
+
+[2023-06-29 09:57:03]  64 in bits
+
+[2023-06-29 09:57:05] [92;1mlitex[0sdram_mr_scrub
+
+[2023-06-29 09:57:05] m> 
+
+[2023-06-29 09:57:05] Switc
+
+[2023-06-29 09:57:06] hing SDRAM to hardware control.
+
+[2023-06-29 09:57:06] [92;1mlitex[0m> ssdram_bist_writer 0 268435455
+
+[2023-06-29 09:57:06] dram_bist_pat 2779096485
+
+[2023-06-29 09:57:06] [92;1mlitex[0m>sdram_bist_writer 0 268435455
+
+[2023-06-29 09:57:06]  sdram_bist_writer 0 268435455
+
+[2023-06-29 09:57:06] Writing from address 0 to address ffffff ...sdram_bist_writer 0 268435455
+
+[2023-06-29 09:57:06] Done
+
+[2023-06-29 09:57:06] DRAM controller has address width 24, data width 64 isdram_bist_reader 0 268435455 1000
+
+[2023-06-29 09:57:07] n bits
+
+[2023-06-29 09:57:10] [92;1mlitex[0msdram_delay_scrub
+
+[2023-06-29 09:57:10] > 
+
+[2023-06-29 09:57:11] [92;1mlitex[0m>sdram_bist_writer 0 268435455
+
+[2023-06-29 09:57:11]  sdram_bist_writer 0 268435455
+
+[2023-06-29 09:57:11] Writing from address 0 to address ffffff ...sdram_bist_writer 0 268435455
+
+[2023-06-29 09:57:11] Done
+
+[2023-06-29 09:57:11] DRAM controller has address width 24, data width 64 insdram_bist_reader 0 268435455 1000
+
+[2023-06-29 09:57:12]  bits
+
+[2023-06-29 09:57:15] [92;1mlitex[0m>sdram_cal
+
+[2023-06-29 09:57:15]  
+
+[2023-06-29 09:57:15]   m0, b00: |0000000000000000000000000
+
+[2023-06-29 09:57:16] 0000000| delays: -
+
+[2023-06-29 09:57:16] [92;1mlitex[0m>sdram_bist_writer 0 268435455
+
+[2023-06-29 09:57:16]  sdram_bist_writer 0 268435455
+
+[2023-06-29 09:57:16] Writing from address 0 to address ffffff ...sdram_bist_writer 0 268435455
+
+[2023-06-29 09:57:16] Done
+
+[2023-06-29 09:57:16] DRAM controller has address width 24, data width 64 insdram_bist_reader 0 268435455 1000
+
+[2023-06-29 09:57:17]  bits
+
+[2023-06-29 09:57:20] [92;1mlitex[0m>sdram_init
+
+[2023-06-29 09:57:20]  
+
+[2023-06-29 09:57:20]   m
+
+[2023-06-29 09:57:21] 0, b00: |00000000000000000000000000000000| delays: -
+
+[2023-06-29 09:57:21] [92;1mlitex[0m>sdram_bist_writer 0 268435455
+
+[2023-06-29 09:57:21]  sdram_bist_writer 0 268435455
+
+[2023-06-29 09:57:21] Writing from address 0 to address ffffff ...sdram_bist_writer 0 268435455
+
+[2023-06-29 09:57:21] Done
+
+[2023-06-29 09:57:21] DRAM controller has address width 24, data width 64 insdram_bist_reader 0 268435455 1000
+
+[2023-06-29 09:57:22]  bits
+
+[2023-06-29 09:57:25] [92;1mlitex[0
+
+[2023-06-29 09:57:25] m> 
+
+[2023-06-29 09:57:32] [92;1mlitex[0
+
+[2023-06-29 09:57:32] m> 
+
+[2023-06-29 09:57:55] [92;1mlitex[0
+
+[2023-06-29 09:57:56] m> 
+
+[2023-06-29 09:57:56] [92;1mlitexsdram_bist_writer 0 268435455
+
+[2023-06-29 09:57:56] [0m> sdram_bist_pat 2779096485
+
+[2023-06-29 09:57:56] [92;1mlitexsdram_bist_writer 0 268435455
+
+[2023-06-29 09:57:56] [0m> sdram_bist_writer 0 268435455
+
+[2023-06-29 09:57:56] Writing from address 0 to address ffffff ...sdram_bist_writer 0 268435455
+
+[2023-06-29 09:57:57] Done
+
+[2023-06-29 09:57:57] DRAM controller has address width 24, data widthsdram_bist_reader 0 268435455 1000
+
+[2023-06-29 09:57:58]  64 in bits
+
+[2023-06-29 09:58:00] [92;1mlitex[0msdram_mr_scrub
+
+[2023-06-29 09:58:00] > 
+
+[2023-06-29 09:58:00] Switch
+
+[2023-06-29 09:58:01] ing SDRAM to hardware control.
+
+[2023-06-29 09:58:01] [92;1mlitex[0m> sdsdram_bist_writer 0 268435455
+
+[2023-06-29 09:58:01] ram_bist_pat 2779096485
+
+[2023-06-29 09:58:01] [92;1mlitex[0m> sdsdram_bist_writer 0 268435455
+
+[2023-06-29 09:58:01] ram_bist_writer 0 268435455
+
+[2023-06-29 09:58:01] DRAM controller has address width 24, data width 64 in bsdram_bist_reader 0 268435455 1000
+
+[2023-06-29 09:58:02] its
+
+[2023-06-29 09:58:05] [92;1mlitex[0sdram_delay_scrub
+
+[2023-06-29 09:58:05] m> 
+
+[2023-06-29 09:58:06] [92;1mlitex[0m>sdram_bist_writer 0 268435455
+
+[2023-06-29 09:58:06]  sdram_bist_writer 0 268435455
+
+[2023-06-29 09:58:06] Writing from address 0 to address ffffff ...sdram_bist_writer 0 268435455
+
+[2023-06-29 09:58:06] Done
+
+[2023-06-29 09:58:06] DRAM controller has address width 24, data width 64 isdram_bist_reader 0 268435455 1000
+
+[2023-06-29 09:58:07] n bits
+
+[2023-06-29 09:58:10] [92;1mlitex[0sdram_cal
+
+[2023-06-29 09:58:10] m> 
+
+[2023-06-29 09:58:10]   m0, b00: |000000000000000000000000
+
+[2023-06-29 09:58:11] 00000000| delays: -
+
+[2023-06-29 09:58:11] [92;1mlitex[0m> ssdram_bist_writer 0 268435455
+
+[2023-06-29 09:58:11] dram_bist_pat 2779096485
+
+[2023-06-29 09:58:11] DRAM controller has address width 24, data width 64 in sdram_bist_reader 0 268435455 1000
+

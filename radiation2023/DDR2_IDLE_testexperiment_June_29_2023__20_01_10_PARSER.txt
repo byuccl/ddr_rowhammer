@@ -1,0 +1,269 @@
+
+Reading File:  DDR2_IDLE_testexperiment_June_29_2023__20_01_10_UART.log
+Number of lines in uart file:  319
+320
+Printing Dynamic Errors
+
+
+
+[ 6 / 29 /2023 at  20 : 1 : 30 ]
+
+Error group count:  1
+
+ Num Errors: 2 
+
+Error New:    0x0044a67:  a5a5a5a5 a5a5a5b5
+Error New:    0x06d2819:  a5a5a5a5 a5a585a5
+Error New:    0x0df1440:  a5a5a5a5 a5a5a5a7
+
+
+
+[ 6 / 29 /2023 at  20 : 2 : 3 ]
+
+Error group count:  2
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  20 : 2 : 36 ]
+
+Error group count:  3
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  20 : 3 : 8 ]
+
+Error group count:  4
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  20 : 3 : 41 ]
+
+Error group count:  5
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  20 : 3 : 45 ]
+
+Error group count:  6
+
+ Num Errors: 3 
+
+Error Gone:    0x06d2819:  a5a5a5a5 a5a585a5
+Error Gone:    0x0df1440:  a5a5a5a5 a5a5a5a7
+
+
+
+[ 6 / 29 /2023 at  20 : 3 : 45 ]
+
+Error group count:  7
+
+Error count not displayed, type: 6 index: 2 line: [2023-06-29 20:03:45]    ADDRESS    DATA
+
+
+Error New:    0x06d2819:  a5a5a5a5 a5a585a5
+Error New:    0x0df1440:  a5a5a5a5 a5a5a5a7
+Error Gone:    0x0044a67:  a5a5a5a5 a5a5a5b5
+
+
+
+[ 6 / 29 /2023 at  20 : 4 : 17 ]
+
+Error group count:  8
+
+ Num Errors: 3 
+
+Error New:    0x0044a67:  a5a5a5a5 a5a5a5b5
+Error Gone:    0x06d2819:  a5a5a5a5 a5a585a5
+Error Gone:    0x0df1440:  a5a5a5a5 a5a5a5a7
+
+
+
+[ 6 / 29 /2023 at  20 : 4 : 17 ]
+
+Error group count:  9
+
+Error count not displayed, type: 6 index: 2 line: [2023-06-29 20:04:17]    ADDRESS    DATA
+
+
+Error New:    0x06d2819:  a5a5a5a5 a5a585a5
+Error New:    0x0df1440:  a5a5a5a5 a5a5a5a7
+Error Gone:    0x0044a67:  a5a5a5a5 a5a5a5b5
+
+
+
+[ 6 / 29 /2023 at  20 : 4 : 48 ]
+
+Error group count:  10
+
+ Num Errors: 3 
+
+Error New:    0x0044a67:  a5a5a5a5 a5a5a5b5
+Error Gone:    0x06d2819:  a5a5a5a5 a5a585a5
+Error Gone:    0x0df1440:  a5a5a5a5 a5a5a5a7
+
+
+
+[ 6 / 29 /2023 at  20 : 4 : 48 ]
+
+Error group count:  11
+
+Error count not displayed, type: 6 index: 2 line: [2023-06-29 20:04:48]    ADDRESS    DATA
+
+
+Error New:    0x06d2819:  a5a5a5a5 a5a585a5
+Error New:    0x0df1440:  a5a5a5a5 a5a5a5a7
+Error Gone:    0x0044a67:  a5a5a5a5 a5a5a5b5
+
+
+
+[ 6 / 29 /2023 at  20 : 5 : 19 ]
+
+Error group count:  12
+
+ Num Errors: 3 
+
+Error New:    0x0044a67:  a5a5a5a5 a5a5a5b5
+Error Gone:    0x06d2819:  a5a5a5a5 a5a585a5
+Error Gone:    0x0df1440:  a5a5a5a5 a5a5a5a7
+
+
+
+[ 6 / 29 /2023 at  20 : 5 : 19 ]
+
+Error group count:  13
+
+Error count not displayed, type: 6 index: 2 line: [2023-06-29 20:05:19]    ADDRESS    DATA
+
+
+Error New:    0x06d2819:  a5a5a5a5 a5a585a5
+Error New:    0x0df1440:  a5a5a5a5 a5a5a5a7
+Error Gone:    0x0044a67:  a5a5a5a5 a5a5a5b5
+
+
+
+[ 6 / 29 /2023 at  20 : 5 : 50 ]
+
+Error group count:  14
+
+ Num Errors: 3 
+
+Error New:    0x0044a67:  a5a5a5a5 a5a5a5b5
+Error Gone:    0x06d2819:  a5a5a5a5 a5a585a5
+Error Gone:    0x0df1440:  a5a5a5a5 a5a5a5a7
+
+
+
+[ 6 / 29 /2023 at  20 : 5 : 50 ]
+
+Error group count:  15
+
+Error count not displayed, type: 6 index: 2 line: [2023-06-29 20:05:50]    ADDRESS    DATA
+
+
+Error New:    0x06d2819:  a5a5a5a5 a5a585a5
+Error New:    0x0928880:  a5a5a5a5 a5a5b5a5
+Error New:    0x0df1440:  a5a5a5a5 a5a5a5a7
+Error Gone:    0x0044a67:  a5a5a5a5 a5a5a5b5
+
+
+
+[ 6 / 29 /2023 at  20 : 6 : 21 ]
+
+Error group count:  16
+
+ Num Errors: 4 
+
+Error New:    0x0044a67:  a5a5a5a5 a5a5a5b5
+
+
+
+[ 6 / 29 /2023 at  20 : 6 : 25 ]
+
+Error group count:  17
+
+ Num Errors: 3 
+
+Error Gone:    0x06d2819:  a5a5a5a5 a5a585a5
+Error Gone:    0x0928880:  a5a5a5a5 a5a5b5a5
+Error Gone:    0x0df1440:  a5a5a5a5 a5a5a5a7
+
+Reached end of file with error count
+
+
+###################################################################################################################################################################
+
+
+Printing Errors found and their frequencies: 
+| Frequency    | Error
+|           12 |   0x0044a67:  a5a5a5a5 a5a5a5b5
+|           11 |   0x06d2819:  a5a5a5a5 a5a585a5
+|           11 |   0x0df1440:  a5a5a5a5 a5a5a5a7
+|            2 |   0x0928880:  a5a5a5a5 a5a5b5a5
+
+###################################################################################################################################################################
+
+
+Printing Unmatched BIST lines:
+
+[2023-06-29 20:01:22] 
+
+[2023-06-29 20:03:44] [92;1mlsdram_bist_writer 0 268435455
+
+[2023-06-29 20:03:44] itex[0m> sdram_bist_pat 2779096485
+
+[2023-06-29 20:03:44] [92;1msdram_bist_writer 0 268435455
+
+[2023-06-29 20:03:44] litex[0m> sdram_bist_writer 0 268435455
+
+[2023-06-29 20:03:44] Writing from address 0 to address ffffff ...sdram_bist_writer 0 268435455
+
+[2023-06-29 20:03:44] Done
+
+[2023-06-29 20:03:44]     18164087            0     16777216            0              524                0   0x0000000-0x0000517          0
+
+[2023-06-29 20:03:44] DRAM controller has address width 24, data wsdram_bist_reader 0 268435455 1000
+
+[2023-06-29 20:03:45] idth 64 in bits
+
+[2023-06-29 20:03:45]     18164112            0     16777216            0              524                0   0x0000000-0x0000517          0
+
+[2023-06-29 20:03:45]     18164115            0     16777216            0              524                0   0x0000000-0x0000517          0
+
+[2023-06-29 20:06:22] [92;1mli
+
+[2023-06-29 20:06:23] tex[0m> 
+
+[2023-06-29 20:06:23] [92;1mlsdram_bist_writer 0 268435455
+
+[2023-06-29 20:06:23] itex[0m> sdram_bist_pat 2779096485
+
+[2023-06-29 20:06:23] [92;1mlsdram_bist_writer 0 268435455
+
+[2023-06-29 20:06:23] itex[0m> sdram_bist_writer 0 268435455
+
+[2023-06-29 20:06:23] Writing from address 0 to address ffffff ...sdram_bist_writer 0 268435455
+
+[2023-06-29 20:06:24] Done
+
+[2023-06-29 20:06:24]     18164117            0     16777216            0              524                0   0x0000000-0x0000517          0
+
+[2023-06-29 20:06:24] DRAM controller has address width 24, data wsdram_bist_reader 0 268435455 1000
+
+[2023-06-29 20:06:25] idth 64 in bits
+
+[2023-06-29 20:06:25]     18164082            0     16777216            0              524                0   0x0000000-0x0000517          0
+
+[2023-06-29 20:06:25]     18164115            0     16777216            0              524                0   0x0000000-0x0000517          0
+

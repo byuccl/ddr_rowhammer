@@ -1,0 +1,279 @@
+
+Reading File:  DDR2_IDLE_testexperiment_June_29_2023__19_16_25_UART.log
+Number of lines in uart file:  194
+195
+Printing Dynamic Errors
+Printing order of linetypes and linetypeindexes:
+
+LineType: 7 LineTypeIndex: -1 Line: [2023-06-29 19:16:37]
+LineType: 0 LineTypeIndex: 0 Line: [2023-06-29 19:16:43] [1m        __   _ __      _  __[0m
+LineType: 0 LineTypeIndex: 1 Line: [2023-06-29 19:16:43] [1m       / /  (_) /____ | |/_/[0m
+LineType: 0 LineTypeIndex: 2 Line: [2023-06-29 19:16:43] [1m      / /__/ / __/ -_)>  <[0m
+LineType: 0 LineTypeIndex: 3 Line: [2023-06-29 19:16:43] [1m     /____/_/\__/\__/_/|_|[0m
+LineType: 0 LineTypeIndex: 4 Line: [2023-06-29 19:16:43] [1m   Build your hardware, easily![0m
+LineType: 0 LineTypeIndex: 5 Line: [2023-06-29 19:16:43]  (c) Copyright 2012-2023 Enjoy-Digital
+LineType: 0 LineTypeIndex: 6 Line: [2023-06-29 19:16:43]  (c) Copyright 2007-2015 M-Labs
+LineType: 0 LineTypeIndex: 7 Line: [2023-06-29 19:16:43]  BIOS built on Jun 26 2023 13:54:09
+LineType: 0 LineTypeIndex: 8 Line: [2023-06-29 19:16:43]  BIOS CRC passed (df9f327e)
+LineType: 0 LineTypeIndex: 9 Line: [2023-06-29 19:16:43]  LiteX git sha1: f1da8a0c
+LineType: 0 LineTypeIndex: 10 Line: [2023-06-29 19:16:43] --=============== [1mSoC[0m ==================--
+LineType: 0 LineTypeIndex: 11 Line: [2023-06-29 19:16:43] [1mCPU[0m:		VexRiscv @ 75MHz
+LineType: 0 LineTypeIndex: 12 Line: [2023-06-29 19:16:43] [1mBUS[0m:		WISHBONE 32-bit @ 4GiB
+LineType: 0 LineTypeIndex: 13 Line: [2023-06-29 19:16:43] [1mCSR[0m:		32-bit data
+LineType: 0 LineTypeIndex: 14 Line: [2023-06-29 19:16:43] [1mROM[0m:		128.0KiB
+LineType: 0 LineTypeIndex: 15 Line: [2023-06-29 19:16:43] [1mSRAM[0m:		8.0KiB
+LineType: 0 LineTypeIndex: 16 Line: [2023-06-29 19:16:43] [1mL2[0m:		8.0KiB
+LineType: 0 LineTypeIndex: 17 Line: [2023-06-29 19:16:43] [1mSDRAM[0m:		128.0MiB 16-bit @ 300MT/s (CL-3 CWL-2)
+LineType: 0 LineTypeIndex: 19 Line: [2023-06-29 19:16:43] [1mMAIN-RAM[0m:	128.0MiB
+LineType: 0 LineTypeIndex: 20 Line: [2023-06-29 19:16:43] --========== [1mInitialization[0m ============--
+LineType: 0 LineTypeIndex: 21 Line: [2023-06-29 19:16:43] Initializing SDRAM @0x40000000...
+LineType: 0 LineTypeIndex: 22 Line: [2023-06-29 19:16:43] Switching SDRAM to software control.
+LineType: 0 LineTypeIndex: 25 Line: [2023-06-29 19:16:43] Read leveling:
+LineType: 0 LineTypeIndex: 26 Line: [2023-06-29 19:16:43]   m0, b00: |00000000000000000000000000000000| delays: -
+LineType: 0 LineTypeIndex: 26 Line: [2023-06-29 19:16:43]   m0, b01: |00000000000000000000000000000000| delays: -
+LineType: 0 LineTypeIndex: 26 Line: [2023-06-29 19:16:43]   m0, b02: |11111111111000000000000000000000| delays: 05+-05
+LineType: 0 LineTypeIndex: 26 Line: [2023-06-29 19:16:43]   m0, b03: |00000000000000111111111111111111| delays: 22+-08
+LineType: 0 LineTypeIndex: 26 Line: [2023-06-29 19:16:43]   m0, b04: |00000000000000000000000000000000| delays: -
+LineType: 0 LineTypeIndex: 26 Line: [2023-06-29 19:16:43]   m0, b05: |00000000000000000000000000000000| delays: -
+LineType: 0 LineTypeIndex: 26 Line: [2023-06-29 19:16:43]   m0, b06: |00000000000000000000000000000000| delays: -
+LineType: 0 LineTypeIndex: 26 Line: [2023-06-29 19:16:43]   m0, b07: |00000000000000000000000000000000| delays: -
+LineType: 0 LineTypeIndex: 27 Line: [2023-06-29 19:16:43]   best: m0, b03 delays: 22+-08
+LineType: 0 LineTypeIndex: 26 Line: [2023-06-29 19:16:43]   m1, b00: |00000000000000000000000000000000| delays: -
+LineType: 0 LineTypeIndex: 26 Line: [2023-06-29 19:16:43]   m1, b01: |00000000000000000000000000000000| delays: -
+LineType: 0 LineTypeIndex: 26 Line: [2023-06-29 19:16:43]   m1, b02: |11111111111000000000000000000000| delays: 05+-05
+LineType: 0 LineTypeIndex: 26 Line: [2023-06-29 19:16:43]   m1, b03: |00000000000000111111111111111111| delays: 22+-08
+LineType: 0 LineTypeIndex: 26 Line: [2023-06-29 19:16:43]   m1, b04: |00000000000000000000000000000000| delays: -
+LineType: 0 LineTypeIndex: 26 Line: [2023-06-29 19:16:43]   m1, b05: |00000000000000000000000000000000| delays: -
+LineType: 0 LineTypeIndex: 26 Line: [2023-06-29 19:16:43]   m1, b06: |00000000000000000000000000000000| delays: -
+LineType: 0 LineTypeIndex: 26 Line: [2023-06-29 19:16:43]   m1, b07: |00000000000000000000000000000000| delays: -
+LineType: 0 LineTypeIndex: 27 Line: [2023-06-29 19:16:43]   best: m1, b03 delays: 22+-08
+LineType: 0 LineTypeIndex: 28 Line: [2023-06-29 19:16:43] Switching SDRAM to hardware control.
+LineType: 0 LineTypeIndex: 29 Line: [2023-06-29 19:16:43] Memtest at 0x40000000 (2.0MiB)...
+LineType: 0 LineTypeIndex: 30 Line: [2023-06-29 19:16:43]   Write: 0x40000000-0x40000000 0B
+LineType: 0 LineTypeIndex: 30 Line: [2023-06-29 19:16:43]   Write: 0x40000000-0x40020000 128.0KiB
+LineType: 0 LineTypeIndex: 30 Line: [2023-06-29 19:16:43]   Write: 0x40000000-0x40040000 256.0KiB
+LineType: 0 LineTypeIndex: 30 Line: [2023-06-29 19:16:43]   Write: 0x40000000-0x40060000 384.0KiB
+LineType: 0 LineTypeIndex: 30 Line: [2023-06-29 19:16:44]   Write: 0x40000000-0x40080000 512.0KiB
+LineType: 0 LineTypeIndex: 30 Line: [2023-06-29 19:16:44]   Write: 0x40000000-0x400a0000 640.0KiB
+LineType: 0 LineTypeIndex: 30 Line: [2023-06-29 19:16:44]   Write: 0x40000000-0x400c0000 768.0KiB
+LineType: 0 LineTypeIndex: 30 Line: [2023-06-29 19:16:44]   Write: 0x40000000-0x400e0000 896.0KiB
+LineType: 0 LineTypeIndex: 30 Line: [2023-06-29 19:16:44]   Write: 0x40000000-0x40100000 1.0MiB
+LineType: 0 LineTypeIndex: 30 Line: [2023-06-29 19:16:44]   Write: 0x40000000-0x40120000 1.1MiB
+LineType: 0 LineTypeIndex: 30 Line: [2023-06-29 19:16:44]   Write: 0x40000000-0x40140000 1.2MiB
+LineType: 0 LineTypeIndex: 30 Line: [2023-06-29 19:16:44]   Write: 0x40000000-0x40160000 1.3MiB
+LineType: 0 LineTypeIndex: 30 Line: [2023-06-29 19:16:44]   Write: 0x40000000-0x40180000 1.5MiB
+LineType: 0 LineTypeIndex: 30 Line: [2023-06-29 19:16:44]   Write: 0x40000000-0x401a0000 1.6MiB
+LineType: 0 LineTypeIndex: 30 Line: [2023-06-29 19:16:44]   Write: 0x40000000-0x401c0000 1.7MiB
+LineType: 0 LineTypeIndex: 30 Line: [2023-06-29 19:16:44]   Write: 0x40000000-0x401e0000 1.8MiB
+LineType: 0 LineTypeIndex: 30 Line: [2023-06-29 19:16:44]   Write: 0x40000000-0x40200000 2.0MiB
+LineType: 0 LineTypeIndex: 31 Line: [2023-06-29 19:16:44]    Read: 0x40000000-0x40000000 0B
+LineType: 0 LineTypeIndex: 31 Line: [2023-06-29 19:16:44]    Read: 0x40000000-0x40020000 128.0KiB
+LineType: 0 LineTypeIndex: 31 Line: [2023-06-29 19:16:44]    Read: 0x40000000-0x40040000 256.0KiB
+LineType: 0 LineTypeIndex: 31 Line: [2023-06-29 19:16:44]    Read: 0x40000000-0x40060000 384.0KiB
+LineType: 0 LineTypeIndex: 31 Line: [2023-06-29 19:16:44]    Read: 0x40000000-0x40080000 512.0KiB
+LineType: 0 LineTypeIndex: 31 Line: [2023-06-29 19:16:44]    Read: 0x40000000-0x400a0000 640.0KiB
+LineType: 0 LineTypeIndex: 31 Line: [2023-06-29 19:16:44]    Read: 0x40000000-0x400c0000 768.0KiB
+LineType: 0 LineTypeIndex: 31 Line: [2023-06-29 19:16:44]    Read: 0x40000000-0x400e0000 896.0KiB
+LineType: 0 LineTypeIndex: 31 Line: [2023-06-29 19:16:44]    Read: 0x40000000-0x40100000 1.0MiB
+LineType: 0 LineTypeIndex: 31 Line: [2023-06-29 19:16:44]    Read: 0x40000000-0x40120000 1.1MiB
+LineType: 0 LineTypeIndex: 31 Line: [2023-06-29 19:16:44]    Read: 0x40000000-0x40140000 1.2MiB
+LineType: 0 LineTypeIndex: 31 Line: [2023-06-29 19:16:44]    Read: 0x40000000-0x40160000 1.3MiB
+LineType: 0 LineTypeIndex: 31 Line: [2023-06-29 19:16:44]    Read: 0x40000000-0x40180000 1.5MiB
+LineType: 0 LineTypeIndex: 31 Line: [2023-06-29 19:16:44]    Read: 0x40000000-0x401a0000 1.6MiB
+LineType: 0 LineTypeIndex: 31 Line: [2023-06-29 19:16:44]    Read: 0x40000000-0x401c0000 1.7MiB
+LineType: 0 LineTypeIndex: 31 Line: [2023-06-29 19:16:44]    Read: 0x40000000-0x401e0000 1.8MiB
+LineType: 0 LineTypeIndex: 31 Line: [2023-06-29 19:16:44]    Read: 0x40000000-0x40200000 2.0MiB
+LineType: 0 LineTypeIndex: 32 Line: [2023-06-29 19:16:44] Memtest OK
+LineType: 0 LineTypeIndex: 33 Line: [2023-06-29 19:16:44] Memspeed at 0x40000000 (Sequential, 2.0MiB)...
+LineType: 0 LineTypeIndex: 34 Line: [2023-06-29 19:16:44]   Write speed: 25.3MiB/s
+LineType: 0 LineTypeIndex: 35 Line: [2023-06-29 19:16:44]    Read speed: 34.0MiB/s
+LineType: 0 LineTypeIndex: 36 Line: [2023-06-29 19:16:44] --============== [1mBoot[0m ==================--
+LineType: 0 LineTypeIndex: 37 Line: [2023-06-29 19:16:44] Booting from serial...
+LineType: 0 LineTypeIndex: 38 Line: [2023-06-29 19:16:44] Press Q or ESC to abort boot completely.
+LineType: 0 LineTypeIndex: 39 Line: [2023-06-29 19:16:44] sL5DdSMmkekro
+LineType: 0 LineTypeIndex: 40 Line: [2023-06-29 19:16:44] Timeout
+LineType: 0 LineTypeIndex: 41 Line: [2023-06-29 19:16:44] No boot medium found
+LineType: 0 LineTypeIndex: 42 Line: [2023-06-29 19:16:44] --============= [1mConsole[0m ================--
+LineType: 2 LineTypeIndex: 0 Line: [2023-06-29 19:16:44] [92;1mlitex[0m> sdram_bist_pat 2779096485
+LineType: 2 LineTypeIndex: 1 Line: [2023-06-29 19:16:44] sdram_bist_pat 2779096485
+LineType: 2 LineTypeIndex: 2 Line: [2023-06-29 19:16:44] Pattern set to: a5a5a5a5 a5a5a5a5
+LineType: 1 LineTypeIndex: 0 Line: [2023-06-29 19:16:44] [92;1mlitex[0m>
+LineType: 1 LineTypeIndex: 0 Line: [2023-06-29 19:16:44] [92;1mlitex[0m>
+LineType: 1 LineTypeIndex: 0 Line: [2023-06-29 19:16:44] [92;1mlitex[0m>
+LineType: 5 LineTypeIndex: 0 Line: [2023-06-29 19:16:44] [92;1mlitex[0m> sdram_bist_writer 0 268435455
+LineType: 5 LineTypeIndex: 1 Line: [2023-06-29 19:16:44] sdram_bist_writer 0 268435455
+LineType: 5 LineTypeIndex: 6 Line: [2023-06-29 19:16:44] DRAM controller has address width 24, data width 64 in bits
+LineType: 5 LineTypeIndex: 4 Line: [2023-06-29 19:16:45] Writing from address 0 to address ffffff ...Done
+LineType: 5 LineTypeIndex: 7 Line: [2023-06-29 19:16:45]  WRITE TICKS   READ TICKS TOTAL WRITES  TOTAL READS  WR-SPEED(MiB/s)  RD-SPEED(MiB/s)      ADDRESSES TESTED     ERRORS
+LineType: 5 LineTypeIndex: 8 Line: [2023-06-29 19:16:45]     18164123            0     16777216            0              524                0   0x0000000-0x0ffffff          0
+LineType: 5 LineTypeIndex: 2 Line: [2023-06-29 19:16:45] [92;1mlitex[0m> sdram_bist_reader 0 268435455 1000
+LineType: 5 LineTypeIndex: 3 Line: [2023-06-29 19:16:46] sdram_bist_reader 0 268435455 1000
+LineType: 5 LineTypeIndex: 6 Line: [2023-06-29 19:16:46] DRAM controller has address width 24, data width 64 in bits
+LineType: 5 LineTypeIndex: 5 Line: [2023-06-29 19:16:46] Reading from address 0 to address ffffff
+LineType: 6 LineTypeIndex: 0 Line: [2023-06-29 19:16:46] Error address range: 0x44a67-0xdf1440, Num Errors: 3, Data expected:
+LineType: 6 LineTypeIndex: 1 Line: [2023-06-29 19:16:46] a5a5a5a5 a5a5a5a5
+LineType: 6 LineTypeIndex: 2 Line: [2023-06-29 19:16:46]    ADDRESS    DATA
+LineType: 6 LineTypeIndex: 3 Line: [2023-06-29 19:16:46]  0x0044a67:  a5a5a5a5 a5a5a5b5
+LineType: 6 LineTypeIndex: 3 Line: [2023-06-29 19:16:46]  0x06d2819:  a5a5a5a5 a5a585a5
+LineType: 6 LineTypeIndex: 3 Line: [2023-06-29 19:16:47]  0x0df1440:  a5a5a5a5 a5a5a5a7
+LineType: 5 LineTypeIndex: 7 Line: [2023-06-29 19:16:47]  WRITE TICKS   READ TICKS TOTAL WRITES  TOTAL READS  WR-SPEED(MiB/s)  RD-SPEED(MiB/s)      ADDRESSES TESTED     ERRORS
+LineType: 6 LineTypeIndex: 4 Line: [2023-06-29 19:16:47]            0     17844353            0     16777216                0              534   0x0000000-0x0ffffff          3
+LineType: 5 LineTypeIndex: 0 Line: [2023-06-29 19:16:47] [92;1mlitex[0m> sdram_bist_writer 0 268435455
+LineType: 5 LineTypeIndex: 1 Line: [2023-06-29 19:16:47] sdram_bist_writer 0 268435455
+LineType: 5 LineTypeIndex: 6 Line: [2023-06-29 19:16:47] DRAM controller has address width 24, data width 64 in bits
+LineType: 5 LineTypeIndex: 4 Line: [2023-06-29 19:16:48] Writing from address 0 to address ffffff ...Done
+LineType: 5 LineTypeIndex: 7 Line: [2023-06-29 19:16:48]  WRITE TICKS   READ TICKS TOTAL WRITES  TOTAL READS  WR-SPEED(MiB/s)  RD-SPEED(MiB/s)      ADDRESSES TESTED     ERRORS
+LineType: 5 LineTypeIndex: 8 Line: [2023-06-29 19:16:48]     18164115            0     16777216            0              524                0   0x0000000-0x0ffffff          0
+LineType: 5 LineTypeIndex: 2 Line: [2023-06-29 19:16:48] [92;1mlitex[0m> sdram_bist_reader 0 268435455 1000
+LineType: 5 LineTypeIndex: 3 Line: [2023-06-29 19:16:49] sdram_bist_reader 0 268435455 1000
+LineType: 5 LineTypeIndex: 6 Line: [2023-06-29 19:16:49] DRAM controller has address width 24, data width 64 in bits
+LineType: 5 LineTypeIndex: 5 Line: [2023-06-29 19:16:49] Reading from address 0 to address ffffff
+LineType: 6 LineTypeIndex: 0 Line: [2023-06-29 19:16:49] Error address range: 0x44a67-0xdf1440, Num Errors: 3, Data expected:
+LineType: 6 LineTypeIndex: 1 Line: [2023-06-29 19:16:49] a5a5a5a5 a5a5a5a5
+LineType: 6 LineTypeIndex: 2 Line: [2023-06-29 19:16:49]    ADDRESS    DATA
+LineType: 6 LineTypeIndex: 3 Line: [2023-06-29 19:16:49]  0x0044a67:  a5a5a5a5 a5a5a5b5
+LineType: 6 LineTypeIndex: 3 Line: [2023-06-29 19:16:49]  0x06d2819:  a5a5a5a5 a5a585a5
+LineType: 6 LineTypeIndex: 3 Line: [2023-06-29 19:16:50]  0x0df1440:  a5a5a5a5 a5a5a5a7
+LineType: 5 LineTypeIndex: 7 Line: [2023-06-29 19:16:50]  WRITE TICKS   READ TICKS TOTAL WRITES  TOTAL READS  WR-SPEED(MiB/s)  RD-SPEED(MiB/s)      ADDRESSES TESTED     ERRORS
+LineType: 6 LineTypeIndex: 4 Line: [2023-06-29 19:16:50]            0     17844334            0     16777216                0              534   0x0000000-0x0ffffff          3
+LineType: 5 LineTypeIndex: 0 Line: [2023-06-29 19:16:50] [92;1mlitex[0m> sdram_bist_writer 0 268435455
+LineType: 5 LineTypeIndex: 1 Line: [2023-06-29 19:16:50] sdram_bist_writer 0 268435455
+LineType: 5 LineTypeIndex: 6 Line: [2023-06-29 19:16:50] DRAM controller has address width 24, data width 64 in bits
+LineType: 5 LineTypeIndex: 4 Line: [2023-06-29 19:16:51] Writing from address 0 to address ffffff ...Done
+LineType: 5 LineTypeIndex: 7 Line: [2023-06-29 19:16:51]  WRITE TICKS   READ TICKS TOTAL WRITES  TOTAL READS  WR-SPEED(MiB/s)  RD-SPEED(MiB/s)      ADDRESSES TESTED     ERRORS
+LineType: 5 LineTypeIndex: 8 Line: [2023-06-29 19:16:51]     18164115            0     16777216            0              524                0   0x0000000-0x0ffffff          0
+LineType: 5 LineTypeIndex: 2 Line: [2023-06-29 19:16:51] [92;1mlitex[0m> sdram_bist_reader 0 268435455 1000
+LineType: 5 LineTypeIndex: 3 Line: [2023-06-29 19:16:52] sdram_bist_reader 0 268435455 1000
+LineType: 5 LineTypeIndex: 6 Line: [2023-06-29 19:16:52] DRAM controller has address width 24, data width 64 in bits
+LineType: 5 LineTypeIndex: 5 Line: [2023-06-29 19:16:52] Reading from address 0 to address ffffff
+LineType: 6 LineTypeIndex: 0 Line: [2023-06-29 19:16:52] Error address range: 0x44a67-0xdf1440, Num Errors: 3, Data expected:
+LineType: 6 LineTypeIndex: 1 Line: [2023-06-29 19:16:52] a5a5a5a5 a5a5a5a5
+LineType: 6 LineTypeIndex: 2 Line: [2023-06-29 19:16:52]    ADDRESS    DATA
+LineType: 6 LineTypeIndex: 3 Line: [2023-06-29 19:16:52]  0x0044a67:  a5a5a5a5 a5a5a5b5
+LineType: 6 LineTypeIndex: 3 Line: [2023-06-29 19:16:52]  0x06d2819:  a5a5a5a5 a5a585a5
+LineType: 6 LineTypeIndex: 3 Line: [2023-06-29 19:16:54]  0x0df1440:  a5a5a5a5 a5a5a5a7
+LineType: 5 LineTypeIndex: 7 Line: [2023-06-29 19:16:54]  WRITE TICKS   READ TICKS TOTAL WRITES  TOTAL READS  WR-SPEED(MiB/s)  RD-SPEED(MiB/s)      ADDRESSES TESTED     ERRORS
+LineType: 6 LineTypeIndex: 4 Line: [2023-06-29 19:16:54]            0     17844352            0     16777216                0              534   0x0000000-0x0ffffff          3
+LineType: 1 LineTypeIndex: 0 Line: [2023-06-29 19:16:54] [92;1mlitex[0m>
+LineType: 1 LineTypeIndex: 0 Line: [2023-06-29 19:16:54] [92;1mlitex[0m>
+LineType: 1 LineTypeIndex: 0 Line: [2023-06-29 19:16:54] [92;1mlitex[0m>
+LineType: 1 LineTypeIndex: 0 Line: [2023-06-29 19:16:54] [92;1mlitex[0m>
+LineType: 1 LineTypeIndex: 0 Line: [2023-06-29 19:16:54] [92;1mlitex[0m>
+LineType: 1 LineTypeIndex: 0 Line: [2023-06-29 19:16:54] [92;1mlitex[0m>
+LineType: 1 LineTypeIndex: 0 Line: [2023-06-29 19:16:54] [92;1mlitex[0m>
+LineType: 1 LineTypeIndex: 0 Line: [2023-06-29 19:16:55] [92;1mlitex[0m>
+LineType: 1 LineTypeIndex: 0 Line: [2023-06-29 19:16:55] [92;1mlitex[0m>
+LineType: 1 LineTypeIndex: 0 Line: [2023-06-29 19:16:55] [92;1mlitex[0m>
+LineType: 2 LineTypeIndex: 0 Line: [2023-06-29 19:16:55] [92;1mlitex[0m> sdram_bist_pat 2779096485
+LineType: 1 LineTypeIndex: 0 Line: [2023-06-29 19:16:55] [92;1mlitex[0m>
+LineType: 1 LineTypeIndex: 0 Line: [2023-06-29 19:16:55] [92;1mlitex[0m>
+LineType: 7 LineTypeIndex: -1 Line: [2023-06-29 19:16:55] [92;1mlitex[0m>sdram_bist_writer 0 268435455
+LineType: 7 LineTypeIndex: -1 Line: [2023-06-29 19:16:55]  sdram_bist_pat 2779096485
+LineType: 2 LineTypeIndex: 2 Line: [2023-06-29 19:16:55] Pattern set to: a5a5a5a5 a5a5a5a5
+LineType: 1 LineTypeIndex: 0 Line: [2023-06-29 19:16:55] [92;1mlitex[0m>
+LineType: 1 LineTypeIndex: 0 Line: [2023-06-29 19:16:55] [92;1mlitex[0m>
+LineType: 1 LineTypeIndex: 0 Line: [2023-06-29 19:16:55] [92;1mlitex[0m>
+LineType: 1 LineTypeIndex: 0 Line: [2023-06-29 19:16:55] [92;1mlitex[0m>
+LineType: 1 LineTypeIndex: 0 Line: [2023-06-29 19:16:55] [92;1mlitex[0m>
+LineType: 7 LineTypeIndex: -1 Line: [2023-06-29 19:16:55] [92;1mlitex[0msdram_bist_writer 0 268435455
+LineType: 7 LineTypeIndex: -1 Line: [2023-06-29 19:16:55] > sdram_bist_writer 0 268435455
+LineType: 5 LineTypeIndex: 6 Line: [2023-06-29 19:16:55] DRAM controller has address width 24, data width 64 in bits
+LineType: 7 LineTypeIndex: -1 Line: [2023-06-29 19:16:55] Writing from address 0 to address ffffff ...sdram_bist_writer 0 268435455
+LineType: 7 LineTypeIndex: -1 Line: [2023-06-29 19:16:55] Done
+LineType: 5 LineTypeIndex: 7 Line: [2023-06-29 19:16:55]  WRITE TICKS   READ TICKS TOTAL WRITES  TOTAL READS  WR-SPEED(MiB/s)  RD-SPEED(MiB/s)      ADDRESSES TESTED     ERRORS
+LineType: 5 LineTypeIndex: 8 Line: [2023-06-29 19:16:55]     18164117            0     16777216            0              524                0   0x0000000-0x0ffffff          0
+LineType: 5 LineTypeIndex: 0 Line: [2023-06-29 19:16:55] [92;1mlitex[0m> sdram_bist_writer 0 268435455
+LineType: 7 LineTypeIndex: -1 Line: [2023-06-29 19:16:55] DRAM controller has address width 24, data width 64 sdram_bist_reader 0 268435455 1000
+LineType: 7 LineTypeIndex: -1 Line: [2023-06-29 19:16:56] in bits
+LineType: 5 LineTypeIndex: 4 Line: [2023-06-29 19:16:56] Writing from address 0 to address ffffff ...Done
+LineType: 5 LineTypeIndex: 7 Line: [2023-06-29 19:16:56]  WRITE TICKS   READ TICKS TOTAL WRITES  TOTAL READS  WR-SPEED(MiB/s)  RD-SPEED(MiB/s)      ADDRESSES TESTED     ERRORS
+LineType: 5 LineTypeIndex: 8 Line: [2023-06-29 19:16:56]     18164112            0     16777216            0              524                0   0x0000000-0x0ffffff          0
+LineType: 5 LineTypeIndex: 0 Line: [2023-06-29 19:16:56] [92;1mlitex[0m> sdram_bist_writer 0 268435455
+LineType: 5 LineTypeIndex: 6 Line: [2023-06-29 19:16:56] DRAM controller has address width 24, data width 64 in bits
+LineType: 5 LineTypeIndex: 4 Line: [2023-06-29 19:16:56] Writing from address 0 to address ffffff ...Done
+LineType: 5 LineTypeIndex: 7 Line: [2023-06-29 19:16:56]  WRITE TICKS   READ TICKS TOTAL WRITES  TOTAL READS  WR-SPEED(MiB/s)  RD-SPEED(MiB/s)      ADDRESSES TESTED     ERRORS
+LineType: 5 LineTypeIndex: 8 Line: [2023-06-29 19:16:56]     18164112            0     16777216            0              524                0   0x0000000-0x0ffffff          0
+LineType: 5 LineTypeIndex: 2 Line: [2023-06-29 19:16:56] [92;1mlitex[0m> sdram_bist_reader 0 268435455 1000
+LineType: 5 LineTypeIndex: 6 Line: [2023-06-29 19:16:56] DRAM controller has address width 24, data width 64 in bits
+LineType: 5 LineTypeIndex: 5 Line: [2023-06-29 19:16:56] Reading from address 0 to address ffffff
+LineType: 6 LineTypeIndex: 0 Line: [2023-06-29 19:16:56] Error address range: 0x44a67-0xdf1440, Num Errors: 3, Data expected:
+LineType: 6 LineTypeIndex: 1 Line: [2023-06-29 19:16:56] a5a5a5a5 a5a5a5a5
+LineType: 6 LineTypeIndex: 2 Line: [2023-06-29 19:16:56]    ADDRESS    DATA
+LineType: 6 LineTypeIndex: 3 Line: [2023-06-29 19:16:56]  0x0044a67:  a5a5a5a5 a5a5a5b5
+
+
+
+[ 6 / 29 /2023 at  19 : 16 : 46 ]
+
+Error group count:  1
+
+ Num Errors: 3 
+
+Error New:    0x0044a67:  a5a5a5a5 a5a5a5b5
+Error New:    0x06d2819:  a5a5a5a5 a5a585a5
+Error New:    0x0df1440:  a5a5a5a5 a5a5a5a7
+
+
+
+[ 6 / 29 /2023 at  19 : 16 : 49 ]
+
+Error group count:  2
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  19 : 16 : 52 ]
+
+Error group count:  3
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  19 : 16 : 56 ]
+
+Error group count:  4
+
+ Num Errors: 3 
+
+Error Gone:    0x06d2819:  a5a5a5a5 a5a585a5
+Error Gone:    0x0df1440:  a5a5a5a5 a5a5a5a7
+
+Reached end of file with error count
+
+
+###################################################################################################################################################################
+
+
+Printing Errors found and their frequencies: 
+| Frequency    | Error
+|            4 |   0x0044a67:  a5a5a5a5 a5a5a5b5
+|            3 |   0x06d2819:  a5a5a5a5 a5a585a5
+|            3 |   0x0df1440:  a5a5a5a5 a5a5a5a7
+
+###################################################################################################################################################################
+
+
+Printing Unmatched BIST lines:
+
+[2023-06-29 19:16:37] 
+
+[2023-06-29 19:16:55] [92;1mlitex[0m>sdram_bist_writer 0 268435455
+
+[2023-06-29 19:16:55]  sdram_bist_pat 2779096485
+
+[2023-06-29 19:16:55] [92;1mlitex[0msdram_bist_writer 0 268435455
+
+[2023-06-29 19:16:55] > sdram_bist_writer 0 268435455
+
+[2023-06-29 19:16:55] Writing from address 0 to address ffffff ...sdram_bist_writer 0 268435455
+
+[2023-06-29 19:16:55] Done
+
+[2023-06-29 19:16:55] DRAM controller has address width 24, data width 64 sdram_bist_reader 0 268435455 1000
+
+[2023-06-29 19:16:56] in bits
+

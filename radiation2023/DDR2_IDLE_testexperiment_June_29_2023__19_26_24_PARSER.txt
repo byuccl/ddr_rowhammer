@@ -1,0 +1,103 @@
+
+Reading File:  DDR2_IDLE_testexperiment_June_29_2023__19_26_24_UART.log
+Number of lines in uart file:  207
+208
+Printing Dynamic Errors
+
+
+
+[ 6 / 29 /2023 at  19 : 26 : 45 ]
+
+Error group count:  1
+
+ Num Errors: 3 
+
+Error New:    0x0044a67:  a5a5a5a5 a5a5a5b5
+Error New:    0x06d2819:  a5a5a5a5 a5a585a5
+Error New:    0x0df1440:  a5a5a5a5 a5a5a5a7
+
+
+
+[ 6 / 29 /2023 at  19 : 31 : 47 ]
+
+Error group count:  2
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  19 : 36 : 50 ]
+
+Error group count:  3
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  19 : 41 : 53 ]
+
+Error group count:  4
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  19 : 46 : 56 ]
+
+Error group count:  5
+
+ Num Errors: 4 
+
+Error New:    0x0e58519:  a5e5a5a5 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  19 : 47 : 0 ]
+
+Error group count:  6
+
+ Num Errors: 3 
+
+Error Gone:    0x06d2819:  a5a5a5a5 a5a585a5
+Error Gone:    0x0df1440:  a5a5a5a5 a5a5a5a7
+Error Gone:    0x0e58519:  a5e5a5a5 a5a5a5a5
+
+Reached end of file with error count
+
+
+###################################################################################################################################################################
+
+
+Printing Errors found and their frequencies: 
+| Frequency    | Error
+|            6 |   0x0044a67:  a5a5a5a5 a5a5a5b5
+|            5 |   0x06d2819:  a5a5a5a5 a5a585a5
+|            5 |   0x0df1440:  a5a5a5a5 a5a5a5a7
+|            1 |   0x0e58519:  a5e5a5a5 a5a5a5a5
+
+###################################################################################################################################################################
+
+
+Printing Unmatched BIST lines:
+
+[2023-06-29 19:26:36] 
+
+[2023-06-29 19:46:59] [92;1mlsdram_bist_writer 0 268435455
+
+[2023-06-29 19:46:59] itex[0m> sdram_bist_pat 2779096485
+
+[2023-06-29 19:46:59] [92;1msdram_bist_writer 0 268435455
+
+[2023-06-29 19:46:59] litex[0m> sdram_bist_writer 0 268435455
+
+[2023-06-29 19:46:59] Writing from address 0 to address ffffff ...sdram_bist_writer 0 268435455
+
+[2023-06-29 19:46:59] Done
+
+[2023-06-29 19:46:59] DRAM controller has address width 24, data wsdram_bist_reader 0 268435455 1000
+
+[2023-06-29 19:47:00] idth 64 in bits
+
