@@ -171,7 +171,8 @@ Events:
   - A UART timeout occured at 23:17:28. Amidst a few unicode errors, the writer stopped midway outputting a line of data to summarize the output. The board was repowered.  
   - A UART timeout occured at 23:33:27. After sending the reading command, a few lines output, but it appears the reader didn't run. The board was repowered.
 - After the board repowered at 23:33:27, bizarre behavior happened up until about 00:02:41, when another UART timeout occured and the board was again repowered.
-  - First, after the writer ran once, the reader counted 
+  - At first, the writer runs once normally, and the reader ran and counted 3 data errors, but while the BIST was displaying errors, the BIST output many more erroneous addresses above the 3 originally recorded. The error count for the next BIST reads climbs up to 268435456, which isn't possible as there are only 16777215 total addresses in the DRAM. There is some register corruption going on here. The data output at these addresses mostly matched what we expected in the beginning, although more than 3 do not. I believe one of the problems is that the register holding the data to match the data read back is going bad here,
+  - Second, at this point, our script starts sending reading commands every 1-3 seconds
 
 ### Continuous Test 17 ( 2023-07-01 07:54:00 - 2023-07-01 07:55:32 )
 
