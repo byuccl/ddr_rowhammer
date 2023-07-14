@@ -1,0 +1,555 @@
+
+Reading File:  ./chipir2023/DDR3_IDLE_testexperiment_June_29_2023__08_54_59_UART.log
+Number of lines in uart file:  688
+689
+Printing Dynamic Errors
+
+
+
+[ 6 / 29 /2023 at  9 : 21 : 9 ]
+
+Error group count:  1
+
+ Num Errors: 33554432 
+
+Error New:    0x0000000:         0        0        0        0
+Error New:    0x0000001:         0        0        0        0
+Error New:    0x0000002:         0        0        0        0
+Error New:    0x0000003:         0        0        0        0
+Error New:    0x0000004:         0        0        0        0
+Error New:    0x0000005:         0        0        0        0
+Error New:    0x0000006:         0        0        0        0
+Error New:    0x0000007:         0        0        0        0
+Error New:    0x0000008:         0        0        0        0
+Error New:    0x0000009:         0        0        0        0
+Error New:    0x000000a:         0        0        0        0
+Error New:    0x000000b:         0        0        0        0
+Error New:    0x000000c:         0        0        0        0
+Error New:    0x000000d:         0        0        0        0
+Error New:    0x000000e:         0        0        0        0
+Error New:    0x000000f:         0        0        0        0
+Error New:    0x0000010:         0        0        0        0
+Error New:    0x0000011:         0        0        0        0
+Error New:    0x0000012:         0        0        0        0
+Error New:    0x0000013:         0        0        0        0
+Error New:    0x0000014:         0        0        0        0
+Error New:    0x0000015:         0        0        0        0
+Error New:    0x0000016:         0        0        0        0
+Error New:    0x0000017:         0        0        0        0
+Error New:    0x0000018:         0        0        0        0
+Error New:    0x0000019:         0        0        0        0
+Error New:    0x000001a:         0        0        0        0
+Error New:    0x000001b:         0        0        0        0
+
+Unexpected data printed or Timeout occured
+
+
+
+
+[ 6 / 29 /2023 at  9 : 21 : 9 ]
+
+Error group count:  2
+
+Error count not displayed, type: 6 index: 3 line: [2023-06-29 09:21:09]  0x000001b:         0        0        0        0 
+
+
+Error New:    0x000001d:         0        0        0        0
+Error New:    0x000001e:         0        0        0        0
+Error New:    0x000001f:         0        0        0        0
+Error New:    0x0000020:         0        0        0        0
+Error New:    0x0000021:         0        0        0        0
+Error New:    0x0000022:         0        0        0        0
+Error New:    0x0000023:         0        0        0        0
+Error New:    0x0000024:         0        0        0        0
+Error New:    0x0000025:         0        0        0        0
+Error New:    0x0000026:         0        0        0        0
+Error New:    0x0000027:         0        0        0        0
+Error New:    0x0000028:         0        0        0        0
+Error New:    0x0000029:         0        0        0        0
+Error New:    0x000002a:         0        0        0        0
+Error New:    0x000002b:         0        0        0        0
+Error New:    0x000002c:         0        0        0        0
+Error New:    0x000002d:         0        0        0        0
+Error New:    0x000002e:         0        0        0        0
+Error New:    0x000002f:         0        0        0        0
+Error New:    0x0000030:         0        0        0        0
+Error New:    0x0000031:         0        0        0        0
+Error New:    0x0000032:         0        0        0        0
+Error New:    0x0000033:         0        0        0        0
+Error New:    0x0000034:         0        0        0        0
+Error New:    0x0000035:         0        0        0        0
+Error New:    0x0000036:         0        0        0        0
+Error New:    0x0000037:         0        0        0        0
+Error New:    0x0000038:         0        0        0        0
+Error New:    0x0000039:         0        0        0        0
+Error New:    0x000003a:         0        0        0        0
+Error New:    0x000003b:         0        0        0        0
+Error New:    0x000003c:         0        0        0        0
+Error New:    0x000003d:         0        0        0        0
+Error New:    0x000003e:         0        0        0        0
+Error New:    0x000003f:         0        0        0        0
+Error New:    0x0000040:         0        0        0        0
+Error New:    0x0000041:         0        0        0        0
+Error New:    0x0000042:         0        0        0        0
+Error New:    0x0000043:         0        0        0        0
+Error New:    0x0000044:         0        0        0        0
+Error New:    0x0000045:         0        0        0        0
+Error New:    0x0000046:         0        0        0        0
+Error New:    0x0000047:         0        0        0        0
+Error New:    0x0000048:         0        0        0        0
+Error New:    0x0000049:         0        0        0        0
+Error New:    0x000004a:         0        0        0        0
+Error New:    0x000004b:         0        0        0        0
+Error New:    0x000004c:         0        0        0        0
+Error New:    0x000004d:         0        0        0        0
+Error New:    0x000004e:         0        0        0        0
+Error New:    0x000004f:         0        0        0        0
+Error New:    0x0000050:         0        0        0        0
+Error New:    0x0000051:         0        0        0        0
+Error New:    0x0000052:         0        0        0        0
+Error New:    0x0000053:         0        0        0        0
+Error New:    0x0000054:         0        0        0        0
+Error New:    0x0000055:         0        0        0        0
+Error New:    0x0000056:         0        0        0        0
+Error New:    0x0000057:         0        0        0        0
+Error New:    0x0000058:         0        0        0        0
+Error New:    0x0000059:         0        0        0        0
+Error New:    0x000005a:         0        0        0        0
+Error New:    0x000005b:         0        0        0        0
+Error New:    0x000005c:         0        0        0        0
+Error New:    0x000005d:         0        0        0        0
+Error New:    0x000005e:         0        0        0        0
+Error New:    0x000005f:         0        0        0        0
+Error New:    0x0000060:         0        0        0        0
+Error New:    0x0000061:         0        0        0        0
+Error New:    0x0000062:         0        0        0        0
+Error New:    0x0000063:         0        0        0        0
+Error New:    0x0000064:         0        0        0        0
+Error New:    0x0000065:         0        0        0        0
+Error New:    0x0000066:         0        0        0        0
+Error New:    0x0000067:         0        0        0        0
+Error New:    0x0000068:         0        0        0        0
+Error New:    0x0000069:         0        0        0        0
+Error New:    0x000006a:         0        0        0        0
+Error New:    0x000006b:         0        0        0        0
+Error New:    0x000006c:         0        0        0        0
+Error New:    0x000006d:         0        0        0        0
+Error New:    0x000006e:         0        0        0        0
+Error New:    0x000006f:         0        0        0        0
+Error New:    0x0000070:         0        0        0        0
+Error New:    0x0000071:         0        0        0        0
+Error New:    0x0000072:         0        0        0        0
+Error New:    0x0000073:         0        0        0        0
+Error New:    0x0000074:         0        0        0        0
+Error New:    0x0000075:         0        0        0        0
+Error New:    0x0000076:         0        0        0        0
+Error New:    0x0000077:         0        0        0        0
+Error New:    0x0000078:         0        0        0        0
+Error New:    0x0000079:         0        0        0        0
+Error New:    0x000007a:         0        0        0        0
+Error New:    0x000007b:         0        0        0        0
+Error New:    0x000007c:         0        0        0        0
+Error New:    0x000007d:         0        0        0        0
+Error New:    0x000007e:         0        0        0        0
+Error New:    0x000007f:         0        0        0        0
+Error New:    0x0000080:         0        0        0        0
+Error New:    0x0000081:         0        0        0        0
+Error New:    0x0000082:         0        0        0        0
+Error New:    0x0000083:         0        0        0        0
+Error New:    0x0000084:         0        0        0        0
+Error New:    0x0000085:         0        0        0        0
+Error Gone:    0x0000000:         0        0        0        0
+Error Gone:    0x0000001:         0        0        0        0
+Error Gone:    0x0000002:         0        0        0        0
+Error Gone:    0x0000003:         0        0        0        0
+Error Gone:    0x0000004:         0        0        0        0
+Error Gone:    0x0000005:         0        0        0        0
+Error Gone:    0x0000006:         0        0        0        0
+Error Gone:    0x0000007:         0        0        0        0
+Error Gone:    0x0000008:         0        0        0        0
+Error Gone:    0x0000009:         0        0        0        0
+Error Gone:    0x000000a:         0        0        0        0
+Error Gone:    0x000000b:         0        0        0        0
+Error Gone:    0x000000c:         0        0        0        0
+Error Gone:    0x000000d:         0        0        0        0
+Error Gone:    0x000000e:         0        0        0        0
+Error Gone:    0x000000f:         0        0        0        0
+Error Gone:    0x0000010:         0        0        0        0
+Error Gone:    0x0000011:         0        0        0        0
+Error Gone:    0x0000012:         0        0        0        0
+Error Gone:    0x0000013:         0        0        0        0
+Error Gone:    0x0000014:         0        0        0        0
+Error Gone:    0x0000015:         0        0        0        0
+Error Gone:    0x0000016:         0        0        0        0
+Error Gone:    0x0000017:         0        0        0        0
+Error Gone:    0x0000018:         0        0        0        0
+Error Gone:    0x0000019:         0        0        0        0
+Error Gone:    0x000001a:         0        0        0        0
+Error Gone:    0x000001b:         0        0        0        0
+
+Unexpected data printed or Timeout occured
+
+
+
+
+[ 6 / 29 /2023 at  9 : 26 : 10 ]
+
+Error group count:  3
+
+Error count not displayed, type: 6 index: 3 line: [2023-06-29 09:26:10]  0x0000085:         0        0        0        0 
+
+
+Error New:    0x0000088:         0        0        0        0
+Error New:    0x0000089:         0        0        0        0
+Error Gone:    0x000001d:         0        0        0        0
+Error Gone:    0x000001e:         0        0        0        0
+Error Gone:    0x000001f:         0        0        0        0
+Error Gone:    0x0000020:         0        0        0        0
+Error Gone:    0x0000021:         0        0        0        0
+Error Gone:    0x0000022:         0        0        0        0
+Error Gone:    0x0000023:         0        0        0        0
+Error Gone:    0x0000024:         0        0        0        0
+Error Gone:    0x0000025:         0        0        0        0
+Error Gone:    0x0000026:         0        0        0        0
+Error Gone:    0x0000027:         0        0        0        0
+Error Gone:    0x0000028:         0        0        0        0
+Error Gone:    0x0000029:         0        0        0        0
+Error Gone:    0x000002a:         0        0        0        0
+Error Gone:    0x000002b:         0        0        0        0
+Error Gone:    0x000002c:         0        0        0        0
+Error Gone:    0x000002d:         0        0        0        0
+Error Gone:    0x000002e:         0        0        0        0
+Error Gone:    0x000002f:         0        0        0        0
+Error Gone:    0x0000030:         0        0        0        0
+Error Gone:    0x0000031:         0        0        0        0
+Error Gone:    0x0000032:         0        0        0        0
+Error Gone:    0x0000033:         0        0        0        0
+Error Gone:    0x0000034:         0        0        0        0
+Error Gone:    0x0000035:         0        0        0        0
+Error Gone:    0x0000036:         0        0        0        0
+Error Gone:    0x0000037:         0        0        0        0
+Error Gone:    0x0000038:         0        0        0        0
+Error Gone:    0x0000039:         0        0        0        0
+Error Gone:    0x000003a:         0        0        0        0
+Error Gone:    0x000003b:         0        0        0        0
+Error Gone:    0x000003c:         0        0        0        0
+Error Gone:    0x000003d:         0        0        0        0
+Error Gone:    0x000003e:         0        0        0        0
+Error Gone:    0x000003f:         0        0        0        0
+Error Gone:    0x0000040:         0        0        0        0
+Error Gone:    0x0000041:         0        0        0        0
+Error Gone:    0x0000042:         0        0        0        0
+Error Gone:    0x0000043:         0        0        0        0
+Error Gone:    0x0000044:         0        0        0        0
+Error Gone:    0x0000045:         0        0        0        0
+Error Gone:    0x0000046:         0        0        0        0
+Error Gone:    0x0000047:         0        0        0        0
+Error Gone:    0x0000048:         0        0        0        0
+Error Gone:    0x0000049:         0        0        0        0
+Error Gone:    0x000004a:         0        0        0        0
+Error Gone:    0x000004b:         0        0        0        0
+Error Gone:    0x000004c:         0        0        0        0
+Error Gone:    0x000004d:         0        0        0        0
+Error Gone:    0x000004e:         0        0        0        0
+Error Gone:    0x000004f:         0        0        0        0
+Error Gone:    0x0000050:         0        0        0        0
+Error Gone:    0x0000051:         0        0        0        0
+Error Gone:    0x0000052:         0        0        0        0
+Error Gone:    0x0000053:         0        0        0        0
+Error Gone:    0x0000054:         0        0        0        0
+Error Gone:    0x0000055:         0        0        0        0
+Error Gone:    0x0000056:         0        0        0        0
+Error Gone:    0x0000057:         0        0        0        0
+Error Gone:    0x0000058:         0        0        0        0
+Error Gone:    0x0000059:         0        0        0        0
+Error Gone:    0x000005a:         0        0        0        0
+Error Gone:    0x000005b:         0        0        0        0
+Error Gone:    0x000005c:         0        0        0        0
+Error Gone:    0x000005d:         0        0        0        0
+Error Gone:    0x000005e:         0        0        0        0
+Error Gone:    0x000005f:         0        0        0        0
+Error Gone:    0x0000060:         0        0        0        0
+Error Gone:    0x0000061:         0        0        0        0
+Error Gone:    0x0000062:         0        0        0        0
+Error Gone:    0x0000063:         0        0        0        0
+Error Gone:    0x0000064:         0        0        0        0
+Error Gone:    0x0000065:         0        0        0        0
+Error Gone:    0x0000066:         0        0        0        0
+Error Gone:    0x0000067:         0        0        0        0
+Error Gone:    0x0000068:         0        0        0        0
+Error Gone:    0x0000069:         0        0        0        0
+Error Gone:    0x000006a:         0        0        0        0
+Error Gone:    0x000006b:         0        0        0        0
+Error Gone:    0x000006c:         0        0        0        0
+Error Gone:    0x000006d:         0        0        0        0
+Error Gone:    0x000006e:         0        0        0        0
+Error Gone:    0x000006f:         0        0        0        0
+Error Gone:    0x0000070:         0        0        0        0
+Error Gone:    0x0000071:         0        0        0        0
+Error Gone:    0x0000072:         0        0        0        0
+Error Gone:    0x0000073:         0        0        0        0
+Error Gone:    0x0000074:         0        0        0        0
+Error Gone:    0x0000075:         0        0        0        0
+Error Gone:    0x0000076:         0        0        0        0
+Error Gone:    0x0000077:         0        0        0        0
+Error Gone:    0x0000078:         0        0        0        0
+Error Gone:    0x0000079:         0        0        0        0
+Error Gone:    0x000007a:         0        0        0        0
+Error Gone:    0x000007b:         0        0        0        0
+Error Gone:    0x000007c:         0        0        0        0
+Error Gone:    0x000007d:         0        0        0        0
+Error Gone:    0x000007e:         0        0        0        0
+Error Gone:    0x000007f:         0        0        0        0
+Error Gone:    0x0000080:         0        0        0        0
+Error Gone:    0x0000081:         0        0        0        0
+Error Gone:    0x0000082:         0        0        0        0
+Error Gone:    0x0000083:         0        0        0        0
+Error Gone:    0x0000084:         0        0        0        0
+Error Gone:    0x0000085:         0        0        0        0
+
+Unexpected data printed or Timeout occured
+
+
+
+
+[ 6 / 29 /2023 at  9 : 27 : 22 ]
+
+All errors gone
+
+Error Gone:    0x0000088:         0        0        0        0
+Error Gone:    0x0000089:         0        0        0        0
+
+
+
+[ 6 / 29 /2023 at  9 : 37 : 24 ]
+
+Error group count:  4
+
+ Num Errors: 1 
+
+Error New:    0x0b9b551:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a7a5
+
+
+
+[ 6 / 29 /2023 at  9 : 37 : 26 ]
+
+All errors gone
+
+Error Gone:    0x0b9b551:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a7a5
+
+
+
+[ 6 / 29 /2023 at  9 : 42 : 27 ]
+
+Error group count:  5
+
+ Num Errors: 1 
+
+Error New:    0x0852ab4:  a5a5a7a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  9 : 42 : 28 ]
+
+All errors gone
+
+Error Gone:    0x0852ab4:  a5a5a7a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+
+###################################################################################################################################################################
+
+
+Printing Errors found and their frequencies: 
+| Frequency    | Error
+|            1 |   0x0000000:         0        0        0        0
+|            1 |   0x0000001:         0        0        0        0
+|            1 |   0x0000002:         0        0        0        0
+|            1 |   0x0000003:         0        0        0        0
+|            1 |   0x0000004:         0        0        0        0
+|            1 |   0x0000005:         0        0        0        0
+|            1 |   0x0000006:         0        0        0        0
+|            1 |   0x0000007:         0        0        0        0
+|            1 |   0x0000008:         0        0        0        0
+|            1 |   0x0000009:         0        0        0        0
+|            1 |   0x000000a:         0        0        0        0
+|            1 |   0x000000b:         0        0        0        0
+|            1 |   0x000000c:         0        0        0        0
+|            1 |   0x000000d:         0        0        0        0
+|            1 |   0x000000e:         0        0        0        0
+|            1 |   0x000000f:         0        0        0        0
+|            1 |   0x0000010:         0        0        0        0
+|            1 |   0x0000011:         0        0        0        0
+|            1 |   0x0000012:         0        0        0        0
+|            1 |   0x0000013:         0        0        0        0
+|            1 |   0x0000014:         0        0        0        0
+|            1 |   0x0000015:         0        0        0        0
+|            1 |   0x0000016:         0        0        0        0
+|            1 |   0x0000017:         0        0        0        0
+|            1 |   0x0000018:         0        0        0        0
+|            1 |   0x0000019:         0        0        0        0
+|            1 |   0x000001a:         0        0        0        0
+|            1 |   0x000001b:         0        0        0        0
+|            1 |   0x000001d:         0        0        0        0
+|            1 |   0x000001e:         0        0        0        0
+|            1 |   0x000001f:         0        0        0        0
+|            1 |   0x0000020:         0        0        0        0
+|            1 |   0x0000021:         0        0        0        0
+|            1 |   0x0000022:         0        0        0        0
+|            1 |   0x0000023:         0        0        0        0
+|            1 |   0x0000024:         0        0        0        0
+|            1 |   0x0000025:         0        0        0        0
+|            1 |   0x0000026:         0        0        0        0
+|            1 |   0x0000027:         0        0        0        0
+|            1 |   0x0000028:         0        0        0        0
+|            1 |   0x0000029:         0        0        0        0
+|            1 |   0x000002a:         0        0        0        0
+|            1 |   0x000002b:         0        0        0        0
+|            1 |   0x000002c:         0        0        0        0
+|            1 |   0x000002d:         0        0        0        0
+|            1 |   0x000002e:         0        0        0        0
+|            1 |   0x000002f:         0        0        0        0
+|            1 |   0x0000030:         0        0        0        0
+|            1 |   0x0000031:         0        0        0        0
+|            1 |   0x0000032:         0        0        0        0
+|            1 |   0x0000033:         0        0        0        0
+|            1 |   0x0000034:         0        0        0        0
+|            1 |   0x0000035:         0        0        0        0
+|            1 |   0x0000036:         0        0        0        0
+|            1 |   0x0000037:         0        0        0        0
+|            1 |   0x0000038:         0        0        0        0
+|            1 |   0x0000039:         0        0        0        0
+|            1 |   0x000003a:         0        0        0        0
+|            1 |   0x000003b:         0        0        0        0
+|            1 |   0x000003c:         0        0        0        0
+|            1 |   0x000003d:         0        0        0        0
+|            1 |   0x000003e:         0        0        0        0
+|            1 |   0x000003f:         0        0        0        0
+|            1 |   0x0000040:         0        0        0        0
+|            1 |   0x0000041:         0        0        0        0
+|            1 |   0x0000042:         0        0        0        0
+|            1 |   0x0000043:         0        0        0        0
+|            1 |   0x0000044:         0        0        0        0
+|            1 |   0x0000045:         0        0        0        0
+|            1 |   0x0000046:         0        0        0        0
+|            1 |   0x0000047:         0        0        0        0
+|            1 |   0x0000048:         0        0        0        0
+|            1 |   0x0000049:         0        0        0        0
+|            1 |   0x000004a:         0        0        0        0
+|            1 |   0x000004b:         0        0        0        0
+|            1 |   0x000004c:         0        0        0        0
+|            1 |   0x000004d:         0        0        0        0
+|            1 |   0x000004e:         0        0        0        0
+|            1 |   0x000004f:         0        0        0        0
+|            1 |   0x0000050:         0        0        0        0
+|            1 |   0x0000051:         0        0        0        0
+|            1 |   0x0000052:         0        0        0        0
+|            1 |   0x0000053:         0        0        0        0
+|            1 |   0x0000054:         0        0        0        0
+|            1 |   0x0000055:         0        0        0        0
+|            1 |   0x0000056:         0        0        0        0
+|            1 |   0x0000057:         0        0        0        0
+|            1 |   0x0000058:         0        0        0        0
+|            1 |   0x0000059:         0        0        0        0
+|            1 |   0x000005a:         0        0        0        0
+|            1 |   0x000005b:         0        0        0        0
+|            1 |   0x000005c:         0        0        0        0
+|            1 |   0x000005d:         0        0        0        0
+|            1 |   0x000005e:         0        0        0        0
+|            1 |   0x000005f:         0        0        0        0
+|            1 |   0x0000060:         0        0        0        0
+|            1 |   0x0000061:         0        0        0        0
+|            1 |   0x0000062:         0        0        0        0
+|            1 |   0x0000063:         0        0        0        0
+|            1 |   0x0000064:         0        0        0        0
+|            1 |   0x0000065:         0        0        0        0
+|            1 |   0x0000066:         0        0        0        0
+|            1 |   0x0000067:         0        0        0        0
+|            1 |   0x0000068:         0        0        0        0
+|            1 |   0x0000069:         0        0        0        0
+|            1 |   0x000006a:         0        0        0        0
+|            1 |   0x000006b:         0        0        0        0
+|            1 |   0x000006c:         0        0        0        0
+|            1 |   0x000006d:         0        0        0        0
+|            1 |   0x000006e:         0        0        0        0
+|            1 |   0x000006f:         0        0        0        0
+|            1 |   0x0000070:         0        0        0        0
+|            1 |   0x0000071:         0        0        0        0
+|            1 |   0x0000072:         0        0        0        0
+|            1 |   0x0000073:         0        0        0        0
+|            1 |   0x0000074:         0        0        0        0
+|            1 |   0x0000075:         0        0        0        0
+|            1 |   0x0000076:         0        0        0        0
+|            1 |   0x0000077:         0        0        0        0
+|            1 |   0x0000078:         0        0        0        0
+|            1 |   0x0000079:         0        0        0        0
+|            1 |   0x000007a:         0        0        0        0
+|            1 |   0x000007b:         0        0        0        0
+|            1 |   0x000007c:         0        0        0        0
+|            1 |   0x000007d:         0        0        0        0
+|            1 |   0x000007e:         0        0        0        0
+|            1 |   0x000007f:         0        0        0        0
+|            1 |   0x0000080:         0        0        0        0
+|            1 |   0x0000081:         0        0        0        0
+|            1 |   0x0000082:         0        0        0        0
+|            1 |   0x0000083:         0        0        0        0
+|            1 |   0x0000084:         0        0        0        0
+|            1 |   0x0000085:         0        0        0        0
+|            1 |   0x0000088:         0        0        0        0
+|            1 |   0x0000089:         0        0        0        0
+|            1 |   0x0b9b551:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a7a5
+|            1 |   0x0852ab4:  a5a5a7a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+
+###################################################################################################################################################################
+
+
+Printing Unmatched BIST lines:
+
+[2023-06-29 08:55:14] 
+
+[2023-06-29 09:20:54] DRAM controller has address width 
+
+[2023-06-29 09:21:07]  BIOS CRC failed (expected 630265f5, got 9a880a95)
+
+[2023-06-29 09:21:07]  The system will continue, but expect problems.
+
+[2023-06-29 09:21:07]   bus errors:  256/256
+
+[2023-06-29 09:21:07]   addr errors: 0/8192
+
+[2023-06-29 09:21:07]   data errors: 524288/524288
+
+[2023-06-29 09:21:07] Memtest KO
+
+[2023-06-29 09:21:07] Memory initialization failed
+
+[2023-06-29 09:21:07] [92;sdram_bist_writer 0 268435455
+
+[2023-06-29 09:21:07] 1mlitex[0m> sdram_bist_pat 2779096485
+
+[2023-06-29 09:21:07] Writing from address 0 to address 1ffffff ...sdram_bist_writer 0 268435455
+
+[2023-06-29 09:21:08] Done
+
+[2023-06-29 09:21:08] Writing from address 0 to address 1ffffff ...sdram_bist_reader 0 268435455 1000
+
+[2023-06-29 09:21:09] Done
+
+[2023-06-29 09:26:09]  0x000001c:         0     sdram_bist_reader 0 268435455 1000
+
+[2023-06-29 09:26:10]    0        0        0 
+
+[2023-06-29 09:26:10]  0x0000086:         0         0        0        0 
+
+[2023-06-29 09:26:10]  0x0000087:         0        0        0         0 
+
+[2023-06-29 09:26:10]  
+
+[2023-06-29 09:26:10]  0x000008a :         0        0        0        0 
+
+[2023-06-29 09:26:10]  0x000008b:         0         
+
+[2023-06-29 09:26:56]  BIOS CRC failed (expected 630265f5, got bb99eb57)
+
+[2023-06-29 09:26:56]  The system will continue, but expect problems.
+
+[2023-06-29 09:53:03] Command not foun
+
