@@ -76,6 +76,7 @@ No BIST output. Appears to be manually closed.
 
 Events:
 - Much smoother test. The UART delay was set to 60 seconds instead of 30. 3 UART timeouts occured after sending a reading/writing command and getting no output. 
+- The test runs the writer once. Then the reader runs every five minutes. If there are 5 consecutive errors after the reader runs, the writer runs once before the reader runs again.
 - The number of errors ranged from 34 - 2497522.
 - Beginning at 03:42:32 and lasting until the end of the test, the entire DRAM address space was recorded as having errors.
 
@@ -105,4 +106,10 @@ Events:
 - Between 08:52:45 and 11:55:32, the read-count doubled while the address-range it read from remained the same.
 - Beginning at 13:08:20 and lasting until the end of the test, the entire DRAM address space was recorded as having errors.
 
-### Idle Test 20 (  -  )
+### Idle Test 20 ( 2023-07-02 19:10:38 - 2023-07-03 08:19:32 )
+
+Events:
+- Two UART timeouts after sending reading commands with no returning output. The board was repowered both times. 
+- The number of errors ranged from 132 - 
+- Between 23:46:30 until the timeout at time 06:13:57, the entire DRAM address space was recorded as having errors.
+
