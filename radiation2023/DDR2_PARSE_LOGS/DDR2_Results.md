@@ -190,12 +190,36 @@ Events:
 Events: 
 - Two UART timeouts occured, both from starting the reader and timing out from no output.
 - The total number of addressses that printed out with data errors was 23.
+- The number of errors ranged from 2 - 9.
 
-### Continuous Test 17 ( 2023-07-01 07:54:00 - 2023-07-01 07:55:32 )
+### Idle Test 19 ( 2023-06-30 20:14:09 - 2023-07-01 07:52:49 )
 
 Events:
 - 8 UART Timeouts occured: 5 after starting the reader and no data returned, 1 after starting the writer and no data returned, and 2 after starting the reader and getting unicode errors, which led to the Terminal Recovery state that tried to close and reopen the ttyUSB device and send input but failed receiving output.
-- This character, '', started outputting in random places in the output. 
+- The number of errors ranged from 2 - 15.
+
+### Idle Test 20 ( 2023-07-01 07:57:39 - 2023-07-01 15:49:50 )
+
+Events:
+- A smoother test than the previous, but UART timeouts still occured (12 total, all after sending a reading command). 
+- More instances of data and register corruption. Instances where address range changed to 0x0-0x0fffff7, address width register changed from 24 to 16, and entire lines from the output were colored green.
+- The number of errors ranged from 4 - 16.
+
+### Idle Test 21 ( 2023-07-02 19:00:11 - 2023-07-02 19:00:21 )
+
+No BIST output. Perhaps this test was stopped manually.
+
+### Idle Test 22 ( 2023-07-02 19:00:39 - 2023-07-02 19:00:39 )
+
+No BIST output. Again, perhaps this test was stopped manually.
+
+### Idle Test 23 ( 2023-07-02 19:09:40 - 2023-07-03 06:08:39 )
+
+Events: 
+- More random characters in random places within the output. 
+- UART timeouts after sending a reading/writing command and receiving no input.
+- The number of errors ranged from 15 - 32.
+
 
 
 

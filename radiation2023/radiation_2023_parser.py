@@ -91,7 +91,7 @@ class bist_utils:
         self.boot_regex_list[21] = UART_TIME_REGEX + " Initializing SDRAM @0x40000000...\n"
         self.boot_regex_list[22] = UART_TIME_REGEX + " Switching SDRAM to software control.\n"
         self.boot_regex_list[23] = UART_TIME_REGEX + " Write latency calibration:\n"
-        self.boot_regex_list[24] = UART_TIME_REGEX + " ([\x00\x00]|)m0:6 m1:6 m2:6 m3:6 m4:6 m5:6 m6:6 m7:6 m8:6 m9:6 m10:6 m11:6 m12:6 m13:6 m14:6 m15:6 \n"
+        self.boot_regex_list[24] = UART_TIME_REGEX + " ([\x00][\x00])m0:6 m1:6 m2:6 m3:6 m4:6 m5:6 m6:6 m7:6 m8:6 m9:6 m10:6 m11:6 m12:6 m13:6 m14:6 m15:6 \n"
         self.boot_regex_list[25] = UART_TIME_REGEX + " Read leveling:\n"
         self.boot_regex_list[26] = UART_TIME_REGEX + "   m[0-9][0-9]*, b0[0-7]: \|[01]{32}\| delays: ((-)|([0-9]{2}\+\-[0-9]{2}))\n"
         self.boot_regex_list[27] = UART_TIME_REGEX + "   best: m[0-9][0-9]*, b0[0-7] delays: ((-)|([0-9]{2}\+\-[0-9]{2}))\n"
