@@ -1,0 +1,614 @@
+
+Reading File:  ./chipir2023/DDR3_IDLE_testexperiment_June_29_2023__15_13_39_UART.log
+Number of lines in uart file:  1562
+1563
+Printing Dynamic Errors
+
+
+
+[ 6 / 29 /2023 at  15 : 18 : 56 ]
+
+Error group count:  1
+
+ Num Errors: 1 
+
+Error New:    0x15925ef:  a5a5a5a5 a5e5a5a5 a5a5a5a5 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  15 : 18 : 58 ]
+
+Error group count:  2
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 18 : 59 ]
+
+Error group count:  3
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 19 : 2 ]
+
+Error group count:  4
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 19 : 3 ]
+
+Error group count:  5
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 19 : 5 ]
+
+Error group count:  6
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 19 : 7 ]
+
+Error group count:  7
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 19 : 9 ]
+
+Error group count:  8
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 19 : 10 ]
+
+Error group count:  9
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 19 : 13 ]
+
+All errors gone
+
+Error Gone:    0x15925ef:  a5a5a5a5 a5e5a5a5 a5a5a5a5 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  15 : 24 : 14 ]
+
+Error group count:  10
+
+ Num Errors: 1 
+
+Error New:    0x15925ef:  a5a5a5a5 a5e5a5a5 a5a5a5a5 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  15 : 24 : 15 ]
+
+Error group count:  11
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 24 : 17 ]
+
+Error group count:  12
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 24 : 19 ]
+
+Error group count:  13
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 24 : 20 ]
+
+Error group count:  14
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 24 : 22 ]
+
+Error group count:  15
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 24 : 24 ]
+
+Error group count:  16
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 24 : 26 ]
+
+Error group count:  17
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 24 : 27 ]
+
+Error group count:  18
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 24 : 30 ]
+
+Error group count:  19
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 24 : 31 ]
+
+Error group count:  20
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 24 : 33 ]
+
+Error group count:  21
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 24 : 35 ]
+
+Error group count:  22
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 24 : 37 ]
+
+Error group count:  23
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 24 : 38 ]
+
+Error group count:  24
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 24 : 41 ]
+
+Error group count:  25
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 24 : 42 ]
+
+Error group count:  26
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 24 : 43 ]
+
+Error group count:  27
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 24 : 46 ]
+
+Error group count:  28
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 24 : 47 ]
+
+Error group count:  29
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 24 : 49 ]
+
+Error group count:  30
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 24 : 51 ]
+
+Error group count:  31
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 24 : 53 ]
+
+Error group count:  32
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 24 : 54 ]
+
+Error group count:  33
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 24 : 57 ]
+
+Error group count:  34
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 24 : 58 ]
+
+Error group count:  35
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 25 : 0 ]
+
+Error group count:  36
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 25 : 2 ]
+
+Error group count:  37
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 25 : 3 ]
+
+Error group count:  38
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 25 : 5 ]
+
+Error group count:  39
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 25 : 7 ]
+
+Error group count:  40
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 25 : 9 ]
+
+Error group count:  41
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 25 : 10 ]
+
+Error group count:  42
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 25 : 13 ]
+
+Error group count:  43
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 25 : 14 ]
+
+Error group count:  44
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 25 : 16 ]
+
+Error group count:  45
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 25 : 18 ]
+
+Error group count:  46
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 25 : 20 ]
+
+Error group count:  47
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 25 : 21 ]
+
+Error group count:  48
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 25 : 24 ]
+
+Error group count:  49
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 25 : 25 ]
+
+Error group count:  50
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 25 : 26 ]
+
+Error group count:  51
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 25 : 29 ]
+
+Error group count:  52
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 25 : 30 ]
+
+Error group count:  53
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 25 : 32 ]
+
+Error group count:  54
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 25 : 34 ]
+
+Error group count:  55
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 25 : 36 ]
+
+Error group count:  56
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 25 : 37 ]
+
+Error group count:  57
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 25 : 40 ]
+
+Error group count:  58
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 25 : 41 ]
+
+Error group count:  59
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 25 : 43 ]
+
+Error group count:  60
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 25 : 45 ]
+
+Error group count:  61
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 25 : 47 ]
+
+Error group count:  62
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 25 : 48 ]
+
+Error group count:  63
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 25 : 50 ]
+
+Error group count:  64
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  15 : 25 : 52 ]
+
+All errors gone
+
+Error Gone:    0x15925ef:  a5a5a5a5 a5e5a5a5 a5a5a5a5 a5a5a5a5
+
+###################################################################################################################################################################
+
+
+Printing Errors found and their frequencies: 
+| Frequency    | Error
+|           64 |   0x15925ef:  a5a5a5a5 a5e5a5a5 a5a5a5a5 a5a5a5a5
+
+###################################################################################################################################################################
+
+
+Printing Unmatched BIST lines:
+
+[2023-06-29 15:13:53] 
+
