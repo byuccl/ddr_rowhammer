@@ -80,6 +80,8 @@ Events:
   continuously through recovery commands, and as a result became stuck in a neverending cycle of sending BIST recovery commands, 
   rebooting the SoC, and then repowering the board with the Lindy. The error at this same address persisted even after repowering 
   several times.
+  * **MJW**: Please put the details of each error (address, expected value, received value)
+  * **MJW**: Please put the details of stuck bit
 - Up from 9:29:59 to the end of the test, even after the board has repowered and continues to repower several times, random letters 
   and characters begin to output in the messages, and portions of messages are scattered in the output.
 - There is a bug in which, after leaving a BIST recovery mode, the pexpect script does not find expected data from the writer all the 
@@ -129,6 +131,7 @@ Events:
 - The log is saying at the end of the test: Reader successful, Delay for 300 seconds. Was it delaying for this long? Also, at the very
   end of the test, why did it only  print out one error address when the error count was 3? I believe there is some script modification
   and debugging going on here.
+  * **MJW**: Lets talk thorugh this. I did make some committs to the code during the test and we can see the commit history. 
 - As in Idle test 7, there appears to be a bug in which, after leaving a BIST recovery mode, the pexpect script runs the writer at a 
   maximum of 3 times, as the pexpect script does not find expected data and therefore runs it again.
 
