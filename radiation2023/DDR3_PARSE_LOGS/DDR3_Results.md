@@ -160,4 +160,52 @@ These errors were gone after a bist write
 
 ### IDLE Test 13 (2023-07-01 07:57:44 - 15:49:34)
 - The test timed out 17 times 
--  
+- There were some errors that were just some random bits that do not look like the pattern written to the DRAM 
+- Besides those errors, the following errors were found: 
+    - 0x0e7748f was found 53 times
+    - 0x15925ef was found 46 times
+    - 0x0a7748f was found 41 times (a5a5a5a5 a5a5ada5 a5a5a5a5 a5a5a5a5)
+    - 0x11bb43c was found 41 times 
+    - 0x01e250e was found 31 times (a5ada5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5)
+    - 0x05e250e was found 14 times 
+    - 0x01e2511 was found 11 times (a5ada5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5) and 6 times (0xa52da5a5 a525a5a5 a525a5a5 a525a5a5)
+    - 0x11925ef was found 6 times  
+
+- At 13:57:09, 12550 errors were found. It looks like these addresses had a lot of bit flips that made the data read really different than the pattern written. 
+
+- At 14:07:21, something unexpected happened with the test. There was a change in the address width from 25 to 05 and the data width from 118 to 08. This made it read addresses 0-0f. The data expected changed to 05 05 05 05. The number of errors was zero but it showed some errors which somehow were all in address 0x0000000. The same problem did not go away and stayed until 14:42:58. Then it happened to address 0x0000002 and stayed like that until there was a unicode error at 14:53:12 and the whole thing rebooted 
+
+- The test was fine after that until 15:28:57 where we got the errors that are not similar to the pattern written at all 
+
+
+
+### Continuous Test 12 (2023-07-01 16:22:26 - 16:22:44)
+- Board was not able to connect. Cannot find serial device
+
+### Continuous Test 13 (2023-07-01 16:23:07 - 21:07:26)
+- At 16:58:21, the test says that there were 2 errors found but there 4098 errors found. The same thing happened at 17:10:26 where it says that there are 2 errors but there were 2050 errors showing up. 
+- At 18:02:13, there were 769 errors found and they were just the random bits errors
+- At 18:33:19, there were 310141 errors found between addresses 0x0 and 0x1ffff80, but the number of errors increased to 33554432 errors but it went down to 1 error at 19:11:57 after a timeout at 19:11:55 
+- The error at address 0x0e7748f was found 10526 times
+- The error at address 0x15925ef was found 1621 times 
+- The test had 5 timeouts 
+
+
+### Continuous Test 14 (2023-07-01 12:26:36 - 2023-07-02 07:59:14)
+- Until 0:22:35, there were at most 2 errors showing up. Then at that time, there were 14757 errors found and they were gone 5 seconds later 
+
+- At 0:23:07, there were 258 errors found and these are the errors that are just random bits read that are so different than the pattern. 
+
+- At 0:29:06, there were 33554432 errors found and they stayed there until 0:43:14 as there was a timeout at 0:43:12. The 33554432 were found again at 5:00:32. Between those times, there were mainly 3 errors and there would be 4000 others from time to time. The number of errors went back to 2 at 5:34:40. 
+- At 7:08:18, there were 513 errors found and these are the errors that are just random bits read that are so different than the pattern. 
+- The following were the most frequent errors during this test: 
+        14079 |   0x0e7748f:  a5a5a5a5 a5a5a585 a5a5a5a5 a5a5a5a5
+         3921 |   0x1d83bab:  a5a5a5a5 ada5a5a5 a5a5a5a5 a5a5a5a5
+         2759 |   0x0ea11eb:  a5a5a5a5 a5a5a5a5 a5ada5a5 a5a5a5a5
+          576 |   0x0e7748f:  a5a5a5a5 a585a5a5 a5a5a5a5 a5a5a5a5
+
+
+### Continuous Test 15 (2023-07-02 08:01:03 - 18:59:58)
+- Until 13:00:38, there were mostly 2-3 errors found, and there were around 4000 errors found from time to time. At this time, the weird random errors were found. 
+
+Not Done Yet 
