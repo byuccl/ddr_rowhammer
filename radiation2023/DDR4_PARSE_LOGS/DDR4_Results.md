@@ -113,3 +113,43 @@ Events:
 - The number of errors ranged from 132 - 
 - Between 23:46:30 until the timeout at time 06:13:57, the entire DRAM address space was recorded as having errors.
 
+### Continuous Test 1 (2023-06-29 11:07:40 - 11:18:21)
+- This test did not really run as it kept timing out 
+
+
+### Continuous Test 2 (2023-06-29 11:18:41 - 11:21:29)
+- This test was not that smooth and it did not run for long. There were not that much errors. There were 4 error group so it is hard to conclude if a specific error kept occurring 
+
+### Continuous Test 3 (2023-06-29 12:54:44 - 13:00:38)
+- This test timed out 3 times in 6 minutes. We did not really get that much errors from it. We had 8 error groups for this test. 
+
+
+
+### Continuous Test 4 (2023-06-29 13:16:51 - 13:48:09)
+- The first error was at 13:17:18
+- There were 7 timeouts this test 
+- At 13:27:39, there were 5605502 errors found and they stayed there until the end of the test which resulted in an error frequency of 60/76 for the addresses that had the problems
+
+
+### Continuous Test 5 (2023-06-29 13:49:36 - 14:58:07)
+- There were 45 timeouts in this test 
+- The first error was at 13:50:03
+- It is hard to see specific patterns because test kept timing out while reading the errors because the delay was shorter than need for this board. 
+- There were 10 addresses that got the most errors during this test, and these addresses are:
+0x0e99007 0x162c7a7 0x2f76f9d 0x3d6effe 0x5cd65dc 0x65a1dec 0x7f0086d 0x88c7f96 0x73fd4b0 0x7d9ef11 
+
+
+
+
+### Continuous Test 6 (2023-06-29 15:13:08 - 19:41:08)
+- The first error was at 15:13:34
+- This test did not have any timeout errors 
+- For the first 137 groups, the error count was around 4120, at 16:19:58, the count jumped to around 6166. The error count jumped to around 12300 at group count 324. 
+- The highest error frequency was 643/714 
+
+
+### Continuous Test 7 (2023-07-01 7:54:14 - 7:55:37)
+- The first error was at 7:54:41 
+- This test did not run for long so we did not get much errors to see a specific pattern. 
+
+NOT DONE YET! 

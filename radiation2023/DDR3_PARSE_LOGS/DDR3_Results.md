@@ -206,6 +206,31 @@ These errors were gone after a bist write
 
 
 ### Continuous Test 15 (2023-07-02 08:01:03 - 18:59:58)
-- Until 13:00:38, there were mostly 2-3 errors found, and there were around 4000 errors found from time to time. At this time, the weird random errors were found. 
+- Until 13:00:38, there were mostly the same 2-3 errors found, and there were around 4000 errors found from time to time. At this time, the weird random errors were found. 
+- The reason the parser is showing unexpected data printed or timeout occured is because the speed of reading is faster than what the others had
 
-Not Done Yet 
+- The following were the most frequent errors during this test: 
+        7625 |   0x0e7748f:  a5a5a5a5 a5a5a585 a5a5a5a5 a5a5a5a5
+        7399 |   0x0129cb1:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1
+        2969 |   0x1ef1d5c:  a5e5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+
+
+### IDLE Test 14 (2023-07-02 19:10:18 - 2023-07-03 08:23:33)
+- At 0:48:24, there were 5122 errors that were a mix of just the random bits read which are way different than the pattern written to the DRAM and some bit flips 
+- At 02:04:34, there were 33554432 errors found. These errors were just the DRAM returning zeros. For example, address 0x0000004 returned 0 0 0 0. another example is from address 0x000027e, it returned 1000 0 0 0. These errors were gone at 2:11:41 after a write to the DRAM 
+- At 04:09:08, there were 1225014 between addresses 0x0 - 0x1ffff83
+- The following were the most frequent errors during this test:
+            119 |   0x0129cb1:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1
+            83 |   0x0769724:  a5a5a5a5 a5a525a5 a5a5a5a5 a5a5a5a5
+            12 |   0x022eca3:  a5a5a5a5 a5a5a5a5 85a5a5a5 a5a5a5a5
+
+
+### Most vulnerable addresses
+- 0x0e7748f 
+- 0x1d83bab
+- 0x0ea11eb
+- 0x0129cb1
+- 0x1ef1d5c
+- 0x15925ef
+- 0x05e250e
+- 0x12925ef

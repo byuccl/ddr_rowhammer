@@ -1,0 +1,149 @@
+
+Reading File:  ./chipir2023/DDR4_CONTINUOUS_testexperiment_June_29_2023__12_54_44_UART.log
+Number of lines in uart file:  1039
+1040
+Printing Dynamic Errors
+
+
+
+[ 6 / 29 /2023 at  12 : 55 : 11 ]
+
+Error group count:  1
+
+ Num Errors: 9 
+
+Error New:    0x05eecf5:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+Error New:    0x0e99007:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a7 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+Error New:    0x5cd65dc:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 ada5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+Error New:    0x7209717:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+Error New:    0x72a4964:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5
+Error New:    0x73fd4b0:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+
+Unexpected data printed or Timeout occured
+
+
+
+
+[ 6 / 29 /2023 at  12 : 55 : 44 ]
+
+Error group count:  2
+
+ Num Errors: 8 
+
+Error Gone:    0x05eecf5:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+
+Unexpected data printed or Timeout occured
+
+
+
+
+[ 6 / 29 /2023 at  12 : 56 : 35 ]
+
+Error group count:  3
+
+ Num Errors: 9 
+
+Error New:    0x71f537c:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+
+Unexpected data printed or Timeout occured
+
+
+
+
+[ 6 / 29 /2023 at  12 : 57 : 8 ]
+
+Error group count:  4
+
+ Num Errors: 9 
+
+Error Gone:    0x71f537c:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+
+Unexpected data printed or Timeout occured
+
+
+
+
+[ 6 / 29 /2023 at  12 : 57 : 59 ]
+
+Error group count:  5
+
+ Num Errors: 10 
+
+Error New:    0x7d9ef11:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5ada5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+
+Unexpected data printed or Timeout occured
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 32 ]
+
+Error group count:  6
+
+ Num Errors: 11 
+
+Error New:    0x2f76f9d:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 85a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+
+Unexpected data printed or Timeout occured
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 23 ]
+
+Error group count:  7
+
+ Num Errors: 12 
+
+Error New:    0x6b13b7b:  a5a585a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+Error Gone:    0x2f76f9d:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 85a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+
+Unexpected data printed or Timeout occured
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 56 ]
+
+Error group count:  8
+
+ Num Errors: 13 
+
+Error New:    0x05eecf5:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+Error New:    0x89b13f1:  a5a5a5a5 a5a5a5a5 a5a5a5a7 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+
+Reached end of file with error count
+
+
+###################################################################################################################################################################
+
+
+Printing Errors found and their frequencies: 
+| Frequency    | Error
+|            8 |   0x0e99007:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a7 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+|            8 |   0x5cd65dc:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 ada5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+|            8 |   0x7209717:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+|            8 |   0x72a4964:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5
+|            8 |   0x73fd4b0:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+|            4 |   0x7d9ef11:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5ada5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+|            2 |   0x05eecf5:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+|            2 |   0x6b13b7b:  a5a585a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+|            1 |   0x71f537c:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+|            1 |   0x2f76f9d:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 85a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+|            1 |   0x89b13f1:  a5a5a5a5 a5a5a5a5 a5a5a5a7 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+
+###################################################################################################################################################################
+
+
+Printing Unmatched BIST lines:
+
+[2023-06-29 12:54:56] 
+
+[2023-06-29 12:55:02] m0:6 m1:6 m2:6 m3:6 m4:6 m5:6 m6:6 m7:6 m8:6 m9:6 m10:6 m11:6 m12:6 m13:6 m14:6 m15:6 
+
+[2023-06-29 12:56:25] m0:6 m1:6 m2:6 m3:6 m4:6 m5:6 m6:6 m7:6 m8:6 m9:6 m10:6 m11:6 m12:6 m13:6 m14:6 m15:6 
+
+[2023-06-29 12:57:49] m0:6 m1:6 m2:6 m3:6 m4:6 m5:6 m6:6 m7:6 m8:6 m9:6 m10:6 m11:6 m12:6 m13:6 m14:6 m15:6 
+
+[2023-06-29 12:59:13] m0:6 m1:6 m2:6 m3:6 m4:6 m5:6 m6:6 m7:6 m8:6 m9:6 m10:6 m11:6 m12:6 m13:6 m14:6 m15:6 
+
