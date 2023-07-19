@@ -1,0 +1,323 @@
+
+Reading File:  ./chipir2023/DDR2_CONTINUOUS_testexperiment_June_29_2023__11_19_08_UART.log
+Number of lines in uart file:  538
+539
+Printing Dynamic Errors
+
+
+
+[ 6 / 29 /2023 at  11 : 19 : 28 ]
+
+Error group count:  1
+
+ Num Errors: 3 
+
+Error New:    0x0021998:  a5a5a5e5 a5a5a5a5
+Error New:    0x0df1440:  a5a5a5a5 a5a5a5a7
+Error New:    0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  11 : 19 : 32 ]
+
+Error group count:  2
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 19 : 35 ]
+
+Error group count:  3
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 19 : 38 ]
+
+Error group count:  4
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 19 : 42 ]
+
+Error group count:  5
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 19 : 46 ]
+
+Error group count:  6
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 19 : 49 ]
+
+Error group count:  7
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 19 : 52 ]
+
+Error group count:  8
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 19 : 57 ]
+
+Error group count:  9
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 20 : 0 ]
+
+Error group count:  10
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 20 : 3 ]
+
+Error group count:  11
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 20 : 6 ]
+
+Error group count:  12
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 20 : 11 ]
+
+Error group count:  13
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 20 : 14 ]
+
+Error group count:  14
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 20 : 17 ]
+
+Error group count:  15
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 20 : 20 ]
+
+Error group count:  16
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 20 : 25 ]
+
+Error group count:  17
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 20 : 28 ]
+
+Error group count:  18
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 20 : 31 ]
+
+Error group count:  19
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 20 : 35 ]
+
+Error group count:  20
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 20 : 39 ]
+
+Error group count:  21
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 20 : 42 ]
+
+Error group count:  22
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 20 : 46 ]
+
+Error group count:  23
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 20 : 49 ]
+
+Error group count:  24
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 20 : 55 ]
+
+Error group count:  25
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 20 : 59 ]
+
+Error group count:  26
+
+ Num Errors: 3 
+
+
+###################################################################################################################################################################
+
+
+Printing Errors found and their frequencies: 
+| Frequency    | Error
+|           26 |   0x0021998:  a5a5a5e5 a5a5a5a5
+|           26 |   0x0df1440:  a5a5a5a5 a5a5a5a7
+|           26 |   0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+###################################################################################################################################################################
+
+
+Printing Unmatched BIST lines:
+
+[2023-06-29 11:19:21] 
+
+[2023-06-29 11:19:28]   bus errors:  0/256
+
+[2023-06-29 11:19:28]   addr errors: 0/8192
+
+[2023-06-29 11:19:28]   data errors: 1/524288
+
+[2023-06-29 11:19:28] Memtest KO
+
+[2023-06-29 11:19:28] Memory initialization failed
+
+[2023-06-29 11:19:41] 
+
+[2023-06-29 11:19:42] [92;1mlitex[0m> 
+
+[2023-06-29 11:19:42] [92;1mlitexsdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 11:19:42] [0m> sdram_bist_pat 2779096485
+
+[2023-06-29 11:19:55] [92;1mlsdram_mr_scrub
+
+[2023-06-29 11:19:55] itex[0m> sdram_mr_scrub
+
+[2023-06-29 11:19:55] [92;1ml
+
+[2023-06-29 11:19:56] itex[0m> 
+
+[2023-06-29 11:20:09] [92;1mlitex[sdram_delay_scrub
+
+[2023-06-29 11:20:09] 0m> sdram_delay_scrub
+
+[2023-06-29 11:20:10] [92;1mlitex[0m> ssdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 11:20:10] dram_bist_pat 2779096485
+
+[2023-06-29 11:20:23] [92;1mlitex[0sdram_cal
+
+[2023-06-29 11:20:23] m> sdram_cal
+
+[2023-06-29 11:20:23]   m0, b01: |000000000000000000000000000000
+
+[2023-06-29 11:20:24] 00| delays: -
+
+[2023-06-29 11:20:38] [92;1mlitex[sdram_init
+
+[2023-06-29 11:20:38] 0m> sdram_init
+
+[2023-06-29 11:20:38]   m0, 
+
+[2023-06-29 11:20:39] b01: |00000000000000000000000000000000| delays: -
+
+[2023-06-29 11:20:39]   bus errors:  0/256
+
+[2023-06-29 11:20:39]   addr errors: 0/8192
+
+[2023-06-29 11:20:39]   data errors: 1/524288
+
+[2023-06-29 11:20:39] Memtest KO
+
+[2023-06-29 11:20:52] [92;1mlitex[
+
+[2023-06-29 11:20:52] 0m> 
+
+[2023-06-29 11:20:55] Command not found
+

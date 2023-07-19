@@ -1,0 +1,5930 @@
+
+Reading File:  ./chipir2023/DDR2_CONTINUOUS_testexperiment_June_29_2023__12_57_14_UART.log
+Number of lines in uart file:  10201
+10202
+Printing Dynamic Errors
+
+
+
+[ 6 / 29 /2023 at  12 : 57 : 34 ]
+
+Error group count:  1
+
+ Num Errors: 2 
+
+Error New:    0x0df1440:  a5a5a5a5 a5a5a5a7
+Error New:    0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  12 : 57 : 35 ]
+
+Error group count:  2
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 57 : 35 ]
+
+Error group count:  3
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 57 : 36 ]
+
+Error group count:  4
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 57 : 38 ]
+
+Error group count:  5
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 57 : 39 ]
+
+Error group count:  6
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 57 : 39 ]
+
+Error group count:  7
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 57 : 40 ]
+
+Error group count:  8
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 57 : 42 ]
+
+Error group count:  9
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 57 : 42 ]
+
+Error group count:  10
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 57 : 43 ]
+
+Error group count:  11
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 57 : 44 ]
+
+Error group count:  12
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 57 : 46 ]
+
+Error group count:  13
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 57 : 46 ]
+
+Error group count:  14
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 57 : 47 ]
+
+Error group count:  15
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 57 : 48 ]
+
+Error group count:  16
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 57 : 50 ]
+
+Error group count:  17
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 57 : 50 ]
+
+Error group count:  18
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 57 : 51 ]
+
+Error group count:  19
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 57 : 52 ]
+
+Error group count:  20
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 57 : 53 ]
+
+Error group count:  21
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 57 : 54 ]
+
+Error group count:  22
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 57 : 55 ]
+
+Error group count:  23
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 57 : 55 ]
+
+Error group count:  24
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 57 : 59 ]
+
+Error group count:  25
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 0 ]
+
+Error group count:  26
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 1 ]
+
+Error group count:  27
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 1 ]
+
+Error group count:  28
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 22 ]
+
+Error group count:  29
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 23 ]
+
+Error group count:  30
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 23 ]
+
+Error group count:  31
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 24 ]
+
+Error group count:  32
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 26 ]
+
+Error group count:  33
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 27 ]
+
+Error group count:  34
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 27 ]
+
+Error group count:  35
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 28 ]
+
+Error group count:  36
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 30 ]
+
+Error group count:  37
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 31 ]
+
+Error group count:  38
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 31 ]
+
+Error group count:  39
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 32 ]
+
+Error group count:  40
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 34 ]
+
+Error group count:  41
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 34 ]
+
+Error group count:  42
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 35 ]
+
+Error group count:  43
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 36 ]
+
+Error group count:  44
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 38 ]
+
+Error group count:  45
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 38 ]
+
+Error group count:  46
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 39 ]
+
+Error group count:  47
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 40 ]
+
+Error group count:  48
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 42 ]
+
+Error group count:  49
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 42 ]
+
+Error group count:  50
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 43 ]
+
+Error group count:  51
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 43 ]
+
+Error group count:  52
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 47 ]
+
+Error group count:  53
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 48 ]
+
+Error group count:  54
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 49 ]
+
+Error group count:  55
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 58 : 49 ]
+
+Error group count:  56
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 10 ]
+
+Error group count:  57
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 11 ]
+
+Error group count:  58
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 11 ]
+
+Error group count:  59
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 12 ]
+
+Error group count:  60
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 14 ]
+
+Error group count:  61
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 15 ]
+
+Error group count:  62
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 15 ]
+
+Error group count:  63
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 16 ]
+
+Error group count:  64
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 18 ]
+
+Error group count:  65
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 19 ]
+
+Error group count:  66
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 19 ]
+
+Error group count:  67
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 20 ]
+
+Error group count:  68
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 22 ]
+
+Error group count:  69
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 22 ]
+
+Error group count:  70
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 23 ]
+
+Error group count:  71
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 24 ]
+
+Error group count:  72
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 26 ]
+
+Error group count:  73
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 26 ]
+
+Error group count:  74
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 27 ]
+
+Error group count:  75
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 28 ]
+
+Error group count:  76
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 30 ]
+
+Error group count:  77
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 30 ]
+
+Error group count:  78
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 31 ]
+
+Error group count:  79
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 31 ]
+
+Error group count:  80
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 36 ]
+
+Error group count:  81
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 36 ]
+
+Error group count:  82
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 37 ]
+
+Error group count:  83
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 37 ]
+
+Error group count:  84
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 58 ]
+
+Error group count:  85
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 59 ]
+
+Error group count:  86
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 59 : 59 ]
+
+Error group count:  87
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 0 ]
+
+Error group count:  88
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 2 ]
+
+Error group count:  89
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 3 ]
+
+Error group count:  90
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 3 ]
+
+Error group count:  91
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 4 ]
+
+Error group count:  92
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 6 ]
+
+Error group count:  93
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 7 ]
+
+Error group count:  94
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 7 ]
+
+Error group count:  95
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 8 ]
+
+Error group count:  96
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 10 ]
+
+Error group count:  97
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 10 ]
+
+Error group count:  98
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 11 ]
+
+Error group count:  99
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 12 ]
+
+Error group count:  100
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 14 ]
+
+Error group count:  101
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 14 ]
+
+Error group count:  102
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 15 ]
+
+Error group count:  103
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 16 ]
+
+Error group count:  104
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 18 ]
+
+Error group count:  105
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 18 ]
+
+Error group count:  106
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 19 ]
+
+Error group count:  107
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 19 ]
+
+Error group count:  108
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 24 ]
+
+Error group count:  109
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 24 ]
+
+Error group count:  110
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 25 ]
+
+Error group count:  111
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 25 ]
+
+Error group count:  112
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 46 ]
+
+Error group count:  113
+
+ Num Errors: 1 
+
+Error Gone:    0x0df1440:  a5a5a5a5 a5a5a5a7
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 47 ]
+
+Error group count:  114
+
+ Num Errors: 2 
+
+Error New:    0x0df1440:  a5a5a5a5 a5a5a5a7
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 47 ]
+
+Error group count:  115
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 48 ]
+
+Error group count:  116
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 50 ]
+
+Error group count:  117
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 50 ]
+
+Error group count:  118
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 51 ]
+
+Error group count:  119
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 52 ]
+
+Error group count:  120
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 54 ]
+
+Error group count:  121
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 54 ]
+
+Error group count:  122
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 55 ]
+
+Error group count:  123
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 56 ]
+
+Error group count:  124
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 58 ]
+
+Error group count:  125
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 58 ]
+
+Error group count:  126
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 0 : 59 ]
+
+Error group count:  127
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 0 ]
+
+Error group count:  128
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 1 ]
+
+Error group count:  129
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 2 ]
+
+Error group count:  130
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 3 ]
+
+Error group count:  131
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 3 ]
+
+Error group count:  132
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 5 ]
+
+Error group count:  133
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 6 ]
+
+Error group count:  134
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 7 ]
+
+Error group count:  135
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 7 ]
+
+Error group count:  136
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 11 ]
+
+Error group count:  137
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 12 ]
+
+Error group count:  138
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 13 ]
+
+Error group count:  139
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 13 ]
+
+Error group count:  140
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 33 ]
+
+Error group count:  141
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 34 ]
+
+Error group count:  142
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 34 ]
+
+Error group count:  143
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 35 ]
+
+Error group count:  144
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 37 ]
+
+Error group count:  145
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 38 ]
+
+Error group count:  146
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 38 ]
+
+Error group count:  147
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 39 ]
+
+Error group count:  148
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 41 ]
+
+Error group count:  149
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 42 ]
+
+Error group count:  150
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 42 ]
+
+Error group count:  151
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 43 ]
+
+Error group count:  152
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 45 ]
+
+Error group count:  153
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 45 ]
+
+Error group count:  154
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 46 ]
+
+Error group count:  155
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 47 ]
+
+Error group count:  156
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 49 ]
+
+Error group count:  157
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 49 ]
+
+Error group count:  158
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 50 ]
+
+Error group count:  159
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 51 ]
+
+Error group count:  160
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 53 ]
+
+Error group count:  161
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 53 ]
+
+Error group count:  162
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 54 ]
+
+Error group count:  163
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 55 ]
+
+Error group count:  164
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 58 ]
+
+Error group count:  165
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 1 : 59 ]
+
+Error group count:  166
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 2 : 0 ]
+
+Error group count:  167
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 2 : 0 ]
+
+Error group count:  168
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 2 : 21 ]
+
+Error group count:  169
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 2 : 22 ]
+
+Error group count:  170
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 2 : 22 ]
+
+Error group count:  171
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 2 : 23 ]
+
+Error group count:  172
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 2 : 25 ]
+
+Error group count:  173
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 2 : 26 ]
+
+Error group count:  174
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 2 : 26 ]
+
+Error group count:  175
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 2 : 27 ]
+
+Error group count:  176
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 2 : 29 ]
+
+Error group count:  177
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 2 : 30 ]
+
+Error group count:  178
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 2 : 30 ]
+
+Error group count:  179
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 2 : 31 ]
+
+Error group count:  180
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 2 : 33 ]
+
+Error group count:  181
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 2 : 33 ]
+
+Error group count:  182
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 2 : 34 ]
+
+Error group count:  183
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 2 : 35 ]
+
+Error group count:  184
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 2 : 37 ]
+
+Error group count:  185
+
+ Num Errors: 1 
+
+Error Gone:    0x0df1440:  a5a5a5a5 a5a5a5a7
+
+
+
+[ 6 / 29 /2023 at  13 : 2 : 37 ]
+
+Error group count:  186
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 2 : 38 ]
+
+Error group count:  187
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 2 : 38 ]
+
+Error group count:  188
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 2 : 41 ]
+
+Error group count:  189
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 2 : 41 ]
+
+Error group count:  190
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 2 : 42 ]
+
+Error group count:  191
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 2 : 42 ]
+
+Error group count:  192
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 2 : 46 ]
+
+Error group count:  193
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 2 : 46 ]
+
+Error group count:  194
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 2 : 47 ]
+
+Error group count:  195
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 2 : 47 ]
+
+Error group count:  196
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 7 ]
+
+Error group count:  197
+
+ Num Errors: 2 
+
+Error New:    0x0df1440:  a5a5a5a5 a5a5a5a7
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 8 ]
+
+Error group count:  198
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 8 ]
+
+Error group count:  199
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 9 ]
+
+Error group count:  200
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 11 ]
+
+Error group count:  201
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 12 ]
+
+Error group count:  202
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 12 ]
+
+Error group count:  203
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 13 ]
+
+Error group count:  204
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 15 ]
+
+Error group count:  205
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 16 ]
+
+Error group count:  206
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 16 ]
+
+Error group count:  207
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 17 ]
+
+Error group count:  208
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 19 ]
+
+Error group count:  209
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 19 ]
+
+Error group count:  210
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 20 ]
+
+Error group count:  211
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 21 ]
+
+Error group count:  212
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 23 ]
+
+Error group count:  213
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 23 ]
+
+Error group count:  214
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 24 ]
+
+Error group count:  215
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 25 ]
+
+Error group count:  216
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 27 ]
+
+Error group count:  217
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 27 ]
+
+Error group count:  218
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 28 ]
+
+Error group count:  219
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 29 ]
+
+Error group count:  220
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 33 ]
+
+Error group count:  221
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 33 ]
+
+Error group count:  222
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 34 ]
+
+Error group count:  223
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 34 ]
+
+Error group count:  224
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 55 ]
+
+Error group count:  225
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 56 ]
+
+Error group count:  226
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 56 ]
+
+Error group count:  227
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 57 ]
+
+Error group count:  228
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 3 : 59 ]
+
+Error group count:  229
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 0 ]
+
+Error group count:  230
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 0 ]
+
+Error group count:  231
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 1 ]
+
+Error group count:  232
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 3 ]
+
+Error group count:  233
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 4 ]
+
+Error group count:  234
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 4 ]
+
+Error group count:  235
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 5 ]
+
+Error group count:  236
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 7 ]
+
+Error group count:  237
+
+ Num Errors: 1 
+
+Error Gone:    0x0df1440:  a5a5a5a5 a5a5a5a7
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 7 ]
+
+Error group count:  238
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 8 ]
+
+Error group count:  239
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 8 ]
+
+Error group count:  240
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 10 ]
+
+Error group count:  241
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 11 ]
+
+Error group count:  242
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 11 ]
+
+Error group count:  243
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 12 ]
+
+Error group count:  244
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 14 ]
+
+Error group count:  245
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 15 ]
+
+Error group count:  246
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 15 ]
+
+Error group count:  247
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 16 ]
+
+Error group count:  248
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 19 ]
+
+Error group count:  249
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 20 ]
+
+Error group count:  250
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 20 ]
+
+Error group count:  251
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 21 ]
+
+Error group count:  252
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 34 ]
+
+Error group count:  253
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 34 ]
+
+Error group count:  254
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 35 ]
+
+Error group count:  255
+
+ Num Errors: 2 
+
+Error New:    0x0df1440:  a5a5a5a5 a5a5a5a7
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 35 ]
+
+Error group count:  256
+
+ Num Errors: 1 
+
+Error Gone:    0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 37 ]
+
+Error group count:  257
+
+ Num Errors: 2 
+
+Error New:    0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 38 ]
+
+Error group count:  258
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 38 ]
+
+Error group count:  259
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 39 ]
+
+Error group count:  260
+
+ Num Errors: 1 
+
+Error Gone:    0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 41 ]
+
+Error group count:  261
+
+ Num Errors: 2 
+
+Error New:    0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 42 ]
+
+Error group count:  262
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 42 ]
+
+Error group count:  263
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 43 ]
+
+Error group count:  264
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 45 ]
+
+Error group count:  265
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 45 ]
+
+Error group count:  266
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 46 ]
+
+Error group count:  267
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 47 ]
+
+Error group count:  268
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 49 ]
+
+Error group count:  269
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 49 ]
+
+Error group count:  270
+
+ Num Errors: 1 
+
+Error Gone:    0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 50 ]
+
+Error group count:  271
+
+ Num Errors: 2 
+
+Error New:    0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 50 ]
+
+Error group count:  272
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 52 ]
+
+Error group count:  273
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 53 ]
+
+Error group count:  274
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 54 ]
+
+Error group count:  275
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 54 ]
+
+Error group count:  276
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 58 ]
+
+Error group count:  277
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 4 : 59 ]
+
+Error group count:  278
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 5 : 0 ]
+
+Error group count:  279
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 5 : 0 ]
+
+Error group count:  280
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 5 : 20 ]
+
+Error group count:  281
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 5 : 21 ]
+
+Error group count:  282
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 5 : 21 ]
+
+Error group count:  283
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 5 : 22 ]
+
+Error group count:  284
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 5 : 24 ]
+
+Error group count:  285
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 5 : 25 ]
+
+Error group count:  286
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 5 : 25 ]
+
+Error group count:  287
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 5 : 26 ]
+
+Error group count:  288
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 5 : 28 ]
+
+Error group count:  289
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 5 : 29 ]
+
+Error group count:  290
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 5 : 29 ]
+
+Error group count:  291
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 5 : 30 ]
+
+Error group count:  292
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 5 : 32 ]
+
+Error group count:  293
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 5 : 32 ]
+
+Error group count:  294
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 5 : 33 ]
+
+Error group count:  295
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 5 : 34 ]
+
+Error group count:  296
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 5 : 36 ]
+
+Error group count:  297
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 5 : 36 ]
+
+Error group count:  298
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 5 : 37 ]
+
+Error group count:  299
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 5 : 38 ]
+
+Error group count:  300
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 5 : 40 ]
+
+Error group count:  301
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 5 : 40 ]
+
+Error group count:  302
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 5 : 41 ]
+
+Error group count:  303
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 5 : 42 ]
+
+Error group count:  304
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 5 : 46 ]
+
+Error group count:  305
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 5 : 46 ]
+
+Error group count:  306
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 5 : 47 ]
+
+Error group count:  307
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 5 : 47 ]
+
+Error group count:  308
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 8 ]
+
+Error group count:  309
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 9 ]
+
+Error group count:  310
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 9 ]
+
+Error group count:  311
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 10 ]
+
+Error group count:  312
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 12 ]
+
+Error group count:  313
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 13 ]
+
+Error group count:  314
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 13 ]
+
+Error group count:  315
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 14 ]
+
+Error group count:  316
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 16 ]
+
+Error group count:  317
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 17 ]
+
+Error group count:  318
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 17 ]
+
+Error group count:  319
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 18 ]
+
+Error group count:  320
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 20 ]
+
+Error group count:  321
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 20 ]
+
+Error group count:  322
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 21 ]
+
+Error group count:  323
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 22 ]
+
+Error group count:  324
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 24 ]
+
+Error group count:  325
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 24 ]
+
+Error group count:  326
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 25 ]
+
+Error group count:  327
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 26 ]
+
+Error group count:  328
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 28 ]
+
+Error group count:  329
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 28 ]
+
+Error group count:  330
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 29 ]
+
+Error group count:  331
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 30 ]
+
+Error group count:  332
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 34 ]
+
+Error group count:  333
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 34 ]
+
+Error group count:  334
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 35 ]
+
+Error group count:  335
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 36 ]
+
+Error group count:  336
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 56 ]
+
+Error group count:  337
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 57 ]
+
+Error group count:  338
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 57 ]
+
+Error group count:  339
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 6 : 58 ]
+
+Error group count:  340
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 0 ]
+
+Error group count:  341
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 1 ]
+
+Error group count:  342
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 1 ]
+
+Error group count:  343
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 2 ]
+
+Error group count:  344
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 4 ]
+
+Error group count:  345
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 5 ]
+
+Error group count:  346
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 5 ]
+
+Error group count:  347
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 6 ]
+
+Error group count:  348
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 8 ]
+
+Error group count:  349
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 8 ]
+
+Error group count:  350
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 9 ]
+
+Error group count:  351
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 10 ]
+
+Error group count:  352
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 12 ]
+
+Error group count:  353
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 12 ]
+
+Error group count:  354
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 13 ]
+
+Error group count:  355
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 14 ]
+
+Error group count:  356
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 16 ]
+
+Error group count:  357
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 16 ]
+
+Error group count:  358
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 17 ]
+
+Error group count:  359
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 18 ]
+
+Error group count:  360
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 22 ]
+
+Error group count:  361
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 22 ]
+
+Error group count:  362
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 23 ]
+
+Error group count:  363
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 24 ]
+
+Error group count:  364
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 44 ]
+
+Error group count:  365
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 45 ]
+
+Error group count:  366
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 46 ]
+
+Error group count:  367
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 46 ]
+
+Error group count:  368
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 48 ]
+
+Error group count:  369
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 49 ]
+
+Error group count:  370
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 49 ]
+
+Error group count:  371
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 50 ]
+
+Error group count:  372
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 52 ]
+
+Error group count:  373
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 53 ]
+
+Error group count:  374
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 53 ]
+
+Error group count:  375
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 54 ]
+
+Error group count:  376
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 56 ]
+
+Error group count:  377
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 57 ]
+
+Error group count:  378
+
+ Num Errors: 1 
+
+Error Gone:    0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 57 ]
+
+Error group count:  379
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 57 ]
+
+Error group count:  380
+
+ Num Errors: 2 
+
+Error New:    0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  13 : 7 : 59 ]
+
+Error group count:  381
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 0 ]
+
+Error group count:  382
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 1 ]
+
+Error group count:  383
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 1 ]
+
+Error group count:  384
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 3 ]
+
+Error group count:  385
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 4 ]
+
+Error group count:  386
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 5 ]
+
+Error group count:  387
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 5 ]
+
+Error group count:  388
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 9 ]
+
+Error group count:  389
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 10 ]
+
+Error group count:  390
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 11 ]
+
+Error group count:  391
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 11 ]
+
+Error group count:  392
+
+ Num Errors: 1 
+
+Error Gone:    0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 31 ]
+
+Error group count:  393
+
+ Num Errors: 2 
+
+Error New:    0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 32 ]
+
+Error group count:  394
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 33 ]
+
+Error group count:  395
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 33 ]
+
+Error group count:  396
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 35 ]
+
+Error group count:  397
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 36 ]
+
+Error group count:  398
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 36 ]
+
+Error group count:  399
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 37 ]
+
+Error group count:  400
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 39 ]
+
+Error group count:  401
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 40 ]
+
+Error group count:  402
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 40 ]
+
+Error group count:  403
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 41 ]
+
+Error group count:  404
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 43 ]
+
+Error group count:  405
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 44 ]
+
+Error group count:  406
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 44 ]
+
+Error group count:  407
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 45 ]
+
+Error group count:  408
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 47 ]
+
+Error group count:  409
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 47 ]
+
+Error group count:  410
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 48 ]
+
+Error group count:  411
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 49 ]
+
+Error group count:  412
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 51 ]
+
+Error group count:  413
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 51 ]
+
+Error group count:  414
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 52 ]
+
+Error group count:  415
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 53 ]
+
+Error group count:  416
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 57 ]
+
+Error group count:  417
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 57 ]
+
+Error group count:  418
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 58 ]
+
+Error group count:  419
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 8 : 59 ]
+
+Error group count:  420
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 9 : 19 ]
+
+Error group count:  421
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 9 : 20 ]
+
+Error group count:  422
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 9 : 21 ]
+
+Error group count:  423
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 9 : 21 ]
+
+Error group count:  424
+
+ Num Errors: 1 
+
+Error Gone:    0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  13 : 9 : 23 ]
+
+Error group count:  425
+
+ Num Errors: 2 
+
+Error New:    0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  13 : 9 : 24 ]
+
+Error group count:  426
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 9 : 24 ]
+
+Error group count:  427
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 9 : 25 ]
+
+Error group count:  428
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 9 : 27 ]
+
+Error group count:  429
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 9 : 27 ]
+
+Error group count:  430
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 9 : 28 ]
+
+Error group count:  431
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 9 : 29 ]
+
+Error group count:  432
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 9 : 31 ]
+
+Error group count:  433
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 9 : 31 ]
+
+Error group count:  434
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 9 : 32 ]
+
+Error group count:  435
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 9 : 33 ]
+
+Error group count:  436
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 9 : 35 ]
+
+Error group count:  437
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 9 : 35 ]
+
+Error group count:  438
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 9 : 36 ]
+
+Error group count:  439
+
+ Num Errors: 1 
+
+Error Gone:    0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  13 : 9 : 36 ]
+
+Error group count:  440
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 9 : 38 ]
+
+Error group count:  441
+
+ Num Errors: 2 
+
+Error New:    0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  13 : 9 : 39 ]
+
+Error group count:  442
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 9 : 39 ]
+
+Error group count:  443
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 9 : 40 ]
+
+Error group count:  444
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 9 : 44 ]
+
+Error group count:  445
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 9 : 45 ]
+
+Error group count:  446
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 9 : 45 ]
+
+Error group count:  447
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 9 : 46 ]
+
+Error group count:  448
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 6 ]
+
+Error group count:  449
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 7 ]
+
+Error group count:  450
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 8 ]
+
+Error group count:  451
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 8 ]
+
+Error group count:  452
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 10 ]
+
+Error group count:  453
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 11 ]
+
+Error group count:  454
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 11 ]
+
+Error group count:  455
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 12 ]
+
+Error group count:  456
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 14 ]
+
+Error group count:  457
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 15 ]
+
+Error group count:  458
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 15 ]
+
+Error group count:  459
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 16 ]
+
+Error group count:  460
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 18 ]
+
+Error group count:  461
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 19 ]
+
+Error group count:  462
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 19 ]
+
+Error group count:  463
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 20 ]
+
+Error group count:  464
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 22 ]
+
+Error group count:  465
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 22 ]
+
+Error group count:  466
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 23 ]
+
+Error group count:  467
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 24 ]
+
+Error group count:  468
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 26 ]
+
+Error group count:  469
+
+ Num Errors: 1 
+
+Error Gone:    0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 26 ]
+
+Error group count:  470
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 27 ]
+
+Error group count:  471
+
+ Num Errors: 2 
+
+Error New:    0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 27 ]
+
+Error group count:  472
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 31 ]
+
+Error group count:  473
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 32 ]
+
+Error group count:  474
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 33 ]
+
+Error group count:  475
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 33 ]
+
+Error group count:  476
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 53 ]
+
+Error group count:  477
+
+ Num Errors: 1 
+
+Error Gone:    0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 54 ]
+
+Error group count:  478
+
+ Num Errors: 2 
+
+Error New:    0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 54 ]
+
+Error group count:  479
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 55 ]
+
+Error group count:  480
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 57 ]
+
+Error group count:  481
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 58 ]
+
+Error group count:  482
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 58 ]
+
+Error group count:  483
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 10 : 59 ]
+
+Error group count:  484
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 1 ]
+
+Error group count:  485
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 1 ]
+
+Error group count:  486
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 2 ]
+
+Error group count:  487
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 3 ]
+
+Error group count:  488
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 5 ]
+
+Error group count:  489
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 5 ]
+
+Error group count:  490
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 6 ]
+
+Error group count:  491
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 7 ]
+
+Error group count:  492
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 9 ]
+
+Error group count:  493
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 9 ]
+
+Error group count:  494
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 10 ]
+
+Error group count:  495
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 11 ]
+
+Error group count:  496
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 13 ]
+
+Error group count:  497
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 13 ]
+
+Error group count:  498
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 14 ]
+
+Error group count:  499
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 14 ]
+
+Error group count:  500
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 18 ]
+
+Error group count:  501
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 19 ]
+
+Error group count:  502
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 20 ]
+
+Error group count:  503
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 20 ]
+
+Error group count:  504
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 40 ]
+
+Error group count:  505
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 41 ]
+
+Error group count:  506
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 42 ]
+
+Error group count:  507
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 42 ]
+
+Error group count:  508
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 44 ]
+
+Error group count:  509
+
+ Num Errors: 1 
+
+Error Gone:    0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 45 ]
+
+Error group count:  510
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 45 ]
+
+Error group count:  511
+
+ Num Errors: 1 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 46 ]
+
+Error group count:  512
+
+ Num Errors: 3 
+
+Error New:    0x065cdf0:  a5a5a5b5 a5a5a5a5
+Error New:    0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 49 ]
+
+Error group count:  513
+
+ Num Errors: 2 
+
+Error Gone:    0x065cdf0:  a5a5a5b5 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 50 ]
+
+Error group count:  514
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 50 ]
+
+Error group count:  515
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 51 ]
+
+Error group count:  516
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 53 ]
+
+Error group count:  517
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 53 ]
+
+Error group count:  518
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 54 ]
+
+Error group count:  519
+
+ Num Errors: 3 
+
+Error New:    0x065cdf0:  a5a5a5b5 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 56 ]
+
+Error group count:  520
+
+ Num Errors: 2 
+
+Error Gone:    0x065cdf0:  a5a5a5b5 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 58 ]
+
+Error group count:  521
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 59 ]
+
+Error group count:  522
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 11 : 59 ]
+
+Error group count:  523
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 12 : 0 ]
+
+Error group count:  524
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 12 : 2 ]
+
+Error group count:  525
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 12 : 3 ]
+
+Error group count:  526
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 12 : 3 ]
+
+Error group count:  527
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 12 : 4 ]
+
+Error group count:  528
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 12 : 8 ]
+
+Error group count:  529
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 12 : 9 ]
+
+Error group count:  530
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 12 : 9 ]
+
+Error group count:  531
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  13 : 12 : 10 ]
+
+Error group count:  532
+
+ Num Errors: 2 
+
+
+###################################################################################################################################################################
+
+
+Printing Errors found and their frequencies: 
+| Frequency    | Error
+|          517 |   0x0ed5b13:  a5a5a5a1 a5a5a5a5
+|          501 |   0x0df1440:  a5a5a5a5 a5a5a5a7
+|            2 |   0x065cdf0:  a5a5a5b5 a5a5a5a5
+
+###################################################################################################################################################################
+
+
+Printing Unmatched BIST lines:
+
+[2023-06-29 12:57:26] 
+
+[2023-06-29 12:57:36] [92;1mli
+
+[2023-06-29 12:57:37] tex[0m> 
+
+[2023-06-29 12:57:37] [92;1mlitesdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 12:57:37] x[0m> sdram_bist_pat 2779096485
+
+[2023-06-29 12:57:40] [92;1mlitex[0m>sdram_mr_scrub
+
+[2023-06-29 12:57:40]  
+
+[2023-06-29 12:57:40] [92;1m
+
+[2023-06-29 12:57:41] litex[0m> 
+
+[2023-06-29 12:57:41] [92;1mlitex[0m>sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 12:57:41]  sdram_bist_pat 2779096485
+
+[2023-06-29 12:57:44] [92sdram_delay_scrub
+
+[2023-06-29 12:57:44] ;1mlitex[0m> sdram_delay_scrub
+
+[2023-06-29 12:57:45] [92;1mlitex[0m>sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 12:57:45]  sdram_bist_pat 2779096485
+
+[2023-06-29 12:57:48] [92sdram_cal
+
+[2023-06-29 12:57:48] ;1mlitex[0m> sdram_cal
+
+[2023-06-29 12:57:48]   m0, b01: |00000000000000000000000000000
+
+[2023-06-29 12:57:49] 000| delays: -
+
+[2023-06-29 12:57:49] [92;1mlitex[0m>sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 12:57:49]  sdram_bist_pat 2779096485
+
+[2023-06-29 12:57:52] [92sdram_init
+
+[2023-06-29 12:57:52] ;1mlitex[0m> sdram_init
+
+[2023-06-29 12:57:52]   m0,
+
+[2023-06-29 12:57:53]  b01: |00000000000000000000000000000000| delays: -
+
+[2023-06-29 12:57:53] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 12:57:53] > sdram_bist_pat 2779096485
+
+[2023-06-29 12:57:56] [9
+
+[2023-06-29 12:57:56] 2;1mlitex[0m> 
+
+[2023-06-29 12:58:02] [92;1mlitex[
+
+[2023-06-29 12:58:02] 0m> 
+
+[2023-06-29 12:58:24] [92;1mlitex
+
+[2023-06-29 12:58:25] [0m> 
+
+[2023-06-29 12:58:25] [92;1mlitexsdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 12:58:25] [0m> sdram_bist_pat 2779096485
+
+[2023-06-29 12:58:28] sdram_mr_scrub
+
+[2023-06-29 12:58:28] [92;1m
+
+[2023-06-29 12:58:29] litex[0m> 
+
+[2023-06-29 12:58:29] [92;1mlitex[0m> sdram_sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 12:58:29] bist_pat 2779096485
+
+[2023-06-29 12:58:32] [92;1mlitesdram_delay_scrub
+
+[2023-06-29 12:58:32] x[0m> sdram_delay_scrub
+
+[2023-06-29 12:58:33] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 12:58:33] > sdram_bist_pat 2779096485
+
+[2023-06-29 12:58:36] [sdram_cal
+
+[2023-06-29 12:58:36] 92;1mlitex[0m> sdram_cal
+
+[2023-06-29 12:58:36]   m0, b01: |000000000000000000000000000
+
+[2023-06-29 12:58:37] 00000| delays: -
+
+[2023-06-29 12:58:37] [92;1mlitex[0m> ssdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 12:58:37] dram_bist_pat 2779096485
+
+[2023-06-29 12:58:40] [92;sdram_init
+
+[2023-06-29 12:58:40] 1mlitex[0m> sdram_init
+
+[2023-06-29 12:58:40]   m
+
+[2023-06-29 12:58:41] 0, b01: |00000000000000000000000000000000| delays: -
+
+[2023-06-29 12:58:41] [92;1mlitex[0m> sdrsdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 12:58:41] am_bist_pat 2779096485
+
+[2023-06-29 12:58:44] [92;1m
+
+[2023-06-29 12:58:44] litex[0m> 
+
+[2023-06-29 12:58:50] [92;1mlitex
+
+[2023-06-29 12:58:50] [0m> 
+
+[2023-06-29 12:59:12] [92;1mlit
+
+[2023-06-29 12:59:13] ex[0m> 
+
+[2023-06-29 12:59:13] [92;1mlisdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 12:59:13] tex[0m> sdram_bist_pat 2779096485
+
+[2023-06-29 12:59:16] [92;1mlitex[0msdram_mr_scrub
+
+[2023-06-29 12:59:16] > 
+
+[2023-06-29 12:59:16] [92
+
+[2023-06-29 12:59:17] ;1mlitex[0m> 
+
+[2023-06-29 12:59:17] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 12:59:17] > sdram_bist_pat 2779096485
+
+[2023-06-29 12:59:20] [sdram_delay_scrub
+
+[2023-06-29 12:59:20] 92;1mlitex[0m> sdram_delay_scrub
+
+[2023-06-29 12:59:21] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 12:59:21] > sdram_bist_pat 2779096485
+
+[2023-06-29 12:59:24] [9sdram_cal
+
+[2023-06-29 12:59:24] 2;1mlitex[0m> sdram_cal
+
+[2023-06-29 12:59:24]   m0, b01: |000000000000000000000000000
+
+[2023-06-29 12:59:25] 00000| delays: -
+
+[2023-06-29 12:59:25] [92;1mlitex[0m> sdrasdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 12:59:25] m_bist_pat 2779096485
+
+[2023-06-29 12:59:28] [92;1mlisdram_init
+
+[2023-06-29 12:59:28] tex[0m> sdram_init
+
+[2023-06-29 12:59:28]   m0,
+
+[2023-06-29 12:59:29]  b01: |00000000000000000000000000000000| delays: -
+
+[2023-06-29 12:59:29] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 12:59:29] > sdram_bist_pat 2779096485
+
+[2023-06-29 12:59:32] [
+
+[2023-06-29 12:59:32] 92;1mlitex[0m> 
+
+[2023-06-29 12:59:38] [92;1mlitex[0
+
+[2023-06-29 12:59:38] m> 
+
+[2023-06-29 13:00:00] [92;1mlite
+
+[2023-06-29 13:00:01] x[0m> 
+
+[2023-06-29 13:00:01] [92;1mlisdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:00:01] tex[0m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:00:04] [92;1mlitex[0sdram_mr_scrub
+
+[2023-06-29 13:00:04] m> 
+
+[2023-06-29 13:00:04] [92;1
+
+[2023-06-29 13:00:05] mlitex[0m> 
+
+[2023-06-29 13:00:05] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:00:05] > sdram_bist_pat 2779096485
+
+[2023-06-29 13:00:08] [9sdram_delay_scrub
+
+[2023-06-29 13:00:08] 2;1mlitex[0m> sdram_delay_scrub
+
+[2023-06-29 13:00:09] [92;1mlitex[0sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:00:09] m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:00:12] [sdram_cal
+
+[2023-06-29 13:00:12] 92;1mlitex[0m> sdram_cal
+
+[2023-06-29 13:00:12]   m0, b01: |000000000000000000000000000
+
+[2023-06-29 13:00:13] 00000| delays: -
+
+[2023-06-29 13:00:13] [92;1mlitex[0sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:00:13] m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:00:16] sdram_init
+
+[2023-06-29 13:00:16] [92;1mlitex[0m> sdram_init
+
+[2023-06-29 13:00:16]   m0,
+
+[2023-06-29 13:00:17]  b01: |00000000000000000000000000000000| delays: -
+
+[2023-06-29 13:00:17] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:00:17] > sdram_bist_pat 2779096485
+
+[2023-06-29 13:00:20] [9
+
+[2023-06-29 13:00:20] 2;1mlitex[0m> 
+
+[2023-06-29 13:00:26] [92;1mlit
+
+[2023-06-29 13:00:26] ex[0m> 
+
+[2023-06-29 13:00:48] [92;1mlit
+
+[2023-06-29 13:00:49] ex[0m> 
+
+[2023-06-29 13:00:49] [92;1mlitesdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:00:49] x[0m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:00:52] [92;1mlitex[0m>sdram_mr_scrub
+
+[2023-06-29 13:00:52]  
+
+[2023-06-29 13:00:52] [92;1
+
+[2023-06-29 13:00:53] mlitex[0m> 
+
+[2023-06-29 13:00:53] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:00:53] > sdram_bist_pat 2779096485
+
+[2023-06-29 13:00:56] [sdram_delay_scrub
+
+[2023-06-29 13:00:56] 92;1mlitex[0m> sdram_delay_scrub
+
+[2023-06-29 13:00:57] [92;1mlitex[0m> ssdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:00:57] dram_bist_pat 2779096485
+
+[2023-06-29 13:01:00] [92;sdram_cal
+
+[2023-06-29 13:01:00] 1mlitex[0m> sdram_cal
+
+[2023-06-29 13:01:00]   m0, b01: |00000000000000000000000000000
+
+[2023-06-29 13:01:01] 000| delays: -
+
+[2023-06-29 13:01:01] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:01:01] > sdram_bist_pat 2779096485
+
+[2023-06-29 13:01:04] [9sdram_init
+
+[2023-06-29 13:01:04] 2;1mlitex[0m> sdram_init
+
+[2023-06-29 13:01:04]   m0, 
+
+[2023-06-29 13:01:05] b01: |00000000000000000000000000000000| delays: -
+
+[2023-06-29 13:01:08] [92;
+
+[2023-06-29 13:01:08] 1mlitex[0m> 
+
+[2023-06-29 13:01:14] [92;1mlit
+
+[2023-06-29 13:01:14] ex[0m> 
+
+[2023-06-29 13:01:35] [92;1mlite
+
+[2023-06-29 13:01:36] x[0m> 
+
+[2023-06-29 13:01:36] [92;1mlitexsdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:01:37] [0m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:01:39] sdram_mr_scrub
+
+[2023-06-29 13:01:39] [92;1m
+
+[2023-06-29 13:01:40] litex[0m> 
+
+[2023-06-29 13:01:40] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:01:40] > sdram_bist_pat 2779096485
+
+[2023-06-29 13:01:43] [9sdram_delay_scrub
+
+[2023-06-29 13:01:43] 2;1mlitex[0m> sdram_delay_scrub
+
+[2023-06-29 13:01:44] [92;1mlitex[0m>sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:01:44]  sdram_bist_pat 2779096485
+
+[2023-06-29 13:01:47] [9sdram_cal
+
+[2023-06-29 13:01:47] 2;1mlitex[0m> sdram_cal
+
+[2023-06-29 13:01:47]   m0, b01: |000000000000000000000000000000
+
+[2023-06-29 13:01:48] 00| delays: -
+
+[2023-06-29 13:01:48] [92;1mlitex[0m>sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:01:48]  sdram_bist_pat 2779096485
+
+[2023-06-29 13:01:51] [92sdram_init
+
+[2023-06-29 13:01:51] ;1mlitex[0m> sdram_init
+
+[2023-06-29 13:01:52] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:01:52] > sdram_bist_pat 2779096485
+
+[2023-06-29 13:01:55] [9
+
+[2023-06-29 13:01:55] 2;1mlitex[0m> 
+
+[2023-06-29 13:02:01] [92;1mli
+
+[2023-06-29 13:02:01] tex[0m> 
+
+[2023-06-29 13:02:23] [92;1mli
+
+[2023-06-29 13:02:25] tex[0m> 
+
+[2023-06-29 13:02:25] [92;1mlitsdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:02:25] ex[0m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:02:27] [92;1mlitex[0m>sdram_mr_scrub
+
+[2023-06-29 13:02:27]  
+
+[2023-06-29 13:02:27] [92;
+
+[2023-06-29 13:02:28] 1mlitex[0m> 
+
+[2023-06-29 13:02:28] [92;1mlitex[sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:02:28] 0m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:02:31] sdram_delay_scrub
+
+[2023-06-29 13:02:31] [92;1mlitex[0m> sdram_delay_scrub
+
+[2023-06-29 13:02:32] [92;1mlitex[0sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:02:32] m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:02:35] sdram_cal
+
+[2023-06-29 13:02:35] [92;1mlitex[0m> sdram_cal
+
+[2023-06-29 13:02:35]   m0, b01: |000000000000000000000000000
+
+[2023-06-29 13:02:36] 00000| delays: -
+
+[2023-06-29 13:02:36] [92;1mlitex[sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:02:36] 0m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:02:39] [92;1mlitex[0m
+
+[2023-06-29 13:02:40] > 
+
+[2023-06-29 13:02:48] [92;1mlitex[0m
+
+[2023-06-29 13:02:48] > 
+
+[2023-06-29 13:03:10] [92;1mlit
+
+[2023-06-29 13:03:11] ex[0m> 
+
+[2023-06-29 13:03:11] [92;1mlitsdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:03:11] ex[0m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:03:13] [92;1mlitex[0msdram_mr_scrub
+
+[2023-06-29 13:03:13] > 
+
+[2023-06-29 13:03:13] [92;
+
+[2023-06-29 13:03:14] 1mlitex[0m> 
+
+[2023-06-29 13:03:14] [92;1mlitex[0sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:03:14] m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:03:17] [sdram_delay_scrub
+
+[2023-06-29 13:03:17] 92;1mlitex[0m> sdram_delay_scrub
+
+[2023-06-29 13:03:18] [92;1mlitex[0m>sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:03:18]  sdram_bist_pat 2779096485
+
+[2023-06-29 13:03:21] [9sdram_cal
+
+[2023-06-29 13:03:21] 2;1mlitex[0m> sdram_cal
+
+[2023-06-29 13:03:21]   m0, b01: |000000000000000000000000000
+
+[2023-06-29 13:03:22] 00000| delays: -
+
+[2023-06-29 13:03:22] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:03:22] > sdram_bist_pat 2779096485
+
+[2023-06-29 13:03:25] [9sdram_init
+
+[2023-06-29 13:03:25] 2;1mlitex[0m> sdram_init
+
+[2023-06-29 13:03:25]   m
+
+[2023-06-29 13:03:26] 0, b01: |00000000000000000000000000000000| delays: -
+
+[2023-06-29 13:03:26] [92;1mlitex[0sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:03:26] m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:03:29] [9
+
+[2023-06-29 13:03:29] 2;1mlitex[0m> 
+
+[2023-06-29 13:03:35] [92;1mlitex[
+
+[2023-06-29 13:03:35] 0m> 
+
+[2023-06-29 13:03:58] [92;1mlitex
+
+[2023-06-29 13:03:59] [0m> 
+
+[2023-06-29 13:03:59] [92;1mlitsdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:03:59] ex[0m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:04:01] [92;1mlitex[0m>sdram_mr_scrub
+
+[2023-06-29 13:04:01]  
+
+[2023-06-29 13:04:01] [92;
+
+[2023-06-29 13:04:02] 1mlitex[0m> 
+
+[2023-06-29 13:04:02] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:04:02] > sdram_bist_pat 2779096485
+
+[2023-06-29 13:04:05] [92sdram_delay_scrub
+
+[2023-06-29 13:04:05] ;1mlitex[0m> sdram_delay_scrub
+
+[2023-06-29 13:04:06] [92;1mlitex[0m>sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:04:06]  sdram_bist_pat 2779096485
+
+[2023-06-29 13:04:10] [92;1mlitex[0sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:04:10] m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:04:13] [92;1mlitex[0m
+
+[2023-06-29 13:04:14] > 
+
+[2023-06-29 13:04:14] [92;1mlitex[0m>sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:04:14]  sdram_bist_pat 2779096485
+
+[2023-06-29 13:04:21] [92;1mlitex
+
+[2023-06-29 13:04:21] [0m> 
+
+[2023-06-29 13:04:37] [92;1mlitesdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:04:37] x[0m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:04:39] Switching SDRAM to hardware 
+
+[2023-06-29 13:04:40] control.
+
+[2023-06-29 13:04:40] [92;1mlitex[sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:04:40] 0m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:04:43] sdram_delay_scrub
+
+[2023-06-29 13:04:43] [92;1mlitex[0m> sdram_delay_scrub
+
+[2023-06-29 13:04:44] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:04:44] > sdram_bist_pat 2779096485
+
+[2023-06-29 13:04:47] [9sdram_cal
+
+[2023-06-29 13:04:47] 2;1mlitex[0m> sdram_cal
+
+[2023-06-29 13:04:47]   m0, b01: |0000000000000000000000000000
+
+[2023-06-29 13:04:48] 0000| delays: -
+
+[2023-06-29 13:04:48] [92;1mlitex[0sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:04:48] m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:04:51] [sdram_init
+
+[2023-06-29 13:04:51] 92;1mlitex[0m> 
+
+[2023-06-29 13:04:51]   m0, b00: |000000000000000
+
+[2023-06-29 13:04:52] 00000000000000000| delays: -
+
+[2023-06-29 13:04:52] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:04:52] > sdram_bist_pat 2779096485
+
+[2023-06-29 13:04:55] [
+
+[2023-06-29 13:04:55] 92;1mlitex[0m> 
+
+[2023-06-29 13:05:01] [92;1mlit
+
+[2023-06-29 13:05:01] ex[0m> 
+
+[2023-06-29 13:05:23] [92;1mli
+
+[2023-06-29 13:05:24] tex[0m> 
+
+[2023-06-29 13:05:24] [92;1mlitsdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:05:24] ex[0m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:05:26] [92;1mlitex[0msdram_mr_scrub
+
+[2023-06-29 13:05:26] > 
+
+[2023-06-29 13:05:26] [92;1
+
+[2023-06-29 13:05:27] mlitex[0m> 
+
+[2023-06-29 13:05:27] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:05:27] > sdram_bist_pat 2779096485
+
+[2023-06-29 13:05:30] [sdram_delay_scrub
+
+[2023-06-29 13:05:30] 92;1mlitex[0m> sdram_delay_scrub
+
+[2023-06-29 13:05:31] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:05:31] > sdram_bist_pat 2779096485
+
+[2023-06-29 13:05:34] [9sdram_cal
+
+[2023-06-29 13:05:34] 2;1mlitex[0m> sdram_cal
+
+[2023-06-29 13:05:34]   m0, b01: |000000000000000000000000000
+
+[2023-06-29 13:05:35] 00000| delays: -
+
+[2023-06-29 13:05:35] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:05:35] > sdram_bist_pat 2779096485
+
+[2023-06-29 13:05:38] [9sdram_init
+
+[2023-06-29 13:05:38] 2;1mlitex[0m> sdram_init
+
+[2023-06-29 13:05:38]   m
+
+[2023-06-29 13:05:39] 0, b01: |00000000000000000000000000000000| delays: -
+
+[2023-06-29 13:05:39] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:05:39] > sdram_bist_pat 2779096485
+
+[2023-06-29 13:05:42] [9
+
+[2023-06-29 13:05:42] 2;1mlitex[0m> 
+
+[2023-06-29 13:05:48] [92;1mlitex
+
+[2023-06-29 13:05:48] [0m> 
+
+[2023-06-29 13:06:11] [92;1mlit
+
+[2023-06-29 13:06:12] ex[0m> 
+
+[2023-06-29 13:06:12] [92;1mlitesdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:06:12] x[0m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:06:14] [92;1mlitex[0m>sdram_mr_scrub
+
+[2023-06-29 13:06:14]  
+
+[2023-06-29 13:06:14] [92
+
+[2023-06-29 13:06:15] ;1mlitex[0m> 
+
+[2023-06-29 13:06:15] [92;1mlitex[sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:06:15] 0m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:06:18] sdram_delay_scrub
+
+[2023-06-29 13:06:18] [92;1mlitex[0m> sdram_delay_scrub
+
+[2023-06-29 13:06:19] [92;1mlitex[0sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:06:19] m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:06:22] [sdram_cal
+
+[2023-06-29 13:06:22] 92;1mlitex[0m> sdram_cal
+
+[2023-06-29 13:06:22]   m0, b01: |000000000000000000000000000000
+
+[2023-06-29 13:06:23] 00| delays: -
+
+[2023-06-29 13:06:23] [92;1mlitex[0sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:06:23] m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:06:26] [sdram_init
+
+[2023-06-29 13:06:26] 92;1mlitex[0m> sdram_init
+
+[2023-06-29 13:06:26]   m0
+
+[2023-06-29 13:06:27] , b01: |00000000000000000000000000000000| delays: -
+
+[2023-06-29 13:06:27] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:06:27] > sdram_bist_pat 2779096485
+
+[2023-06-29 13:06:30] [
+
+[2023-06-29 13:06:30] 92;1mlitex[0m> 
+
+[2023-06-29 13:06:36] [92;1mlite
+
+[2023-06-29 13:06:36] x[0m> 
+
+[2023-06-29 13:06:59] [92;1mlit
+
+[2023-06-29 13:07:00] ex[0m> 
+
+[2023-06-29 13:07:00] [92;1mlisdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:07:00] tex[0m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:07:02] [92;1mlitex[0msdram_mr_scrub
+
+[2023-06-29 13:07:02] > 
+
+[2023-06-29 13:07:02] [92;
+
+[2023-06-29 13:07:03] 1mlitex[0m> 
+
+[2023-06-29 13:07:03] [92;1mlitex[0sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:07:03] m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:07:06] sdram_delay_scrub
+
+[2023-06-29 13:07:06] [92;1mlitex[0m> sdram_delay_scrub
+
+[2023-06-29 13:07:07] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:07:07] > sdram_bist_pat 2779096485
+
+[2023-06-29 13:07:10] [92sdram_cal
+
+[2023-06-29 13:07:10] ;1mlitex[0m> sdram_cal
+
+[2023-06-29 13:07:10]   m0, b01: |00000000000000000000000000000
+
+[2023-06-29 13:07:11] 000| delays: -
+
+[2023-06-29 13:07:11] [92;1mlitex[0m> sdrasdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:07:11] m_bist_pat 2779096485
+
+[2023-06-29 13:07:14] [92;1mlisdram_init
+
+[2023-06-29 13:07:14] tex[0m> sdram_init
+
+[2023-06-29 13:07:14]   m0
+
+[2023-06-29 13:07:15] , b01: |00000000000000000000000000000000| delays: -
+
+[2023-06-29 13:07:15] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:07:15] > sdram_bist_pat 2779096485
+
+[2023-06-29 13:07:18] [92;1mlitex
+
+[2023-06-29 13:07:18] [0m> 
+
+[2023-06-29 13:07:24] [92;1mli
+
+[2023-06-29 13:07:24] tex[0m> 
+
+[2023-06-29 13:07:47] [92;1mli
+
+[2023-06-29 13:07:48] tex[0m> 
+
+[2023-06-29 13:07:48] [92;1mlitesdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:07:48] x[0m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:07:50] [92;1mlitex[0m>sdram_mr_scrub
+
+[2023-06-29 13:07:50]  
+
+[2023-06-29 13:07:50] [92;
+
+[2023-06-29 13:07:51] 1mlitex[0m> 
+
+[2023-06-29 13:07:51] [92;1mlitexsdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:07:51] [0m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:07:54] sdram_delay_scrub
+
+[2023-06-29 13:07:55] [92;1mlitex[0m> ssdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:07:55] dram_bist_pat 2779096485
+
+[2023-06-29 13:07:58] [92sdram_cal
+
+[2023-06-29 13:07:58] ;1mlitex[0m> 
+
+[2023-06-29 13:07:58]   m0, b00: |00000000000000
+
+[2023-06-29 13:07:59] 000000000000000000| delays: -
+
+[2023-06-29 13:07:59] [92;1mlitex[0sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:07:59] m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:08:02] sdram_init
+
+[2023-06-29 13:08:02] [92;1mlitex[0m> sdram_init
+
+[2023-06-29 13:08:02]   m0
+
+[2023-06-29 13:08:03] , b01: |00000000000000000000000000000000| delays: -
+
+[2023-06-29 13:08:03] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:08:03] > sdram_bist_pat 2779096485
+
+[2023-06-29 13:08:06] [
+
+[2023-06-29 13:08:06] 92;1mlitex[0m> 
+
+[2023-06-29 13:08:11] [92;1mli
+
+[2023-06-29 13:08:11] tex[0m> 
+
+[2023-06-29 13:08:24] [92;1mlitex[
+
+[2023-06-29 13:08:34] [92;1mlit
+
+[2023-06-29 13:08:35] ex[0m> 
+
+[2023-06-29 13:08:35] [92;1mlitesdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:08:35] x[0m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:08:37] [92
+
+[2023-06-29 13:08:38] ;1mlitex[0m> 
+
+[2023-06-29 13:08:38] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:08:38] > sdram_bist_pat 2779096485
+
+[2023-06-29 13:08:41] [sdram_delay_scrub
+
+[2023-06-29 13:08:41] 92;1mlitex[0m> sdram_delay_scrub
+
+[2023-06-29 13:08:42] [92;1mlitex[0m> sdrasdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:08:42] m_bist_pat 2779096485
+
+[2023-06-29 13:08:45] [92;1mlisdram_cal
+
+[2023-06-29 13:08:45] tex[0m> sdram_cal
+
+[2023-06-29 13:08:45]   m0, b01: |0000000000000000000000000000
+
+[2023-06-29 13:08:46] 0000| delays: -
+
+[2023-06-29 13:08:46] [92;1mlitex[0sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:08:46] m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:08:49] [sdram_init
+
+[2023-06-29 13:08:49] 92;1mlitex[0m> sdram_init
+
+[2023-06-29 13:08:49]   m
+
+[2023-06-29 13:08:50] 0, b01: |00000000000000000000000000000000| delays: -
+
+[2023-06-29 13:08:50] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:08:50] > sdram_bist_pat 2779096485
+
+[2023-06-29 13:08:53] [
+
+[2023-06-29 13:08:53] 92;1mlitex[0m> 
+
+[2023-06-29 13:08:59] [92;1mlit
+
+[2023-06-29 13:08:59] ex[0m> 
+
+[2023-06-29 13:09:21] [92;1mlite
+
+[2023-06-29 13:09:22] x[0m> 
+
+[2023-06-29 13:09:22] [92;1mlitsdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:09:22] ex[0m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:09:25] [92;1mlitex[0m>sdram_mr_scrub
+
+[2023-06-29 13:09:25]  
+
+[2023-06-29 13:09:25] [92;1
+
+[2023-06-29 13:09:26] mlitex[0m> 
+
+[2023-06-29 13:09:26] [92;1mlitex[0sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:09:26] m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:09:29] [sdram_delay_scrub
+
+[2023-06-29 13:09:29] 92;1mlitex[0m> sdram_delay_scrub
+
+[2023-06-29 13:09:30] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:09:30] > sdram_bist_pat 2779096485
+
+[2023-06-29 13:09:33] [92sdram_cal
+
+[2023-06-29 13:09:33] ;1mlitex[0m> sdram_cal
+
+[2023-06-29 13:09:33]   m0, b01: |0000000000000000000000000000
+
+[2023-06-29 13:09:34] 0000| delays: -
+
+[2023-06-29 13:09:34] [92;1mlitex[0m>sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:09:34]  sdram_bist_pat 2779096485
+
+[2023-06-29 13:09:37] [9sdram_init
+
+[2023-06-29 13:09:37] 2;1mlitex[0m> 
+
+[2023-06-29 13:09:37] Read
+
+[2023-06-29 13:09:38]  leveling:
+
+[2023-06-29 13:09:38] [92;1mlitex[0sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:09:38] m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:09:41] 
+
+[2023-06-29 13:09:41] [92;1mlitex[0m> 
+
+[2023-06-29 13:09:46] [92;1mli
+
+[2023-06-29 13:09:46] tex[0m> 
+
+[2023-06-29 13:10:09] [92;1mli
+
+[2023-06-29 13:10:10] tex[0m> 
+
+[2023-06-29 13:10:10] [92;1mlitsdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:10:10] ex[0m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:10:12] [92;1mlitex[0m>sdram_mr_scrub
+
+[2023-06-29 13:10:12]  
+
+[2023-06-29 13:10:12] [92;
+
+[2023-06-29 13:10:13] 1mlitex[0m> 
+
+[2023-06-29 13:10:13] [92;1mlitex[sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:10:13] 0m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:10:16] [92;1sdram_delay_scrub
+
+[2023-06-29 13:10:16] mlitex[0m> 
+
+[2023-06-29 13:10:16] [92;1mlite
+
+[2023-06-29 13:10:17] x[0m> 
+
+[2023-06-29 13:10:17] [92;1mlitex[0sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:10:17] m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:10:20] sdram_cal
+
+[2023-06-29 13:10:20] [92;1mlitex[0m> sdram_cal
+
+[2023-06-29 13:10:20]   m0, b01: |000000000000000000000000000
+
+[2023-06-29 13:10:21] 00000| delays: -
+
+[2023-06-29 13:10:21] [92;1mlitex[0m>sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:10:21]  sdram_bist_pat 2779096485
+
+[2023-06-29 13:10:24] [9sdram_init
+
+[2023-06-29 13:10:24] 2;1mlitex[0m> sdram_init
+
+[2023-06-29 13:10:24]   m0
+
+[2023-06-29 13:10:25] , b01: |00000000000000000000000000000000| delays: -
+
+[2023-06-29 13:10:25] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:10:25] > sdram_bist_pat 2779096485
+
+[2023-06-29 13:10:28] [
+
+[2023-06-29 13:10:28] 92;1mlitex[0m> 
+
+[2023-06-29 13:10:28] [92;1reboot
+
+[2023-06-29 13:10:34] [92;1mli
+
+[2023-06-29 13:10:34] tex[0m> 
+
+[2023-06-29 13:10:55] [92;1mli
+
+[2023-06-29 13:10:56] tex[0m> 
+
+[2023-06-29 13:10:56] [92;1mlitesdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:10:56] x[0m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:10:59] [92;
+
+[2023-06-29 13:11:00] 1mlitex[0m> 
+
+[2023-06-29 13:11:00] [92;1mlitex[0m> sdram_sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:11:00] bist_pat 2779096485
+
+[2023-06-29 13:11:03] [92;1mlitesdram_delay_scrub
+
+[2023-06-29 13:11:03] x[0m> sdram_delay_scrub
+
+[2023-06-29 13:11:04] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:11:04] > sdram_bist_pat 2779096485
+
+[2023-06-29 13:11:07] [9sdram_cal
+
+[2023-06-29 13:11:07] 2;1mlitex[0m> sdram_cal
+
+[2023-06-29 13:11:07]   m0, b01: |0000000000000000000000000000
+
+[2023-06-29 13:11:08] 0000| delays: -
+
+[2023-06-29 13:11:08] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:11:08] > sdram_bist_pat 2779096485
+
+[2023-06-29 13:11:11] [sdram_init
+
+[2023-06-29 13:11:11] 92;1mlitex[0m> sdram_init
+
+[2023-06-29 13:11:11]   m0
+
+[2023-06-29 13:11:12] , b01: |00000000000000000000000000000000| delays: -
+
+[2023-06-29 13:11:12] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:11:12] > sdram_bist_pat 2779096485
+
+[2023-06-29 13:11:15] [9
+
+[2023-06-29 13:11:15] 2;1mlitex[0m> 
+
+[2023-06-29 13:11:21] [92;1mlite
+
+[2023-06-29 13:11:21] x[0m> 
+
+[2023-06-29 13:11:43] [92;1mli
+
+[2023-06-29 13:11:44] tex[0m> 
+
+[2023-06-29 13:11:44] [92;1mlitex[0sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:11:44] m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:11:47] sdram_mr_scrub
+
+[2023-06-29 13:11:47] [92;
+
+[2023-06-29 13:11:48] 1mlitex[0m> 
+
+[2023-06-29 13:11:48] [92;1mlitex[0sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:11:48] m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:11:51] sdram_delay_scrub
+
+[2023-06-29 13:11:51] [92;1mlitex[0m> sdram_delay_scrub
+
+[2023-06-29 13:11:52] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:11:52] > sdram_bist_pat 2779096485
+
+[2023-06-29 13:11:57] [sdram_cal
+
+[2023-06-29 13:11:57] 92;1mlitex[0m> 
+
+[2023-06-29 13:11:57]   m0, 
+
+[2023-06-29 13:11:58] b01: |00000000000000000000000000000000| delays: -
+
+[2023-06-29 13:11:58] [92;1mlitex[0sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:11:58] m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:12:00] [sdram_init
+
+[2023-06-29 13:12:01] 92;1mlitex[0m> sdram_init
+
+[2023-06-29 13:12:01]   m
+
+[2023-06-29 13:12:02] 0, b01: |00000000000000000000000000000000| delays: -
+
+[2023-06-29 13:12:02] [92;1mlitex[0sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 13:12:02] m> sdram_bist_pat 2779096485
+
+[2023-06-29 13:12:04] [
+
+[2023-06-29 13:12:04] 92;1mlitex[0m> 
+
+[2023-06-29 13:12:10] [92;1mlit
+
+[2023-06-29 13:12:10] ex[0m> 
+

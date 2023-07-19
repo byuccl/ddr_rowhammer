@@ -1,0 +1,299 @@
+
+Reading File:  ./chipir2023/DDR2_CONTINUOUS_testexperiment_June_29_2023__11_08_05_UART.log
+Number of lines in uart file:  516
+517
+Printing Dynamic Errors
+
+
+
+[ 6 / 29 /2023 at  11 : 8 : 25 ]
+
+Error group count:  1
+
+ Num Errors: 2 
+
+Error New:    0x0df1440:  a5a5a5a5 a5a5a5a7
+Error New:    0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  11 : 8 : 25 ]
+
+Error group count:  2
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 8 : 26 ]
+
+Error group count:  3
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 8 : 27 ]
+
+Error group count:  4
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 8 : 28 ]
+
+Error group count:  5
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 8 : 29 ]
+
+Error group count:  6
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 8 : 30 ]
+
+Error group count:  7
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 8 : 30 ]
+
+Error group count:  8
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 8 : 32 ]
+
+Error group count:  9
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 8 : 33 ]
+
+Error group count:  10
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 8 : 34 ]
+
+Error group count:  11
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 8 : 34 ]
+
+Error group count:  12
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 8 : 36 ]
+
+Error group count:  13
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 8 : 37 ]
+
+Error group count:  14
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 8 : 38 ]
+
+Error group count:  15
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 8 : 38 ]
+
+Error group count:  16
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 8 : 40 ]
+
+Error group count:  17
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 8 : 41 ]
+
+Error group count:  18
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 8 : 41 ]
+
+Error group count:  19
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 8 : 42 ]
+
+Error group count:  20
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 8 : 44 ]
+
+Error group count:  21
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 8 : 45 ]
+
+Error group count:  22
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 8 : 45 ]
+
+Error group count:  23
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 8 : 46 ]
+
+Error group count:  24
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 8 : 50 ]
+
+Error group count:  25
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  11 : 8 : 51 ]
+
+Error group count:  26
+
+ Num Errors: 2 
+
+
+###################################################################################################################################################################
+
+
+Printing Errors found and their frequencies: 
+| Frequency    | Error
+|           26 |   0x0df1440:  a5a5a5a5 a5a5a5a7
+|           26 |   0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+###################################################################################################################################################################
+
+
+Printing Unmatched BIST lines:
+
+[2023-06-29 11:08:17] 
+
+[2023-06-29 11:08:27] [92;1mlitex
+
+[2023-06-29 11:08:28] [0m> 
+
+[2023-06-29 11:08:28] [92;1mlitex[sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 11:08:28] 0m> sdram_bist_pat 2779096485
+
+[2023-06-29 11:08:31] sdram_mr_scrub
+
+[2023-06-29 11:08:31] [92;1mli
+
+[2023-06-29 11:08:32] tex[0m> 
+
+[2023-06-29 11:08:35] [92;sdram_delay_scrub
+
+[2023-06-29 11:08:35] 1mlitex[0m> sdram_delay_scrub
+
+[2023-06-29 11:08:39] [92;sdram_cal
+
+[2023-06-29 11:08:39] 1mlitex[0m> sdram_cal
+
+[2023-06-29 11:08:39]   m0, b01: |0000000000000000000000000000000
+
+[2023-06-29 11:08:40] 0| delays: -
+
+[2023-06-29 11:08:40] [92;1mlitex[0m> ssdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 11:08:40] dram_bist_pat 2779096485
+
+[2023-06-29 11:08:42] [92;sdram_init
+
+[2023-06-29 11:08:42] 1mlitex[0m> sdram_init
+
+[2023-06-29 11:08:42]   m0, 
+
+[2023-06-29 11:08:43] b01: |00000000000000000000000000000000| delays: -
+
+[2023-06-29 11:08:46] [92
+
+[2023-06-29 11:08:46] ;1mlitex[0m> 
+

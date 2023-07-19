@@ -1,0 +1,314 @@
+
+Reading File:  ./chipir2023/DDR2_CONTINUOUS_testexperiment_July_01_2023__07_54_00_UART.log
+Number of lines in uart file:  460
+461
+Printing Dynamic Errors
+
+
+
+[ 7 / 1 /2023 at  7 : 54 : 20 ]
+
+Error group count:  1
+
+ Num Errors: 3 
+
+Error New:    0x078ec96:  a5a5a1a5 a5a5a5a5
+Error New:    0x0adc6a6:  a5a5a5a5 ada5a5a5
+Error New:    0x0df1440:  a5a5a5a5 a5a5a5a7
+
+
+
+[ 7 / 1 /2023 at  7 : 54 : 22 ]
+
+Error group count:  2
+
+ Num Errors: 4 
+
+Error New:    0x01f5ae8:  a5a5a5a5 a5a5a4a5
+
+
+
+[ 7 / 1 /2023 at  7 : 54 : 25 ]
+
+Error group count:  3
+
+ Num Errors: 4 
+
+
+
+
+[ 7 / 1 /2023 at  7 : 54 : 27 ]
+
+Error group count:  4
+
+ Num Errors: 4 
+
+
+
+
+[ 7 / 1 /2023 at  7 : 54 : 31 ]
+
+Error group count:  5
+
+ Num Errors: 4 
+
+
+
+
+[ 7 / 1 /2023 at  7 : 54 : 34 ]
+
+Error group count:  6
+
+ Num Errors: 4 
+
+
+
+
+[ 7 / 1 /2023 at  7 : 54 : 37 ]
+
+Error group count:  7
+
+ Num Errors: 4 
+
+
+
+
+[ 7 / 1 /2023 at  7 : 54 : 40 ]
+
+Error group count:  8
+
+ Num Errors: 4 
+
+Error New:    0x0a88ff3:  a5a4a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  7 : 54 : 44 ]
+
+Error group count:  9
+
+ Num Errors: 4 
+
+
+
+
+[ 7 / 1 /2023 at  7 : 54 : 46 ]
+
+Error group count:  10
+
+ Num Errors: 4 
+
+Error Gone:    0x0a88ff3:  a5a4a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  7 : 54 : 49 ]
+
+Error group count:  11
+
+ Num Errors: 4 
+
+
+
+
+[ 7 / 1 /2023 at  7 : 54 : 52 ]
+
+Error group count:  12
+
+ Num Errors: 4 
+
+Error New:    0x0a88ff3:  a5a4a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  7 : 54 : 56 ]
+
+Error group count:  13
+
+ Num Errors: 4 
+
+
+
+
+[ 7 / 1 /2023 at  7 : 54 : 58 ]
+
+Error group count:  14
+
+ Num Errors: 4 
+
+
+
+
+[ 7 / 1 /2023 at  7 : 55 : 1 ]
+
+Error group count:  15
+
+ Num Errors: 4 
+
+Error Gone:    0x0a88ff3:  a5a4a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  7 : 55 : 4 ]
+
+Error group count:  16
+
+ Num Errors: 4 
+
+
+
+
+[ 7 / 1 /2023 at  7 : 55 : 8 ]
+
+Error group count:  17
+
+ Num Errors: 4 
+
+
+
+
+[ 7 / 1 /2023 at  7 : 55 : 11 ]
+
+Error group count:  18
+
+ Num Errors: 5 
+
+Error New:    0x01c3524:  25a5a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  7 : 55 : 13 ]
+
+Error group count:  19
+
+ Num Errors: 4 
+
+Error New:    0x0a88ff3:  a5a4a5a5 a5a5a5a5
+Error Gone:    0x01c3524:  25a5a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  7 : 55 : 16 ]
+
+Error group count:  20
+
+ Num Errors: 4 
+
+
+
+
+[ 7 / 1 /2023 at  7 : 55 : 20 ]
+
+Error group count:  21
+
+ Num Errors: 5 
+
+
+
+
+[ 7 / 1 /2023 at  7 : 55 : 23 ]
+
+Error group count:  22
+
+ Num Errors: 5 
+
+Error New:    0x01c3524:  25a5a5a5 a5a5a5a5
+Error Gone:    0x0a88ff3:  a5a4a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  7 : 55 : 25 ]
+
+Error group count:  23
+
+ Num Errors: 4 
+
+Error Gone:    0x01c3524:  25a5a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  7 : 55 : 28 ]
+
+Error group count:  24
+
+ Num Errors: 6 
+
+Error New:    0x01c3524:  25a5a5a5 a5a5a5a5
+Error New:    0x0a88ff3:  a5a4a5a5 a5a5a5a5
+
+
+
+[ 7 / 1 /2023 at  7 : 55 : 32 ]
+
+Error group count:  25
+
+ Num Errors: 5 
+
+Error Gone:    0x078ec96:  a5a5a1a5 a5a5a5a5
+Error Gone:    0x0adc6a6:  a5a5a5a5 ada5a5a5
+Error Gone:    0x0df1440:  a5a5a5a5 a5a5a5a7
+Error Gone:    0x01c3524:  25a5a5a5 a5a5a5a5
+Error Gone:    0x0a88ff3:  a5a4a5a5 a5a5a5a5
+
+Reached end of file with error count
+
+
+###################################################################################################################################################################
+
+
+Printing Errors found and their frequencies: 
+| Frequency    | Error
+|           24 |   0x078ec96:  a5a5a1a5 a5a5a5a5
+|           24 |   0x0adc6a6:  a5a5a5a5 ada5a5a5
+|           24 |   0x0df1440:  a5a5a5a5 a5a5a5a7
+|           24 |   0x01f5ae8:  a5a5a5a5 a5a5a4a5
+|            9 |   0x0a88ff3:  a5a4a5a5 a5a5a5a5
+|            3 |   0x01c3524:  25a5a5a5 a5a5a5a5
+
+###################################################################################################################################################################
+
+
+Printing Unmatched BIST lines:
+
+[2023-07-01 07:54:13] 
+
+[2023-07-01 07:54:30] [92;1mlitex[0m>
+
+[2023-07-01 07:54:31]  
+
+[2023-07-01 07:54:31] [92;1mlitex[sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-07-01 07:54:31] 0m> sdram_bist_pat 2779096485
+
+[2023-07-01 07:54:42] [92;1mlitex[
+
+[2023-07-01 07:54:43] 0m> 
+
+[2023-07-01 07:54:43] [92;1mlitex[0sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-07-01 07:54:43] m> sdram_bist_pat 2779096485
+
+[2023-07-01 07:54:54] [92;1mlitex
+
+[2023-07-01 07:54:55] [0m> 
+
+[2023-07-01 07:54:55] [92;1mlitex[0sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-07-01 07:54:55] m> sdram_bist_pat 2779096485
+
+[2023-07-01 07:55:06] [92;1mlitex
+
+[2023-07-01 07:55:07] [0m> 
+
+[2023-07-01 07:55:07] [92;1mlitex[0sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-07-01 07:55:07] m> sdram_bist_pat 2779096485
+
+[2023-07-01 07:55:20] Pattern set to: a5a5a5a5 asdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-07-01 07:55:20] 5a5a5a5 
+
+[2023-07-01 07:55:32] [92;1mlitexsdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-07-01 07:55:32] [0m> sdram_bist_pat 2779096485
+

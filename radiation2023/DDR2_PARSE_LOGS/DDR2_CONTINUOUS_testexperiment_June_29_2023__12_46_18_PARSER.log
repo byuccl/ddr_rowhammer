@@ -1,0 +1,881 @@
+
+Reading File:  ./chipir2023/DDR2_CONTINUOUS_testexperiment_June_29_2023__12_46_18_UART.log
+Number of lines in uart file:  1496
+1497
+Printing Dynamic Errors
+
+
+
+[ 6 / 29 /2023 at  12 : 46 : 38 ]
+
+Error group count:  1
+
+ Num Errors: 1 
+
+Error New:    0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  12 : 46 : 39 ]
+
+Error group count:  2
+
+ Num Errors: 2 
+
+Error New:    0x0021998:  a5a5a5e5 a5a5a5a5
+Error New:    0x0df1440:  a5a5a5a5 a5a5a5a7
+
+
+
+[ 6 / 29 /2023 at  12 : 46 : 42 ]
+
+Error group count:  3
+
+ Num Errors: 1 
+
+Error Gone:    0x0021998:  a5a5a5e5 a5a5a5a5
+Error Gone:    0x0df1440:  a5a5a5a5 a5a5a5a7
+
+
+
+[ 6 / 29 /2023 at  12 : 46 : 42 ]
+
+Error group count:  4
+
+ Num Errors: 2 
+
+Error New:    0x0021998:  a5a5a5e5 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  12 : 46 : 47 ]
+
+Error group count:  5
+
+ Num Errors: 2 
+
+Error New:    0x0df1440:  a5a5a5a5 a5a5a5a7
+
+
+
+[ 6 / 29 /2023 at  12 : 46 : 50 ]
+
+Error group count:  6
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 46 : 53 ]
+
+Error group count:  7
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 46 : 57 ]
+
+Error group count:  8
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 47 : 1 ]
+
+Error group count:  9
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 47 : 4 ]
+
+Error group count:  10
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 47 : 8 ]
+
+Error group count:  11
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 47 : 11 ]
+
+Error group count:  12
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 47 : 15 ]
+
+Error group count:  13
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 47 : 18 ]
+
+Error group count:  14
+
+ Num Errors: 2 
+
+Error Gone:    0x0df1440:  a5a5a5a5 a5a5a5a7
+
+
+
+[ 6 / 29 /2023 at  12 : 47 : 22 ]
+
+Error group count:  15
+
+ Num Errors: 2 
+
+Error New:    0x0df1440:  a5a5a5a5 a5a5a5a7
+
+
+
+[ 6 / 29 /2023 at  12 : 47 : 25 ]
+
+Error group count:  16
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 47 : 29 ]
+
+Error group count:  17
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 47 : 33 ]
+
+Error group count:  18
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 47 : 36 ]
+
+Error group count:  19
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 47 : 39 ]
+
+Error group count:  20
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 47 : 44 ]
+
+Error group count:  21
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 47 : 47 ]
+
+Error group count:  22
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 47 : 50 ]
+
+Error group count:  23
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 47 : 53 ]
+
+Error group count:  24
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 48 : 0 ]
+
+Error group count:  25
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 48 : 3 ]
+
+Error group count:  26
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 48 : 6 ]
+
+Error group count:  27
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 48 : 9 ]
+
+Error group count:  28
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 48 : 32 ]
+
+Error group count:  29
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 48 : 35 ]
+
+Error group count:  30
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 48 : 38 ]
+
+Error group count:  31
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 48 : 42 ]
+
+Error group count:  32
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 48 : 46 ]
+
+Error group count:  33
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 48 : 49 ]
+
+Error group count:  34
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 48 : 53 ]
+
+Error group count:  35
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 48 : 56 ]
+
+Error group count:  36
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 49 : 0 ]
+
+Error group count:  37
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 49 : 4 ]
+
+Error group count:  38
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 49 : 7 ]
+
+Error group count:  39
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 49 : 10 ]
+
+Error group count:  40
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 49 : 15 ]
+
+Error group count:  41
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 49 : 18 ]
+
+Error group count:  42
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 49 : 21 ]
+
+Error group count:  43
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 49 : 24 ]
+
+Error group count:  44
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 49 : 29 ]
+
+Error group count:  45
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 49 : 32 ]
+
+Error group count:  46
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 49 : 35 ]
+
+Error group count:  47
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 49 : 38 ]
+
+Error group count:  48
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 49 : 43 ]
+
+Error group count:  49
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 49 : 46 ]
+
+Error group count:  50
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 49 : 49 ]
+
+Error group count:  51
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 49 : 53 ]
+
+Error group count:  52
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 49 : 59 ]
+
+Error group count:  53
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 50 : 2 ]
+
+Error group count:  54
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 50 : 6 ]
+
+Error group count:  55
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 50 : 9 ]
+
+Error group count:  56
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 50 : 32 ]
+
+Error group count:  57
+
+ Num Errors: 2 
+
+Error Gone:    0x0021998:  a5a5a5e5 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  12 : 50 : 33 ]
+
+Error group count:  58
+
+ Num Errors: 2 
+
+Error New:    0x0021998:  a5a5a5e5 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  12 : 50 : 36 ]
+
+Error group count:  59
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 50 : 39 ]
+
+Error group count:  60
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 50 : 44 ]
+
+Error group count:  61
+
+ Num Errors: 2 
+
+Error Gone:    0x0021998:  a5a5a5e5 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  12 : 50 : 44 ]
+
+Error group count:  62
+
+ Num Errors: 3 
+
+Error New:    0x0021998:  a5a5a5e5 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  12 : 50 : 47 ]
+
+Error group count:  63
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 50 : 51 ]
+
+Error group count:  64
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 50 : 55 ]
+
+Error group count:  65
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 50 : 58 ]
+
+Error group count:  66
+
+ Num Errors: 3 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 51 : 2 ]
+
+Error group count:  67
+
+ Num Errors: 2 
+
+Error Gone:    0x0021998:  a5a5a5e5 a5a5a5a5
+
+
+
+[ 6 / 29 /2023 at  12 : 51 : 2 ]
+
+Error group count:  68
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 51 : 4 ]
+
+Error group count:  69
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 51 : 5 ]
+
+Error group count:  70
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 51 : 6 ]
+
+Error group count:  71
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 51 : 6 ]
+
+Error group count:  72
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 51 : 8 ]
+
+Error group count:  73
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 51 : 9 ]
+
+Error group count:  74
+
+ Num Errors: 2 
+
+
+
+
+[ 6 / 29 /2023 at  12 : 51 : 9 ]
+
+Error group count:  75
+
+ Num Errors: 2 
+
+Error Gone:    0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+Reached end of file with error count
+
+
+###################################################################################################################################################################
+
+
+Printing Errors found and their frequencies: 
+| Frequency    | Error
+|           74 |   0x0ed5b13:  a5a5a5a1 a5a5a5a5
+|           71 |   0x0df1440:  a5a5a5a5 a5a5a5a7
+|           62 |   0x0021998:  a5a5a5e5 a5a5a5a5
+
+###################################################################################################################################################################
+
+
+Printing Unmatched BIST lines:
+
+[2023-06-29 12:46:31] 
+
+[2023-06-29 12:46:45] [92;1
+
+[2023-06-29 12:46:46] mlitex[0m> 
+
+[2023-06-29 12:46:46] [92;1mlitex[0m> sdramsdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 12:46:46] _bist_pat 2779096485
+
+[2023-06-29 12:47:00] sdram_mr_scrub
+
+[2023-06-29 12:47:00] [92;
+
+[2023-06-29 12:47:01] 1mlitex[0m> 
+
+[2023-06-29 12:47:01] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 12:47:01] > sdram_bist_pat 2779096485
+
+[2023-06-29 12:47:14] [92;1mlitesdram_delay_scrub
+
+[2023-06-29 12:47:14] x[0m> sdram_delay_scrub
+
+[2023-06-29 12:47:15] [92;1mlitex[0sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 12:47:15] m> sdram_bist_pat 2779096485
+
+[2023-06-29 12:47:28] [92;1mlitexsdram_cal
+
+[2023-06-29 12:47:28] [0m> sdram_cal
+
+[2023-06-29 12:47:28]   m0, b01: |00000000000000000000000000
+
+[2023-06-29 12:47:29] 000000| delays: -
+
+[2023-06-29 12:47:29] [92;1mlitex[sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 12:47:29] 0m> sdram_bist_pat 2779096485
+
+[2023-06-29 12:47:42] [92;1mlitsdram_init
+
+[2023-06-29 12:47:42] ex[0m> sdram_init
+
+[2023-06-29 12:47:42]   m0
+
+[2023-06-29 12:47:43] , b01: |00000000000000000000000000000000| delays: -
+
+[2023-06-29 12:47:43] [92;1mlitex[0sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 12:47:43] m> sdram_bist_pat 2779096485
+
+[2023-06-29 12:47:56] [92;1mlit
+
+[2023-06-29 12:47:56] ex[0m> 
+
+[2023-06-29 12:47:59] Command not found
+
+[2023-06-29 12:48:12] 
+
+[2023-06-29 12:48:12] [92;1mlitex[0m> 
+
+[2023-06-29 12:48:46] [92;1mlisdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 12:48:46] tex[0m> sdram_bist_pat 2779096485
+
+[2023-06-29 12:48:59] [92;sdram_mr_scrub
+
+[2023-06-29 12:48:59] 1mlitex[0m> sdram_mr_scrub
+
+[2023-06-29 12:48:59] [92;1mli
+
+[2023-06-29 12:49:00] tex[0m> 
+
+[2023-06-29 12:49:00] [92;1mlitex[0m>sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 12:49:00]  sdram_bist_pat 2779096485
+
+[2023-06-29 12:49:13] [92;1mlitexsdram_delay_scrub
+
+[2023-06-29 12:49:13] [0m> sdram_delay_scrub
+
+[2023-06-29 12:49:14] [92;1mlitex[0m> sdsdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 12:49:14] ram_bist_pat 2779096485
+
+[2023-06-29 12:49:27] [92;1mlitex[0sdram_cal
+
+[2023-06-29 12:49:27] m> sdram_cal
+
+[2023-06-29 12:49:27]   m0, b01: |000000000000000000000000000000
+
+[2023-06-29 12:49:28] 00| delays: -
+
+[2023-06-29 12:49:28] [92;1mlitex[0m>sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 12:49:28]  sdram_bist_pat 2779096485
+
+[2023-06-29 12:49:41] [92;1mlitexsdram_init
+
+[2023-06-29 12:49:41] [0m> sdram_init
+
+[2023-06-29 12:49:41]   
+
+[2023-06-29 12:49:42] m0, b01: |00000000000000000000000000000000| delays: -
+
+[2023-06-29 12:49:42]   bus errors:  0/256
+
+[2023-06-29 12:49:42]   addr errors: 0/8192
+
+[2023-06-29 12:49:42]   data errors: 1/524288
+
+[2023-06-29 12:49:42] Memtest KO
+
+[2023-06-29 12:49:42] [92;1mlitex[0sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 12:49:42] m> sdram_bist_pat 2779096485
+
+[2023-06-29 12:49:56] [92;1mlite
+
+[2023-06-29 12:49:56] x[0m> 
+
+[2023-06-29 12:49:59] Command not found
+
+[2023-06-29 12:50:12] [
+
+[2023-06-29 12:50:12] 92;1mlitex[0m> 
+
+[2023-06-29 12:50:42] [92;1mli
+
+[2023-06-29 12:50:43] tex[0m> 
+
+[2023-06-29 12:50:43] [92;1mlitex[0m> sdramsdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 12:50:43] _bist_pat 2779096485
+
+[2023-06-29 12:50:54] [92;1mlitesdram_mr_scrub
+
+[2023-06-29 12:50:54] x[0m> 
+
+[2023-06-29 12:50:54] 
+
+[2023-06-29 12:50:55] [92;1mlitex[0m> 
+
+[2023-06-29 12:50:55] [92;1mlitex[0msdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 12:50:55] > sdram_bist_pat 2779096485
+
+[2023-06-29 12:51:03] [92;1mlitex[0sdram_delay_scrub
+
+[2023-06-29 12:51:03] m> 
+
+[2023-06-29 12:51:04] [92;1mlitex[0sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 12:51:04] m> sdram_bist_pat 2779096485
+
+[2023-06-29 12:51:07] [sdram_cal
+
+[2023-06-29 12:51:07] 92;1mlitex[0m> sdram_cal
+
+[2023-06-29 12:51:07]   m0, b01: |000000000000000000000000000
+
+[2023-06-29 12:51:08] 00000| delays: -
+
+[2023-06-29 12:51:08] [92;1mlitex[0sdram_bist 0x0 268435455 1000 1 1 0 0
+
+[2023-06-29 12:51:08] m> sdram_bist_pat 2779096485
+

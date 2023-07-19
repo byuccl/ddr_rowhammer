@@ -111,16 +111,54 @@ Events:
 - No change in behavior from Tests 8 - 10.
 
 ### Continuous Test 11 ( 2023-06-29 11:08:05 - 2023-06-29 11:08:51 )
+- First error was at 11:08:25 
+- There were 2 errors this test that were there all the time and did not go away at all. Those 2 errors are: 
+  - 0x0df1440 : a5a5a5a5 a5a5a5a7
+  - 0x0ed5b13 : a5a5a5a1 a5a5a5a5
+
+- There was a unicode error at 11:08:46 
 
 ### Continuous Test 12 ( 2023-06-29 11:19:08 - 2023-06-29 11:21:01 )
+- Memory initialization failed because of 1 data error. It does not look like the error was one of teh errors found in the previous test, because this error had to be between addresses 0x40000000 - 0x40200000
+- First error group was found at 11:19:28, and they stayed the same until the end of the test. These errors were: 
+  - 0x0021998:  a5a5a5e5 a5a5a5a5
+  - 0x0df1440:  a5a5a5a5 a5a5a5a7
+  - 0x0ed5b13:  a5a5a5a1 a5a5a5a5
+
+- This test did not have any timeouts 
 
 ### Continuous Test 13 ( 2023-06-29 12:46:18 - 2023-06-29 12:51:09 )
-
+- This test also failed memory initialization at 12:49:  because of 1 data error, but the fail was at 12:49:42. It had no other memory initialization errors 
+- The test had 2 timeouts
+- There were 3 errors showing up during this test, but none of them was showing up the whole time. These errors are the same errors from the previous test. The following are the errors with their frequency out of 75:
+  - 74: 0x0ed5b13:  a5a5a5a1 a5a5a5a5
+  - 71: 0x0df1440:  a5a5a5a5 a5a5a5a7
+  - 62: 0x0021998:  a5a5a5e5 a5a5a5a5
 ### Continuous Test 14 ( 2023-06-29 12:51:20 - 2023-06-29 12:53:35 )
+- There were 3 timeouts this test 
+- There were no memory initialization errors 
+- The first error was found at 12:51:40
+- There were only 2 errors found this test, these 2 errors are:
+  - 77: 0x0ed5b13:  a5a5a5a1 a5a5a5a5
+  - 76: 0x0df1440:  a5a5a5a5 a5a5a5a7
 
 ### Continuous Test 15 ( 2023-06-29 12:57:14 - 2023-06-29 13:12:29 )
-
+- The first error was at 12:57:34
+- There were 19 unicode errors that led to 19 reboots of the board 
+- The test had 532 errors and there were mainly 2 errors showing up, the errors were the following: 
+  - 517: 0x0ed5b13:  a5a5a5a1 a5a5a5a5
+  - 501: 0x0df1440:  a5a5a5a5 a5a5a5a7
 ### Continuous Test 16 ( 2023-06-29 13:13:19 - 2023-06-29 19:16:17 )
+- The first error was at 13:13:38
+- There were 4 timeouts this test 
+- At 14:20:38, the data read from the DRAM was just 0s. There were 8388611 errors which were just the DRAM returning 0s. Some addresses were returning other values than 0. For example, address 0x0000116 returned 0 82010000. These error stayed until 16:18:49, as there was a timeout at 16:19:23. The DRAM recovered after that and showed 2 errors.
+- At 16:47:53, the whole DRAM went bad as there were 16777216 errors; the whole memory was returning 0s 
+- At 16:59:09, the pattern written to the memory was corrupted as it was set to 252525a5 252525a5, there were 221 errors showing up because of that, but the data read from the addresses was corrupted as well. The addresses were (0x5ff - 0x7741ff). For example, address 0x00006ff returned 252525a5 25a5. This kept happening for different addresses as well until a timeout occurred at 17:25:31. The DRAM recovered after that. 
+- Besides the errors reading 0s, there were 4 main errors that had a good error frequency. The following errors are:
+  - 5124: 0x0df1440:  a5a5a5a5 a5a5a5a7
+  - 4839: 0x06d2819:  a5a5a5a5 a5a585a5
+  - 2513: 0x0ed5b13:  a5a5a5a1 a5a5a5a5
+  - 2424: 0x0a4f004:  a5a5a5a1 a5a5a5a5
 
 ### Idle Test 12 ( 2023-06-29 19:16:25 - 2023-06-29 19:16:56 )
 
@@ -201,6 +239,14 @@ Events:
 - 8 UART Timeouts occured: 5 after starting the reader and no data returned, 1 after starting the writer and no data returned, and 2 after starting the reader and getting unicode errors, which led to the Terminal Recovery state that tried to close and reopen the ttyUSB device and send input but failed receiving output.
 - The number of errors ranged from 2 - 15.
 
+### Continuous Test 17 (2023-07-01 07:54:00 - 07:55:32)
+- There were no timeouts this test 
+- The first error was at 7:54:20. 
+- There were 4 main errors this test that had a 24/25 error frequency. The errors were the following:
+  - 0x078ec96:  a5a5a1a5 a5a5a5a5
+  - 0x0adc6a6:  a5a5a5a5 ada5a5a5
+  - 0x0df1440:  a5a5a5a5 a5a5a5a7
+  - 0x01f5ae8:  a5a5a5a5 a5a5a4a5
 ### Idle Test 20 ( 2023-07-01 07:57:39 - 2023-07-01 15:49:50 )
 
 Events:
@@ -208,6 +254,60 @@ Events:
 - More instances of data and register corruption. Instances where address range changed to 0x0-0x0fffff7, address width register changed from 24 to 16, and entire lines from the output were colored green.
 - The number of errors ranged from 4 - 16.
 
+
+### Continuous Test 18 (2023-07-01 16:22:00 - 21:07:16)
+- The first error was at 16:22:40
+- There were 7 timeouts this test
+- The error count range was 8-13 until 19:37:39. At that time, there were 16777215 errors found. The memory recovered at 19:39:19 after a timeout occurred. 
+- The following were the errors with a significant error frequency out of 4650 error groups:
+  - 4595: 0x078ec96:  a5a5a1a5 a5a5a5a5
+  - 4595: 0x0a4c9f8:  a5a5a5a5 a525a5a5
+  - 4595: 0x0b8ec51:  a5a5a5a5 a5a5a5e5
+  - 4595: 0x0bb8558:  a5a5a5b5 a5a5a5a5
+  - 4595: 0x0c131ad:  85a5a5a5 a5a5a5a5
+  - 4594: 0x0fe20e2:  a5a4a5a5 a5a5a5a5
+  - 4594: 0x01f5ae8:  a5a5a5a5 a5a5a4a5
+  - 4574: 0x0df1440:  a5a5a5a5 a5a5a5a7
+  - 4519: 0x012764f:  a5a5a5a5 a5a5e5a5
+  - 4400: 0x03e13ae:  a5a5e5a5 a5a5a5a5
+  - 4049: 0x0dfa3b7:  a5a5a5a5 a5a5a5b5
+  - 3525: 0x00ca4f7:  e5a5a5a5 a5a5a5a5
+  - 2362: 0x03af07f:  b5a5a5a5 a5a5a5a5
+  - 1676: 0x00dcaf0:  a5a5a5a7 a5a5a5a5
+  - 1067: 0x0e5564e:  a5a5a5a5 a5e5a5a5
+
+
+### Continuous Test 19 (2023-07-01 21:26:29 - 2023-07-02 00:25:50)
+- The first error was found at 21:26:49
+-  There were 2 timeouts this test and 1 unicode error which was at the end of the test 
+- Even though there was a good number of repeated dynamic errors, none of the errors were stuck bits as there were times in the test were no errors were found. 
+- The following errors were found the most during this test
+  - 2165: 0x00ca4f7:  e5a5a5a5 a5a5a5a5
+  - 2165: 0x03e13ae:  a5a5e5a5 a5a5a5a5
+  - 2165: 0x0a4c9f8:  a5a5a5a5 a525a5a5
+  - 2165: 0x0c131ad:  85a5a5a5 a5a5a5a5
+  - 2165: 0x0df1440:  a5a5a5a5 a5a5a5a7
+  - 2165: 0x0fe20e2:  a5a4a5a5 a5a5a5a5
+  - 2160: 0x01f5ae8:  a5a5a5a5 a5a5a4a5
+  - 2083: 0x012764f:  a5a5a5a5 a5a5e5a5
+  - 1951: 0x076cc63:  a5a5a5a5 85a5a5a5
+  - 1808: 0x03af07f:  b5a5a5a5 a5a5a5a5
+  - 1795: 0x0dfa3b7:  a5a5a5a5 a5a5a5b5
+  - 1465: 0x078ec96:  a5a5a1a5 a5a5a5a5
+  - 1465: 0x0b8ec51:  a5a5a5a5 a5a5a5e5
+  - 1465: 0x0bb8558:  a5a5a5b5 a5a5a5a5
+  -  828: 0x005bac2:  a5a5a5a5 b5a5a5a5
+  -  700: 0x058ec96:  a5a5a1a5 a5a5a5a5
+  -  700: 0x098ec51:  a5a5a5a5 a5a5a5e5
+  -  700: 0x09b8558:  a5a5a5b5 a5a5a5a5
+
+
+### Continuous Test 20 (2023-07-02 08:00:19 - 08:00:31)
+- Test did not run. It was stopped quickly so no errors found 
+
+
+### Continuous Test 21 (2023-07-02 08:00:43 - 08:00:48)
+- Test stopped quickly so no errors found 
 ### Idle Test 21 ( 2023-07-02 19:00:11 - 2023-07-02 19:00:21 )
 
 No BIST output. Perhaps this test was stopped manually.

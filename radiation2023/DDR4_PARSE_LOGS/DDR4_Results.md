@@ -134,7 +134,7 @@ Events:
 ### Continuous Test 5 (2023-06-29 13:49:36 - 14:58:07)
 - There were 45 timeouts in this test 
 - The first error was at 13:50:03
-- It is hard to see specific patterns because test kept timing out while reading the errors because the delay was shorter than need for this board. 
+- It is hard to see specific patterns because test kept timing out while reading the errors because the delay was shorter than needed for this board. 
 - There were 10 addresses that got the most errors during this test, and these addresses are:
 0x0e99007 0x162c7a7 0x2f76f9d 0x3d6effe 0x5cd65dc 0x65a1dec 0x7f0086d 0x88c7f96 0x73fd4b0 0x7d9ef11 
 
@@ -142,6 +142,7 @@ Events:
 
 
 ### Continuous Test 6 (2023-06-29 15:13:08 - 19:41:08)
+- At this time, there was a change in the reading delay.
 - The first error was at 15:13:34
 - This test did not have any timeout errors 
 - For the first 137 groups, the error count was around 4120, at 16:19:58, the count jumped to around 6166. The error count jumped to around 12300 at group count 324. 
@@ -151,5 +152,35 @@ Events:
 ### Continuous Test 7 (2023-07-01 7:54:14 - 7:55:37)
 - The first error was at 7:54:41 
 - This test did not run for long so we did not get much errors to see a specific pattern. 
+- There were no timeouts during this test
 
-NOT DONE YET! 
+
+### Continuous Test 8 (2023-07-01 16:22:32 - 21:07:21)
+- There were no timeouts this test. 
+- First error was at 16:22:58
+- The number of errors ranged between 77 - 16500
+- There were no stuck bits as the largest error frequency was 782/795
+
+
+### Continuous Test 9 (2023-07-01 21:26:41 - 2023-07-02 07:58:54)
+- There were 2 UART timeouts this test
+- The first error was at 21:27:00
+- The number of errors ranged between 61 - 12400
+- I noticed that the error count was getting high then the DRAM would kind of recover and go back to low numbers, but then it jumps back to high numbers
+- There were 1213 error groups, the 3 addresses with the highest error frequency were:
+    - 0x05eecf5 (1135 times)
+        - a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - 0x06e3abc (1112 times)
+        - a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - 0x0724e9d (1107 times)
+        - a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+
+
+
+### Continuous Test 10 (2023-07-02 08:01:10 - 19:00:19)
+- The fist error was at 08:01:37
+- The number of errors ranged between 51 - 168435456
+- At 13:07:07, there were 268435456 errors which means that the whole DRAM had errors. The errors stayed there until the end of the test. The DRAM was not able to recover. 
+- There were no timeout errors 
+- We cannot really conclude which addresses are the most vulnerable because the whole DRAM had errors for a majority of testing time. 
+
