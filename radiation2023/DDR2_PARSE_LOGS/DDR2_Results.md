@@ -80,6 +80,10 @@ Events:
   continuously through recovery commands, and as a result became stuck in a neverending cycle of sending BIST recovery commands, 
   rebooting the SoC, and then repowering the board with the Lindy. The error at this same address persisted even after repowering 
   several times.
+  Following are the errors found at this time period:
+    - 0x01f2bca: a5a5a5a5 a5a525a5
+    - 0x0c843e7: a5a585a5 a5a5a5a5
+    - 0x0ed5b13: a5a5a5a1 a5a5a5a5
   * **MJW**: Please put the details of each error (address, expected value, received value)
   * **MJW**: Please put the details of stuck bit
 - Up from 9:29:59 to the end of the test, even after the board has repowered and continues to repower several times, random letters 
@@ -87,28 +91,51 @@ Events:
 - There is a bug in which, after leaving a BIST recovery mode, the pexpect script does not find expected data from the writer all the 
   time, and the writer will run 1-3 times until it is successful.
 
+- The following are the errors found during this test with their frequency: 
+  - 259: 0x0ed5b13:  a5a5a5a1 a5a5a5a5
+  -   2: 0x0c843e7:  a5a585a5 a5a5a5a5
+  -   1: 0x078c709:  a5a5a5a5 a525a5a5
+  -   1: 0x01f2bca:  a5a5a5a5 a5a525a5
+- It is hard to conclude if there were any stuck bits because whenever there was a reboot, the memTest was OK, so there were no stuck bits during the memTests. 
 ### Idle Test 8 ( 2023-06-29 09:56:37 - 2023-06-29 09:58:11 )
 
 Events:
 - Similar behavior to events of last test. Again, there is only one error read at the same address (address: 0x0ed5b13) without any 
   other errors, and the cycle of sending bist recovery commands and repowering the board went once while the same error persisted.
 - Again, unrecognized characters and scattered portions of messages output in random areas.
+- Only error found was:
+  - 0x0ed5b13: a5a5a5a1 a5a5a5a5 
+- There was a reboot at 9:57:32, and the board passed the memTest so it is hard to say that there was a stuck bit 
 
 ### Idle Test 9 ( 2023-06-29 09:59:47 - 2023-06-29 10:01:20 )
 
 Events:
 - Very similar behavior to Idle Test 8. The same error at address 0x0ed5b13 was output without any other errors, and the cycle of bist 
   recovery commands persisted with unrecognized characters and scattered portions of messages in random places in the output.
+- Only error found was:
+  - 0x0ed5b13: a5a5a5a1 a5a5a5a5
+- There was a reboot at 10:00:42 and the memTest was OK 
 
 ### Idle Test 10 ( 2023-06-29 10:01:35 - 2023-06-29 10:02:14 )
 
 Events:
 - No change in behavior from Tests 8 and 9.
+- Only error found was:
+  - 0x0ed5b13: a5a5a5a1 a5a5a5a5
+- Test had no timeouts 
 
-### Idle Test 11 ( 2023-06-29 11:04:12 - 2023-06-29 11:04:47 )
+### IDLE Test 11 (2023-06-29 10:54:20 - 10:54:56)
+- Similar behavior to tests 8-10
+- The same error from before is still showing up. The error is:
+  - 0x0ed5b13: a5a5a5a1 a5a5a5a5
+- There were no timeouts this test 
+### Idle Test 12 ( 2023-06-29 11:04:12 - 2023-06-29 11:04:47 )
 
 Events: 
-- No change in behavior from Tests 8 - 10.
+- No change in behavior from Tests 8 - 11.
+- Error found:
+  - 0x0ed5b13: a5a5a5a1 a5a5a5a5
+- Test had no timeouts
 
 ### Continuous Test 11 ( 2023-06-29 11:08:05 - 2023-06-29 11:08:51 )
 - First error was at 11:08:25 
@@ -160,7 +187,7 @@ Events:
   - 2513: 0x0ed5b13:  a5a5a5a1 a5a5a5a5
   - 2424: 0x0a4f004:  a5a5a5a1 a5a5a5a5
 
-### Idle Test 12 ( 2023-06-29 19:16:25 - 2023-06-29 19:16:56 )
+### Idle Test 13 ( 2023-06-29 19:16:25 - 2023-06-29 19:16:56 )
 
 Events:
 - Three errors output consistently here (addresses 0x0044a67, 0x06d2819, 0x0df1440). After three writes and three reads reading the 
@@ -172,8 +199,12 @@ Events:
   * **MJW**: Lets talk thorugh this. I did make some committs to the code during the test and we can see the commit history. 
 - As in Idle test 7, there appears to be a bug in which, after leaving a BIST recovery mode, the pexpect script runs the writer at a 
   maximum of 3 times, as the pexpect script does not find expected data and therefore runs it again.
+- Errors found are: 
+  - 0x0044a67: a5a5a5a5 a5a5a5b5
+  - 0x06d2819: a5a5a5a5 a5a585a5
+  - 0x0df1440: a5a5a5a5 a5a5a5a7
 
-### Idle Test 13 ( 2023-06-29 19:26:24 - 2023-06-29 19:47:00 )
+### Idle Test 14 ( 2023-06-29 19:26:24 - 2023-06-29 19:47:00 )
 
 Events:
 - Same behavior as last test with the same three errors output consistently, although an extra error appeared once at 19:46:58 at address
@@ -181,15 +212,26 @@ Events:
   is modified here to constantly run the reader instead of the writer. After the reads, the pexpect script entered the first DRAM 
   Recovery state, which simply stopped and restarted the BIST, and one more read happened just before the end of the test.
 - Again, the log says "Reader successful, Delay for 300 seconds" at the end, and only one of the 3 errors were displayed at the end.
-
-### Idle Test 14 ( 2023-06-29 19:52:58 - 2023-06-29 19:55:35 )
+- Errors found are: 
+  - 0x0044a67: a5a5a5a5 a5a5a5b5
+  - 0x06d2819: a5a5a5a5 a5a585a5
+  - 0x0df1444: a5a5a5a5 a5a5a5a7
+  - 0x0e58519: a5e5a5a5 a5a5a5a5 
+- There were no timeouts this test 
+### Idle Test 15 ( 2023-06-29 19:52:58 - 2023-06-29 19:55:35 )
 
 Events:
-- Same behavior as idle test 13 with the same three errors, and the error at address 0xe58519 appeared twice. One write and 5 reads occured,
+- Same behavior as idle test 14 with the same three errors, and the error at address 0xe58519 appeared twice. One write and 5 reads occured,
   and the pexpect script went to the DRAM recovery state, and the BIST stopped and restarted. One more read happened before the end of the test,
   and only one of three errors was output with the same "Reader successful, Delay for 300 seconds" message appearing in the log.
+- Errors found are: 
+  - 0x0044a67:  a5a5a5a5 a5a5a5b5
+  - 0x06d2819:  a5a5a5a5 a5a585a5
+  - 0x0df1440:  a5a5a5a5 a5a5a5a7
+  - 0x0e58519:  a5e5a5a5 a5a5a5a5
+- There were no timeouts this test 
 
-### Idle Test 15 ( 2023-06-29 20:01:10 - 2023-06-29 20:06:25 )
+### Idle Test 16 ( 2023-06-29 20:01:10 - 2023-06-29 20:06:25 )
 
 Events:
 - Same behavior as idle test 13 with the same three errors, but instead of the error at address 0xe58519 appearing, a new one appeared at 
@@ -198,8 +240,15 @@ Events:
 - The bug continues after Idle Test 7, where after leaving the BIST recovery mode, the writer writes 1 - 3 times in a row 
   before running the reader. At the start, the writer wrote data to the full DRAM memory (addresses 0x0 - 0x0ffffff), but after some time, 
   it appears that the writer wrote to the addresses 0x0 - 0x517 about 6 times. 
+- Errors found are:
+  - 0x0044a67:  a5a5a5a5 a5a5a5b5
+  - 0x06d2819:  a5a5a5a5 a5a585a5
+  - 0x0df1440:  a5a5a5a5 a5a5a5a7
+  - 0x0928880:  a5a5a5a5 a5a5b5a5
+- There were no timeouts this test 
 
-### Idle Test 16 ( 2023-06-29 20:07:18 - 2023-06-30 07:51:27 )
+
+### Idle Test 17 ( 2023-06-29 20:07:18 - 2023-06-30 07:51:27 )
 
 Events:
 - The script ran the test in the pattern of Test 15: running the writer once, then the reader 5 times, and if errors occured in all these 5 
@@ -218,26 +267,58 @@ Events:
     - Eight more UART timeouts occured before the end of the test, all of which resulted in the Lindy repowering the board. One occured while waiting for output from a writing command, and the other seven occured while waiting for output from the reading command. 
   - The error count remained in the single digits during this entire time, with a max error count of 9.
 
-### Idle Test 17 ( 2023-06-30 08:18:34 - 2023-06-30 17:32:24 )
+  - Errors found: 
+    - 0x01c2c44:  25a5a5a5 a5a5a5a5
+    - 0x0605a00:  a5e5a5a5 a5a5a5a5
+    - 0x0df1440:  a5a5a5a5 a5a5a5a7
+    - 0x01f9c00:  a5e5a5a5 a5a5a5a5
+    - 0x0044a67:  a5a5a5a5 a5a5a5b5
+
+### Idle Test 18 ( 2023-06-30 08:18:34 - 2023-06-30 17:32:24 )
 
 Events:
 - No UART timeouts occured during the entire test.
 - The total number of errors after each read in the entire test remained in the single digits, with the maximum reaching 7.
 - The total number of addresses that printed out with data errors was 11. 
 - The pexpect script wrote to the entire memory once, then read from it five times. After every five reads, the Bist simply stopped and restarted, and the issue mentioned originally in Idle Test 7 with the writer running three times at minimum again appears here. The cycle of five reads, restarting the bist, and the writer running three times continues until the end of the test.
-
-### Idle Test 18 ( 2023-06-30 17:33:20 - 2023-06-30 20:11:57 )
+- Errors found:
+  - 0x078ec96:  a5a5a1a5 a5a5a5a5
+  - 0x0df1440:  a5a5a5a5 a5a5a5a7
+  - 0x03eb11f:  a5e5a5a5 a5a5a5a5
+  - 0x0e5564e:  a5a5a5a5 a5e5a5a5
+  - 0x0dfa3b7:  a5a5a5a5 a5a5a5b5
+  - 0x0240aaa:  a4a5a5a5 a5a5a5a5
+  - 0x0adc6a6:  a5a5a5a5 ada5a5a5
+  - 0x010b930:  a5a5a5a7 a5a5a5a5
+  - 0x08aab56:  a5a5e5a5 a5a5a5a5
+  - 0x0680a8a:  a5e5a5a5 a5a5a5a5
+  - 0x0a4f004:  a5a5a5a1 a5a5a5a5
+### Idle Test 19 ( 2023-06-30 17:33:20 - 2023-06-30 20:11:57 )
 
 Events: 
 - Two UART timeouts occured, both from starting the reader and timing out from no output.
-- The total number of addressses that printed out with data errors was 23.
+- The total number of addresses that printed out with data errors was 23.
 - The number of errors ranged from 2 - 9.
-
-### Idle Test 19 ( 2023-06-30 20:14:09 - 2023-07-01 07:52:49 )
+- Errors found with their frequency: 
+  - 36: 0x078ec96:  a5a5a1a5 a5a5a5a5
+  - 36: 0x0df1440:  a5a5a5a5 a5a5a5a7
+  - 29: 0x0240aaa:  a4a5a5a5 a5a5a5a5
+  - 23: 0x0adc6a6:  a5a5a5a5 ada5a5a5
+  - 13: 0x0680a8a:  a5e5a5a5 a5a5a5a5
+  -  7: 0x0dfa3b7:  a5a5a5a5 a5a5a5b5
+  -  6: 0x0216929:  85a5a5a5 a5a5a5a5
+### Idle Test 20 ( 2023-06-30 20:14:09 - 2023-07-01 07:52:49 )
 
 Events:
 - 8 UART Timeouts occured: 5 after starting the reader and no data returned, 1 after starting the writer and no data returned, and 2 after starting the reader and getting unicode errors, which led to the Terminal Recovery state that tried to close and reopen the ttyUSB device and send input but failed receiving output.
-- The number of errors ranged from 2 - 15.
+- At 23:31:14, there were 4194307 errors as the memory was returning 0s instead of the expected data. This kept happening until 2:09:17 as the memory recovered after a timeout at 2:08:41
+- The errors that were bitflips are (with their error frequency):
+  - 94: 0x078ec96:  a5a5a1a5 a5a5a5a5
+  - 93: 0x0df1440:  a5a5a5a5 a5a5a5a7
+  - 91: 0x0adc6a6:  a5a5a5a5 ada5a5a5
+  - 49: 0x01f5ae8:  a5a5a5a5 a5a5a4a5
+  - 43: 0x0240aaa:  a4a5a5a5 a5a5a5a5
+  - 38: 0x0504725:  a5a525a5 a5a5a5a5
 
 ### Continuous Test 17 (2023-07-01 07:54:00 - 07:55:32)
 - There were no timeouts this test 
@@ -247,14 +328,29 @@ Events:
   - 0x0adc6a6:  a5a5a5a5 ada5a5a5
   - 0x0df1440:  a5a5a5a5 a5a5a5a7
   - 0x01f5ae8:  a5a5a5a5 a5a5a4a5
-### Idle Test 20 ( 2023-07-01 07:57:39 - 2023-07-01 15:49:50 )
+### Idle Test 21 ( 2023-07-01 07:57:39 - 2023-07-01 15:49:50 )
 
 Events:
 - A smoother test than the previous, but UART timeouts still occured (12 total, all after sending a reading command). 
 - More instances of data and register corruption. Instances where address range changed to 0x0-0x0fffff7, address width register changed from 24 to 16, and entire lines from the output were colored green.
 - The number of errors ranged from 4 - 16.
-
-
+- The errors found with a significant error frequency are: 
+  - 82: 0x078ec96:  a5a5a1a5 a5a5a5a5
+  - 82: 0x0df1440:  a5a5a5a5 a5a5a5a7
+  - 80: 0x01f5ae8:  a5a5a5a5 a5a5a4a5
+  - 69: 0x036a949:  a5a5a5a5 a5a5e5a5
+  - 68: 0x0fe20e2:  a5a4a5a5 a5a5a5a5
+  - 50: 0x0c131ad:  85a5a5a5 a5a5a5a5
+  - 38: 0x012764f:  a5a5a5a5 a5a5e5a5
+  - 38: 0x0a4c9f8:  a5a5a5a5 a525a5a5
+  - 28: 0x0b8ec51:  a5a5a5a5 a5a5a5e5
+  - 21: 0x0240aaa:  a4a5a5a5 a5a5a5a5
+  - 18: 0x0251b5d:  a5a5a5a5 a585a5a5
+  - 16: 0x0bb8558:  a5a5a5b5 a5a5a5a5
+  - 14: 0x0d04af0:  a5a5a525 a5a5a5a5
+  - 14: 0x029fdba:  a5a4a5a5 a5a5a5a5
+  - 14: 0x034fe9e:  a5a5a5a5 a5a5a7a5
+  - 10: 0x0a88ff3:  a5a4a5a5 a5a5a5a5
 ### Continuous Test 18 (2023-07-01 16:22:00 - 21:07:16)
 - The first error was at 16:22:40
 - There were 7 timeouts this test
@@ -308,24 +404,67 @@ Events:
 
 ### Continuous Test 21 (2023-07-02 08:00:43 - 08:00:48)
 - Test stopped quickly so no errors found 
-### Idle Test 21 ( 2023-07-02 19:00:11 - 2023-07-02 19:00:21 )
+### Idle Test 22 ( 2023-07-02 19:00:11 - 2023-07-02 19:00:21 )
 
 No BIST output. Perhaps this test was stopped manually.
 
-### Idle Test 22 ( 2023-07-02 19:00:39 - 2023-07-02 19:00:39 )
+### Idle Test 23 ( 2023-07-02 19:00:39 - 2023-07-02 19:00:39 )
 
 No BIST output. Again, perhaps this test was stopped manually.
 
-### Idle Test 23 ( 2023-07-02 19:09:40 - 2023-07-03 06:08:39 )
+### Idle Test 24 ( 2023-07-02 19:09:40 - 2023-07-03 06:08:39 )
 
 Events: 
 - More random characters in random places within the output. 
 - UART timeouts after sending a reading/writing command and receiving no input.
 - The number of errors ranged from 15 - 32.
+- The errors with a significant error frequency are:
+  - 148: 0x0059b09:  a5a5a5b5 a5a5a5a5
+  - 148: 0x00e4241:  a5a7a5a5 a5a5a5a5
+  - 148: 0x012764f:  a5a5a5a5 a5a5e5a5
+  - 147: 0x01f5ae8:  a5a5a5a5 a5a5a4a5
+  - 147: 0x0ded024:  a5a5a5b5 a5a5a5a5
+  - 147: 0x0df1440:  a5a5a5a5 a5a5a5a7
+  - 147: 0x0fe20e2:  a5a4a5a5 a5a5a5a5
+  - 146: 0x0bb8558:  a5a5a5b5 a5a5a5a5
+  - 143: 0x00ca4f7:  e5a5a5a5 a5a5a5a5
+  - 143: 0x010b930:  a5a5a5a7 a5a5a5a5
+  - 143: 0x0240aaa:  a4a5a5a5 a5a5a5a5
+  - 142: 0x0ccea44:  a5a5a525 a5a5a5a5
+  - 141: 0x02913fb:  a5a5a5a5 a4a5a5a5
+  - 141: 0x0a4c9f8:  a5a5a5a5 a525a5a5
+  - 140: 0x0c131ad:  85a5a5a5 a5a5a5a5
+  - 119: 0x0d844e5:  a5a5a5a5 a5a7a5a5
+  - 100: 0x0ed0e2d:  a5a5a5a5 25a5a5a5
+  -  98: 0x0b6ac1e:  a5a5a5a5 b5a5a5a5
+  -  89: 0x058aa3c:  a5a5a5a5 ada5a5a5
+  -  85: 0x0e5564e:  a5a5a5a5 a5e5a5a5
+  -  83: 0x0afd50a:  e5a5a5a5 a5a5a5a5
+  -  77: 0x056a750:  a5a5a5a5 a5a5a5a7
+  -  73: 0x084c579:  a5a5a5a5 a5a5e5a5
+  -  68: 0x05ac296:  a5a5a5a5 b5a5a5a5
+  -  67: 0x0150761:  a5a5e5a5 a5a5a5a5
+  -  54: 0x0b30399:  a5a5a5e5 a5a5a5a5
+  -  52: 0x076cc63:  a5a5a5a5 85a5a5a5
+  -  52: 0x0b8ec51:  a5a5a5a5 a5a5a5e5
+  -  39: 0x0991428:  a5a5a5a5 a5a525a5
+  -  32: 0x0536d07:  25a5a5a5 a5a5a5a5
+  -  27: 0x01cae7e:  a5a5a5a5 85a5a5a5
 
 
 
-
-
+### Most vulnerable addresses
+- 0x0df1440
+- 0x01f5ae8
+- 0x078ec96
+- 0x0240aaa
+- 0x012764f
+- 0x0fe20e2
+- 0x0ed5b13
+- 0x0bb8558
+- 0x00ca4f7
+- 0x010b930
+- 0x0c131ad
+- 0x0a4c9f8
 
 
