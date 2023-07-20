@@ -62,9 +62,12 @@ No events occurred. BIST ran normally
 ### IDLE Test 5 (2023-06-29 08:54:59 - 09:54:05)
 
 - At 9:12:9, there were 33554432 errors, and these errors were basically the addresses returning 0s instead of the written pattern. There was a timeout at 9:26:56 after the spike errors. 
+  - The first timeout occured at 09:20:51, when a reading command was sent and only partial output came back. However, the UARTBONE was read and showed the BIST to be in the IDLE/beginning state. A UARTBONE reset was issued successfully.
+  - The output from the reading command sent at 09:21:09 stopped after 09:21:10. After sending another read command and receiving no output, the UARTBone showed the BIST was in the state of burst reading and counting errors (perhaps stuck in the reading state?).
 - The first error that shows bit flips was at 9:37:24 and gone 2 seconds after
 - New error showed up at 9:42:27 and was gone a seconds after
 - The simulation timed out after that 
+  - The reading command was sent, the output partially said "Command not found", and the BIST was in the IDLE/beginning state at the time of the timeout.
 
 
 
@@ -82,18 +85,25 @@ No events occurred. BIST ran normally
 - At 11:39:57, there were 4088 new errors. The expected pattern was still different than the written pattern, however, there were errors that had bit flips. There was a pattern for these errors, they were at address 0x1000000, and every address adding 0x0000400 
 - All errors were gone at 11:40:02
 - There were 3 timeouts between 11:45:03 - 11:46:13
+  - Two ways to reset the BIST failed, and after the third timeout, the board was repowered.
+  - The timeout at 11:45:33 occured because one of the reading commands was not recognized (partial output said "Incorrect count"). The BIST was in the IDLE/beginning state.
 - There were 4096 new errors at 12:17:45. However, only one error was printed because there was a timeout. There were 5 timeouts between 12:17:45 and 12:41:25
+  - At 12:18:15, the output stopped while the reader was in the middle of printing out errors. The BIST was in the state in which a read command had been sent to the controller and the BIST was now waiting for a response. Perhaps it was stuck waiting for a response. Reconnecting to the ttyUSB device and issuing a UARTBone reset both failed, and the board was repowered.
+  - At 12:33:59, the output stopped in the middle of burst reading/counting errors, and at the timeout the UARTBone shows the BIST was in the state of burst reading and counting errors. Perhaps the BIST was stuck in this state. Reconnecting to the ttyUSB device and issuing a UARTBone reset both failed (resulted in incomplete rebooting output), and the board was repowered.
 - Between 12:51:29 - 12:51:34, there were 8188 new errors that were gone after. The pattern noticed was that the errors showed up every 0x0000400 address
 - Between 13:09:34 - 13:09:35, a new error and it was gone as well
 - At 13:31:12, there were 2048 errors in addresses 0x20080-0x186077f and these errors were weird. The data read was completely different than the pattern. For example, the data read at address 0x0020080 is: 1547d5d 7f363c05  476fa3f 3f747a0f. All of these errors were gone after a bist write. 
 - Similar pattern appeared at 13:36:20 with 1024 errors. For example, the data read at address 0x0000001 is: dcad392 fd75defc 81c04f4c 67c3657f 
 These errors were gone after a bist write
 - There were 2 timeouts after that. 
+  - At 13:47:31, output stopped in the middle of a reading command. The BIST was in the state of burst reading and counting errors. A UARTBOne reset resulted in partial output before timing out again, and the board was repowered.
 - At 13:52:44, there were 9204 errors that were normal bit flips compared to the data written. The errors were gone after a bist write.
 - There was a timeout at 13:59:12
+  - The first argument in the reading command was not recognized (output: "Incorrect beginning_address"). Reconnecting to the ttyUSB device and issuing a UARTBone reset both failed. There was also a UARTBone Timeout that occured here. The BIST was likely in the IDLE state, but we don't know for sure. The board was eventually repowered.
 - There were 8204 errors found at 14:19:20, but there were 2 timeouts during the read. All of these errors were gone after the timeout. 
+  - The timeout at 14:19:50 occured near the end of the reading command printing out errors. The BIST state variable said it was in the continuous-running BIST mode waiting to display a summary of data. Either the register holding the BIST state was corrupted, or some crazy transition occured from one state to another that wasn't supposed to happen. The board was eventually repowered.
 - 4101 errors were found at 14:30:35 and were gone after a bist write
-- At time 14:30:42, we got an error at address 0x15925ef which was: a5a5a5a5 a5e5a5a5 a5a5a5a5 a5a5a5a5. This was the only error found until 4105 new errors were found at 15:11:30. Those errors were gone after a bist write but the only error that stayed there was the one at address 0x15925ef. This error stayed there until the end of the test 
+- At time 14:30:42, we got an error at address 0x15925ef which was: a5a5a5a5 a5e5a5a5 a5a5a5a5 a5a5a5a5. This was the only error found until 4105 new errors were found at 15:11:30. Those errors were gone after a bist write but the only error that stayed there was the one at address 0x15925ef. This error stayed there until the end of the test.
 
 
 ### IDLE Test 8 (2023-06-29 15:13:39 - 15:25:52)
@@ -104,6 +114,7 @@ These errors were gone after a bist write
 - The error at address 0x15925ef showed up at the beginning of the test
 - 4089 errors were found at time 15:39:10 and were gone after a bist write but the error at the beginning is still there 
 - At 16:15:48, 3410 new errors were found and the original error was gone until it came back at 16:15:54 with all the errors gone after a bist write 
+- Starting at 16:34:41, a series of timeouts occur. All of them happen after the bist is closed and restarted. Each time, the BIST recovers after a UARTBOne-issued reset, but times out once the BIST is closed again. The BIST is always in the IDLE/beginning state for each of these timeouts. After 15 of these, the single error disappears for a short time until it comes back, and the bist closes, and a timeout occurs in which the board is repowered. Timeouts no longer occur after this repower.
 - 3341 new errors showed up at 17:00:20, and the original error is gone but again, it is found at time 17:01:38 when the other errors were gone after the bist write
 
 - The same thing keeps happening throughout the test, whenever there are a lot of errors, the error at address 0x15925ef is gone but then when the other errors are gone, the error shows up again. 
@@ -115,6 +126,7 @@ These errors were gone after a bist write
 - The error at address 0x15925ef was still showing up. It showed up around 75 times during this test. 
 - Another error that showed up for a significant number of times is at address 0x15ca824 and the error was: a5a5a5a5 a5ada5a5 a5a5a5a5 a5a5a5a5
 - Also, during this test, there were 18 timeouts. 
+  - Most of the time, the BIST was in the IDLE state during a timeout. Once, it was stuck in a state displaying errors. Another time, the BIST was stuck waiting for the controller after having sent it a request to read an address while reading errors. Lastly, one other time happened where the BIST was stuck in a state that both read data and counted the errors in a burst read.
 - At 20:08:41, 4122 errors were found and had more bit flips at 20:13:46. The parser shows them gone, and shows new errors found but they are the same addresses but with more bit flips
 - At 20:18:51, there were 5146 errors, the new errors were weird errors that are not similar to the bit flips seen. For example, the error found at address 0x063aa80 is: 81d0162 9d031673 bc1d82bd ad45bb32. These errors were gone after a bist write at 20:23:57. But similar weird errors showed up at the same time, however, there was a timeout during the read. All these errors were gone at 20:24:05 after a bist write
 
@@ -135,6 +147,7 @@ These errors were gone after a bist write
 ### IDLE Test 11 (2023-06-30 17:33:24 - 20:14:15)
 - The error at address 0x12925ef hs been found 19 teams during this test, and the error at address 0x05e250e was found 14 times. 
 - This test timed out 43 times 
+  - In the first timeout, the BIST was starting the reading command and no output came out. The BIST was in the idle state. After the board was repowered, the next one happened 5 min afterwards, the same thing happened: the reading command was sent and no output came out. The BIST was in an error-reading state. The next time, the reader command was started and the BIST was in a writing state. Afterwards, the BIST was stuck in a reading state and timeouts happened over and over again.
 - At time 18:09:00, there were 5122 errors and these were the weird errors that have just random values that is no where near the pattern written. These errors were gone at 18:14:12
 - This pattern just kept happening the same as some previous tests,teh weird errors show up and then they are gone. But they show up again after some time
 
