@@ -501,7 +501,7 @@ class DataLog:
 
 
     # Print the error counts for each group and all the dynamic errors seen
-    def print_dynamic_errors(self, display_err_freq: bool = None, continuous_test: bool = None):
+    def print_dynamic_errors(self, leave_out_groups = None, display_err_freq: bool = None, continuous_test: bool = None):
         print("Printing Dynamic Errors")
         
 
@@ -540,6 +540,16 @@ class DataLog:
 
                     error_group_index += 1
 
+                    # If any error groups specified not to show, move on to the end of this group and start the loop again.
+                    if leave_out_groups != None and str(error_group_index) in leave_out_groups:
+                        while (index < len(self.uartData.bistLines)) and not (((self.uartData.bistLines[index].lineTypeIndex == ERROR_DATA_OUTPUT_INDEX_CONT_FIRST or
+                                                                         self.uartData.bistLines[index].lineTypeIndex == ERROR_DATA_OUTPUT_INDEX_CONT_SECOND) and
+                                                                         self.uartData.bistLines[index].lineType == TYPE_BIST_CONTINUOUS_ERROR_REGEX) or
+                                                                         self.uartData.bistLines[index].lineType != TYPE_BIST_CONTINUOUS_ERROR_REGEX):
+                            # print("SKIPPING: ", self.uartData.bistLines[index].wholeStr)
+                            index += 1
+                        continue
+
                     errors_found = True
 
                     # Print the error group information (now that errors have been found)
@@ -557,7 +567,6 @@ class DataLog:
                         # that truly show errros.
                         if (self.uartData.bistLines[index].lineType == TYPE_BIST_CONTINUOUS_ERROR_REGEX and 
                             self.uartData.bistLines[index].lineTypeIndex == ERROR_LIST_INDEX):
-
                             # This is the list of current errors, and the variable lineStr 
                             # is the string containing both address and data without the time.
                             error_cur_list.append(self.uartData.bistLines[index].lineStr)
@@ -565,6 +574,7 @@ class DataLog:
                         index += 1
                     
                     # After the list of errors has been created, decide which errors to output.
+
                     error_prev_dict, error_freq_dict = self._print_new_old_errors(error_prev_dict, error_cur_list, error_freq_dict)
                     error_cur_list.clear()
 
@@ -581,11 +591,23 @@ class DataLog:
             # Cycle through all the tokens in the order they were read
             while index < len(self.uartData.bistLines):
 
+                print(index)
+
                 # Find the beginning of where error addresses and data start and cycle through them
                 if (self.uartData.bistLines[index].lineType == TYPE_BIST_IDLE_ERROR_REGEX and 
                     self.uartData.bistLines[index].lineTypeIndex == ERROR_LIST_INDEX):
 
                     error_group_index += 1
+
+                    # If any error groups specified not to show, move on to the end of this group and start the loop again.
+                    if leave_out_groups != None and str(error_group_index) in leave_out_groups:
+                        while (index < len(self.uartData.bistLines)) and ((self.uartData.bistLines[index].lineType == TYPE_BIST_IDLE_ERROR_REGEX and 
+                                                                       self.uartData.bistLines[index].lineTypeIndex == ERROR_LIST_INDEX) or
+                                                                        (((index + 1) < len(self.uartData.bistLines)) and
+                                                                        (self.uartData.bistLines[index + 1].lineTypeIndex == ERROR_LIST_INDEX) and 
+                                                                        (self.uartData.bistLines[index + 1].lineType == TYPE_BIST_IDLE_ERROR_REGEX))):
+                            index += 1
+                        continue
 
                     errors_found = True
 
@@ -677,7 +699,23 @@ def main():
     parser.add_argument("--with_all_err_freq_cnts",     action="store_true", help="Display all errors and their frequencies")
     parser.add_argument("--no_log_output",              action="store_true", help="No log output")
     parser.add_argument("--no_uart_output",             action="store_true", help="No uart output")
+    parser.add_argument("--leave_out_groups",    type=str,     nargs="+",    help="List of error groups to leave out (in both dynamic list and frequency count)")
     args = parser.parse_args()
+
+    list_leave_out_groups = []
+    if args.leave_out_groups:
+        for value in args.leave_out_groups:
+            value = str(value)
+            if value.find("-") > 0:
+                str_divided = value.split("-")
+                value1 = int(str_divided[0])
+                value2 = int(str_divided[1])
+                for index in range(value1, value2 + 1):
+                    list_leave_out_groups.append(str(index))
+            else:
+                list_leave_out_groups.append(value)
+    
+
 
     # Setup regular expressions that match UART data.
     regex_dicts = bist_utils()
@@ -685,10 +723,8 @@ def main():
     # Open log and uart files, split into tokens and store in object
     datalog_obj = DataLog(uart_filename=args.uart_filename, continuous_test=type_bist_continuous(args.uart_filename), uart_regex_dicts=regex_dicts) # log_filename=args.log_filename
 
-    print(len(datalog_obj.uartData.bistLines))
-
     # Print all the seen dynamic errors
-    datalog_obj.print_dynamic_errors(args.with_all_err_freq_cnts, continuous_test=type_bist_continuous(args.uart_filename))
+    datalog_obj.print_dynamic_errors(list_leave_out_groups, args.with_all_err_freq_cnts, continuous_test=type_bist_continuous(args.uart_filename))
 
     # Print lines unrecognized (if any, usually the first line is blank and will be unknown)
     datalog_obj.print_unknown_linetypes()
