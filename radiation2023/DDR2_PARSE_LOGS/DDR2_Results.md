@@ -96,7 +96,36 @@ Events:
   -   2: 0x0c843e7:  a5a585a5 a5a5a5a5
   -   1: 0x078c709:  a5a5a5a5 a525a5a5
   -   1: 0x01f2bca:  a5a5a5a5 a5a525a5
-- It is hard to conclude if there were any stuck bits because whenever there was a reboot, the memTest was OK, so there were no stuck bits during the memTests. 
+
+
+- 0x0ed5b13: a5a5a5a1 a5a5a5a5
+  - Appeared at 9:35:24 - 9:56:34 (End of test)
+  - 259/262 error groups
+  - Stuck bit
+
+
+- 0x0c843e7: a5a585a5 a5a5a5a5 
+  - Appeared at 9:30:0 - Gone 9:30:23
+  - Appeared at 9:35:24 - Gone 9:35:27
+  - Appeared at 9:35:46 - Gone 9:40:48
+  - Appeared at 9:40:59 - Gone 9:41:0
+  - Appeared at 9:42:26 - Gone 9:47:29
+  - 8/262 error groups 
+  - Is it stuck or bit error ?
+
+- 0x078c709: a5a5a5a5 a525a5a5
+  - Appeared at 9:14:54 - Gone 9:14:56
+  - 1/262 error groups 
+  - Bit error 
+
+- 0x01f2bca: a5a5a5a5 a5a525a5
+  - Appeared at 9:35:24 - Gone 9:35:27
+  - 1/262 error groups
+  - Bit error
+
+
+
+
 ### Idle Test 8 ( 2023-06-29 09:56:37 - 2023-06-29 09:58:11 )
 
 Events:
@@ -107,6 +136,10 @@ Events:
   - 0x0ed5b13: a5a5a5a1 a5a5a5a5 
 - There was a reboot at 9:57:32, and the board passed the memTest so it is hard to say that there was a stuck bit 
 
+- 0x0ed5b13: a5a5a5a1 a5a5a5a5
+  - Appeared 9:56:58 - Gone 9:58:11 (End of Test)
+  - 33/33 error groups
+  - Stuck bit 
 ### Idle Test 9 ( 2023-06-29 09:59:47 - 2023-06-29 10:01:20 )
 
 Events:
@@ -116,6 +149,11 @@ Events:
   - 0x0ed5b13: a5a5a5a1 a5a5a5a5
 - There was a reboot at 10:00:42 and the memTest was OK 
 
+- 0x0ed5b13: a5a5a5a1 a5a5a5a5
+  - Appeared at 10:00:08 - Gone 10:01:20 (End of test)
+  - 33/33 error groups 
+  - Stuck bit
+
 ### Idle Test 10 ( 2023-06-29 10:01:35 - 2023-06-29 10:02:14 )
 
 Events:
@@ -124,11 +162,21 @@ Events:
   - 0x0ed5b13: a5a5a5a1 a5a5a5a5
 - Test had no timeouts 
 
+- 0x0ed5b13: a5a5a5a1 a5a5a5a5a
+  - Appeared at 10:01:56 - Gone 10:02:14 (End of test)
+  - 12/12 error groups
+  - Stuck bit
+
 ### IDLE Test 11 (2023-06-29 10:54:20 - 10:54:56)
 - Similar behavior to tests 8-10
 - The same error from before is still showing up. The error is:
   - 0x0ed5b13: a5a5a5a1 a5a5a5a5
-- There were no timeouts this test 
+- There were no timeouts this test
+
+- 0x0ed5b13: a5a5a5a1 a5a5a5a5
+  - Appeared at 10:54:40 - 10:54:56 (End of test)
+  - 11/11 error groups 
+  - Stuck bit
 ### Idle Test 12 ( 2023-06-29 11:04:12 - 2023-06-29 11:04:47 )
 
 Events: 
@@ -145,6 +193,16 @@ Events:
 
 - There was a unicode error at 11:08:46 
 
+- 0x0df1440: a5a5a5a5 a5a5a5a7
+  - Appeared at 11:08:25 - Gone 11:08:51 (End of test)
+  - 26/26 error groups
+  - Stuck bit
+
+- 0x0ed5b13: a5a5a5a1 a5a5a5a5
+  - Appeared at 11:08:25 - Gone 11:08:51 (End of test)
+  - 26/26 group errors
+  - Stuck bit 
+
 ### Continuous Test 12 ( 2023-06-29 11:19:08 - 2023-06-29 11:21:01 )
 - Memory initialization failed because of 1 data error. It does not look like the error was one of teh errors found in the previous test, because this error had to be between addresses 0x40000000 - 0x40200000
 - First error group was found at 11:19:28, and they stayed the same until the end of the test. These errors were: 
@@ -154,6 +212,21 @@ Events:
 
 - This test did not have any timeouts 
 
+- 0x0021998: a5a5a5e5 a5a5a5a5
+  - Appeared at 11:19:28 - Gone 11:21:01 (End of test)
+  - 26/26 group errors
+  - Stuck bit
+
+- 0x0df1440: a5a5a5a5 a5a5a5a7
+  - Appeared at 11:19:28 - Gone 11:21:01 (End of test)
+  - 26/26 group errors
+  - Stuck bit
+
+- 0x0ed5b13: a5a5a5a1 a5a5a5a5
+  - Appeared at 11:19:28 - Gone 11:21:01 (End of test)
+  - 26/26 errors
+  - Stuck bit
+
 ### Continuous Test 13 ( 2023-06-29 12:46:18 - 2023-06-29 12:51:09 )
 - This test also failed memory initialization at 12:49:  because of 1 data error, but the fail was at 12:49:42. It had no other memory initialization errors 
 - The test had 2 timeouts
@@ -161,6 +234,29 @@ Events:
   - 74: 0x0ed5b13:  a5a5a5a1 a5a5a5a5
   - 71: 0x0df1440:  a5a5a5a5 a5a5a5a7
   - 62: 0x0021998:  a5a5a5e5 a5a5a5a5
+
+
+- 0x0ed5b13: a5a5a5a1 a5a5a5a5
+  - Appeared at 12:46:38 - Gone 12:51:09 (It was actually gone at this time, not because the test ended)
+  - 74/75 error groups
+  - Stuck bit
+
+- 0x0df1440: a5a5a5a5 a5a5a5a7
+  - Appeared 12:46:39 - Gone 12:46:42
+  - Appeared 12:46:47 - Gone 12:47:18
+  - Appeared 12:47:22 - Gone 12:51:09 (End of test)
+  - 71/75 error groups
+  - Stuck bit 
+
+
+- 0x0021998: a5a5a5e5 a5a5a5a5
+  - Appeared at 12:46:39 - Gone 12:46:52
+  - Appeared at 12:46:42 - Gone 12:50:32
+  - Appeared at 12:50:33 - Gone 12:50:44
+  - Appeared at 12:50:44 - Gone 12:51:02
+  - 62/75 error groups
+  - Stuck bits
+
 ### Continuous Test 14 ( 2023-06-29 12:51:20 - 2023-06-29 12:53:35 )
 - There were 3 timeouts this test 
 - There were no memory initialization errors 
@@ -169,12 +265,55 @@ Events:
   - 77: 0x0ed5b13:  a5a5a5a1 a5a5a5a5
   - 76: 0x0df1440:  a5a5a5a5 a5a5a5a7
 
+
+- 0x0ed5b13: a5a5a5a1 a5a5a5a5
+  - Appeared at 12:51:40 - Gone 12:53:34 (End of test)
+  - 77/77 error groups
+  - Stuck bit
+
+
+- 0x0df1440: a5a5a5a5 a5a5a5a7
+  - Appeared 12:51:40 - Gone 12:52:28
+  - Appeared 12:52:29 - Gone 12:53:34 (End of test)
+  - 76/77 error groups
+  - Stuck bit
+
 ### Continuous Test 15 ( 2023-06-29 12:57:14 - 2023-06-29 13:12:29 )
 - The first error was at 12:57:34
 - There were 19 unicode errors that led to 19 reboots of the board 
-- The test had 532 errors and there were mainly 2 errors showing up, the errors were the following: 
+- The test had 532 errors and there were 3 errors showing up, the errors were the following: 
   - 517: 0x0ed5b13:  a5a5a5a1 a5a5a5a5
   - 501: 0x0df1440:  a5a5a5a5 a5a5a5a7
+  - 2  : 0x065cdf0:  a5a5a5b5 a5a5a5a5
+
+- 0x0ed5b13: a5a5a5a1 a5a5a5a5 
+  - Appeared at 12:57:34 - Gone 13:04:35
+  - Appeared at 13:04:37 - Gone 13:04:39
+  - Appeared at 13:04:41 - Gone 13:04:49
+  - Appeared at 13:04:50 - Gone 13:07:57
+  - Appeared at 13:07:57 - Gone 13:08:11
+  - Appeared at 13:08:31 - Gone 13:09:21
+  - Appeared at 13:09:23 - Gone 13:09:36
+  - Appeared at 13:09:38 - Gone 13:10:26
+  - Appeared at 13:10:27 - Gone 13:10:53
+  - Appeared at 13:10:54 - Gone 13:11:44
+  - Appeared at 13:11:46 - Gone 13:12:29 (End of test)
+  - 517/532 error groups
+  - Stuck bit
+
+- 0x0df1440: a5a5a5a5 a5a5a5a7
+  - Appeared 12:57:34 - Gone 13:00:46
+  - Appeared 13:00:47 - Gone 13:02:37
+  - Appeared 13:03:07 - Gone 13:04:07
+  - Appeared 13:04:35 - Gone 13:12:29 (End of test)
+  - 501/532 error groups
+  - Stuck bit
+
+- 0x065cdf0: a5a5a5b5 a5a5a5a5
+  - Appeared 13:11:46 - Gone 13:11:49
+  - Appeared 13:11:54 - Gone 13:11:56
+  - 2/532 error groups 
+  - Bit error
 ### Continuous Test 16 ( 2023-06-29 13:13:19 - 2023-06-29 19:16:17 )
 - The first error was at 13:13:38
 - There were 4 timeouts this test 
@@ -201,8 +340,17 @@ Events:
   maximum of 3 times, as the pexpect script does not find expected data and therefore runs it again.
 - Errors found are: 
   - 0x0044a67: a5a5a5a5 a5a5a5b5
+    - Appeared 19:16:46 - Gone 19:16:56 (End of test)
+    - 4/4 error groups
+    - Stuck error
   - 0x06d2819: a5a5a5a5 a5a585a5
+    - Appeared 19:16:46 - Gone 19:16:56 (This error was gone at that time, it was not present in the last error group)
+    - 3/4 error groups
+    - Stuck error
   - 0x0df1440: a5a5a5a5 a5a5a5a7
+    - Appeared 19:16:46 - Gone 19:16:56 (This error was gone at that time, it was not present in the last error group)
+    - 3/4 error groups
+    - Stuck error
 
 ### Idle Test 14 ( 2023-06-29 19:26:24 - 2023-06-29 19:47:00 )
 
@@ -214,9 +362,21 @@ Events:
 - Again, the log says "Reader successful, Delay for 300 seconds" at the end, and only one of the 3 errors were displayed at the end.
 - Errors found are: 
   - 0x0044a67: a5a5a5a5 a5a5a5b5
+    - Appeared 19:26:45 - 19:47:0 (End of test)
+    - 6/6 error groups 
+    - Stuck bit
   - 0x06d2819: a5a5a5a5 a5a585a5
+    - Appeared 19:26:45 - Gone 19:47:0 (This error was gone at that time, it was not present in the last error group)
+    - 5/6 error groups
+    - Stuck bit
   - 0x0df1444: a5a5a5a5 a5a5a5a7
+    - Appeared 19:26:45 - Gone 19:47:0 (This error was gone at that time, it was not present in the last error group)
+    - 5/6 error groups
+    - Stuck bit
   - 0x0e58519: a5e5a5a5 a5a5a5a5 
+    - Appeared 19:46:56 - Gone 19:47:0 (This error was gone at that time, it was not present in the last error group)
+    - 1/6 error groups
+    - Bit error
 - There were no timeouts this test 
 ### Idle Test 15 ( 2023-06-29 19:52:58 - 2023-06-29 19:55:35 )
 
@@ -226,25 +386,63 @@ Events:
   and only one of three errors was output with the same "Reader successful, Delay for 300 seconds" message appearing in the log.
 - Errors found are: 
   - 0x0044a67:  a5a5a5a5 a5a5a5b5
+    - Appeared 19:53:19 - 19:55:35 (End of test)
+    - 6/6 error groups 
+    - Stuck bit
   - 0x06d2819:  a5a5a5a5 a5a585a5
+    - Appeared 19:53:19 - 19:55:35 (This error was gone at that time, it was not present in the last error group)
+    - 5/6 error groups
+    - Stuck bit
   - 0x0df1440:  a5a5a5a5 a5a5a5a7
+     - Appeared 19:53:19 - 19:55:35 (This error was gone at that time, it was not present in the last error group)
+    - 5/6 error groups
+    - Stuck bit
   - 0x0e58519:  a5e5a5a5 a5a5a5a5
+    - Appeared 19:54:57 - Gone 19:55:35 (This error was gone at that time, it was not present in the last error group)
+    - 2/6 error groups
+    - Bit error
 - There were no timeouts this test 
 
 ### Idle Test 16 ( 2023-06-29 20:01:10 - 2023-06-29 20:06:25 )
 
 Events:
 - Same behavior as idle test 13 with the same three errors, but instead of the error at address 0xe58519 appearing, a new one appeared at 
-  address 0x0928880 twice. This test ran longer with a delay set to 30 seconds instead of 300 seconds between reads, with the pattern occuring 
+  address 0x0928880 twice. This test ran longer with a delay set to 30 seconds instead of 300 seconds between reads, with the pattern occurring 
   of one write followed by five reads followed by a BIST restart. 
 - The bug continues after Idle Test 7, where after leaving the BIST recovery mode, the writer writes 1 - 3 times in a row 
   before running the reader. At the start, the writer wrote data to the full DRAM memory (addresses 0x0 - 0x0ffffff), but after some time, 
   it appears that the writer wrote to the addresses 0x0 - 0x517 about 6 times. 
 - Errors found are:
   - 0x0044a67:  a5a5a5a5 a5a5a5b5
+    - Appeared 20:01:30 - Gone 20:03:45
+    - Appeared 20:04:17 - Gone 20:04:17
+    - Appeared 20:04:48 - Gone 20:04:48
+    - Appeared 20:05:19 - Gone 20:05:19
+    - Appeared 20:06:21 - Gone 20:06:25 (End of test)
+    - 12/17 error groups 
+    - Stuck bit 
   - 0x06d2819:  a5a5a5a5 a5a585a5
+    - Appeared 20:01:30 - Gone 20:03:45
+    - Appeared 20:03:45 - Gone 20:04:17
+    - Appeared 20:04:17 - Gone 20:04:48
+    - Appeared 20:04:48 - Gone 20:05:19
+    - Appeared 20:05:19 - Gone 20:05:50
+    - Appeared 20:05:50 - Gone 20:06:25 (This error was gone at that time, it was not present in the last error group)  
+    - 11/17 error groups
+    - Stuck bit
   - 0x0df1440:  a5a5a5a5 a5a5a5a7
+    - Appeared 20:01:30 - Gone 20:03:45
+    - Appeared 20:03:45 - Gone 20:04:17
+    - Appeared 20:04:17 - Gone 20:04:48
+    - Appeared 20:04:48 - Gone 20:05:19
+    - Appeared 20:05:19 - Gone 20:05:50
+    - Appeared 20:05:50 - Gone 20:06:25 (This error was gone at that time, it was not present in the last error group)  
+    - 11/17 error groups
+    - Stuck bit
   - 0x0928880:  a5a5a5a5 a5a5b5a5
+    - Appeared 20:05:50 - Gone 20:06:25 (This error was gone at that time, it was not present in the last error group)
+    - 2/17 error groups
+    - Bit error 
 - There were no timeouts this test 
 
 

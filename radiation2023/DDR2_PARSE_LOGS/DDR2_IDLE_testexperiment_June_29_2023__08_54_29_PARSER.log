@@ -1,5 +1,5 @@
 
-Reading File:  DDR2_IDLE_testexperiment_June_29_2023__08_54_29_UART.log
+Reading File:  ./chipir2023/DDR2_IDLE_testexperiment_June_29_2023__08_54_29_UART.log
 Number of lines in uart file:  9155
 9156
 Printing Dynamic Errors
@@ -2399,7 +2399,7 @@ Error group count:  262
 Printing Errors found and their frequencies: 
 | Frequency    | Error
 |          259 |   0x0ed5b13:  a5a5a5a1 a5a5a5a5
-|            2 |   0x0c843e7:  a5a585a5 a5a5a5a5
+|            8 |   0x0c843e7:  a5a585a5 a5a5a5a5
 |            1 |   0x078c709:  a5a5a5a5 a525a5a5
 |            1 |   0x01f2bca:  a5a5a5a5 a5a525a5
 
