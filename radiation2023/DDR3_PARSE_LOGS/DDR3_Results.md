@@ -69,6 +69,16 @@ No events occurred. BIST ran normally
 - The simulation timed out after that 
   - The reading command was sent, the output partially said "Command not found", and the BIST was in the IDLE/beginning state at the time of the timeout.
 
+- Besides the times when zeros were found, there were 2 bit errors found:
+  - 0x0b9b551:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a7a5
+    - Appeared 9:37:24 - Gone 9:37:26
+    - 1/5 error groups
+    - Bit error 
+  - 0x0852ab4:  a5a5a7a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 9:42:27 - Gone 9:42:28 (it was gone at the last error group by end of test)
+    - 1/5 error groups 
+    - Bit error 
+
 
 
 ### IDLE Test 6 (2023-06-29 10:00:28 - 10:51:13)
@@ -105,10 +115,21 @@ These errors were gone after a bist write
 - 4101 errors were found at 14:30:35 and were gone after a bist write
 - At time 14:30:42, we got an error at address 0x15925ef which was: a5a5a5a5 a5e5a5a5 a5a5a5a5 a5a5a5a5. This was the only error found until 4105 new errors were found at 15:11:30. Those errors were gone after a bist write but the only error that stayed there was the one at address 0x15925ef. This error stayed there until the end of the test.
 
-
+- 0x15925ef:  a5a5a5a5 a5e5a5a5 a5a5a5a5 a5a5a5a5
+  - Appeared 14:30:35 - Gone 14:54:40
+  - Appeared 14:59:41 - Gone 14:59:43
+  - Appeared 15:05:10 - Gone 15:06:29
+  - Appeared 15:11:36 - Gone 15:13:01 (End of test)
+  - 637/649 error groups
+  - Stuck bit
 ### IDLE Test 8 (2023-06-29 15:13:39 - 15:25:52)
 - The error from the previous test was still showing up. It was gone at 15:19:13, and it showed back up at time 15:24:14 and stayed there until the end of the test
 
+- 0x15925ef:  a5a5a5a5 a5e5a5a5 a5a5a5a5 a5a5a5a5
+  - Appeared 15:18:56 - Gone 15:19:13
+  - Appeared 15:24:14 - Gone 15:25:52 (It was gone by the end of the test)
+  - 64/64 error groups
+  - Stuck bit
 
 ### Continuous Test 10 (2023-06-29 15:30:26 - 19:37:45)
 - The error at address 0x15925ef showed up at the beginning of the test
@@ -121,6 +142,14 @@ These errors were gone after a bist write
 
 - At time 17:27:13, there were 33554432 errors with the error at address 0x15925ef gone. The number of errors stayed the same with the errors at the same addresses but with more bit flips. 
 
+- 0x15925ef:  a5a5a5a5 a5e5a5a5 a5a5a5a5 a5a5a5a5
+  - Appeared 15:30:42 - Gone 16:15:48
+  - Appeared 16:15:54 - Gone 17:00:20
+  - Appeared 17:01:38 - Gone 17:05:08
+  - Appeared 17:05:31 - Gone 17:07:09 
+  - Appeared 17:08:33 - Gone 17:27:13
+  - 3615/5022 error groups
+  - Stuck bit
 ### IDLE Test 9 (2023-06-29 19:37:56 - 07:51:52)
 
 - The error at address 0x15925ef was still showing up. It showed up around 75 times during this test. 
@@ -143,13 +172,51 @@ These errors were gone after a bist write
 - This is the smoothest test so far, although it ran for 9 hours. It did not have any timeouts at all. 
 - This test only had 2 main errors; The error at address 0x15925ef (137 times)and the another error at address 0x05e250e (68 times) which had the following data read: a5ada5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
 
+- 0x15925ef:  a5a5a5a5 a5e5a5a5 a5a5a5a5 a5a5a5a5
+  - Appeared 8:19:22 - Gone 17:29:24 (End of test)
+  - 137/137 error groups
+  - Stuck bit
 
+- 0x05e250e:  a5ada5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+  - Appeared 8:19:22 - Gone 9:20:09
+  - Appeared 9:55:19 - Gone 10:00:26
+  - Appeared 11:10:48 - Gone 11:20:58
+  - Appeared 11:31:00 - Gone 11:41:10
+  - Appeared 12:06:18 - Gone 12:21:31
+  - Appeared 12:41:35 - Gone 12:41:39
+  - Appeared 12:51:42 - Gone 13:01:52
+  - Appeared 13:26:59 - Gone 13:42:12
+  - Appeared 14:02:16 - Gone 14:02:20
+  - Appeared 14:17:24 - Gone 14:22:31
+  - Appeared 14:32:33 - Gone 14:42:43
+  - Appeared 14:52:45 - Gone 16:03:41
+  - Appeared 16:08:42 - Gone 16:23:55
+  - Appeared 16:28:56 - Gone 16:44:09
+  - Appeared 17:29:24 - Gone 17:29:24 (End of test)
+  - 68/137 error groups
+  - Stuck bit 
 ### IDLE Test 11 (2023-06-30 17:33:24 - 20:14:15)
 - The error at address 0x12925ef hs been found 19 teams during this test, and the error at address 0x05e250e was found 14 times. 
 - This test timed out 43 times 
   - In the first timeout, the BIST was starting the reading command and no output came out. The BIST was in the idle state. After the board was repowered, the next one happened 5 min afterwards, the same thing happened: the reading command was sent and no output came out. The BIST was in an error-reading state. The next time, the reader command was started and the BIST was in a writing state. Afterwards, the BIST was stuck in a reading state and timeouts happened over and over again.
 - At time 18:09:00, there were 5122 errors and these were the weird errors that have just random values that is no where near the pattern written. These errors were gone at 18:14:12
 - This pattern just kept happening the same as some previous tests,teh weird errors show up and then they are gone. But they show up again after some time
+
+- 0x15925ef:  a5a5a5a5 a5e5a5a5 a5a5a5a5 a5a5a5a5
+  - Appeared 17:33:38 - Gone 17:53:43
+  - Appeared 17:53:49 - Gone 17:58:50
+  - Appeared 18:14:12 - Gone 18:34:23
+  - Appeared 18:34:31 - Gone 18:39:34
+  - Appeared 18:56:07 - Gone 19:27:52
+  - Appeared 19:34:10 - Gone 19:39:11 (End of test)
+  - 19/29 error groups
+  - Stuck bit
+- 0x05e250e:  a5ada5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+  - Appeared 18:14:12 - Gone 18:56:07
+  - Appeared 19:07:21 - Gone 19:22:51
+  - Appeared 19:39:11 - Gone 19:39:11 (End of test)
+  - 14/29 error groups
+  - Stuck bit
 
 
 ### IDLE Test 12 (2023-06-30 20:14:57 - 2023-07-01 07:51:28)
@@ -163,6 +230,64 @@ These errors were gone after a bist write
 - There were 25 time outs during this test 
 - There were a lot of times where the test timed out while reading the errors. That happened especially during the times when there were the weird errors. 
 
+- 88:  0x15925ef:  a5a5a5a5 a5e5a5a5 a5a5a5a5 a5a5a5a5
+  - Appeared 20:15:14 - Gone 20:40:31
+  - Appeared 20:55:52 - Gone 21:07:38
+  - Appeared 21:07:38 - Gone 21:12:46
+  - Appeared 21:12:48 - Gone 21:30:24
+  - Appeared 21:40:42 - Gone 22:00:56
+  - Appeared 22:01:05 - Gone 22:42:48
+  - Appeared 22:49:35 - Gone 22:59:38
+  - Appeared 23:09:54 - Gone 0:00:14
+  - Appeared 0:12:12 - Gone 1:09:13
+  - Appeared 1:24:37 - Gone 1:36:42
+  - Appeared 1:49:12 - Gone 1:59:17
+  - Appeared 2:09:39 - Gone 2:29:13
+  - Appeared 2:44:43 - Gone 2:49:44
+  - Appeared 3:10:06 - Gone 3:20:12
+  - Appeared 3:32:09 - Gone 4:24:00
+  - Appeared 4:39:21 - Gone 5:09:43
+  - Appeared 5:09:43 - Gone 5:14:52
+  - Appeared 5:47:28 - Gone 6:02:36
+  - Appeared 6:07:48 - Gone 6:17:59
+  - Appeared 6:17:59 - Gone 6:23:07
+  - Appeared 6:28:23 - Gone 6:57:02
+  - Appeared 6:57:02 - Gone 7:02:11
+  - Appeared 7:08:57 - Gone 7:13:59
+  - Appeared 7:29:23 - Gone 7:34:26
+  - Appeared 7:51:26 - Gone 7:51:26 (End of test)
+  - 88/162 error groups
+  - Stuck bit
+
+- 72:  0x05e250e:  a5ada5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+  - Appeared 20:15:14 - Gone 20:35:29
+  - Appeared 20:55:52 - Gone 21:02:37
+  - Appeared 21:07:38 - Gone 21:12:46
+  - Appeared 21:12:48 - Gone 21:12:54
+  - Appeared 21:20:18 - Gone 21:35:30
+  - Appeared 21:45:43 - Gone 22:17:31
+  - Appeared 22:22:32 - Gone 22:42:48
+  - Appeared 1:49:12 - Gone 2:49:44
+  - Appeared 3:10:06 - Gone 4:24:00
+  - Appeared 4:39:21 - Gone 5:09:43
+  - Appeared 5:09:43 - Gone 5:19:57
+  - Appeared 5:47:28 - Gone 6:02:36
+  - Appeared 6:07:48 - Gone 6:17:59
+  - Appeared 6:17:59 - Gone 6:57:02
+  - Appeared 6:57:02 - Gone 7:02:11
+  - Appeared 7:08:57 - Gone 7:19:07
+  - Appeared 7:29:23 - Gone 7:51:26 (End of test)
+  - 72/162 error groups
+  - Stuck bit
+- 72:  0x0e7748f:  a5a5a5a5 a5a5a585 a5a5a5a5 a5a5a5a5
+  - Appeared 21:07:38 - Gone 21:12:46
+  - Appeared 21:12:48 - Gone 21:20:18
+
+  NOT DONE YET
+- 25:  0x0ea11eb:  a5a5a5a5 a5a5a5a5 a5ada5a5 a5a5a5a5
+  - 
+- 12:  0x11bb43c:  a5a5a5a5 a5a5ada5 a5a5a5a5 a5a5a5a5
+  - 
 
 ### Continuous Test 11 (2023-07-01 07:54:08 - 07:55:36)
 - The error we had before at address 0x15925ef was found 21 times. 
@@ -170,6 +295,20 @@ These errors were gone after a bist write
 - Error at address 0x0e7748f was found 21 times
 - There were no timeouts during this test
 
+- 0x05e250e:  a5ada5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+  - Appeared 7:54:23 - Gone 7:55:36 (End of test)
+  - 22/22 error groups
+  - Stuck bit
+
+- 0x0e7748f:  a5a5a5a5 a5a5a585 a5a5a5a5 a5a5a5a5
+  - Appeared 7:54:23 - Gone 7:55:36 (It was gone at the last error group by the end of the test)
+  - 22/22 error groups
+  - Stuck bit
+
+- 0x15925ef:  a5a5a5a5 a5e5a5a5 a5a5a5a5 a5a5a5a5
+  - Appeared 7:54:23 - Gone 7:55:36 (It was gone at he last error group by the end of the test)
+  - 22/22 error groups
+  - Stuck bit
 
 ### IDLE Test 13 (2023-07-01 07:57:44 - 15:49:34)
 - The test timed out 17 times 
