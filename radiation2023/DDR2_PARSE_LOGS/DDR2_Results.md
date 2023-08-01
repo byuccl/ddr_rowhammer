@@ -840,7 +840,7 @@ Events:
 
 Events:
 - 8 UART Timeouts occured: 5 after starting the reader and no data returned, 1 after starting the writer and no data returned, and 2 after starting the reader and getting unicode errors, which led to the Terminal Recovery state that tried to close and reopen the ttyUSB device and send input but failed receiving output.
-- At 23:31:14, there were 4194307 errors as the memory was returning 0s instead of the expected data. This kept happening until 2:09:17 as the memory recovered after a timeout at 2:08:41
+- SEFI: At 23:31:14, there were 4194307 errors as the memory was returning 0s instead of the expected data. This kept happening until 2:09:17 as the memory recovered after a timeout at 2:08:41
 - The errors that were bitflips are (with their error frequency):
   - 94: 0x078ec96:  a5a5a1a5 a5a5a5a5
     - Appeared 20:14:29 - Gone 23:10:40
@@ -1476,20 +1476,193 @@ Events:
 - The error count range was 8-13 until 19:37:39. At that time, there were 16777215 errors found. The memory recovered at 19:39:19 after a timeout occurred. 
 - The following were the errors with a significant error frequency out of 4650 error groups:
   - 4595: 0x078ec96:  a5a5a1a5 a5a5a5a5
+    - Appeared 16:22:40 - Gone 16:58:16
+    - Appeared 17:00:35 - Gone 19:31:42
+    - Appeared 19:32:46 - Gone 19:37:39
+    - Appeared 19:39:19 - Gone 21:07:17 (It was gone at the last error group by the end of the test)
+    - 4595/4650 error groups
+    - Stuck bit
   - 4595: 0x0a4c9f8:  a5a5a5a5 a525a5a5
+    - Appeared 16:22:40 - Gone 16:58:16
+    - Appeared 17:00:35 - Gone 19:31:42
+    - Appeared 19:32:46 - Gone 19:37:39
+    - Appeared 19:39:19 - Gone 21:07:17 (It was gone at the last error group by the end of the test)
+    - 4595/4650 error groups
+    - Stuck bit
   - 4595: 0x0b8ec51:  a5a5a5a5 a5a5a5e5
+    - Appeared 16:22:40 - Gone 16:58:16
+    - Appeared 17:00:35 - Gone 19:31:42
+    - Appeared 19:32:46 - Gone 19:37:39
+    - Appeared 19:39:19 - Gone 21:07:17 (It was gone at the last error group by the end of the test)
+    - 4595/4650 error groups
+    - Stuck bit
   - 4595: 0x0bb8558:  a5a5a5b5 a5a5a5a5
+    - Appeared 16:22:40 - Gone 16:58:16
+    - Appeared 17:00:35 - Gone 19:31:42
+    - Appeared 19:32:46 - Gone 19:37:39
+    - Appeared 19:39:19 - Gone 21:07:17 (It was gone at the last error group by the end of the test)
+    - 4595/4650 error groups
+    - Stuck bit
   - 4595: 0x0c131ad:  85a5a5a5 a5a5a5a5
+    - Appeared 16:22:40 - Gone 16:58:16
+    - Appeared 17:00:35 - Gone 19:31:42
+    - Appeared 19:32:46 - Gone 19:37:39
+    - Appeared 19:39:19 - Gone 21:07:17 (It was gone at the last error group by the end of the test)
+    - 4595/4650 error groups
+    - Stuck bit
   - 4594: 0x0fe20e2:  a5a4a5a5 a5a5a5a5
+    - Appeared 16:22:40 - Gone 16:58:16
+    - Appeared 17:00:35 - Gone 19:31:42
+    - Appeared 19:32:46 - Gone 19:37:39
+    - Appeared 19:39:19 - Gone 20:30:56
+    - Appeared 20:32:01 - Gone 21:07:17 (It was gone at the last error group by the end of the test)
+    - 4594/4650 error groups
+    - Stuck bit
   - 4594: 0x01f5ae8:  a5a5a5a5 a5a5a4a5
+    - Appeared 16:22:54 - Gone 16:58:20
+    - Appeared 17:00:35 - Gone 19:37:39
+    - Appeared 19:39:19 - Gone 21:07:17 (End of test)
+    - 4594/4650 error groups
+    - Stuck bit
   - 4574: 0x0df1440:  a5a5a5a5 a5a5a5a7
+    - Appeared 16:22:40 - Gone 16:22:46 
+    - Appeared 16:23:08 - Gone 16:23:14
+    - Appeared 16:23:22 - Gone 16:23:32
+    - Appeared 16:23:46 - Gone 16:23:50 
+    - Appeared 16:24:05 - Gone 16:24:11
+    - Appeared 16:24:25 - Gone 16:24:28
+    - Appeared 16:24:33 - Gone 16:58:16
+    - Appeared 17:00:35 - Gone 19:31:42 
+    - Appeared 19:32:46 - Gone 19:37:39 
+    - Appeared 19:39:19 - Gone 21:07:17 (It was gone at the last error group by the end of test)
+    - 4574/4650 error groups
+    - Stuck bit
   - 4519: 0x012764f:  a5a5a5a5 a5a5e5a5
+    - Appeared 16:22:40 - Gone 16:58:20
+    - Appeared 17:00:35 - Gone 19:29:34
+    - Appeared 19:32:46 - Gone 19:37:39
+    - Appeared 19:39:19 - Gone 20:17:22
+    - Appeared 20:18:14 - Gone 20:28:21 
+    - Appeared 20:32:01 - Gone 21:07:17 (End of test)
+    - 4519/4650 error groups
+    - Stuck bit
   - 4400: 0x03e13ae:  a5a5e5a5 a5a5a5a5
+    - Appeared 16:32:45 - Gone 16:58:20
+    - Appeared 17:00:35 - Gone 17:14:07
+    - Appeared 17:14:10 - Gone 17:25:24
+    - Appeared 17:25:34 - Gone 17:25:41
+    - Appeared 17:25:44 - Gone 17:25:48 
+    - Appeared 17:25:59 - Gone 17:26:06
+    - Appeared 17:26:10 - Gone 17:26:35
+    - Appeared 17:26:38 - Gone 17:26:44 
+    - Appeared 17:26:49 - Gone 17:29:47
+    - Appeared 17:29:51 - Gone 17:29:55
+    - Appeared 17:30:02 - Gone 17:30:05
+    - Appeared 17:30:13 - Gone 17:30:39
+    - Appeared 17:30:42 - Gone 17:30:45
+    - Appeared 17:30:48 - Gone 17:30:56
+    - Appeared 17:31:00 - Gone 17:31:11 
+    - Appeared 17:31:14 - Gone 17:38:41
+    - Appeared 17:38:48 - Gone 17:39:02
+    - Appeared 17:39:06 - Gone 17:39:34
+    - Appeared 17:39:39 - Gone 17:40:18
+    - Appeared 17:40:22 - Gone 17:40:55 
+    - Appeared 17:40:58 - Gone 17:41:23
+    - Appeared 17:41:27 - Gone 19:37:39
+    - Appeared 19:39:19 - Gone 21:07:17 (End of test)
+    - 4400/4650 error groups
+    - Stuck bit
   - 4049: 0x0dfa3b7:  a5a5a5a5 a5a5a5b5
+    - Appeared 16:53:08 - Gone 16:58:16
+    - Appeared 17:00:38 - Gone 19:31:42 
+    - Appeared 19:34:16 - Gone 19:37:39
+    - Appeared 19:39:19 - Gone 20:32:01 
+    - Appeared 20:32:15 - Gone 21:07:17 (It was gone at the last error group by the end of test)
+    - 4049/4650 error groups
+    - Stuck bit
   - 3525: 0x00ca4f7:  e5a5a5a5 a5a5a5a5
+    - Appeared 17:28:06 - Gone 17:30:10
+    - Appeared 17:30:13 - Gone 17:30:53
+    - Appeared 17:30:56 - Gone 17:31:00 
+    - Appeared 17:31:03 - Gone 19:37:39
+    - Appeared 19:39:19 - Gone 21:07:17 (End of test)
+    - 3525/4650 error groups
+    - Stuck bit
   - 2362: 0x03af07f:  b5a5a5a5 a5a5a5a5
   - 1676: 0x00dcaf0:  a5a5a5a7 a5a5a5a5
+    - Appeared 18:01:26 - Gone 18:01:34 
+    - Appeared 18:02:38 - Gone 18:02:41
+    - Appeared 18:23:03 - Gone 18:23:06 
+    - Appeared 18:23:10 - Gone 18:23:35 
+    - Appeared 18:23:43 - Gone 18:24:07 
+    - Appeared 18:24:12 - Gone 18:24:18
+    - Appeared 18:24:30 - Gone 18:24:33 
+    - Appeared 18:24:36 - Gone 18:24:41
+    - Appeared 18:24:55 - Gone 18:24:59
+    - Appeared 18:25:16 - Gone 18:25:20
+    - Appeared 18:25:27 - Gone 18:25:31
+    - Appeared 18:25:39 - Gone 18:25:48 
+    - Appeared 18:25:56 - Gone 19:37:39
+    - Appeared 19:39:19 - Gone 20:07:59 
+    - 1676/4650 error groups
+    - Stuck bit
   - 1067: 0x0e5564e:  a5a5a5a5 a5e5a5a5
+  - 836:  0x076d69d:  a5a5a5a5 a5a5a5a4
+  - 210:  0x0571846:  e5a5a5a5 a5a5a5a5
+    - Appeared 20:54:39 - Gone 21:07:17 (it was gone at the last error group by the end of test)
+    - 210/4650 error groups
+    - Stuck bit 
+  - 188:  0x076cc63:  a5a5a5a5 85a5a5a5
+    - Appeared 20:55:57 - Gone 21:07:17 (it was gone at the last error group by the end of test)
+    - 188/4650 error groups
+    - Stuck bit 
+  - 147:  0x01b7bd1:  a5a5a5a5 a5a5a525
+    - Appeared 18:28:06 - Gone 18:29:30 
+    - Appeared 18:29:40 - Gone 18:36:18
+    - Appeared 18:36:21 - Gone 18:36:43 
+    - Appeared 18:36:50 - Gone 18:37:07 
+    - Appeared 18:50:33 - Gone 18:50:41
+    - Appeared 18:54:32 - Gone 18:54:36
+    - 147/4650 error groups
+    - Stuck bit 
+  - 122:  0x036a949:  a5a5a5a5 a5a5e5a5
+    - Appeared 17:16:57 - Gone 17:17:03
+    - Appeared 17:31:17 - Gone 17:31:28
+    - Appeared 17:41:41 - Gone 17:41:49 
+    - Appeared 17:43:51 - Gone 17:43:54 
+    - Appeared 17:49:56 - Gone 17:50:00 
+    - Appeared 17:50:04 - Gone 17:50:15 
+    - Appeared 18:19:29 - Gone 18:19:33
+    - Appeared 18:32:26 - Gone 18:32:33
+    - Appeared 18:56:34 - Gone 18:56:42
+    - Appeared 19:12:21 - Gone 19:12:25
+    - Appeared 19:25:46 - Gone 19:25:54
+    - Appeared 19:40:35 - Gone 19:40:41 
+    - Appeared 19:56:21 - Gone 19:56:35
+    - Appeared 19:57:30 - Gone 19:58:10 
+    - Appeared 19:59:57 - Gone 20:00:02 
+    - Appeared 20:11:24 - Gone 20:11:27
+    - Appeared 20:16:23 - Gone 20:16:46 
+    - Appeared 20:32:58 - Gone 20:33:02 
+    - Appeared 20:35:18 - Gone 20:35:33
+    - Appeared 20:40:12 - Gone 20:40:26 
+    - Appeared 20:41:45 - Gone 20:42:00 
+    - Appeared 20:46:48 - Gone 20:47:00
+    - Appeared 20:50:57 - Gone 20:51:05 
+    - Appeared 20:57:10 - Gone 20:59:42 
+    - Appeared 21:00:11 - Gone 21:00:43
+    - Appeared 21:03:51 - Gone 21:04:05
+    - Appeared 21:05:18 - Gone 21:05:29 
+    - 122/4650 error groups
+    - Stuck bit 
+  -  57:  0x04f480a:  a5a5a5a5 a5a5a4a5
+    - Appeared 20:18:14 - Gone 20:21:37 
+    - Appeared 02:29:55 - Gone 20:29:58
+    - 57/4650 error groups
+    - Bit error 
+  -  42:  0x076d6a8:  a5a5a5a5 a5a5a5a4
+  -  28:  0x000373b:  a5a5a5a5 a5a5a5ad
+  -  15:  0x0680a8a:  a5e5a5a5 a5a5a5a5
 
 
 ### Continuous Test 19 (2023-07-01 21:26:29 - 2023-07-02 00:25:50)
