@@ -83,9 +83,10 @@ No events occurred. BIST ran normally
 
 ### IDLE Test 6 (2023-06-29 10:00:28 - 10:51:13)
 
-- 4096 Errors were found at 10:05:47 and were all gone at 10:05:52 after a following write to the whole memory 
-- Between 10:20:55 and 10:21:01, 4104 errors were found and they were gone after a write to the whole memory
-- Between 10:26:02 and 10:26:08, 4096 errors were found and they were gone after a write to the whole memory 
+- Bursts: 
+  - 4096 Errors were found at 10:05:47 and were all gone at 10:05:52 after a following write to the whole memory 
+  - Between 10:20:55 and 10:21:01, 4104 errors were found and they were gone after a write to the whole memory
+  - Between 10:26:02 and 10:26:08, 4096 errors were found and they were gone after a write to the whole memory 
 - All of the errors were found once so there was no specific pattern found 
 
 
@@ -237,7 +238,7 @@ These errors were gone after a bist write
 - The error at address 0x12925ef has been found 19 teams during this test, and the error at address 0x05e250e was found 14 times. 
 - This test timed out 43 times 
   - In the first timeout, the BIST was starting the reading command and no output came out. The BIST was in the idle state. After the board was repowered, the next one happened 5 min afterwards, the same thing happened: the reading command was sent and no output came out. The BIST was in an error-reading state. The next time, the reader command was started and the BIST was in a writing state. Afterwards, the BIST was stuck in a reading state and timeouts happened over and over again.
-- At time 18:09:00, there were 5122 errors and these were the weird errors that have just random values that is no where near the pattern written. These errors were gone at 18:14:12
+- SEFI: At time 18:09:00, there were 5122 errors and these were the weird errors that have just random values that is no where near the pattern written. These errors were gone at 18:14:12
 - This pattern just kept happening the same as some previous tests,teh weird errors show up and then they are gone. But they show up again after some time
 
 - 0x15925ef:  a5a5a5a5 a5e5a5a5 a5a5a5a5 a5a5a5a5
@@ -270,7 +271,7 @@ These errors were gone after a bist write
 
 - SEFI: At time 5:19:57, there were 16778243 errors and these errors were because the data read from the addresses was just 0s or 1000. These errors were gone but they came back at 5:35:19. 
 
-- 88:  0x15925ef:  a5a5a5a5 a5e5a5a5 a5a5a5a5 a5a5a5a5
+- 0x15925ef:  a5a5a5a5 a5e5a5a5 a5a5a5a5 a5a5a5a5
   - Appeared 20:15:14 - Gone 20:40:31
   - Appeared 20:55:52 - Gone 21:07:38
   - Appeared 21:07:38 - Gone 21:12:46
@@ -299,7 +300,7 @@ These errors were gone after a bist write
   - 88/162 error groups
   - Stuck bit
 
-- 72:  0x05e250e:  a5ada5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 0x05e250e:  a5ada5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
   - Appeared 20:15:14 - Gone 20:35:29
   - Appeared 20:55:52 - Gone 21:02:37
   - Appeared 21:07:38 - Gone 21:12:46
@@ -319,7 +320,7 @@ These errors were gone after a bist write
   - Appeared 7:29:23 - Gone 7:51:26 (End of test)
   - 72/162 error groups
   - Stuck bit
-- 72:  0x0e7748f:  a5a5a5a5 a5a5a585 a5a5a5a5 a5a5a5a5
+- 0x0e7748f:  a5a5a5a5 a5a5a585 a5a5a5a5 a5a5a5a5
   - Appeared 21:07:38 - Gone 21:12:46
   - Appeared 21:12:48 - Gone 21:20:18
   - Appeared 21:25:21 - Gone 21:35:30
@@ -343,7 +344,7 @@ These errors were gone after a bist write
   - Appeared 7:51:26 - Gone 7:51:26 (It appeared at the last error group of the test)
   - 72/162 error groups
   - Stuck bit 
-- 25:  0x0ea11eb:  a5a5a5a5 a5a5a5a5 a5ada5a5 a5a5a5a5
+- 0x0ea11eb:  a5a5a5a5 a5a5a5a5 a5ada5a5 a5a5a5a5
   - Appeared 20:25:19 - Gone 20:40:31
   - Appeared 20:55:52 - Gone 21:02:37
   - Appeared 21:07:38 - Gone 21:12:46
@@ -353,17 +354,17 @@ These errors were gone after a bist write
   - Appeared 22:54:36 - Gone 22:59:38
   - 25/162 error groups
   - Stuck bit 
-- 12:  0x11bb43c:  a5a5a5a5 a5a5ada5 a5a5a5a5 a5a5a5a5
+- 0x11bb43c:  a5a5a5a5 a5a5ada5 a5a5a5a5 a5a5a5a5
   - Appeared 3:10:06 - Gone 3:20:12
   - Appeared 3:37:11 - Gone 4:18:57
   - Appeared 4:49:27 - Gone 5:09:43
   - Appeared 5:09:43 - Gone 5:14:52
   - Appeared 5:47:28 - Gone 6:02:36
   - 12/162 error groups
-  - Bit error 
+  - Stuck bit  
 
 ### Continuous Test 11 (2023-07-01 07:54:08 - 07:55:36)
-- The error we had before at address 0x15925ef was found 21 times. 
+- The error found before at address 0x15925ef was found 21 times. 
 - Error at address 0x05e250e was found 22 times 
 - Error at address 0x0e7748f was found 21 times
 - There were no timeouts during this test
@@ -470,17 +471,17 @@ These errors were gone after a bist write
 - 0x01e2511:  a52da5a5 a525a5a5 a525a5a5 a525a5a5
   - Appeared 8:49:41 - Gone 9:14:52
   - 6/106 error groups
-  - Bit error 
+  - Stuck bit 
 
 - 0x0a7748f:  a525a5a5 a525a585 a525a5a5 a525a5a5
   - Appeared 8:49:41 - Gone 9:14:52
   - 6/106 error groups
-  - Bit error 
+  - Stuck bit 
 
 - 0x11925ef:  a525a5a5 a525a5a5 a525a5a5 a525a5a5
   - Appeared 8:49:41 - Gone 9:14:52
   - 6/106 error groups
-  - Bit error 
+  - Stuck bit
 
 ### Continuous Test 12 (2023-07-01 16:22:26 - 16:22:44)
 - Board was not able to connect. Cannot find serial device
@@ -518,10 +519,12 @@ These errors were gone after a bist write
 ### Continuous Test 14 (2023-07-01 21:26:36 - 2023-07-02 07:59:14)
 - Until 0:22:35, there were at most 2 errors showing up. Then at that time, there were 14757 errors found and they were gone 5 seconds later 
 
-- At 0:23:07, there were 258 errors found and these are the errors that are just random bits read that are so different than the pattern. 
+- SEFI: At 0:23:07, there were 258 errors found and these are the errors that are just random bits read that are so different than the pattern. 
 
 - SEFI: At 0:29:06, there were 33554432 errors found and they stayed there until 0:43:14 as there was a timeout at 0:43:12. The 33554432 were found again at 5:00:32. Between those times, there were mainly 3 errors and there would be 4000 others from time to time. The number of errors went back to 2 at 5:34:40. 
+
 - SEFI: At 7:08:18, there were 513 errors found and these are the errors that are just random bits read that are so different than the pattern. 
+
 - The following were the most frequent errors during this test: 
   - 0x0e7748f:  a5a5a5a5 a5a5a585 a5a5a5a5 a5a5a5a5
     - Appeared 21:26:52 - Gone 0:29:06
@@ -585,7 +588,7 @@ These errors were gone after a bist write
   - 0x0e7748f:  a5a5a5a5 a585a5a5 a5a5a5a5 a5a5a5a5
     - It was found 90 times between 7:30:38 - 7:44:47. it kept showing up then going away during that that time
     - 576/15510 error groups
-    - Stuck? 
+    - Stuck bit 
 
 
 ### Continuous Test 15 (2023-07-02 08:01:03 - 18:59:58)
@@ -595,12 +598,12 @@ These errors were gone after a bist write
 - SEFI: 8:49:38, there were 33554432 errors until 9:42:01. These errors were bit flips that occured in the whole DRAM. The errors were there for 551/11363 error groups. The following was the data read from them: 
   - a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5e5
 
-- SEFI: 13:00:38, Random values were read until 13:00:42
+- SEFI: Random values were read between 13:00:38 - 13:00:42
 - SEFI: Random values were read between 13:06:38 - 13:06:47 
 - SEFI: Random values were read between 17:45:13 - 17:45:23
 - SEFI: Random values were read between 18:29:45 - 18:29:51
 
-- The following were the stuck bits and bit errors during this test: 
+- The following were the stuck bits found during this test: 
   - 0x0e7748f:  a5a5a5a5 a5a5a585 a5a5a5a5 a5a5a5a5
     - Appeared 8:01:19 - Gone 8:49:38
     - Appeared 9:42:01 - Gone 10:11:51
@@ -659,6 +662,7 @@ These errors were gone after a bist write
     - Appeared 18:41:55 - Gone 18:42:12
     - 7625/11363 error groups
     - Stuck bit
+
   - 0x0129cb1:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1
     - Appeared 9:52:03 - Gone 9:52:07
     - Appeared 9:56:57 - Gone 12:23:02
@@ -745,7 +749,6 @@ These errors were gone after a bist write
     - 7399/11363 error groups
     - Stuck bit 
 
-
   - 2969 |   0x1ef1d5c:  a5e5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
 
 
@@ -807,7 +810,7 @@ These errors were gone after a bist write
     - Appeared 3:53:49 - Gone 4:09:08
     - Appeared 6:14:03 - Gone 7:13:05
     - 12/144 error groups
-    - Bit error 
+    - Stuck bit
 
 
 ### Most vulnerable addresses
