@@ -104,7 +104,7 @@ Events:
   - Stuck bit
 
 
-- 0x0c843e7: a5a585a5 a5a5a5a5 
+- 0x0c843e7:  a5a585a5 a5a5a5a5 
   - Appeared at 9:30:0 - Gone 9:30:23
   - Appeared at 9:35:24 - Gone 9:35:27
   - Appeared at 9:35:46 - Gone 9:40:48
@@ -113,12 +113,12 @@ Events:
   - 8/262 error groups 
   - Is it stuck or bit error ?
 
-- 0x078c709: a5a5a5a5 a525a5a5
+- 0x078c709:  a5a5a5a5 a525a5a5
   - Appeared at 9:14:54 - Gone 9:14:56
   - 1/262 error groups 
   - Bit error 
 
-- 0x01f2bca: a5a5a5a5 a5a525a5
+- 0x01f2bca:  a5a5a5a5 a5a525a5
   - Appeared at 9:35:24 - Gone 9:35:27
   - 1/262 error groups
   - Bit error
@@ -502,11 +502,11 @@ Events:
     - Appeared 19:16:46 - Gone 19:16:56 (End of test)
     - 4/4 error groups
     - Stuck error
-  - 0x06d2819: a5a5a5a5 a5a585a5
+  - 0x06d2819:  a5a5a5a5 a5a585a5
     - Appeared 19:16:46 - Gone 19:16:56 (This error was gone at that time, it was not present in the last error group)
     - 3/4 error groups
     - Stuck error
-  - 0x0df1440: a5a5a5a5 a5a5a5a7
+  - 0x0df1440:  a5a5a5a5 a5a5a5a7
     - Appeared 19:16:46 - Gone 19:16:56 (This error was gone at that time, it was not present in the last error group)
     - 3/4 error groups
     - Stuck error
@@ -524,15 +524,15 @@ Events:
     - Appeared 19:26:45 - 19:47:0 (End of test)
     - 6/6 error groups 
     - Stuck bit
-  - 0x06d2819: a5a5a5a5 a5a585a5
+  - 0x06d2819:  a5a5a5a5 a5a585a5
     - Appeared 19:26:45 - Gone 19:47:0 (This error was gone at that time, it was not present in the last error group)
     - 5/6 error groups
     - Stuck bit
-  - 0x0df1444: a5a5a5a5 a5a5a5a7
+  - 0x0df1444:  a5a5a5a5 a5a5a5a7
     - Appeared 19:26:45 - Gone 19:47:0 (This error was gone at that time, it was not present in the last error group)
     - 5/6 error groups
     - Stuck bit
-  - 0x0e58519: a5e5a5a5 a5a5a5a5 
+  - 0x0e58519:  a5e5a5a5 a5a5a5a5 
     - Appeared 19:46:56 - Gone 19:47:0 (This error was gone at that time, it was not present in the last error group)
     - 1/6 error groups
     - Bit error
@@ -1176,7 +1176,7 @@ Events:
     - 1/164 error groups
     - Bit error 
   -  1: 0x01c2524:  25a5a5a5 a5a5a5a5
-    - Appeared 7:52:49 - Gone 7:52_49 (End of test)
+    - Appeared 7:52:49 - Gone 7:52:49 (End of test)
     - 1/164 error groups
     - Bit error 
 ### Continuous Test 17 (2023-07-01 07:54:00 - 07:55:32)
@@ -1413,7 +1413,7 @@ Events:
     - Appeared 10:46:25 - Gone 10:51:31
     -  2/86 error groups
     - Stuck bit
-  - 0x09fd697:  a5a5a5a1 a5a5a5a5
+   - 0x09fd697:  a5a5a5a1 a5a5a5a5
     - Appeared 10:46:25 - Gone 10:51:31
     -  2/86 error groups
     - Stuck bit
@@ -2732,7 +2732,7 @@ Events:
   -   1: 0x0adc335:  a5a4a5a5 a5a5a5a5
     - Appeared 0:17:09 - Gone 0:17:09
     - 1/165 error groups
-    - Bit error 
+    - Bit error
   -   1: 0x0b2d885:  a5a4a5a5 a5a5a5a5
     - Appeared 0:17:09 - Gone 0:17:09
     - 1/165 error groups
@@ -2877,20 +2877,5 @@ Events:
     - Appeared 5:07:37 - Gone 5:07:41
     - 1/165 error groups
     - Bit error
-
-
-### Most vulnerable addresses
-- 0x0df1440
-- 0x01f5ae8
-- 0x078ec96
-- 0x0240aaa
-- 0x012764f
-- 0x0fe20e2
-- 0x0ed5b13
-- 0x0bb8558
-- 0x00ca4f7
-- 0x010b930
-- 0x0c131ad
-- 0x0a4c9f8
 
 

@@ -92,7 +92,7 @@ No events occurred. BIST ran normally
 
 ### IDLE Test 7 (2023-06-29 10:54:26 - 15:13:20)
 
-- Between 11:39:52 - 11:39:55, there were 33554432 errors and this is because the pattern was messed up. The expected pattern was a5a5a525 a5a5a525 a5a5a525 a5a5a525 which is different to the written pattern a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- SEFI: Between 11:39:52 - 11:39:55, there were 33554432 errors and this is because the pattern was messed up. The expected pattern was a5a5a525 a5a5a525 a5a5a525 a5a5a525 which is different to the written pattern a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
 - At 11:39:57, there were 4088 new errors. The expected pattern was still different than the written pattern, however, there were errors that had bit flips. There was a pattern for these errors, they were at address 0x1000000, and every address adding 0x0000400 
 - All errors were gone at 11:40:02
 - There were 3 timeouts between 11:45:03 - 11:46:13

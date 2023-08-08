@@ -1,0 +1,441 @@
+# DDR2 Tests Summary 
+## IDLE Tests:
+The errors found in the IDLE Tests are categorized in 3 categories as follows:
+### Stuck bits:
+The following are the stuck bits found during the IDLE Tests 
+  - 0x0251b5d:  a5a5a5a5 a585a5a5
+  - 0x09149e7:  a5a5a5a5 e5a5a5a5
+  - 0x0044a67:  a5a5a5a5 a5a5a5b5
+  - 0x004440d:  a5a5a5ad a5a5a5a5
+  - 0x0e58519:  a5e5a5a5 a5a5a5a5
+  - 0x0dfa3b7:  a5a5a5a5 a5a5a5b5
+  - 0x0a01f01:  a5a5a5a5 a5a1a5a5
+  - 0x0df1444:  a5a5a5a5 a5a5a5a7
+  - 0x0504725:  a5a525a5 a5a5a5a5 
+  - 0x06d2819:  a5a5a5a5 a5a585a5
+  - 0x0216929:  85a5a5a5 a5a5a5a5
+  - 0x00593e2:  a5a5a5a5 a5ada5a5
+  - 0x0d56efd:  a5a5a5a5 a4a5a5a5
+  - 0x0cd17db:  a5a1a5a5 a5a5a5a5
+  - 0x031ca5b:  a5a5a5a5 a5a5e5a5
+  - 0x09fd697:  a5a5a5a1 a5a5a5a5
+  - 0x054d942:  a5a5a5a5 a585a5a5
+  - 0x03b25bc:  a5a5a5a5 a5a5a5b5
+  - 0x0c29e8f:  a5a5a5a5 a5a585a5
+  - 0x0a4f004:  a5a5a5a1 a5a5a5a5
+  - 0x03a428a:  ada5a5a5 a5a5a5a5
+  - 0x0e71062:  a5a5a5a5 a5a7a5a5
+  - 0x0c19a83:  a5a5a5a1 a5a5a5a5
+  - 0x093b06b:  a5a5a5a5 e5a5a5a5
+  - 0x030db98:  a5a5a5a5 a7a5a5a5
+  - 0x0a367b0:  a5a5a585 a5a5a5a5
+  - 0x0a0df61:  a5a5a5a5 a5a5a5a4
+  - 0x08aab56:  a5a5e5a5 a5a5a5a5
+  - 0x032a567:  a7a5a5a5 a5a5a5a5
+  - 0x0fd1f3b:  a5a5a5a4 a5a5a5a5
+  - 0x0986372:  a5a5a1a5 a5a5a5a5
+  - 0x0b1040b:  b5a5a5a5 a5a5a5a5
+  - 0x0814fa5:  a5a5a5a5 a7a5a5a5
+  - 0x0108741:  a5a5a5a5 a5a7a5a5
+  - 0x0928880:  a5a5a5a5 a5a5b5a5
+  - 0x0ed5b13:  a5a5a5a1 a5a5a5a5
+  - 0x0c352a0:  a5a5a5a5 a5a5a5a4
+  - 0x0c843e7:  a5a585a5 a5a5a5a5 
+  - 0x082e8e9:  a5a5a5a5 a7a5a5a5
+  - 0x0aed81b:  a5a5a5a5 a7a5a5a5
+  - 0x0ddacfa:  a5a5a5a7 a5a5a5a5
+  - 0x0d5615d:  a5a5a525 a5a5a5a5
+  - 0x03eeb43:  a5b5a5a5 a5a5a5a5
+  - 0x0e2476a:  a5a5a5a5 a5a5ada5
+  - 0x0b588f9:  a5a5a5a5 a5a5a5a7
+  - 0x0680a8a:  a5e5a5a5 a5a5a5a5
+  - 0x0adc6a6:  a5a5a5a5 ada5a5a5
+  - 0x034fe9e:  a5a5a5a5 a5a5a7a5
+  - 0x029fdba:  a5a4a5a5 a5a5a5a5
+  - 0x0d04af0:  a5a5a525 a5a5a5a5
+  - 0x0059b09:  a5a5a5b5 a5a5a5a5
+  - 0x00e4241:  a5a7a5a5 a5a5a5a5
+  - 0x012764f:  a5a5a5a5 a5a5e5a5
+  - 0x01f5ae8:  a5a5a5a5 a5a5a4a5
+  - 0x0ded024:  a5a5a5b5 a5a5a5a5
+  - 0x0df1440:  a5a5a5a5 a5a5a5a7
+  - 0x0fe20e2:  a5a4a5a5 a5a5a5a5
+  - 0x0bb8558:  a5a5a5b5 a5a5a5a5
+  - 0x00ca4f7:  e5a5a5a5 a5a5a5a5
+  - 0x010b930:  a5a5a5a7 a5a5a5a5
+  - 0x0240aaa:  a4a5a5a5 a5a5a5a5
+  - 0x0ccea44:  a5a5a525 a5a5a5a5
+  - 0x02913fb:  a5a5a5a5 a4a5a5a5
+  - 0x0a4c9f8:  a5a5a5a5 a525a5a5
+  - 0x0f5a92c:  a5a5a5a5 a525a5a5
+  - 0x0c131ad:  85a5a5a5 a5a5a5a5
+  - 0x0d844e5:  a5a5a5a5 a5a7a5a5 
+  - 0x0ed0e2d:  a5a5a5a5 25a5a5a5
+  - 0x0b6ac1e:  a5a5a5a5 b5a5a5a5
+  - 0x058aa3c:  a5a5a5a5 ada5a5a5
+  - 0x0120f3f:  a5a5a5a5 a5a5a5ad
+  - 0x0e5564e:  a5a5a5a5 a5e5a5a5
+  - 0x0afd50a:  e5a5a5a5 a5a5a5a5
+  - 0x056a750:  a5a5a5a5 a5a5a5a7
+  - 0x084c579:  a5a5a5a5 a5a5e5a5
+  - 0x05ac296:  a5a5a5a5 b5a5a5a5
+  - 0x0150761:  a5a5e5a5 a5a5a5a5
+  - 0x0b30399:  a5a5a5e5 a5a5a5a5
+  - 0x076cc63:  a5a5a5a5 85a5a5a5
+  - 0x0b8ec51:  a5a5a5a5 a5a5a5e5
+  - 0x0991428:  a5a5a5a5 a5a525a5
+  - 0x04d4cf2:  a5a5a5a5 a5a5a525
+  - 0x0aad5a9:  a5a5a5e5 a5a5a5a5
+  - 0x026f486:  a5a5a585 a5a5a5a5
+  - 0x0536d07:  25a5a5a5 a5a5a5a5
+  - 0x01cae7e:  a5a5a5a5 85a5a5a5
+  - 0x027356a:  a5a5a5a5 a5a525a5
+  - 0x03af07f:  b5a5a5a5 a5a5a5a5
+  - 0x01f5ae8:  a1a5a5a5 a1a5a4a5
+  - 0x0046eb5:  a5a5a5a5 a7a5a5a5
+  - 0x03a428a:  a9a5a5a5 a1a5a5a5
+  - 0x0104725:  a1a525a5 a1a5a5a5
+  - 0x04f4dab:  85a5a5a5 a5a5a5a5
+  - 0x0354ba3:  a5a7a5a5 a5a5a5a5
+  - 0x0d34be7:  a5a5a525 a5a5a5a5
+  - 0x0adc6a6:  a1a5a5a5 a9a5a5a5
+  - 0x0625d58:  a5a5a5a5 a5a5b5a5
+  - 0x0b01a6d:  a5a5a5a7 a5a5a5a5
+  - 0x06d812c:  a5a5a5a5 a5a5a585
+  - 0x0a697f2:  a5a5a5a5 a5a585a5
+  - 0x0ab6b46:  a5a5a5a5 a5a5a5b5
+  - 0x02fe8e9:  a5a5a5a5 a5a5a5a7
+  - 0x01e5ae8:  a5a5a5a5 a5a5a4a5
+  - 0x0e62cea:  e5a5a5a5 a5a5a5a5
+  - 0x005bac2:  a5a5a5a5 b5a5a5a5
+  - 0x0316953:  a5a5a5a5 b5a5a5a5
+  - 0x04b8539:  a5a5a5a4 a5a5a5a5
+  - 0x01ea479:  a5a5a5a5 a5a5a5a1
+  - 0x004440d:  a1a5a5ad a1a5a5a5
+  - 0x0c85f56:  a5a5a5a5 a5a5a1a5
+  - 0x038ec96:  a1a5a1a5 a1a5a5a5
+  - 0x08404b3:  a5a5a5a5 a5ada5a5
+  - 0x03a339d:  a5a5a5a5 a7a5a5a5
+  - 0x0efd451:  a5a1a5a5 a5a5a5a5
+  - 0x036a949:  a5a5a5a5 a5a5e5a5
+  - 0x0ba13a2:  a5a5a5a5 a5ada5a5
+  - 0x0d61735:  a5a5a5a5 a5a5ada5
+  - 0x047c549:  25a5a5a5 a5a5a5a5
+  - 0x06ad52b:  a5a5a5a5 85a5a5a5
+  - 0x078ec96:  a5a5a1a5 a5a5a5a5
+  - 0x00c4241:  a5a7a5a5 a5a5a5a5
+  - 0x034300a:  b5a5a5a5 a5a5a5a5
+  - 0x0988fc8:  a5a5a5a5 a5a5a5a4
+  - 0x010764f:  a5a5a5a5 a5a5e5a5
+  - 0x01d5ae8:  a5a5a5a5 a5a5a4a5
+  - 0x0b50233:  a5a5a5a5 a5e5a5a5
+  - 0x003731f:  a5a5a7a5 a5a5a5a5
+  - 0x04a13b7:  a5a5a5a5 a5a1a5a5
+  - 0x0b98558:  a5a5a5b5 a5a5a5a5
+  - 0x02df10e:  a5a7a5a5 a5a5a5a5
+  - 0x0dd1440:  a5a5a5a5 a5a5a5a7
+  - 0x06d95eb:  a5a5a5a5 a5a5a525
+  - 0x0fc20e2:  a5a4a5a5 a5a5a5a5
+  - 0x022c8bb:  a1a5a5a5 a5a5a5a5
+  - 0x055697f:  a5a5a5a5 a5a5a4a5
+  - 0x0efb47b:  a5a5a5a5 85a5a5a5
+  - 0x0675eac:  e5a5a5a5 a5a5a5a5
+  - 0x0ab8e2c:  a5a5ada5 a5a5a5a5
+  - 0x03e75bb:  b5a5a5a5 a5a5a5a5
+  - 0x0fd0ada:  a5a5a585 a5a5a5a5
+  - 0x0a80030:  a5a5a4a5 a5a5a5a5
+  - 0x05d9f61:  a5ada5a5 a5a5a5a5
+  - 0x07a3027:  a5a5a5a4 a5a5a5a5
+  - 0x09bf517:  a5a1a5a5 a5a5a5a5
+  - 0x0a88ff3:  a5a4a5a5 a5a5a5a5
+  - 0x0080bf9:  a5a5a5a5 a5ada5a5
+  - 0x068e02f:  a5a5a5e5 a5a5a5a5
+  - 0x0e64290:  a5a5a5a5 a5a5a5b5
+  - 0x0dcd024:  a5a5a5b5 a5a5a5a5
+  - 0x01515f1:  a5a5a5a5 e5a5a5a5
+  - 0x00916f8:  b5a5a5a5 a5a5a5a5
+  - 0x000283b:  a5a7a5a5 a5a5a5a5
+  - 0x025ef5b:  a5a5a4a5 a5a5a5a5
+  - 0x0555b4e:  a5a5a5a5 a1a5a5a5
+  - 0x09f0d7a:  a5a5a4a5 a5a5a5a5
+  - 0x095719e:  a5a5a5a5 a5a5a5b5
+  - 0x0c917c5:  a5a5a5a5 25a5a5a5
+  - 0x033dae0:  a5a5a5a5 e5a5a5a5
+  - 0x0b4ac1e:  a5a5a5a5 b5a5a5a5
+  - 0x0351653:  a5ada5a5 a5a5a5a5
+  - 0x0371653:  a5ada5a5 a5a5a5a5
+  - 0x011b930:  a5a5a5a7 a5a5a5a5
+  - 0x013764f:  a5a5a5a5 a5a5e5a5
+  - 0x01dae7e:  a5a5a5a5 85a5a5a5
+  - 0x09b12e0:  a5a5a5a5 a1a5a5a5
+  - 0x0a5c9f8:  a5a5a5a5 a525a5a5
+  - 0x0739a0b:  a5a5a5a5 a5a5a585
+  - 0x0a5142e:  a5a4a5a5 a5a5a5a5
+  - 0x0637496:  a5a5a5ad a5a5a5a5
+  - 0x0eb8173:  a5a5a5a5 a5a585a5
+  - 0x0a73eea:  a5a5a1a5 a5a5a5a5
+  - 0x002313c:  a5a5a5a5 a5a5a7a5
+
+
+### Soft bits:
+  - 0x00c1937:  a5a5a5a5 a7a5a5a5
+  - 0x078c709:  a5a5a5a5 a525a5a5
+  - 0x01f2bca:  a5a5a5a5 a5a525a5
+  - 0x06ff4f3:  a5a5a5a5 a5a525a5
+  - 0x0c97db1:  a5a5a5a5 a5a5a5a1
+  - 0x0a45bf9:  a5a5a5a5 a5a1a5a5
+  - 0x073ef53:  a525a5a5 a5a5a5a5
+  - 0x015b893:  a5a5a5a5 a5a585a5
+  - 0x032ec67:  a5a5a5e5 a5a5a5a5
+  - 0x0be6bd5:  a5a5a5a5 a5a5a5a7
+  - 0x0125877:  b5a5a5a5 a5a5a5a5
+  - 0x02e14e8:  a5a4a5a5 a5a5a5a5
+  - 0x07364e8:  a5a4a5a5 a5a5a5a5
+  - 0x0f57c1b:  a5a5a5a5 a525a5a5
+  - 0x01ff440:  a5a5a5a5 a5a5a5a7
+  - 0x0a66b19:  a5a5a4a5 a5a5a5a5
+  - 0x0000000:  a5a5a5a5 a5a5a4a5
+  - 0x076d69d:  a5a5a5a5 a5a5a5a4
+  - 0x0ec3c61:  a5a5a5a1 a5a5a5a5
+  - 0x0b23f9c:  a5a5b5a5 a5a5a5a5
+  - 0x01e484e:  a5a5a5a5 a5a5a585
+  - 0x09c98a9:  a5a5a5a5 a4a5a5a5
+  - 0x03eb11f:  a5e5a5a5 a5a5a5a5
+  - 0x0715d1c:  a525a5a5 a5a5a5a5
+  - 0x07717e8:  a5a1a5a5 a5a5a5a5
+  - 0x0338f80:  a5a7a5a5 a5a5a5a5
+  - 0x09c422f:  a5a5a5a5 a5a5a4a5
+  - 0x0063307:  a5a4a5a5 a5a5a5a5
+  - 0x0094860:  a5a4a5a5 a5a5a5a5
+  - 0x0b64dc9:  a5a5a5a5 a5a5e5a5
+  - 0x00c5d9b:  a5a4a5a5 a5a5a5a5
+  - 0x00f72e8:  a5a4a5a5 a5a5a5a5
+  - 0x0128818:  a5a4a5a5 a5a5a5a5
+  - 0x0b8d632:  a5a5a5a5 a5e5a5a5
+  - 0x0159d52:  a5a4a5a5 a5a5a5a5
+  - 0x01c2524:  25a5a5a5 a5a5a5a5
+  - 0x018b28d:  a5a4a5a5 a5a5a5a5
+  - 0x01bc7d7:  a5a4a5a5 a5a5a5a5
+  - 0x01edd0a:  a5a4a5a5 a5a5a5a5
+  - 0x021f244:  a5a4a5a5 a5a5a5a5
+  - 0x025078f:  a5a4a5a5 a5a5a5a5
+  - 0x0281cc9:  a5a4a5a5 a5a5a5a5
+  - 0x0d66f46:  a5a5a5a5 a5a5ada5
+  - 0x0240aaa:  a0a5a5a5 a1a5a5a5
+  - 0x00b3211:  a5a4a5a5 a5a5a5a5
+  - 0x096e6eb:  a5a5a585 a5a5a5a5
+  - 0x07b0ae6:  a5a5a5a5 a5a525a5
+  - 0x02e4733:  a5a4a5a5 a5a5a5a5
+  - 0x0315c81:  a5a4a5a5 a5a5a5a5
+  - 0x0c3f863:  a5a5a5a5 a5a5a585
+  - 0x03471bb:  a5a4a5a5 a5a5a5a5
+  - 0x0d251d8:  a5a5a5a5 a5a4a5a5
+  - 0x01786d1:  a5a4a5a5 a5a5a5a5
+  - 0x03a9c39:  a5a4a5a5 a5a5a5a5
+  - 0x03db173:  a5a4a5a5 a5a5a5a5
+  - 0x040c6aa:  a5a4a5a5 a5a5a5a5
+  - 0x043dbe3:  a5a4a5a5 a5a5a5a5
+  - 0x046f12b:  a5a4a5a5 a5a5a5a5
+  - 0x04a0662:  a5a4a5a5 a5a5a5a5
+  - 0x04d1b9c:  a5a4a5a5 a5a5a5a5
+  - 0x05030e0:  a5a4a5a5 a5a5a5a5
+  - 0x053461a:  a5a4a5a5 a5a5a5a5
+  - 0x0565b54:  a5a4a5a5 a5a5a5a5
+  - 0x059708f:  a5a4a5a5 a5a5a5a5
+  - 0x05c85d7:  a5a4a5a5 a5a5a5a5
+  - 0x05f9b0c:  a5a4a5a5 a5a5a5a5
+  - 0x062b046:  a5a4a5a5 a5a5a5a5
+  - 0x065c57e:  a5a4a5a5 a5a5a5a5
+  - 0x068dac9:  a5a4a5a5 a5a5a5a5
+  - 0x06bf000:  a5a4a5a5 a5a5a5a5
+  - 0x06f0535:  a5a4a5a5 a5a5a5a5
+  - 0x0721a81:  a5a4a5a5 a5a5a5a5
+  - 0x0752fba:  a5a4a5a5 a5a5a5a5
+  - 0x07844f5:  a5a4a5a5 a5a5a5a5
+  - 0x07b5a28:  a5a4a5a5 a5a5a5a5
+  - 0x07e6f70:  a5a4a5a5 a5a5a5a5
+  - 0x08184ac:  a5a4a5a5 a5a5a5a5
+  - 0x08499e7:  a5a4a5a5 a5a5a5a5
+  - 0x087af2a:  a5a4a5a5 a5a5a5a5
+  - 0x08ac464:  a5a4a5a5 a5a5a5a5
+  - 0x08dd99e:  a5a4a5a5 a5a5a5a5
+  - 0x090eed6:  a5a4a5a5 a5a5a5a5
+  - 0x094041c:  a5a4a5a5 a5a5a5a5
+  - 0x0951954:  a5a4a5a5 a5a5a5a5
+  - 0x09a2e8e:  a5a4a5a5 a5a5a5a5
+  - 0x09d43db:  a5a4a5a5 a5a5a5a5
+  - 0x0a0590e:  a5a4a5a5 a5a5a5a5
+  - 0x0a16e41:  a5a4a5a5 a5a5a5a5
+  - 0x0a68380:  a5a4a5a5 a5a5a5a5
+  - 0x0a998cd:  a5a4a5a5 a5a5a5a5
+  - 0x0acae00:  a5a4a5a5 a5a5a5a5
+  - 0x0adc335:  a5a4a5a5 a5a5a5a5
+  - 0x0b2d885:  a5a4a5a5 a5a5a5a5
+  - 0x0b5edbc:  a5a4a5a5 a5a5a5a5
+  - 0x0b902f7:  a5a4a5a5 a5a5a5a5
+  - 0x0bc1827:  a5a4a5a5 a5a5a5a5
+  - 0x0bf2d74:  a5a4a5a5 a5a5a5a5
+  - 0x0c242ae:  a5a4a5a5 a5a5a5a5
+  - 0x0c557e9:  a5a4a5a5 a5a5a5a5
+  - 0x0c86d2a:  a5a4a5a5 a5a5a5a5
+  - 0x0cb8266:  a5a4a5a5 a5a5a5a5
+  - 0x0ce97a0:  a5a4a5a5 a5a5a5a5
+  - 0x0d4c21e:  a5a4a5a5 a5a5a5a5
+  - 0x0d7d758:  a5a4a5a5 a5a5a5a5
+  - 0x0daec90:  a5a4a5a5 a5a5a5a5
+  - 0x0e1170d:  a5a4a5a5 a5a5a5a5
+  - 0x0e42c47:  a5a4a5a5 a5a5a5a5
+  - 0x0e74182:  a5a4a5a5 a5a5a5a5
+  - 0x0ed6c00:  a5a4a5a5 a5a5a5a5
+  - 0x0f08139:  a5a4a5a5 a5a5a5a5
+  - 0x0f9c0f9:  a5a4a5a5 a5a5a5a5
+  - 0x0fcd628:  a5a4a5a5 a5a5a5a5
+  - 0x0127247:  a5a5a5a5 a5a5e5a5
+  - 0x01f34e9:  a5a5a5a5 a5a5a4a5
+  - 0x028f744:  a5a5a5a5 a4a5a5a5
+  - 0x05696a0:  a5a5a5a5 a5a5a5a7
+  - 0x0849d9a:  a5a5a5a5 a5a5e5a5
+  - 0x0a4c750:  a5a5a5a5 a525a5a5
+  - 0x0b8e364:  a5a5a5a5 a5a5a5e5
+  - 0x0d83da1:  a5a5a5a5 a5a7a5a5
+  - 0x0e53bff:  a5a5a5a5 a5e5a5a5
+  - 0x0ecf83a:  a5a5a5a5 25a5a5a5
+  - 0x0213a3b:  a5a5a4a5 a5a5a5a5
+  - 0x058c296:  a5a5a5a5 b5a5a5a5
+  - 0x01aac36:  a5a5a5a5 a1a5a5a5
+  - 0x0169c09:  a5a5a5a5 a525a5a5
+  - 0x04d78ea:  a5a5a5a5 a5a1a5a5
+  - 0x0d06865:  a585a5a5 a5a5a5a5
+### SEFI:
+
+
+## Continuous Tests:
+The errors found in the Continuous Tests are categorized in 3 categories as follows:
+### Stuck bits:
+- 0x0df1440:  a5a5a5a5 a5a5a5a7
+- 0x0ed5b13:  a5a5a5a1 a5a5a5a5
+- 0x0021998:  a5a5a5e5 a5a5a5a5
+- 0x065cdf0:  a5a5a5b5 a5a5a5a5
+- 0x06d2819:  a5a5a5a5 a5a585a5
+- 0x0a4f004:  a5a5a5a1 a5a5a5a5
+- 0x0044a67:  a5a5a5a5 a5a5a5b5
+- 0x0dfa3b7:  a5a5a5a5 a5a5a5b5
+- 0x0e58519:  a5e5a5a5 a5a5a5a5
+- 0x077184d:  a5a5a5a5 a5a585a5
+- 0x013f746:  b5a5a5a5 a5a5a5a5
+- 0x0d5d5ce:  a5a5a5a5 e5a5a5a5
+- 0x08ca7b6:  a5a5a5a5 a5ada5a5
+- 0x078ec96:  a5a5a1a5 a5a5a5a5
+- 0x0adc6a6:  a5a5a5a5 ada5a5a5
+- 0x01f5ae8:  a5a5a5a5 a5a5a4a5
+- 0x0a88ff3:  a5a4a5a5 a5a5a5a5
+- 0x01c3524:  25a5a5a5 a5a5a5a5
+- 0x0a4c9f8:  a5a5a5a5 a525a5a5
+- 0x0b8ec51:  a5a5a5a5 a5a5a5e5
+- 0x0bb8558:  a5a5a5b5 a5a5a5a5
+- 0x0c131ad:  85a5a5a5 a5a5a5a5
+- 0x0fe20e2:  a5a4a5a5 a5a5a5a5
+- 0x012764f:  a5a5a5a5 a5a5e5a5
+- 0x03e13ae:  a5a5e5a5 a5a5a5a5
+- 0x00ca4f7:  e5a5a5a5 a5a5a5a5
+- 0x03af07f:  b5a5a5a5 a5a5a5a5
+- 0x00dcaf0:  a5a5a5a7 a5a5a5a5
+- 0x0e5564e:  a5a5a5a5 a5e5a5a5
+- 0x076d69d:  a5a5a5a5 a5a5a5a4
+- 0x0571846:  e5a5a5a5 a5a5a5a5
+- 0x076cc63:  a5a5a5a5 85a5a5a5
+- 0x01b7bd1:  a5a5a5a5 a5a5a525
+- 0x036a949:  a5a5a5a5 a5a5e5a5
+- 0x04f480a:  a5a5a5a5 a5a5a4a5
+- 0x076d6a8:  a5a5a5a5 a5a5a5a4
+- 0x000373b:  a5a5a5a5 a5a5a5ad
+- 0x0680a8a:  a5e5a5a5 a5a5a5a5
+- 0x005bac2:  a5a5a5a5 b5a5a5a5
+- 0x058ec96:  a5a5a1a5 a5a5a5a5
+- 0x098ec51:  a5a5a5a5 a5a5a5e5
+- 0x09b8558:  a5a5a5b5 a5a5a5a5
+- 0x0a58bc4:  a5a5a5a5 a5a5a1a5
+- 0x0554694:  a5a5a5a5 a5a5a1a5
+- 0x016a949:  a5a5a5a5 a5a5e5a5
+- 0x02102fa:  a5a5a5a5 a5a525a5
+- 0x06d5895:  a5a5a5a5 a5a5a1a5
+- 0x0c5564e:  a5a5a5a5 a5e5a5a5
+- 0x010b930:  a5a5a5a7 a5a5a5a5
+- 0x056d69d:  a5a5a5a5 a5a5a5a4
+- 0x0b6284e:  a5ada5a5 a5a5a5a5
+
+
+### Soft bits:
+ - 0x0922dd6:  a5a5a5a5 a5a5a5e5
+ - 0x0d1dbf6:  a5a5a5a5 a4a5a5a5
+ - 0x0894a65:  a5a5b5a5 a5a5a5a5
+ - 0x0858bc4:  a5a5a5a5 a5a5a1a5
+ - 0x09de034:  a5a5a5a5 25a5a5a5
+ - 0x0b85c4b:  a5a5a5a7 a5a5a5a5
+ - 0x0338f80:  a5a7a5a5 a5a5a5a5
+ - 0x0b6bd43:  a5a5a5a5 e5a5a5a5
+ - 0x0c0978e:  a525a5a5 a5a5a5a5
+
+ 
+### SEFI:
+
+
+
+## Combined Errors:
+These error were found in both the IDLE and Continuous tests. There were 16517 error groups during these tests
+
+### Stuck bits
+- 0x0044a67:  a5a5a5a5 a5a5a5b5
+    - 1049 error groups
+- 0x0df1440:  a5a5a5a5 a5a5a5a7
+    - 13069 error groups
+- 0x0ed5b13:  a5a5a5a1 a5a5a5a5
+    - 3466 error groups
+- 0x06d2819:  a5a5a5a5 a5a585a5
+    - 4863 error groups
+- 0x0a4f004:  a5a5a5a1 a5a5a5a5 
+    - 2427 error groups
+- 0x0dfa3b7:  a5a5a5a5 a5a5a5b5
+    - 6451 error groups
+- 0x0e58519:  a5e5a5a5 a5a5a5a5
+    - 271 error groups
+- 0x078ec96:  a5a5a1a5 a5a5a5a5
+    - 6434 error groups
+- 0x0adc6a6:  a5a5a5a5 ada5a5a5
+    - 203 error groups
+- 0x01f5ae8:  a5a5a5a5 a5a5a4a5 
+    - 7054 error groups
+- 0x0a88ff3:  a5a4a5a5 a5a5a5a5
+    - 28 error groups
+- 0x0a4c9f8:  a5a5a5a5 a525a5a5
+    - 6939 error groups
+- 0x0b8ec51:  a5a5a5a5 a5a5a5e5
+    - 6140 error groups
+- 0x0bb8558:  a5a5a5b5 a5a5a5a5
+    - 6222 error groups
+- 0x0c131ad:  85a5a5a5 a5a5a5a5
+    - 6950 error groups
+- 0x0fe20e2:  a5a4a5a5 a5a5a5a5
+    - 6982 error groups
+- 0x012764f:  a5a5a5a5 a5a5e5a5
+    - 6788 error groups
+- 0x00ca4f7:  e5a5a5a5 a5a5a5a5
+    - 5833 error groups
+- 0x03af07f:  b5a5a5a5 a5a5a5a5
+    - 4186 error groups
+- 0x0e5564e:  a5a5a5a5 a5e5a5a5
+    - 1258 error groups
+- 0x076d69d:  a5a5a5a5 a5a5a5a4 (Stuck bit for continuous but soft for IDLE)
+    - 846 error groups
+- 0x076cc63:  a5a5a5a5 85a5a5a5
+    - 2191 error groups
+- 0x036a949:  a5a5a5a5 a5a5e5a5
+    - 309 error groups
+- 0x0680a8a:  a5e5a5a5 a5a5a5a5
+    - 37 error groups
+- 0x005bac2:  a5a5a5a5 b5a5a5a5
+    - 839 error groups
+- 0x010b930:  a5a5a5a7 a5a5a5a5
+    - 198 error groups
+- 0x0338f80:  a5a7a5a5 a5a5a5a5 (Soft for continuous and IDLE)
+    - 2 error groups
