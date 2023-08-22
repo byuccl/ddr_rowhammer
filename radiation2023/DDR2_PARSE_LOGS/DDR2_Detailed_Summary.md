@@ -3,6 +3,7 @@
 The errors found in the IDLE Tests are categorized in 3 categories as follows:
 ### Stuck bits:
 The following are the stuck bits found during the IDLE Tests 
+171 errors:
   - 0x0251b5d:  a5a5a5a5 a585a5a5
   - 0x09149e7:  a5a5a5a5 e5a5a5a5
   - 0x0044a67:  a5a5a5a5 a5a5a5b5
@@ -178,6 +179,7 @@ The following are the stuck bits found during the IDLE Tests
 
 
 ### Soft bits:
+127 errors
   - 0x00c1937:  a5a5a5a5 a7a5a5a5
   - 0x078c709:  a5a5a5a5 a525a5a5
   - 0x01f2bca:  a5a5a5a5 a5a525a5
@@ -306,12 +308,14 @@ The following are the stuck bits found during the IDLE Tests
   - 0x0169c09:  a5a5a5a5 a525a5a5
   - 0x04d78ea:  a5a5a5a5 a5a1a5a5
   - 0x0d06865:  a585a5a5 a5a5a5a5
+  
 ### SEFI:
 
 
 ## Continuous Tests:
 The errors found in the Continuous Tests are categorized in 3 categories as follows:
 ### Stuck bits:
+60 errors
 - 0x0df1440:  a5a5a5a5 a5a5a5a7
 - 0x0ed5b13:  a5a5a5a1 a5a5a5a5
 - 0x0021998:  a5a5a5e5 a5a5a5a5
@@ -366,6 +370,7 @@ The errors found in the Continuous Tests are categorized in 3 categories as foll
 
 
 ### Soft bits:
+9 errors
  - 0x0922dd6:  a5a5a5a5 a5a5a5e5
  - 0x0d1dbf6:  a5a5a5a5 a4a5a5a5
  - 0x0894a65:  a5a5b5a5 a5a5a5a5
@@ -376,7 +381,7 @@ The errors found in the Continuous Tests are categorized in 3 categories as foll
  - 0x0b6bd43:  a5a5a5a5 e5a5a5a5
  - 0x0c0978e:  a525a5a5 a5a5a5a5
 
- 
+
 ### SEFI:
 
 
@@ -385,6 +390,7 @@ The errors found in the Continuous Tests are categorized in 3 categories as foll
 These error were found in both the IDLE and Continuous tests. There were 16517 error groups during these tests
 
 ### Stuck bits
+27 errors
 - 0x0044a67:  a5a5a5a5 a5a5a5b5
     - 1049 error groups
 - 0x0df1440:  a5a5a5a5 a5a5a5a7

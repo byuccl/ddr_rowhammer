@@ -42,6 +42,39 @@ Events:
 - The number of errors near the end ranged from 4 - 5.
 - At the end of the test, the ttyUSB devices were not found and the pexpect script terminated.
 
+- 21 |   0x89b13f1:  a5a5a5a5 a5a5a5a5 a5a5a5a7 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 9:12:43 - Gone 9:25:52
+    - Appeared 9:33:33 - Gone 9:41:21 (End of test)
+    - 21/28 error groups
+    - Stuck bit
+
+- 18 |   0x0e99007:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a7 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 9:25:50 - Gone 9:31:12
+    - Appeared 9:31:14 - Gone 9:41:21 (End of test)
+    - 18/28 error groups
+    - Stuck bit 
+
+- 12 |   0xf8cefcf:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 9:12:43 - Gone 9:25:50 
+    - Appeared 9:34:42 - Gone 9:35:24
+    - Appeared 9:36:18 - Gone 9:37:01
+    - Appeared 9:39:31 - Gone 9:40:13
+    - 12/28 error groups
+    - Stuck bit
+- 9 |   0x2df9057:  a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 9:20:09 - Gone 9:25:52
+    - Appeared 9:34:08 - Gone 9:34:42
+    - Appeared 9:36:18 - Gone 9:37:01
+    - Appeared 9:38:21 - Gone 9:41:21 (End of test)
+    - 9/28 error groups
+    - Stuck bit 
+- 7 |   0xc2afa29:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5ada5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 9:33:33 - Gone 9:34:42
+    - Appeared 9:36:18 - Gone 9:37:56
+    - Appeared 9:39:31 - Gone 9:40:47
+    - Appeared 9:41:21 - Gone 9:41:21 (It appeared at the last error group)
+    - 7/28 error groups
+    - Stuck bits
 ### Idle Test 9 ( 2023-06-29 09:57:29 - 2023-06-29 09:57:48 )
 
 No output from BIST. Appears that ttyUSB device could not be found by software, and script closed in the Terminating State.
@@ -56,17 +89,346 @@ Events:
 - We had the same problem in this test as in Idle Test 8, in that timeouts occured because the BIST reader was running longer than 30 seconts to print out all the errors. Because it took too long, our pexpect scripts treated this like a timeout, and after each UART timeout, the ttyUSB device was reset, and the reader took too long again, thus the board was repwered. 
 - The number of errors ranged from 9 - 12.
 
+- 15 |   0x05eecf5:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 10:55:57 - 11:07:30 (End of test)
+    - 15/15 error groups
+    - Stuck bit
+- 15 |   0x0e99007:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a7 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 10:55:57 - 11:07:30 (End of test)
+    - 15/15 error groups
+    - Stuck bit
+- 14 |   0x2f76f9d:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 85a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 10:55:57 - 11:07:30 (It was gone at the last error group of the test)
+    - 14/15 error groups
+    - Stuck bit
+- 14 |   0x7209717:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 10:55:57 - 11:07:30 (It was gone at the last error group of the test)
+    - 14/15 error groups
+    - Stuck bit
+- 14 |   0x72a4964:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5
+    - Appeared 10:55:57 - 11:07:30 (It was gone at the last error group of the test)
+    - 14/15 error groups
+    - Stuck bit
+- 14 |   0x73fd4b0:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 10:55:57 - 11:07:30 (It was gone at the last error group of the test)
+    - 14/15 error groups
+    - Stuck bit
+- 10 |   0x38daa36:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5e5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 10:55:57 - Gone 11:04:12 
+    - 10/15 error groups
+    - Stuck bit
+- 10 |   0x71f537c:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 10:55:57 - Gone 11:04:12 
+    - 10/15 error groups
+    - Stuck bit
+- 7 |   0xfcadb48:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 10:55:57 - Gone 10:56:42
+    - Appeared 10:57:36 - Gone 10:58:21
+    - Appeared 10:59:15 - Gone 11:00:00
+    - Appeared 11:00:54 - Gone 11:01:39
+    - Appeared 11:02:33 - Gone 11:03:18
+    - Appeared 11:04:12 - Gone 11:04:57 
+    - Appeared 11:05:51 - Gone 11:06:36
+    - 7/15 error groups
+    - Stuck bit
+- 7 |   0x68c7cfb:  a5a5a5a5 a5a5a5a5 a5ada5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 11:01:39 - Gone 11:07:30
+    - 7/15 error groups
+    - Stuck bit
+- 6 |   0xf8cefcf:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 10:55:57 - Gone 10:56:42 
+    - Appeared 10:57:36 - Gone 10:58:21
+    - Appeared 10:59:15 - Gone 11:00:00
+    - Appeared 11:00:54 - Gone 11:01:39
+    - Appeared 11:02:33 - Gone 11:03:18
+    - Appeared 11:04:12 - Gone 11:04:57
+    - 6/15 error groups
+    - Stuck bit
+- 3 |   0xf7bb9ac:  a5a1a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 11:00:54 - Gone 11:01:39
+    - Appeared 11:04:12 - Gone 11:04:57
+    - Appeared 11:05:51 - Gone 11:06:36
+    - 3/15 error groups
+    - Stuck bit
 ### Idle Test 12 ( 2023-06-29 19:41:19 - 2023-06-29 19:47:07 )
 
 Events:
 - Same problem as previous test. Board kept repowering.
 - The number of errors ranged from 19 - 26.
 
+- 7 |   0x05eecf5:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:41:46 - Gone 19:46:43 (End of test)
+    - 7/7 error groups 
+    - Stuck bit
+- 7 |   0x0724e9d:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:41:46 - Gone 19:46:43 (End of test)
+    - 7/7 error groups 
+    - Stuck bit
+- 7 |   0x162c2a7:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a1a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:41:46 - Gone 19:46:43 (End of test)
+    - 7/7 error groups 
+    - Stuck bit
+- 7 |   0x43d2ef8:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:41:46 - Gone 19:46:43 (End of test)
+    - 7/7 error groups 
+    - Stuck bit
+- 7 |   0x44499d0:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a1a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:41:46 - Gone 19:46:43 (End of test)
+    - 7/7 error groups 
+    - Stuck bit
+- 7 |   0x5c1865a:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a7a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:41:46 - Gone 19:46:43 (End of test)
+    - 7/7 error groups 
+    - Stuck bit
+- 7 |   0x5ca2871:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 b5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:41:46 - Gone 19:46:43 (End of test)
+    - 7/7 error groups 
+    - Stuck bit
+- 7 |   0x5cd65dc:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 ada5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:41:46 - Gone 19:46:43 (End of test)
+    - 7/7 error groups 
+    - Stuck bit
+- 7 |   0x72a4964:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5
+    - Appeared 19:41:46 - Gone 19:46:43 (End of test)
+    - 7/7 error groups 
+    - Stuck bit
+- 7 |   0x7aa1870:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a7a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:41:46 - Gone 19:46:43 (End of test)
+    - 7/7 error groups 
+    - Stuck bit
+- 7 |   0x7f0086d:  a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:41:46 - Gone 19:46:43 (End of test)
+    - 7/7 error groups 
+    - Stuck bit
+- 7 |   0x816283a:  a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:41:46 - Gone 19:46:43 (End of test)
+    - 7/7 error groups 
+    - Stuck bit
+- 7 |   0xa1133af:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:41:46 - Gone 19:46:43 (End of test)
+    - 7/7 error groups 
+    - Stuck bit
+- 6 |   0x0e99007:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a7 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:41:46 - Gone 19:45:48
+    - Appeared 19:46:43 - Gone 19:46:43 (it appeared at the last error group of the test)
+    - 6/7 error groups
+    - Stuck bit
+- 6 |   0x282eb3d:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:41:46 - Gone 19:46:43 (it was gone at the last error group of the test)
+    - 6/7 error groups
+    - Stuck bit
+- 6 |   0x3d6effe:  a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:41:46 - Gone 19:46:43
+    - 6/7 error groups
+    - Stuck bit 
+- 6 |   0x65a1dec:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:41:46 - Gone 19:45:04
+    - Appeared 19:45:48 - Gone 19:46:43 (End of test)
+    - 6/7 error groups
+    - Stuck bit
+- 6 |   0xa9d95c9:  a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:41:46 - Gone 19:46:43 (it was gone at the last error group of the test)
+    - 6/7 error groups
+    - Stuck bit
+- 5 |   0x38fcbe1:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:41:46 - Gone 19:45:48
+    - 5/7 error groups
+    - Stuck bit
+- 5 |   0x89b13f1:  a5a5a5a5 a5a5a5a5 a5a5a5a7 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:41:46 - Gone 19:45:48
+    - 5/7 error groups
+    - Stuck bit
+- 5 |   0x2df9057:  a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:43:25 - Gone 19:46:43
+    - 5/7 error groups
+    - Stuck bit
+- 4 |   0x1c6d480:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:41:46 - Gone 19:45:04 
+    - 4/7 error groups
+    - Stuck bit
+- 3 |   0xd708438:  a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:41:46 - Gone 19:42:30
+    - Appeared 19:43:25 - Gone 19:44:09
+    - Appeared 19:45:04 - Gone 19:45:48
+    - 3/7 error groups
+    - Stuck bit
+- 3 |   0xec62ce9:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:41:46 - Gone 19:42:30
+    - Appeared 19:43:25 - Gone 19:44:09
+    - Appeared 19:45:04 - Gone 19:45:48
+    - 3/7 error groups
+    - Stuck bit
+- 3 |   0xfcadb48:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:41:46 - Gone 19:42:30
+    - Appeared 19:43:25 - Gone 19:44:09
+    - Appeared 19:45:04 - Gone 19:45:48
+    - 3/7 error groups
+    - Stuck bit
+- 2 |   0x7d6ee57:  a5a5a5a5 a5a5a5a5 a5a5b5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:42:30 - Gone 19:44:09
+    - 2/7 error groups
+    - Stuck bit
+- 1 |   0x0d686cb:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:41:46 - Gone 19:42:30
+    - 1/7 error groups
+    - Soft bit 
+- 1 |   0x25a3bcc:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 ada5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:42:30 - Gone 19:43:25
+    - 1/7 error groups
+    - Soft bit
+- 1 |   0x918359a:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:43:25 - Gone 19:44:09
+    - 1/7 error groups 
+    - Soft bit
+- 1 |   0xe86694c:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 25a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:43:25 - Gone 19:44:09
+    - 1/7 error groups 
+    - Soft bit
 ### Idle Test 13 ( 2023-06-29 19:48:35 - 2023-06-29 19:53:14 )
 
 Events:
 - Same problem as previous test. Board kept repowering.
 - The number of errors ranged from 21 - 24.
+
+- 6 |   0x05eecf5:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:49:02 - Gone 19:53:04 (End of test)
+    - 6/6 error groups
+    - Stuck bit 
+- 6 |   0x0724e9d:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:49:02 - Gone 19:53:04 (End of test)
+    - 6/6 error groups
+    - Stuck bit 
+- 6 |   0x162c2a7:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a1a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:49:02 - Gone 19:53:04 (End of test)
+    - 6/6 error groups
+    - Stuck bit 
+- 6 |   0x43d2ef8:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:49:02 - Gone 19:53:04 (End of test)
+    - 6/6 error groups
+    - Stuck bit 
+- 6 |   0x44499d0:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a1a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:49:02 - Gone 19:53:04 (End of test)
+    - 6/6 error groups
+    - Stuck bit 
+- 5 |   0x0e99007:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a7 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:49:02 - Gone 19:49:46
+    - Appeared 19:50:41 - Gone 19:53:04 (End of test)
+    - 5/6 error groups
+    - Stuck bit
+- 5 |   0x2df9057:  a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:49:02 - Gone 19:53:04 (it was gone at the last error group of the test)
+    - 5/6 error groups
+    - Stuck bit
+- 5 |   0x5c1865a:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a7a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:49:02 - Gone 19:53:04 (it was gone at the last error group of the test)
+    - 5/6 error groups
+    - Stuck bit
+- 5 |   0x5ca2871:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 b5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:49:02 - Gone 19:53:04 (it was gone at the last error group of the test)
+    - 5/6 error groups
+    - Stuck bit
+- 5 |   0x5cd65dc:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 ada5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:49:02 - Gone 19:53:04 (it was gone at the last error group of the test)
+    - 5/6 error groups
+    - Stuck bit
+- 5 |   0x72a4964:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5
+    - Appeared 19:49:02 - Gone 19:53:04 (it was gone at the last error group of the test)
+    - 5/6 error groups
+    - Stuck bit
+- 5 |   0x7aa1870:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a7a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:49:02 - Gone 19:53:04 (it was gone at the last error group of the test)
+    - 5/6 error groups
+    - Stuck bit
+- 5 |   0x7f0086d:  a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:49:02 - Gone 19:53:04 (it was gone at the last error group of the test)
+    - 5/6 error groups
+    - Stuck bit
+- 5 |   0x816283a:  a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:49:02 - Gone 19:53:04 (it was gone at the last error group of the test)
+    - 5/6 error groups
+    - Stuck bit
+- 5 |   0xa1133af:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:49:02 - Gone 19:53:04 (it was gone at the last error group of the test)
+    - 5/6 error groups
+    - Stuck bit
+- 5 |   0xa9d95c9:  a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:49:02 - Gone 19:53:04 (it was gone at the last error group of the test)
+    - 5/6 error groups
+    - Stuck bit
+- 4 |   0x3d6effe:  a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:49:02 - Gone 19:49:46
+    - Appeared 19:50:41 - Gone 19:52:20
+    - Appeared 19:53:04 - Gone 19:53:04 (it appeared at the last error group of the test)
+    - 4/6 error groups
+    - Stuck bit 
+- 4 |   0x65a1dec:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:49:02 - Gone 19:50:41
+    - Appeared 19:51:25 - Gone 19:53:04 (it was gone at the error group of the test)
+    - 4/6 error groups
+    - Stuck bit
+- 4 |   0x89b13f1:  a5a5a5a5 a5a5a5a5 a5a5a5a7 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:49:46 - Gone 19:53:04 (it was gone at the last error group of the test)
+    - 4/6 error groups
+    - Stuck bit
+- 3 |   0x7d6ee57:  a5a5a5a5 a5a5a5a5 a5a5b5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:49:02 - Gone 19:49:46
+    - Appeared 19:50:41 - Gone 19:51:25
+    - Appeared 19:52:20 - Gone 19:53:04 (it was gone at the last error group of the test)
+    - 3/6 error groups
+    - Stuck bit 
+- 3 |   0xd708438:  a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:49:02 - Gone 19:49:46
+    - Appeared 19:50:41 - Gone 19:51:25
+    - Appeared 19:52:20 - Gone 19:53:04 (it was gone at the last error group of the test)
+    - 3/6 error groups
+    - Stuck bit 
+- 3 |   0xec62ce9:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:49:02 - Gone 19:49:46
+    - Appeared 19:50:41 - Gone 19:51:25
+    - Appeared 19:52:20 - Gone 19:53:04 (it was gone at the last error group of the test)
+    - 3/6 error groups
+    - Stuck bit 
+- 3 |   0xfcadb48:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:49:02 - Gone 19:49:46
+    - Appeared 19:50:41 - Gone 19:51:25
+    - Appeared 19:52:20 - Gone 19:53:04 (it was gone at the last error group of the test)
+    - 3/6 error groups
+    - Stuck bit 
+- 3 |   0x1c6d480:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:49:46 - Gone 19:50:41
+    - Appeared 19:51:25 - Gone 19:52:20
+    - Appeared 19:53:04 - Gone 19:53:04 (it appeared at the last error group of the test)
+    - 3/6 error groups
+    - Stuck bit
+- 3 |   0x282eb3d:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:51:25 - Gone 19:53:04 (end of test) 
+    - 3/6 error groups
+    - Stuck bit
+- 2 |   0x0d686cb:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:49:02 - Gone 19:49:46
+    - Appeared 19:50:41 - Gone 19:51:25
+    - 2/6 error groups
+    - Stuck bit
+- 1 |   0x918359a:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:50:41 - Gone 19:51:25
+    - 1/6 error groups
+    - Soft bit
+- 1 |   0xe86694c:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 25a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:50:41 - Gone 19:51:25
+    - 1/6 error groups
+    - Soft bit
+- 1 |   0x364b432:  a7a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:51:25 - Gone 19:52:20
+    - 1/6 error groups
+    - Soft bit
+- 1 |   0x8e8b99d:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a1a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:51:25 - Gone 19:52:20
+    - 1/6 error groups
+    - Soft bit
+- 1 |   0x38fcbe1:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 19:53:04 - Gone 19:53:04 (it appeared at the last error group of the test)
+    - 1/6 error groups 
+    - Soft bit
 
 ### Idle Test 14 ( 2023-06-29 20:05:03 - 2023-06-29 20:05:13 )
 
@@ -78,20 +440,1740 @@ Events:
 - Much smoother test. The UART delay was set to 60 seconds instead of 30. 3 UART timeouts occured after sending a reading/writing command and getting no output. 
 - The test runs the writer once. Then the reader runs every five minutes. If there are 5 consecutive errors after the reader runs, the writer runs once before the reader runs again.
 - The number of errors ranged from 34 - 2497522.
-- Beginning at 03:42:32 and lasting until the end of the test, the entire DRAM address space was recorded as having errors.
+- SEFI: Beginning at 03:42:32 and lasting until the end of the test, the entire DRAM address space was recorded as having errors.
+161 error groups
+- 41 |   0x05eecf5:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 20:05:59 - Gone 20:11:40
+    - Appeared 23:47:37 - Gone 1:03:31
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:00:15 - Gone 3:42:18
+    - 41/161 error groups
+    - Stuck bit
+- 41 |   0x0724e9d:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 20:05:59 - Gone 20:11:40
+    - Appeared 23:47:37 - Gone 1:03:31
+    - Appeared 1:14:26 - Gone 1:31:32 
+    - Appeared 2:00:15 - Gone 3:42:18
+    - 41/161 error groups
+    - Stuck bit
+- 41 |   0x162c2a7:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a1a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 20:05:59 - Gone 20:11:40
+    - Appeared 23:47:37 - Gone 1:03:31
+    - Appeared 1:14:26 - Gone 1:31:32 
+    - Appeared 2:00:15 - Gone 3:42:18
+    - 41/161 error groups
+    - Stuck bit
+- 40 |   0x084c791:  a5a1a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 23:47:37 - Gone 1:03:31
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:00:15 - Gone 3:42:18
+    - 40/161 error groups
+    - Stuck bit
+- 39 |   0x0d686cb:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 20:05:59 - Gone 20:11:40
+    - Appeared 23:47:37 - Gone 0:28:45
+    - Appeared 0:34:26 - Gone 0:52:20
+    - Appeared 0:58:01 - Gone 1:03:31 
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:00:15 - Gone 3:42:18 
+    - 39/161 error groups
+    - Stuck bit
+- 38 |   0x0e99007:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a7 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 20:05:59 - Gone 20:11:40
+    - Appeared 23:47:37 - Gone 1:03:31
+    - Appeared 1:20:08 - Gone 1:31:32
+    - Appeared 2:05:56 - Gone 2:44:45 
+    - Appeared 2:50:27 - Gone 3:42:18
+    - 38/161 error groups
+    - Stuck bit
+- 31 |   0x2646eb1:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a7a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 0:15:41 - Gone 0:52:20
+    - Appeared 0:58:01 - Gone 1:03:31 
+    - Appeared 1:20:08 - Gone 1:31:32 
+    - Appeared 2:05:56 - Gone 3:42:18 
+    - 31/161 error groups
+    - Stuck bit
+- 29 |   0x25a3bcc:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 ada5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 23:47:37 - Gone 23:58:50
+    - Appeared 0:10:00 - Gone 0:28:45
+    - Appeared 0:34:26 - Gone 0:52:20
+    - Appeared 0:58:01 - Gone 1:03:31
+    - Appeared 1:20:08 - Gone 1:31:32
+    - Appeared 2:05:56 - Gone 2:22:31
+    - Appeared 2:28:13 - Gone 2:44:45
+    - Appeared 2:50:27 - Gone 3:07:21 
+    - Appeared 3:13:03 - Gone 3:30:55
+    - Appeared 3:36:37 - Gone 3:42:18
+    - 29/161 error groups 
+    - Stuck bit 
+- 27 |   0x38fcbe1:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 20:05:59 - Gone 20:11:40
+    - Appeared 23:47:37 - Gone 23:58:50
+    - Appeared 0:10:00 - Gone 1:03:31
+    - Appeared 1:14:26 - Gone 1:31:32 
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:42:18
+    - 27/161 error groups
+    - Stuck bit
+- 27 |   0x43d2ef8:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 20:05:59 - Gone 20:11:40
+    - Appeared 23:45:37 - Gone 23:58:50
+    - Appeared 0:10:00 - Gone 1:03:31
+    - Appeared 1:14:26 - Gone 1:31:32 
+    - Appeared 2:00:15 - Gone 2:05:56 
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:42:18
+    - 27/161 error groups
+    - Stuck bit
+- 27 |   0x44499d0:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a1a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 20:05:59 - Gone 20:11:40
+    - Appeared 23:45:37 - Gone 23:58:50
+    - Appeared 0:10:00 - Gone 1:03:31
+    - Appeared 1:14:26 - Gone 1:31:32 
+    - Appeared 2:00:15 - Gone 2:05:56 
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:42:18
+    - 27/161 error groups
+    - Stuck bit
+- 26 |   0x3d6effe:  a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 20:05:59 - Gone 20:11:40
+    - Appeared 23:53:18 - Gone 23:58:50
+    - Appeared 0:10:00 - Gone 1:03:31 
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09 
+    - Appeared 3:07:21 - Gone 3:42:18
+    - 26/161 error groups
+    - Stuck bit
+- 26 |   0x5c1865a:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a7a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 20:05:59 - Gone 20:11:40
+    - Appeared 23:47:37 - Gone 23:58:50
+    - Appeared 0:10:00 - Gone 0:58:01
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:42:18
+    - 26/161 error groups
+    - Stuck bit 
+- 26 |   0x5ca2871:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 b5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 20:05:59 - Gone 20:11:40
+    - Appeared 23:47:37 - Gone 23:58:50
+    - Appeared 0:10:00 - Gone 0:58:01
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:42:18
+    - 26/161 error groups
+    - Stuck bit 
+- 26 |   0x5cd65dc:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 ada5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 20:05:59 - Gone 20:11:40
+    - Appeared 23:47:37 - Gone 23:58:50
+    - Appeared 0:10:00 - Gone 0:58:01
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:42:18
+    - 26/161 error groups
+    - Stuck bit 
+- 26 |   0x512a051:  a5a5a5a5 a5a5a5a5 a5a5a7a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 23:47:37 - Gone 23:58:50
+    - Appeared 0:10:00 - Gone 1:03:31
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:42:18
+    - 26/161 error groups
+    - Stuck bit
+- 26 |   0x58a6303:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 23:47:37 - Gone 23:58:50
+    - Appeared 0:10:00 - Gone 1:03:31 
+    - Appeared 1:14:26 - Gone 1:31:32 
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:42:18
+    - 26/161 error groups
+    - Stuck bit
+- 25 |   0x7aa1870:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a7a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 20:05:59 - Gone 20:11:40
+    - Appeared 23:47:37 - Gone 23:53:18
+    - Appeared 0:10:00 - Gone 0:58:01
+    - Appeared 1:14:26 - Gone 1:31:32 
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:42:18
+    - 25/161 error groups
+    - Stuck bit 
+- 25 |   0x7f0086d:  a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 20:05:59 - Gone 20:11:40
+    - Appeared 23:47:37 - Gone 23:53:18
+    - Appeared 0:10:00 - Gone 0:58:01
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:42:18
+    - 25/161 error groups
+    - Stuck bit
+- 25 |   0x816283a:  a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 20:05:59 - Gone 20:11:40
+    - Appeared 23:47:37 - Gone 23:53:18
+    - Appeared 0:10:00 - Gone 0:58:01
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:42:18
+    - 25/161 error groups
+    - Stuck bit
+- 25 |   0xa1133af:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 20:05:59 - Gone 20:11:40
+    - Appeared 23:47:37 - Gone 23:53:18
+    - Appeared 0:10:00 - Gone 0:58:01
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:42:18
+    - 25/161 error groups
+    - Stuck bit
+- 25 |   0x5eae635:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 23:47:37 - Gone 23:58:50
+    - Appeared 0:10:00 - Gone 0:58:01
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:42:18
+    - 25/161 error groups
+    - Stuck bit
+- 25 |   0x65a1dec:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 23:47:37 - Gone 23:58:50
+    - Appeared 0:10:00 - Gone 0:58:01
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:42:18
+    - 25/161 error groups
+    - Stuck bit
+- 25 |   0x250a338:  a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 0:15:41 - Gone 0:28:45
+    - Appeared 0:40:08 - Gone 0:52:20
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:05:56 - Gone 2:22:31
+    - Appeared 2:28:13 - Gone 2:44:45
+    - Appeared 2:50:27 - Gone 3:07:21
+    - Appeared 3:13:03 - Gone 3:30:55
+    - Appeared 3:36:37 - Gone 3:42:18
+    - 25/161 error groups
+    - Stuck bit 
+- 24 |   0xa9d95c9:  a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 20:05:59 - Gone 20:11:40
+    - Appeared 23:47:37 - Gone 23:53:18
+    - Appeared 0:10:00 - Gone 0:58:01
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:36:37
+    - 24/161 error groups
+    - Stuck bit
+- 24 |   0xc2321c9:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a7a5a5 a5a5a5a5
+    - Appeared 20:05:59 - Gone 20:11:40
+    - Appeared 23:47:37 - Gone 23:53:18
+    - Appeared 0:10:00 - Gone 0:58:01
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:36:37
+    - 24/161 error groups
+    - Stuck bit
+- 24 |   0xc365434:  a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 20:05:59 - Gone 20:11:40
+    - Appeared 23:47:37 - Gone 23:53:18
+    - Appeared 0:10:00 - Gone 0:58:01
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:36:37
+    - 24/161 error groups
+    - Stuck bit
+- 24 |   0xd708438:  a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 20:05:59 - Gone 20:11:40
+    - Appeared 23:47:37 - Gone 23:53:18
+    - Appeared 0:10:00 - Gone 0:58:01
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:36:37
+    - 24/161 error groups
+    - Stuck bit
+- 24 |   0xec62ce9:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 20:05:59 - Gone 20:11:40
+    - Appeared 23:47:37 - Gone 23:53:18
+    - Appeared 0:10:00 - Gone 0:58:01
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:36:37
+    - 24/161 error groups
+    - Stuck bit
+- 24 |   0xfcadb48:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 20:05:59 - Gone 20:11:40
+    - Appeared 23:47:37 - Gone 23:53:18
+    - Appeared 0:10:00 - Gone 0:58:01
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:36:37
+    - 24/161 error groups
+    - Stuck bit
+- 24 |   0xa0b8b4a:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5ada5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 23:47:37 - Gone 23:53:18
+    - Appeared 0:10:00 - Gone 0:58:01
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09 
+    - Appeared 3:07:21 - Gone 3:42:18
+    - 24/161 error groups
+    - Stuck bit
+- 23 |   0xc1090fb:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a1a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 20:05:59 - Gone 20:11:40
+    - Appeared 23:47:37 - Gone 23:53:18
+    - Appeared 0:10:00 - Gone 0:58:01
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:36:37
+    - 23/161 error groups
+    - Stuck bit
+- 23 |   0xb6bea17:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 23:47:37 - Gone 23:53:18
+    - Appeared 0:10:00 - Gone 0:58:01
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:36:37
+    - 23/161 error groups
+    - Stuck bit 
+- 23 |   0xc21dd2d:  a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 23:47:37 - Gone 23:53:18
+    - Appeared 0:10:00 - Gone 0:58:01
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:36:37
+    - 23/161 error groups
+    - Stuck bit 
+- 23 |   0xf9adac6:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 23:47:37 - Gone 23:53:18
+    - Appeared 0:10:00 - Gone 0:58:01
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:36:37
+    - 23/161 error groups
+    - Stuck bit 
+- 22 |   0xc4f693d:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 25a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 23:47:37 - Gone 23:53:18
+    - Appeared 0:10:00 - Gone 0:58:01
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:36:37
+    - 22/161 error groups
+    - Stuck bit 
+- 22 |   0x3198709:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 23:53:18 - Gone 23:58:50
+    - Appeared 0:10:00 - Gone 1:03:31
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:50:27 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:42:18
+    - 22/161 error groups
+- 22 |   0xe08e018:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 85a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 0:10:00 - Gone 0:58:01
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09 
+    - Appeared 3:07:21 - Gone 3:36:37
+    - 22/161 error groups
+    - Stuck bit
+- 22 |   0x2418a8a:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 0:28:45 - Gone 0:52:20
+    - Appeared 0:58:01 - Gone 1:03:31
+    - Appeared 2:16:42 - Gone 2:44:45 
+    - Appeared 2:50:27 - Gone 3:30:55
+    - 22/161 error groups
+    - Stuck bit
+- 21 |   0x302cd9e:  a5a4a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 23:47:37 - Gone 23:58:50
+    - Appeared 0:10:00 - Gone 0:28:45
+    - Appeared 0:34:26 - Gone 0:52:20
+    - Appeared 1:20:08 - Gone 1:31:32
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:30:55
+    - Appeared 3:36:37 - Gone 3:42:18
+    - 21/161 error groups
+    - Stuck bit
+- 21 |   0xec706f8:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 23:47:37 - Gone 23:53:18
+    - Appeared 0:10:00 - Gone 0:58:01
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:36:37
+    - 21/161 error groups
+    - Stuck bit
+- 21 |   0x252382a:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 2:05:56 - Gone 3:42:18
+    - 21/161 error groups
+    - Stuck bit
+- 20 |   0x80e1fe1:  a5a5a5a5 a5a5a5a5 a5a5a7a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 23:47:37 - Gone 23:53:18
+    - Appeared 0:10:00 - Gone 0:52:20
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:42:18
+    - 20/161 error groups
+    - Stuck bit
+- 20 |   0xca40d24:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a1a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 0:15:41 - Gone 0:58:01
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:00:15 - Gone 2:05:56 
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09 
+    - Appeared 3:07:21 - Gone 3:30:55
+    - 20/161 error groups
+    - Stuck bit
+- 19 |   0x7d6ee57:  a5a5a5a5 a5a5a5a5 a5a5b5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 20:05:59 - Gone 20:11:40
+    - Appeared 23:47:37 - Gone 32:53:18
+    - Appeared 0:15:41 - Gone 0:28:45 
+    - Appeared 0:34:26 - Gone 0:58:01
+    - Appeared 1:20:08 - Gone 1:31:32
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:13:03 - Gone 3:30:55 
+    - Appeared 3:36:37 - Gone 3:42:18
+    - 19/161 error groups
+    - Stuck bit
+- 19 |   0xc126cf2:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a7a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 0:28:45 - Gone 0:58:01
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:36:37
+    - 19/161 error groups
+    - Stuck bit
 
+- 18 |   0x2df9057:  a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 20:05:59 - Gone 20:11:40
+    - Appeared 23:47:37 - Gone 23:58:50
+    - Appeared 0:10:00 - Gone 0:28:45
+    - Appeared 0:34:26 - Gone 0:52:20
+    - Appeared 1:25:50 - Gone 1:31:32
+    - Appeared 2:50:27 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:30:55
+    - Appeared 3:36:37 - Gone 3:42:18
+    - 18/161 error groups
+    - Stuck bit
+- 18 |   0xffbdedd:  a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 0:15:41 - Gone 0:28:45
+    - Appeared 0:34:26 - Gone 0:52:20
+    - Appeared 1:14:26 - Gone 1:31:32
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09 
+    - Appeared 3:07:21 - Gone 3:36:37
+    - 18/161 error groups
+    - Stuck bit
+- 15 |   0x8fea35c:  a5a585a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 32:47:37 - Gone 23:53:18
+    - Appeared 0:10:00 - Gone 0:28:45
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:42:18
+    - 15/161 error groups
+    - Stuck bit
+- 15 |   0x5b93108:  a5a5a5a5 a5a5a5a5 a5a5a525 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 23:53:18 - Gone 23:58:50
+    - Appeared 0:15:41 - Gone 0:28:45
+    - Appeared 0:40:08 - Gone 0:52:20
+    - Appeared 1:20:08 - Gone 1:31:32
+    - Appeared 3:07:21 - Gone 3:42:18
+    - 15/161 error groups
+    - Stuck bit
+- 13 |   0xce98516:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a585a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 0:15:41 - Gone 0:28:45 
+    - Appeared 1:25:50 - Gone 1:31:32
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:36:37
+    - 13/161 error groups
+    - Stuck bit
+- 13 |   0x3aef716:  a5a5a5a5 a5a5a5a5 a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 1:14:26 - Gone 1:31:32 
+    - Appeared 2:00:15 - Gone 2:05:56 
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09 
+    - Appeared 3:07:21 - Gone 3:30:55 
+    - Appeared 3:36:37 - Gone 3:42:18
+    - 13/161 error groups
+    - Stuck bit
+- 13 |   0xc329065:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a7a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 1:14:26 - Gone 1:31:32 
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:36:37
+    - 13/161 error groups
+    - Stuck bit
+- 13 |   0xc4c4793:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 1:14:26 - Gone 1:31:32 
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:36:37
+    - 13/161 error groups
+    - Stuck bit
+- 13 |   0xcefbb71:  a5a5a5a5 a5a5a5a5 a5a5a5ad a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 1:14:26 - Gone 1:31:32 
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:36:37
+    - 13/161 error groups
+    - Stuck bit
+- 11 |   0x441e6d4:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a7a5a5a5 a5a5a5a5
+    - Appeared 2:00:15 - Gone 2:05:56
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:42:18
+    - 11/161 error groups
+    - Stuck bit 
+- 10 |   0x4f1349f:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:42:18
+    - 10/161 error groups
+    - Stuck bit
+- 9 |   0x72a4964:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5
+    - Appeared 20:05:59 - Gone 20:11:40
+    - Appeared 0:15:41 - Gone 0:28:45
+    - Appeared 0:34:26 - Gone 0:52:20
+    - Appeared 1:20:08 - Gone 1:31:32
+    - 9/161 error groups
+    - Stuck bit
+- 9 |   0x3b7f7c0:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5ada5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 23:47:37 - Gone 23:58:50
+    - Appeared 0:10:00 - Gone 0:28:45
+    - Appeared 0:34:26 - Gone 0:52:20
+    - 9/161 error groups
+    - Stuck bit
+- 9 |   0xa88ecf6:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 ada5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 23:47:37 - Gone 23:53:18
+    - Appeared 0:10:00 - Gone 0:52:20 
+    - 9/161 error groups
+    - Stuck bit
+- 9 |   0xdcba815:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 23:47:37 - Gone 23:53:18
+    - Appeared 0:15:41 - Gone 0:28:45
+    - Appeared 0:34:26 - Gone 0:52:20
+    - Appeared 1:20:08 - Gone 1:31:32
+    - 9/161 error groups
+    - Stuck bit
+- 9 |   0x1c8b953:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a7a5 a5a5a5a5
+    - Appeared 23:58:50 - Gone 0:10:00 
+    - Appeared 0:15:41 - Gone 0:28:45 
+    - Appeared 0:34:26 - Gone 0:52:20
+    - 9/161 error groups
+    - Stuck bit
+- 9 |   0x6348fc6:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5e5a5a5 a5a5a5a5
+    - Appeared 0:45:50 - Gone 0:52:20
+    - Appeared 2:50:27 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:30:55
+    - Appeared 3:36:37 - Gone 3:42:18
+    - 9/161 error groups
+    - Stuck bit
+- 9 |   0x3456118:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 2:22:31 - Gone 2:28:13
+    - Appeared 2:50:27 - Gone 2:56:09 
+    - Appeared 3:07:21 - Gone 3:42:18
+    - 9/161 error groups
+    - Stuck bit 
+- 9 |   0x3ff7698:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:42:18 
+    - 9/161 error groups
+    - Stuck bit 
+- 8 |   0x1c752fe:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 e5a5a5a5 a5a5a5a5
+    - Appeared 0:34:26 - Gone 0:52:20
+    - Appeared 0:58:01 - Gone 1:03:31
+    - Appeared 1:14:26 - Gone 1:31:32 
+    - 8/161 error groups
+    - Stuck bit
+- 8 |   0xd17d5a2:  a5ada5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:36:37
+    - 8/161 error groups
+    - Stuck bit
+- 8 |   0xfe5f5eb:  a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 2:44:45 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:36:37
+    - 8/161 error groups
+    - Stuck bit 
+- 8 |   0x55946d1:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a7a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 2:50:27 - Gone 2:56:09
+    - Appeared 3:07:21 - Gone 3:42:18
+    - 8/161 error groups
+    - Stuck bit
+- 8 |   0x1df5aeb:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5ada5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 2:56:09 - Gone 3:30:55
+    - 8/161 error groups
+    - Stuck bit 
 ### Idle Test 16 ( 2023-06-30 08:19:49 - 2023-06-30 17:29:49 )
 
 Events:
 - An End Of File exception occured during BIST execution. The board was repowered. Other than this exception, this test ran very smoothly. 
 - The number of errors ranged from 35 - 93. 
 
+- 118 |   0x05eecf5:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 17:29:10 (End of test)
+    - 118/118 error groups
+    - Stuck bit
+- 118 |   0x084c791:  a5a1a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 17:29:10 (End of test)
+    - 118/118 error groups
+    - Stuck bit
+- 118 |   0x162c2a7:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a1a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 17:29:10 (End of test)
+    - 118/118 error groups
+    - Stuck bit
+- 117 |   0x3e41ae0:  a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 117/118 error groups
+    - Stuck bit
+- 117 |   0x3ff7698:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 117/118 error groups
+    - Stuck bit
+- 117 |   0x43d2ef8:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 117/118 error groups
+    - Stuck bit
+- 117 |   0x44499d0:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a1a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 117/118 error groups
+    - Stuck bit
+- 117 |   0x459fd2b:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a1a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 117/118 error groups
+    - Stuck bit
+- 117 |   0x4f1349f:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 117/118 error groups
+    - Stuck bit
+- 117 |   0x54ecc5b:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 ada5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 117/118 error groups
+    - Stuck bit
+- 117 |   0x5ca2871:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 b5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 117/118 error groups
+    - Stuck bit
+- 117 |   0x5cd65dc:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 ada5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 117/118 error groups
+    - Stuck bit
+- 117 |   0x65a1dec:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 117/118 error groups
+    - Stuck bit
+- 117 |   0x7f0086d:  a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 117/118 error groups
+    - Stuck bit
+- 117 |   0x816283a:  a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 117/118 error groups
+    - Stuck bit
+- 117 |   0xb793af3:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 117/118 error groups
+    - Stuck bit
+- 117 |   0xc126cf2:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a7a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 117/118 error groups
+    - Stuck bit
+- 117 |   0xc21dd2d:  a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 117/118 error groups
+    - Stuck bit
+- 117 |   0xc2321c9:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a7a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 117/118 error groups
+    - Stuck bit
+- 117 |   0xc365434:  a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 117/118 error groups
+    - Stuck bit
+- 117 |   0xcefbb71:  a5a5a5a5 a5a5a5a5 a5a5a5ad a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 117/118 error groups
+    - Stuck bit
+- 117 |   0xd17d5a2:  a5ada5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 117/118 error groups
+    - Stuck bit
+- 117 |   0xd708438:  a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 117/118 error groups
+    - Stuck bit
+- 117 |   0xf9adac6:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 117/118 error groups
+    - Stuck bit
+- 117 |   0xfcadb48:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 117/118 error groups
+    - Stuck bit
+- 117 |   0x012894c:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 b5a5a5a5 a5a5a5a5
+    - Appeared 8:25:57 - 17:29:10 (end of test)
+    - 117/118 error groups
+    - Stuck bit 
+- 117 |   0x0724e9d:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:25:57 - 17:29:10 (end of test)
+    - 117/118 error groups
+    - Stuck bit 
+- 116 |   0x0d686cb:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 14:14:05 
+    - Appeared 14:19:47 - Gone 17:29:10 (it was gone at the last error group of test)
+    - 116/118 error groups
+    - Stuck bit
+- 116 |   0x7aa1870:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a7a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 13:26:54 
+    - Appeared 13:32:36 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 116/118 error groups
+    - Stuck bit 
+- 116 |   0xd914e22:  a5a5a5a5 a5a5a5a5 a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 14:19:47 
+    - Appeared 14:25:29 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 116/118 error groups
+    - Stuck bit 
+- 116 |   0x20bfc78:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:25:57 - Gone 17:29:10 (it was gone at the last error group of test)
+    - 116/118 error groups
+    - Stuck bit
+- 116 |   0x536d83a:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:25:57 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 116/118 error groups
+    - Stuck bit
+- 116 |   0x5f8d9b0:  a525a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:25:57 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 116/118 error groups
+    - Stuck bit
+- 116 |   0x73e70ca:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:25:57 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 116/118 error groups
+    - Stuck bit
+- 116 |   0x8f7570b:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:25:57 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 116/118 error groups
+    - Stuck bit
+- 116 |   0xa0b8b4a:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5ada5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:25:57 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 116/118 error groups
+    - Stuck bit
+- 116 |   0xa1133af:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:25:57 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 116/118 error groups
+    - Stuck bit
+- 116 |   0xb1fe38e:  a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:25:57 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 116/118 error groups
+    - Stuck bit
+- 116 |   0xc4f693d:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 25a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:25:57 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 116/118 error groups
+    - Stuck bit
+- 115 |   0x9075bf3:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a1a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:31:39 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 115/118 error groups
+    - Stuck bit
+- 115 |   0xb774330:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a525 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:31:39 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 115/118 error groups
+    - Stuck bit
+- 114 |   0xc1090fb:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a1a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 13:50:29
+    - Appeared 13:56:12 - Gone 15:24:50
+    - Appeared 15:30:32 - Gone 16:12:01
+    - Appeared 16:17:43 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 114/118 error groups
+    - Stuck bit
+- 114 |   0xf14783e:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a1a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 9:31:02
+    - Appeared 9:36:45 - Gone 9:54:38
+    - Appeared 10:06:02 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 114/118 error groups
+    - Stuck bit
+- 114 |   0x3d6effe:  a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:25:57 - Gone 14:37:40
+    - Appeared 14:43:22 - Gone 17:28:35
+    - 114/118 error groups
+    - Stuck bit 
+- 114 |   0xe08e018:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 85a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:25:57 - Gone 13:26:54
+    - Appeared 13:32:36 - Gone 17:28:35
+    - 114/118 error groups
+    - Stuck bit 
+- 112 |   0xa88ecf6:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 ada5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 9:07:27
+    - Appeared 9:18:51 - Gone 9:54:38
+    - Appeared 10:00:20 - Gone 10:41:48
+    - Appeared 10:53:12 - Gone 17:28:35
+    - 112/118 error groups
+    - Stuck bit 
+- 111 |   0x04dfd83:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 8:43:50
+    - Appeared 8:49:32 - Gone 9:54:38
+    - Appeared 10:00:20 - Gone 11:28:59
+    - Appeared 11:34:41 - Gone 11:52:34
+    - Appeared 11:58:16 - Gone 12:39:44
+    - Appeared 12:45:26 - Gone 15:01:15 
+    - Appeared 15:06:57 - Gone 17:29:10 (it was gone at the last error group of the test)
+    - 111/118 error groups
+    - Stuck bit
+- 111 |   0x2d6c272:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5ada5 a5a5a5a5
+    - Appeared 8:25:57 - Gone 15:24:50
+    - Appeared 15:30:32 - Gone 15:48:25
+    - Appeared 15:54:07 - Gone 16:35:36
+    - Appeared 16:41:18 - Gone 16:59:11 
+    - Appeared 17:04:53 - Gone 17:28:35
+    - 111/118 error groups
+    - Stuck bit
+- 109 |   0x8fea35c:  a5a585a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 13:03:19
+    - Appeared 13:20:26 - Gone 14:14:05
+    - Appeared 14:19:47 - Gone 15:24:50
+    - Appeared 15:30:32 - Gone 15:48:25
+    - Appeared 15:54:07 - Gone 16:35:36 
+    - Appeared 16:47:00 - Gone 17:28:35 
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 109/118 error groups
+    - Stuck bit
+- 107 |   0x6c3954a:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 b5a5a5a5 a5a5a5a5
+    - Appeared 8:31:39 - Gone 9:54:38 
+    - Appeared 10:00:20 - Gone 11:28:59
+    - Appeared 12:03:58 - Gone 17:28:35 
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 107/118 error groups
+    - Stuck bit
+- 106 |   0x5eae635:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:31:39 - Gone 13:50:29
+    - Appeared 13:56:12 - Gone 14:14:05
+    - Appeared 14:19:47 - Gone 15:24:50
+    - Appeared 15:36:14 - Gone 15:48:25 
+    - Appeared 15:54:07 - Gone 16:35:36
+    - Appeared 16:41:18 - Gone 16:59:11 
+    - Appeared 17:04:53 - Gone 17:22:46
+    - 106/118 error groups
+    - Stuck bit
+- 104 |   0x5c1865a:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a7a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:25:57 - Gone 10:18:13
+    - Appeared 10:23:55 - Gone 11:52:34
+    - Appeared 11:58:16 - Gone 12:16:09
+    - Appeared 12:27:33 - Gone 13:03:19 
+    - Appeared 13:20:26 - Gone 14:14:05
+    - Appeared 14:19:47 - Gone 15:24:50
+    - Appeared 15:41:56 - Gone 15:48:25
+    - Appeared 15:54:07 - Gone 17:28:35 
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 104/118 error groups
+    - Stuck bitAppeared 
+- 104 |   0xa9d95c9:  a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:25:57 - Gone 11:52:34
+    - Appeared 11:58:16 - Gone 13:26:54
+    - Appeared 13:32:36 - Gone 13:50:29
+    - Appeared 14:01:54 - Gone 14:37:40
+    - Appeared 14:43:22 - Gone 15:01:15
+    - Appeared 15:06:57 - Gone 15:24:50
+    - Appeared 15:30:32 - Gone 15:48:25
+    - Appeared 15:54:07 - Gone 16:12:01 
+    - Appeared 16:17:43 - Gone 16:35:36 
+    - Appeared 16:41:18 - Gone 17:22:46
+    - 104/118 error groups
+    - Stuck bit
+- 102 |   0x512a051:  a5a5a5a5 a5a5a5a5 a5a5a7a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 9:07:27 
+    - Appeared 9:13:09 - Gone 9:54:38
+    - Appeared 10:00:20 - Gone 10:18:13
+    - Appeared 10:29:37 - Gone 10:41:48 
+    - Appeared 10:47:30 - Gone 11:28:59
+    - Appeared 11:34:41 - Gone 13:03:19
+    - Appeared 13:09:01 - Gone 13:26:54
+    - Appeared 13:38:19 - Gone 14:37:40
+    - Appeared 14:43:22 - Gone 15:48:25
+    - Appeared 15:54:07 - Gone 16:12:01
+    - Appeared 16:17:43 - Gone 16:59:11
+    - Appeared 17:04:53 - Gone 17:22:46 
+    - 102/118 error groups
+    - Stuck bit 
+- 102 |   0xb6bea17:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:25:57 - Gone 16:12:01 
+    - Appeared 16:47:00 - Gone 16:59:11
+    - 102/118 error groups
+    - Stuck bit
+- 101 |   0x0e99007:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a7 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:25:57 - Gone 10:18:13
+    - Appeared 10:23:55 - Gone 10:41:48 
+    - Appeared 10:47:30 - Gone 11:05:23
+    - Appeared 11:11:05 - Gone 13:50:29
+    - Appeared 13:56:12 - Gone 14:14:05
+    - Appeared 14:19:47 - Gone 15:24:50
+    - Appeared 15:30:32 - Gone 15:48:25
+    - Appeared 16:05:32 - Gone 16:12:01
+    - Appeared 16:23:25 - Gone 16:35:36
+    - Appeared 16:52:42 - Gone 16:59:11
+    - Appeared 17:04:53 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 101/118 error groups
+    - Stuck bit
+- 98 |   0x2df9057:  a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 8:43:50
+    - Appeared 8:49:32 - Gone 9:31:02
+    - Appeared 9:36:45 - Gone 9:54:38
+    - Appeared 10:11:44 - Gone 10:18:13
+    - Appeared 10:23:55 - Gone 10:41:48
+    - Appeared 10:47:30 - Gone 11:05:23
+    - Appeared 11:11:05 - Gone 11:28:59 
+    - Appeared 11:34:41 - Gone 11:52:34
+    - Appeared 11:58:16 - Gone 13:26:54 
+    - Appeared 13:32:36 - Gone 15:01:15 
+    - Appeared 15:06:57 - Gone 15:48:25 
+    - Appeared 15:54:07 - Gone 16:12:01
+    - Appeared 16:17:43 - Gone 16:35:36 
+    - Appeared 16:41:18 - Gone 16:59:11
+    - Appeared 17:10:35 - Gone 17:22:46
+    - 98/118 error groups
+    - Stuck but 
+- 97 |   0xae38121:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 85a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 9:42:27 - Gone 9:54:38
+    - Appeared 10:00:20 - Gone 13:50:29
+    - Appeared 14:01:54 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 97/118 error groups
+    - Stuck bit
+- 96 |   0x8f369eb:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:43:04 - Gone 8:43:50
+    - Appeared 8:49:32 - Gone 9:07:27
+    - Appeared 9:18:51 - Gone 9:31:02
+    - Appeared 9:42:27 - Gone 9:54:38
+    - Appeared 10:00:20 - Gone 10:18:13
+    - Appeared 10:23:55 - Gone 10:41:48
+    - Appeared 10:47:30 - Gone 11:05:23 
+    - Appeared 11:11:05 - Gone 11:28:59
+    - Appeared 11:34:41 - Gone 12:16:09 
+    - Appeared 12:27:33 - Gone 13:03:19 
+    - Appeared 13:09:01 - Gone 13:50:29
+    - Appeared 13:56:12 - Gone 15:24:50
+    - Appeared 15:30:32 - Gone 15:48:25
+    - Appeared 15:54:07 - Gone 16:12:01
+    - Appeared 16:17:43 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 96/118 error groups
+    - Stuck bit
+- 94 |   0x9e3b96e:  a5a5a5a5 a5a5a5a5 a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 15:01:15
+    - Appeared 16:52:42 - Gone 17:28:35 
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 94/118 error groups
+    - Stuck bit  
+- 94 |   0x80e1fe1:  a5a5a5a5 a5a5a5a5 a5a5a7a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:25:57 - Gone 12:16:09
+    - Appeared 12:33:15 - Gone 12:39:44
+    - Appeared 12:45:26 - Gone 13:03:19
+    - Appeared 13:09:01 - Gone 13:26:54 
+    - Appeared 13:32:36 - Gone 13:50:29
+    - Appeared 15:06:57 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 94/118 error groups
+    - Stuck bit  
+- 94 |   0x1c752fe:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 e5a5a5a5 a5a5a5a5
+    - Appeared 8:31:39 - Gone 15:01:15 
+    - Appeared 15:12:39 - Gone 15:24:50
+    - Appeared 15:30:32 - Gone 15:48:25
+    - Appeared 15:54:07 - Gone 16:12:01
+    - 94/118 error groups
+    - Stuck bit 
+- 92 |   0x463d827:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 9:53:51 - Gone 12:39:44
+    - Appeared 12:45:26 - Gone 15:01:15 
+    - Appeared 15:06:57 - Gone 15:24:50
+    - Appeared 15:36:14 - Gone 16:35:36 
+    - Appeared 16:41:18 - Gone 17:28:35
+    - 92/118 error groups
+    - Stuck bit
+- 91 |   0x250a338:  a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:31:39 - Gone 8:43:50
+    - Appeared 8:49:32 - Gone 9:07:27
+    - Appeared 9:13:09 - Gone 9:31:02
+    - Appeared 9:36:45 - Gone 9:54:38
+    - Appeared 10:00:20 - Gone 10:18:13
+    - Appeared 10:23:55 - Gone 10:41:48
+    - Appeared 10:47:30 - Gone 11:05:23
+    - Appeared 11:16:47 - Gone 11:28:59
+    - Appeared 11:34:41 - Gone 11:52:34
+    - Appeared 11:58:16 - Gone 12:16:09
+    - Appeared 12:21:51 - Gone 12:39:44
+    - Appeared 12:45:26 - Gone 13:03:19
+    - Appeared 13:09:01 - Gone 13:26:54
+    - Appeared 13:32:36 - Gone 13:50:29
+    - Appeared 13:56:12 - Gone 14:14:05
+    - Appeared 14:19:47 - Gone 14:37:40
+    - Appeared 14:43:22 - Gone 15:24:50
+    - Appeared 15:36:14 - Gone 15:48:25
+    - Appeared 15:54:07 - Gone 16:35:36
+    - Appeared 16:41:18 - Gone 16:59:11 
+    - Appeared 17:10:35 - Gone 17:28:35
+    - 91/118 error groups
+    - Stuck bit 
+- 89 |   0xa1eccc8:  a5a5a5a5 a5a5a5a5 a5a5a5ad a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 15:01:15 
+    - Appeared 15:06:57 - Gone 15:24:50
+    - 89/118 error groups
+    - Stuck bit
+- 89 |   0xc394d1f:  a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:37:21 - Gone 11:52:34
+    - Appeared 12:15:22 - Gone 12:16:09
+    - Appeared 12:51:08 - Gone 13:26:54
+    - Appeared 13:32:36 - Gone 13:50:29
+    - Appeared 14:54:46 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 89/118 error groups
+    - Stuck bit
+- 87 |   0xec706f8:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 13:26:54
+    - Appeared 13:32:36 - Gone 15:01:15
+    - Appeared 15:59:49 - Gone 16:12:01
+    - 87/118 error groups
+    - Stuck bit
+- 86 |   0x7d6ee57:  a5a5a5a5 a5a5a5a5 a5a5b5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:25:57 - Gone 8:43:50
+    - Appeared 8:49:32 - Gone 10:18:13
+    - Appeared 10:23:55 - Gone 10:41:48
+    - Appeared 10:47:30 - Gone 11:05:23
+    - Appeared 11:11:05 - Gone 11:52:34
+    - Appeared 11:58:16 - Gone 12:16:09 
+    - Appeared 12:33:15 - Gone 12:39:44
+    - Appeared 12:45:26 - Gone 13:26:54
+    - Appeared 13:32:36 - Gone 13:50:29
+    - Appeared 13:56:12 - Gone 14:14:05
+    - Appeared 14:19:47 - Gone 14:37:40
+    - Appeared 14:49:04 - Gone 15:01:15
+    - Appeared 15:06:57 - Gone 15:24:50
+    - Appeared 15:30:32 - Gone 15:48:25
+    - Appeared 16:05:32 - Gone 16:12:01
+    - Appeared 16:23:25 - Gone 16:35:36
+    - Appeared 17:10:35 - Gone 17:22:46
+    - 86/118 error groups
+    - Stuck bit
+- 86 |   0x8b07ba4:  a5a5a5a5 a5a5a5a5 a5a7a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 9:00:58 - Gone 9:07:27
+    - Appeared 9:13:09 - Gone 9:54:38
+    - Appeared 10:06:02 - Gone 10:41:48
+    - Appeared 10:47:30 - Gone 12:16:09
+    - Appeared 12:33:15 - Gone 13:03:19
+    - Appeared 13:09:01 - Gone 13:26:54
+    - Appeared 13:38:19 - Gone 13:50:29
+    - Appeared 14:01:54 - Gone 14:37:40
+    - Appeared 14:54:46 - Gone 15:01:15 
+    - Appeared 15:18:21 - Gone 15:48:25
+    - Appeared 15:54:07 - Gone 16:12:01
+    - Appeared 16:17:43 - Gone 16:35:36 
+    - Appeared 16:47:00 - Gone 17:22:46
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 86/118 error groups
+    - Stuck bit
+- 85 |   0x527670d:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 10:53:12 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 85/118 error groups
+    - Stuck bit
+- 84 |   0x73b2ee4:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 ada5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:37:21 - Gone 8:43:50
+    - Appeared 8:49:32 - Gone 13:50:29
+    - Appeared 14:07:36 - Gone 14:14:05
+    - Appeared 15:41:56 - Gone 15:48:25
+    - Appeared 15:54:07 - Gone 16:12:01
+    - Appeared 16:23:25 - Gone 16:35:36
+    - Appeared 16:47:00 - Gone 16:59:11
+    - Appeared 17:04:53 - Gone 17:22:46
+    - 84/118 error groups
+    - Stuck bit
+- 83 |   0x3198709:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 9:54:38
+    - Appeared 10:00:20 - Gone 10:41:48
+    - Appeared 10:47:30 - Gone 11:52:34
+    - Appeared 11:58:16 - Gone 12:16:09
+    - Appeared 12:21:51 - Gone 13:03:19
+    - Appeared 13:09:01 - Gone 13:26:54
+    - Appeared 13:32:36 - Gone 13:50:29
+    - Appeared 14:13:18 - Gone 14:14:05
+    - Appeared 14:36:53 - Gone 14:37:40
+    - Appeared 15:30:32 - Gone 15:48:25
+    - Appeared 15:54:07 - Gone 16:12:01
+    - Appeared 16:23:25 - Gone 16:35:36
+    - Appeared 16:41:18 - Gone 16:59:11
+    - Appeared 17:16:18 - Gone 17:22:46
+    - 83/118 error groups
+    - Stuck bit 
+- 81 |   0xe22ed9d:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5ada5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:25:57 - Gone 9:07:27
+    - Appeared 9:36:45 - Gone 9:54:38
+    - Appeared 11:52:34 - Gone 12:16:09
+    - Appeared 12:27:33 - Gone 16:12:01
+    - Appeared 16:17:43 - Gone 16:59:11 
+    - Appeared 17:04:53 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 81/118 error groups
+    - Stuck bit
+- 69 |   0x3f1b482:  a5a5a5a5 a5a5a5a5 a5a1a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 12:6:09
+    - Appeared 12:51:08 - Gone 13:26:54
+    - Appeared 13:32:36 - Gone 13:50:29
+    - Appeared 14:07:36 - Gone 14:37:40
+    - 69/118 error groups
+    - Stuck bit 
+- 62 |   0xacbf89d:  a5a5a5a5 a5a5a5a5 a7a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 10:47:30 - Gone 11:05:23
+    - Appeared 11:11:05 - Gone 11:52:34
+    - Appeared 11:58:16 - Gone 12:16:09 
+    - Appeared 12:21:51 - Gone 12:39:44
+    - Appeared 12:45:26 - Gone 13:03:19
+    - Appeared 13:09:01 - Gone 13:50:29
+    - Appeared 13:56:12 - Gone 14:37:40
+    - Appeared 14:43:22 - Gone 15:01:15 
+    - Appeared 15:06:57 - Gone 15:24:50
+    - Appeared 15:47:39 - Gone 15:48:25
+    - Appeared 15:54:07 - Gone 16:12:01
+    - Appeared 16:41:18 - Gone 16:59:11
+    - Appeared 17:16:18 - Gone 17:22:46
+    - 62/118 error groups
+    - Stuck bit 
+- 56 |   0x96bbcf2:  a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:31:39 - Gone 8:43:50
+    - Appeared 8:49:32 - Gone 9:07:27
+    - Appeared 9:13:09 - Gone 9:31:02
+    - Appeared 9:36:45 - Gone 9:54:38
+    - Appeared 10:11:44 - Gone 10:18:13
+    - Appeared 10:29:37 - Gone 10:41:48
+    - Appeared 11:22:30 - Gone 11:28:59
+    - Appeared 11:34:41 - Gone 11:52:34
+    - Appeared 11:58:16 - Gone 12:16:09
+    - Appeared 12:38:58 - Gone 12:39:44
+    - Appeared 13:02:33 - Gone 13:03:19 
+    - Appeared 13:14:43 - Gone 13:26:54
+    - Appeared 13:38:19 - Gone 13:50:29
+    - Appeared 14:19:47 - Gone 14:37:40
+    - Appeared 15:00:28 - Gone 15:01:15
+    - Appeared 15:06:57 - Gone 15:24:50
+    - Appeared 15:54:07 - Gone 16:12:01
+    - Appeared 16:41:18 - Gone 16:59:11
+    - Appeared 17:22:00 - Gone 17:22:46
+    - 56/118 error groups
+    - Stuck bit
+- 53 |   0x918359a:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 11:05:23 - Gone 11:28:59
+    - Appeared 11:51:47 - Gone 11:52:34
+    - Appeared 11:58:16 - Gone 12:16:09
+    - Appeared 12:21:51 - Gone 13:03:19
+    - Appeared 13:09:01 - Gone 13:26:54
+    - Appeared 13:38:19 - Gone 13:50:29
+    - Appeared 14:01:54 - Gone 14:14:05
+    - Appeared 14:19:47 - Gone 14:37:40
+    - Appeared 14:43:22 - Gone 15:01:15
+    - Appeared 15:06:57 - Gone 15:24:50
+    - Appeared 15:30:32 - Gone 15:48:25
+    - Appeared 16:05:32 - Gone 16:12:01
+    - Appeared 16:17:43 - Gone 16:35:36
+    - Appeared 16:52:42 - Gone 16:59:11
+    - 53/118 error groups
+    - Stuck bit
+- 52 |   0x5b93108:  a5a5a5a5 a5a5a5a5 a5a5a525 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 8:43:50
+    - Appeared 8:49:32 - Gone 9:07:27
+    - Appeared 9:18:51 - Gone 9:31:02
+    - Appeared 9:36:45 - Gone 9:54:38
+    - Appeared 10:06:02 - Gone 10:18:13
+    - Appeared 10:29:37 - Gone 11:52:34
+    - Appeared 12:51:08 - Gone 13:03:19
+    - Appeared 13:49:43 - Gone 13:50:29
+    - Appeared 15:06:57 - Gone 15:24:50
+    - Appeared 15:41:56 - Gone 15:48:25
+    - Appeared 16:41:18 - Gone 16:59:11 
+    - Appeared 17:22:00 - Gone 17:22:46
+    - 52/118 error groups
+    - Stuck bit 
+- 51 |   0xb220543:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 10:17:26 - Gone 10:18:13
+    - Appeared 10:47:30 - Gone 11:05:23
+    - Appeared 11:52:34 - Gone 12:39:44
+    - Appeared 12:45:26 - Gone 13:03:19
+    - Appeared 13:09:01 - Gone 14:37:40 
+    - Appeared 14:43:22 - Gone 15:01:15
+    - Appeared 15:06:57 - Gone 15:48:25
+    - 51/118 error groups
+    - Stuck bit 
+- 48 |   0xc4c4793:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 11:28:59
+    - Appeared 13:09:01 - Gone 13:26:54
+    - Appeared 14:19:47 - Gone 14:37:40
+    - 48/118 error groups
+    - Stuck bit
+- 47 |   0x399de92:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:32:36 - Gone 14:37:40
+    - Appeared 14:43:22 - Gone 15:24:50
+    - Appeared 15:30:32 - Gone 17:22:46
+    - 47/118 error groups
+    - Stuck bit
+- 43 |   0x6899c4c:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5ad a5a5a5a5
+    - Appeared 8:31:39 - Gone 8:43:50
+    - Appeared 9:54:38 - Gone 11:05:23
+    - Appeared 11:11:05 - Gone 11:28:59
+    - Appeared 11:46:05 - Gone 12:39:44
+    - Appeared 12:45:26 - Gone 13:26:54
+    - 43/118 error groups
+    - Stuck bit
+- 43 |   0x2d761b8:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:55:15 - Gone 9:07:27 
+    - Appeared 9:13:09 - Gone 9:31:02 
+    - Appeared 9:36:45 - Gone 9:54:38
+    - Appeared 10:00:20 - Gone 10:18:13
+    - Appeared 10:41:01 - Gone 10:41:48
+    - Appeared 11:16:47 - Gone 11:28:59
+    - Appeared 11:51:47 - Gone 11:52:34
+    - Appeared 12:21:51 - Gone 12:39:44
+    - Appeared 13:20:26 - Gone 13:26:54
+    - Appeared 14:54:46 - Gone 15:01:15
+    - Appeared 15:06:57 - Gone 15:24:50
+    - Appeared 15:30:32 - Gone 15:48:25 
+    - Appeared 15:54:07 - Gone 16:12:01
+    - Appeared 16:23:25 - Gone 16:35:36
+    - 43/118 error groups
+    - Stuck bit 
+- 38 |   0x660ef11:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:31:39 - Gone 9:07:27
+    - Appeared 9:13:09 - Gone 9:31:02
+    - Appeared 9:42:27 - Gone 9:54:38
+    - Appeared 10:00:20 - Gone 10:18:13
+    - Appeared 11:28:12 - Gone 11:28:59
+    - Appeared 15:06:57 - Gone 15:24:50
+    - Appeared 15:30:32 - Gone 16:35:36
+    - 38/118 error groups
+    - Stuck bit
+- 35 |   0xedbc1eb:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a1a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 8:25:57
+    - Appeared 10:35:19 - Gone 10:41:01 
+    - Appeared 11:34:41 - Gone 11:40:23
+    - Appeared 11:46:05 - Gone 11:58:16
+    - Appeared 12:03:58 - Gone 12:15:22 
+    - Appeared 12:16:09 - Gone 12:21:33
+    - Appeared 12:39:44 - Gone 12:45:26
+    - Appeared 13:20:26 - Gone 13:26:54
+    - Appeared 13:38:19 - Gone 13:44:01
+    - Appeared 13:50:29 - Gone 14:01:54
+    - Appeared 14:13:18 - Gone 14:14:05 
+    - Appeared 14:19:47 - Gone 14:31:11
+    - Appeared 14:43:22 - Gone 14:49:04
+    - Appeared 15:00:28 - Gone 15:24:03
+    - Appeared 15:24:05 - Gone 15:41:56
+    - Appeared 15:47:39 - Gone 15:48:25 
+    - Appeared 15:59:49 - Gone 16:11:14
+    - Appeared 16:12:01 - Gone 16:23:25
+    - Appeared 16:34:49 - Gone 16:35:36
+    - Appeared 17:22:46 - Gone 17:28:35
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 35/118 error groups
+    - Stuck bit
+- 30 |   0x6348fc6:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5e5a5a5 a5a5a5a5
+    - Appeared 8:43:04 - Gone 8:43:50
+    - Appeared 8:49:32 - Gone 9:07:27
+    - Appeared 9:13:09 - Gone 9:54:38
+    - Appeared 10:00:20 - Gone 10:18:13
+    - Appeared 11:58:16 - Gone 12:16:09
+    - Appeared 12:45:26 - Gone 13:03:19
+    - Appeared 13:09:01 - Gone 13:26:54
+    - 30/118 error groups
+    - Suck bit
+- 28 |   0xc6f29a0:  a5a7a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 9:06:40 - Gone 9:07:27
+    - Appeared 10:11:44 - Gone 10:17:26
+    - Appeared 10:41:48 - Gone 10:47:30
+    - Appeared 10:58:54 - Gone 11:04:37
+    - Appeared 11:05:23 - Gone 11:11:05
+    - Appeared 11:34:41 - Gone 11:40:23
+    - Appeared 11:51:47 - Gone 11:58:16 
+    - Appeared 12:09:40 - Gone 12:15:22
+    - Appeared 12:45:26 - Gone 12:51:08
+    - Appeared 13:03:19 - Gone 13:09:01
+    - Appeared 13:14:43 - Gone 13:20:26
+    - Appeared 13:26:08 - Gone 13:26:54
+    - Appeared 13:50:29 - Gone 14:13:18
+    - Appeared 14:36:53 - Gone 14:37:40
+    - Appeared 15:12:39 - Gone 15:18:21 
+    - Appeared 15:24:03 - Gone 15:24:50
+    - Appeared 15:30:32 - Gone 15:36:14
+    - Appeared 15:59:49 - Gone 16:05:32
+    - Appeared 16:12:01 - Gone 16:17:43
+    - Appeared 16:23:25 - Gone 16:29:07
+    - Appeared 16:34:49 - Gone 16:41:18
+    - Appeared 16:47:00 - Gone 16:52:42 
+    - Appeared 16:59:11 - Gone 17:04:53
+    - 28/118 error groups
+    - Stuck bit 
+- 28 |   0xaa5f7b0:  a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 15:12:39 - Gone 15:24:50
+    - Appeared 15:30:32 - Gone 15:48:25
+    - Appeared 15:54:07 - Gone 17:28:35 
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 28/118 error groups
+    - Stuck bit
+- 25 |   0xf943614:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a1a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 8:43:50
+    - Appeared 8:49:32 - Gone 9:07:27
+    - Appeared 9:13:09 - Gone 9:31:02
+    - Appeared 9:36:45 - Gone 9:54:38
+    - Appeared 10:00:20 - Gone 10:18:13
+    - Appeared 10:23:55 - Gone 10:41:48
+    - 25/118 error groups
+    - Stuck bit 
+- 24 |   0x9b0ce8e:  a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 9:54:38
+    - Appeared 10:00:20 - Gone 10:18:13
+    - 24/118 error groups
+    - Stuck bit
+- 23 |   0xd02d629:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a1a5a5a5 a5a5a5a5
+    - Appeared 10:06:02 - Gone 10:18:13
+    - Appeared 10:23:55 - Gone 10:41:48
+    - Appeared 10:47:30 - Gone 11:05:23
+    - Appeared 11:11:05 - Gone 11:28:59
+    - Appeared 11:40:23 - Gone 11:52:34
+    - Appeared 12:09:40 - Gone 12:16:09
+    - Appeared 12:27:33 - Gone 12:39:44
+    - 23/118 error groups
+    - Stuck bit
+- 19 |   0x5bf57d1:  a5a5a5a5 a5a5a5a5 a5a5a5ad a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 15:06:57 - Gone 16:35:36
+    - 19/118 error groups
+    - Stuck bit
+- 18 |   0x3456118:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:25:57 - Gone 8:43:50
+    - Appeared 8:49:32 - Gone 9:54:38
+    - 18/118 error groups
+    - Stuck bit 
+- 17 |   0x3f128b4:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a7 a5a5a5a5
+    - Appeared 9:00:58 - Gone 9:07:27
+    - Appeared 9:36:45 - Gone 9:54:38
+    - Appeared 13:38:19 - Gone 13:50:29
+    - Appeared 14:13:18 - Gone 14:14:05
+    - Appeared 14:19:47 - Gone 14:37:40
+    - Appeared 14:49:04 - Gone 15:01:15
+    - 17/118 error groups
+    - Stuck bit
+- 16 |   0x62a8570:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a7a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:25:57 - Gone 9:31:02
+    - Appeared 10:35:19 - Gone 10:41:48
+    - 16/118 error groups
+    - Stuck bit 
+- 16 |   0x3aef716:  a5a5a5a5 a5a5a5a5 a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 11:11:05 - Gone 11:52:34
+    - Appeared 11:58:16 - Gone 12:16:09
+    - Appeared 16:23:25 - Gone 16:35:36
+    - 16/118 error groups
+    - Stuck bit
+- 14 |   0x730df28:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:43:50 - Gone 9:31:02 
+    - Appeared 9:36:45 - Gone 9:54:38
+    - 14/118 error groups
+    - Stuck bit 
+- 13 |   0xac172a2:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a525a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 9:07:27
+    - Appeared 12:03:58 - Gone 12:16:09
+    - 13/118 error groups
+    - Stuck bit 
+- 12 |   0x6183117:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a7a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:25:57 - Gone 8:43:50
+    - Appeared 8:49:32 - Gone 9:07:27
+    - Appeared 9:13:09 - Gone 9:31:02
+    - 12/118 error groups
+    - Stuck bit
+- 12 |   0xcf8a4cc:  a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 10:35:19 - Gone 10:41:48
+    - Appeared 10:47:30 - Gone 11:05:23
+    - Appeared 15:12:39 - Gone 15:24:50
+    - Appeared 15:59:49 - Gone 16:12:01
+    - 12/118 error groups
+    - Stuck bit
+- 11 |   0x495375c:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:31:39 - Gone 8:43:50
+    - Appeared 12:51:08 - Gone 13:03:19
+    - Appeared 13:44:01 - Gone 13:50:29
+    - Appeared 15:12:39 - Gone 15:24:50
+    - 11/118 error groups
+    - Stuck bit
+- 11 |   0x4093486:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5ada5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 14:49:04 - Gone 15:01:15
+    - Appeared 16:11:14 - Gone 16:12:01
+    - Appeared 16:29:07 - Gone 16:35:36
+    - Appeared 16:52:42 - Gone 16:59:11 
+    - Appeared 17:22:00 - Gone 17:28:35 
+    - Appeared 17:29:10 - Gone 17:29:10 (it appeared at the last error group of the test)
+    - 11/118 error groups
+    - Stuck bit
+- 10 |   0xc2afa29:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5ada5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:31:39 - Gone 8:37:21
+    - Appeared 9:36:45 - Gone 9:48:09 
+    - Appeared 10:18:13 - Gone 10:29:37
+    - Appeared 10:35:19 - Gone 10:41:01
+    - Appeared 10:58:54 - Gone 11:04:37
+    - Appeared 11:22:30 - Gone 11:28:12 
+    - Appeared 12:56:51 - Gone 13:02:33
+    - Appeared 13:09:01 - Gone 13:14:43
+    - 10/118 error groups
+    - Stuck bit
+- 10 |   0x34914a4:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:43:04 - Gone 8:43:50
+    - Appeared 8:55:15 - Gone 9:07:27
+    - Appeared 9:36:45 - Gone 9:54:38
+    - Appeared 13:20:26 - Gone 13:26:54
+    - 10/118 error groups
+    - Stuck bit
+- 10 |   0xe6bb636:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 9:53:51 - Gone 9:54:38
+    - Appeared 11:52:34 - Gone 12:16:09
+    - Appeared 15:54:07 - Gone 16:12:01
+    - 10/118 error groups
+    - Stuck bit
+- 9 |   0xe83eaf9:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a1a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:25:57 - Gone 9:07:27
+    - 9/118 error groups
+    - Stuck bit
+- 9 |   0x2c6af54:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5b5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 9:30:16 - Gone 9:31:02 
+    - Appeared 9:36:45 - Gone 9:54:38
+    - Appeared 10:00:20 - Gone 10:18:13
+    - 9/118 error groups
+    - Stuck bit 
+- 9 |   0x8b99701:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a1a5a5a5 a5a5a5a5
+    - Appeared 11:34:41 - Gone 12:16:09
+    - 9/118 error groups
+    - Stuck bit
+- 8 |   0x2b5ee99:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:25:57 - Gone 8:43:50
+    - Appeared 8:49:32 - Gone 9:07:27
+    - 8/118 error groups
+    - Stuck bit
+- 7 |   0x1e8cb87:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:31:39 - Gone 8:43:50 
+    - Appeared 8:49:32 - Gone 9:07:27
+    - 7/118 error groups
+    - Stuck bit
+- 7 |   0xe86694c:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 25a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:31:39 - Gone 8:43:50
+    - Appeared 9:30:16 - Gone 9:31:02 
+    - Appeared 13:14:43 - Gone 13:26:54 
+    - 7/118 error groups
+    - Stuck bit
+- 6 |   0x252382a:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 10:17:26 - Gone 10:41:48
+    - 6/118 error groups
+    - Stuck bit
+- 6 |   0x5b8d2a8:  a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 10:47:30 - Gone 11:05:23
+    - Appeared 13:44:01 - Gone 13:50:29
+    - 6/118 error groups
+    - Stuck bit
+- 6 |   0xf5d4623:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 10:47:30 - Gone 11:05:23 
+    - Appeared 11:46:05 - Gone 11:52:34
+    - 6/118 error groups
+    - Stuck bit 
+- 6 |   0x2418a8a:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:26:08 - Gone 13:50:29
+    - 6/118 error groups
+    - Stuck bit 
+- 6 |   0xaf6351c:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a585 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 14:13:18 - Gone 14:14:05
+    - Appeared 14:25:29 - Gone 14:37:40
+    - Appeared 17:16:18 - Gone 17:22:46
+    - 6/118 error groups
+    - Stuck bit 
+- 6 |   0x7789915:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 16:58:25 - Gone 17:22:46
+    - 6/118 error groups
+    - Stuck bit 
+- 5 |   0x364b432:  a7a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 8:25:57
+    - Appeared 9:00:58 - Gone 9:06:40
+    - Appeared 9:13:09 - Gone 9:18:51 
+    - Appeared 11:28:59 - Gone 11:34:41 
+    - Appeared 13:56:12 - Gone 14:01:54 
+    - 5/118 error groups
+    - Stuck bit
+- 5 |   0xf1a9560:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a1a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:20:15 - Gone 8:25:57
+    - Appeared 8:43:04 - Gone 8:43:50
+    - Appeared 9:24:34 - Gone 9:30:16
+    - Appeared 13:32:36 - Gone 13:44:01
+    - 5/118 error groups
+    - Stuck bit  
+- 5 |   0x2813cc5:  a5a5a5a5 a5a5a5a5 a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:37:21 - Gone 8:43:50
+    - Appeared 9:18:51 - Gone 9:31:02 
+    - 5/118 error groups
+    - Stuck bit
+- 5 |   0xffbdedd:  a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:49:32 - Gone 9:07:27
+    - Appeared 9:30:16 - Gone 9:31:02
+    - 5/118 error groups
+    - Stuck bit
+- 5 |   0x3231309:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5
+    - Appeared 10:41:01 - Gone 10:41:48 
+    - Appeared 11:58:16 - Gone 12:16:09
+    - 5/118 error groups
+    - Stuck bit 
+- 5 |   0x00201d7:  a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 15:24:03 - Gone 15:24:50
+    - Appeared 15:54:07 - Gone 16:12:01
+    - 5/118 error groups
+    - Stuck bit
+- 5 |   0xec62ce9:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 16:35:36 - Gone 16:59:11
+    - 5/118 error groups
+    - Stuck bit
+- 4 |   0x4e839b4:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a525a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:25:57 - Gone 8:43:50
+    - 4/118 error groups
+    - Stuck bit
+- 4 |   0x7c401a4:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a7a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 9:06:40 - Gone 9:07:27
+    - Appeared 10:35:19 - Gone 10:41:01
+    - Appeared 13:44:01 - Gone 13:49:43
+    - Appeared 14:07:36 - Gone 14:13:18 
+    - 4/118 error groups
+    - Stuck bit
+- 4 |   0xc329065:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a7a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 9:36:45 - Gone 9:54:38
+    - 4/118 error groups
+    - Stuck bit
+- 4 |   0xd4243dc:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 ada5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 9:36:45 - Gone 9:54:38
+    - 4/118 error groups
+    - Stuck bit
+- 4 |   0xe4fff4a:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5ada5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 12:21:51 - Gone 12:39:44
+    - 4/118 error groups
+    - Stuck bit 
+- 4 |   0xc24663a:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 17:04:53 - Gone 17:22:46
+    - 4/118 error groups
+    - Stuck bit
+- 3 |   0xc86a879:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a7a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:31:39 - Gone 8:43:50
+    - 3/118 error groups
+    - Stuck bit 
+- 3 |   0x43c3993:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 9:18:51 - Gone 9:31:02
+    - 3/118 error groups
+    - Stuck bit
+- 3 |   0x25a3bcc:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 ada5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 9:42:27 - Gone 9:54:38
+    - 3/118 error groups
+    - Stuck bit 
+- 2 |   0x5f555a8:  a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 10:58:54 - Gone 11:05:23
+    - 2/118 error groups
+    - Stuck bit
+- 2 |   0xfe5f5eb:  a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 11:22:30 - Gone 11:8:59
+    - 2/118 error groups
+    - Stuck bit 
+- 1 |   0xacb65f4:  a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 8:43:04 - Gone 8:43:50
+    - 1/118 error groups
+    - Soft error
+- 1 |   0x716773c:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 9:06:40 - Gone 9:07:27
+    - 1/118 error groups
+    - Soft error 
+- 1 |   0x55946d1:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a7a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 10:41:48 - Gone 10:47:30
+    - 1/118 error groups
+    - Soft error
 ### Idle Test 17 ( 2023-06-30 17:33:34 - 2023-06-30 20:12:43 )
 
 Events:
 - No timeouts or exceptions during the entire test, very smooth.
 - The number of errors ranged from 53 - 4944937.
 
+- 8 |   0x012894c:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 b5a5a5a5 a5a5a5a5
+- 8 |   0x04dfd83:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 8 |   0x05eecf5:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 8 |   0x0724e9d:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 8 |   0x084c791:  a5a1a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 8 |   0x162c2a7:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a1a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 8 |   0x2418a8a:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 8 |   0x399de92:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 8 |   0x00001ff:  a5a5a5f5 a5a5a5a5 a5a5a5f5 a5a5a5a5 a5a5a5f5 a5a5a5a5 a5a5a5f5 a5a5a5a5 a5a5a5f5 a5a5a5a5 a5a5a5f5 a5a5a5a5 a5a5a5f5 a5a5a5a5 f5a5a5f5 a5a5a5a5
+- 7 |   0x0d686cb:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 7 |   0x20bfc78:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0x3d6effe:  a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0x3e41ae0:  a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0x3ff7698:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0x4093486:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5ada5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0x43d2ef8:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0x44499d0:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a1a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0x459fd2b:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a1a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0x4f1349f:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0x527670d:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0x536d83a:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0x54ecc5b:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 ada5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0x5ca2871:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 b5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0x5cd65dc:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 ada5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0x5f8d9b0:  a525a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0x65a1dec:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0x6c3954a:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 b5a5a5a5 a5a5a5a5
+- 6 |   0x73e70ca:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0x7aa1870:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a7a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0x7f0086d:  a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0x816283a:  a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0x8b07ba4:  a5a5a5a5 a5a5a5a5 a5a7a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0x8f369eb:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0x8f7570b:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0x9075bf3:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a1a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0x9e3b96e:  a5a5a5a5 a5a5a5a5 a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0xa0b8b4a:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5ada5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0xa1133af:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0xa88ecf6:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 ada5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0xaa5f7b0:  a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0xae38121:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 85a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0xb1fe38e:  a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0xb774330:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a525 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0xb793af3:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0xc1090fb:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a1a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0xc126cf2:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a7a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0xc21dd2d:  a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0xc2321c9:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a7a5a5 a5a5a5a5
+- 6 |   0xc365434:  a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0xc394d1f:  a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0xc4c4793:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0xc4f693d:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 25a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0xcefbb71:  a5a5a5a5 a5a5a5a5 a5a5a5ad a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0xd17d5a2:  a5ada5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0xd708438:  a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0xd914e22:  a5a5a5a5 a5a5a5a5 a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0xe08e018:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 85a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0xe22ed9d:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5ada5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0xf14783e:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a1a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0xf9adac6:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0xfcadb48:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0x2df9057:  a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 6 |   0x0402feb:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5ada5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 5 |   0x5c1865a:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a7a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 5 |   0x8fea35c:  a5a585a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 5 |   0x463d827:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 5 |   0x80e1fe1:  a5a5a5a5 a5a5a5a5 a5a5a7a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 5 |   0x2d761b8:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 5 |   0x3198709:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 4 |   0xedbc1eb:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a1a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 4 |   0x0e99007:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a7 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 4 |   0x512a051:  a5a5a5a5 a5a5a5a5 a5a5a7a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 4 |   0x5b93108:  a5a5a5a5 a5a5a5a5 a5a5a525 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 4 |   0x72a4964:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5
+- 4 |   0x73b2ee4:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 ada5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 4 |   0x7d6ee57:  a5a5a5a5 a5a5a5a5 a5a5b5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 4 |   0x918359a:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 4 |   0xa9d95c9:  a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 4 |   0xacbf89d:  a5a5a5a5 a5a5a5a5 a7a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 4 |   0x2d6c272:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5ada5 a5a5a5a5
+- 4 |   0xa149cf3:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a7a5a5a5 a5a5a5a5
+- 4 |   0x250a338:  a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 3 |   0x5eae635:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 3 |   0xe6d63e2:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a1a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 2 |   0xc6f29a0:  a5a7a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 2 |   0x274262d:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a525a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 2 |   0x2ad504e:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5
+- 2 |   0xa1eccc8:  a5a5a5a5 a5a5a5a5 a5a5a5ad a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 2 |   0xb75751d:  a5a5a5a5 a5a5a5a5 a5a5a5e5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 2 |   0xd9d4882:  a5a5a5a5 a5a5a5a5 a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 2 |   0xeaaf25c:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5b5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 2 |   0xf2eb858:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5e5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 2 |   0xf762bca:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5ad a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 2 |   0x5cd38cd:  a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 2 |   0x851d4a9:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a7 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+- 2 |   0xa5f8686:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
 ### Idle Test 18 ( 2023-06-30 20:13:58 - 2023-07-01 07:50:36 )
 
 Events:
@@ -120,25 +2202,419 @@ Events:
 ### Continuous Test 2 (2023-06-29 11:18:41 - 11:21:29)
 - This test was not that smooth and it did not run for long. There were not that much errors. There were 4 error group so it is hard to conclude if a specific error kept occurring 
 
+- 4 |   0x0e99007:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a7 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 11:19:07 - Gone 11:21:05 (End of test)
+    - 4/4 error groups
+    - Stuck bit
+- 4 |   0x2f76f9d:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 85a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 11:19:07 - Gone 11:21:05 (End of test)
+    - 4/4 error groups
+    - Stuck bit
+- 4 |   0x3d6effe:  a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 11:19:07 - Gone 11:21:05 (End of test)
+    - 4/4 error groups
+    - Stuck bit
+- 4 |   0x5c1865a:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a7a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 11:19:07 - Gone 11:21:05 (End of test)
+    - 4/4 error groups
+    - Stuck bit
+- 4 |   0x7209717:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 11:19:07 - Gone 11:21:05 (End of test)
+    - 4/4 error groups
+    - Stuck bit
+- 4 |   0x72a4964:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5
+    - Appeared 11:19:07 - Gone 11:21:05 (End of test)
+    - 4/4 error groups
+    - Stuck bit
+- 4 |   0x73fd4b0:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 11:19:07 - Gone 11:21:05 (End of test)
+    - 4/4 error groups
+    - Stuck bit
+- 4 |   0x91a2de5:  a5a1a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 11:19:07 - Gone 11:21:05 (End of test)
+    - 4/4 error groups
+    - Stuck bit
+- 2 |   0x463d827:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 11:20:32 - Gone 11:21:05 (End of test)
+    - 2/4 error groups
+    - Stuck bit 
+- 1 |   0x5a2cda1:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 11:19:07 - Gone 11:19:41 
+    - 1/4 error groups
+    - Soft bit 
+- 1 |   0x2df9057:  a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 11:19:41 - Gone 11:20:32 
+    - 1/4 error groups
+    - Soft bit 
+- 1 |   0x05eecf5:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 11:21:05 - Gone 11:21:05 (it appeared at the last error group of the test)
+    - 1/4 error groups
+    - Stuck bit
+
 ### Continuous Test 3 (2023-06-29 12:54:44 - 13:00:38)
 - This test timed out 3 times in 6 minutes. We did not really get that much errors from it. We had 8 error groups for this test. 
 
+- 8 |   0x0e99007:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a7 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 12:55:11 - Gone 12:59:56 (End of test)
+    - 8/8 error groups
+    - Stuck bit 
+- 8 |   0x5cd65dc:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 ada5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 12:55:11 - Gone 12:59:56 (End of test)
+    - 8/8 error groups
+    - Stuck bit 
+- 8 |   0x7209717:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 12:55:11 - Gone 12:59:56 (End of test)
+    - 8/8 error groups
+    - Stuck bit 
+- 8 |   0x72a4964:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5
+    - Appeared 12:55:11 - Gone 12:59:56 (End of test)
+    - 8/8 error groups
+    - Stuck bit 
+- 8 |   0x73fd4b0:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 12:55:11 - Gone 12:59:56 (End of test)
+    - 8/8 error groups
+    - Stuck bit 
+- 4 |   0x7d9ef11:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5ada5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 12:57:59 - Gone 12:59:56 (End of test)
+    - 4/8 error groups
+    - Stuck bit 
+- 2 |   0x05eecf5:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 12:55:11 - Gone 12:55:44 
+    - Appeared 12:59:56 - Gone 12:59:56 (it appeared at the last error group of the test)
+    - 2/8 error groups
+    - Stuck bit
+- 2 |   0x6b13b7b:  a5a585a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 12:59:23 - Gone 12:59:56 (End of test)
+    - 2/8 error groups
+    - Stuck bit
+- 1 |   0x71f537c:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 12:56:35 - Gone 12:57:08 
+    - 1/8 error groups
+    - Soft error
+- 1 |   0x2f76f9d:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 85a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 12:58:32 - Gone 12:59:23 
+    - 1/8 error groups
+    - Soft error
+- 1 |   0x89b13f1:  a5a5a5a5 a5a5a5a5 a5a5a5a7 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 12:59:56 - Gone 12:59:56 (it appeared at the last error group of the test)
+    - 1/8 error groups
+    - Stuck bit
 
 
 ### Continuous Test 4 (2023-06-29 13:16:51 - 13:48:09)
 - The first error was at 13:17:18
 - There were 7 timeouts this test 
-- At 13:27:39, there were 5605502 errors found and they stayed there until the end of the test which resulted in an error frequency of 60/76 for the addresses that had the problems
+- SEFI: At 13:27:39, there were 5605502 errors found and they stayed there until the end of the test which resulted in an error frequency of 60/76 for the addresses that had the problems
 
+- 15 |   0x0e99007:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a7 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:17:18 - Gone 13:27:30
+    - 15/76 error groups
+    - Stuck bit
+- 15 |   0x5cd65dc:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 ada5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:17:18 - Gone 13:27:30
+    - 15/76 error groups
+    - Stuck bit
+- 15 |   0x65a1dec:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:17:18 - Gone 13:27:30
+    - 15/76 error groups
+    - Stuck bit
+- 15 |   0x72a4964:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5
+    - Appeared 13:17:18 - Gone 13:27:30
+    - 15/76 error groups
+    - Stuck bit
+- 15 |   0x73fd4b0:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:17:18 - Gone 13:27:30
+    - 15/76 error groups
+    - Stuck bit
+- 13 |   0x05eecf5:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:17:51 - Gone 13:20:06
+    - Appeared 13:20:39 - Gone 13:27:30
+    - 13/76 error groups
+    - Stuck bit
+- 13 |   0x6b13b7b:  a5a585a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:17:51 - Gone 13:19:15
+    - Appeared 13:20:06 - Gone 13:27:30
+    - 13/76 error groups
+    - Stuck bit
+- 12 |   0x7209717:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:17:51 - Gone 13:18:42
+    - Appeared 13:19:15 - Gone 13:25:42
+    - Appeared 13:26:15 - Gone 13:27:30
+    - 12/76 error groups
+    - Stuck bit
+- 11 |   0x7d9ef11:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5ada5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:20:06 - Gone 13:27:30
+    - 11/76 error groups
+    - Stuck bit 
+- 10 |   0x7f0086d:  a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:20:39 - Gone 13:27:30
+    - 10/76 error groups
+    - Stuck bit
+- 9 |   0x3d6effe:  a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:21:30 - Gone 13:27:30
+    - 9/76 error groups
+    - Stuck bit
+- 6 |   0x5a2cda1:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:17:18 - Gone 13:20:06 
+    - Appeared 13:21:30 - Gone 13:22:03 
+    - Appeared 13:23:27 - Gone 13:24:18
+    - 6/76 error groups
+    - Stuck bit
+- 4 |   0x2f76f9d:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 85a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:23:27 - Gone 13:25:42
+    - Appeared 13:26:15 - Gone 13:27:06
+    - 4/76 error groups
+    - Stuck bit 
+- 4 |   0x89b13f1:  a5a5a5a5 a5a5a5a5 a5a5a5a7 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:23:27 - Gone 13:26:15
+    - 4/76 error groups
+    - Stuck bit
+- 2 |   0x2acc25c:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5b5a5a5 a5a5a5a5
+    - Appeared 13:25:42 - Gone 13:26:15 
+    - Appeared 13:27:06 - Gone 13:27:30
+    - 2/76 error groups
+    - STuck bit
+- 1 |   0x27722c5:  a5a5afa5 a5a5a5a5 a5a5afa5 a5a5a5a5 a5a5afa5 a5a5a5a5 a5a5afa5 a5a5a5a5 a5a5afa5 a5a5a5a5 a5a5afa5 a5a5a5a5 a5a5afa5 a5a5a5a5 a5a5afa5 a5a5a5a5
+    - Appeared 13:20:06 - Gone 13:20:39
+    - 1/76 error groups
+    - Soft error
+- 1 |   0x2b9d3c4:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a585a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:22:54 - Gone 13:23:27
+    - 1/76 error groups
+    - Soft error
+- 1 |   0x918359a:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:23:27 - Gone 13:24:18
+    - 1/76 error groups
+    - Soft error
+- 1 |   0x91a2de5:  a5a1a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:24:18 - Gone 13:24:51
+    - 1/76 error groups
+    - Soft error 
+- 1 |   0x6ddf8f8:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5b5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:27:06 - Gone 13:27:30
+    - 1/76 error groups
+    - Soft error
 
 ### Continuous Test 5 (2023-06-29 13:49:36 - 14:58:07)
 - There were 45 timeouts in this test 
 - The first error was at 13:50:03
 - It is hard to see specific patterns because test kept timing out while reading the errors because the delay was shorter than needed for this board. 
+- SEFI: At 14:35:25, there were errors between addresses 0x4fc6680 - 0x4fc7eff
 - There were 10 addresses that got the most errors during this test, and these addresses are:
 0x0e99007 0x162c7a7 0x2f76f9d 0x3d6effe 0x5cd65dc 0x65a1dec 0x7f0086d 0x88c7f96 0x73fd4b0 0x7d9ef11 
 
-
+- 98 |   0x0e99007:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a7 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:50:03 - Gone 14:57:31 (End of test)
+    - 98/98 error groups
+    - Stuck bit
+- 98 |   0x162c2a7:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a1a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:50:03 - Gone 14:57:31 (End of test)
+    - 98/98 error groups
+    - Stuck bit
+- 98 |   0x2f76f9d:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 85a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:50:03 - Gone 14:57:31 (End of test)
+    - 98/98 error groups
+    - Stuck bit
+- 98 |   0x3d6effe:  a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:50:03 - Gone 14:57:31 (End of test)
+    - 98/98 error groups
+    - Stuck bit
+- 98 |   0x5cd65dc:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 ada5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:50:03 - Gone 14:57:31 (End of test)
+    - 98/98 error groups
+    - Stuck bit
+- 98 |   0x65a1dec:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:50:03 - Gone 14:57:31 (End of test)
+    - 98/98 error groups
+    - Stuck bit
+- 97 |   0x7f0086d:  a5a5a5a4 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:50:03 - Gone 14:35:25
+    - Appeared 14:36:16 - Gone 14:57:31 (End of test)
+    - 97/98 error groups
+    - Stuck bit 
+- 97 |   0x88c7f96:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5
+    - Appeared 13:50:03 - Gone 14:35:25
+    - Appeared 14:36:16 - Gone 14:57:31 (End of test)
+    - 97/98 error groups
+    - Stuck bit 
+- 94 |   0x73fd4b0:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:50:03 - Gone 14:31:13 
+    - Appeared 14:32:04 - Gone 14:35:25
+    - Appeared 14:36:16 - Gone 14:47:52
+    - Appeared 14:48:43 - Gone 14:51:31
+    - Appeared 14:52:04 - Gone 14:57:31 (End of test)
+    - 94/98 error groups
+    - Stuck bit 
+- 89 |   0x7d9ef11:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5ada5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:50:03 - Gone 14:35:25
+    - Appeared 14:36:49 - Gone 14:37:40
+    - Appeared 14:38:13 - Gone 14:39:04 
+    - Appeared 14:39:37 - Gone 14:52:55
+    - Appeared 14:54:11 - Gone 14:56:07
+    - 89/98 error groups
+    - Stuck bit
+- 59 |   0x72a4964:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5
+    - Appeared 13:50:03 - Gone 14:22:16
+    - Appeared 14:22:49 - Gone 14:23:40 
+    - Appeared 14:24:13 - Gone 14:25:04
+    - Appeared 14:25:37 - Gone 14:28:25
+    - Appeared 14:29:16 - Gone 14:32:04
+    - Appeared 14:34:52 - Gone 14:35:25 
+    - Appeared 14:38:13 - Gone 14:39:04
+    - Appeared 14:54:44 - Gone 14:55:34
+    - 59/98 error groups
+    - Stuck bit
+- 50 |   0x91a2de5:  a5a1a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:50:37 - Gone 13:51:27
+    - Appeared 13:54:15 - Gone 13:57:03
+    - Appeared 14:00:25 - Gone 14:01:49
+    - Appeared 14:10:13 - Gone 14:11:04
+    - Appeared 14:12:28 - Gone 14:13:52
+    - Appeared 14:14:25 - Gone 14:15:16 
+    - Appeared 14:15:49 - Gone 14:20:01
+    - Appeared 14:20:52 - Gone 14:22:16
+    - Appeared 14:22:49 - Gone 14:32:04
+    - Appeared 14:32:37 - Gone 14:35:25
+    - Appeared 14:36:16 - Gone 14:39:04
+    - Appeared 14:41:43 - Gone 14:42:16
+    - Appeared 14:43:07 - Gone 14:43:40
+    - Appeared 14:51:31 - Gone 14:53:28
+    - Appeared 14:54:11 - Gone 14:54:44
+    - Appeared 14:55:34 - Gone 14:57:31 (End of test)
+    - 50/98 error groups
+    - Stuck bit
+- 44 |   0x2df9057:  a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:50:03 - Gone 13:50:37
+    - Appeared 13:52:01 - Gone 13:53:25
+    - Appeared 13:56:13 - Gone 13:58:27
+    - Appeared 13:59:01 - Gone 14:01:16
+    - Appeared 14:02:40 - Gone 14:04:04
+    - Appeared 14:04:37 - Gone 14:08:16
+    - Appeared 14:12:28 - Gone 14:13:52
+    - Appeared 14:20:01 - Gone 14:20:52
+    - Appeared 14:22:16 - Gone 14:22:49
+    - Appeared 14:27:01 - Gone 14:27:52
+    - Appeared 14:31:13 - Gone 14:32:04
+    - Appeared 14:32:37 - Gone 14:34:52
+    - Appeared 14:35:25 - Gone 14:37:40
+    - Appeared 14:38:13 - Gone 14:39:37 
+    - Appeared 14:41:43 - Gone 14:42:16
+    - Appeared 14:43:40 - Gone 14:45:04
+    - Appeared 14:47:19 - Gone 14:48:43
+    - Appeared 14:50:07 - Gone 14:52:04
+    - Appeared 14:52:55 - GOne 14:55:34
+    - Appeared 14:56:07 - Gone 14:56:58
+    - Appeared 14:57:31 - Gone 14:57:31 (it appeared at the last error group of test)
+    - 44/98 error groups
+    - Stuck bit 
+- 42 |   0x6b13b7b:  a5a585a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:50:03 - Gone 13:51:27
+    - Appeared 13:52:51 - Gone 13:54:15
+    - Appeared 13:55:39 - Gone 13:56:13 
+    - Appeared 13:57:03 - Gone 13:58:27
+    - Appeared 13:59:01 - Gone 14:01:16
+    - Appeared 14:02:40 - Gone 14:05:28
+    - Appeared 14:06:01 - Gone 14:06:52
+    - Appeared 14:09:40 - Gone 14:10:13
+    - Appeared 14:11:37 - Gone 14:13:01
+    - Appeared 14:15:16 - Gone 14:16:40
+    - Appeared 14:17:13 - Gone 14:18:04 
+    - Appeared 14:18:37 - Gone 14:22:49
+    - Appeared 14:24:13 - Gone 14:25:04
+    - Appeared 14:25:37 - Gone 14:28:25
+    - Appeared 14:29:16 - Gone 14:32:37
+    - Appeared 14:50:07 - Gone 14:50:40
+    - Appeared 14:52:04 - Gone 14:52:55 
+    - Appeared 14:53:28 - Gone 14:54:11
+    - Appeared 14:55:34 - Gone 14:56:07
+    - Appeared 14:57:31 - Gone 14:57:31 (it appeared at the last error group of test)
+    - 42/98 error groups
+    - Stuck bit 
+- 40 |   0x0724e9d:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 14:30:40 - Gone 14:57:31 (end of test)
+    - 40/98 error groups
+    - Stuck bit 
+- 22 |   0x05eecf5:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:50:03 - Gone 13:52:51
+    - Appeared 13:53:25 - Gone 13:57:03
+    - Appeared 13:59:01 - Gone 13:59:52
+    - Appeared 14:00:25 - Gone 14:01:16 
+    - Appeared 14:01:49 - Gone 14:02:40
+    - Appeared 14:03:13 - Gone 14:06:01 
+    - Appeared 14:06:52 - Gone 14:08:16
+    - Appeared 14:08:49 - Gone 14:09:40
+    - Appeared 14:10:13 - Gone 14:12:28
+    - 22/98 error groups
+    - Stuck bit 
+- 20 |   0x1102925:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a4a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:54:49 - Gone 13:59:01
+    - Appeared 14:34:52 - Gone 14:36:16
+    - Appeared 14:36:49 - Gone 14:37:40
+    - Appeared 14:38:13 - Gone 14:43:40
+    - Appeared 14:46:28 - Gone 14:47:19 
+    - Appeared 14:47:52 - Gone 14:48:43
+    - Appeared 14:56:58 - Gone 14:57:31
+    - 20/98 error groups
+    - Stuck bit
+- 20 |   0x010f046:  a5a5a5a5 a5a5a5a5 a5a5ada5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 14:40:19 - Gone 14:40:53
+    - Appeared 14:44:31 - Gone 14:45:55 
+    - Appeared 14:46:28 - Gone 14:57:31 (end of test)
+    - 20/98 error groups
+    - Stuck bit
+- 10 |   0x918359a:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a4a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:54:49 - Gone 13:55:39
+    - Appeared 13:58:27 - Gone 13:59:52
+    - Appeared 14:10:13 - Gone 14:11:04 
+    - Appeared 14:11:37 - Gone 14:12:28
+    - Appeared 14:14:25 - Gone 14:15:16 
+    - Appeared 14:15:49 - Gone 14:17:13
+    - Appeared 14:18:37 - Gone 14:19:28
+    - Appeared 14:33:28 - Gone 14:34:01 
+    - 10/98 error groups
+    - Stuck bit 
+- 9 |   0x5c1865a:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a7a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:50:03 - Gone 13:51:27
+    - Appeared 13:52:01 - Gone 13:56:13
+    - Appeared 14:03:13 - Gone 14:04:04
+    - 9/98 error groups
+    - Stuck bit
+- 7 |   0x82a0e85:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:50:03 - Gone 13:54:49
+    - 7/98 error groups
+    - Stuck bit 
+- 6 |   0x364b432:  a7a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:52:51 - Gone 13:53:25
+    - Appeared 13:55:39 - Gone 13:57:03
+    - Appeared 13:59:52 - Gone 14:00:25
+    - Appeared 14:13:01 - Gone 14:13:52
+    - Appeared 14:43:07 - Gone 14:43:40
+    - 6/98 error groups
+    - Stuck bit
+- 3 |   0x2acc25c:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5b5a5a5 a5a5a5a5
+    - Appeared 13:50:03 - Gone 13:51:27
+    - Appeared 13:52:01 - Gone 13:52:51
+    - 3/98 error groups
+    - Stuck bit 
+- 3 |   0x5a2cda1:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a1a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 13:52:01 - Gone 13:52:51
+    - Appeared 14:27:52 - Gone 14:28:25
+    - Appeared 14:48:43 - Gone 14:49:16
+    - 3/98 error groups
+    - Stuck bit 
+- 3 |   0x719eb0e:  a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a4a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 14:32:37 - Gone 14:34:52 
+    - 3/98 error groups
+    - Stuck bit
+- 2 |   0x250a338:  a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 14:02:40 - Gone 14:03:13
+    - Appeared 14:07:25 - Gone 14:08:16
+    - 2/98 error groups
+    - Stuck bit
+- 2 |   0x96bbcf2:  a5a5a5a1 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5 a5a5a5a5
+    - Appeared 14:56:58 - Gone 14:57:31 (End of test)
+    - 2/98 error groups
+    - Stuck bit 
 
 
 ### Continuous Test 6 (2023-06-29 15:13:08 - 19:41:08)
