@@ -63,12 +63,12 @@ BIST_ERROR_RANGE_REGEX = 'Error address range: 0x[0-9a-f]{6,7}-0x[0-9a-f]{6,7},'
 BIST_ERROR_CNT_REGEX = 'Num Errors: [0-9]+,'
 
 
-DRAM_WAIT_TIMES = [0, 1, 2, 3, 4, 5, 10, 20, 30, 40, 50, 60]
+DRAM_WAIT_TIMES = [0, 1, 2, 5, 10, 60]
 
 
 
 
-def create_display_subplot(input_list, refresh_list, max_error_cnt, write_ones:bool):
+def create_display_subplot(args, input_list, refresh_list, max_error_cnt, write_ones:bool):
     # Plot everything
     # Set subplot up
     ax = plt.figure().add_subplot(projection='3d')
@@ -77,10 +77,10 @@ def create_display_subplot(input_list, refresh_list, max_error_cnt, write_ones:b
     facecolors = plt.colormaps['viridis_r'](np.linspace(0, 1, len(input_list)))
 
     poly = PolyCollection(input_list, facecolors=facecolors)
-    # ax.add_collection3d(poly, zs=refresh_list, zdir='y')
-    # ax.set(xlim=(DRAM_WAIT_TIMES[0], DRAM_WAIT_TIMES[len(DRAM_WAIT_TIMES) - 1]), ylim=(0, args.end_refresh_rate), zlim=(0, max_error_cnt), xlabel='Wait time (sec)', ylabel='Refresh rate (ck)', zlabel='Errors') # xlim=(0, 10), ylim=(1, 9), zlim=(0, 0.35),
-    ax.add_collection3d(poly, zs=range(0, len(refresh_list)), zdir='y')
-    ax.set(xlim=(DRAM_WAIT_TIMES[0], DRAM_WAIT_TIMES[len(DRAM_WAIT_TIMES) - 1]), ylim=(0, len(refresh_list)), zlim=(0, max_error_cnt), xlabel='Wait time (sec)', ylabel='Refresh rate tests', zlabel='Errors') # xlim=(0, 10), ylim=(1, 9), zlim=(0, 0.35),
+    ax.add_collection3d(poly, zs=refresh_list, zdir='y')
+    ax.set(xlim=(DRAM_WAIT_TIMES[0], DRAM_WAIT_TIMES[len(DRAM_WAIT_TIMES) - 1]), ylim=(0, args.end_refresh_rate), zlim=(0, max_error_cnt), xlabel='Wait time (sec)', ylabel='Refresh rate (ck)', zlabel='Errors') # xlim=(0, 10), ylim=(1, 9), zlim=(0, 0.35),
+    # ax.add_collection3d(poly, zs=range(0, len(refresh_list)), zdir='y')
+    # ax.set(xlim=(DRAM_WAIT_TIMES[0], DRAM_WAIT_TIMES[len(DRAM_WAIT_TIMES) - 1]), ylim=(0, len(refresh_list)), zlim=(0, max_error_cnt), xlabel='Wait time (sec)', ylabel='Refresh rate tests', zlabel='Errors') # xlim=(0, 10), ylim=(1, 9), zlim=(0, 0.35),
 
     if write_ones:
         plt.title("Writing All Ones")
@@ -345,8 +345,8 @@ def main():
     # print(refresh_list)
 
     # Create plots of both
-    create_display_subplot(ones_error_point_list, refresh_list, max_error_cnt, write_ones=True)
-    create_display_subplot(zeros_error_point_list, refresh_list, max_error_cnt, write_ones=False)
+    create_display_subplot(args, ones_error_point_list, refresh_list, max_error_cnt, write_ones=True)
+    create_display_subplot(args, zeros_error_point_list, refresh_list, max_error_cnt, write_ones=False)
 
     zeros_err_list_file.close()
     ones_err_list_file.close()
