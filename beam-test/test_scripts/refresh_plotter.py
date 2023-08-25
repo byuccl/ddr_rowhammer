@@ -63,7 +63,7 @@ BIST_ERROR_RANGE_REGEX = 'Error address range: 0x[0-9a-f]{6,7}-0x[0-9a-f]{6,7},'
 BIST_ERROR_CNT_REGEX = 'Num Errors: [0-9]+,'
 
 
-DRAM_WAIT_TIMES = [0, 1, 2, 5, 10, 60]
+DRAM_WAIT_TIMES = [0, 1, 2]
 
 
 
@@ -289,6 +289,8 @@ def main():
         # Create list for holding error points
         zeros_error_point_graph = []
         ones_error_point_graph = []
+        ones_error_point_graph.append((DRAM_WAIT_TIMES[0], 0))
+        zeros_error_point_graph.append((DRAM_WAIT_TIMES[0], 0))
 
         # Print new refresh rate (for organization)
         zeros_err_list_file.write(BEG_NEW_REFRESH_RATE_STR.format(rfsh_rate=refresh_rate))
@@ -340,9 +342,9 @@ def main():
 
         refresh_rate *= DOUBLE_REFRESH
 
-    # print(ones_error_point_list)
-    # print(zeros_error_point_list)
-    # print(refresh_list)
+    print(ones_error_point_list)
+    print(zeros_error_point_list)
+    print(refresh_list)
 
     # Create plots of both
     create_display_subplot(args, ones_error_point_list, refresh_list, max_error_cnt, write_ones=True)
