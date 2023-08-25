@@ -23,6 +23,7 @@ Build/load the bitstream before running this program.
 import argparse
 import time
 import re
+import os
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -57,7 +58,7 @@ BIST_READER_CMD_STR = "sdram_bist_reader 0x0 0xfffffff {err_lim}"
 BEG_NEW_REFRESH_RATE_STR="\n\n\n###################################################################\n# Refresh rate {rfsh_rate}\n###################################################################\n\n"
 TOT_NUM_TESTS_STR = "Total number of tests: "
 
-BIST_ERROR_MSG_REGEX = '0x[a-f0-9]{7}:  [ a-f0-9]{7}[a-f0-9] [ a-f0-9]{7}[a-f0-9]'
+BIST_ERROR_MSG_REGEX = '0x[a-f0-9]{7}:  [ a-f0-9]{7}[a-f0-9] [ a-f0-9]{7}[a-f0-9] [ a-f0-9]{7}[a-f0-9] [ a-f0-9]{7}[a-f0-9]'
 BIST_ERROR_RANGE_REGEX = 'Error address range: 0x[0-9a-f]{6,7}-0x[0-9a-f]{6,7},'
 BIST_ERROR_CNT_REGEX = 'Num Errors: [0-9]+,'
 
@@ -232,11 +233,20 @@ def main():
     # Create path for logfile
     log_dir = Path(".")
     if args.log_dir:
+        if not os.path.exists(args.log_dir):
+            os.makedirs(args.log_dir)
         log_dir = Path(args.log_dir)
 
-    # Create files to hold all errors output
-    zeros_err_list_file = open(args.filename + '_WRITING_ZEROS.txt', 'w')
-    ones_err_list_file = open(args.filename + '_WRITING_ONES.txt', 'w')
+        # Create files to hold all errors output
+        zeros_err_list_file = open(args.log_dir + '/' + args.filename + '_WRITING_ZEROS.txt', 'w')
+        ones_err_list_file = open(args.log_dir + '/' + args.filename + '_WRITING_ONES.txt', 'w')
+    else:
+
+        # Create files to hold all errors output
+        zeros_err_list_file = open(args.filename + '_WRITING_ZEROS.txt', 'w')
+        ones_err_list_file = open(args.filename + '_WRITING_ONES.txt', 'w')
+    
+    
 
     # Begin writing to files
     zeros_err_list_file.write(FILE_BEG_STR)

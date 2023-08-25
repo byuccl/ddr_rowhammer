@@ -72,8 +72,35 @@ Noncontinuous mode:
 python3 ddrcontinuous_experiment.py --test_name testexperiment --usb_uart_phys_port 1-4.3 --usb_uart_phys_if 1 --lindy_ip 169.254.132.210 --board_lindy_port 2 --no_uart_bone --noncontinuous_bist_delay 300 --test_board_name nexys4ddr --test_prefix EXAMPLE_DDR2_NONCONTINUOUS
 ```
 
-Notes:
-Nexys4ddr board 
+
+
+
+## Refresh Plotter
+
+This is a script that uses pexpect to send commands to the BIST and provide a list of errors and graphs of the errors to show both the weakest bits and the number of errors accumulated given different refresh rates.
+
+Source the file env.sh in the soc directory, build the bitstream with commands to control the refresh rate (in the ddr_rowhammer 'refresh_change' branch) and load the bitstream to the board.
+
+The arguments are as follows:
+
+tty_port: The port to connect to the board (ttyUSBX)
+filename: The beginning name of all the files
+error_limit: The limit of errors the BIST should output.
+beg_refresh_rate: The beginning refresh rate to start at (will double every cycle)
+end_refresh_rate: The refresh rate to end at (inclusive)
+log_dir: The name of a directory to place all the files in. 
+
+The refresh rate starts at the beginning refresh rate argument and doubles until it is greater than the ending refresh rate specified. The wait times are in an array DRAM_WAIT_TIMES near the top of the file.
+
+An example command:
+
+```
+python refresh_plotter.py --tty_port 1 --filename refresh_test --error_limit 1000 --beg_refresh_rate 31250 --end_refresh_rate 62500 --log_dir refresh_files
+```
+
+
+
+
 
 Previous documentation:
 
