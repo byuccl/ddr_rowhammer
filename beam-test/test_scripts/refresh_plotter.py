@@ -51,6 +51,7 @@ WRITING_ONES_STR = "ones"
 WRITING_ZEROS_STR = "zeros"
 WRITING_ONES_CMD_STR = "0xffffffff"
 WRITING_ZEROS_CMD_STR = "0x00000000"
+BIST_REFRESH_CMD_RESET_STR = "sdram_refresh_set 782"
 BIST_REFRESH_CMD_SR = "sdram_refresh_set {refresh_rate}"
 BIST_PAT_CMD_STR = "sdram_bist_pat {bist_pat_str}"
 BIST_WRITER_CMD_STR = "sdram_bist_writer 0x0 0xfffffff"
@@ -63,7 +64,7 @@ BIST_ERROR_RANGE_REGEX = 'Error address range: 0x[0-9a-f]{6,7}-0x[0-9a-f]{6,7},'
 BIST_ERROR_CNT_REGEX = 'Num Errors: [0-9]+,'
 
 
-DRAM_WAIT_TIMES = [0, 1, 2]
+DRAM_WAIT_TIMES = [0, 1, 2, 5, 10, 60]
 
 
 
@@ -148,6 +149,10 @@ def run_bist_cmds(args, refresh_rate : int, wait_time : int, serial_fdspawn : fd
     serial_fdspawn.sendline(BIST_WRITER_CMD_STR)
     serial_fdspawn.expect(LITEX_LOGIN_PATTERN, timeout=30)
     time.sleep(wait_time)
+
+    # Reset the refresh rate to normal
+    serial_fdspawn.sendline(BIST_REFRESH_CMD_RESET_STR)
+    serial_fdspawn.expect(LITEX_LOGIN_PATTERN, timeout=30)
 
     # Start the BIST reader
     serial_fdspawn.sendline(BIST_READER_CMD_STR.format(err_lim=str(args.error_limit)))
