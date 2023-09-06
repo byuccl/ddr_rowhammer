@@ -75,7 +75,7 @@ env: env.sh
 
 $(PYTHON_VENV)/dependencies_installed.txt: | env.sh
 	@echo ------------------------------------------
-	@echo Installing build dependnecies.
+	@echo Installing build dependencies.
 	@echo ------------------------------------------
 	git submodule update --init linux-on-litex-vexriscv
 	git submodule update --init --recursive dependencies
@@ -90,32 +90,40 @@ move_target_platform:
 	cd dependencies/litex-boards/litex_boards/platforms/ && rm antmicro_datacenter_ddr4_test_board.py
 	cp ./target/antmicro_datacenter_ddr4_test_board.py dependencies/litex-boards/litex_boards/targets/
 	cp ./platform/antmicro_datacenter_ddr4_test_board.py dependencies/litex-boards/litex_boards/platforms/
+	
+# -------------------------------------- #
 
-deps: $(PYTHON_VENV)/dependencies_installed.txt move_target_platform
+openocd: 
+	@echo ------------------------------------------
+	@echo Installing openocd
+	@echo ------------------------------------------
+	cd dependencies/openocd && ./bootstrap && ./configure --enable-ftdi && make && sudo make install
+	@echo Installed openocd on $$(date). > $(PYTHON_VENV)/dependencies_installed.txt
+	@echo -------------------DONE-------------------
+
+deps: $(PYTHON_VENV)/dependencies_installed.txt move_target_platform openocd
 
 # -------------------------------------- #
 
-build: deps | env.sh
+build: deps | env.sh openocd
 	@echo ------------------------------------------
 	@echo Building SoC.
 	@echo ------------------------------------------
 	. ./env.sh; \
 	cd linux-on-litex-vexriscv && ./make.py --board datacenter --build
-	# python $(PYTHON_FLAGS) ./dependencies/litex-boards/litex_boards/targets/$(BUILD_TARGET) --build $(BUILD_FLAGS)
 	@echo -------------------DONE-------------------
 
 # -------------------------------------- #
 
-load: | env.sh
+load: | env.sh 
 	@echo ------------------------------------------
 	@echo Loading Design
 	@echo ------------------------------------------
 	. ./env.sh; \
 	cd linux-on-litex-vexriscv && ./make.py --board datacenter --load
-	# python $(PYTHON_FLAGS) ./dependencies/litex-boards/litex_boards/targets/$(BUILD_TARGET) --load 
 	@echo -------------------DONE-------------------
 
 clean:
 	git submodule deinit -f linux-on-litex-vexriscv
 	git submodule deinit -f dependencies
-	rm -r .pyenv && rm -r linux-on-litex-vexriscv/build
+	rm env.sh && rm -r .pyenv && rm linux-on-litex-vexriscv/build

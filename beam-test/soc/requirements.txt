@@ -1,24 +1,24 @@
+meson
+ninja
 -e dependencies/migen
--e dependencies/pythondata-software-picolibc
--e dependencies/pythondata-software-compiler_rt
 -e dependencies/litex
--e dependencies/liteeth
+-e dependencies/litex-boards
 -e dependencies/litedram
+-e dependencies/liteeth
+-e dependencies/liteiclink
+-e dependencies/litejesd204b
 -e dependencies/litepcie
 -e dependencies/litesata
--e dependencies/litesdcard
--e dependencies/liteiclink
 -e dependencies/litescope
--e dependencies/litejesd204b
+-e dependencies/litesdcard
 -e dependencies/litespi
--e dependencies/litex-boards
--e dependencies/pythondata-misc-tapcfg
--e dependencies/pythondata-misc-usb_ohci
 -e dependencies/pythondata-cpu-lm32
 -e dependencies/pythondata-cpu-mor1kx
 -e dependencies/pythondata-cpu-naxriscv
 -e dependencies/pythondata-cpu-serv
 -e dependencies/pythondata-cpu-vexriscv
 -e dependencies/pythondata-cpu-vexriscv-smp
-meson
-ninja
+-e dependencies/pythondata-misc-tapcfg
+-e dependencies/pythondata-misc-usb_ohci
+-e dependencies/pythondata-software-picolibc
+-e dependencies/pythondata-software-compiler_rt

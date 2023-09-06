@@ -10,9 +10,6 @@
 [submodule "beam-test/soc/dependencies/litepcie"]
 	path = beam-test/soc/dependencies/litepcie
 	url = https://github.com/enjoy-digital/litepcie
-[submodule "beam-test/soc/dependencies/litesata"]
-	path = beam-test/soc/dependencies/litesata
-	url = https://github.com/enjoy-digital/litesata
 [submodule "beam-test/soc/dependencies/litescope"]
 	path = beam-test/soc/dependencies/litescope
 	url = https://github.com/enjoy-digital/litescope
@@ -70,3 +67,6 @@
 [submodule "beam-test/soc/dependencies/litex-boards"]
 	path = beam-test/soc/dependencies/litex-boards
 	url = https://github.com/litex-hub/litex-boards
+[submodule "beam-test/soc/dependencies/litesata"]
+	path = beam-test/soc/dependencies/litesata
+	url = https://github.com/enjoy-digital/litesata
