@@ -4,9 +4,13 @@
 
 ### Setting up our ECC project
 
-1. Clone this repository 
-```git clone https://github.com/tr-rocks/ecc_litex_build```
-
+1. Clone this repository and checkout our ecc_build branch.
+```
+git clone https://github.com/byuccl/ddr_rowhammer
+cd ./ddr_rowhammer
+git checkout ecc_build
+cd beam-test/soc
+```
 Note: If the default location of Vivado is not ```/tools/Xilinx/Vivado```, find the directory Vivado is installed, and run the command ```export VIVADO_LOCATION={}/Vivado```, where {} is the location of Vivado.
 
 
