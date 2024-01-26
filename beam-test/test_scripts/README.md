@@ -102,6 +102,14 @@ python refresh_plotter.py --tty_port 1 --filename refresh_test --error_limit 100
 
 
 
+## getAllErrorBitsFromRW scripts
+
+Each of these scripts sort the bits that flipped in the rowhammer tester according to the refresh rate they flipped in the refresh tests.
+
+
+
+
+
 Previous documentation:
 
 # DDR Rowhammer scripts
