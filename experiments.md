@@ -13,30 +13,14 @@ For each experiment provide the following:
 
 Here is a description of all the experiments we've done with each board.
 
-## Nexys4DDR
+## Refresh tests (Nexys4ddr, Nexys Video, Antmicro)
 
-### Refresh Tests - Non-Irradiated Board
+* The goal of this experiment was to find bits easily flipped when writing to the memory, setting a specified refresh rate, waiting some time, and then checking the errors.
 
-### Refresh Tests - Irradiated Board
+## Rowhammer tests (Nexys4ddr, Nexys Video, Antmicro)
 
-### Rowhammer Tests - Irradiated Board
+* Tho goal of this experiment was to find bits on both boards vulnerable to the rowhammer effect.
 
-### Comparison - Irradiated Board
+## Logs for comparison
 
-## Nexys Video
-
-### Refresh Tests - Irradiated Board
-
-### Rowhammer Tests - Irradiated Board
-
-### Comparison - Irradiated board
-
-## Antmicro Datacenter Board
-
-### Refresh Tests - Irradiated Memory
-
-### Rowhammer Tests - Irradiated Memory
-
-### Refresh Tests - Non-Irradiated Memory
-
-### Rowhammer Tests - Non-Irradiated Memory
+ - Scripts ([Nexys4ddr executable](https://github.com/byuccl/ddr_rowhammer/blob/refresh_change/beam-test/test_scripts/getAllErrorBitsFromRW_nexys4ddr.py), [Nexys Video executable](https://github.com/byuccl/ddr_rowhammer/blob/refresh_change/beam-test/test_scripts/getAllErrorBitsFromRW_nexys_video.py)) were made to compare the data between the BIST and the rowhammer tester. 
