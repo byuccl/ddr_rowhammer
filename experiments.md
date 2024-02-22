@@ -18,6 +18,9 @@ The goal of this experiment was to determine the defects that occur with the DRA
 We targeted the Nexys4DDR, Nexys Video, and antmicro datacenter boards.
 The data from the bist we ran during this test is [here](https://github.com/byuccl/ddr_rowhammer/releases/tag/untagged-dae17d4e2af2286aa6d6).
 
+The summaries of the parsed data is under the radiation branch. In radiation2023 directory, you can find DDR2, DDR3, and DDR4 parse logs directories. In each one of those directories, you can find summaries about the errors, their types and some description about them under detailed summaries. The parsing script is also found under the same branch (radiation2023) and its called radiation_2023_parser.py
+
+
 TODO: expand description
 
 
@@ -167,7 +170,7 @@ The goal of this experiment was to find bits on both boards vulnerable to the ro
 
 * Irradiated Nexys4ddr: We have rowhammer data up to the entire bank 0 for the nexys4ddr. These are on Tyler's computer.
 * Irradiated Nexys Video: We have rowhammer data up to row 12182 out of 32768 rows. These are on Tyler's computer.
-* Irradiated antmicro datacenter: We are currently running the rowhammer on this. The generated logs are on Rami's computer.
+* Irradiated antmicro datacenter: We are currently running the rowhammer on this (Mem 1). The generated logs are on Rami's computer. We also ran a test on Mem 2 that reached 24486 rows, it is on Rami's computer and also on Tyler's. 
 
 The json script is organized via read_count, pair of rows attacked, and in errors_in_rows we have bank number, row number, column number, and a list of all bits that flipped in the column. An example log from the nexys4ddr scripts is a json file with the following:
 
