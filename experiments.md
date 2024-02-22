@@ -7,11 +7,20 @@ For each experiment provide the following:
 
 # Experiment #1: December 2022 Radiation Test (Los Alamos)
 
+The goal of this experiment was to determine the defects that occur with the DRAM from radiation. We tested with the nexys video and antmicro datacenter boards.
+The results of our experiment are summarized [here](https://github.com/byuccl/ddr_rowhammer/tree/tr-ddrh-mjw/radiation_results#radiation-experiment-feedback) and the data from the bist we ran during this test is [here](https://github.com/byuccl/ddr_rowhammer/releases/tag/lansce_Dec2022).
+TODO: expand description
+
 # Experiment #2: July 2023 Radiation Test (Europe)
 
+The goal of this experiment was to determine the defects that occur with the DRAM from radiation, specifically if the number of errors increase as a result of the rowhammer effect and lower refresh rate, and if these errors correlate. 
+We targeted the Nexys4DDR, Nexys Video, and antmicro datacenter boards.
+The data from the bist we ran during this test is [here](https://github.com/byuccl/ddr_rowhammer/releases/tag/untagged-dae17d4e2af2286aa6d6)
+TODO: expand description
 
 
-# Board Experiments since then:
+
+# Board Experiments:
 
 Here is a description of all the experiments we've done with each board.
 
