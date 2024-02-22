@@ -33,6 +33,7 @@ The goal of this experiment was to find bits easily flipped when writing to the 
 
 
 **Part 1**
+
 At first we ran the BIST on all of the boards: nexys4dr irradiated and non-irradiated, nexys video irradiated and non-irradiated, and antmicro datacenter irradiated and non-irradiated. These were all run with a limit to the number of errors displayed (first we did 1,000, and then switched to 10,000 errors). Each test wrote and checked both data types (0's and 1's) for every bit. We have the graphs from our presentation from these logs which show the comparison of the error count with the nexys4ddr and antmicro datacenter board from these. Most of these have graphs showing the wait-time (time between writing data and checking it) and total errors, as at the time we changed the wait-time many times for comparison. The logs are stored in the following places:
 
 Non-irradiated Nexys4DDR: Data from refresh rates 7.8 us doubled till 1.00 ms, limit displaying 1000 errors (looks like it wasn't exceeded for these refresh rates) at many wait times, then data from refresh rates 2.00 ms doubled till 8 seconds, limit 10,000 errors at many wait times, then data from refresh rates 16 sec to 34.956 min, limit displaying 1000 errors: All these tests are stored on Tyler's computer.
@@ -49,6 +50,7 @@ Irradiated Antmicro Datacenter Board: Data from refresh rates 7.8us doubled till
 
 
 **Part 2**
+
 We started doing these again, this time displaying all the errors (waiting 5 min between the writing and the checking). 
 
 * We have data for refresh rates from 7.8us doubled till 512 ms for the irradiated nexys4ddr, as well as one time letting it sit for two hours with refresh disabled; these are on Tyler's computer.
