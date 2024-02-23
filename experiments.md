@@ -1,3 +1,6 @@
+This file summarizes all of the memory experiments we have completed.
+This provides an overview of the purpose of the experiment, indicates the specific boards used in the test, a brief summary of what we have learned, and links to the actual data and analysis.
+
 In this file, provide a summary of the various experiments that we have done from the start.
 For each experiment provide the following:
 * Provide a brief description of the goal of the experiemtn
@@ -7,12 +10,15 @@ For each experiment provide the following:
 
 # Experiment #1: December 2022 Radiation Test (Los Alamos)
 
-The goal of this experiment was to determine the defects that occur with the DRAM from radiation. We tested with the nexys video and antmicro datacenter boards.
+The goal of this experiment was to determine the defects that occur with the DRAM from radiation.
+We tested with the nexys video and antmicro datacenter boards.
 The results of our experiment are summarized [here](https://github.com/byuccl/ddr_rowhammer/tree/tr-ddrh-mjw/radiation_results#radiation-experiment-feedback) and the data from the bist we ran during this test is [here](https://github.com/byuccl/ddr_rowhammer/releases/tag/lansce_Dec2022).
+
+**TODO**: Indicate which specific boards were used for this part. Add a picture?
 
 TODO: expand description
 
-# Experiment #2: July 2023 Radiation Test (Europe)
+# Experiment #2: July 2023 ChipIR Radiation Test
 
 The goal of this experiment was to determine the defects that occur with the DRAM from radiation, specifically if the number of errors increase as a result of the rowhammer effect and lower refresh rate, and if these errors correlate. 
 We targeted the Nexys4DDR, Nexys Video, and antmicro datacenter boards.
@@ -20,10 +26,9 @@ The data from the bist we ran during this test is [here](https://github.com/byuc
 
 The summaries of the parsed data is under the radiation branch. In radiation2023 directory, you can find DDR2, DDR3, and DDR4 parse logs directories. In each one of those directories, you can find summaries about the errors, their types and some description about them under detailed summaries. The parsing script is also found under the same branch (radiation2023) and its called radiation_2023_parser.py
 
+**TODO**: Indicate which specific boards and memory modules were used for this part. Add a picture?
 
 TODO: expand description
-
-
 
 # Board Experiments:
 
@@ -31,30 +36,38 @@ Here is a description of all the experiments we've done with each board.
 
 ## Refresh tests (Nexys4ddr, Nexys Video, Antmicro)
 
-The goal of this experiment was to find bits easily flipped when writing to the memory, setting a specified refresh rate, waiting some time, and then checking the errors. We have used this on our Nexys4ddr (DDR2), Nexys Video (DDR3), and Antmicro (DDR4) boards. We created scripts called [refresh_plotter_nexys4ddr.py](https://github.com/byuccl/ddr_rowhammer/blob/refresh_change/beam-test/test_scripts/refresh_plotter_nexys4ddr.py), [refresh_plotter.py](https://github.com/byuccl/ddr_rowhammer/blob/refresh_change/beam-test/test_scripts/refresh_plotter.py) (for the nexys video board), and [refresh_plotter_antmicro.py](https://github.com/byuccl/ddr_rowhammer/blob/refresh_change/beam-test/test_scripts/refresh_plotter_antmicro.py) to run the BIST automatically and save the logs in a directory. 
-
+The goal of this experiment was to find bits easily flipped when writing to the memory, setting a specified refresh rate, waiting some time, and then checking the errors. 
+We have used this on our Nexys4ddr (DDR2), Nexys Video (DDR3), and Antmicro (DDR4) boards. We created scripts called [refresh_plotter_nexys4ddr.py](https://github.com/byuccl/ddr_rowhammer/blob/refresh_change/beam-test/test_scripts/refresh_plotter_nexys4ddr.py), [refresh_plotter.py](https://github.com/byuccl/ddr_rowhammer/blob/refresh_change/beam-test/test_scripts/refresh_plotter.py) (for the nexys video board), and [refresh_plotter_antmicro.py](https://github.com/byuccl/ddr_rowhammer/blob/refresh_change/beam-test/test_scripts/refresh_plotter_antmicro.py) to run the BIST automatically and save the logs in a directory. 
 
 
 **Part 1**
 
-At first we ran the BIST on all of the boards: nexys4dr irradiated and non-irradiated, nexys video irradiated and non-irradiated, and antmicro datacenter irradiated and non-irradiated. These were all run with a limit to the number of errors displayed (first we did 1,000, and then switched to 10,000 errors). Each test wrote and checked both data types (0's and 1's) for every bit. We have the graphs from our presentation from these logs which show the comparison of the error count with the nexys4ddr and antmicro datacenter board from these. Most of these have graphs showing the wait-time (time between writing data and checking it) and total errors, as at the time we changed the wait-time many times for comparison. The logs are stored in the following places:
+**TODO** Add board numbers (all six)
 
-Non-irradiated Nexys4DDR: Data from refresh rates 7.8 us doubled till 1.00 ms, limit displaying 1000 errors (looks like it wasn't exceeded for these refresh rates) at many wait times, then data from refresh rates 2.00 ms doubled till 8 seconds, limit 10,000 errors at many wait times, then data from refresh rates 16 sec to 34.956 min, limit displaying 1000 errors: All these tests are stored on Tyler's computer.
+At first we ran the BIST on all of the boards: nexys4dr irradiated and non-irradiated, nexys video irradiated and non-irradiated, and antmicro datacenter irradiated and non-irradiated.
+These were all run with a limit to the number of errors displayed (first we did 1,000, and then switched to 10,000 errors). Each test wrote and checked both data types (0's and 1's) for every bit.
+We have the graphs from our presentation from these logs which show the comparison of the error count with the nexys4ddr and antmicro datacenter board from these.
+Most of these have graphs showing the wait-time (time between writing data and checking it) and total errors, as at the time we changed the wait-time many times for comparison. The logs are stored in the following places:
 
-Irradiated Nexys4DDR: Data from refresh rates 7.8 us doubled till 512 ms, limit 10,000 errors at many wait times: All of these are stored on Tyler's computer.
+* Non-irradiated Nexys4DDR: Data from refresh rates 7.8 us doubled till 1.00 ms, limit displaying 1000 errors (looks like it wasn't exceeded for these refresh rates) at many wait times, then data from refresh rates 2.00 ms doubled till 8 seconds, limit 10,000 errors at many wait times, then data from refresh rates 16 sec to 34.956 min, limit displaying 1000 errors: 
+All these tests are stored on Tyler's computer.
+* Irradiated Nexys4DDR: Data from refresh rates 7.8 us doubled till 512 ms, limit 10,000 errors at many wait times: All of these are stored on Tyler's computer.
+* Non-irradiated Nexys Video: We also ran the bist on this board, I'm still looking for it but it is on the NUC.
+* Irradiated Nexys Video: Data from refresh rates 7.8 us doubled till 32 ms, limit 1,000 errors at many wait times: All of these are on the NUC.
+* Non-irradiated Antmicro Datacenter Board: Data from refresh rates 7.8us doubled till 32 ms, limit 10,000 errors at many wait times: these are on Tyler's computer.
+* Irradiated Antmicro Datacenter Board: Data from refresh rates 7.8us doubled till 32 ms, limit 10,000 errors at many wait times: these are on the NUC.
 
-Non-irradiated Nexys Video: We also ran the bist on this board, I'm still looking for it but it is on the NUC.
+**TODO**: Please summarze the size of the data files for these experiments.
 
-Irradiated Nexys Video: Data from refresh rates 7.8 us doubled till 32 ms, limit 1,000 errors at many wait times: All of these are on the NUC.
-
-Non-irradiated Antmicro Datacenter Board: Data from refresh rates 7.8us doubled till 32 ms, limit 10,000 errors at many wait times: these are on Tyler's computer.
-
-Irradiated Antmicro Datacenter Board: Data from refresh rates 7.8us doubled till 32 ms, limit 10,000 errors at many wait times: these are on the NUC.
+**TODO**: Is there a way to compress the data and provide a release? Please experiment with ways of archving this data.
 
 
 **Part 2**
 
-We started doing these again, this time displaying all the errors (waiting 5 min between the writing and the checking). 
+We started doing these again, this time *recording* all the errors (waiting 5 min between the writing and the checking). 
+The purpose of recording the actual errors is so that we can characterize and coralate the specific bits with row hammer testing.
+
+**TODO** Add board numbers and explain why some boards are not being tested.
 
 * We have data for refresh rates from 7.8us doubled till 512 ms for the irradiated nexys4ddr, as well as one time letting it sit for two hours with refresh disabled; these are on Tyler's computer.
 * We have data for refresh rates from 7.8us doubled till 256ms for the irradiated nexys video board, as well as one time letting it sit for 24 hours with refresh disabled; these are on Tyler's computer.
