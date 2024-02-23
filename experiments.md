@@ -16,7 +16,7 @@ TODO: expand description
 
 The goal of this experiment was to determine the defects that occur with the DRAM from radiation, specifically if the number of errors increase as a result of the rowhammer effect and lower refresh rate, and if these errors correlate. 
 We targeted the Nexys4DDR, Nexys Video, and antmicro datacenter boards.
-The data from the bist we ran during this test is [here](https://github.com/byuccl/ddr_rowhammer/releases/tag/untagged-dae17d4e2af2286aa6d6).
+The data from the bist we ran during this test is [here](https://github.com/byuccl/ddr_rowhammer/releases/tag/untagged-dae17d4e2af2286aa6d6). The sets of data we parsed and documented are on [this branch of the ddr_rowhammer repository.](https://github.com/byuccl/ddr_rowhammer/tree/radiation2023/radiation2023)
 
 The summaries of the parsed data is under the radiation branch. In radiation2023 directory, you can find DDR2, DDR3, and DDR4 parse logs directories. In each one of those directories, you can find summaries about the errors, their types and some description about them under detailed summaries. The parsing script is also found under the same branch (radiation2023) and its called radiation_2023_parser.py
 
