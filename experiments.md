@@ -38,7 +38,7 @@ The summaries of the parsed data is under the radiation branch. In radiation2023
 ![IMG_0422](https://github.com/byuccl/ddr_rowhammer/assets/83432874/6e89d89c-8059-4c94-b656-4cd1870ddcc8)
 
 
-**TODO**: Indicate which specific boards and memory modules were used for this part. Add a picture?
+We have labelled the three boards under radiation "Test". This is the Nexys4ddr board (labelled #57), the Nexys Video board (labelled "BYU-ARTIX-020"), and the antmicro datacenter board (labelled "ddr"; the "linux soc" board was for a different experiment not radiating the DDR memory).
 
 TODO: expand description
 
