@@ -3,7 +3,7 @@ This provides an overview of the purpose of the experiment, indicates the specif
 
 In this file, provide a summary of the various experiments that we have done from the start.
 For each experiment provide the following:
-* Provide a brief description of the goal of the experiemtn
+* Provide a brief description of the goal of the experiment
 * Indicate which board/memory was used for the experiment and what subset of the memory was tested
 * Provide a small snippet of what the output file looks like
 * Indicate where the data is currently located
@@ -59,25 +59,25 @@ We have used this on our Nexys4ddr (DDR2), Nexys Video (DDR3), and Antmicro (DDR
 
 **Part 1**
 
-**TODO** Add board numbers (all six)
+**TODO** Add board numbers (all six) --> Added
 
 At first we ran the BIST on all of the boards: nexys4dr irradiated and non-irradiated, nexys video irradiated and non-irradiated, and antmicro datacenter irradiated and non-irradiated.
 These were all run with a limit to the number of errors displayed (first we did 1,000, and then switched to 10,000 errors). Each test wrote and checked both data types (0's and 1's) for every bit.
 We have the graphs from our presentation from these logs which show the comparison of the error count with the nexys4ddr and antmicro datacenter board from these.
 Most of these have graphs showing the wait-time (time between writing data and checking it) and total errors, as at the time we changed the wait-time many times for comparison. The logs are stored in the following places:
 
-* Non-irradiated Nexys4DDR: Data from refresh rates 7.8 us doubled till 1.00 ms, limit displaying 1000 errors (looks like it wasn't exceeded for these refresh rates) at many wait times, then data from refresh rates 2.00 ms doubled till 8 seconds, limit 10,000 errors at many wait times, then data from refresh rates 16 sec to 34.956 min, limit displaying 1000 errors: 
+* Non-irradiated Nexys4DDR (DDR): Data from refresh rates 7.8 us doubled till 1.00 ms, limit displaying 1000 errors (looks like it wasn't exceeded for these refresh rates) at many wait times, then data from refresh rates 2.00 ms doubled till 8 seconds, limit 10,000 errors at many wait times, then data from refresh rates 16 sec to 34.956 min, limit displaying 1000 errors: 
 All these tests are stored on Tyler's computer.
 * Irradiated Nexys4DDR (#57): Data from refresh rates 7.8 us doubled till 512 ms, limit 10,000 errors at many wait times: All of these are stored on Tyler's computer.
-* Non-irradiated Nexys Video: We also ran the bist on this board, I'm still looking for it but it is on the NUC.
+* Non-irradiated Nexys Video (BYU-Artix7-007): We also ran the bist on this board, I'm still looking for it but it is on the NUC.
 * Irradiated Nexys Video (BYU-Artix-020): Data from refresh rates 7.8 us doubled till 32 ms, limit 1,000 errors at many wait times: All of these are on the NUC.
 * Non-irradiated Antmicro Datacenter Board (linux-SOC #8): Data from refresh rates 7.8us doubled till 32 ms, limit 10,000 errors at many wait times: these are on Tyler's computer.
-* Irradiated Antmicro Datacenter  (ddr #10): Data from refresh rates 7.8us doubled till 32 ms, limit 10,000 errors at many wait times: these are on the NUC.
+* Irradiated Antmicro Datacenter (ddr #10): Data from refresh rates 7.8us doubled till 32 ms, limit 10,000 errors at many wait times: these are on the NUC.
 
 
 
 
-**TODO**: Is there a way to compress the data and provide a release? Please experiment with ways of archving this data.
+**TODO**: Is there a way to compress the data and provide a release? Please experiment with ways of archiving this data.
 * Rami: We can compress the data and push it to github in a release, and we can also put it on a hard-drive so that we can have it in 2 places just in case. 
 
 
@@ -85,17 +85,17 @@ All these tests are stored on Tyler's computer.
 **Part 2**
 
 We started doing these again, this time *recording* all the errors (waiting 5 min between the writing and the checking). 
-The purpose of recording the actual errors is so that we can characterize and coralate the specific bits with row hammer testing.
+The purpose of recording the actual errors is so that we can characterize and correlate the specific bits with row hammer testing.
 
 **TODO**: Please summarize the size of the data files for these experiments.
 * For the non-irradiated antmicro board, there are 3 files of data: log file (9.5 GB), Writing Ones Errors (474.2 MB) and Writing Zeros Errors (3.0 GB)
 
 **TODO** Add board numbers and explain why some boards are not being tested.
 
-* We have data for refresh rates from 7.8us doubled till 512 ms for the irradiated nexys4ddr, as well as one time letting it sit for two hours with refresh disabled; these are on Tyler's computer.
-* We have data for refresh rates from 7.8us doubled till 256ms for the irradiated nexys video board, as well as one time letting it sit for 24 hours with refresh disabled; these are on Tyler's computer.
-* We have data for refresh rates from 7.8us doubled till 16ms (I believe, definitely found data up to 8ms) for the non-irradiated antmicro datacenter board as it appears; these logs are on the NUC.
-* We have data for refresh rates from 7.8us doubled till 4.00 ms for the irradiated antmicro datacenter board currently; we stopped this test to run the rowhammer tester on it; the logs with the refresh tests for this board are on Tyler's computer. 
+* We have data for refresh rates from 7.8us doubled till 512 ms for the irradiated nexys4ddr (#57), as well as one time letting it sit for two hours with refresh disabled; these are on Tyler's computer.
+* We have data for refresh rates from 7.8us doubled till 256ms for the irradiated nexys video board (BYU-ARTIX-020), as well as one time letting it sit for 24 hours with refresh disabled; these are on Tyler's computer.
+* We have data for refresh rates from 7.8us doubled till 16ms (I believe, definitely found data up to 8ms) for the non-irradiated antmicro datacenter board (linux-SOC #8 Mem 2) as it appears; these logs are on the NUC.
+* We have data for refresh rates from 7.8us doubled till 4.00 ms for the irradiated antmicro datacenter board currently (ddr #10 Mem-1); we stopped this test to run the rowhammer tester on it; the logs with the refresh tests for this board are on Tyler's computer. 
 
 The output for the antmicro datacenter board testing 1's and testing 0's looks like this:
 
@@ -204,9 +204,9 @@ The output for the antmicro datacenter board testing 1's and testing 0's looks l
 
 The goal of this experiment was to find bits on both boards vulnerable to the rowhammer effect. When we first started running the [rowhammer tester](https://github.com/antmicro/rowhammer-tester), we had to modify the output file to also include the bank as it included errors from all banks grouped together in rows, no way of telling which error belonged to which bank although we knew the row number. The command we've been using disables the refresher, writing with pattern all 0's. These are the tests I've found so far, I believe there are more on the NUC. 
 
-* Irradiated Nexys4ddr: We have rowhammer data up to the entire bank 0 for the nexys4ddr. These are on Tyler's computer.
-* Irradiated Nexys Video: We have rowhammer data up to row 12182 out of 32768 rows. These are on Tyler's computer.
-* Irradiated antmicro datacenter: We are currently running the rowhammer on this (Mem 1). The generated logs are on Rami's computer, the test was stopped at row 18143 due to the flooding, and the logs were sent to Taylor. We also ran a test on Mem 2 that reached 24486 rows, it is on Rami's computer and also on Tyler's. 
+* Irradiated Nexys4ddr (#57): We have rowhammer data up to the entire bank 0 for the nexys4ddr. These are on Tyler's computer.
+* Irradiated Nexys Video (BYU-ARTIX-020): We have rowhammer data up to row 12182 out of 32768 rows. These are on Tyler's computer.
+* Irradiated antmicro datacenter (ddr #10): We ran the rowhammer test on this (Mem 1). The generated logs are on Rami's computer, the test was stopped at row 18143 due to the flooding, and the logs were sent to Taylor. We also ran a test on Mem 2 that reached 24486 rows, it is on Rami's computer and also on Tyler's. 
 
 The json script is organized via read_count, pair of rows attacked, and in errors_in_rows we have bank number, row number, column number, and a list of all bits that flipped in the column. An example log from the nexys4ddr scripts is a json file with the following:
 
