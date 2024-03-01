@@ -32,6 +32,12 @@ The data from the bist we ran during this test is [here](https://github.com/byuc
 
 The summaries of the parsed data is under the radiation branch. In radiation2023 directory, you can find DDR2, DDR3, and DDR4 parse logs directories. In each one of those directories, you can find summaries about the errors, their types and some description about them under detailed summaries. The parsing script is also found under the same branch (radiation2023) and its called radiation_2023_parser.py
 
+![img_0423](https://github.com/byuccl/ddr_rowhammer/assets/83432874/2eb5fc83-daf6-430a-b530-f36bc2f12a7e)
+
+
+![IMG_0422](https://github.com/byuccl/ddr_rowhammer/assets/83432874/6e89d89c-8059-4c94-b656-4cd1870ddcc8)
+
+
 **TODO**: Indicate which specific boards and memory modules were used for this part. Add a picture?
 
 TODO: expand description
