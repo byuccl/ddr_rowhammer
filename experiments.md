@@ -12,7 +12,7 @@ For each experiment provide the following:
 
 The goal of this experiment was to determine the defects that occur with the DRAM from radiation.
 We tested with the nexys video and antmicro datacenter boards.
-The results of our experiment are summarized [here](https://github.com/byuccl/ddr_rowhammer/tree/tr-ddrh-mjw/radiation_results#radiation-experiment-feedback) and the data from the bist we ran during this test is [here](https://github.com/byuccl/ddr_rowhammer/releases/tag/lansce_Dec2022).
+The results of our experiment are summarized [in this README](https://github.com/byuccl/ddr_rowhammer/tree/tr-ddrh-mjw/radiation_results#radiation-experiment-feedback) and the raw data from the bist we ran during this test is [here](https://github.com/byuccl/ddr_rowhammer/releases/tag/lansce_Dec2022). We parsed through the data, and all of our results are found in the [radiation_results](https://github.com/byuccl/ddr_rowhammer/tree/tr-ddrh-mjw/radiation_results) folder, where each log file shows how many errors occured reading memory, 
 
 ![image](https://github.com/byuccl/ddr_rowhammer/assets/83432874/7e268e56-8f36-4a1d-9268-0aec8da942a3)
 
@@ -21,8 +21,6 @@ The antmicro datacenter board we used is the one with two labels "Test" and "ddr
 ![image](https://github.com/byuccl/ddr_rowhammer/assets/83432874/c2448998-88c5-48fb-887c-543e49521ebf)
 
 The nexys video board we used is the one labelled BYU-ARTIX-026.
-
-TODO: expand description
 
 # Experiment #2: July 2023 ChipIR Radiation Test
 
