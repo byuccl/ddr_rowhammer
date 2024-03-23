@@ -28,7 +28,7 @@ The following are the stuck bits found during the IDLE Tests
 ### Soft bits:
 
 
-### SEFI: 
+### SEFI: How should i exactly show these? At some points, the whole DRAM went bad 
 
 
 
