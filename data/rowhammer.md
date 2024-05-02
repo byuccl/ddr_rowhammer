@@ -2,12 +2,17 @@
 
 This file summarizes the rowhammer experiments.
 
+Here is a [link to the wiki page](https://github.com/byuccl/ddr_rowhammer/wiki/Instructions-to-Setup-the-rowhammer-tester) on the ddr_rowhammer repository that explains how to set up our rowhammer project.
+Also, here is a [link to the fork](https://github.com/byuccl/rowhammer-tester/) which the instructions show how to install.
+
 ## Rowhammer tests (Nexys4ddr, Nexys Video, Antmicro)
 
 The goal of this experiment was to find bits on the DRAM modules that are vulnerable to the rowhammer effect.
+
 **Provide a summary of what rowhammer is**
 
 **Provide a summary of the big picture of what a rowhammer test does**
+
 Pairs of rows
 What are the parameters that can be changed in a test?
 * Number of times that the attacked row was accessed (read_count)
