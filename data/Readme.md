@@ -28,12 +28,18 @@ The experiments used to collect this data are described in detail [here](../expe
 ### Rowhammer tests
 
 * Nexys4DDR:
-  * completed all of bank #0 on board #57
+  * completed up to row 7283 of bank #0 on board #57
+    * 6 files = {4.3 MB, 304 MB, 108.0 MB, 87.8 MB, 536.7 MB, 74.8 MB}
   * completed all of bank #0 for board 'ddr' (non irradiated)
+    * 1 file = 21.4 MB 
 * NexysVideo:
-  * completed all of bank #0 for Radiated board (BYU-Artix-020)
-  * still running for Unradiated board (BYU-Artix7-007) (getting close to compelting)
+  * completed rows 0 - 3173, 6281 - 32765 for Radiated board (BYU-Artix-020)
+    * 15 files = {251.2 MB, 250.0 MB, 383.8 MB, 177.4 MB, 199.3 MB, 438.9 MB, 1.1 GB, 291.3 MB, 451.8 MB, 376.9 MB, 482.7 MB, 1.6 GB, 1.6 GB, 1.2 GB, 1.1 GB}
+  * completed rows 0 - 8207 (BYU-Artix7-007) (currently running)
+    * 4 files = {1.4 GB, 9.7 MB, 977.1 MB, 191.8 MB}
 * AntMicro:
-  * #010/MEM1: up to row 18143 on bank 0
-  * #010/MEM2: all of bank 0
+  * #010/MEM1: completed rows 22523 to row 68550 on bank 0
+    * 1 file - 5.3 GB
+  * #010/MEM2: completed rows 24486 to row 131069 on bank 0
+    * 1 file - 5.2 GB
   
