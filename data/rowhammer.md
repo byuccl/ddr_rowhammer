@@ -40,7 +40,9 @@ After running the rowhammer tester, a map is dumped into a json file which conta
 2. Each key "pair\_{}\_{}" points to another map that first has two keys "hammer\_row\_1" and "hammer\_row\_2" (which both point to the number id of the rows being hammered) and second has the "errors_in_row" key that holds the data of all the bits that have flipped.
 3. We had to reorganize the "errors_in_row" key as only the row, column, and bit numbers were being output, and not the bank.
    Our changes were made in rowhammer.py. Look for the sections of code with '###################################################'.
-   The "errors_in_rows" key points to a map with bank numbers as each key. Each bank number points to a corresponding row map with row numbers as each key. Likewise, each row number points to a map with column numbers as each key. And lastly, each column number points to a list holding all the bitnumbers that have flipped during the test. 
+   The "errors_in_rows" key points to a map with bank numbers as each key. Each bank number points to a corresponding row map with row numbers as each key. Likewise, each row number points to a map with column numbers as each key. And lastly, each column number points to a list holding all the bitnumbers that have flipped during the test.
+
+Antmicro has provided descriptions of the python scripts to run and all the arguments needed to run the tester [in this document here.](https://github.com/antmicro/rowhammer-tester/blob/main/docs/source/usage.md#hammering)
 
 An example log from the nexys4ddr scripts is a json file with the following:
 
