@@ -10,12 +10,14 @@ Also, here is a [link to the fork](https://github.com/byuccl/rowhammer-tester/) 
 The goal of this experiment was to find bits on the DRAM modules that are vulnerable to the rowhammer effect.
 
 **Provide a summary of what rowhammer is**
+
 To decrease the cost-per-bit of memory, DRAM cells over time have been placed closer together in the same area and have decreased in size. 
 Unfortunately, cells are more likely to experience disturbance or interference from outside neighbouring cell operations. 
 Particularly, the voltage stored in a cell may decrease or increase as a result of neighbouring cell accesses, so much so that the intended bit value in the cell flips.
 The Row Hammer effect refers to any pattern or technique of cell accesses which results in this effect, where multiple accesses on a row of cells in the DRAM is referred to as a "row hammer event". 
 
 **Provide a summary of the big picture of what a rowhammer test does**
+
 The Antmicro "rowhammer-tester" is a project written in the migen HDL that takes advantage of the [Litex SoC](https://github.com/enjoy-digital/litex) and its [DRAM controller LiteDRAM](https://github.com/enjoy-digital/litedram) to use the row hammer effect on the DRAM of an fpga. 
 It first fills the DRAM device with data of a certain pattern, hammers rows with data of a certain pattern, and then reads the entire memory for errors. 
 
