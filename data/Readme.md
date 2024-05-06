@@ -28,7 +28,7 @@ The experiments used to collect this data are described in detail [here](../expe
 ### Rowhammer tests
 
 * Nexys4DDR:
-  * completed up to row 7283 of bank #0 on board #57 (irradiated)
+  * completed all of bank #0 on board #57 (irradiated)
     * 6 files = {4.3 MB, 304 MB, 108.0 MB, 87.8 MB, 536.7 MB, 74.8 MB}
     * Compressed all together: 71.8 MB
   * completed all of bank #0 for board 'ddr' (non irradiated)
