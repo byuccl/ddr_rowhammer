@@ -9,12 +9,51 @@ Also, here is a [link to the fork](https://github.com/byuccl/rowhammer-tester/) 
 
 The goal of this experiment was to find bits on the DRAM modules that are vulnerable to the rowhammer effect.
 
+* Nexys4DDR: (Bank 0 is done for both boards)
+  * completed up to row xxxx (last row) of bank #0 on board #57 (irradiated)
+    * 6 files = {4.3 MB, 304 MB, 108.0 MB, 87.8 MB, 536.7 MB, 74.8 MB}. Each file is a different set of rows.
+    * Compressed all together: 71.8 MB
+  * completed all of bank #0 for board 'ddr' (non irradiated)
+    * 1 file = 21.4 MB
+    * Compressed all together: 1.1 MB
+* NexysVideo:
+  * completed rows 0 - 3173, 6281 - 32765 for Radiated board (BYU-Artix-020)
+    * 15 files = {251.2 MB, 250.0 MB, 383.8 MB, 177.4 MB, 199.3 MB, 438.9 MB, 1.1 GB, 291.3 MB, 451.8 MB, 376.9 MB, 482.7 MB, 1.6 GB, 1.6 GB, 1.2 GB, 1.1 GB}
+    * Compressed all together: 663.3 MB
+  * completed rows 0 - 8207 (BYU-Artix7-007) (currently running)
+    * 4 files = {1.4 GB, 9.7 MB, 977.1 MB, 191.8 MB}
+    * Compressed all together: 158.8 MB
+* AntMicro:
+  * #010/MEM1: completed rows 22523 to row 68550 on bank 0
+    * 1 file - 5.3 GB
+    * Compressed all together: 312.6 MB
+  * #010/MEM2: completed rows 0 to 13155, 24486 to row 131069 on bank 0
+    * 2 files - 3.3 GB, 5.2 GB
+    * Compressed all together: 470.5 MB
+  
+
+* Parameters:
+* bit pattern to write to entire memory, 
+* Begining row to start test at, number of rows you want to test
+* Number of times reading from the rows (1E6)
+* Can run it with or without refresh (with refresh, it uses the standard slowest refresh that meets spec: 7.8 us per row)
+    * What happens when you run the rowhammer test with a lower refresh rate than specified (but not zero)? This is an open question.
+
+1. Writes pattern to full memory
+2. Reads pattern to see if memory is correct
+3. Reads pattern
+
 **Provide a summary of what rowhammer is**
 
 To decrease the cost-per-bit of memory, DRAM cells over time have been placed closer together in the same area and have decreased in size. 
 Unfortunately, cells are more likely to experience disturbance or interference from outside neighbouring cell operations. 
 Particularly, the voltage stored in a cell may decrease or increase as a result of neighbouring cell accesses, so much so that the intended bit value in the cell flips.
 The Row Hammer effect refers to any pattern or technique of cell accesses which results in this effect, where multiple accesses on a row of cells in the DRAM is referred to as a "row hammer event". 
+
+**How can this be used maliciously?**
+
+**Describe the steps involved in a rowhammer tests and summarize the parameters that can be changed. Do this at a higher level than the ant micro for the first paragraph**
+
 
 **Provide a summary of the big picture of what a rowhammer test does**
 
