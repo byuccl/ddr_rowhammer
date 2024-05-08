@@ -14,10 +14,10 @@ Unfortunately, cells are more likely to experience disturbance or interference f
 Particularly, the voltage stored in a cell may decrease or increase as a result of neighbouring cell accesses, so much so that the intended bit value in the cell flips.
 The Row Hammer effect refers to any pattern or technique of cell accesses which results in this effect, where multiple accesses on a row of cells in the DRAM is referred to as a "row hammer event". 
 
-## Our Method of Row Hammer Attack
-
 The Antmicro "rowhammer-tester" is a project written in the migen HDL that takes advantage of the [Litex SoC](https://github.com/enjoy-digital/litex) and its [DRAM controller LiteDRAM](https://github.com/enjoy-digital/litedram) to use the row hammer effect on the DRAM of an fpga. 
 It first fills the DRAM device with data of a certain pattern, hammers rows with data of a certain pattern, and then reads the entire memory for errors. 
+
+## Our Method of Row Hammer Attack
 
 To run the rowhammer tester, we followed their instructions for creating the project and the bitstream. 
 [Here are instructions for the arty board.](https://github.com/antmicro/rowhammer-tester/blob/main/docs/source/arty.md) 
@@ -112,21 +112,18 @@ Reenabling refresh ...
 
 Verifying attacked memory ...
 ```
-
-
-
 Pairs of rows
 What are the parameters that can be changed in a test?
 * Number of times that the attacked row was accessed (read_count)
 How long does it take to perform a test?
 
-
 When we first started running the [rowhammer tester](https://github.com/antmicro/rowhammer-tester), we had to modify the output file to also include the bank as it included errors from all banks grouped together in rows, no way of telling which error belonged to which bank although we knew the row number.
+Our changes can be found [in this file,](https://github.com/byuccl/rowhammer-tester/blob/main/rowhammer_tester/scripts/rowhammer.py) commented with ```#'s```.
 
 ### Timing
 
-For the antmicro DDR4 non-irradiated board, the row hammer test took about 30 - 40 seconds for each pair (with about 380 - 640 errors each test).
-For the antmicro DDR4 irradiated board, the rowhammer test took about 60 - 75 seconds for each pair (with about 950 - 1220 errors each test). 
+For the antmicro DDR4 non-irradiated board, the row hammer test takes about 30 - 40 seconds for each pair (with about 380 - 640 errors each test).
+For the antmicro DDR4 irradiated board, the rowhammer test takes about 60 - 75 seconds for each pair (with about 950 - 1220 errors each test). 
 
 ### Output Organization
 
