@@ -122,11 +122,6 @@ How long does it take to perform a test?
 
 
 When we first started running the [rowhammer tester](https://github.com/antmicro/rowhammer-tester), we had to modify the output file to also include the bank as it included errors from all banks grouped together in rows, no way of telling which error belonged to which bank although we knew the row number.
-The command we've been using disables the refresher, writing with pattern all 0's. These are the tests I've found so far, I believe there are more on the NUC. 
-
-* Irradiated Nexys4ddr (#57): We have rowhammer data up to the entire bank 0 for the nexys4ddr. These are on Tyler's computer.
-* Irradiated Nexys Video (BYU-ARTIX-020): We have rowhammer data up to row 12182 out of 32768 rows. These are on Tyler's computer.
-* Irradiated antmicro datacenter (ddr #10): We ran the rowhammer test on this (Mem 1). The generated logs are on Rami's computer, the test was stopped at row 18143 due to the flooding, and the logs were sent to Taylor. We also ran a test on Mem 2 that reached 24486 rows, it is on Rami's computer and also on Tyler's.
 
 ### Timing
 
@@ -142,12 +137,6 @@ After running the rowhammer tester, a map is dumped into a json file which conta
 3. We had to reorganize the "errors_in_row" key as only the row, column, and bit numbers were being output, and not the bank.
    Our changes were made in rowhammer.py. Look for the sections of code with '###################################################'.
    The "errors_in_rows" key points to a map with bank numbers as each key. Each bank number points to a corresponding row map with row numbers as each key. Likewise, each row number points to a map with column numbers as each key. And lastly, each column number points to a list holding all the bitnumbers that have flipped during the test.
-
-### Method and Parameters
-
-Antmicro has provided descriptions of the python scripts to run and all the arguments needed to run the tester [in 
-
-Our method
 
 An example log from the nexys4ddr scripts is a json file with the following:
 
@@ -317,3 +306,12 @@ An example log from the nexys4ddr scripts is a json file with the following:
                             122
                         ],
 ```
+
+
+
+The command we've been using disables the refresher, writing with pattern all 0's. These are the tests I've found so far, I believe there are more on the NUC. 
+
+* Irradiated Nexys4ddr (#57): We have rowhammer data up to the entire bank 0 for the nexys4ddr. These are on Tyler's computer.
+* Irradiated Nexys Video (BYU-ARTIX-020): We have rowhammer data up to row 12182 out of 32768 rows. These are on Tyler's computer.
+* Irradiated antmicro datacenter (ddr #10): We ran the rowhammer test on this (Mem 1). The generated logs are on Rami's computer, the test was stopped at row 18143 due to the flooding, and the logs were sent to Taylor. We also ran a test on Mem 2 that reached 24486 rows, it is on Rami's computer and also on Tyler's.
+
