@@ -38,14 +38,14 @@ The experiments used to collect this data are described in detail [here](../expe
   * completed all of bank #0 for Radiated board (BYU-Artix-020)
     * 15 files = {251.2 MB, 250.0 MB, 383.8 MB, 177.4 MB, 1.0 GB, 199.3 MB, 438.9 MB, 1.1 GB, 291.3 MB, 451.8 MB, 376.9 MB, 482.7 MB, 1.6 GB, 1.6 GB, 1.2 GB, 1.1 GB}
     * Compressed all together: 668.8 MB
-  * completed rows 0 - 8207 (BYU-Artix7-007) (currently running)
-    * 4 files = {1.4 GB, 9.7 MB, 977.1 MB, 191.8 MB}
-    * Compressed all together: 158.8 MB
+  * completed rows 0 - 9124 (BYU-Artix7-007) (currently running)
+    * 6 files = {1.4 GB, 9.7 MB, 977.1 MB, 191.8 MB, 109.3 MB, 106.6 MB}
+    * Compressed all together: 171.9 MB
 * AntMicro:
   * #010/MEM1: completed rows 22523 to row 68550 on bank 0 (currenlty running)
     * 1 file - 5.3 GB
     * Compressed all together: 312.6 MB
-  * #010/MEM2: completed rows 0 to 13155, 24486 to row 131069 on bank 0 (currently running)
-    * 2 files - 3.3 GB, 5.2 GB
-    * Compressed all together: 470.5 MB
+  * #010/MEM2: completed all of bank #0
+    * 4 files - 3.3 GB, 5.2 GB, 1.2 GB, 86.3 kB
+    * Compressed all together: 534.7 MB
   
