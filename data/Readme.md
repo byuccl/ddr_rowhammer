@@ -44,7 +44,7 @@ The experiments used to collect this data are described in detail [here](../expe
 * AntMicro:
   * #010/MEM1: completed rows 0 to row 7865, 22523 to row 68550 on bank 0 (currenlty running)
     * 2 files - 5.3 GB, 2.7 GB
-    * Compressed all together: 312.6 MB
+    * Compressed all together: 467.5 MB
   * #010/MEM2: completed all of bank #0
     * 4 files - 3.3 GB, 5.2 GB, 1.2 GB, 86.3 kB
     * Compressed all together: 534.7 MB
