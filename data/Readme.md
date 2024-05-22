@@ -42,9 +42,9 @@ The experiments used to collect this data are described in detail [here](../expe
     * 8 files = {1.4 GB, 9.7 MB, 977.1 MB, 191.8 MB, 109.3 MB, 106.6 MB, 993.0 MB, 1.2 GB}
     * Compressed all together: 351.4 MB
 * AntMicro:
-  * #010/MEM1: completed rows 0 to row 20273, 22523 to row 68550 on bank 0 (currenlty running)
-    * 3 files - 5.3 GB, 2.7 GB, 3.4 GB
-    * Compressed all together: 664.0 MB
+  * #010/MEM1: completed rows 0 to row 68550 of bank #0 (currenlty running)
+    * 4 files - 5.3 GB, 2.7 GB, 3.4 GB, 290.1 MB
+    * Compressed all together: 681.4 MB
   * #010/MEM2: completed all of bank #0
     * 4 files - 3.3 GB, 5.2 GB, 1.2 GB, 86.3 kB
     * Compressed all together: 534.7 MB
