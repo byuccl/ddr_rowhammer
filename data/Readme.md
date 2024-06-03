@@ -39,12 +39,12 @@ The experiments used to collect this data are described in detail [here](../expe
     * 15 files = {251.2 MB, 250.0 MB, 383.8 MB, 177.4 MB, 1.0 GB, 199.3 MB, 438.9 MB, 1.1 GB, 291.3 MB, 451.8 MB, 376.9 MB, 482.7 MB, 1.6 GB, 1.6 GB, 1.2 GB, 1.1 GB}
     * Compressed all together: 668.8 MB
   * completed rows 0 - 17771 of bank #0 (BYU-Artix7-007) (currently running)
-    * 8 files = {1.4 GB, 9.7 MB, 977.1 MB, 191.8 MB, 109.3 MB, 106.6 MB, 993.0 MB, 1.2 GB}
-    * Compressed all together: 351.4 MB
+    * 9 files = {1.4 GB, 9.7 MB, 977.1 MB, 191.8 MB, 109.3 MB, 106.6 MB, 993.0 MB, 1.2 GB, 1.3 GB}
+    * Compressed all together: 432.8 MB
 * AntMicro:
   * #010/MEM1: completed rows 0 to row 68550 of bank #0 (currenlty running)
-    * 4 files - 5.3 GB, 2.7 GB, 3.4 GB, 290.1 MB
-    * Compressed all together: 681.4 MB
+    * 8 files - 5.3 GB, 2.7 GB, 3.4 GB, 290.1 MB, 886.0 Mb, 1.7 GB, 85.5 MB, 2.3 GB
+    * Compressed all together: 969.3 MB
   * #010/MEM2: completed all of bank #0
     * 4 files - 3.3 GB, 5.2 GB, 1.2 GB, 86.3 kB
     * Compressed all together: 534.7 MB
