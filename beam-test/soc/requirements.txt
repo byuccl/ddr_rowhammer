@@ -4,8 +4,8 @@ ninja
 -e dependencies/litex
 -e dependencies/litex-boards
 -e dependencies/litedram
--e dependencies/liteeth
 -e dependencies/liteiclink
+-e dependencies/liteeth
 -e dependencies/litejesd204b
 -e dependencies/litepcie
 -e dependencies/litesata
