@@ -19,7 +19,7 @@ LINE_RANK_STR_REGEX = "#### refresh rate \d* test (zeros|ones)"
 CHECK_RANK_STR = "test"
 ZEROS_REF_STR = "zeros"
 ONES_REF_STR = "ones"
-REGEX_ERROR_STR = "0x[0-1][0-9a-f]{6}:  [ 0-9a-f]{7}[0-9a-f] [ 0-9a-f]{7}[0-9a-f] [ 0-9a-f]{7}[0-9a-f] [ 0-9a-f]{7}[0-9a-f]"
+REGEX_ERROR_STR = "0x0[0-9a-f]{6}:  [ 0-9a-f]{7}[0-9a-f] [ 0-9a-f]{7}[0-9a-f] [ 0-9a-f]{7}[0-9a-f] [ 0-9a-f]{7}[0-9a-f] [ 0-9a-f]{7}[0-9a-f] [ 0-9a-f]{7}[0-9a-f] [ 0-9a-f]{7}[0-9a-f] [ 0-9a-f]{7}[0-9a-f] [ 0-9a-f]{7}[0-9a-f] [ 0-9a-f]{7}[0-9a-f] [ 0-9a-f]{7}[0-9a-f] [ 0-9a-f]{7}[0-9a-f] [ 0-9a-f]{7}[0-9a-f] [ 0-9a-f]{7}[0-9a-f] [ 0-9a-f]{7}[0-9a-f] [ 0-9a-f]{7}[0-9a-f]"
 SDRAM_REFRESH_TEST_STR = "sdram_refresh_set {refresh_rate}"
 SDRAM_PATTERN_REGEX_ZEROS_STR = "sdram_bist_pat 0x00000000"
 SDRAM_PATTERN_REGEX_ONES_STR = "sdram_bist_pat 0xffffffff"
@@ -404,8 +404,6 @@ def main():
                             rank_map[bank_key][row_key] = {}
                         if not (col_key in rank_map[bank_key][row_key]):
                             rank_map[bank_key][row_key][col_key] = {}
-                        if bit_cnt in rank_map[bank_key][row_key][col_key]:
-                            continue
 
                         address_to_convert = int(row_key)
                         address_to_convert = (address_to_convert << NEXYS_VIDEO_BANK_BIT_CNT) + int(bank_key)

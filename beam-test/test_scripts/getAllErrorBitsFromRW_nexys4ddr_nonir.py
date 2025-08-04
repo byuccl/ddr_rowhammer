@@ -224,7 +224,7 @@ def main():
             # points to a map of error bits (bank numbers, pointing to map of row numbers, pointing to row of column numbers, pointing to 
             # lists full of the bit numbers in each column)
             # We skip the keys with "read_count".
-            if pair_dict == READ_COUNT_KEY_RW_STR: 
+            if pair_dict == READ_COUNT_KEY_RW_STR:
                 continue
             
             # Take the map from key "errors_in_rows", this is all we want from the rowhammer tester map. 
@@ -264,8 +264,8 @@ def main():
     file_desc.write("\n".join(["[" + str(key) + " : " + str(value) + "]" for key, value in prev_error_map.items()]))
 
     ##################################################################
-    
-    print("Computing error_map_rbits map (selecting errors near hammered rows)")
+
+    print("Computing error_map_rbits map (selecting errors near hammered rows, now also selecting bits not in previous test)")
 
     # Keep only the bits that have flipped near the attacked rows
     error_map_rbits = {}
@@ -317,7 +317,6 @@ def main():
 
                 # #####################################
 
-
                 #####################################
                 # NEW ROW HAMMER COUNTER
                 #####################################
@@ -327,9 +326,6 @@ def main():
                     # Caching (for fast performance)
                     row_map = error_map[key][bank_key][row_key]
                     bit_list = row_map[col_key]
-
-                    # if (("attacked_row_pair_1893_1895_bank_0" in error_map_rbits) and ("0" in error_map_rbits["attacked_row_pair_1893_1895_bank_0"]) and ("1894" in error_map_rbits["attacked_row_pair_1893_1895_bank_0"]["0"])):
-                    #     print("pt11-Here it is!!!!", error_map_rbits["attacked_row_pair_1893_1895_bank_0"]["0"]["1894"])
 
                     # See if bits were already added
                     for bit_num in bit_list:
@@ -341,6 +337,9 @@ def main():
                                 (col_key in error_map_rbits[key_temp][bank_key][row_key]) and 
                                 (bit_num in error_map_rbits[key_temp][bank_key][row_key][col_key])):
 
+                                # If it was added (enters this if statement), then
+                                # check if it is in our lists of 3rd or 5th bits.
+                                # If not, get rid of it.
                                 if (((len(near_bit_upper_list) >= 2) and (not ((bank_key, row_key, col_key, bit_num) in near_bit_upper_list[1]))) or 
                                     (((len(near_bit_upper_list) >= 1) and ((bank_key, row_key, col_key, bit_num) in near_bit_upper_list[0])) or
                                      ((len(near_bit_upper_list) >= 3) and ((bank_key, row_key, col_key, bit_num) in near_bit_upper_list[2])) or 
@@ -369,14 +368,12 @@ def main():
                                     if len(error_map_rbits[key_temp]) == 0:
                                         error_map_rbits.pop(key_temp)
 
-
                         # Don't wanna add bits we just removed that were added previously!
                         if ((bank_key in rbits_new_list_removed_bits) and
                             (row_key in rbits_new_list_removed_bits[bank_key]) and 
                             (col_key in rbits_new_list_removed_bits[bank_key][row_key]) and 
                             (bit_num in rbits_new_list_removed_bits[bank_key][row_key][col_key])):
                             continue
-
 
                         # Now that address is in attacked bank near attacked rows, add element to list
                         if not (key in error_map_rbits):
@@ -390,7 +387,6 @@ def main():
                         if not (bit_num in error_map_rbits[key][bank_key][row_key][col_key]):
                             error_map_rbits[key][bank_key][row_key][col_key].append(bit_num)
                         near_bit_list.append((bank_key, row_key, col_key, bit_num))
-                            
 
             # As soon as all columns have been added, update deque of lists
             if (len(near_bit_upper_list) >= 6):
@@ -399,19 +395,10 @@ def main():
             near_bit_list.clear()
 
             #####################################
-
-    #         if (("attacked_row_pair_1893_1895_bank_0" in error_map_rbits) and ("0" in error_map_rbits["attacked_row_pair_1893_1895_bank_0"]) and ("1894" in error_map_rbits["attacked_row_pair_1893_1895_bank_0"]["0"])):
-    #             print("pt1-Here it is!!!!", error_map_rbits["attacked_row_pair_1893_1895_bank_0"]["0"]["1894"])
-
-    # if (("attacked_row_pair_1893_1895_bank_0" in error_map_rbits) and ("0" in error_map_rbits["attacked_row_pair_1893_1895_bank_0"]) and ("1894" in error_map_rbits["attacked_row_pair_1893_1895_bank_0"]["0"])):
-    #     print("pt12-Here it is!!!!", error_map_rbits["attacked_row_pair_1893_1895_bank_0"]["0"]["1894"])
-
-    # print("Some text: ", error_map_rbits["attacked_row_pair_1893_1895_bank_0"]['0'])
-
+    
     file_desc.write("\n\n\n\n\n\n\n\n")
     file_desc.write("Error map rbits map (all errors that have flippped near attacked rows)")
     file_desc.write("\n".join([str(key) + " : " + str(value) for key, value in error_map_rbits.items()]))
-    print("Printed Error map rbits map (all errors that have flippped near attacked rows)")
 
     ##################################################################
     # Added code for keeping bits that flipped near previous attacked rows
@@ -559,8 +546,6 @@ def main():
     
     print("Computing frequency map of all errors")
 
-    # print("Some text: ", error_map_rbits["attacked_row_pair_1893_1895_bank_0"])
-
     # Give each bit flip a frequency count
     frq_cnt_map = {}
     for key in error_map:
@@ -588,7 +573,7 @@ def main():
     # Find line numbers of starting refresh rates in script
     print("Finding refresh rate sections in file")
     refresh_test_ranks = []
-    with open("./nexys4ddr_complete_characterization_irradiated/nexys4ddr_complete_characterization_irradiated_complete_log.txt") as openedFile:
+    with open("./nexys4ddr_complete_characterization_nonirradiated/nexys4ddr_complete_characterization_nonirradiated_organized.log") as openedFile:
         for num, line in enumerate(openedFile, 1):
             if CHECK_RANK_STR in line:
                 rfsh_rate = int(re.search(r'\d+', line).group())
@@ -631,20 +616,21 @@ def main():
 
                         # print("part2: bank: ", bank_key, " row: ", row_key, " col: ", col_key, " bit_cnt: ", bit_cnt, " freq: ", frq_cnt_map[bank_key][row_key][col_key][bit_cnt])
 
-                        # ################################
-                        # # Prev Error Check
-                        # ################################
-                        
+                        ################################
+                        # Prev Error Check
+                        ################################
+
                         # # Check if bits are from previous file
-                        # if ((bank_key in prev_error_map) and
+                        # if ((bank_key in prev_error_map) and 
                         #     (row_key in prev_error_map[bank_key]) and 
-                        #     (col_key in prev_error_map[bank_key][row_key]) and
+                        #     (col_key in prev_error_map[bank_key][row_key]) and 
                         #     (bit_cnt in prev_error_map[bank_key][row_key][col_key])):
                         #     print("Bit skipped due to prev file: bank: ", bank_key, ", row: ", row_key, ", col: ", col_key, ', bit_cnt: ', bit_cnt)
                         #     file_desc.write("Bit skipped due to prev file: bank: " + str(bank_key) + ", row: " + str(row_key) + ", col: " + str(col_key) + ", bit_cnt: " + str(bit_cnt) + "\n")
                         #     continue
 
-                        # ################################
+                        ################################
+
 
                         ################################
                         # Added code
@@ -668,7 +654,7 @@ def main():
                                 continue
 
                         ################################
-                        
+
                         # Make sure that the bank, row, col exist in rank_map
                         if not (bank_key in rank_map):
                             rank_map[bank_key] = {}
@@ -678,7 +664,7 @@ def main():
                             rank_map[bank_key][row_key][col_key] = {}
                         if bit_cnt in rank_map[bank_key][row_key][col_key]:
                             continue
-
+                        
                         address_to_convert = int(row_key)
                         address_to_convert = (address_to_convert << NEXYS4DDR_BANK_BIT_CNT) + int(bank_key)
                         address_to_convert = (address_to_convert << NEXYS4DDR_COL_BIT_CNT) + (int(col_key) >> NEXYS4DDR_COL_BIT_DEL) 
@@ -692,7 +678,7 @@ def main():
                         lowest_rank = STARTING_DECREMENTING_RANK_NUM
                         found_lowest_rank = False
                         check_0_flipped_1_list = []
-                        with open("./nexys4ddr_complete_characterization_irradiated/nexys4ddr_complete_characterization_irradiated_complete_log.txt") as openedFile:
+                        with open("./nexys4ddr_complete_characterization_nonirradiated/nexys4ddr_complete_characterization_nonirradiated_organized.log") as openedFile:
 
                             for line_num, line in enumerate(openedFile, STARTING_PAGE_NUM):
                                 # Find the first line in file matching address. There are assumptions made about how the BIST log file opened is organized.
@@ -747,6 +733,9 @@ def main():
                                         lowest_rank = STARTING_DECREMENTING_RANK_NUM
                                         if (len(flipped_bits_list) > 0 and int(bit_cnt) in flipped_bits_list):
 
+                                            # First check if keys exist in dictionary
+                                            # if not((bank_key in rank_map) and (row_key in rank_map[bank_key]) and (col_key in rank_map[bank_key][row_key]) and (bit_cnt in rank_map[bank_key][row_key][col_key])):
+
                                             print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ Passed? Yes")
                                             
                                             lowest_rank = refresh_test_ranks[element_index][RANK_RANK_INDEX]
@@ -771,9 +760,12 @@ def main():
                                         else:
 
                                             print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ Found rank? No")
+                                
+                                    
 
                         total_index += 1
                         print("\n\nTotal lines finished: ", total_index, ", rank added: ", lowest_rank) # end = '\r'
+
 
                         if (found_lowest_rank == False):
                             refresh_test_rank_error_cnts[len(refresh_test_rank_error_cnts) - 1] += 1
@@ -782,7 +774,7 @@ def main():
                         print("\n\n")
                         
                         rank_map[bank_key][row_key][col_key][bit_cnt] = (lowest_rank, timeAndAddress, ''.join(("(" + str(element[0]) + " : " + str(element[1]) + ") ") for element in check_0_flipped_1_list))
-    
+
     file_desc.write("\n\n\n\n\n\n\n\nRank map {bank, row, col, bit_num, rank), rank:0-17, 18 means nonexistant (18 refresh tests):\n")
     file_desc.write("\n".join(["[" + str(key) + " : " + str(value) + "]" for key, value in rank_map.items()]))
 

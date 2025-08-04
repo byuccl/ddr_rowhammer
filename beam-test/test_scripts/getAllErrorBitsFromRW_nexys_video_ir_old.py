@@ -20,11 +20,6 @@ CHECK_RANK_STR = "test"
 ZEROS_REF_STR = "zeros"
 ONES_REF_STR = "ones"
 REGEX_ERROR_STR = "0x[0-1][0-9a-f]{6}:  [ 0-9a-f]{7}[0-9a-f] [ 0-9a-f]{7}[0-9a-f] [ 0-9a-f]{7}[0-9a-f] [ 0-9a-f]{7}[0-9a-f]"
-SDRAM_REFRESH_TEST_STR = "sdram_refresh_set {refresh_rate}"
-SDRAM_PATTERN_REGEX_ZEROS_STR = "sdram_bist_pat 0x00000000"
-SDRAM_PATTERN_REGEX_ONES_STR = "sdram_bist_pat 0xffffffff"
-ADDR_DATA_STR = "ADDRESS    DATA"
-REFRESH_RATE_TESTED = 0
 BANK_INDEX_INT = 5
 BEG_FREQ_CNT = 1
 NEXYS_VIDEO_BANK_BIT_CNT = 3
@@ -32,7 +27,7 @@ NEXYS_VIDEO_COL_BIT_CNT = 7
 NEXYS_VIDEO_COL_BIT_DEL = 3
 STARTING_PAGE_NUM = 1
 STARTING_DECREMENTING_RANK_NUM = 16
-NUM_RANKS = 1 # For single file, 1 rank only
+NUM_RANKS = 16 # Ranks range from index 0 - 15, 16 means nonexistentrank
 TUNE_OUT_REFRESH_ERRORS = 5
 RANK_INDEX = 5
 BASE_SIXTEEN = 16
@@ -41,6 +36,7 @@ NINTH_INDEX = 9
 NUM_BITS_IN_HEX = 4
 BIT_CNT_MODULO8 = 8
 BIT_CNT_SUB7 = 7
+HIGHEST_RFSH_RATE = 38404096
 LOWEST_RFSH_RATE = 782
 RANK_PAGE_INDEX = 0
 RANK_TESTTYPE_INDEX = 2
@@ -324,54 +320,31 @@ def main():
 
     file_desc.write("\n".join(["[" + str(key) + " : " + str(value) + "]" for key, value in frq_cnt_map.items()]))
 
-    # # Find line numbers of starting refresh rates in script
-    # print("Finding refresh rate sections in file")
-    # refresh_test_ranks = []
-    # with open("./nexys_video_complete_characterization_irradiated/nexys_video_complete_caracterization_irradiated_complete_log.txt") as openedFile:
-    #     for num, line in enumerate(openedFile, 1):
-    #         if CHECK_RANK_STR in line:
-    #             rfsh_rate = int(re.search(r'\d+', line).group())
-    #             test_type = ZEROS_REF_STR if (line.find(ZEROS_REF_STR) > 0) else ONES_REF_STR
-    #             rank_num = find_rank(rfsh_rate=rfsh_rate)
-    #             print(rfsh_rate, ", ", test_type, ", ", rank_num)
-    #             pass
-    #             refresh_test_ranks.append((num, rfsh_rate, test_type, rank_num))
-
-                
-    # print("Printing refresh rank list: (organized by line number, rfsh rate, test type, rank)")
-    # file_desc.write("\n\n\n\n\n\n\nPrinting refresh rank list: (organized by line number, rfsh rate, test type, rank)\n")
-    # refresh_test_ranks = sort_tuple_ranks(refresh_test_ranks)
-
-    # print(refresh_test_ranks)
-
+    # Find line numbers of starting refresh rates in script
     print("Finding refresh rate sections in file")
     refresh_test_ranks = []
-    with open("./nexys_video_complete_characterization_irradiated/refresh_test_nexysvid_refreshdisabled_UART.log") as openedFile:
-        find_pattern = False
-        find_addr_data_str = False
+    with open("./nexys_video_complete_characterization_irradiated/nexys_video_complete_caracterization_irradiated_complete_log.txt") as openedFile:
         for num, line in enumerate(openedFile, 1):
-            if SDRAM_REFRESH_TEST_STR.format(refresh_rate=REFRESH_RATE_TESTED) in line:
-                find_pattern = True
-            elif find_pattern and (SDRAM_PATTERN_REGEX_ZEROS_STR in line):
-                test_type = ZEROS_REF_STR
-                find_pattern = False
-                find_addr_data_str = True
-            elif find_pattern and (SDRAM_PATTERN_REGEX_ONES_STR in line):
-                test_type = ONES_REF_STR
-                find_pattern = False
-                find_addr_data_str = True
-            elif find_addr_data_str and (ADDR_DATA_STR in line):
-                find_addr_data_str = False
-                rank = 0
-                refresh_test_ranks.append((num, REFRESH_RATE_TESTED, test_type, rank))
+            if CHECK_RANK_STR in line:
+                rfsh_rate = int(re.search(r'\d+', line).group())
+                test_type = ZEROS_REF_STR if (line.find(ZEROS_REF_STR) > 0) else ONES_REF_STR
+                rank_num = find_rank(rfsh_rate=rfsh_rate)
+                print(rfsh_rate, ", ", test_type, ", ", rank_num)
+                pass
+                refresh_test_ranks.append((num, rfsh_rate, test_type, rank_num))
 
+                
+    print("Printing refresh rank list: (organized by line number, rfsh rate, test type, rank)")
+    file_desc.write("\n\n\n\n\n\n\nPrinting refresh rank list: (organized by line number, rfsh rate, test type, rank)\n")
+    refresh_test_ranks = sort_tuple_ranks(refresh_test_ranks)
 
-    # Printing refresh rates
-    print("Printing refresh rate list")
-    file_desc.write("\n\n\n\n\nPrinting refresh rate list")
     print(refresh_test_ranks)
     file_desc.write("[" + ", \n".join([str(n) for n in refresh_test_ranks]) + "]")
 
+    # Get all refresh test counts
+    refresh_test_rank_error_cnts = (len(refresh_test_ranks) + 1) * [0]
+    print("\n\n\nrefresh_test_rank_error_cnts:")
+    print(refresh_test_rank_error_cnts)
 
     ## Assert that the log contains data for 16 refresh rates, two tests each (with ones, with zeros)
     assert len(refresh_test_ranks) == (NUM_RANKS * 2)
@@ -417,13 +390,17 @@ def main():
 
                         # Find the rank
                         address = ""
-                        rank = STARTING_DECREMENTING_RANK_NUM
+                        lowest_rank = STARTING_DECREMENTING_RANK_NUM
+                        found_lowest_rank = False
                         timeAndAddress = ""
-                        with open("./nexys_video_complete_characterization_irradiated/refresh_test_nexysvid_refreshdisabled_UART.log") as openedFile:
+                        check_0_flipped_1_list = []
+                        with open("./nexys_video_complete_characterization_irradiated/nexys_video_complete_caracterization_irradiated_complete_log.txt") as openedFile:
 
+                            print("Bist string to match: ", bist_matching_str)
                             for line_num, line in enumerate(openedFile, STARTING_PAGE_NUM):
                                 # Find the first line in file matching address. There are assumptions made about how the BIST log file opened is organized.
                                 if bist_matching_str in line:
+                                    print("Looking at line from BIST: ", line, end="")
  
                                     # Assert data exists in correct format
                                     if (re.search(REGEX_ERROR_STR, line) == None):
@@ -474,23 +451,48 @@ def main():
 
                                     print("Flipped bits list: ", flipped_bits_list)
 
-                                    rank = STARTING_DECREMENTING_RANK_NUM
-                                    if (len(flipped_bits_list) > 0 and int(bit_cnt) in flipped_bits_list):
+                                    if (found_lowest_rank == False):
+                                        lowest_rank = STARTING_DECREMENTING_RANK_NUM
+                                        if (len(flipped_bits_list) > 0 and int(bit_cnt) in flipped_bits_list):
 
-                                        print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ Passed? Yes")
+                                            print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ Passed? Yes")
+                                            
+                                            lowest_rank = refresh_test_ranks[element_index][RANK_RANK_INDEX]
+                                            found_lowest_rank = True
+                                            refresh_test_rank_error_cnts[element_index] += 1
+                                            check_0_flipped_1_list.append((check_0_flipped_1, bist_matching_str))
+
+                                            print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ Now finding other ranks")
+
+                                        else:
+                                    
+                                            print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ Passed? No")
+
+                                    else:
+
+                                        if (len(flipped_bits_list) > 0 and int(bit_cnt) in flipped_bits_list):
+
+                                            print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ Found rank? Yes")
+                                            refresh_test_rank_error_cnts[element_index] += 1
+                                            check_0_flipped_1_list.append((check_0_flipped_1, bist_matching_str))
                                         
-                                        rank = refresh_test_ranks[element_index][RANK_RANK_INDEX]
-                                        break
-                                
-                                    print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ Passed? No")
+                                        else:
+
+                                            print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ Found rank? No")
 
                         total_index += 1
-                        print("Total lines finished: ", total_index, ", rank added: ", rank) # end = '\r'
+                        print("\n\nTotal lines finished: ", total_index, ", rank added: ", lowest_rank) # end = '\r'
+
+                        if (found_lowest_rank == False):
+                            refresh_test_rank_error_cnts[len(refresh_test_rank_error_cnts) - 1] += 1
+
+                        print("\n\nCurrent error counts: ", refresh_test_rank_error_cnts)
+                        print("\n\n")
                         
                         if len(timeAndAddress) > 0:
-                            rank_map[bank_key][row_key][col_key][bit_cnt] = (rank, timeAndAddress)
+                            rank_map[bank_key][row_key][col_key][bit_cnt] = (lowest_rank, timeAndAddress, ''.join(("(" + str(element[0]) + " : " + str(element[1]) + ") ") for element in check_0_flipped_1_list))
                         else:
-                            rank_map[bank_key][row_key][col_key][bit_cnt] = (rank, bist_matching_str)
+                            rank_map[bank_key][row_key][col_key][bit_cnt] = (lowest_rank, bist_matching_str, ''.join(("(" + str(element[0]) + " : " + str(element[1]) + ") ") for element in check_0_flipped_1_list))
 
     file_desc.write("\n\n\n\n\n\n\n\nRank map {bank, row, col, bit_num, rank), rank:0-17, 18 means nonexistant (18 refresh tests):\n")
     file_desc.write("\n".join(["[" + str(key) + " : " + str(value) + "]" for key, value in rank_map.items()]))
@@ -503,7 +505,7 @@ def main():
         for row_key in rank_map[bank_key]:
             for col_key in rank_map[bank_key][row_key]:
                 for bit_cnt in rank_map[bank_key][row_key][col_key]:
-                    organized_rank_list.append((int(bank_key), int(row_key), int(col_key), int(bit_cnt), frq_cnt_map[bank_key][row_key][col_key][bit_cnt], rank_map[bank_key][row_key][col_key][bit_cnt][0], rank_map[bank_key][row_key][col_key][bit_cnt][1]))
+                    organized_rank_list.append((int(bank_key), int(row_key), int(col_key), int(bit_cnt), frq_cnt_map[bank_key][row_key][col_key][bit_cnt], rank_map[bank_key][row_key][col_key][bit_cnt][0], rank_map[bank_key][row_key][col_key][bit_cnt][1], rank_map[bank_key][row_key][col_key][bit_cnt][2]))
 
     # Organize the list by rank with a lambda
     organized_rank_list.sort(key=lambda a: a[RANK_INDEX])
@@ -511,6 +513,21 @@ def main():
     file_desc.write("\n\n\n\n\n\n\n\nOrganized list (bank, row, col, bit_num, freq, rank), rank:0-17, 18 means nonexistant (18 refresh tests):\n")
     for tuple_element in organized_rank_list:
         file_desc.write(str(tuple_element) + "\n")
+
+    # Write the number of rowhammer errors found in refresh tests to file
+    file_desc.write("\n\n\n\n\n\n\n\nList of all rowhammer errors found for each section of refresh errors")
+    for element in refresh_test_rank_error_cnts:
+        file_desc.write("[" + str(element) + "]\n")
+
+    # Show the count of first-time errrs for simplicity's sake
+    file_desc.write("\n\n\n\n\n\n\n\nList of first-time rowhammer errors found for each section of refresh errors:\n")
+    counter_var = 0
+    for help_index in range(NUM_RANKS + 1):
+        for element in organized_rank_list:
+            if help_index == element[RANK_INDEX]:
+                counter_var += 1
+        file_desc.write(str(counter_var) + "\n")
+        counter_var = 0
 
     file_desc.close()
 
