@@ -11,7 +11,7 @@ Instructions to setup our BIST design are [here](https://github.com/byuccl/ddr_r
 
 Instructions to setup the Row Hammer Tester are [here](https://github.com/byuccl/ddr_rowhammer/wiki/Instructions-to-Setup-the-rowhammer-tester).
 
-A design using ECC with LiteDRAM was created, and instructions to set that up are [here](https://github.com/byuccl/ddr_rowhammer/wiki/Instructions-to-setup-our-ECC-designs).
+A design using ECC with LiteDRAM was created, and instructions for setup of that design are [here](https://github.com/byuccl/ddr_rowhammer/wiki/Instructions-to-setup-our-ECC-designs).
 
 Some saved references to papers are [here](https://github.com/byuccl/ddr_rowhammer/wiki/Papers-and-Related-Work).
 
