@@ -1,7 +1,7 @@
 # DDR Rowhammer Project
 
-The goal of this project is to determine reliability of generations of the DRAM. 
-We will do this by characterizing each generation of DRAM tested based on the retention capabilities and vulnerability to row hammer attacks of their memory cells.
+The goal of this project is to determine reliability of generations of the DRAM. DRAM is used as main memory in most computer systems, and its use and study in harsh, radioactive environments is desirable. 
+Each generation of DRAM tested was characterized based on the retention capabilities and vulnerability to row hammer attacks of their memory cells.
 
 ## Wiki Pages 
 
