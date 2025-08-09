@@ -55,8 +55,8 @@ WRITING_ZEROS_CMD_STR = "0x00000000"
 BIST_REFRESH_CMD_RESET_STR = "sdram_refresh_set 586"
 BIST_REFRESH_CMD_SR = "sdram_refresh_set {refresh_rate}"
 BIST_PAT_CMD_STR = "sdram_bist_pat {bist_pat_str}"
-BIST_WRITER_CMD_STR = "sdram_bist_writer 0x0 0xfffffff"
-BIST_READER_CMD_STR = "sdram_bist_reader 0x0 0xfffffff {err_lim}"
+BIST_WRITER_CMD_STR = "sdram_bist_writer 0x000000 0xfffffff"
+BIST_READER_CMD_STR = "sdram_bist_reader 0x000000 0xfffffff {err_lim}"
 BEG_NEW_REFRESH_RATE_STR="\n\n\n###################################################################\n# Refresh rate {rfsh_rate}\n###################################################################\n\n"
 TOT_NUM_TESTS_STR = "Total number of tests: "
 
@@ -65,9 +65,9 @@ BIST_ERROR_RANGE_REGEX = 'Error address range: 0x[0-9a-f]{6,7}-0x[0-9a-f]{6,7},'
 BIST_ERROR_CNT_REGEX = 'Num Errors: [0-9]+,'
 BIST_NEWLINE_CHARS = '\n\n'
 
-DRAM_WAIT_TIMES = [0, 7200]
+# DRAM_WAIT_TIMES = [86400]
 # DRAM_WAIT_TIMES = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-# DRAM_WAIT_TIMES = [0, 300]
+DRAM_WAIT_TIMES = [300]
 # DRAM_WAIT_TIMES = [1, 5, 10, 60, 120, 240, 480, 720, 960, 1200, 1440, 1680, 1920, 2160, 2400, 3600, 5400, 7200]
 
 
@@ -285,22 +285,6 @@ def main():
     # zeros_err_list_file.write(FILE_BEG_STR)
     # ones_err_list_file.write(FILE_BEG_STR)
 
-    # Create uart stdout and log file
-    uart_log_filename = create_log_path("UART",args.filename, log_dir)
-    uart_log_file = open(uart_log_filename,"w")
-
-    # Format logfile
-    logfile = TimestampedFile(uart_log_file, timestampformat = TIME_STRING_FORMAT)
-
-    # Get serial device string for Serial object
-    serial_dev = DEFAULT_TTY_STR + str(args.tty_port)
-
-    # Create serial object to open with fdspawn
-    serial_fd = Serial(serial_dev, baudrate=DEFAULT_SERIAL_BAUDRATE)
-
-    # Open the port
-    serial_fdspawn = fdspawn(serial_fd, encoding="utf-8", logfile=logfile)
-
     # Save beginning refresh rate
     refresh_rate = args.beg_refresh_rate
 
@@ -322,6 +306,22 @@ def main():
     max_error_cnt = 0
     for refresh_rate in refresh_list:
 
+        # Create uart stdout and log file
+        uart_log_filename = create_log_path("UART_refresh_rate_" + str(refresh_rate) ,args.filename, log_dir)
+        uart_log_file = open(uart_log_filename,"w")
+
+        # Format logfile
+        logfile = TimestampedFile(uart_log_file, timestampformat = TIME_STRING_FORMAT)
+
+        # Get serial device string for Serial object
+        serial_dev = DEFAULT_TTY_STR + str(args.tty_port)
+
+        # Create serial object to open with fdspawn
+        serial_fd = Serial(serial_dev, baudrate=DEFAULT_SERIAL_BAUDRATE)
+
+        # Open the port
+        serial_fdspawn = fdspawn(serial_fd, encoding="utf-8", logfile=logfile)
+
         # Create list for holding error points
         zeros_error_point_graph = []
         ones_error_point_graph = []
@@ -333,7 +333,7 @@ def main():
         # ones_err_list_file.write(BEG_NEW_REFRESH_RATE_STR.format(rfsh_rate=refresh_rate))
 
         for wait_time in DRAM_WAIT_TIMES:
-            
+
             print(PROGRESS_STR.format(testnum=testindex, total_tests=total_tests, wait_time=wait_time), end="\r")
 
             # Write all zeros
@@ -376,6 +376,12 @@ def main():
         # Add points to lists
         ones_error_point_list.append(ones_error_point_graph)
         zeros_error_point_list.append(zeros_error_point_graph)
+
+        # Close the port? 
+        serial_fd.close()
+
+        # Close the file?
+        logfile.close()
 
     print(ones_error_point_list)
     print(zeros_error_point_list)

@@ -59,12 +59,11 @@ BIST_READER_CMD_STR = "sdram_bist_reader 0x0 0xfffffff {err_lim}"
 BEG_NEW_REFRESH_RATE_STR="\n\n\n###################################################################\n# Refresh rate {rfsh_rate}\n###################################################################\n\n"
 TOT_NUM_TESTS_STR = "Total number of tests: "
 
-BIST_ERROR_MSG_REGEX = b'0x[a-f0-9]{7}:  [ a-f0-9]{7}[a-f0-9] [ a-f0-9]{7}[a-f0-9] [ a-f0-9]{7}[a-f0-9] [ a-f0-9]{7}[a-f0-9] [ a-f0-9]{7}[a-f0-9] [ a-f0-9]{7}[a-f0-9] [ a-f0-9]{7}[a-f0-9] [ a-f0-9]{7}[a-f0-9] [ a-f0-9]{7}[a-f0-9] [ a-f0-9]{7}[a-f0-9] [ a-f0-9]{7}[a-f0-9] [ a-f0-9]{7}[a-f0-9] [ a-f0-9]{7}[a-f0-9] [ a-f0-9]{7}[a-f0-9] [ a-f0-9]{7}[a-f0-9] [ a-f0-9]{7}[a-f0-9]'
+BIST_ERROR_MSG_REGEX = b'0x[a-f0-9]{7}:  [ a-f0-9]{7}[a-f0-9] [ a-f0-9]{7}[a-f0-9] [ a-f0-9]{7}[a-f0-9] [ a-f0-9]{7}[a-f0-9]'
 BIST_ERROR_RANGE_REGEX = b'Error address range: 0x[0-9a-f]{6,7}-0x[0-9a-f]{6,7},'
 BIST_ERROR_CNT_REGEX = b'Num Errors: [0-9]+,'
 
-
-DRAM_WAIT_TIMES = [0, 86400]
+DRAM_WAIT_TIMES = [300]
 
 
 
@@ -328,22 +327,9 @@ def main():
 
         for wait_time in DRAM_WAIT_TIMES:
 
-            print(PROGRESS_STR.format(testnum=testindex, total_tests=total_tests, wait_time=wait_time), end="\r")
-
-            # Write all zeros
-            error_cnt, pnt = run_test_get_results(
-                args=args,
-                err_list_file='', # zeros_err_list_file, 
-                serial_fdspawn=serial_fdspawn,
-                refresh_rate=refresh_rate, 
-                wait_time=wait_time,
-                with_ones=False)
-            
-            zeros_error_point_graph.append(pnt)
-            max_error_cnt = max(max_error_cnt, error_cnt)
-            
-            # Count number of tests
-            testindex += 1
+            ####################################################################
+            # Switch here
+            ####################################################################
 
             # Print progress
             print(PROGRESS_STR.format(testnum=testindex, total_tests=total_tests, wait_time=wait_time), end="\r")
@@ -362,6 +348,30 @@ def main():
             
             # Print progress
             testindex += 1
+
+            ####################################################################
+
+            print(PROGRESS_STR.format(testnum=testindex, total_tests=total_tests, wait_time=wait_time), end="\r")
+
+            # Write all zeros
+            error_cnt, pnt = run_test_get_results(
+                args=args,
+                err_list_file='', # zeros_err_list_file, 
+                serial_fdspawn=serial_fdspawn,
+                refresh_rate=refresh_rate, 
+                wait_time=wait_time,
+                with_ones=False)
+            
+            zeros_error_point_graph.append(pnt)
+            max_error_cnt = max(max_error_cnt, error_cnt)
+            
+            # Count number of tests
+            testindex += 1
+
+
+            ####################################################################
+
+            ####################################################################
 
         # To complete graphing shapes, add the final point
         ones_error_point_graph.append((DRAM_WAIT_TIMES[len(DRAM_WAIT_TIMES) - 1], 0))
