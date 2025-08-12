@@ -1,9 +1,6 @@
 [submodule "beam-test/soc/dependencies/liteeth"]
 	path = beam-test/soc/dependencies/liteeth
 	url = https://github.com/enjoy-digital/liteeth
-[submodule "beam-test/soc/dependencies/liteiclink"]
-	path = beam-test/soc/dependencies/liteiclink
-	url = https://github.com/enjoy-digital/liteiclink
 [submodule "beam-test/soc/dependencies/litejesd204b"]
 	path = beam-test/soc/dependencies/litejesd204b
 	url = https://github.com/enjoy-digital/litejesd204b
@@ -70,3 +67,6 @@
 [submodule "beam-test/soc/dependencies/litedram"]
 	path = beam-test/soc/dependencies/litedram
 	url = https://github.com/byuccl/litedram
+[submodule "beam-test/soc/dependencies/liteiclink"]
+	path = beam-test/soc/dependencies/liteiclink
+	url = https://github.com/enjoy-digital/liteiclink.git
