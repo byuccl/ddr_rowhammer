@@ -2,12 +2,12 @@
 -e dependencies/pythondata-software-picolibc
 -e dependencies/pythondata-software-compiler_rt
 -e dependencies/litex
+-e dependencies/liteiclink
 -e dependencies/liteeth
 -e dependencies/litedram
 -e dependencies/litepcie
 -e dependencies/litesata
 -e dependencies/litesdcard
--e dependencies/liteiclink
 -e dependencies/litescope
 -e dependencies/litejesd204b
 -e dependencies/litespi
