@@ -15,6 +15,10 @@ A design using ECC with LiteDRAM was created, and instructions for setup of that
 
 Some saved references to papers are [here](https://github.com/byuccl/ddr_rowhammer/wiki/Papers-and-Related-Work).
 
+## Thesis
+
+[Investigating Radiation Induced Rowhammer and Retention Failures in DRAM](https://scholarsarchive.byu.edu/etd/10932/)
+
 
 
 
